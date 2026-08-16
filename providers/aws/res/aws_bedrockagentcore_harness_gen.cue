@@ -58,6 +58,26 @@ aws_bedrockagentcore_harness: {
 		harness_name!:       string
 		max_iterations?:     number
 		max_tokens?:         number
+		memory_actual?: [...close({
+			agentcore_memory_configuration?: [...close({
+				actor_id?:       string
+				arn?:            string
+				messages_count?: number
+				retrieval_config?: [...close({
+					map_block_key?:   string
+					relevance_score?: number
+					strategy_id?:     string
+					top_k?:           number
+				})]
+			})]
+			disabled?: [...close({})]
+			managed_memory_configuration?: [...close({
+				arn?:                   string
+				encryption_key_arn?:    string
+				event_expiry_duration?: number
+				strategies?: [...string]
+			})]
+		})]
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		timeout_seconds?: number
@@ -86,6 +106,8 @@ aws_bedrockagentcore_harness: {
 
 	#memory: close({
 		agentcore_memory_configuration?: matchN(1, [_#defs."/$defs/memory/$defs/agentcore_memory_configuration", [..._#defs."/$defs/memory/$defs/agentcore_memory_configuration"]])
+		disabled?: matchN(1, [_#defs."/$defs/memory/$defs/disabled", [..._#defs."/$defs/memory/$defs/disabled"]])
+		managed_memory_configuration?: matchN(1, [_#defs."/$defs/memory/$defs/managed_memory_configuration", [..._#defs."/$defs/memory/$defs/managed_memory_configuration"]])
 	})
 
 	#model: close({
@@ -223,6 +245,15 @@ aws_bedrockagentcore_harness: {
 		relevance_score?: number
 		strategy_id?:     string
 		top_k?:           number
+	})
+
+	_#defs: "/$defs/memory/$defs/disabled": close({})
+
+	_#defs: "/$defs/memory/$defs/managed_memory_configuration": close({
+		arn?:                   string
+		encryption_key_arn?:    string
+		event_expiry_duration?: number
+		strategies?: [...string]
 	})
 
 	_#defs: "/$defs/model/$defs/bedrock_model_config": close({

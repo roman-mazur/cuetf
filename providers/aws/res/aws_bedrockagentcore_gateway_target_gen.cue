@@ -332,8 +332,24 @@ aws_bedrockagentcore_gateway_target: {
 	})
 
 	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/mcp_server": close({
-		endpoint!:     string
-		listing_mode?: string
+		mcp_tool_schema?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/mcp_server/$defs/mcp_tool_schema", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/mcp_server/$defs/mcp_tool_schema"]])
+		endpoint!:          string
+		listing_mode?:      string
+		resource_priority?: number
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/mcp_server/$defs/mcp_tool_schema": close({
+		inline_payload?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/mcp_server/$defs/mcp_tool_schema/$defs/inline_payload", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/mcp_server/$defs/mcp_tool_schema/$defs/inline_payload"]])
+		s3?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/mcp_server/$defs/mcp_tool_schema/$defs/s3", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/mcp_server/$defs/mcp_tool_schema/$defs/s3"]])
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/mcp_server/$defs/mcp_tool_schema/$defs/inline_payload": close({
+		payload!: string
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/mcp_server/$defs/mcp_tool_schema/$defs/s3": close({
+		bucket_owner_account_id?: string
+		uri!:                     string
 	})
 
 	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/open_api_schema": close({

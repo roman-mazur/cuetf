@@ -86,6 +86,8 @@ aws_arcregionswitch_plan: {
 
 	_#defs: "/$defs/workflow/$defs/step": close({
 		arc_routing_control_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/arc_routing_control_config", [..._#defs."/$defs/workflow/$defs/step/$defs/arc_routing_control_config"]])
+		aurora_provisioned_scaling_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/aurora_provisioned_scaling_config", [..._#defs."/$defs/workflow/$defs/step/$defs/aurora_provisioned_scaling_config"]])
+		aurora_serverless_scaling_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/aurora_serverless_scaling_config", [..._#defs."/$defs/workflow/$defs/step/$defs/aurora_serverless_scaling_config"]])
 		custom_action_lambda_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/custom_action_lambda_config", [..._#defs."/$defs/workflow/$defs/step/$defs/custom_action_lambda_config"]])
 		document_db_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/document_db_config", [..._#defs."/$defs/workflow/$defs/step/$defs/document_db_config"]])
 		ec2_asg_capacity_increase_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/ec2_asg_capacity_increase_config", [..._#defs."/$defs/workflow/$defs/step/$defs/ec2_asg_capacity_increase_config"]])
@@ -93,6 +95,8 @@ aws_arcregionswitch_plan: {
 		eks_resource_scaling_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/eks_resource_scaling_config", [..._#defs."/$defs/workflow/$defs/step/$defs/eks_resource_scaling_config"]])
 		execution_approval_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/execution_approval_config", [..._#defs."/$defs/workflow/$defs/step/$defs/execution_approval_config"]])
 		global_aurora_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/global_aurora_config", [..._#defs."/$defs/workflow/$defs/step/$defs/global_aurora_config"]])
+		lambda_event_source_mapping_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/lambda_event_source_mapping_config", [..._#defs."/$defs/workflow/$defs/step/$defs/lambda_event_source_mapping_config"]])
+		neptune_global_database_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/neptune_global_database_config", [..._#defs."/$defs/workflow/$defs/step/$defs/neptune_global_database_config"]])
 		parallel_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config"]])
 		rds_create_cross_region_read_replica_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/rds_create_cross_region_read_replica_config", [..._#defs."/$defs/workflow/$defs/step/$defs/rds_create_cross_region_read_replica_config"]])
 		rds_promote_read_replica_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/rds_promote_read_replica_config", [..._#defs."/$defs/workflow/$defs/step/$defs/rds_promote_read_replica_config"]])
@@ -118,6 +122,24 @@ aws_arcregionswitch_plan: {
 	_#defs: "/$defs/workflow/$defs/step/$defs/arc_routing_control_config/$defs/region_and_routing_controls/$defs/routing_control": close({
 		routing_control_arn!: string
 		state!:               string
+	})
+
+	_#defs: "/$defs/workflow/$defs/step/$defs/aurora_provisioned_scaling_config": close({
+		cross_account_role?:        string
+		external_id?:               string
+		global_cluster_identifier!: string
+		instance_arns!: [string]:                string
+		region_database_cluster_arns!: [string]: string
+		timeout_minutes?: number
+	})
+
+	_#defs: "/$defs/workflow/$defs/step/$defs/aurora_serverless_scaling_config": close({
+		cross_account_role?:        string
+		external_id?:               string
+		global_cluster_identifier!: string
+		region_database_cluster_arns!: [string]: string
+		target_percent?:  number
+		timeout_minutes?: number
 	})
 
 	_#defs: "/$defs/workflow/$defs/step/$defs/custom_action_lambda_config": close({
@@ -245,12 +267,46 @@ aws_arcregionswitch_plan: {
 		ungraceful!: string
 	})
 
+	_#defs: "/$defs/workflow/$defs/step/$defs/lambda_event_source_mapping_config": close({
+		region_event_source_mapping?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/lambda_event_source_mapping_config/$defs/region_event_source_mapping", [..._#defs."/$defs/workflow/$defs/step/$defs/lambda_event_source_mapping_config/$defs/region_event_source_mapping"]])
+		ungraceful?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/lambda_event_source_mapping_config/$defs/ungraceful", [..._#defs."/$defs/workflow/$defs/step/$defs/lambda_event_source_mapping_config/$defs/ungraceful"]])
+		action!:          string
+		timeout_minutes?: number
+	})
+
+	_#defs: "/$defs/workflow/$defs/step/$defs/lambda_event_source_mapping_config/$defs/region_event_source_mapping": close({
+		arn!:                string
+		cross_account_role?: string
+		external_id?:        string
+		region!:             string
+	})
+
+	_#defs: "/$defs/workflow/$defs/step/$defs/lambda_event_source_mapping_config/$defs/ungraceful": close({
+		behavior!: string
+	})
+
+	_#defs: "/$defs/workflow/$defs/step/$defs/neptune_global_database_config": close({
+		ungraceful?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/neptune_global_database_config/$defs/ungraceful", [..._#defs."/$defs/workflow/$defs/step/$defs/neptune_global_database_config/$defs/ungraceful"]])
+		behavior!:                  string
+		cross_account_role?:        string
+		external_id?:               string
+		global_cluster_identifier!: string
+		region_database_cluster_arns!: [string]: string
+		timeout_minutes?: number
+	})
+
+	_#defs: "/$defs/workflow/$defs/step/$defs/neptune_global_database_config/$defs/ungraceful": close({
+		ungraceful!: string
+	})
+
 	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config": close({
 		step?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step"]])
 	})
 
 	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step": close({
 		arc_routing_control_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/arc_routing_control_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/arc_routing_control_config"]])
+		aurora_provisioned_scaling_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/aurora_provisioned_scaling_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/aurora_provisioned_scaling_config"]])
+		aurora_serverless_scaling_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/aurora_serverless_scaling_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/aurora_serverless_scaling_config"]])
 		custom_action_lambda_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/custom_action_lambda_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/custom_action_lambda_config"]])
 		document_db_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/document_db_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/document_db_config"]])
 		ec2_asg_capacity_increase_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/ec2_asg_capacity_increase_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/ec2_asg_capacity_increase_config"]])
@@ -258,6 +314,8 @@ aws_arcregionswitch_plan: {
 		eks_resource_scaling_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/eks_resource_scaling_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/eks_resource_scaling_config"]])
 		execution_approval_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/execution_approval_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/execution_approval_config"]])
 		global_aurora_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/global_aurora_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/global_aurora_config"]])
+		lambda_event_source_mapping_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/lambda_event_source_mapping_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/lambda_event_source_mapping_config"]])
+		neptune_global_database_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/neptune_global_database_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/neptune_global_database_config"]])
 		rds_create_cross_region_read_replica_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/rds_create_cross_region_read_replica_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/rds_create_cross_region_read_replica_config"]])
 		rds_promote_read_replica_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/rds_promote_read_replica_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/rds_promote_read_replica_config"]])
 		region_switch_plan_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/region_switch_plan_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/region_switch_plan_config"]])
@@ -282,6 +340,24 @@ aws_arcregionswitch_plan: {
 	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/arc_routing_control_config/$defs/region_and_routing_controls/$defs/routing_control": close({
 		routing_control_arn!: string
 		state!:               string
+	})
+
+	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/aurora_provisioned_scaling_config": close({
+		cross_account_role?:        string
+		external_id?:               string
+		global_cluster_identifier!: string
+		instance_arns!: [string]:                string
+		region_database_cluster_arns!: [string]: string
+		timeout_minutes?: number
+	})
+
+	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/aurora_serverless_scaling_config": close({
+		cross_account_role?:        string
+		external_id?:               string
+		global_cluster_identifier!: string
+		region_database_cluster_arns!: [string]: string
+		target_percent?:  number
+		timeout_minutes?: number
 	})
 
 	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/custom_action_lambda_config": close({
@@ -406,6 +482,38 @@ aws_arcregionswitch_plan: {
 	})
 
 	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/global_aurora_config/$defs/ungraceful": close({
+		ungraceful!: string
+	})
+
+	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/lambda_event_source_mapping_config": close({
+		region_event_source_mapping?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/lambda_event_source_mapping_config/$defs/region_event_source_mapping", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/lambda_event_source_mapping_config/$defs/region_event_source_mapping"]])
+		ungraceful?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/lambda_event_source_mapping_config/$defs/ungraceful", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/lambda_event_source_mapping_config/$defs/ungraceful"]])
+		action!:          string
+		timeout_minutes?: number
+	})
+
+	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/lambda_event_source_mapping_config/$defs/region_event_source_mapping": close({
+		arn!:                string
+		cross_account_role?: string
+		external_id?:        string
+		region!:             string
+	})
+
+	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/lambda_event_source_mapping_config/$defs/ungraceful": close({
+		behavior!: string
+	})
+
+	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/neptune_global_database_config": close({
+		ungraceful?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/neptune_global_database_config/$defs/ungraceful", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/neptune_global_database_config/$defs/ungraceful"]])
+		behavior!:                  string
+		cross_account_role?:        string
+		external_id?:               string
+		global_cluster_identifier!: string
+		region_database_cluster_arns!: [string]: string
+		timeout_minutes?: number
+	})
+
+	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/neptune_global_database_config/$defs/ungraceful": close({
 		ungraceful!: string
 	})
 

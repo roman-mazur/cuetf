@@ -348,6 +348,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -448,6 +449,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -481,6 +487,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -580,6 +587,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -587,6 +599,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -686,6 +699,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -693,6 +711,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -793,6 +812,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -800,6 +824,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -899,6 +924,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -906,6 +936,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -1004,6 +1035,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -1021,6 +1057,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -1121,6 +1158,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -1181,6 +1223,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -1281,6 +1324,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -1314,6 +1362,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -1413,6 +1462,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -1420,6 +1474,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -1519,6 +1574,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -1526,6 +1586,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -1626,6 +1687,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -1633,6 +1699,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -1732,6 +1799,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -1739,6 +1811,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -1837,6 +1910,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -1871,6 +1949,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -1971,6 +2050,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -2004,6 +2088,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -2103,6 +2188,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -2110,6 +2200,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -2209,6 +2300,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -2216,6 +2312,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -2316,6 +2413,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -2323,6 +2425,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -2422,6 +2525,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -2429,6 +2537,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -2527,6 +2636,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -2534,6 +2648,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -2633,6 +2748,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -2640,6 +2760,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -2739,6 +2860,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -2746,6 +2872,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -2846,6 +2973,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -2853,6 +2985,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -2952,6 +3085,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -2959,6 +3097,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -3057,6 +3196,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -3074,6 +3218,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -3174,6 +3319,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -3254,6 +3404,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -3354,6 +3505,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -3387,6 +3543,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -3486,6 +3643,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -3493,6 +3655,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -3592,6 +3755,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -3599,6 +3767,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -3699,6 +3868,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -3706,6 +3880,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -3805,6 +3980,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -3812,6 +3992,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -3910,6 +4091,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -3927,6 +4113,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -4027,6 +4214,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -4087,6 +4279,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -4187,6 +4380,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -4220,6 +4418,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -4319,6 +4518,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -4326,6 +4530,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -4425,6 +4630,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -4432,6 +4642,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -4532,6 +4743,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -4539,6 +4755,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -4638,6 +4855,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -4645,6 +4867,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -4743,6 +4966,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -4777,6 +5005,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -4877,6 +5106,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -4910,6 +5144,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -5009,6 +5244,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -5016,6 +5256,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -5115,6 +5356,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -5122,6 +5368,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -5222,6 +5469,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -5229,6 +5481,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -5328,6 +5581,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -5335,6 +5593,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -5433,6 +5692,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -5440,6 +5704,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -5539,6 +5804,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -5546,6 +5816,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -5645,6 +5916,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -5652,6 +5928,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -5752,6 +6029,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -5759,6 +6041,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -5858,6 +6141,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -5865,6 +6153,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -5963,6 +6252,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -6017,6 +6311,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -6117,6 +6412,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -6150,6 +6450,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -6249,6 +6550,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -6256,6 +6562,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -6355,6 +6662,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -6362,6 +6674,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -6462,6 +6775,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -6469,6 +6787,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -6568,6 +6887,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -6575,6 +6899,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -6673,6 +6998,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -6690,6 +7020,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -6790,6 +7121,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -6850,6 +7186,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -6950,6 +7287,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -6983,6 +7325,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -7082,6 +7425,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -7089,6 +7437,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -7188,6 +7537,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -7195,6 +7549,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -7295,6 +7650,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -7302,6 +7662,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -7401,6 +7762,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -7408,6 +7774,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -7506,6 +7873,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -7540,6 +7912,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -7640,6 +8013,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -7673,6 +8051,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -7772,6 +8151,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -7779,6 +8163,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -7878,6 +8263,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -7885,6 +8275,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -7985,6 +8376,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -7992,6 +8388,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -8091,6 +8488,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -8098,6 +8500,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -8196,6 +8599,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -8203,6 +8611,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -8302,6 +8711,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -8309,6 +8723,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -8408,6 +8823,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -8415,6 +8835,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -8515,6 +8936,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -8522,6 +8948,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -8621,6 +9048,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -8628,6 +9060,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -8726,6 +9159,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -8733,6 +9171,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -8832,6 +9271,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -8839,6 +9283,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -8938,6 +9383,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -8945,6 +9395,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -9045,6 +9496,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -9052,6 +9508,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -9151,6 +9608,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -9158,6 +9620,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -9256,6 +9719,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -9273,6 +9741,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -9372,6 +9841,11 @@ aws_wafv2_web_acl: {
 	})
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
+
+	_#defs: "/$defs/rule/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
@@ -9717,6 +10191,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -9817,6 +10292,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -9850,6 +10330,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -9949,6 +10430,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -9956,6 +10442,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -10055,6 +10542,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -10062,6 +10554,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -10162,6 +10655,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -10169,6 +10667,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -10268,6 +10767,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -10275,6 +10779,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -10373,6 +10878,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -10390,6 +10900,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -10490,6 +11001,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -10550,6 +11066,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -10650,6 +11167,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -10683,6 +11205,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -10782,6 +11305,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -10789,6 +11317,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -10888,6 +11417,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -10895,6 +11429,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -10995,6 +11530,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -11002,6 +11542,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -11101,6 +11642,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -11108,6 +11654,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -11206,6 +11753,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -11240,6 +11792,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -11340,6 +11893,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -11373,6 +11931,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -11472,6 +12031,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -11479,6 +12043,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -11578,6 +12143,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -11585,6 +12155,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -11685,6 +12256,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -11692,6 +12268,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -11791,6 +12368,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -11798,6 +12380,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -11896,6 +12479,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -11903,6 +12491,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -12002,6 +12591,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -12009,6 +12603,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -12108,6 +12703,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -12115,6 +12715,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -12215,6 +12816,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -12222,6 +12828,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -12321,6 +12928,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -12328,6 +12940,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -12426,6 +13039,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -12443,6 +13061,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -12543,6 +13162,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -12623,6 +13247,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -12723,6 +13348,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -12756,6 +13386,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -12855,6 +13486,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -12862,6 +13498,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -12961,6 +13598,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -12968,6 +13610,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -13068,6 +13711,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -13075,6 +13723,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -13174,6 +13823,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -13181,6 +13835,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -13279,6 +13934,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -13296,6 +13956,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -13396,6 +14057,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -13456,6 +14122,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -13556,6 +14223,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -13589,6 +14261,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -13688,6 +14361,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -13695,6 +14373,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -13794,6 +14473,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -13801,6 +14485,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -13901,6 +14586,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -13908,6 +14598,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -14007,6 +14698,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -14014,6 +14710,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -14112,6 +14809,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -14146,6 +14848,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -14246,6 +14949,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -14279,6 +14987,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -14378,6 +15087,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -14385,6 +15099,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -14484,6 +15199,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -14491,6 +15211,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -14591,6 +15312,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -14598,6 +15324,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -14697,6 +15424,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -14704,6 +15436,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -14802,6 +15535,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -14809,6 +15547,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -14908,6 +15647,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -14915,6 +15659,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -15014,6 +15759,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -15021,6 +15771,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -15121,6 +15872,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -15128,6 +15884,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -15227,6 +15984,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -15234,6 +15996,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -15332,6 +16095,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -15386,6 +16154,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -15486,6 +16255,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -15519,6 +16293,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -15618,6 +16393,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -15625,6 +16405,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -15724,6 +16505,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -15731,6 +16517,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -15831,6 +16618,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -15838,6 +16630,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -15937,6 +16730,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -15944,6 +16742,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -16042,6 +16841,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -16059,6 +16863,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -16159,6 +16964,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -16219,6 +17029,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -16319,6 +17130,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -16352,6 +17168,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -16451,6 +17268,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -16458,6 +17280,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -16557,6 +17380,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -16564,6 +17392,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -16664,6 +17493,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -16671,6 +17505,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -16770,6 +17605,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -16777,6 +17617,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -16875,6 +17716,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -16909,6 +17755,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -17009,6 +17856,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -17042,6 +17894,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -17141,6 +17994,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -17148,6 +18006,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -17247,6 +18106,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -17254,6 +18118,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -17354,6 +18219,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -17361,6 +18231,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -17460,6 +18331,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -17467,6 +18343,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -17565,6 +18442,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -17572,6 +18454,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -17671,6 +18554,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -17678,6 +18566,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -17777,6 +18666,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -17784,6 +18678,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -17884,6 +18779,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -17891,6 +18791,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -17990,6 +18891,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -17997,6 +18903,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -18095,6 +19002,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -18102,6 +19014,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -18201,6 +19114,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -18208,6 +19126,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -18307,6 +19226,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -18314,6 +19238,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -18414,6 +19339,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -18421,6 +19351,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -18520,6 +19451,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -18527,6 +19463,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -18625,6 +19562,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/managed_rule_group_statement/$defs/scope_down_statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -18699,6 +19641,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -18799,6 +19742,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -18832,6 +19780,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -18931,6 +19880,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -18938,6 +19892,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -19037,6 +19992,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -19044,6 +20004,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -19144,6 +20105,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -19151,6 +20117,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -19250,6 +20217,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -19257,6 +20229,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -19355,6 +20328,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -19372,6 +20350,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -19472,6 +20451,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -19532,6 +20516,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -19632,6 +20617,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -19665,6 +20655,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -19764,6 +20755,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -19771,6 +20767,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -19870,6 +20867,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -19877,6 +20879,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -19977,6 +20980,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -19984,6 +20992,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -20083,6 +21092,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -20090,6 +21104,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -20188,6 +21203,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -20222,6 +21242,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -20322,6 +21343,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -20355,6 +21381,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -20454,6 +21481,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -20461,6 +21493,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -20560,6 +21593,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -20567,6 +21605,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -20667,6 +21706,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -20674,6 +21718,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -20773,6 +21818,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -20780,6 +21830,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -20878,6 +21929,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -20885,6 +21941,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -20984,6 +22041,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -20991,6 +22053,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -21090,6 +22153,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -21097,6 +22165,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -21197,6 +22266,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -21204,6 +22278,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -21303,6 +22378,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -21310,6 +22390,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -21408,6 +22489,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -21425,6 +22511,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -21525,6 +22612,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -21605,6 +22697,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -21705,6 +22798,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -21738,6 +22836,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -21837,6 +22936,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -21844,6 +22948,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -21943,6 +23048,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -21950,6 +23060,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -22050,6 +23161,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -22057,6 +23173,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -22156,6 +23273,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -22163,6 +23285,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -22261,6 +23384,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -22278,6 +23406,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -22378,6 +23507,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -22438,6 +23572,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -22538,6 +23673,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -22571,6 +23711,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -22670,6 +23811,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -22677,6 +23823,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -22776,6 +23923,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -22783,6 +23935,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -22883,6 +24036,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -22890,6 +24048,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -22989,6 +24148,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -22996,6 +24160,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -23094,6 +24259,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -23128,6 +24298,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -23228,6 +24399,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -23261,6 +24437,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -23360,6 +24537,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -23367,6 +24549,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -23466,6 +24649,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -23473,6 +24661,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -23573,6 +24762,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -23580,6 +24774,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -23679,6 +24874,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -23686,6 +24886,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -23784,6 +24985,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -23791,6 +24997,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -23890,6 +25097,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -23897,6 +25109,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -23996,6 +25209,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -24003,6 +25221,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -24103,6 +25322,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -24110,6 +25334,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -24209,6 +25434,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -24216,6 +25446,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -24314,6 +25545,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -24368,6 +25604,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -24468,6 +25705,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -24501,6 +25743,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -24600,6 +25843,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -24607,6 +25855,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -24706,6 +25955,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -24713,6 +25967,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -24813,6 +26068,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -24820,6 +26080,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -24919,6 +26180,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -24926,6 +26192,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -25024,6 +26291,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -25041,6 +26313,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -25141,6 +26414,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -25201,6 +26479,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -25301,6 +26580,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -25334,6 +26618,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -25433,6 +26718,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -25440,6 +26730,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -25539,6 +26830,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -25546,6 +26842,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -25646,6 +26943,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -25653,6 +26955,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -25752,6 +27055,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -25759,6 +27067,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -25857,6 +27166,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -25891,6 +27205,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -25991,6 +27306,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -26024,6 +27344,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -26123,6 +27444,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -26130,6 +27456,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -26229,6 +27556,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -26236,6 +27568,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -26336,6 +27669,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -26343,6 +27681,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -26442,6 +27781,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -26449,6 +27793,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -26547,6 +27892,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -26554,6 +27904,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -26653,6 +28004,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -26660,6 +28016,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -26759,6 +28116,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -26766,6 +28128,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -26866,6 +28229,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -26873,6 +28241,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -26972,6 +28341,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -26979,6 +28353,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -27077,6 +28452,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -27084,6 +28464,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -27183,6 +28564,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -27190,6 +28576,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -27289,6 +28676,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -27296,6 +28688,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -27396,6 +28789,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -27403,6 +28801,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -27502,6 +28901,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -27509,6 +28913,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -27607,6 +29012,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -27681,6 +29091,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -27781,6 +29192,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -27814,6 +29230,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -27913,6 +29330,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -27920,6 +29342,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -28019,6 +29442,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -28026,6 +29454,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -28126,6 +29555,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -28133,6 +29567,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -28232,6 +29667,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -28239,6 +29679,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -28337,6 +29778,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -28354,6 +29800,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -28454,6 +29901,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -28514,6 +29966,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -28614,6 +30067,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -28647,6 +30105,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -28746,6 +30205,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -28753,6 +30217,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -28852,6 +30317,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -28859,6 +30329,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -28959,6 +30430,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -28966,6 +30442,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -29065,6 +30542,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -29072,6 +30554,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -29170,6 +30653,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -29204,6 +30692,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -29304,6 +30793,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -29337,6 +30831,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -29436,6 +30931,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -29443,6 +30943,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -29542,6 +31043,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -29549,6 +31055,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -29649,6 +31156,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -29656,6 +31168,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -29755,6 +31268,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -29762,6 +31280,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -29860,6 +31379,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -29867,6 +31391,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -29966,6 +31491,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -29973,6 +31503,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -30072,6 +31603,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -30079,6 +31615,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -30179,6 +31716,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -30186,6 +31728,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -30285,6 +31828,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -30292,6 +31840,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -30390,6 +31939,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -30407,6 +31961,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -30507,6 +32062,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -30587,6 +32147,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -30687,6 +32248,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -30720,6 +32286,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -30819,6 +32386,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -30826,6 +32398,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -30925,6 +32498,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -30932,6 +32510,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -31032,6 +32611,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -31039,6 +32623,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -31138,6 +32723,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -31145,6 +32735,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -31243,6 +32834,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -31260,6 +32856,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -31360,6 +32957,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -31420,6 +33022,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -31520,6 +33123,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -31553,6 +33161,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -31652,6 +33261,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -31659,6 +33273,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -31758,6 +33373,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -31765,6 +33385,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -31865,6 +33486,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -31872,6 +33498,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -31971,6 +33598,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -31978,6 +33610,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -32076,6 +33709,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -32110,6 +33748,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -32210,6 +33849,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -32243,6 +33887,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -32342,6 +33987,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -32349,6 +33999,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -32448,6 +34099,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -32455,6 +34111,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -32555,6 +34212,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -32562,6 +34224,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -32661,6 +34324,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -32668,6 +34336,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -32766,6 +34435,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -32773,6 +34447,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -32872,6 +34547,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -32879,6 +34559,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -32978,6 +34659,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -32985,6 +34671,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -33085,6 +34772,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -33092,6 +34784,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -33191,6 +34884,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -33198,6 +34896,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -33296,6 +34995,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -33350,6 +35054,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -33450,6 +35155,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -33483,6 +35193,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -33582,6 +35293,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -33589,6 +35305,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -33688,6 +35405,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -33695,6 +35417,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -33795,6 +35518,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -33802,6 +35530,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -33901,6 +35630,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -33908,6 +35642,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -34006,6 +35741,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -34023,6 +35763,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -34123,6 +35864,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -34183,6 +35929,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -34283,6 +36030,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -34316,6 +36068,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -34415,6 +36168,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -34422,6 +36180,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -34521,6 +36280,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -34528,6 +36292,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -34628,6 +36393,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -34635,6 +36405,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -34734,6 +36505,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -34741,6 +36517,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -34839,6 +36616,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -34873,6 +36655,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -34973,6 +36756,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -35006,6 +36794,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -35105,6 +36894,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -35112,6 +36906,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -35211,6 +37006,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -35218,6 +37018,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -35318,6 +37119,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -35325,6 +37131,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -35424,6 +37231,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -35431,6 +37243,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -35529,6 +37342,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -35536,6 +37354,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -35635,6 +37454,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -35642,6 +37466,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -35741,6 +37566,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -35748,6 +37578,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -35848,6 +37679,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -35855,6 +37691,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -35954,6 +37791,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -35961,6 +37803,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -36059,6 +37902,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -36066,6 +37914,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -36165,6 +38014,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -36172,6 +38026,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -36271,6 +38126,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -36278,6 +38138,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -36378,6 +38239,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -36385,6 +38251,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -36484,6 +38351,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -36491,6 +38363,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -36588,6 +38461,11 @@ aws_wafv2_web_acl: {
 	})
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
+
+	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
@@ -36756,6 +38634,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -36856,6 +38735,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -36889,6 +38773,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -36988,6 +38873,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -36995,6 +38885,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -37094,6 +38985,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -37101,6 +38997,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -37201,6 +39098,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -37208,6 +39110,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -37307,6 +39210,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -37314,6 +39222,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -37412,6 +39321,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -37429,6 +39343,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -37529,6 +39444,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -37589,6 +39509,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -37689,6 +39610,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -37722,6 +39648,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -37821,6 +39748,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -37828,6 +39760,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -37927,6 +39860,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -37934,6 +39872,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -38034,6 +39973,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -38041,6 +39985,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -38140,6 +40085,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -38147,6 +40097,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -38245,6 +40196,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -38279,6 +40235,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -38379,6 +40336,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -38412,6 +40374,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -38511,6 +40474,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -38518,6 +40486,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -38617,6 +40586,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -38624,6 +40598,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -38724,6 +40699,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -38731,6 +40711,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -38830,6 +40811,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -38837,6 +40823,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -38935,6 +40922,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -38942,6 +40934,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -39041,6 +41034,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -39048,6 +41046,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -39147,6 +41146,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -39154,6 +41158,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -39254,6 +41259,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -39261,6 +41271,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -39360,6 +41371,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -39367,6 +41383,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -39465,6 +41482,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -39482,6 +41504,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -39582,6 +41605,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -39662,6 +41690,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -39762,6 +41791,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -39795,6 +41829,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -39894,6 +41929,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -39901,6 +41941,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -40000,6 +42041,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -40007,6 +42053,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -40107,6 +42154,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -40114,6 +42166,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -40213,6 +42266,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -40220,6 +42278,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -40318,6 +42377,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -40335,6 +42399,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -40435,6 +42500,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -40495,6 +42565,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -40595,6 +42666,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -40628,6 +42704,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -40727,6 +42804,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -40734,6 +42816,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -40833,6 +42916,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -40840,6 +42928,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -40940,6 +43029,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -40947,6 +43041,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -41046,6 +43141,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -41053,6 +43153,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -41151,6 +43252,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -41185,6 +43291,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -41285,6 +43392,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -41318,6 +43430,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -41417,6 +43530,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -41424,6 +43542,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -41523,6 +43642,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -41530,6 +43654,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -41630,6 +43755,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -41637,6 +43767,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -41736,6 +43867,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -41743,6 +43879,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -41841,6 +43978,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -41848,6 +43990,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -41947,6 +44090,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -41954,6 +44102,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -42053,6 +44202,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -42060,6 +44214,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -42160,6 +44315,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -42167,6 +44327,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -42266,6 +44427,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -42273,6 +44439,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -42371,6 +44538,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -42425,6 +44597,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -42525,6 +44698,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -42558,6 +44736,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -42657,6 +44836,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -42664,6 +44848,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -42763,6 +44948,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -42770,6 +44960,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -42870,6 +45061,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -42877,6 +45073,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -42976,6 +45173,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -42983,6 +45185,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -43081,6 +45284,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/and_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -43098,6 +45306,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -43198,6 +45407,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -43258,6 +45472,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -43358,6 +45573,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -43391,6 +45611,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -43490,6 +45711,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -43497,6 +45723,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -43596,6 +45823,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -43603,6 +45835,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -43703,6 +45936,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -43710,6 +45948,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -43809,6 +46048,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -43816,6 +46060,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -43914,6 +46159,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/not_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -43948,6 +46198,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation"]])
 		positional_constraint!: string
 		search_string!:         string
@@ -44048,6 +46299,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/byte_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -44081,6 +46337,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -44180,6 +46437,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -44187,6 +46449,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -44286,6 +46549,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -44293,6 +46561,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -44393,6 +46662,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -44400,6 +46674,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -44499,6 +46774,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -44506,6 +46786,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -44604,6 +46885,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -44611,6 +46897,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -44710,6 +46997,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -44717,6 +47009,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -44816,6 +47109,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -44823,6 +47121,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -44923,6 +47222,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -44930,6 +47234,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -45029,6 +47334,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -45036,6 +47346,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -45134,6 +47445,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/or_statement/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -45141,6 +47457,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -45240,6 +47557,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -45247,6 +47569,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -45346,6 +47669,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -45353,6 +47681,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -45453,6 +47782,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -45460,6 +47794,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -45559,6 +47894,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -45566,6 +47906,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -45664,6 +48005,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/rate_based_statement/$defs/scope_down_statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -45671,6 +48017,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/regex_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/regex_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/regex_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/regex_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/regex_match_statement/$defs/text_transformation"]])
 		regex_string!: string
 	})
@@ -45770,6 +48117,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/regex_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/regex_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/regex_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -45777,6 +48129,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/regex_pattern_set_reference_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation"]])
 		arn!: string
 	})
@@ -45876,6 +48229,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/regex_pattern_set_reference_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -45968,6 +48326,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/size_constraint_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation"]])
 		comparison_operator!: string
 		size!:                number
@@ -46068,6 +48427,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/size_constraint_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/size_constraint_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/size_constraint_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -46075,6 +48439,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/sqli_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation"]])
 		sensitivity_level?: string
 	})
@@ -46174,6 +48539,11 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/sqli_match_statement/$defs/field_to_match/$defs/uri_path": close({})
 
+	_#defs: "/$defs/rule/$defs/statement/$defs/sqli_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
+
 	_#defs: "/$defs/rule/$defs/statement/$defs/sqli_match_statement/$defs/text_transformation": close({
 		priority!: number
 		type!:     string
@@ -46181,6 +48551,7 @@ aws_wafv2_web_acl: {
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/xss_match_statement": close({
 		field_to_match?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/xss_match_statement/$defs/field_to_match", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/statement/$defs/xss_match_statement/$defs/field_to_match"]])
+		pre_parse_text_transformation?: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation", list.MaxItems(10) & [..._#defs."/$defs/rule/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation"]])
 		text_transformation!: matchN(1, [_#defs."/$defs/rule/$defs/statement/$defs/xss_match_statement/$defs/text_transformation", [_, ...] & [..._#defs."/$defs/rule/$defs/statement/$defs/xss_match_statement/$defs/text_transformation"]])
 	})
 
@@ -46278,6 +48649,11 @@ aws_wafv2_web_acl: {
 	})
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/xss_match_statement/$defs/field_to_match/$defs/uri_path": close({})
+
+	_#defs: "/$defs/rule/$defs/statement/$defs/xss_match_statement/$defs/pre_parse_text_transformation": close({
+		priority!: number
+		type!:     string
+	})
 
 	_#defs: "/$defs/rule/$defs/statement/$defs/xss_match_statement/$defs/text_transformation": close({
 		priority!: number
