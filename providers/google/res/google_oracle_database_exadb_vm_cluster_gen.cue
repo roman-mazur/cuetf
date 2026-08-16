@@ -55,6 +55,13 @@ google_oracle_database_exadb_vm_cluster: {
 		gcp_oracle_zone?: string
 		id?:              string
 
+		// The identity connector details which will allow OCI to securely access
+		// the resources in the customer project.
+		identity_connector?: [...close({
+			connection_state?:    string
+			service_agent_email?: string
+		})]
+
 		// The labels or tags associated with the ExadbVmCluster.
 		//
 		// **Note**: This field is non-authoritative, and will only manage the labels

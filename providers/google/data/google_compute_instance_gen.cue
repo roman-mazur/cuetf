@@ -249,6 +249,7 @@ google_compute_instance: {
 		scheduling?: [...close({
 			automatic_restart?:           bool
 			availability_domain?:         number
+			host_error_timeout_seconds?:  number
 			instance_termination_action?: string
 			local_ssd_recovery_timeout?: [...close({
 				nanos?:   number

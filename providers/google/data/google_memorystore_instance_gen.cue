@@ -6,7 +6,9 @@ google_memorystore_instance: {
 	close({
 		// Optional. Immutable. Authorization mode of the instance. Possible values:
 		// AUTH_DISABLED
-		// IAM_AUTH
+		// IAM_AUTH.
+		//
+		// TOKEN_AUTH is also supported, but only available in the google-beta provider.
 		authorization_mode?: string
 
 		// The automated backup config for a instance.

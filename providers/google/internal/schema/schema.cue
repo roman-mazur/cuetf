@@ -52233,6 +52233,116 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_chronicle_soar_network: {
+			version: 0
+			block: {
+				attributes: {
+					address: {
+						type:             "string"
+						description:      "Subnet in CIDR format."
+						description_kind: "plain"
+						required:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "SoarNetwork name, limited to 4096 characters."
+						description_kind: "plain"
+						required:         true
+					}
+					environments_json: {
+						type:             "string"
+						description:      "SoarNetwork associated logical environments."
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					instance: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					location: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Identifier. The resource name of the SoarNetwork.
+									Format:
+									projects/{project}/locations/{location}/instances/{instance}/soarNetworks/{soar_network}
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					priority: {
+						type:             "number"
+						description:      "SoarNetwork priority."
+						description_kind: "plain"
+						optional:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					soar_network_id: {
+						type:             "string"
+						description:      "Id of the soarNetwork record."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_chronicle_watchlist: {
 			version: 0
 			block: {
@@ -57854,6 +57964,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 															"""
 												description_kind: "plain"
 												optional:         true
+												computed:         true
 											}
 											min_instance_count: {
 												type:             "number"
@@ -61091,7 +61202,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						computed:         true
 					}
 					supported_enforcement_modes: {
-						type: ["list", "string"]
+						type: ["set", "string"]
 						description:      "The supported enforcement modes of the framework."
 						description_kind: "plain"
 						computed:         true
@@ -83808,6 +83919,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									optional:         true
 								}
+								host_error_timeout_seconds: {
+									type:             "number"
+									description:      "Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used."
+									description_kind: "plain"
+									optional:         true
+								}
 								instance_termination_action: {
 									type:             "string"
 									description:      "Specifies the action GCE should take when SPOT VM is preempted."
@@ -85098,6 +85215,13 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								availability_domain: {
 									type:             "number"
 									description:      "Specifies the availability domain, which this instance should be scheduled on."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								host_error_timeout_seconds: {
+									type:             "number"
+									description:      "Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used."
 									description_kind: "plain"
 									optional:         true
 									computed:         true
@@ -87247,6 +87371,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								availability_domain: {
 									type:             "number"
 									description:      "Specifies the availability domain, which this instance should be scheduled on."
+									description_kind: "plain"
+									optional:         true
+								}
+								host_error_timeout_seconds: {
+									type:             "number"
+									description:      "Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used."
 									description_kind: "plain"
 									optional:         true
 								}
@@ -99306,6 +99436,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								availability_domain: {
 									type:             "number"
 									description:      "Specifies the availability domain, which this instance should be scheduled on."
+									description_kind: "plain"
+									optional:         true
+								}
+								host_error_timeout_seconds: {
+									type:             "number"
+									description:      "Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used."
 									description_kind: "plain"
 									optional:         true
 								}
@@ -125994,6 +126130,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									}
 									max_items: 1
 								}
+								high_scale_checkpointing_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: enabled: {
+											type:             "bool"
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "The status of the High Scale Checkpointing addon. Defaults to disabled; set enabled = true to enable."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
 								horizontal_pod_autoscaling: {
 									nesting_mode: "list"
 									block: {
@@ -146507,6 +146656,396 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_dataform_repository: {
+			version: 0
+			block: {
+				attributes: {
+					deletion_policy: {
+						type:             "string"
+						description:      "This field uses a custom implementation please refer to documentation under /hashicorp/terraform-provider-google-beta/website/docs/r/dataform_repository.html.markdown for specifics"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "Optional. The repository's user-friendly name."
+						description_kind: "plain"
+						optional:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					kms_key_name: {
+						type: "string"
+						description: """
+									Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
+									It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									Optional. Repository user labels.
+									An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The repository's name."
+						description_kind: "plain"
+						required:         true
+					}
+					npmrc_environment_variables_secret_version: {
+						type:             "string"
+						description:      "Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*/secrets/*/versions/*. The file itself must be in a JSON format."
+						description_kind: "plain"
+						optional:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "A reference to the region"
+						description_kind: "plain"
+						optional:         true
+					}
+					service_account: {
+						type:             "string"
+						description:      "The service account to run workflow invocations under."
+						description_kind: "plain"
+						optional:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					git_remote_settings: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								authentication_token_secret_version: {
+									type:             "string"
+									description:      "The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use 'ssh_authentication_config'). Must be in the format projects/*/secrets/*/versions/*."
+									description_kind: "plain"
+									optional:         true
+								}
+								default_branch: {
+									type:             "string"
+									description:      "The Git remote's default branch name."
+									description_kind: "plain"
+									required:         true
+								}
+								git_repository_link: {
+									type:             "string"
+									description:      "The name of the Developer Connect GitRepositoryLink to use for machine credentials. Must be in the format projects/*/locations/*/connections/*/gitRepositoryLinks/*."
+									description_kind: "plain"
+									optional:         true
+								}
+								token_status: {
+									type:             "string"
+									description:      "Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1/projects.locations.repositories#TokenStatus"
+									description_kind: "plain"
+									computed:         true
+								}
+								url: {
+									type:             "string"
+									description:      "The Git remote's URL."
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							block_types: ssh_authentication_config: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										host_public_key: {
+											type:             "string"
+											description:      "Content of a public SSH key to verify an identity of a remote Git host."
+											description_kind: "plain"
+											required:         true
+										}
+										user_private_key_secret_version: {
+											type:             "string"
+											description:      "The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*/secrets/*/versions/*."
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									description:      "Authentication fields for remote uris using SSH protocol."
+									description_kind: "plain"
+								}
+								max_items: 1
+							}
+							description:      "Optional. If set, configures this repository to be linked to a Git remote."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					workspace_compilation_overrides: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								default_database: {
+									type:             "string"
+									description:      "The default database (Google Cloud project ID)."
+									description_kind: "plain"
+									optional:         true
+								}
+								schema_suffix: {
+									type:             "string"
+									description:      "The suffix that should be appended to all schema (BigQuery dataset ID) names."
+									description_kind: "plain"
+									optional:         true
+								}
+								table_prefix: {
+									type:             "string"
+									description:      "The prefix that should be prepended to all table names."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description:      "If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_dataform_repository_iam_binding: {
+			version: 0
+			block: {
+				attributes: {
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					members: {
+						type: ["set", "string"]
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					repository: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: condition: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							description: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							expression: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+							title: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						description_kind: "plain"
+					}
+					max_items: 1
+				}
+				description_kind: "plain"
+			}
+		}
+		google_dataform_repository_iam_member: {
+			version: 0
+			block: {
+				attributes: {
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					member: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					repository: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: condition: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							description: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							expression: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+							title: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						description_kind: "plain"
+					}
+					max_items: 1
+				}
+				description_kind: "plain"
+			}
+		}
+		google_dataform_repository_iam_policy: {
+			version: 0
+			block: {
+				attributes: {
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					policy_data: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					repository: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_dataform_team_folder: {
 			version: 0
 			block: {
@@ -154254,6 +154793,39 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 															computed:         true
 														}
 													}
+													block_types: attached_disk_config: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																disk_size_gb: {
+																	type:             "number"
+																	description:      "Size of the attached disk, specified in GB."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																disk_type: {
+																	type:             "string"
+																	description:      "The disk type of the attached disk. Such as \"pd-ssd\" or \"pd-standard\"."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																provisioned_iops: {
+																	type:             "number"
+																	description:      "Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																provisioned_throughput: {
+																	type:             "number"
+																	description:      "Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle."
+																	description_kind: "plain"
+																	optional:         true
+																}
+															}
+															description:      "Optional. Attached disk configuration."
+															description_kind: "plain"
+														}
+													}
 													description:      "Disk Config"
 													description_kind: "plain"
 												}
@@ -154329,6 +154901,39 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																			description:      "The amount of local SSD disks that will be attached to each cluster node. Defaults to 0."
 																			description_kind: "plain"
 																			optional:         true
+																		}
+																	}
+																	block_types: attached_disk_config: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				disk_size_gb: {
+																					type:             "number"
+																					description:      "Size of the attached disk, specified in GB."
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				disk_type: {
+																					type:             "string"
+																					description:      "The disk type of the attached disk. Such as \"pd-ssd\" or \"pd-standard\"."
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				provisioned_iops: {
+																					type:             "number"
+																					description:      "Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle."
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				provisioned_throughput: {
+																					type:             "number"
+																					description:      "Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle."
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																			}
+																			description:      "Optional. Attached disk configuration."
+																			description_kind: "plain"
 																		}
 																	}
 																	description:      "Optional. Disk configuration to apply to the instances in this instance selection."
@@ -154433,6 +155038,39 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 															computed:         true
 														}
 													}
+													block_types: attached_disk_config: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																disk_size_gb: {
+																	type:             "number"
+																	description:      "Size of the attached disk, specified in GB."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																disk_type: {
+																	type:             "string"
+																	description:      "The disk type of the attached disk. Such as \"pd-ssd\" or \"pd-standard\"."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																provisioned_iops: {
+																	type:             "number"
+																	description:      "Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																provisioned_throughput: {
+																	type:             "number"
+																	description:      "Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle."
+																	description_kind: "plain"
+																	optional:         true
+																}
+															}
+															description:      "Optional. Attached disk configuration."
+															description_kind: "plain"
+														}
+													}
 													description:      "Disk Config"
 													description_kind: "plain"
 												}
@@ -154509,6 +155147,39 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																				description:      "The amount of local SSD disks that will be attached to each cluster node. Defaults to 0."
 																				description_kind: "plain"
 																				optional:         true
+																			}
+																		}
+																		block_types: attached_disk_config: {
+																			nesting_mode: "list"
+																			block: {
+																				attributes: {
+																					disk_size_gb: {
+																						type:             "number"
+																						description:      "Size of the attached disk, specified in GB."
+																						description_kind: "plain"
+																						optional:         true
+																					}
+																					disk_type: {
+																						type:             "string"
+																						description:      "The disk type of the attached disk. Such as \"pd-ssd\" or \"pd-standard\"."
+																						description_kind: "plain"
+																						optional:         true
+																					}
+																					provisioned_iops: {
+																						type:             "number"
+																						description:      "Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle."
+																						description_kind: "plain"
+																						optional:         true
+																					}
+																					provisioned_throughput: {
+																						type:             "number"
+																						description:      "Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle."
+																						description_kind: "plain"
+																						optional:         true
+																					}
+																				}
+																				description:      "Optional. Attached disk configuration."
+																				description_kind: "plain"
 																			}
 																		}
 																		description:      "Optional. Disk configuration to apply to the instances in this instance selection."
@@ -154831,6 +155502,39 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 															computed:         true
 														}
 													}
+													block_types: attached_disk_config: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																disk_size_gb: {
+																	type:             "number"
+																	description:      "Size of the attached disk, specified in GB."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																disk_type: {
+																	type:             "string"
+																	description:      "The disk type of the attached disk. Such as \"pd-ssd\" or \"pd-standard\"."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																provisioned_iops: {
+																	type:             "number"
+																	description:      "Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																provisioned_throughput: {
+																	type:             "number"
+																	description:      "Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle."
+																	description_kind: "plain"
+																	optional:         true
+																}
+															}
+															description:      "Optional. Attached disk configuration."
+															description_kind: "plain"
+														}
+													}
 													description:      "Disk Config"
 													description_kind: "plain"
 												}
@@ -154906,6 +155610,39 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																			description:      "The amount of local SSD disks that will be attached to each cluster node. Defaults to 0."
 																			description_kind: "plain"
 																			optional:         true
+																		}
+																	}
+																	block_types: attached_disk_config: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				disk_size_gb: {
+																					type:             "number"
+																					description:      "Size of the attached disk, specified in GB."
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				disk_type: {
+																					type:             "string"
+																					description:      "The disk type of the attached disk. Such as \"pd-ssd\" or \"pd-standard\"."
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				provisioned_iops: {
+																					type:             "number"
+																					description:      "Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle."
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				provisioned_throughput: {
+																					type:             "number"
+																					description:      "Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle."
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																			}
+																			description:      "Optional. Attached disk configuration."
+																			description_kind: "plain"
 																		}
 																	}
 																	description:      "Optional. Disk configuration to apply to the instances in this instance selection."
@@ -205099,6 +205836,330 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_iam_folder_access_policy: {
+			version: 0
+			block: {
+				attributes: {
+					access_policy_id: {
+						type: "string"
+						description: """
+									The ID to use for the access policy, which
+									will become the final component of the access policy's
+									resource name.
+									This value must start with a lowercase letter followed by up to 62
+									lowercase letters, numbers, hyphens, or dots. Pattern,
+									/a-z{2,62}/.
+									This value must be unique among all access policies with the same parent.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					annotations: {
+						type: ["map", "string"]
+						description: """
+									User defined annotations. See https://google.aip.dev/148#annotations for
+									more details such as format and size limitations
+
+									**Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+									Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The time when the access policy was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_name: {
+						type: "string"
+						description: """
+									The description of the access policy. Must be less than
+									or equal to 63 characters.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					effective_annotations: {
+						type: ["map", "string"]
+						description:      "All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					etag: {
+						type: "string"
+						description: """
+									The etag for the access policy.
+									If this is provided on update, it must match the server's etag.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					folder: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Identifier. The resource name of the access policy.
+									The following formats are supported:
+									* 'projects/{project_id}/locations/{location}/accessPolicies/{policy_id}'
+									* 'projects/{project_number}/locations/{location}/accessPolicies/{policy_id}'
+									* 'folders/{folder_id}/locations/{location}/accessPolicies/{policy_id}'
+									* 'organizations/{organization_id}/locations/{location}/accessPolicies/{policy_id}'
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					uid: {
+						type:             "string"
+						description:      "The globally unique ID of the access policy."
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type: "string"
+						description: """
+									The time when the access policy was most recently
+									updated.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					details: {
+						nesting_mode: "list"
+						block: {
+							block_types: rules: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										description: {
+											type: "string"
+											description: """
+															Customer specified description of the rule. Must be less than or equal to
+															256 characters.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										effect: {
+											type: "string"
+											description: """
+															The effect of the rule.
+															Possible values:
+															DENY
+															ALLOW Possible values: ["DENY", "ALLOW"]
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+										excluded_principals: {
+											type: ["list", "string"]
+											description: """
+															The identities that are excluded from the access policy rule, even if they
+															are listed in the 'principals'. For example, you could add a Google
+															group to the 'principals', then exclude specific users who belong to
+															that group.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										principals: {
+											type: ["list", "string"]
+											description: """
+															The identities for which this rule's effect governs using one or more
+															permissions on Google Cloud resources. This field can contain the
+															following values:
+															* 'principal://goog/subject/{email_id}': A specific Google Account.
+															Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+															example, 'principal://goog/subject/alice@example.com'.
+															* 'principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}':
+															A Google Cloud service account. For example,
+															'principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com'.
+															* 'principalSet://goog/group/{group_id}': A Google group. For example,
+															'principalSet://goog/group/admins@example.com'.
+															* 'principalSet://goog/cloudIdentityCustomerId/{customer_id}': All of the
+															principals associated with the specified Google Workspace or Cloud
+															Identity customer ID. For example,
+															'principalSet://goog/cloudIdentityCustomerId/C01Abc35'.
+															If an identifier that was previously set on a policy is soft deleted, then
+															calls to read that policy will return the identifier with a deleted
+															prefix. Users cannot set identifiers with this syntax.
+															* 'deleted:principal://goog/subject/{email_id}?uid={uid}': A specific
+															Google Account that was deleted recently. For example,
+															'deleted:principal://goog/subject/alice@example.com?uid=1234567890'. If
+															the Google Account is recovered, this identifier reverts to the standard
+															identifier for a Google Account.
+															* 'deleted:principalSet://goog/group/{group_id}?uid={uid}': A Google group
+															that was deleted recently. For example,
+															'deleted:principalSet://goog/group/admins@example.com?uid=1234567890'.
+															If the Google group is restored, this identifier reverts to the standard
+															identifier for a Google group.
+															* 'deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}':
+															A Google Cloud service account that was deleted recently. For example,
+															'deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890'.
+															If the service account is undeleted, this identifier reverts to the
+															standard identifier for a service account.
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									block_types: {
+										conditions: {
+											nesting_mode: "set"
+											block: {
+												attributes: {
+													expression: {
+														type: "string"
+														description: """
+																		Textual representation of an expression in Common Expression Language
+																		syntax.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													service: {
+														type:             "string"
+														description_kind: "plain"
+														required:         true
+													}
+												}
+												description: """
+																The conditions that determine whether this rule applies to a request.
+																Conditions are identified by their key, which is the FQDN of the service
+																that they are relevant to. For example:
+																'''
+																"conditions": {
+																"iam.googleapis.com": {
+																"expression":
+																}
+																}
+																'''
+																Each rule is evaluated independently. If this rule does not apply
+																to a request, other rules might still apply.
+																Currently supported keys are as follows:
+																* 'eventarc.googleapis.com': Can use 'CEL' functions that evaluate
+																resource fields.
+																* 'iam.googleapis.com': Can use 'CEL' functions that evaluate
+																[resource
+																tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+																combine them using boolean and logical operators. Other functions and
+																operators are not supported.
+																"""
+												description_kind: "plain"
+											}
+										}
+										operation: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													excluded_permissions: {
+														type: ["list", "string"]
+														description: """
+																		Specifies the permissions that this rule excludes from the set of
+																		affected permissions given by 'permissions'. If a permission appears in
+																		'permissions' _and_ in 'excluded_permissions' then it will _not_ be
+																		subject to the policy effect.
+																		The excluded permissions can be specified using the same syntax as
+																		'permissions'.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													permissions: {
+														type: ["list", "string"]
+														description: """
+																		The permissions that are explicitly affected by this rule. Each
+																		permission uses the format '{service_fqdn}/{resource}.{verb}', where
+																		'{service_fqdn}' is the fully qualified domain name for the service.
+																		Currently supported permissions are as follows:
+																		* 'eventarc.googleapis.com/messageBuses.publish'.
+																		"""
+														description_kind: "plain"
+														required:         true
+													}
+												}
+												description: """
+																Attributes that are used to determine whether this rule applies to a
+																request.
+																"""
+												description_kind: "plain"
+											}
+											min_items: 1
+											max_items: 1
+										}
+									}
+									description:      "A list of access policy rules."
+									description_kind: "plain"
+								}
+								min_items: 1
+							}
+							description:      "Access policy details."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_iam_folders_policy_binding: {
 			version: 0
 			block: {
@@ -205640,6 +206701,330 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_iam_organization_access_policy: {
+			version: 0
+			block: {
+				attributes: {
+					access_policy_id: {
+						type: "string"
+						description: """
+									The ID to use for the access policy, which
+									will become the final component of the access policy's
+									resource name.
+									This value must start with a lowercase letter followed by up to 62
+									lowercase letters, numbers, hyphens, or dots. Pattern,
+									/a-z{2,62}/.
+									This value must be unique among all access policies with the same parent.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					annotations: {
+						type: ["map", "string"]
+						description: """
+									User defined annotations. See https://google.aip.dev/148#annotations for
+									more details such as format and size limitations
+
+									**Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+									Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The time when the access policy was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_name: {
+						type: "string"
+						description: """
+									The description of the access policy. Must be less than
+									or equal to 63 characters.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					effective_annotations: {
+						type: ["map", "string"]
+						description:      "All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					etag: {
+						type: "string"
+						description: """
+									The etag for the access policy.
+									If this is provided on update, it must match the server's etag.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Identifier. The resource name of the access policy.
+									The following formats are supported:
+									* 'projects/{project_id}/locations/{location}/accessPolicies/{policy_id}'
+									* 'projects/{project_number}/locations/{location}/accessPolicies/{policy_id}'
+									* 'folders/{folder_id}/locations/{location}/accessPolicies/{policy_id}'
+									* 'organizations/{organization_id}/locations/{location}/accessPolicies/{policy_id}'
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					organization: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					uid: {
+						type:             "string"
+						description:      "The globally unique ID of the access policy."
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type: "string"
+						description: """
+									The time when the access policy was most recently
+									updated.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					details: {
+						nesting_mode: "list"
+						block: {
+							block_types: rules: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										description: {
+											type: "string"
+											description: """
+															Customer specified description of the rule. Must be less than or equal to
+															256 characters.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										effect: {
+											type: "string"
+											description: """
+															The effect of the rule.
+															Possible values:
+															DENY
+															ALLOW Possible values: ["DENY", "ALLOW"]
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+										excluded_principals: {
+											type: ["list", "string"]
+											description: """
+															The identities that are excluded from the access policy rule, even if they
+															are listed in the 'principals'. For example, you could add a Google
+															group to the 'principals', then exclude specific users who belong to
+															that group.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										principals: {
+											type: ["list", "string"]
+											description: """
+															The identities for which this rule's effect governs using one or more
+															permissions on Google Cloud resources. This field can contain the
+															following values:
+															* 'principal://goog/subject/{email_id}': A specific Google Account.
+															Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+															example, 'principal://goog/subject/alice@example.com'.
+															* 'principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}':
+															A Google Cloud service account. For example,
+															'principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com'.
+															* 'principalSet://goog/group/{group_id}': A Google group. For example,
+															'principalSet://goog/group/admins@example.com'.
+															* 'principalSet://goog/cloudIdentityCustomerId/{customer_id}': All of the
+															principals associated with the specified Google Workspace or Cloud
+															Identity customer ID. For example,
+															'principalSet://goog/cloudIdentityCustomerId/C01Abc35'.
+															If an identifier that was previously set on a policy is soft deleted, then
+															calls to read that policy will return the identifier with a deleted
+															prefix. Users cannot set identifiers with this syntax.
+															* 'deleted:principal://goog/subject/{email_id}?uid={uid}': A specific
+															Google Account that was deleted recently. For example,
+															'deleted:principal://goog/subject/alice@example.com?uid=1234567890'. If
+															the Google Account is recovered, this identifier reverts to the standard
+															identifier for a Google Account.
+															* 'deleted:principalSet://goog/group/{group_id}?uid={uid}': A Google group
+															that was deleted recently. For example,
+															'deleted:principalSet://goog/group/admins@example.com?uid=1234567890'.
+															If the Google group is restored, this identifier reverts to the standard
+															identifier for a Google group.
+															* 'deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}':
+															A Google Cloud service account that was deleted recently. For example,
+															'deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890'.
+															If the service account is undeleted, this identifier reverts to the
+															standard identifier for a service account.
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									block_types: {
+										conditions: {
+											nesting_mode: "set"
+											block: {
+												attributes: {
+													expression: {
+														type: "string"
+														description: """
+																		Textual representation of an expression in Common Expression Language
+																		syntax.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													service: {
+														type:             "string"
+														description_kind: "plain"
+														required:         true
+													}
+												}
+												description: """
+																The conditions that determine whether this rule applies to a request.
+																Conditions are identified by their key, which is the FQDN of the service
+																that they are relevant to. For example:
+																'''
+																"conditions": {
+																"iam.googleapis.com": {
+																"expression":
+																}
+																}
+																'''
+																Each rule is evaluated independently. If this rule does not apply
+																to a request, other rules might still apply.
+																Currently supported keys are as follows:
+																* 'eventarc.googleapis.com': Can use 'CEL' functions that evaluate
+																resource fields.
+																* 'iam.googleapis.com': Can use 'CEL' functions that evaluate
+																[resource
+																tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+																combine them using boolean and logical operators. Other functions and
+																operators are not supported.
+																"""
+												description_kind: "plain"
+											}
+										}
+										operation: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													excluded_permissions: {
+														type: ["list", "string"]
+														description: """
+																		Specifies the permissions that this rule excludes from the set of
+																		affected permissions given by 'permissions'. If a permission appears in
+																		'permissions' _and_ in 'excluded_permissions' then it will _not_ be
+																		subject to the policy effect.
+																		The excluded permissions can be specified using the same syntax as
+																		'permissions'.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													permissions: {
+														type: ["list", "string"]
+														description: """
+																		The permissions that are explicitly affected by this rule. Each
+																		permission uses the format '{service_fqdn}/{resource}.{verb}', where
+																		'{service_fqdn}' is the fully qualified domain name for the service.
+																		Currently supported permissions are as follows:
+																		* 'eventarc.googleapis.com/messageBuses.publish'.
+																		"""
+														description_kind: "plain"
+														required:         true
+													}
+												}
+												description: """
+																Attributes that are used to determine whether this rule applies to a
+																request.
+																"""
+												description_kind: "plain"
+											}
+											min_items: 1
+											max_items: 1
+										}
+									}
+									description:      "A list of access policy rules."
+									description_kind: "plain"
+								}
+								min_items: 1
+							}
+							description:      "Access policy details."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_iam_organizations_policy_binding: {
 			version: 0
 			block: {
@@ -206030,6 +207415,330 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								min_items: 1
 							}
 							description:      "Principal access boundary policy details"
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_iam_project_access_policy: {
+			version: 0
+			block: {
+				attributes: {
+					access_policy_id: {
+						type: "string"
+						description: """
+									The ID to use for the access policy, which
+									will become the final component of the access policy's
+									resource name.
+									This value must start with a lowercase letter followed by up to 62
+									lowercase letters, numbers, hyphens, or dots. Pattern,
+									/a-z{2,62}/.
+									This value must be unique among all access policies with the same parent.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					annotations: {
+						type: ["map", "string"]
+						description: """
+									User defined annotations. See https://google.aip.dev/148#annotations for
+									more details such as format and size limitations
+
+									**Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+									Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The time when the access policy was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_name: {
+						type: "string"
+						description: """
+									The description of the access policy. Must be less than
+									or equal to 63 characters.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					effective_annotations: {
+						type: ["map", "string"]
+						description:      "All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					etag: {
+						type: "string"
+						description: """
+									The etag for the access policy.
+									If this is provided on update, it must match the server's etag.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Identifier. The resource name of the access policy.
+									The following formats are supported:
+									* 'projects/{project_id}/locations/{location}/accessPolicies/{policy_id}'
+									* 'projects/{project_number}/locations/{location}/accessPolicies/{policy_id}'
+									* 'folders/{folder_id}/locations/{location}/accessPolicies/{policy_id}'
+									* 'organizations/{organization_id}/locations/{location}/accessPolicies/{policy_id}'
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					uid: {
+						type:             "string"
+						description:      "The globally unique ID of the access policy."
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type: "string"
+						description: """
+									The time when the access policy was most recently
+									updated.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					details: {
+						nesting_mode: "list"
+						block: {
+							block_types: rules: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										description: {
+											type: "string"
+											description: """
+															Customer specified description of the rule. Must be less than or equal to
+															256 characters.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										effect: {
+											type: "string"
+											description: """
+															The effect of the rule.
+															Possible values:
+															DENY
+															ALLOW Possible values: ["DENY", "ALLOW"]
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+										excluded_principals: {
+											type: ["list", "string"]
+											description: """
+															The identities that are excluded from the access policy rule, even if they
+															are listed in the 'principals'. For example, you could add a Google
+															group to the 'principals', then exclude specific users who belong to
+															that group.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										principals: {
+											type: ["list", "string"]
+											description: """
+															The identities for which this rule's effect governs using one or more
+															permissions on Google Cloud resources. This field can contain the
+															following values:
+															* 'principal://goog/subject/{email_id}': A specific Google Account.
+															Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+															example, 'principal://goog/subject/alice@example.com'.
+															* 'principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}':
+															A Google Cloud service account. For example,
+															'principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com'.
+															* 'principalSet://goog/group/{group_id}': A Google group. For example,
+															'principalSet://goog/group/admins@example.com'.
+															* 'principalSet://goog/cloudIdentityCustomerId/{customer_id}': All of the
+															principals associated with the specified Google Workspace or Cloud
+															Identity customer ID. For example,
+															'principalSet://goog/cloudIdentityCustomerId/C01Abc35'.
+															If an identifier that was previously set on a policy is soft deleted, then
+															calls to read that policy will return the identifier with a deleted
+															prefix. Users cannot set identifiers with this syntax.
+															* 'deleted:principal://goog/subject/{email_id}?uid={uid}': A specific
+															Google Account that was deleted recently. For example,
+															'deleted:principal://goog/subject/alice@example.com?uid=1234567890'. If
+															the Google Account is recovered, this identifier reverts to the standard
+															identifier for a Google Account.
+															* 'deleted:principalSet://goog/group/{group_id}?uid={uid}': A Google group
+															that was deleted recently. For example,
+															'deleted:principalSet://goog/group/admins@example.com?uid=1234567890'.
+															If the Google group is restored, this identifier reverts to the standard
+															identifier for a Google group.
+															* 'deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}':
+															A Google Cloud service account that was deleted recently. For example,
+															'deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890'.
+															If the service account is undeleted, this identifier reverts to the
+															standard identifier for a service account.
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									block_types: {
+										conditions: {
+											nesting_mode: "set"
+											block: {
+												attributes: {
+													expression: {
+														type: "string"
+														description: """
+																		Textual representation of an expression in Common Expression Language
+																		syntax.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													service: {
+														type:             "string"
+														description_kind: "plain"
+														required:         true
+													}
+												}
+												description: """
+																The conditions that determine whether this rule applies to a request.
+																Conditions are identified by their key, which is the FQDN of the service
+																that they are relevant to. For example:
+																'''
+																"conditions": {
+																"iam.googleapis.com": {
+																"expression":
+																}
+																}
+																'''
+																Each rule is evaluated independently. If this rule does not apply
+																to a request, other rules might still apply.
+																Currently supported keys are as follows:
+																* 'eventarc.googleapis.com': Can use 'CEL' functions that evaluate
+																resource fields.
+																* 'iam.googleapis.com': Can use 'CEL' functions that evaluate
+																[resource
+																tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+																combine them using boolean and logical operators. Other functions and
+																operators are not supported.
+																"""
+												description_kind: "plain"
+											}
+										}
+										operation: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													excluded_permissions: {
+														type: ["list", "string"]
+														description: """
+																		Specifies the permissions that this rule excludes from the set of
+																		affected permissions given by 'permissions'. If a permission appears in
+																		'permissions' _and_ in 'excluded_permissions' then it will _not_ be
+																		subject to the policy effect.
+																		The excluded permissions can be specified using the same syntax as
+																		'permissions'.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													permissions: {
+														type: ["list", "string"]
+														description: """
+																		The permissions that are explicitly affected by this rule. Each
+																		permission uses the format '{service_fqdn}/{resource}.{verb}', where
+																		'{service_fqdn}' is the fully qualified domain name for the service.
+																		Currently supported permissions are as follows:
+																		* 'eventarc.googleapis.com/messageBuses.publish'.
+																		"""
+														description_kind: "plain"
+														required:         true
+													}
+												}
+												description: """
+																Attributes that are used to determine whether this rule applies to a
+																request.
+																"""
+												description_kind: "plain"
+											}
+											min_items: 1
+											max_items: 1
+										}
+									}
+									description:      "A list of access policy rules."
+									description_kind: "plain"
+								}
+								min_items: 1
+							}
+							description:      "Access policy details."
 							description_kind: "plain"
 						}
 						max_items: 1
@@ -219797,7 +221506,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 					unique_writer_identity: {
 						type:             "bool"
-						description:      "Whether or not to create a unique identity associated with this sink. If false (the legacy behavior), then the writer_identity used is serviceAccount:cloud-logs@system.gserviceaccount.com. If true (default), then a unique service account is created and used for this sink. If you wish to publish logs across projects, you must set unique_writer_identity to true."
+						description:      "Whether to use a service agent as the writer_identity for this sink. If false (the legacy behavior), writer_identity is serviceAccount:cloud-logs@system.gserviceaccount.com and the sink's destination must be in the same project as the sink. If true (the default), writer_identity is a service agent shared by sinks with the same parent. You must set unique_writer_identity to true to publish logs across projects or use bigquery_options."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -222521,7 +224230,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description: """
 									Optional. Immutable. Authorization mode of the instance. Possible values:
 									 AUTH_DISABLED
-									IAM_AUTH
+									IAM_AUTH.
+
+									TOKEN_AUTH is also supported, but only available in the google-beta provider.
 									"""
 						description_kind: "plain"
 						optional:         true
@@ -234966,7 +236677,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type:             "string"
 						description:      "Resource URL of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed."
 						description_kind: "plain"
-						required:         true
+						optional:         true
 					}
 					peering_network: {
 						type:             "string"
@@ -244269,6 +245980,16 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									Configures this gateway to \u200blisten on all ports.
 									By enabling the wildcard ports feature on\u200b \u200byour Secure Web Proxy Gateway,
 									it will accept traffic destined for any port (1-65535) on its\u200b assigned IP address.\u200b
+									This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					allow_global_access: {
+						type: "bool"
+						description: """
+									Optional. If true, the gateway will allow traffic from clients outside
+									of the region where the gateway is located.
 									This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
 									"""
 						description_kind: "plain"
@@ -253610,6 +255331,18 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type:             "string"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					identity_connector: {
+						type: ["list", ["object", {
+							connection_state:    "string"
+							service_agent_email: "string"
+						}]]
+						description: """
+									The identity connector details which will allow OCI to securely access
+									the resources in the customer project.
+									"""
+						description_kind: "plain"
 						computed:         true
 					}
 					labels: {
@@ -283477,6 +285210,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					service_account: {
+						type:             "string"
+						description:      "Repository level service account."
+						description_kind: "plain"
+						optional:         true
+					}
 					uid: {
 						type:             "string"
 						description:      "Unique identifier of the repository."
@@ -283540,6 +285279,37 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								}
 							}
 							description:      "Initial configurations for the repository."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					scan_config: {
+						nesting_mode: "list"
+						block: {
+							block_types: secret_scan_config: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										enabled: {
+											type:             "bool"
+											description:      "Enables secret scanning for the repository."
+											description_kind: "plain"
+											optional:         true
+										}
+										inspect_template: {
+											type:             "string"
+											description:      "The DLP inspect template to use for secret scanning."
+											description_kind: "plain"
+											optional:         true
+											computed:         true
+										}
+									}
+									description:      "Configuration for secret scanning."
+									description_kind: "plain"
+								}
+								max_items: 1
+							}
+							description:      "Provides configuration for scanning."
 							description_kind: "plain"
 						}
 						max_items: 1
@@ -289272,6 +291042,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					password_secret_version: {
+						type: "string"
+						description: """
+									The resource name of the Secret Manager secret storing the password. The secret
+									\t\t\t\tshould be a regional secret and stored in the exact same region as the Cloud SQL instance.
+									\t\t\t\tFollow https://docs.cloud.google.com/secret-manager/regional-secrets/create-regional-secret.
+									\t\t\t\tWhen user and password_secret_version are provided, the script is run using this user.
+									\t\t\t\tOtherwise, the script is run using the identity account used to apply your Terraform config.
+									\t\t\t\tChanging this field forces the script to be run again.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
 					project: {
 						type:             "string"
 						description:      "The ID of the project in which the resource belongs. If it is not provided, the provider project is used."
@@ -289290,6 +291073,18 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									"""
 						description_kind: "plain"
 						required:         true
+					}
+					user: {
+						type: "string"
+						description: """
+									The name of the built-in database user to authenticate as. For MySQL user,
+									\t\t\t\tomit '@' and the hostname. The user should exist as a built-in user in the database.
+									\t\t\t\tWhen user and password_secret_version are provided, the script is run using this user. Otherwise,
+									\t\t\t\tthe script is run using the identity account used to apply your Terraform config.
+									\t\t\t\tChanging this forces the script to be run using the new user.
+									"""
+						description_kind: "plain"
+						optional:         true
 					}
 				}
 				description_kind: "plain"
@@ -299169,6 +300964,188 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								max_items: 1
 							}
 							description:      "The model config to use for the deployment."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_vertex_ai_evaluation_metric: {
+			version: 0
+			block: {
+				attributes: {
+					create_time: {
+						type: "string"
+						description: """
+									The timestamp of when the EvaluationMetric was created in RFC3339 UTC "Zulu" format,
+									with nanosecond resolution and up to nine fractional digits.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "A description of the EvaluationMetric."
+						description_kind: "plain"
+						optional:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "The user-friendly display name for the EvaluationMetric."
+						description_kind: "plain"
+						required:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					evaluation_metric_id: {
+						type: "string"
+						description: """
+									The ID to use for the EvaluationMetric, which will become the final
+									component of the resource name. This value should be 1-63 characters,
+									and valid characters are /[a-z][0-9]-/. The first character must be
+									a lowercase letter, and the last character must be a lowercase letter
+									or number. If not provided, the server will generate a unique ID.
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					gcs_uri: {
+						type:             "string"
+						description:      "The Google Cloud Storage URI that stores the metric specification."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									Labels for the EvaluationMetric.
+
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					metric: {
+						type: "string"
+						description: """
+									The metric configuration as a JSON string. Uses camelCase field names
+									to match the API format. Supports LLM-based metrics and custom code
+									execution metrics.
+									See the [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/Metric)
+									for the full schema.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The short name of the EvaluationMetric (the final component of the resource name)."
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region of the EvaluationMetric. eg us-central1"
+						description_kind: "plain"
+						required:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type: "string"
+						description: """
+									The timestamp of when the EvaluationMetric was last updated in RFC3339 UTC "Zulu" format,
+									with nanosecond resolution and up to nine fractional digits.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					encryption_spec: {
+						nesting_mode: "list"
+						block: {
+							attributes: kms_key_name: {
+								type: "string"
+								description: """
+												Required. The Cloud KMS resource identifier of the customer managed encryption key
+												used to protect a resource. Has the form:
+												'projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key'.
+												The key needs to be in the same region as where the resource is created.
+												"""
+								description_kind: "plain"
+								optional:         true
+							}
+							description: """
+										Customer-managed encryption key spec for this EvaluationMetric. If set,
+										this EvaluationMetric will be secured by this key.
+										"""
 							description_kind: "plain"
 						}
 						max_items: 1
@@ -322994,6 +324971,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type: ["list", ["object", {
 							automatic_restart:           "bool"
 							availability_domain:         "number"
+							host_error_timeout_seconds:  "number"
 							instance_termination_action: "string"
 							local_ssd_recovery_timeout: ["list", ["object", {
 								nanos:   "number"
@@ -323909,6 +325887,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type: ["list", ["object", {
 							automatic_restart:           "bool"
 							availability_domain:         "number"
+							host_error_timeout_seconds:  "number"
 							instance_termination_action: "string"
 							local_ssd_recovery_timeout: ["list", ["object", {
 								nanos:   "number"
@@ -326431,6 +328410,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type: ["list", ["object", {
 							automatic_restart:           "bool"
 							availability_domain:         "number"
+							host_error_timeout_seconds:  "number"
 							instance_termination_action: "string"
 							local_ssd_recovery_timeout: ["list", ["object", {
 								nanos:   "number"
@@ -330845,6 +332825,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							gke_backup_agent_config: ["list", ["object", {
 								enabled: "bool"
 							}]]
+							high_scale_checkpointing_config: ["list", ["object", {
+								enabled: "bool"
+							}]]
 							horizontal_pod_autoscaling: ["list", ["object", {
 								disabled: "bool"
 							}]]
@@ -332821,6 +334804,47 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									Parent scope for the config.
 									Format: projects/{project-id|project-number} or folders/{folder-number} or organizations/{organization-number}.
 									"""
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_dataform_repository_iam_policy: {
+			version: 0
+			block: {
+				attributes: {
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					policy_data: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					repository: {
+						type:             "string"
 						description_kind: "plain"
 						required:         true
 					}
@@ -339179,7 +341203,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description: """
 									Optional. Immutable. Authorization mode of the instance. Possible values:
 									 AUTH_DISABLED
-									IAM_AUTH
+									IAM_AUTH.
+
+									TOKEN_AUTH is also supported, but only available in the google-beta provider.
 									"""
 						description_kind: "plain"
 						computed:         true
@@ -353437,6 +355463,52 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_bigquery_dataset_iam_member: {
+			version: 0
+			block: {
+				attributes: {
+					dataset_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					member: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_bigquery_table: {
+			version: 0
+			block: {
+				attributes: {
+					dataset_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_cloud_run_service: {
 			version: 0
 			block: {
@@ -356511,6 +358583,31 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_bigquery_dataset_iam_member: {
+			version: 1
+			attributes: {
+				condition_title: {
+					type:                "string"
+					optional_for_import: true
+				}
+				dataset_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				member: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				role: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		google_bigquery_reservation: {
 			version: 1
 			attributes: {
@@ -356590,6 +358687,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					required_for_import: true
 				}
 				routine_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_bigquery_table: {
+			version: 1
+			attributes: {
+				dataset_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				table_id: {
 					type:                "string"
 					required_for_import: true
 				}
@@ -357488,6 +359602,27 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					optional_for_import: true
 				}
 				rule: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_chronicle_soar_network: {
+			version: 1
+			attributes: {
+				instance: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				soar_network_id: {
 					type:                "string"
 					required_for_import: true
 				}
@@ -361051,6 +363186,52 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_dataform_repository: {
+			version: 1
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		google_dataform_repository_iam_member: {
+			version: 1
+			attributes: {
+				condition_title: {
+					type:                "string"
+					optional_for_import: true
+				}
+				member: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+				repository: {
+					type:                "string"
+					required_for_import: true
+				}
+				role: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		google_dataform_team_folder: {
 			version: 1
 			attributes: {
@@ -364342,6 +366523,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_iam_folder_access_policy: {
+			version: 1
+			attributes: {
+				access_policy_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				folder: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		google_iam_folders_policy_binding: {
 			version: 1
 			attributes: {
@@ -364397,6 +366595,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_iam_organization_access_policy: {
+			version: 1
+			attributes: {
+				access_policy_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				organization: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		google_iam_organizations_policy_binding: {
 			version: 1
 			attributes: {
@@ -364428,6 +366643,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				principal_access_boundary_policy_id: {
 					type:                "string"
 					required_for_import: true
+				}
+			}
+		}
+		google_iam_project_access_policy: {
+			version: 1
+			attributes: {
+				access_policy_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
 				}
 			}
 		}
@@ -369761,6 +371993,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				project: {
 					type:                "string"
 					optional_for_import: true
+				}
+			}
+		}
+		google_vertex_ai_evaluation_metric: {
+			version: 1
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				region: {
+					type:                "string"
+					required_for_import: true
 				}
 			}
 		}

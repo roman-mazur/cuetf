@@ -31,6 +31,9 @@ google_container_cluster: {
 			gke_backup_agent_config?: [...close({
 				enabled?: bool
 			})]
+			high_scale_checkpointing_config?: [...close({
+				enabled?: bool
+			})]
 			horizontal_pod_autoscaling?: [...close({
 				disabled?: bool
 			})]
