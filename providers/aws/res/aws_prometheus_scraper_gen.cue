@@ -5,6 +5,7 @@ aws_prometheus_scraper: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_prometheus_scraper")
 	close({
 		destination?: matchN(1, [#destination, [...#destination]])
+		exporter?: matchN(1, [#exporter, [...#exporter]])
 		role_configuration?: matchN(1, [#role_configuration, [...#role_configuration]])
 		source?: matchN(1, [#source, [...#source]])
 		timeouts?: #timeouts
@@ -26,6 +27,10 @@ aws_prometheus_scraper: {
 	#destination: close({
 		amp?: matchN(1, [_#defs."/$defs/destination/$defs/amp", [..._#defs."/$defs/destination/$defs/amp"]])
 		cloudwatch?: matchN(1, [_#defs."/$defs/destination/$defs/cloudwatch", [..._#defs."/$defs/destination/$defs/cloudwatch"]])
+	})
+
+	#exporter: close({
+		opensearch?: matchN(1, [_#defs."/$defs/exporter/$defs/opensearch", [..._#defs."/$defs/exporter/$defs/opensearch"]])
 	})
 
 	#role_configuration: close({
@@ -66,6 +71,10 @@ aws_prometheus_scraper: {
 
 	_#defs: "/$defs/destination/$defs/cloudwatch": close({
 		dataset_arn!: string
+	})
+
+	_#defs: "/$defs/exporter/$defs/opensearch": close({
+		domain_arn!: string
 	})
 
 	_#defs: "/$defs/source/$defs/eks": close({

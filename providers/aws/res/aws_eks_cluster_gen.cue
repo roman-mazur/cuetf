@@ -10,6 +10,9 @@ aws_eks_cluster: {
 		compute_config?: matchN(1, [#compute_config, list.MaxItems(1) & [...#compute_config]])
 		control_plane_scaling_config?: matchN(1, [#control_plane_scaling_config, list.MaxItems(1) & [...#control_plane_scaling_config]])
 		encryption_config?: matchN(1, [#encryption_config, list.MaxItems(1) & [...#encryption_config]])
+		kube_api_server_config?: matchN(1, [#kube_api_server_config, list.MaxItems(1) & [...#kube_api_server_config]])
+		kube_controller_manager_config?: matchN(1, [#kube_controller_manager_config, list.MaxItems(1) & [...#kube_controller_manager_config]])
+		kube_scheduler_config?: matchN(1, [#kube_scheduler_config, list.MaxItems(1) & [...#kube_scheduler_config]])
 		kubernetes_network_config?: matchN(1, [#kubernetes_network_config, list.MaxItems(1) & [...#kubernetes_network_config]])
 		outpost_config?: matchN(1, [#outpost_config, list.MaxItems(1) & [...#outpost_config]])
 		remote_network_config?: matchN(1, [#remote_network_config, list.MaxItems(1) & [...#remote_network_config]])
@@ -70,6 +73,19 @@ aws_eks_cluster: {
 		resources!: [...string]
 	})
 
+	#kube_api_server_config: close({
+		service_node_port_range?: matchN(1, [_#defs."/$defs/kube_api_server_config/$defs/service_node_port_range", list.MaxItems(1) & [..._#defs."/$defs/kube_api_server_config/$defs/service_node_port_range"]])
+		event_ttl?: string
+	})
+
+	#kube_controller_manager_config: close({
+		horizontal_pod_autoscaler_controller_config?: matchN(1, [_#defs."/$defs/kube_controller_manager_config/$defs/horizontal_pod_autoscaler_controller_config", list.MaxItems(1) & [..._#defs."/$defs/kube_controller_manager_config/$defs/horizontal_pod_autoscaler_controller_config"]])
+	})
+
+	#kube_scheduler_config: close({
+		node_resources_fit?: matchN(1, [_#defs."/$defs/kube_scheduler_config/$defs/node_resources_fit", list.MaxItems(1) & [..._#defs."/$defs/kube_scheduler_config/$defs/node_resources_fit"]])
+	})
+
 	#kubernetes_network_config: close({
 		elastic_load_balancing?: matchN(1, [_#defs."/$defs/kubernetes_network_config/$defs/elastic_load_balancing", list.MaxItems(1) & [..._#defs."/$defs/kubernetes_network_config/$defs/elastic_load_balancing"]])
 		ip_family?:         string
@@ -121,6 +137,29 @@ aws_eks_cluster: {
 
 	_#defs: "/$defs/encryption_config/$defs/provider": close({
 		key_arn!: string
+	})
+
+	_#defs: "/$defs/kube_api_server_config/$defs/service_node_port_range": close({
+		max_port?: number
+		min_port?: number
+	})
+
+	_#defs: "/$defs/kube_controller_manager_config/$defs/horizontal_pod_autoscaler_controller_config": close({
+		horizontal_pod_autoscaler_sync_period?: string
+	})
+
+	_#defs: "/$defs/kube_scheduler_config/$defs/node_resources_fit": close({
+		scoring_strategy?: matchN(1, [_#defs."/$defs/kube_scheduler_config/$defs/node_resources_fit/$defs/scoring_strategy", list.MaxItems(1) & [..._#defs."/$defs/kube_scheduler_config/$defs/node_resources_fit/$defs/scoring_strategy"]])
+	})
+
+	_#defs: "/$defs/kube_scheduler_config/$defs/node_resources_fit/$defs/scoring_strategy": close({
+		resource?: matchN(1, [_#defs."/$defs/kube_scheduler_config/$defs/node_resources_fit/$defs/scoring_strategy/$defs/resource", [..._#defs."/$defs/kube_scheduler_config/$defs/node_resources_fit/$defs/scoring_strategy/$defs/resource"]])
+		type?: string
+	})
+
+	_#defs: "/$defs/kube_scheduler_config/$defs/node_resources_fit/$defs/scoring_strategy/$defs/resource": close({
+		name?:   string
+		weight?: number
 	})
 
 	_#defs: "/$defs/kubernetes_network_config/$defs/elastic_load_balancing": close({

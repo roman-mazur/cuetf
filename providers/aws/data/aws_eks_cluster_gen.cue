@@ -31,6 +31,29 @@ aws_eks_cluster: {
 				issuer?: string
 			})]
 		})]
+		kube_api_server_config?: [...close({
+			event_ttl?: string
+			service_node_port_range?: [...close({
+				max_port?: number
+				min_port?: number
+			})]
+		})]
+		kube_controller_manager_config?: [...close({
+			horizontal_pod_autoscaler_controller_config?: [...close({
+				horizontal_pod_autoscaler_sync_period?: string
+			})]
+		})]
+		kube_scheduler_config?: [...close({
+			node_resources_fit?: [...close({
+				scoring_strategy?: [...close({
+					resource?: [...close({
+						name?:   string
+						weight?: number
+					})]
+					type?: string
+				})]
+			})]
+		})]
 		kubernetes_network_config?: [...close({
 			elastic_load_balancing?: [...close({
 				enabled?: bool

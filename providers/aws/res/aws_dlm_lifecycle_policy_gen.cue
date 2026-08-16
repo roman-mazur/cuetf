@@ -81,7 +81,8 @@ aws_dlm_lifecycle_policy: {
 
 	_#defs: "/$defs/policy_details/$defs/parameters": close({
 		exclude_boot_volume?: bool
-		no_reboot?:           bool
+		exclude_data_volume_tags?: [string]: string
+		no_reboot?: bool
 	})
 
 	_#defs: "/$defs/policy_details/$defs/schedule": close({
