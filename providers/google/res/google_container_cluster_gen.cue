@@ -297,6 +297,7 @@ google_container_cluster: {
 		gcp_filestore_csi_driver_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/gcp_filestore_csi_driver_config", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/gcp_filestore_csi_driver_config"]])
 		gcs_fuse_csi_driver_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/gcs_fuse_csi_driver_config", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/gcs_fuse_csi_driver_config"]])
 		gke_backup_agent_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/gke_backup_agent_config", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/gke_backup_agent_config"]])
+		high_scale_checkpointing_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/high_scale_checkpointing_config", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/high_scale_checkpointing_config"]])
 		horizontal_pod_autoscaling?: matchN(1, [_#defs."/$defs/addons_config/$defs/horizontal_pod_autoscaling", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/horizontal_pod_autoscaling"]])
 		http_load_balancing?: matchN(1, [_#defs."/$defs/addons_config/$defs/http_load_balancing", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/http_load_balancing"]])
 		lustre_csi_driver_config?: matchN(1, [_#defs."/$defs/addons_config/$defs/lustre_csi_driver_config", list.MaxItems(1) & [..._#defs."/$defs/addons_config/$defs/lustre_csi_driver_config"]])
@@ -968,6 +969,10 @@ google_container_cluster: {
 	})
 
 	_#defs: "/$defs/addons_config/$defs/gke_backup_agent_config": close({
+		enabled!: bool
+	})
+
+	_#defs: "/$defs/addons_config/$defs/high_scale_checkpointing_config": close({
 		enabled!: bool
 	})
 

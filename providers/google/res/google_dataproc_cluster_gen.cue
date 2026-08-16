@@ -376,6 +376,8 @@ google_dataproc_cluster: {
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/master_config/$defs/disk_config": close({
+		attached_disk_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/master_config/$defs/disk_config/$defs/attached_disk_config", [..._#defs."/$defs/cluster_config/$defs/master_config/$defs/disk_config/$defs/attached_disk_config"]])
+
 		// Indicates how many IOPS to provision for the disk. This sets the number of
 		// I/O operations per second that the disk can handle.
 		boot_disk_provisioned_iops?: number
@@ -403,6 +405,22 @@ google_dataproc_cluster: {
 		num_local_ssds?: number
 	})
 
+	_#defs: "/$defs/cluster_config/$defs/master_config/$defs/disk_config/$defs/attached_disk_config": close({
+		// Size of the attached disk, specified in GB.
+		disk_size_gb?: number
+
+		// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+		disk_type?: string
+
+		// Indicates how many IOPS to provision for the disk. This sets the number of
+		// I/O operations per second that the disk can handle.
+		provisioned_iops?: number
+
+		// Indicates how much throughput to provision for the disk. This sets the number
+		// of throughput mb per second that the disk can handle.
+		provisioned_throughput?: number
+	})
+
 	_#defs: "/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy": close({
 		instance_selection_list?: matchN(1, [_#defs."/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list", [..._#defs."/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list"]])
 
@@ -427,6 +445,8 @@ google_dataproc_cluster: {
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config": close({
+		attached_disk_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config/$defs/attached_disk_config", [..._#defs."/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config/$defs/attached_disk_config"]])
+
 		// Indicates how many IOPS to provision for the disk. This sets the number of
 		// I/O operations per second that the disk can handle.
 		boot_disk_provisioned_iops?: number
@@ -450,6 +470,22 @@ google_dataproc_cluster: {
 		num_local_ssds?: number
 	})
 
+	_#defs: "/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config/$defs/attached_disk_config": close({
+		// Size of the attached disk, specified in GB.
+		disk_size_gb?: number
+
+		// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+		disk_type?: string
+
+		// Indicates how many IOPS to provision for the disk. This sets the number of
+		// I/O operations per second that the disk can handle.
+		provisioned_iops?: number
+
+		// Indicates how much throughput to provision for the disk. This sets the number
+		// of throughput mb per second that the disk can handle.
+		provisioned_throughput?: number
+	})
+
 	_#defs: "/$defs/cluster_config/$defs/metastore_config": close({
 		// Resource name of an existing Dataproc Metastore service.
 		dataproc_metastore_service!: string
@@ -470,6 +506,8 @@ google_dataproc_cluster: {
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/preemptible_worker_config/$defs/disk_config": close({
+		attached_disk_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/preemptible_worker_config/$defs/disk_config/$defs/attached_disk_config", [..._#defs."/$defs/cluster_config/$defs/preemptible_worker_config/$defs/disk_config/$defs/attached_disk_config"]])
+
 		// Indicates how many IOPS to provision for the disk. This sets the number of
 		// I/O operations per second that the disk can handle.
 		boot_disk_provisioned_iops?: number
@@ -498,6 +536,22 @@ google_dataproc_cluster: {
 		num_local_ssds?: number
 	})
 
+	_#defs: "/$defs/cluster_config/$defs/preemptible_worker_config/$defs/disk_config/$defs/attached_disk_config": close({
+		// Size of the attached disk, specified in GB.
+		disk_size_gb?: number
+
+		// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+		disk_type?: string
+
+		// Indicates how many IOPS to provision for the disk. This sets the number of
+		// I/O operations per second that the disk can handle.
+		provisioned_iops?: number
+
+		// Indicates how much throughput to provision for the disk. This sets the number
+		// of throughput mb per second that the disk can handle.
+		provisioned_throughput?: number
+	})
+
 	_#defs: "/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy": close({
 		instance_selection_list?: matchN(1, [_#defs."/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list", [..._#defs."/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list"]])
 		provisioning_model_mix?: matchN(1, [_#defs."/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy/$defs/provisioning_model_mix", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy/$defs/provisioning_model_mix"]])
@@ -523,6 +577,8 @@ google_dataproc_cluster: {
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config": close({
+		attached_disk_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config/$defs/attached_disk_config", [..._#defs."/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config/$defs/attached_disk_config"]])
+
 		// Indicates how many IOPS to provision for the disk. This sets the number of
 		// I/O operations per second that the disk can handle.
 		boot_disk_provisioned_iops?: number
@@ -544,6 +600,22 @@ google_dataproc_cluster: {
 
 		// The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
 		num_local_ssds?: number
+	})
+
+	_#defs: "/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config/$defs/attached_disk_config": close({
+		// Size of the attached disk, specified in GB.
+		disk_size_gb?: number
+
+		// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+		disk_type?: string
+
+		// Indicates how many IOPS to provision for the disk. This sets the number of
+		// I/O operations per second that the disk can handle.
+		provisioned_iops?: number
+
+		// Indicates how much throughput to provision for the disk. This sets the number
+		// of throughput mb per second that the disk can handle.
+		provisioned_throughput?: number
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy/$defs/provisioning_model_mix": close({
@@ -683,6 +755,8 @@ google_dataproc_cluster: {
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/worker_config/$defs/disk_config": close({
+		attached_disk_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/worker_config/$defs/disk_config/$defs/attached_disk_config", [..._#defs."/$defs/cluster_config/$defs/worker_config/$defs/disk_config/$defs/attached_disk_config"]])
+
 		// Indicates how many IOPS to provision for the disk. This sets the number of
 		// I/O operations per second that the disk can handle.
 		boot_disk_provisioned_iops?: number
@@ -710,6 +784,22 @@ google_dataproc_cluster: {
 		num_local_ssds?: number
 	})
 
+	_#defs: "/$defs/cluster_config/$defs/worker_config/$defs/disk_config/$defs/attached_disk_config": close({
+		// Size of the attached disk, specified in GB.
+		disk_size_gb?: number
+
+		// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+		disk_type?: string
+
+		// Indicates how many IOPS to provision for the disk. This sets the number of
+		// I/O operations per second that the disk can handle.
+		provisioned_iops?: number
+
+		// Indicates how much throughput to provision for the disk. This sets the number
+		// of throughput mb per second that the disk can handle.
+		provisioned_throughput?: number
+	})
+
 	_#defs: "/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy": close({
 		instance_selection_list?: matchN(1, [_#defs."/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list", [..._#defs."/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list"]])
 
@@ -734,6 +824,8 @@ google_dataproc_cluster: {
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config": close({
+		attached_disk_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config/$defs/attached_disk_config", [..._#defs."/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config/$defs/attached_disk_config"]])
+
 		// Indicates how many IOPS to provision for the disk. This sets the number of
 		// I/O operations per second that the disk can handle.
 		boot_disk_provisioned_iops?: number
@@ -755,6 +847,22 @@ google_dataproc_cluster: {
 
 		// The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
 		num_local_ssds?: number
+	})
+
+	_#defs: "/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config/$defs/attached_disk_config": close({
+		// Size of the attached disk, specified in GB.
+		disk_size_gb?: number
+
+		// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+		disk_type?: string
+
+		// Indicates how many IOPS to provision for the disk. This sets the number of
+		// I/O operations per second that the disk can handle.
+		provisioned_iops?: number
+
+		// Indicates how much throughput to provision for the disk. This sets the number
+		// of throughput mb per second that the disk can handle.
+		provisioned_throughput?: number
 	})
 
 	_#defs: "/$defs/virtual_cluster_config/$defs/auxiliary_services_config": close({

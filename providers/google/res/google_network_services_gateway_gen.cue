@@ -19,6 +19,11 @@ google_network_services_gateway: {
 		// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
 		all_ports?: bool
 
+		// Optional. If true, the gateway will allow traffic from clients outside
+		// of the region where the gateway is located.
+		// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+		allow_global_access?: bool
+
 		// A fully-qualified Certificates URL reference. The proxy presents a
 		// Certificate (selected based on SNI) when establishing a TLS connection.
 		// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.

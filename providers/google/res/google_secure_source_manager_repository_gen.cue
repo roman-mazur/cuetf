@@ -7,6 +7,7 @@ google_secure_source_manager_repository: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_secure_source_manager_repository")
 	close({
 		initial_config?: matchN(1, [#initial_config, list.MaxItems(1) & [...#initial_config]])
+		scan_config?: matchN(1, [#scan_config, list.MaxItems(1) & [...#scan_config]])
 		timeouts?: #timeouts
 
 		// Time the repository was created in UTC.
@@ -36,6 +37,9 @@ google_secure_source_manager_repository: {
 		// The ID for the Repository.
 		repository_id!: string
 		project?:       string
+
+		// Repository level service account.
+		service_account?: string
 
 		// Unique identifier of the repository.
 		uid?: string
@@ -71,9 +75,21 @@ google_secure_source_manager_repository: {
 		readme?: string
 	})
 
+	#scan_config: close({
+		secret_scan_config?: matchN(1, [_#defs."/$defs/scan_config/$defs/secret_scan_config", list.MaxItems(1) & [..._#defs."/$defs/scan_config/$defs/secret_scan_config"]])
+	})
+
 	#timeouts: close({
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/scan_config/$defs/secret_scan_config": close({
+		// Enables secret scanning for the repository.
+		enabled?: bool
+
+		// The DLP inspect template to use for secret scanning.
+		inspect_template?: string
 	})
 }

@@ -54,7 +54,7 @@ google_network_connectivity_transport: {
 
 		// Resource URL of the Network that will be peered with this Transport. This
 		// field must be provided during resource creation and cannot be changed.
-		network!: string
+		network?: string
 
 		// VPC Network URI that was created for the VPC Peering connection to the
 		// provided 'network'. If VPC Peering is disconnected, this can be used to

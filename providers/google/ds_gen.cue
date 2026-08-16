@@ -216,6 +216,7 @@ import (
 	_#ds: "\(#googlePrefix)_data_catalog_taxonomy_iam_policy": close({data.google_data_catalog_taxonomy_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_data_fusion_instance_iam_policy": close({data.google_data_fusion_instance_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_data_lineage_config": close({data.google_data_lineage_config & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_dataform_repository_iam_policy": close({data.google_dataform_repository_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_dataplex_aspect_type_iam_policy": close({data.google_dataplex_aspect_type_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_dataplex_asset_iam_policy": close({data.google_dataplex_asset_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_dataplex_data_product_iam_policy": close({data.google_dataplex_data_product_iam_policy & cuetf.MetaArgs})

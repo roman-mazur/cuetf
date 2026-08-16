@@ -388,6 +388,11 @@ google_compute_instance_from_template: {
 		// Specifies the availability domain, which this instance should be scheduled on.
 		availability_domain?: number
 
+		// Specify the time in seconds for host error detection, the value must be
+		// within the range of [90, 330] with the increment of 30, if unset, the
+		// default behavior of host error recovery will be used.
+		host_error_timeout_seconds?: number
+
 		// Specifies the action GCE should take when SPOT VM is preempted.
 		instance_termination_action?: string
 		min_node_cpus?:               number
