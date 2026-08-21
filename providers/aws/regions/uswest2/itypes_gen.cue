@@ -30717,7 +30717,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 8192
             }
@@ -30927,7 +30927,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 8192
             }
@@ -31032,7 +31032,7 @@ InstanceTypes: [{
             Count:            2
             LogicalGpuCount:  2
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 8192
             }
@@ -31356,7 +31356,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -31464,7 +31464,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -31572,7 +31572,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -31791,7 +31791,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -32329,7 +32329,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -32544,7 +32544,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -33142,7 +33142,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -33234,7 +33234,7 @@ InstanceTypes: [{
             Count:            2
             LogicalGpuCount:  2
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -33329,7 +33329,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -33662,7 +33662,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -34104,7 +34104,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -34665,7 +34665,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -34798,7 +34798,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -34907,7 +34907,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -35019,7 +35019,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -35128,7 +35128,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 45776
             }
@@ -35237,7 +35237,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.25
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 5722
             }
@@ -35346,7 +35346,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.5
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 11444
             }
@@ -35455,7 +35455,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.125
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 2861
             }
@@ -35679,7 +35679,7 @@ InstanceTypes: [{
             Count:            2
             LogicalGpuCount:  2
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 32768
             }
@@ -35906,7 +35906,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 32768
             }
@@ -36049,7 +36049,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 32768
             }
@@ -36161,7 +36161,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 32768
             }
@@ -36276,7 +36276,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 32768
             }
@@ -36616,7 +36616,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 98304
             }
@@ -36749,7 +36749,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 98304
             }
@@ -36858,7 +36858,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 98304
             }
@@ -36970,7 +36970,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 98304
             }
@@ -37079,7 +37079,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -42422,14 +42422,21 @@ InstanceTypes: [{
         AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
-        NetworkPerformance:       "100 Gigabit"
+        NetworkPerformance:       "200 Gigabit"
         MaximumNetworkInterfaces: 15
-        MaximumNetworkCards:      1
+        MaximumNetworkCards:      2
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "100 Gigabit"
-            MaximumNetworkInterfaces:         15
+            MaximumNetworkInterfaces:         8
+            BaselineBandwidthInGbps:          100.0
+            PeakBandwidthInGbps:              100.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 1
+            NetworkPerformance:               "100 Gigabit"
+            MaximumNetworkInterfaces:         7
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
@@ -42798,14 +42805,21 @@ InstanceTypes: [{
         AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
-        NetworkPerformance:       "100 Gigabit"
+        NetworkPerformance:       "200 Gigabit"
         MaximumNetworkInterfaces: 15
-        MaximumNetworkCards:      1
+        MaximumNetworkCards:      2
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "100 Gigabit"
-            MaximumNetworkInterfaces:         15
+            MaximumNetworkInterfaces:         8
+            BaselineBandwidthInGbps:          100.0
+            PeakBandwidthInGbps:              100.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 1
+            NetworkPerformance:               "100 Gigabit"
+            MaximumNetworkInterfaces:         7
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
@@ -44520,12 +44534,22 @@ InstanceTypes: [{
     NetworkInfo: {
         NetworkPerformance:       "300 Gigabit"
         MaximumNetworkInterfaces: 24
-        MaximumNetworkCards:      1
+        MaximumNetworkCards:      2
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
             NetworkCardIndex:                    0
             NetworkPerformance:                  "Up to 300 Gigabit"
-            MaximumNetworkInterfaces:            24
+            MaximumNetworkInterfaces:            12
+            AdditionalFlexibleNetworkInterfaces: 0
+            BaselineBandwidthInGbps:             300.0
+            PeakBandwidthInGbps:                 300.0
+            DefaultEnaQueueCountPerInterface:    32
+            MaximumEnaQueueCount:                768
+            MaximumEnaQueueCountPerInterface:    128
+        }, {
+            NetworkCardIndex:                    1
+            NetworkPerformance:                  "Up to 300 Gigabit"
+            MaximumNetworkInterfaces:            12
             AdditionalFlexibleNetworkInterfaces: 0
             BaselineBandwidthInGbps:             300.0
             PeakBandwidthInGbps:                 300.0
@@ -44905,12 +44929,21 @@ InstanceTypes: [{
     NetworkInfo: {
         NetworkPerformance:       "300 Gigabit"
         MaximumNetworkInterfaces: 24
-        MaximumNetworkCards:      1
+        MaximumNetworkCards:      2
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 300 Gigabit"
-            MaximumNetworkInterfaces:         24
+            MaximumNetworkInterfaces:         12
+            BaselineBandwidthInGbps:          300.0
+            PeakBandwidthInGbps:              300.0
+            DefaultEnaQueueCountPerInterface: 32
+            MaximumEnaQueueCount:             768
+            MaximumEnaQueueCountPerInterface: 128
+        }, {
+            NetworkCardIndex:                 1
+            NetworkPerformance:               "Up to 300 Gigabit"
+            MaximumNetworkInterfaces:         12
             BaselineBandwidthInGbps:          300.0
             PeakBandwidthInGbps:              300.0
             DefaultEnaQueueCountPerInterface: 32
