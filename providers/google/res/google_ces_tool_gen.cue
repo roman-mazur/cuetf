@@ -297,6 +297,8 @@ google_ces_tool: {
 	})
 
 	#python_function: close({
+		service_directory_config?: matchN(1, [_#defs."/$defs/python_function/$defs/service_directory_config", list.MaxItems(1) & [..._#defs."/$defs/python_function/$defs/service_directory_config"]])
+
 		// The description of the Python function, parsed from the python code's
 		// docstring.
 		description?: string
@@ -723,6 +725,7 @@ google_ces_tool: {
 	_#defs: "/$defs/data_store_tool/$defs/modality_configs": close({
 		grounding_config?: matchN(1, [_#defs."/$defs/data_store_tool/$defs/modality_configs/$defs/grounding_config", list.MaxItems(1) & [..._#defs."/$defs/data_store_tool/$defs/modality_configs/$defs/grounding_config"]])
 		rewriter_config?: matchN(1, [_#defs."/$defs/data_store_tool/$defs/modality_configs/$defs/rewriter_config", list.MaxItems(1) & [..._#defs."/$defs/data_store_tool/$defs/modality_configs/$defs/rewriter_config"]])
+		snippets_config?: matchN(1, [_#defs."/$defs/data_store_tool/$defs/modality_configs/$defs/snippets_config", list.MaxItems(1) & [..._#defs."/$defs/data_store_tool/$defs/modality_configs/$defs/snippets_config"]])
 		summarization_config?: matchN(1, [_#defs."/$defs/data_store_tool/$defs/modality_configs/$defs/summarization_config", list.MaxItems(1) & [..._#defs."/$defs/data_store_tool/$defs/modality_configs/$defs/summarization_config"]])
 
 		// The modality type.
@@ -768,6 +771,11 @@ google_ces_tool: {
 		temperature?: number
 	})
 
+	_#defs: "/$defs/data_store_tool/$defs/modality_configs/$defs/snippets_config": close({
+		// Whether snippets are enabled.
+		enable_snippets?: bool
+	})
+
 	_#defs: "/$defs/data_store_tool/$defs/modality_configs/$defs/summarization_config": close({
 		model_settings?: matchN(1, [_#defs."/$defs/data_store_tool/$defs/modality_configs/$defs/summarization_config/$defs/model_settings", list.MaxItems(1) & [..._#defs."/$defs/data_store_tool/$defs/modality_configs/$defs/summarization_config/$defs/model_settings"]])
 
@@ -798,6 +806,12 @@ google_ces_tool: {
 		// Optional. Defines the prompt used for the system instructions when interacting with the
 		// agent in voice conversations. If not set, default prompt will be used.
 		voice_prompt?: string
+	})
+
+	_#defs: "/$defs/python_function/$defs/service_directory_config": close({
+		// The name of Service Directory service.
+		// Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
+		service!: string
 	})
 
 	_#defs: "/$defs/tool_fake_config/$defs/code_block": close({

@@ -117,6 +117,15 @@ google_certificate_manager_certificate: {
 
 		// The private key of the leaf certificate in PEM-encoded form.
 		pem_private_key?: string
+
+		// The private key of the leaf certificate in PEM-encoded form.
+		pem_private_key_wo?: string
+
+		// Triggers update of 'pem_private_key_wo' write-only. Increment this value when
+		// an update to 'pem_private_key_wo' is needed. For more info see [updating
+		// write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		pem_private_key_wo_version?: string
 	})
 
 	#timeouts: close({

@@ -344,6 +344,24 @@ google_cloud_run_v2_service: {
 				accelerator?: string
 			})]
 			revision?: string
+			sandboxes?: [...close({
+				templates?: [...close({
+					args?: [...string]
+					command?: [...string]
+					env?: [...close({
+						name?:  string
+						value?: string
+					})]
+					image?: string
+					name?:  string
+					volume_mounts?: [...close({
+						mount_path?: string
+						name?:       string
+						sub_path?:   string
+					})]
+					working_dir?: string
+				})]
+			})]
 			scaling?: [...close({
 				max_instance_count?: number
 				min_instance_count?: number

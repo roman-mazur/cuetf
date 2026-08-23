@@ -11,6 +11,7 @@ google_colab_notebook_execution: {
 		direct_notebook_source?: matchN(1, [#direct_notebook_source, list.MaxItems(1) & [...#direct_notebook_source]])
 		gcs_notebook_source?: matchN(1, [#gcs_notebook_source, list.MaxItems(1) & [...#gcs_notebook_source]])
 		timeouts?: #timeouts
+		workbench_runtime?: matchN(1, [#workbench_runtime, list.MaxItems(1) & [...#workbench_runtime]])
 
 		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
 		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
@@ -51,6 +52,7 @@ google_colab_notebook_execution: {
 		machine_spec?: matchN(1, [_#defs."/$defs/custom_environment_spec/$defs/machine_spec", list.MaxItems(1) & [..._#defs."/$defs/custom_environment_spec/$defs/machine_spec"]])
 		network_spec?: matchN(1, [_#defs."/$defs/custom_environment_spec/$defs/network_spec", list.MaxItems(1) & [..._#defs."/$defs/custom_environment_spec/$defs/network_spec"]])
 		persistent_disk_spec?: matchN(1, [_#defs."/$defs/custom_environment_spec/$defs/persistent_disk_spec", list.MaxItems(1) & [..._#defs."/$defs/custom_environment_spec/$defs/persistent_disk_spec"]])
+		shielded_instance_config?: matchN(1, [_#defs."/$defs/custom_environment_spec/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/custom_environment_spec/$defs/shielded_instance_config"]])
 	})
 
 	#dataform_repository_source: close({
@@ -79,6 +81,10 @@ google_colab_notebook_execution: {
 	#timeouts: close({
 		create?: string
 		delete?: string
+	})
+
+	#workbench_runtime: close({
+		vm_image!: matchN(1, [_#defs."/$defs/workbench_runtime/$defs/vm_image", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/workbench_runtime/$defs/vm_image"]])
 	})
 
 	_#defs: "/$defs/custom_environment_spec/$defs/machine_spec": close({
@@ -111,5 +117,34 @@ google_colab_notebook_execution: {
 
 		// The type of the persistent disk.
 		disk_type?: string
+	})
+
+	_#defs: "/$defs/custom_environment_spec/$defs/shielded_instance_config": close({
+		// Defines whether the instance has integrity monitoring enabled. Enables
+		// monitoring and attestation of the boot integrity of the instance. The
+		// attestation is performed against the integrity policy baseline. This
+		// baseline is initially derived from the implicitly trusted boot image when
+		// the instance is created. Enabled by default.
+		enable_integrity_monitoring?: bool
+
+		// Defines whether the instance has Secure Boot enabled. Secure Boot helps
+		// ensure that the system only runs authentic software by verifying the digital
+		// signature of all boot components, and halting the boot process if signature
+		// verification fails. Disabled by default.
+		enable_secure_boot?: bool
+
+		// Defines whether the instance has the vTPM enabled. Enabled by default.
+		enable_vtpm?: bool
+	})
+
+	_#defs: "/$defs/workbench_runtime/$defs/vm_image": close({
+		// Use this VM image family to find the image; the newest image in this family will be used.
+		family?: string
+
+		// Use VM image name to find the image.
+		name?: string
+
+		// The name of the Google Cloud project that this VM image belongs to. Format: {project_id}
+		project?: string
 	})
 }

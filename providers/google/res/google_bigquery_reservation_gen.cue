@@ -25,12 +25,25 @@ google_bigquery_reservation: {
 
 		// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
 		edition?: string
-		id?:      string
+
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
+		effective_labels?: [string]: string
+		id?: string
 
 		// If false, any query using this reservation will use idle slots from other reservations within
 		// the same admin project. If true, a query using this reservation will execute with the slot
 		// capacity specified above at most.
 		ignore_idle_slots?: bool
+
+		// The labels associated with this reservation. You can use these to
+		// organize and group your reservations.
+		//
+		//
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+		labels?: [string]: string
 
 		// The geographic location where the transfer config should reside.
 		// Examples: US, EU, asia-northeast1. The default value is US.
@@ -78,6 +91,10 @@ google_bigquery_reservation: {
 		// unit of parallelism. Queries using this reservation might use more slots
 		// during runtime if ignoreIdleSlots is set to false.
 		slot_capacity!: number
+
+		// The combination of labels configured directly on the resource
+		// and default labels configured on the provider.
+		terraform_labels?: [string]: string
 	})
 
 	#autoscale: close({

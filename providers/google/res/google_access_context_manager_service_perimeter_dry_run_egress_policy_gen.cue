@@ -82,6 +82,7 @@ google_access_context_manager_service_perimeter_dry_run_egress_policy: {
 	#timeouts: close({
 		create?: string
 		delete?: string
+		update?: string
 	})
 
 	_#defs: "/$defs/egress_from/$defs/sources": close({
