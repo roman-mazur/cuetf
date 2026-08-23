@@ -29,6 +29,7 @@ aws_fsx_windows_file_system: {
 		id?:         string
 		kms_key_id?: string
 		network_interface_ids?: [...string]
+		network_type?:                   string
 		owner_id?:                       string
 		preferred_file_server_ip?:       string
 		preferred_subnet_id?:            string

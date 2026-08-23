@@ -12,8 +12,9 @@ aws_vpclattice_service: {
 			domain_name?:    string
 			hosted_zone_id?: string
 		})]
-		id?:   string
-		name?: string
+		id?:                   string
+		idle_timeout_seconds?: number
+		name?:                 string
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

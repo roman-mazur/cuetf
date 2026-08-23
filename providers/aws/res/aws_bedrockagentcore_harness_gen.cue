@@ -5,6 +5,7 @@ aws_bedrockagentcore_harness: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_bedrockagentcore_harness")
 	close({
 		authorizer_configuration?: matchN(1, [#authorizer_configuration, [...#authorizer_configuration]])
+		environment?: matchN(1, [#environment, [...#environment]])
 		environment_artifact?: matchN(1, [#environment_artifact, [...#environment_artifact]])
 		memory?: matchN(1, [#memory, [...#memory]])
 		model?: matchN(1, [#model, [...#model]])
@@ -20,7 +21,7 @@ aws_bedrockagentcore_harness: {
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
 		arn?:    string
-		environment?: [...close({
+		environment_actual?: [...close({
 			agentcore_runtime_environment?: [...close({
 				agent_runtime_arn?:  string
 				agent_runtime_id?:   string
@@ -98,6 +99,10 @@ aws_bedrockagentcore_harness: {
 
 	#authorizer_configuration: close({
 		custom_jwt_authorizer?: matchN(1, [_#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer", [..._#defs."/$defs/authorizer_configuration/$defs/custom_jwt_authorizer"]])
+	})
+
+	#environment: close({
+		agentcore_runtime_environment?: matchN(1, [_#defs."/$defs/environment/$defs/agentcore_runtime_environment", [..._#defs."/$defs/environment/$defs/agentcore_runtime_environment"]])
 	})
 
 	#environment_artifact: close({
@@ -227,6 +232,49 @@ aws_bedrockagentcore_harness: {
 
 	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint_overrides/$defs/private_endpoint/$defs/self_managed_lattice_resource": close({
 		resource_configuration_identifier!: string
+	})
+
+	_#defs: "/$defs/environment/$defs/agentcore_runtime_environment": close({
+		filesystem_configuration?: matchN(1, [_#defs."/$defs/environment/$defs/agentcore_runtime_environment/$defs/filesystem_configuration", [..._#defs."/$defs/environment/$defs/agentcore_runtime_environment/$defs/filesystem_configuration"]])
+		network_configuration?: matchN(1, [_#defs."/$defs/environment/$defs/agentcore_runtime_environment/$defs/network_configuration", [..._#defs."/$defs/environment/$defs/agentcore_runtime_environment/$defs/network_configuration"]])
+		agent_runtime_arn?:  string
+		agent_runtime_id?:   string
+		agent_runtime_name?: string
+		lifecycle_configuration?: [...close({
+			idle_runtime_session_timeout?: number
+			max_lifetime?:                 number
+		})]
+	})
+
+	_#defs: "/$defs/environment/$defs/agentcore_runtime_environment/$defs/filesystem_configuration": close({
+		efs_access_point?: matchN(1, [_#defs."/$defs/environment/$defs/agentcore_runtime_environment/$defs/filesystem_configuration/$defs/efs_access_point", [..._#defs."/$defs/environment/$defs/agentcore_runtime_environment/$defs/filesystem_configuration/$defs/efs_access_point"]])
+		s3_files_access_point?: matchN(1, [_#defs."/$defs/environment/$defs/agentcore_runtime_environment/$defs/filesystem_configuration/$defs/s3_files_access_point", [..._#defs."/$defs/environment/$defs/agentcore_runtime_environment/$defs/filesystem_configuration/$defs/s3_files_access_point"]])
+		session_storage?: matchN(1, [_#defs."/$defs/environment/$defs/agentcore_runtime_environment/$defs/filesystem_configuration/$defs/session_storage", [..._#defs."/$defs/environment/$defs/agentcore_runtime_environment/$defs/filesystem_configuration/$defs/session_storage"]])
+	})
+
+	_#defs: "/$defs/environment/$defs/agentcore_runtime_environment/$defs/filesystem_configuration/$defs/efs_access_point": close({
+		access_point_arn!: string
+		mount_path!:       string
+	})
+
+	_#defs: "/$defs/environment/$defs/agentcore_runtime_environment/$defs/filesystem_configuration/$defs/s3_files_access_point": close({
+		access_point_arn!: string
+		mount_path!:       string
+	})
+
+	_#defs: "/$defs/environment/$defs/agentcore_runtime_environment/$defs/filesystem_configuration/$defs/session_storage": close({
+		mount_path!: string
+	})
+
+	_#defs: "/$defs/environment/$defs/agentcore_runtime_environment/$defs/network_configuration": close({
+		network_mode_config?: matchN(1, [_#defs."/$defs/environment/$defs/agentcore_runtime_environment/$defs/network_configuration/$defs/network_mode_config", [..._#defs."/$defs/environment/$defs/agentcore_runtime_environment/$defs/network_configuration/$defs/network_mode_config"]])
+		network_mode!: string
+	})
+
+	_#defs: "/$defs/environment/$defs/agentcore_runtime_environment/$defs/network_configuration/$defs/network_mode_config": close({
+		require_service_s3_endpoint?: bool
+		security_groups!: [...string]
+		subnets!: [...string]
 	})
 
 	_#defs: "/$defs/environment_artifact/$defs/container_configuration": close({

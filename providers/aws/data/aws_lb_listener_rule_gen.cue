@@ -141,6 +141,7 @@ aws_lb_listener_rule: {
 	})
 
 	_#defs: "/$defs/condition/$defs/source_ip": close({
+		ip_address_type?: string
 		values?: [...string]
 	})
 

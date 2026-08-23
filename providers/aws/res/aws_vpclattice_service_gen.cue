@@ -19,9 +19,10 @@ aws_vpclattice_service: {
 			domain_name?:    string
 			hosted_zone_id?: string
 		})]
-		id?:     string
-		name!:   string
-		status?: string
+		id?:                   string
+		idle_timeout_seconds?: number
+		name!:                 string
+		status?:               string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})

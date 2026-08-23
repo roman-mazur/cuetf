@@ -4,7 +4,10 @@ aws_resiliencehubv2_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/aws_resiliencehubv2_service")
 	close({
-		arn!:         string
+		arn!: string
+		associated_system?: [...close({
+			system_arn?: string
+		})]
 		description?: string
 		kms_key_id?:  string
 		name?:        string
