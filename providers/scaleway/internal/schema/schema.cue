@@ -356,6 +356,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -513,6 +514,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: {
@@ -670,6 +672,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: {
@@ -790,6 +793,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: metric: {
@@ -947,6 +951,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: volumes: {
@@ -1248,6 +1253,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: {
@@ -1589,6 +1595,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: {
@@ -1735,6 +1742,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -1869,6 +1877,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: contact_points: {
@@ -1939,6 +1948,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					status: {
 						type:             "string"
@@ -2157,6 +2167,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					retention_days: {
 						type:             "number"
@@ -2254,6 +2265,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					secret_key: {
 						type:             "string"
@@ -2550,6 +2562,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					registry_image: {
 						type:             "string"
@@ -2841,6 +2854,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					schedule: {
 						type:             "string"
@@ -2919,6 +2933,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					url: {
 						type:             "string"
@@ -3013,6 +3028,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					registry_endpoint: {
 						type:             "string"
@@ -3117,6 +3133,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					token: {
 						type:             "string"
@@ -3164,6 +3181,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
@@ -3618,6 +3636,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					size: {
 						type:             "number"
@@ -3714,6 +3733,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					replica_count: {
 						type:             "number"
@@ -3869,6 +3889,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -4693,6 +4714,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 									description:      "The region you want to attach the resource to"
 									description_kind: "plain"
 									optional:         true
+									computed:         true
 								}
 							}
 							description:      "The Scaleway Serverless Container backend linked to the backend stage"
@@ -4715,6 +4737,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 									description:      "The region you want to attach the resource to"
 									description_kind: "plain"
 									optional:         true
+									computed:         true
 								}
 							}
 							description:      "The Scaleway Serverless Function backend linked to the backend stage"
@@ -4764,6 +4787,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 											description:      "The zone you want to attach the resource to"
 											description_kind: "plain"
 											optional:         true
+											computed:         true
 										}
 									}
 									description:      "The Load Balancer configuration"
@@ -5356,6 +5380,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 								description:      "The region you want to attach the resource to"
 								description_kind: "plain"
 								optional:         true
+								computed:         true
 							}
 							secret_id: {
 								type:             "string"
@@ -5478,6 +5503,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					size_in_gb: {
 						type:             "number"
@@ -5624,6 +5650,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -5723,6 +5750,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -5874,6 +5902,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					runtime: {
 						type:             "string"
@@ -5991,6 +6020,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					schedule: {
 						type:             "string"
@@ -6068,6 +6098,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					url: {
 						type:             "string"
@@ -6154,6 +6185,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					registry_endpoint: {
 						type:             "string"
@@ -6256,6 +6288,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					token: {
 						type:             "string"
@@ -6303,6 +6336,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: {
@@ -7271,6 +7305,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					size: {
 						type:             "number"
@@ -7489,6 +7524,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					secret: {
 						type:             "string"
@@ -7687,6 +7723,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -7790,6 +7827,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -7833,6 +7871,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -7916,6 +7955,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -7946,6 +7986,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						type: ["list", "string"]
 						description:      "IPAM ip list, should be for internal use only"
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 					}
 					ipam_ip_ids: {
@@ -7983,6 +8024,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: {
@@ -8121,6 +8163,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: {
@@ -8505,6 +8548,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: {
@@ -8583,6 +8627,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 									description:      "The zone you want to attach the resource to"
 									description_kind: "plain"
 									optional:         true
+									computed:         true
 								}
 							}
 							description:      "List of private network to connect with your instance"
@@ -8801,6 +8846,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: {
@@ -8886,6 +8932,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -8995,6 +9042,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -9135,6 +9183,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					routing_policy_v4_id: {
 						type:             "string"
@@ -9294,6 +9343,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
@@ -9380,6 +9430,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					status: {
 						type:             "string"
@@ -9590,6 +9641,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					status: {
 						type:             "string"
@@ -9657,6 +9709,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					secret: {
 						type:             "string"
@@ -9732,6 +9785,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					topic: {
 						type:             "string"
@@ -9919,6 +9973,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					resource: {
 						type: ["list", ["object", {
@@ -10049,6 +10104,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -10155,6 +10211,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					startup_command: {
 						type: ["list", "string"]
@@ -10277,6 +10334,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: {
@@ -10472,6 +10530,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					service_cidr: {
 						type:             "string"
@@ -10869,6 +10928,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					root_volume_size_in_gb: {
 						type:             "number"
@@ -10939,6 +10999,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: {
@@ -11114,6 +11175,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					status: {
 						type:             "string"
@@ -11289,6 +11351,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					rotated_at: {
 						type:             "string"
@@ -11579,6 +11642,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: {
@@ -12571,6 +12635,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -12663,6 +12728,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -12799,6 +12865,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -12839,6 +12906,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -12872,6 +12940,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -12913,6 +12982,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					secret_key: {
 						type:             "string"
@@ -13025,6 +13095,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					secret_key: {
 						type:             "string"
@@ -13097,6 +13168,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					secret_key: {
 						type:             "string"
@@ -13155,6 +13227,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -13196,6 +13269,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					secret_key: {
 						type:             "string"
@@ -13320,6 +13394,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					secret_key: {
 						type:             "string"
@@ -13476,6 +13551,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					settings: {
 						type: ["map", "string"]
@@ -13733,6 +13809,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					size: {
 						type:             "number"
@@ -13831,6 +13908,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: {
@@ -13896,7 +13974,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 				}
 				description: """
-					Manages MongoDB users. For more information, see the [API documentation](https://developers.scaleway.com/products/mongodb/api/).
+					Manages MongoDB users. For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/managed-database-mongodb).
 
 					-> **Security Best Practice:**
 					For enhanced security, we recommend using the [`password_wo` write-only argument](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-write-only-arguments) instead of the regular `password` argument. This ensures your sensitive credentials are never stored in Terraform state files, providing superior protection against accidental exposure. Write-Only arguments are supported in Terraform 1.11.0 and later.
@@ -13976,6 +14054,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					sse_customer_key: {
 						type:             "string"
@@ -14099,6 +14178,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					tags: {
 						type: ["map", "string"]
@@ -14375,6 +14455,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: access_control_policy: {
@@ -14489,6 +14570,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: rule: {
@@ -14566,6 +14648,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -14610,6 +14693,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: rule: {
@@ -14681,6 +14765,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					website_domain: {
 						type:             "string"
@@ -14811,6 +14896,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					status: {
 						type:             "string"
@@ -14933,6 +15019,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: {
@@ -15035,6 +15122,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					size: {
 						type:             "string"
@@ -15133,6 +15221,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					same_region: {
 						type:             "bool"
@@ -15352,6 +15441,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					settings: {
 						type: ["map", "string"]
@@ -15551,6 +15641,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 									description:      "The zone you want to attach the resource to"
 									description_kind: "plain"
 									optional:         true
+									computed:         true
 								}
 							}
 							description:      "List of private network to expose your database instance"
@@ -15648,6 +15739,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					user_name: {
 						type:             "string"
@@ -15713,6 +15805,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					same_zone: {
 						type:             "bool"
@@ -15916,6 +16009,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					size: {
 						type:             "number"
@@ -16021,6 +16115,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -16184,6 +16279,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: {
@@ -16405,6 +16501,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -16544,6 +16641,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					route_propagation_enabled: {
 						type:             "bool"
@@ -16769,6 +16867,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
@@ -16859,6 +16958,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					status: {
 						type:             "string"
@@ -16884,6 +16984,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: {
@@ -17005,6 +17106,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
@@ -17068,6 +17170,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -17158,6 +17261,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					srn: {
 						type:             "string"
@@ -17301,6 +17405,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					revision: {
 						type:             "string"
@@ -17387,6 +17492,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					type: {
 						type:             "string"
@@ -17499,6 +17605,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					reputation: {
 						type: ["list", ["object", {
@@ -17631,6 +17738,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					timeout: {
 						type:             "number"
@@ -17724,6 +17832,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					sns_arn: {
 						type:             "string"
@@ -17809,6 +17918,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					srn: {
 						type:             "string"
@@ -17859,6 +17969,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					vpc_id: {
 						type:             "string"
@@ -17973,6 +18084,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					srn: {
 						type:             "string"
@@ -18109,6 +18221,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: {
@@ -18238,6 +18351,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					source: {
 						type:             "string"
@@ -18337,6 +18451,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					srn: {
 						type:             "string"
@@ -18619,6 +18734,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -18788,6 +18904,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -18851,6 +18968,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -18944,6 +19062,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -18976,6 +19095,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -19067,6 +19187,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -19152,6 +19273,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					srn: {
 						type:             "string"
@@ -19305,6 +19427,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					status: {
 						type:             "string"
@@ -19708,6 +19831,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -19803,6 +19927,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					resource_id: {
 						type:             "string"
@@ -20139,6 +20264,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -20177,6 +20303,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -20215,6 +20342,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -21078,6 +21206,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -21243,6 +21372,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					rule_status: {
 						type:             "string"
@@ -21285,6 +21415,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -23438,6 +23569,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -24620,6 +24752,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -25244,6 +25377,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -25324,6 +25458,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -25562,6 +25697,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					status: {
 						type:             "string"
@@ -25824,6 +25960,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					updated_at: {
 						type:             "string"
@@ -25876,6 +26013,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description: """
@@ -25951,6 +26089,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description: """
@@ -26023,6 +26162,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description: """
@@ -26429,6 +26569,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
@@ -26447,6 +26588,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: resource: {
@@ -26547,6 +26689,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
@@ -27095,6 +27238,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					srn: {
 						type:             "string"
@@ -27634,6 +27778,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -27939,6 +28084,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -28213,6 +28359,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -28353,6 +28500,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -28475,6 +28623,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -28561,6 +28710,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -28599,6 +28749,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The zone you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -28697,6 +28848,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description: """
@@ -30039,6 +30191,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					size: {
 						type:             "number"
@@ -30121,6 +30274,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					status: {
 						type:             "string"
@@ -31154,6 +31308,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					sla: {
 						type:             "number"
@@ -32346,6 +32501,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					routes: {
 						type: ["list", ["object", {
@@ -32416,6 +32572,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
@@ -32688,6 +32845,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -33874,6 +34032,26 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_object_bucket: {
+			version: 0
+			block: {
+				attributes: {
+					project_ids: {
+						type: ["list", "string"]
+						description:      "Project IDs to filter on. Use '*' to list across all projects"
+						description_kind: "plain"
+						optional:         true
+					}
+					regions: {
+						type: ["list", "string"]
+						description:      "Regions to filter on. Use '*' to list from all regions"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		scaleway_opensearch_deployment: {
 			version: 0
 			block: {
@@ -34666,6 +34844,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				}
 			}
 		}
+		scaleway_billing_budget: {
+			version: 0
+			attributes: id: {
+				type:                "string"
+				required_for_import: true
+			}
+		}
 		scaleway_billing_budget_alert: {
 			version: 0
 			attributes: id: {
@@ -34789,6 +34974,19 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				region: {
 					type:                "string"
 					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_datalab: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
 					required_for_import: true
 				}
 			}
@@ -34984,6 +35182,34 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			attributes: id: {
 				type:                "string"
 				description:         "The id of the resource (UUID format)"
+				required_for_import: true
+			}
+		}
+		scaleway_iam_saml: {
+			version: 0
+			attributes: id: {
+				type:                "string"
+				required_for_import: true
+			}
+		}
+		scaleway_iam_saml_certificate: {
+			version: 0
+			attributes: id: {
+				type:                "string"
+				required_for_import: true
+			}
+		}
+		scaleway_iam_scim: {
+			version: 0
+			attributes: id: {
+				type:                "string"
+				required_for_import: true
+			}
+		}
+		scaleway_iam_scim_token: {
+			version: 0
+			attributes: id: {
+				type:                "string"
 				required_for_import: true
 			}
 		}
@@ -35353,6 +35579,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				}
 			}
 		}
+		scaleway_key_manager_key_material: {
+			version: 0
+			attributes: id: {
+				type:                "string"
+				required_for_import: true
+			}
+		}
 		scaleway_lb: {
 			version: 0
 			attributes: {
@@ -35674,6 +35907,21 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				name: {
 					type:                "string"
 					description:         "The MongoDB user name"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					description:         "The region of the resource"
+					required_for_import: true
+				}
+			}
+		}
+		scaleway_object_bucket: {
+			version: 0
+			attributes: {
+				id: {
+					type:                "string"
+					description:         "The id of the resource (UUID format)"
 					required_for_import: true
 				}
 				region: {
@@ -36297,22 +36545,24 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 
 				## Example Usage
 
-				```hcl
+				```terraform
 				resource "scaleway_block_snapshot" "example" {
 				  name      = "example-snapshot"
 				  volume_id = scaleway_block_volume.example.id
 				}
 
 				resource "scaleway_object_bucket" "example" {
-				  name = "example-bucket"
+				  name   = "example-bucket"
 				  region = "fr-par"
 				}
 
-				resource "scaleway_block_export_snapshot" "example" {
-				  snapshot_id = scaleway_block_snapshot.example.id
-				  bucket      = scaleway_object_bucket.example.name
-				  key         = "snapshots/example-snapshot.qcow2"
-				  wait        = true
+				action "scaleway_block_export_snapshot" "example" {
+				  config {
+				    snapshot_id = scaleway_block_snapshot.example.id
+				    bucket      = scaleway_object_bucket.example.name
+				    key         = "snapshots/example-snapshot.qcow2"
+				    wait        = true
+				  }
 				}
 				```
 
@@ -36969,7 +37219,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			description: """
 				The `scaleway_s2s_vpn_connection_disable_route_propagation` action disables route propagation on an S2S VPN connection. This prevents any prefixes from being announced in the BGP session. Traffic will not be able to flow over the VPN gateway until route propagation is re-enabled (e.g. via the `scaleway_s2s_vpn_connection_enable_route_propagation` action).
 
-				Refer to the [S2S VPN documentation](https://www.scaleway.com/en/docs/network/s2s-vpn/) and [API documentation](https://www.scaleway.com/en/developers/api/s2s-vpn/) for more information.
+				Refer to the [S2S VPN documentation](https://www.scaleway.com/en/docs/site-to-site-vpn/) and [API documentation](https://www.scaleway.com/en/developers/api/s2s-vpn/) for more information.
 
 				## Example Usage
 
@@ -37037,7 +37287,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 
 				Note that by default, even when route propagation is enabled, all routes are blocked. It is essential to attach a routing policy to the connection to define the ranges of routes to announce.
 
-				Refer to the [S2S VPN documentation](https://www.scaleway.com/en/docs/network/s2s-vpn/) and [API documentation](https://www.scaleway.com/en/developers/api/s2s-vpn/) for more information.
+				Refer to the [S2S VPN documentation](https://www.scaleway.com/en/docs/site-to-site-vpn/) and [API documentation](https://www.scaleway.com/en/developers/api/s2s-vpn/) for more information.
 
 				## Example Usage
 
