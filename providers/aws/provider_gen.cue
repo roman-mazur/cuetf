@@ -198,10 +198,16 @@ provider: {
 		account?: string
 
 		// Use this to override the default service endpoint URL
+		accountaccess?: string
+
+		// Use this to override the default service endpoint URL
 		acm?: string
 
 		// Use this to override the default service endpoint URL
 		acmpca?: string
+
+		// Use this to override the default service endpoint URL
+		agentregistry?: string
 
 		// Use this to override the default service endpoint URL
 		amg?: string
@@ -498,6 +504,9 @@ provider: {
 		directoryservice?: string
 
 		// Use this to override the default service endpoint URL
+		directoryservicedata?: string
+
+		// Use this to override the default service endpoint URL
 		dlm?: string
 
 		// Use this to override the default service endpoint URL
@@ -703,6 +712,9 @@ provider: {
 
 		// Use this to override the default service endpoint URL
 		lambda?: string
+
+		// Use this to override the default service endpoint URL
+		lambdacore?: string
 
 		// Use this to override the default service endpoint URL
 		lambdamicrovms?: string

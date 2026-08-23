@@ -4,6 +4,7 @@ aws_resiliencehubv2_service: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_resiliencehubv2_service")
 	close({
+		associated_system?: matchN(1, [#associated_system, [...#associated_system]])
 		permission_model?: matchN(1, [#permission_model, [...#permission_model]])
 		arn?: string
 
@@ -20,6 +21,10 @@ aws_resiliencehubv2_service: {
 		regions!: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string
+	})
+
+	#associated_system: close({
+		system_arn!: string
 	})
 
 	#permission_model: close({

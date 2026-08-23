@@ -61,6 +61,7 @@ aws_observabilityadmin_centralization_rule_for_organization: {
 
 	_#defs: "/$defs/rule/$defs/destination/$defs/destination_logs_configuration/$defs/logs_encryption_configuration": close({
 		encryption_conflict_resolution_strategy?: string
+		encryption_scope?:                        string
 		encryption_strategy!:                     string
 		kms_key_arn?:                             string
 	})

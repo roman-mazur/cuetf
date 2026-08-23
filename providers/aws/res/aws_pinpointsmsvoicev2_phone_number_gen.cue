@@ -24,11 +24,13 @@ aws_pinpointsmsvoicev2_phone_number: {
 		phone_number?:                  string
 		registration_id?:               string
 		self_managed_opt_outs_enabled?: bool
+		status?:                        string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		two_way_channel_arn?:     string
 		two_way_channel_enabled?: bool
 		two_way_channel_role?:    string
+		wait_for_active?:         bool
 	})
 
 	#timeouts: close({

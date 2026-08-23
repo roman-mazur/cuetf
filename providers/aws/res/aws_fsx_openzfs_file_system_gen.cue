@@ -31,6 +31,7 @@ aws_fsx_openzfs_file_system: {
 		id?:         string
 		kms_key_id?: string
 		network_interface_ids?: [...string]
+		network_type?:        string
 		owner_id?:            string
 		preferred_subnet_id?: string
 		root_volume_id?:      string

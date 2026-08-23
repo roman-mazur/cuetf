@@ -143,7 +143,8 @@ aws_lb_listener_rule: {
 	})
 
 	_#defs: "/$defs/condition/$defs/source_ip": close({
-		values!: [...string]
+		ip_address_type?: string
+		values?: [...string]
 	})
 
 	_#defs: "/$defs/transform/$defs/host_header_rewrite_config": close({

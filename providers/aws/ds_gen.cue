@@ -447,6 +447,7 @@ import (
 	_#ds: "\(#awsPrefix)_odb_db_servers": close({data.aws_odb_db_servers & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_odb_db_system_shapes": close({data.aws_odb_db_system_shapes & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_odb_gi_versions": close({data.aws_odb_gi_versions & cuetf.MetaArgs})
+	_#ds: "\(#awsPrefix)_odb_iam_role_association": close({data.aws_odb_iam_role_association & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_odb_network": close({data.aws_odb_network & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_odb_network_peering_connection": close({data.aws_odb_network_peering_connection & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_odb_network_peering_connections": close({data.aws_odb_network_peering_connections & cuetf.MetaArgs})
