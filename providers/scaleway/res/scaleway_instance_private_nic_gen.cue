@@ -8,9 +8,6 @@ scaleway_instance_private_nic: {
 		timeouts?: #timeouts
 		id?:       string
 
-		// IPAM ip list, should be for internal use only
-		ip_ids?: [...string]
-
 		// IPAM IDs of a pre-reserved IP addresses to assign to the Instance in the
 		// requested private network
 		ipam_ip_ids?: [...string]
