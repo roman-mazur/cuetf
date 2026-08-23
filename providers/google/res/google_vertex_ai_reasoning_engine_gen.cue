@@ -368,6 +368,10 @@ google_vertex_ai_reasoning_engine: {
 		// 'us-central1-docker.pkg.dev/my-project/my-repo/my-image:tag') of the
 		// container image that is to be run on each worker replica.
 		image_uri!: string
+
+		// Optional. The port that the container listens on for incoming requests. If
+		// not specified, defaults to 8080.
+		port?: number
 	})
 
 	_#defs: "/$defs/spec/$defs/deployment_spec": close({

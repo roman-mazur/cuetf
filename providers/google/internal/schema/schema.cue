@@ -41,6 +41,11 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					description_kind: "plain"
 					optional:         true
 				}
+				agentic_applications_custom_endpoint: {
+					type:             "string"
+					description_kind: "plain"
+					optional:         true
+				}
 				alloydb_custom_endpoint: {
 					type:             "string"
 					description_kind: "plain"
@@ -2454,11 +2459,28 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						optional:         true
 						computed:         true
 					}
-					group_key: {
-						type:             "string"
-						description:      "Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See \"id\" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: \"01d520gv4vjcrht\""
+					dry_run_access_levels: {
+						type: ["list", "string"]
+						description: """
+									Optional. Dry run access level that will be evaluated but will not be enforced. The
+									access denial based on dry run policy will be logged. Only one access
+									level is supported, not multiple. This list must have exactly one element.
+									Example: "accessPolicies/9522/accessLevels/device_trusted"
+									"""
 						description_kind: "plain"
-						required:         true
+						optional:         true
+					}
+					group_key: {
+						type: "string"
+						description: """
+									Immutable. Google Group id whose members are subject to this binding's restrictions.
+									See "id" in the Google Workspace Directory API's Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+									If a group's email address/alias is changed, this resource will continue to point at the changed group.
+									This field does not accept group email addresses or aliases.
+									Example: "01d520gv4vjcrht"
+									"""
+						description_kind: "plain"
+						optional:         true
 					}
 					id: {
 						type:             "string"
@@ -2480,6 +2502,34 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 				}
 				block_types: {
+					principal: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								service_account: {
+									type: "string"
+									description: """
+												Immutable. Service account email used to assign policies to a single service account.
+												If a service account is subject to multiple policies (e.g., if there is a policy for all
+												service accounts in a project and a policy for the service account), the closest (i.e.
+												the most specific) dry-run policy will be used for the dry-run functionality and the
+												closest policy will be used for the enforcement.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								service_account_project_number: {
+									type:             "string"
+									description:      "Immutable. Cloud project number used to assign policies to all service accounts owned by the project."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description:      "Optional. Immutable. The principal that is subject to the access policies in this policy binding."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
 					scoped_access_settings: {
 						nesting_mode: "list"
 						block: {
@@ -2504,14 +2554,20 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 														optional:         true
 													}
 													session_length: {
-														type:             "string"
-														description:      "Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC max_age param."
+														type: "string"
+														description: """
+																		Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC max_age param.
+																		If this field is set to zero, 'session_length_enabled' must be set to false or left unset.
+																		"""
 														description_kind: "plain"
 														optional:         true
 													}
 													session_length_enabled: {
-														type:             "bool"
-														description:      "Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite."
+														type: "bool"
+														description: """
+																		Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+																		If 'session_length' is set to zero, this field must be false.
+																		"""
 														description_kind: "plain"
 														optional:         true
 													}
@@ -2533,7 +2589,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											}
 											max_items: 1
 										}
-										description:      "Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set."
+										description:      "Optional. Access settings for this scoped access settings. This field may be empty if 'dry_run_settings' is set."
 										description_kind: "plain"
 									}
 									max_items: 1
@@ -2547,7 +2603,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											description_kind: "plain"
 											optional:         true
 										}
-										description:      "Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings."
+										description:      "Optional. Dry-run access settings for this scoped access settings. This field may be empty if 'active_settings' is set. Cannot contain session settings."
 										description_kind: "plain"
 									}
 									max_items: 1
@@ -2606,14 +2662,20 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									optional:         true
 								}
 								session_length: {
-									type:             "string"
-									description:      "Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC max_age param."
+									type: "string"
+									description: """
+												Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC max_age param.
+												If this field is set to zero, 'session_length_enabled' must be set to false or left unset.
+												"""
 									description_kind: "plain"
 									optional:         true
 								}
 								session_length_enabled: {
-									type:             "bool"
-									description:      "Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite."
+									type: "bool"
+									description: """
+												Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+												If 'session_length' is set to zero, this field must be false.
+												"""
 									description_kind: "plain"
 									optional:         true
 								}
@@ -4219,6 +4281,11 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									optional:         true
 								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
 							}
 							description_kind: "plain"
 						}
@@ -4471,6 +4538,11 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									optional:         true
 								}
 								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
 									type:             "string"
 									description_kind: "plain"
 									optional:         true
@@ -7348,6 +7420,1491 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							description_kind: "plain"
 						}
 						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_agentic_applications_analyst_agent_persona: {
+			version: 0
+			block: {
+				attributes: {
+					analyst_agent_persona_id: {
+						type: "string"
+						description: """
+									Id of the requesting object
+									If auto-generating Id server-side, remove this field and
+									analyst_agent_persona_id from the method_signature of Create RPC
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "Create time stamp."
+						description_kind: "plain"
+						computed:         true
+					}
+					customer_context: {
+						type: ["list", "string"]
+						description:      "The customer-specific context to be used by the agent."
+						description_kind: "plain"
+						optional:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_description: {
+						type:             "string"
+						description:      "The description of the persona, shown to users."
+						description_kind: "plain"
+						optional:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "The display name of the persona, shown to users."
+						description_kind: "plain"
+						required:         true
+					}
+					gemini_enterprise_engine: {
+						type: "string"
+						description: """
+									The Gemini Enterprise Engine ID associated with this persona.
+									If set, any requests coming from this GE Engine will be routed to this
+									persona.
+									If not set, requests from GE will only be routed to this persona if its
+									name ends in "/default".
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					model_description: {
+						type:             "string"
+						description:      "The description of the persona review, used by the model."
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Identifier. The resource name of the analyst agent persona.
+									Format:
+									projects/{project}/locations/{location}/analystAgentPersonas/{analyst_agent_persona}
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					role: {
+						type: "string"
+						description: """
+									Possible values:
+									ANALYST_ROLE_GENERIC_FINANCE_ANALYST
+									ANALYST_ROLE_CORPORATE_FINANCE_ANALYST
+									ANALYST_ROLE_CROSS_ASSET_DERIVATIVES_STRATEGIST
+									ANALYST_ROLE_KYC_ANALYST
+									ANALYST_ROLE_SALES_TRADER
+									ANALYST_ROLE_QUANT_ANALYST
+									ANALYST_ROLE_EXCHANGE_MANAGER
+									ANALYST_ROLE_PORTFOLIO_MANAGER
+									ANALYST_ROLE_WEALTH_MANAGER
+									ANALYST_ROLE_INSTITUTIONAL_PORTFOLIO_STRATEGIST
+									ANALYST_ROLE_MNA_EXECUTION_ANALYST
+									ANALYST_ROLE_ECM_ORIGINATION_STRATEGIST
+									ANALYST_ROLE_LEVERAGED_FINANCE_SPECIALIST
+									ANALYST_ROLE_INVESTMENT_RESEARCH_ANALYST
+									ANALYST_ROLE_CORPORATE_BANKING_ANALYST
+									ANALYST_ROLE_CREDIT_RISK_STRATEGIST
+									ANALYST_ROLE_BEHAVIORAL_FINANCIAL_STRATEGIST
+									ANALYST_ROLE_FUND_ACCOUNTANT
+									ANALYST_ROLE_MODEL_VALIDATION_AUDITOR
+									ANALYST_ROLE_PRIVATE_EQUITY_SPECIALIST
+									ANALYST_ROLE_TREASURY_ANALYST
+									ANALYST_ROLE_VENTURE_CAPITAL_ANALYST
+									ANALYST_ROLE_AML_INVESTIGATOR
+									ANALYST_ROLE_DUE_DILIGENCE_ANALYST
+									ANALYST_ROLE_INSURANCE_CLAIMS_ANALYST
+									ANALYST_ROLE_SPECIALTY_LIABILITY_UNDERWRITER
+									ANALYST_ROLE_CATASTROPHE_EXPOSURE_MODELER
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Update time stamp."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					artifact_examples: {
+						nesting_mode: "list"
+						block: {
+							block_types: resource: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										display_label: {
+											type: "string"
+											description: """
+															A user-friendly name for this resource. This can be shown to the user
+															and used by the model.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										model_description: {
+											type: "string"
+											description: """
+															A description of the resource. The model may use this, it will not be
+															shown to users.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										use_rag: {
+											type: "bool"
+											description: """
+															If true, use RAG to retrieve relevant information from the resources.
+
+															Must only be set for file-based resources.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+									}
+									block_types: {
+										bigquery_resource: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													bigquery_dataset: {
+														type: "string"
+														description: """
+																		Points to a bigquery dataset to use.
+
+																		Expected Format:
+																		projects/{project_id_or_number}/datasets/{dataset_id}
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													bigquery_table: {
+														type: "string"
+														description: """
+																		Points to a bigquery table to use.
+
+																		Expected Format:
+																		projects/{project_id_or_number}/datasets/{dataset_id}/tables/{table_id}
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													column_descriptions: {
+														type: ["map", "string"]
+														description:      "A map of column names to column descriptions for the bigquery_table."
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												description:      "Represents a BigQuery resource."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										f1_resource: {
+											nesting_mode: "list"
+											block: {
+												attributes: f1_table: {
+													type: "string"
+													description: """
+																		## - Points to an f1 table to use.
+
+																		- Expected Format:
+																		- {group}.{table_name}
+																		"""
+													description_kind: "plain"
+													optional:         true
+												}
+												description:      "- Represents an F1 resource."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										google_cloud_storage_resource: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													file_extension_restrictions: {
+														type: ["list", "string"]
+														description: """
+																		If non-empty, only files with these extensions are included when
+																		expanding the resource.  If empty, all files are included.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													google_cloud_storage_object: {
+														type: "string"
+														description: """
+																		The Google Cloud Storage object or folder.
+
+																		Format: /
+																		or: //
+
+																		Note that to refer to a folder, it _must_ end in a slash.
+																		"""
+														description_kind: "plain"
+														required:         true
+													}
+												}
+												description:      "Represents a Google Cloud Storage resource."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										google_drive_resource: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													file_extension_restrictions: {
+														type: ["list", "string"]
+														description: """
+																		If non-empty, only files with these extensions are included when
+																		expanding the resource.  If empty, all files are included.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													file_reference: {
+														type: "string"
+														description: """
+																		Points to a drive file to use. May refer to workspace files or folders
+																		as well.  If folder is specifically, all files in the folder
+																		(recursively) are used.
+
+																		Expected Format:
+																		files/{file_id}
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												description:      "Represents a Google Drive resource."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										raw_file_resource: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													file_content: {
+														type:             "string"
+														description:      "The raw file content."
+														description_kind: "plain"
+														required:         true
+													}
+													file_title: {
+														type:             "string"
+														description:      "The title of the file."
+														description_kind: "plain"
+														required:         true
+													}
+													mime_type: {
+														type:             "string"
+														description:      "The mime type of the file."
+														description_kind: "plain"
+														required:         true
+													}
+												}
+												description:      "Represents a raw file resource."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+									}
+									description:      "Represents a resource that can be used by the Analyst Agent."
+									description_kind: "plain"
+								}
+								min_items: 1
+								max_items: 1
+							}
+							description:      "The output artifact examples to be used by the agent."
+							description_kind: "plain"
+						}
+					}
+					artifacts_config: {
+						nesting_mode: "list"
+						block: {
+							block_types: {
+								document_generation_options: {
+									nesting_mode: "list"
+									block: {
+										attributes: export_format: {
+											type: "string"
+											description: """
+															Format for document export.
+															Possible values:
+															PDF
+															DOCX
+															GOOGLE_DOCS
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										block_types: document_examples: {
+											nesting_mode: "list"
+											block: {
+												block_types: resource: {
+													nesting_mode: "list"
+													block: {
+														attributes: {
+															display_label: {
+																type: "string"
+																description: """
+																					A user-friendly name for this resource. This can be shown to the user
+																					and used by the model.
+																					"""
+																description_kind: "plain"
+																optional:         true
+															}
+															model_description: {
+																type: "string"
+																description: """
+																					A description of the resource. The model may use this, it will not be
+																					shown to users.
+																					"""
+																description_kind: "plain"
+																optional:         true
+															}
+															use_rag: {
+																type: "bool"
+																description: """
+																					If true, use RAG to retrieve relevant information from the resources.
+
+																					Must only be set for file-based resources.
+																					"""
+																description_kind: "plain"
+																optional:         true
+															}
+														}
+														block_types: {
+															bigquery_resource: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		bigquery_dataset: {
+																			type: "string"
+																			description: """
+																								Points to a bigquery dataset to use.
+
+																								Expected Format:
+																								projects/{project_id_or_number}/datasets/{dataset_id}
+																								"""
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		bigquery_table: {
+																			type: "string"
+																			description: """
+																								Points to a bigquery table to use.
+
+																								Expected Format:
+																								projects/{project_id_or_number}/datasets/{dataset_id}/tables/{table_id}
+																								"""
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		column_descriptions: {
+																			type: ["map", "string"]
+																			description:      "A map of column names to column descriptions for the bigquery_table."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																	}
+																	description:      "Represents a BigQuery resource."
+																	description_kind: "plain"
+																}
+																max_items: 1
+															}
+															f1_resource: {
+																nesting_mode: "list"
+																block: {
+																	attributes: f1_table: {
+																		type: "string"
+																		description: """
+																								## - Points to an f1 table to use.
+
+																								- Expected Format:
+																								- {group}.{table_name}
+																								"""
+																		description_kind: "plain"
+																		optional:         true
+																	}
+																	description:      "- Represents an F1 resource."
+																	description_kind: "plain"
+																}
+																max_items: 1
+															}
+															google_cloud_storage_resource: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		file_extension_restrictions: {
+																			type: ["list", "string"]
+																			description: """
+																								If non-empty, only files with these extensions are included when
+																								expanding the resource.  If empty, all files are included.
+																								"""
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		google_cloud_storage_object: {
+																			type: "string"
+																			description: """
+																								The Google Cloud Storage object or folder.
+
+																								Format: /
+																								or: //
+
+																								Note that to refer to a folder, it _must_ end in a slash.
+																								"""
+																			description_kind: "plain"
+																			required:         true
+																		}
+																	}
+																	description:      "Represents a Google Cloud Storage resource."
+																	description_kind: "plain"
+																}
+																max_items: 1
+															}
+															google_drive_resource: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		file_extension_restrictions: {
+																			type: ["list", "string"]
+																			description: """
+																								If non-empty, only files with these extensions are included when
+																								expanding the resource.  If empty, all files are included.
+																								"""
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		file_reference: {
+																			type: "string"
+																			description: """
+																								Points to a drive file to use. May refer to workspace files or folders
+																								as well.  If folder is specifically, all files in the folder
+																								(recursively) are used.
+
+																								Expected Format:
+																								files/{file_id}
+																								"""
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																	}
+																	description:      "Represents a Google Drive resource."
+																	description_kind: "plain"
+																}
+																max_items: 1
+															}
+															raw_file_resource: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		file_content: {
+																			type:             "string"
+																			description:      "The raw file content."
+																			description_kind: "plain"
+																			required:         true
+																		}
+																		file_title: {
+																			type:             "string"
+																			description:      "The title of the file."
+																			description_kind: "plain"
+																			required:         true
+																		}
+																		mime_type: {
+																			type:             "string"
+																			description:      "The mime type of the file."
+																			description_kind: "plain"
+																			required:         true
+																		}
+																	}
+																	description:      "Represents a raw file resource."
+																	description_kind: "plain"
+																}
+																max_items: 1
+															}
+														}
+														description:      "Represents a resource that can be used by the Analyst Agent."
+														description_kind: "plain"
+													}
+													min_items: 1
+													max_items: 1
+												}
+												description:      "Examples for document generation."
+												description_kind: "plain"
+											}
+										}
+										description:      "Options for document generation."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								slide_generation_options: {
+									nesting_mode: "list"
+									block: {
+										attributes: export_format: {
+											type: "string"
+											description: """
+															Format for slide export.
+															Possible values:
+															PDF
+															PNG
+															PPTX
+															GOOGLE_SLIDES
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										block_types: slide_examples: {
+											nesting_mode: "list"
+											block: {
+												block_types: resource: {
+													nesting_mode: "list"
+													block: {
+														attributes: {
+															display_label: {
+																type: "string"
+																description: """
+																					A user-friendly name for this resource. This can be shown to the user
+																					and used by the model.
+																					"""
+																description_kind: "plain"
+																optional:         true
+															}
+															model_description: {
+																type: "string"
+																description: """
+																					A description of the resource. The model may use this, it will not be
+																					shown to users.
+																					"""
+																description_kind: "plain"
+																optional:         true
+															}
+															use_rag: {
+																type: "bool"
+																description: """
+																					If true, use RAG to retrieve relevant information from the resources.
+
+																					Must only be set for file-based resources.
+																					"""
+																description_kind: "plain"
+																optional:         true
+															}
+														}
+														block_types: {
+															bigquery_resource: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		bigquery_dataset: {
+																			type: "string"
+																			description: """
+																								Points to a bigquery dataset to use.
+
+																								Expected Format:
+																								projects/{project_id_or_number}/datasets/{dataset_id}
+																								"""
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		bigquery_table: {
+																			type: "string"
+																			description: """
+																								Points to a bigquery table to use.
+
+																								Expected Format:
+																								projects/{project_id_or_number}/datasets/{dataset_id}/tables/{table_id}
+																								"""
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		column_descriptions: {
+																			type: ["map", "string"]
+																			description:      "A map of column names to column descriptions for the bigquery_table."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																	}
+																	description:      "Represents a BigQuery resource."
+																	description_kind: "plain"
+																}
+																max_items: 1
+															}
+															f1_resource: {
+																nesting_mode: "list"
+																block: {
+																	attributes: f1_table: {
+																		type: "string"
+																		description: """
+																								## - Points to an f1 table to use.
+
+																								- Expected Format:
+																								- {group}.{table_name}
+																								"""
+																		description_kind: "plain"
+																		optional:         true
+																	}
+																	description:      "- Represents an F1 resource."
+																	description_kind: "plain"
+																}
+																max_items: 1
+															}
+															google_cloud_storage_resource: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		file_extension_restrictions: {
+																			type: ["list", "string"]
+																			description: """
+																								If non-empty, only files with these extensions are included when
+																								expanding the resource.  If empty, all files are included.
+																								"""
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		google_cloud_storage_object: {
+																			type: "string"
+																			description: """
+																								The Google Cloud Storage object or folder.
+
+																								Format: /
+																								or: //
+
+																								Note that to refer to a folder, it _must_ end in a slash.
+																								"""
+																			description_kind: "plain"
+																			required:         true
+																		}
+																	}
+																	description:      "Represents a Google Cloud Storage resource."
+																	description_kind: "plain"
+																}
+																max_items: 1
+															}
+															google_drive_resource: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		file_extension_restrictions: {
+																			type: ["list", "string"]
+																			description: """
+																								If non-empty, only files with these extensions are included when
+																								expanding the resource.  If empty, all files are included.
+																								"""
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		file_reference: {
+																			type: "string"
+																			description: """
+																								Points to a drive file to use. May refer to workspace files or folders
+																								as well.  If folder is specifically, all files in the folder
+																								(recursively) are used.
+
+																								Expected Format:
+																								files/{file_id}
+																								"""
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																	}
+																	description:      "Represents a Google Drive resource."
+																	description_kind: "plain"
+																}
+																max_items: 1
+															}
+															raw_file_resource: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		file_content: {
+																			type:             "string"
+																			description:      "The raw file content."
+																			description_kind: "plain"
+																			required:         true
+																		}
+																		file_title: {
+																			type:             "string"
+																			description:      "The title of the file."
+																			description_kind: "plain"
+																			required:         true
+																		}
+																		mime_type: {
+																			type:             "string"
+																			description:      "The mime type of the file."
+																			description_kind: "plain"
+																			required:         true
+																		}
+																	}
+																	description:      "Represents a raw file resource."
+																	description_kind: "plain"
+																}
+																max_items: 1
+															}
+														}
+														description:      "Represents a resource that can be used by the Analyst Agent."
+														description_kind: "plain"
+													}
+													min_items: 1
+													max_items: 1
+												}
+												description:      "Examples for slide generation."
+												description_kind: "plain"
+											}
+										}
+										description:      "Options for slide generation."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								visualization_options: {
+									nesting_mode: "list"
+									block: {
+										block_types: visualization_examples: {
+											nesting_mode: "list"
+											block: {
+												attributes: visualization_type: {
+													type:             "string"
+													description:      "The type of the visualization (e.g. \"Bar Chart\", \"Line Chart\")."
+													description_kind: "plain"
+													required:         true
+												}
+												block_types: resource: {
+													nesting_mode: "list"
+													block: {
+														attributes: {
+															display_label: {
+																type: "string"
+																description: """
+																					A user-friendly name for this resource. This can be shown to the user
+																					and used by the model.
+																					"""
+																description_kind: "plain"
+																optional:         true
+															}
+															model_description: {
+																type: "string"
+																description: """
+																					A description of the resource. The model may use this, it will not be
+																					shown to users.
+																					"""
+																description_kind: "plain"
+																optional:         true
+															}
+															use_rag: {
+																type: "bool"
+																description: """
+																					If true, use RAG to retrieve relevant information from the resources.
+
+																					Must only be set for file-based resources.
+																					"""
+																description_kind: "plain"
+																optional:         true
+															}
+														}
+														block_types: {
+															bigquery_resource: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		bigquery_dataset: {
+																			type: "string"
+																			description: """
+																								Points to a bigquery dataset to use.
+
+																								Expected Format:
+																								projects/{project_id_or_number}/datasets/{dataset_id}
+																								"""
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		bigquery_table: {
+																			type: "string"
+																			description: """
+																								Points to a bigquery table to use.
+
+																								Expected Format:
+																								projects/{project_id_or_number}/datasets/{dataset_id}/tables/{table_id}
+																								"""
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		column_descriptions: {
+																			type: ["map", "string"]
+																			description:      "A map of column names to column descriptions for the bigquery_table."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																	}
+																	description:      "Represents a BigQuery resource."
+																	description_kind: "plain"
+																}
+																max_items: 1
+															}
+															f1_resource: {
+																nesting_mode: "list"
+																block: {
+																	attributes: f1_table: {
+																		type: "string"
+																		description: """
+																								## - Points to an f1 table to use.
+
+																								- Expected Format:
+																								- {group}.{table_name}
+																								"""
+																		description_kind: "plain"
+																		optional:         true
+																	}
+																	description:      "- Represents an F1 resource."
+																	description_kind: "plain"
+																}
+																max_items: 1
+															}
+															google_cloud_storage_resource: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		file_extension_restrictions: {
+																			type: ["list", "string"]
+																			description: """
+																								If non-empty, only files with these extensions are included when
+																								expanding the resource.  If empty, all files are included.
+																								"""
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		google_cloud_storage_object: {
+																			type: "string"
+																			description: """
+																								The Google Cloud Storage object or folder.
+
+																								Format: /
+																								or: //
+
+																								Note that to refer to a folder, it _must_ end in a slash.
+																								"""
+																			description_kind: "plain"
+																			required:         true
+																		}
+																	}
+																	description:      "Represents a Google Cloud Storage resource."
+																	description_kind: "plain"
+																}
+																max_items: 1
+															}
+															google_drive_resource: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		file_extension_restrictions: {
+																			type: ["list", "string"]
+																			description: """
+																								If non-empty, only files with these extensions are included when
+																								expanding the resource.  If empty, all files are included.
+																								"""
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		file_reference: {
+																			type: "string"
+																			description: """
+																								Points to a drive file to use. May refer to workspace files or folders
+																								as well.  If folder is specifically, all files in the folder
+																								(recursively) are used.
+
+																								Expected Format:
+																								files/{file_id}
+																								"""
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																	}
+																	description:      "Represents a Google Drive resource."
+																	description_kind: "plain"
+																}
+																max_items: 1
+															}
+															raw_file_resource: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		file_content: {
+																			type:             "string"
+																			description:      "The raw file content."
+																			description_kind: "plain"
+																			required:         true
+																		}
+																		file_title: {
+																			type:             "string"
+																			description:      "The title of the file."
+																			description_kind: "plain"
+																			required:         true
+																		}
+																		mime_type: {
+																			type:             "string"
+																			description:      "The mime type of the file."
+																			description_kind: "plain"
+																			required:         true
+																		}
+																	}
+																	description:      "Represents a raw file resource."
+																	description_kind: "plain"
+																}
+																max_items: 1
+															}
+														}
+														description:      "Represents a resource that can be used by the Analyst Agent."
+														description_kind: "plain"
+													}
+													min_items: 1
+													max_items: 1
+												}
+												description:      "Examples for visualizations."
+												description_kind: "plain"
+											}
+										}
+										description:      "Options for visualizations."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+							}
+							description:      "Configuration for artifacts generated by the analyst agent."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					external_data_sources: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								enabled: {
+									type:             "bool"
+									description:      "Whether this external data source is enabled for the current analysis."
+									description_kind: "plain"
+									required:         true
+								}
+								selection_name: {
+									type: "string"
+									description: """
+												The name of the external data source, used for custom org policy
+												evaluation. Output-only (populated automatically with the selection case
+												name).
+												"""
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							block_types: {
+								air_quality: {
+									nesting_mode: "list"
+									block: {
+										description:      "Configurations for the AirQuality external data source."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								bureau_labor_statistics: {
+									nesting_mode: "list"
+									block: {
+										description:      "Configurations for the BureauLaborStatistics external data source."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								coindesk: {
+									nesting_mode: "list"
+									block: {
+										description:      "Configurations for the Coindesk external data source."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								finnhub: {
+									nesting_mode: "list"
+									block: {
+										description:      "Configurations for the Finnhub external data source."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								fred: {
+									nesting_mode: "list"
+									block: {
+										description:      "Configurations for the Fred external data source."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								sec_edgar: {
+									nesting_mode: "list"
+									block: {
+										description:      "Configurations for the SecEdgar external data source."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								treasury_securities_auctions: {
+									nesting_mode: "list"
+									block: {
+										description:      "Configurations for the TreasurySecuritiesAuctions external data source."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								usda: {
+									nesting_mode: "list"
+									block: {
+										description:      "Configurations for the USDA external data source."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+							}
+							description:      "The external data source selections to be used by the agent."
+							description_kind: "plain"
+						}
+					}
+					mcp_data_sources: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								api_key: {
+									type:             "string"
+									description:      "Input only. The API key of the MCP server."
+									description_kind: "plain"
+									optional:         true
+									sensitive:        true
+								}
+								api_key_name: {
+									type:             "string"
+									description:      "The API key parameter name."
+									description_kind: "plain"
+									optional:         true
+								}
+								client_id: {
+									type:             "string"
+									description:      "The client ID for authentication."
+									description_kind: "plain"
+									optional:         true
+								}
+								client_secret: {
+									type:             "string"
+									description:      "Input only. The client secret for authentication."
+									description_kind: "plain"
+									optional:         true
+									sensitive:        true
+								}
+								description: {
+									type:             "string"
+									description:      "The description of the MCP agent."
+									description_kind: "plain"
+									required:         true
+								}
+								display_name: {
+									type: "string"
+									description: """
+												The display name of the MCP server. Must be no longer than 63 characters
+												and can only contain letters, numbers, spaces, underscores, and hyphens.
+												"""
+									description_kind: "plain"
+									required:         true
+								}
+								enabled: {
+									type:             "bool"
+									description:      "Whether this external data source is enabled for the current analysis."
+									description_kind: "plain"
+									required:         true
+								}
+								oauth_token_url: {
+									type:             "string"
+									description:      "The URL to use for retrieving the OAuth token."
+									description_kind: "plain"
+									optional:         true
+								}
+								prompt: {
+									type:             "string"
+									description:      "The custom prompt for the MCP agent."
+									description_kind: "plain"
+									optional:         true
+								}
+								server_url: {
+									type:             "string"
+									description:      "The URL of the MCP server."
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description:      "The MCP data source selections to be used by the agent."
+							description_kind: "plain"
+						}
+					}
+					resources: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								display_label: {
+									type: "string"
+									description: """
+												A user-friendly name for this resource. This can be shown to the user
+												and used by the model.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								model_description: {
+									type: "string"
+									description: """
+												A description of the resource. The model may use this, it will not be
+												shown to users.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								use_rag: {
+									type: "bool"
+									description: """
+												If true, use RAG to retrieve relevant information from the resources.
+
+												Must only be set for file-based resources.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							block_types: {
+								bigquery_resource: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											bigquery_dataset: {
+												type: "string"
+												description: """
+															Points to a bigquery dataset to use.
+
+															Expected Format:
+															projects/{project_id_or_number}/datasets/{dataset_id}
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											bigquery_table: {
+												type: "string"
+												description: """
+															Points to a bigquery table to use.
+
+															Expected Format:
+															projects/{project_id_or_number}/datasets/{dataset_id}/tables/{table_id}
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											column_descriptions: {
+												type: ["map", "string"]
+												description:      "A map of column names to column descriptions for the bigquery_table."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Represents a BigQuery resource."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								f1_resource: {
+									nesting_mode: "list"
+									block: {
+										attributes: f1_table: {
+											type: "string"
+											description: """
+															## - Points to an f1 table to use.
+
+															- Expected Format:
+															- {group}.{table_name}
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										description:      "- Represents an F1 resource."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								google_cloud_storage_resource: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											file_extension_restrictions: {
+												type: ["list", "string"]
+												description: """
+															If non-empty, only files with these extensions are included when
+															expanding the resource.  If empty, all files are included.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											google_cloud_storage_object: {
+												type: "string"
+												description: """
+															The Google Cloud Storage object or folder.
+
+															Format: /
+															or: //
+
+															Note that to refer to a folder, it _must_ end in a slash.
+															"""
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Represents a Google Cloud Storage resource."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								google_drive_resource: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											file_extension_restrictions: {
+												type: ["list", "string"]
+												description: """
+															If non-empty, only files with these extensions are included when
+															expanding the resource.  If empty, all files are included.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											file_reference: {
+												type: "string"
+												description: """
+															Points to a drive file to use. May refer to workspace files or folders
+															as well.  If folder is specifically, all files in the folder
+															(recursively) are used.
+
+															Expected Format:
+															files/{file_id}
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Represents a Google Drive resource."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								raw_file_resource: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											file_content: {
+												type:             "string"
+												description:      "The raw file content."
+												description_kind: "plain"
+												required:         true
+											}
+											file_title: {
+												type:             "string"
+												description:      "The title of the file."
+												description_kind: "plain"
+												required:         true
+											}
+											mime_type: {
+												type:             "string"
+												description:      "The mime type of the file."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Represents a raw file resource."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+							}
+							description:      "The resources to be used by the agent."
+							description_kind: "plain"
+						}
+					}
+					skills: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								content: {
+									type:             "string"
+									description:      "The markdown text content of the skill."
+									description_kind: "plain"
+									required:         true
+								}
+								description: {
+									type:             "string"
+									description:      "The description of the skill."
+									description_kind: "plain"
+									optional:         true
+								}
+								skill_id: {
+									type: "string"
+									description: """
+												The identifier of the skill. Use a descriptive string that reflects the
+												skill's function.
+												"""
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							block_types: references: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										content: {
+											type:             "string"
+											description:      "The content of the reference."
+											description_kind: "plain"
+											required:         true
+										}
+										reference_id: {
+											type: "string"
+											description: """
+															The identifier of the reference within the skill. Use a descriptive
+															string that reflects the reference's function.
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									description:      "References for the skill."
+									description_kind: "plain"
+								}
+							}
+							description:      "Skills for the agent."
+							description_kind: "plain"
+						}
+					}
+					tables: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								description: {
+									type:             "string"
+									description:      "The description of the table."
+									description_kind: "plain"
+									optional:         true
+								}
+								name: {
+									type:             "string"
+									description:      "The name of the table."
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							block_types: columns: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										data_type: {
+											type: "string"
+											description: """
+															The data type of the column. This should be a GoogleSQL data type.
+															Parameterized types such as PROTO, ENUM, ARRAY, STRUCT<...>, and
+															RANGE are not supported.
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+										description: {
+											type:             "string"
+											description:      "The description of the column."
+											description_kind: "plain"
+											optional:         true
+										}
+										name: {
+											type:             "string"
+											description:      "The name of the column."
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									description:      "The columns in the table."
+									description_kind: "plain"
+								}
+							}
+							description: """
+										Schema overrides for bigquery tables. Used to override the schema of a
+										table in the customer's database, e.g. to provide additional context to the
+										agent.
+										"""
+							description_kind: "plain"
+						}
 					}
 					timeouts: {
 						nesting_mode: "single"
@@ -30501,6 +32058,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						optional:         true
 						computed:         true
 					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
 					id: {
 						type:             "string"
 						description_kind: "plain"
@@ -30513,6 +32076,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									If false, any query using this reservation will use idle slots from other reservations within
 									the same admin project. If true, a query using this reservation will execute with the slot
 									capacity specified above at most.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									The labels associated with this reservation. You can use these to
+									organize and group your reservations.
+
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
 									"""
 						description_kind: "plain"
 						optional:         true
@@ -30602,6 +32178,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									"""
 						description_kind: "plain"
 						required:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
 					}
 				}
 				block_types: {
@@ -35817,6 +37402,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									optional:         true
 									sensitive:        true
+								}
+								pem_private_key_wo: {
+									type:             "string"
+									description:      "The private key of the leaf certificate in PEM-encoded form."
+									description_kind: "plain"
+									optional:         true
+									write_only:       true
+								}
+								pem_private_key_wo_version: {
+									type:             "string"
+									description:      "Triggers update of 'pem_private_key_wo' write-only. Increment this value when an update to 'pem_private_key_wo' is needed. For more info see [updating write-only arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)"
+									description_kind: "plain"
+									optional:         true
 								}
 								private_key_pem: {
 									type:             "string"
@@ -41345,6 +42943,20 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												}
 												max_items: 1
 											}
+											snippets_config: {
+												nesting_mode: "list"
+												block: {
+													attributes: enable_snippets: {
+														type:             "bool"
+														description:      "Whether snippets are enabled."
+														description_kind: "plain"
+														optional:         true
+													}
+													description:      "Snippets configuration."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
 											summarization_config: {
 												nesting_mode: "list"
 												block: {
@@ -41579,6 +43191,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									optional:         true
 								}
+							}
+							block_types: service_directory_config: {
+								nesting_mode: "list"
+								block: {
+									attributes: service: {
+										type: "string"
+										description: """
+															The name of Service Directory service.
+															Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
+															"""
+										description_kind: "plain"
+										required:         true
+									}
+									description:      "Service Directory configuration for the tool."
+									description_kind: "plain"
+								}
+								max_items: 1
 							}
 							description:      "A Python function tool."
 							description_kind: "plain"
@@ -52202,32 +53831,69 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									LIVE
 									HOURLY
 									DAILY
+									LIVE_CUSTOMIZABLE
+									HOURLY_CUSTOMIZABLE
+
+									Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows <=2d), or DAILY (for match windows >2d).
+									Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for <=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+									For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+									suppress the diff and ignore the changes to prevent infinite update loops.
 									"""
 						description_kind: "plain"
 						optional:         true
 					}
 				}
-				block_types: timeouts: {
-					nesting_mode: "single"
-					block: {
-						attributes: {
-							create: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
+				block_types: {
+					schedule_customizations: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								ensure_enrichment_completeness: {
+									type: "bool"
+									description: """
+												Indicates whether to add additional delays and runs to rules to ensure
+												enrichment completeness, with the trade-off of more late-arriving detections.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								late_arriving_data_adjustment: {
+									type:             "string"
+									description:      "Delay the first rule execution run to account for late-arriving data."
+									description_kind: "plain"
+									optional:         true
+								}
 							}
-							delete: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
-							update: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
+							description: """
+										The schedule customizations of the rule deployment. Only valid for
+										customizable run frequencies.
+										"""
+							description_kind: "plain"
 						}
-						description_kind: "plain"
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
 					}
 				}
 				description_kind: "plain"
@@ -57948,6 +59614,103 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											required:         true
 										}
 										description:      "Node Selector describes the hardware requirements of the resources."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								sandboxes: {
+									nesting_mode: "list"
+									block: {
+										block_types: templates: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													args: {
+														type: ["list", "string"]
+														description:      "Arguments to the entrypoint. The docker image's CMD is used if this is not provided."
+														description_kind: "plain"
+														optional:         true
+													}
+													command: {
+														type: ["list", "string"]
+														description:      "Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided."
+														description_kind: "plain"
+														optional:         true
+													}
+													image: {
+														type:             "string"
+														description:      "Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed."
+														description_kind: "plain"
+														required:         true
+													}
+													name: {
+														type:             "string"
+														description:      "Name of the sandbox specified as a DNS_LABEL (RFC 1123)."
+														description_kind: "plain"
+														required:         true
+													}
+													working_dir: {
+														type:             "string"
+														description:      "Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image."
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												block_types: {
+													env: {
+														nesting_mode: "set"
+														block: {
+															attributes: {
+																name: {
+																	type:             "string"
+																	description:      "Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters."
+																	description_kind: "plain"
+																	required:         true
+																}
+																value: {
+																	type:             "string"
+																	description:      "Literal value of the environment variable. Defaults to \"\" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run."
+																	description_kind: "plain"
+																	optional:         true
+																}
+															}
+															description:      "List of environment variables to set in the sandbox."
+															description_kind: "plain"
+														}
+													}
+													volume_mounts: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																mount_path: {
+																	type:             "string"
+																	description:      "Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run"
+																	description_kind: "plain"
+																	required:         true
+																}
+																name: {
+																	type:             "string"
+																	description:      "This must match the Name of a Volume."
+																	description_kind: "plain"
+																	required:         true
+																}
+																sub_path: {
+																	type:             "string"
+																	description:      "Path within the volume from which the container's volume should be mounted."
+																	description_kind: "plain"
+																	optional:         true
+																}
+															}
+															description:      "Volume to mount into the container's filesystem."
+															description_kind: "plain"
+														}
+													}
+												}
+												description:      "Sandbox templates that can be launched through the 'sandbox' CLI."
+												description_kind: "plain"
+											}
+										}
+										description:      "Configuration for sandboxes."
 										description_kind: "plain"
 									}
 									max_items: 1
@@ -71111,6 +72874,34 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									}
 									max_items: 1
 								}
+								shielded_instance_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											enable_integrity_monitoring: {
+												type:             "bool"
+												description:      "Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default."
+												description_kind: "plain"
+												optional:         true
+											}
+											enable_secure_boot: {
+												type:             "bool"
+												description:      "Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default."
+												description_kind: "plain"
+												optional:         true
+											}
+											enable_vtpm: {
+												type:             "bool"
+												description:      "Defines whether the instance has the vTPM enabled. Enabled by default."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Shielded VM configuration."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
 							}
 							description:      "Compute configuration to use for an execution job"
 							description_kind: "plain"
@@ -71192,6 +72983,43 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}
 							description_kind: "plain"
 						}
+					}
+					workbench_runtime: {
+						nesting_mode: "list"
+						block: {
+							block_types: vm_image: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										family: {
+											type:             "string"
+											description:      "Use this VM image family to find the image; the newest image in this family will be used."
+											description_kind: "plain"
+											optional:         true
+										}
+										name: {
+											type:             "string"
+											description:      "Use VM image name to find the image."
+											description_kind: "plain"
+											optional:         true
+										}
+										project: {
+											type:             "string"
+											description:      "The name of the Google Cloud project that this VM image belongs to. Format: {project_id}"
+											description_kind: "plain"
+											optional:         true
+										}
+									}
+									description:      "Custom Compute Engine VM image for the Workbench instance."
+									description_kind: "plain"
+								}
+								min_items: 1
+								max_items: 1
+							}
+							description:      "Configuration for a Workbench Instances-based environment."
+							description_kind: "plain"
+						}
+						max_items: 1
 					}
 				}
 				description_kind: "plain"
@@ -110916,6 +112744,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											description:      "If set to true, enables CAAP for L7 DDoS detection."
 											description_kind: "plain"
 											optional:         true
+											computed:         true
 										}
 										rule_visibility: {
 											type:             "string"
@@ -189334,6 +191163,140 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							description_kind: "plain"
 						}
 						max_items: 1
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_firestore_change_stream: {
+			version: 0
+			block: {
+				attributes: {
+					create_time: {
+						type:             "string"
+						description:      "The creation timestamp of the change stream."
+						description_kind: "plain"
+						computed:         true
+					}
+					database: {
+						type:             "string"
+						description:      "The Firestore database ID. Defaults to '\"(default)\"'."
+						description_kind: "plain"
+						optional:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					etag: {
+						type: "string"
+						description: """
+									Output only. This checksum is computed by the server based on the value of other fields,
+									and may be sent on delete request to ensure the client has an
+									up-to-date value before proceeding.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									The ID to use for the change stream, which will become the final component
+									of the change stream's resource name.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					retention_period: {
+						type: "string"
+						description: """
+									The duration for which change stream data is retained.
+									A duration in seconds with up to nine fractional digits, ending with 's'. Example: "86400s".
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					start_time: {
+						type:             "string"
+						description:      "The time the Change Stream started recording events."
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "The last update timestamp of the change stream."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					collection_group_scope: {
+						nesting_mode: "list"
+						block: {
+							attributes: collection_group_id: {
+								type:             "string"
+								description:      "The ID of the collection group to track."
+								description_kind: "plain"
+								required:         true
+							}
+							description:      "Tracks changes for a specific collection group."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					database_scope: {
+						nesting_mode: "list"
+						block: {
+							description:      "Tracks changes across all collections in the database."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
 					}
 				}
 				description_kind: "plain"
@@ -304281,15 +306244,24 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								container_spec: {
 									nesting_mode: "list"
 									block: {
-										attributes: image_uri: {
-											type: "string"
-											description: """
+										attributes: {
+											image_uri: {
+												type: "string"
+												description: """
 															The Artifact Registry Docker image URI (e.g.,
 															'us-central1-docker.pkg.dev/my-project/my-repo/my-image:tag') of the
 															container image that is to be run on each worker replica.
 															"""
-											description_kind: "plain"
-											required:         true
+												description_kind: "plain"
+												required:         true
+											}
+											port: {
+												type:             "number"
+												description:      "Optional. The port that the container listens on for incoming requests. If not specified, defaults to 8080."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
 										}
 										description:      "Deploy from a container image with a defined entrypoint and commands."
 										description_kind: "plain"
@@ -308670,6 +310642,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						nesting_mode: "list"
 						block: {
 							attributes: {
+								compute_instance_id: {
+									type:             "string"
+									description:      "Output only. The unique numeric identifier of the underlying Compute Engine VM instance."
+									description_kind: "plain"
+									computed:         true
+								}
 								disable_public_ip: {
 									type:             "bool"
 									description:      "Optional. If true, no external IP will be assigned to this VM instance."
@@ -319308,6 +321286,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								accelerator: "string"
 							}]]
 							revision: "string"
+							sandboxes: ["list", ["object", {
+								templates: ["list", ["object", {
+									args: ["list", "string"]
+									command: ["list", "string"]
+									env: ["set", ["object", {
+										name: "string", value: "string"
+									}]]
+									image: "string", name: "string", volume_mounts: ["list", ["object", {
+										mount_path:     "string", name: "string", sub_path: "string"
+									}]]
+									working_dir: "string"
+								}]]
+							}]]
 							scaling: ["list", ["object", {
 								max_instance_count: "number"
 								min_instance_count: "number"
@@ -338414,6 +340405,68 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_iam_workload_identity_pool_openid_config: {
+			version: 0
+			block: {
+				attributes: {
+					authorization_endpoint: {
+						type:             "string"
+						description:      "URL pointing to an authorization endpoint under this issuer."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					id_token_signing_alg_values_supported: {
+						type: ["list", "string"]
+						description:      "JSON array containing a list of the JWS signing algorithms (alg values) supported by the OP for the ID token to encode the claims in a JWT [JWT]."
+						description_kind: "plain"
+						computed:         true
+					}
+					issuer: {
+						type:             "string"
+						description:      "URL using the https scheme with no query or fragment components that the OP asserts as its issuer identifier."
+						description_kind: "plain"
+						computed:         true
+					}
+					jwks_uri: {
+						type:             "string"
+						description:      "URL of the OP's JWK Set [JWK] document, which MUST use the https scheme."
+						description_kind: "plain"
+						computed:         true
+					}
+					resource_name: {
+						type:             "string"
+						description:      "The OIDC discovery URI."
+						description_kind: "plain"
+						required:         true
+					}
+					response_types_supported: {
+						type: ["list", "string"]
+						description:      "JSON array containing a list of the OAuth 2.0 response_type values that this OP supports."
+						description_kind: "plain"
+						computed:         true
+					}
+					subject_types_supported: {
+						type: ["list", "string"]
+						description:      "JSON array containing a list of the subject identifier types that this OP supports."
+						description_kind: "plain"
+						computed:         true
+					}
+					token_endpoint: {
+						type:             "string"
+						description:      "URL pointing to a token endpoint under this issuer."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_iam_workload_identity_pool_provider: {
 			version: 0
 			block: {
@@ -357070,6 +359123,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_agentic_applications_analyst_agent_persona: {
+			version: 1
+			attributes: {
+				analyst_agent_persona_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
 		google_alloydb_backup: {
 			version: 1
 			attributes: {
@@ -365563,6 +367633,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 			}
 		}
 		google_firestore_backup_schedule: {
+			version: 1
+			attributes: {
+				database: {
+					type:                "string"
+					optional_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		google_firestore_change_stream: {
 			version: 1
 			attributes: {
 				database: {

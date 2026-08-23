@@ -274,6 +274,7 @@ import (
 	_#ds: "\(#googlePrefix)_iam_workforce_pool_iam_policy": close({data.google_iam_workforce_pool_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_iam_workload_identity_pool": close({data.google_iam_workload_identity_pool & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_iam_workload_identity_pool_iam_policy": close({data.google_iam_workload_identity_pool_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_iam_workload_identity_pool_openid_config": close({data.google_iam_workload_identity_pool_openid_config & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_iam_workload_identity_pool_provider": close({data.google_iam_workload_identity_pool_provider & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_iap_agent_registry_agent_iam_policy": close({data.google_iap_agent_registry_agent_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_iap_agent_registry_endpoint_iam_policy": close({data.google_iap_agent_registry_endpoint_iam_policy & cuetf.MetaArgs})

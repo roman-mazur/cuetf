@@ -6,6 +6,7 @@ google_access_context_manager_gcp_user_access_binding: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_access_context_manager_gcp_user_access_binding")
 	close({
+		principal?: matchN(1, [#principal, list.MaxItems(1) & [...#principal]])
 		scoped_access_settings?: matchN(1, [#scoped_access_settings, [...#scoped_access_settings]])
 		session_settings?: matchN(1, [#session_settings, list.MaxItems(1) & [...#session_settings]])
 		timeouts?: #timeouts
@@ -24,12 +25,20 @@ google_access_context_manager_gcp_user_access_binding: {
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
 
-		// Required. Immutable. Google Group id whose members are subject to this
-		// binding's restrictions. See "id" in the G Suite Directory API's Groups
-		// resource. If a group's email address/alias is changed, this resource will
-		// continue to point at the changed group. This field does not accept group
-		// email addresses or aliases. Example: "01d520gv4vjcrht"
-		group_key!: string
+		// Optional. Dry run access level that will be evaluated but will not be enforced. The
+		// access denial based on dry run policy will be logged. Only one access
+		// level is supported, not multiple. This list must have exactly one element.
+		// Example: "accessPolicies/9522/accessLevels/device_trusted"
+		dry_run_access_levels?: [...string]
+
+		// Immutable. Google Group id whose members are subject to this binding's restrictions.
+		// See "id" in the Google Workspace Directory API's Group Resource
+		// (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+		// If a group's email address/alias is changed, this resource will continue to
+		// point at the changed group.
+		// This field does not accept group email addresses or aliases.
+		// Example: "01d520gv4vjcrht"
+		group_key?: string
 		id?:        string
 
 		// Immutable. Assigned by the server during creation. The last segment has an
@@ -40,6 +49,19 @@ google_access_context_manager_gcp_user_access_binding: {
 
 		// Required. ID of the parent organization.
 		organization_id!: string
+	})
+
+	#principal: close({
+		// Immutable. Service account email used to assign policies to a single service account.
+		// If a service account is subject to multiple policies (e.g., if there is a policy for all
+		// service accounts in a project and a policy for the service account), the closest (i.e.
+		// the most specific) dry-run policy will be used for the dry-run functionality and the
+		// closest policy will be used for the enforcement.
+		service_account?: string
+
+		// Immutable. Cloud project number used to assign policies to all service
+		// accounts owned by the project.
+		service_account_project_number?: string
 	})
 
 	#scoped_access_settings: close({
@@ -57,11 +79,13 @@ google_access_context_manager_gcp_user_access_binding: {
 		// disabling session. Also can set infinite session by flipping the enabled bit
 		// to false below. If useOidcMaxAge is true, for OIDC apps, the session length
 		// will be the minimum of this field and OIDC max_age param.
+		// If this field is set to zero, 'session_length_enabled' must be set to false or left unset.
 		session_length?: string
 
 		// Optional. This field enables or disables Google Cloud session length. When
 		// false, all fields set above will be disregarded and the session length is
 		// basically infinite.
+		// If 'session_length' is set to zero, this field must be false.
 		session_length_enabled?: bool
 
 		// Optional. The session challenges proposed to users when the Google Cloud
@@ -100,11 +124,13 @@ google_access_context_manager_gcp_user_access_binding: {
 		// disabling session. Also can set infinite session by flipping the enabled bit
 		// to false below. If useOidcMaxAge is true, for OIDC apps, the session length
 		// will be the minimum of this field and OIDC max_age param.
+		// If this field is set to zero, 'session_length_enabled' must be set to false or left unset.
 		session_length?: string
 
 		// Optional. This field enables or disables Google Cloud session length. When
 		// false, all fields set above will be disregarded and the session length is
 		// basically infinite.
+		// If 'session_length' is set to zero, this field must be false.
 		session_length_enabled?: bool
 
 		// Optional. The session challenges proposed to users when the Google Cloud

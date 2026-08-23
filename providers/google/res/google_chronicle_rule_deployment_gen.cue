@@ -1,9 +1,12 @@
 package res
 
+import "list"
+
 google_chronicle_rule_deployment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_rule_deployment")
 	close({
+		schedule_customizations?: matchN(1, [#schedule_customizations, list.MaxItems(1) & [...#schedule_customizations]])
 		timeouts?: #timeouts
 
 		// Whether detections resulting from this deployment should be considered
@@ -77,7 +80,29 @@ google_chronicle_rule_deployment: {
 		// LIVE
 		// HOURLY
 		// DAILY
+		// LIVE_CUSTOMIZABLE
+		// HOURLY_CUSTOMIZABLE
+		//
+		// Note: Certain legacy run frequencies are deprecated. For multi-event rules,
+		// use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows <=2d), or
+		// DAILY (for match windows >2d).
+		// Legacy values LIVE and HOURLY are mapped to their customizable counterparts
+		// on the backend. DAILY for <=2d match window multi-event rules will be happed
+		// to HOURLY_CUSTOMIZABLE.
+		// For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE.
+		// If you continue to use deprecated values in your Terraform configuration,
+		// Terraform will silently
+		// suppress the diff and ignore the changes to prevent infinite update loops.
 		run_frequency?: string
+	})
+
+	#schedule_customizations: close({
+		// Indicates whether to add additional delays and runs to rules to ensure
+		// enrichment completeness, with the trade-off of more late-arriving detections.
+		ensure_enrichment_completeness?: bool
+
+		// Delay the first rule execution run to account for late-arriving data.
+		late_arriving_data_adjustment?: string
 	})
 
 	#timeouts: close({

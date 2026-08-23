@@ -121,6 +121,9 @@ google_workbench_instance: {
 		shielded_instance_config?: matchN(1, [_#defs."/$defs/gce_setup/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/gce_setup/$defs/shielded_instance_config"]])
 		vm_image?: matchN(1, [_#defs."/$defs/gce_setup/$defs/vm_image", list.MaxItems(1) & [..._#defs."/$defs/gce_setup/$defs/vm_image"]])
 
+		// Output only. The unique numeric identifier of the underlying Compute Engine VM instance.
+		compute_instance_id?: string
+
 		// Optional. If true, no external IP will be assigned to this VM instance.
 		disable_public_ip?: bool
 
