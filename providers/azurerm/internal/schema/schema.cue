@@ -23621,7 +23621,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_cdn_frontdoor_origin: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					cdn_frontdoor_origin_group_id: {
@@ -119984,7 +119984,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_security_center_automation: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					description: {
@@ -135492,7 +135492,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_storage_container: {
-			version: 1
+			version: 2
 			block: {
 				attributes: {
 					container_access_type: {
@@ -136775,7 +136775,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_storage_share: {
-			version: 2
+			version: 3
 			block: {
 				attributes: {
 					access_tier: {
