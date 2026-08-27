@@ -171,7 +171,7 @@ func injectSamples(t *testing.T, provider string, dst string) {
 func initTestModule(t *testing.T, workDir string, provider string) {
 	t.Helper()
 	t.Log("init cue module")
-	RunCUE(t, workDir, "mod", "init", "github.com/roman-mazur/cuetf")
+	RunCUE(t, workDir, "mod", "init", "--language-version", gen.LanguageVersion, "github.com/roman-mazur/cuetf")
 	t.Log("copy internal deps")
 	if err := embedassets.CopyInternalDeps(workDir); err != nil {
 		t.Fatal(err)

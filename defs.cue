@@ -41,8 +41,8 @@ documented: {
 
 #block: documented & {
 	deprecated: bool | *false
-	attributes: [name=string]:   #attributeDescription
-	block_types?: [name=string]: #blockTypeDescription
+	attributes: [string]:   #attributeDescription
+	block_types?: [string]: #blockTypeDescription
 }
 
 #attributeDescription: documented & _attrTypeOptions & {
@@ -56,7 +56,7 @@ documented: {
 
 _attrTypeOptions: {type: #attr.#type} | {
 	nested_type: nestable & {
-		attributes: [name=string]: #attributeDescription
+		attributes: [string]: #attributeDescription
 	}
 }
 
