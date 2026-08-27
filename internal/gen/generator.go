@@ -78,11 +78,15 @@ func (g *Generator) Generate(cfg *Config) error {
 	return nil
 }
 
+// LanguageVersion is the CUE language version declared by the modules we
+// generate into, and hence the version the generated syntax must be valid at.
+const LanguageVersion = "v0.9.0"
+
 func writeModuleFile(providerPath string) {
 	_ = os.MkdirAll(filepath.Join(providerPath, "cue.mod"), 0777)
 	createFile(
 		filepath.Join(providerPath, "cue.mod", "module.cue"),
-		fmt.Sprintf("module: %q\nlanguage: version: \"v0.9.0\"\n", modulePath),
+		fmt.Sprintf("module: %q\nlanguage: version: %q\n", modulePath, LanguageVersion),
 	)
 }
 
