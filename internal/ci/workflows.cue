@@ -57,11 +57,11 @@ _scriptPrepareForGitPush: """
 		#prepareForGitUse: bool | *false
 
 		name: "Checkout"
-		uses: "actions/checkout@v6"
+		uses: "actions/checkout@v7"
 
 		if #prepareForGitUse {
 			with: "fetch-depth": 0
-			with: token:         "${{ secrets.GENERATOR_TOKEN }}"
+			with: token:         "${{ secrets.GENERATOR_TOKEN || github.token }}"
 		}
 	}
 
