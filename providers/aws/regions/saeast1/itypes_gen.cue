@@ -18676,7 +18676,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -18895,7 +18895,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -19003,7 +19003,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -19114,7 +19114,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -19327,7 +19327,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -19545,7 +19545,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -19654,7 +19654,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -20747,7 +20747,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21077,7 +21077,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -24673,7 +24673,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.4
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -24769,7 +24769,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.4
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -24865,7 +24865,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.4
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -24964,7 +24964,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.4
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -25060,7 +25060,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.4
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -25159,7 +25159,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.4
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -25255,7 +25255,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.4
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -25351,7 +25351,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.4
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -25446,7 +25446,7 @@ InstanceTypes: [{
     BareMetal: true
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.4
+        SustainedClockSpeedInGhz: 3.2
         Manufacturer:             "Intel"
     }
     VCpuInfo: {
@@ -25535,7 +25535,7 @@ InstanceTypes: [{
     BareMetal: true
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.4
+        SustainedClockSpeedInGhz: 3.2
         Manufacturer:             "Intel"
     }
     VCpuInfo: {
@@ -25628,7 +25628,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.4
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -25724,7 +25724,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 3.6
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -25820,7 +25820,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 3.6
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -25916,7 +25916,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 3.6
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -26012,7 +26012,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 3.6
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -26108,7 +26108,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 3.6
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -26204,7 +26204,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 3.6
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -26310,7 +26310,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 3.6
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -26406,7 +26406,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 3.6
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -26501,7 +26501,7 @@ InstanceTypes: [{
     BareMetal: true
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 3.6
+        SustainedClockSpeedInGhz: 3.2
         Manufacturer:             "Intel"
     }
     VCpuInfo: {
@@ -26590,7 +26590,7 @@ InstanceTypes: [{
     BareMetal: true
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 3.6
+        SustainedClockSpeedInGhz: 3.2
         Manufacturer:             "Intel"
     }
     VCpuInfo: {
@@ -26690,7 +26690,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 3.6
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -47976,6 +47976,230 @@ InstanceTypes: [{
             }
         }]
         TotalGpuMemoryInMiB: 1155072
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       false
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "unsupported"
+    RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
+}, {
+    InstanceType:      "p6-b300.48xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["capacity-block", "on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 2.4
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          192
+        DefaultCores:          96
+        DefaultThreadsPerCore: 2
+        ValidCores: [4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 4194304
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 30400
+        Disks: [{
+            SizeInGB: 3800
+            Count:    8
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  100000
+            BaselineThroughputInMBps: 12500.0
+            BaselineIops:             400000
+            MaximumBandwidthInMbps:   100000
+            MaximumThroughputInMBps:  12500.0
+            MaximumIops:              400000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 64
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "6400 Gigabit"
+        MaximumNetworkInterfaces: 68
+        MaximumNetworkCards:      17
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          350.0
+            PeakBandwidthInGbps:              350.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 1
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 2
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 3
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 4
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 5
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 6
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 7
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 8
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 9
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 10
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 11
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 12
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 13
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 14
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 15
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+        }, {
+            NetworkCardIndex:                 16
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+        }]
+        Ipv4AddressesPerInterface: 50
+        Ipv6AddressesPerInterface: 50
+        Ipv6Supported:             true
+        EnaSupport:                "required"
+        EfaSupported:              true
+        EfaInfo: {
+            MaximumEfaInterfaces: 16
+        }
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported:          false
+        Ipv4AddressesPerSecondaryInterface: 0
+    }
+    GpuInfo: {
+        Gpus: [{
+            Name:             "B300"
+            Manufacturer:     "NVIDIA"
+            Count:            8
+            LogicalGpuCount:  8
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai"]
+            MemoryInfo: {
+                SizeInMiB: 275040
+            }
+        }]
+        TotalGpuMemoryInMiB: 2200320
     }
     PlacementGroupInfo: {
         SupportedStrategies: ["cluster", "partition", "spread"]

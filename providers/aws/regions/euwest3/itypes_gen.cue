@@ -14491,7 +14491,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -14599,7 +14599,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -14707,7 +14707,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -14818,7 +14818,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -14926,7 +14926,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -15573,7 +15573,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -15788,7 +15788,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -16560,7 +16560,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -16672,7 +16672,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -16890,7 +16890,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -17002,7 +17002,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -19838,7 +19838,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.4
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -19934,7 +19934,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.4
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -20129,7 +20129,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.4
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -20228,7 +20228,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.4
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -20324,7 +20324,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.4
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -20515,7 +20515,7 @@ InstanceTypes: [{
     BareMetal: true
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 2.4
+        SustainedClockSpeedInGhz: 3.2
         Manufacturer:             "Intel"
     }
     VCpuInfo: {
@@ -21273,7 +21273,7 @@ InstanceTypes: [{
     Hypervisor: "nitro"
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 3.6
+        SustainedClockSpeedInGhz: 3.2
         SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
@@ -21570,7 +21570,7 @@ InstanceTypes: [{
     BareMetal: true
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 3.6
+        SustainedClockSpeedInGhz: 3.2
         Manufacturer:             "Intel"
     }
     VCpuInfo: {
@@ -21659,7 +21659,7 @@ InstanceTypes: [{
     BareMetal: true
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 3.6
+        SustainedClockSpeedInGhz: 3.2
         Manufacturer:             "Intel"
     }
     VCpuInfo: {
