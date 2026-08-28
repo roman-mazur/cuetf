@@ -1,6 +1,6 @@
 module rmazur.io/cuetf
 
-go 1.26
+go 1.27
 
 tool cuelang.org/go/cmd/cue
 

@@ -7,7 +7,7 @@ import (
 )
 
 #versions: {
-	go:        "1.26"
+	go:        "1.27"
 	terraform: "1.14.6"
 }
 
