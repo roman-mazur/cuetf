@@ -54,6 +54,7 @@ import (
 	_#res: "\(#elasticstackPrefix)_fleet_elastic_defend_integration_policy": close({res.elasticstack_fleet_elastic_defend_integration_policy & cuetf.MetaArgs})
 	_#res: "\(#elasticstackPrefix)_fleet_integration": close({res.elasticstack_fleet_integration & cuetf.MetaArgs})
 	_#res: "\(#elasticstackPrefix)_fleet_integration_policy": close({res.elasticstack_fleet_integration_policy & cuetf.MetaArgs})
+	_#res: "\(#elasticstackPrefix)_fleet_managed_integration": close({res.elasticstack_fleet_managed_integration & cuetf.MetaArgs})
 	_#res: "\(#elasticstackPrefix)_fleet_output": close({res.elasticstack_fleet_output & cuetf.MetaArgs})
 	_#res: "\(#elasticstackPrefix)_fleet_proxy": close({res.elasticstack_fleet_proxy & cuetf.MetaArgs})
 	_#res: "\(#elasticstackPrefix)_fleet_server_host": close({res.elasticstack_fleet_server_host & cuetf.MetaArgs})

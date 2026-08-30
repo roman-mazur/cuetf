@@ -37,7 +37,7 @@ elasticstack_kibana_synthetics_parameter: {
 			update?: string
 		})
 
-		// Generated id for the parameter.
+		// The composite ID of the parameter: `<space_id>/<parameter_uuid>`.
 		id?: string
 
 		// The key of the parameter.
@@ -45,6 +45,9 @@ elasticstack_kibana_synthetics_parameter: {
 
 		// Whether the parameter should be shared across spaces.
 		share_across_spaces?: bool
+
+		// An identifier for the space. If space_id is not provided, the default space is used.
+		space_id?: string
 
 		// An array of tags to categorize the parameter.
 		tags?: [...string]

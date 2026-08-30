@@ -7,6 +7,9 @@ elasticstack_elasticsearch_watch: {
 		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
 		// The list of actions that will be run if the condition matches.
+		// Elasticsearch-injected search-request defaults (`rest_total_hits_as_int`,
+		// `search_type`, `indices`), script `lang`, and logging-action `level` do not
+		// need to be set explicitly and will not cause spurious diffs.
 		actions?: string
 		timeouts?: close({
 			// A string that can be [parsed as a
@@ -42,12 +45,18 @@ elasticstack_elasticsearch_watch: {
 		active?: bool
 
 		// The condition that defines if the actions should be run.
+		// Elasticsearch-injected search-request defaults (`rest_total_hits_as_int`,
+		// `search_type`, `indices`), script `lang`, and logging-action `level` do not
+		// need to be set explicitly and will not cause spurious diffs.
 		condition?: string
 
 		// Internal identifier of the resource.
 		id?: string
 
 		// The input that defines the input that loads the data for the watch.
+		// Elasticsearch-injected search-request defaults (`rest_total_hits_as_int`,
+		// `search_type`, `indices`), script `lang`, and logging-action `level` do not
+		// need to be set explicitly and will not cause spurious diffs.
 		input?: string
 
 		// Metadata json that will be copied into the history entries.
@@ -57,6 +66,9 @@ elasticstack_elasticsearch_watch: {
 		throttle_period_in_millis?: number
 
 		// Processes the watch payload to prepare it for the watch actions.
+		// Elasticsearch-injected search-request defaults (`rest_total_hits_as_int`,
+		// `search_type`, `indices`), script `lang`, and logging-action `level` do not
+		// need to be set explicitly and will not cause spurious diffs.
 		transform?: string
 
 		// The trigger that defines when the watch should run.

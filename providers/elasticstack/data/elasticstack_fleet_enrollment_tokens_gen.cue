@@ -59,9 +59,7 @@ elasticstack_fleet_enrollment_tokens: {
 		// to select all enrollment tokens.
 		policy_id?: string
 
-		// The Kibana space ID to query enrollment tokens from. When the agent policy is
-		// space-scoped, this must be set to match the policy's space. If not
-		// specified, queries the default space.
+		// An identifier for the space. If space_id is not provided, the default space is used.
 		space_id?: string
 	})
 
