@@ -43,7 +43,20 @@ cloudflare_share_recipients: {
 				terminal?: bool
 			})]])
 
-			// Share Recipient association status.
+			// The current state of the recipient relative to the share. The
+			// `desired_association_status` (not exposed in the response) tracks the
+			// target state set by the API; the background reconciliation workflow
+			// drives `current_association_status` toward it.
+			//
+			// - `associating` — The recipient was recently added; the workflow is
+			// pushing shared resources into the recipient account.
+			// - `associated` — Shared resources have been successfully applied to
+			// the recipient account.
+			// - `disassociating` — The recipient was removed (via DELETE or PUT
+			// replacement); the workflow is removing shared resources from the
+			// recipient account.
+			// - `disassociated` — Shared resources have been removed from the
+			// recipient account. The recipient record remains in the database.
 			// Available values: "associating", "associated", "disassociating", "disassociated".
 			association_status?: string
 
@@ -84,7 +97,20 @@ cloudflare_share_recipients: {
 				terminal?: bool
 			})]])
 
-			// Share Recipient association status.
+			// The current state of the recipient relative to the share. The
+			// `desired_association_status` (not exposed in the response) tracks the
+			// target state set by the API; the background reconciliation workflow
+			// drives `current_association_status` toward it.
+			//
+			// - `associating` — The recipient was recently added; the workflow is
+			// pushing shared resources into the recipient account.
+			// - `associated` — Shared resources have been successfully applied to
+			// the recipient account.
+			// - `disassociating` — The recipient was removed (via DELETE or PUT
+			// replacement); the workflow is removing shared resources from the
+			// recipient account.
+			// - `disassociated` — Shared resources have been removed from the
+			// recipient account. The recipient record remains in the database.
 			// Available values: "associating", "associated", "disassociating", "disassociated".
 			association_status?: string
 

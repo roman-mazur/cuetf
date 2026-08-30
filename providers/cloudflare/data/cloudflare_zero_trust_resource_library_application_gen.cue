@@ -21,32 +21,32 @@ cloudflare_zero_trust_resource_library_application: {
 		// Returns the application type description.
 		application_type_description?: string
 
+		// Returns the category ID.
+		category_id?: number
+
 		// Returns the application creation time.
 		created_at?: string
 
 		// GenAI score for the application. Returns -1 when no score is available.
 		gen_ai_score?: number
 
-		// Returns the list of hostnames for the application.
+		// Hostnames matched by the application.
 		hostnames?: [...string]
 
 		// Returns the human readable ID.
 		human_id?: string
-		id!:       string
+		id!:       number
 
-		// Returns the Intel API ID for the application.
-		intel_id?: number
-
-		// Returns the list of IP subnets for the application.
+		// IP subnets matched by the application.
 		ip_subnets?: [...string]
 
 		// Returns the application name.
 		name?: string
 
-		// Returns the list of port protocols for the application.
+		// Port and protocol pairs matched by the application.
 		port_protocols?: [...string]
 
-		// Returns the list of support domains for the application.
+		// Support domains matched by the application.
 		support_domains?: [...string]
 
 		// Cloudflare products that support this application.

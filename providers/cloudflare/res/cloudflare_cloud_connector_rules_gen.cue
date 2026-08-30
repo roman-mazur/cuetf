@@ -17,7 +17,7 @@ cloudflare_cloud_connector_rules: {
 			enabled?: bool
 
 			// Cloud Provider type
-			// Available values: "aws_s3", "cloudflare_r2", "gcp_storage", "azure_storage".
+			// Available values: "aws_s3", "cloudflare_r2", "gcp_storage", "azure_storage", "oci_storage".
 			provider?:   string
 			expression?: string
 			id?:         string
@@ -32,7 +32,7 @@ cloudflare_cloud_connector_rules: {
 			enabled?: bool
 
 			// Cloud Provider type
-			// Available values: "aws_s3", "cloudflare_r2", "gcp_storage", "azure_storage".
+			// Available values: "aws_s3", "cloudflare_r2", "gcp_storage", "azure_storage", "oci_storage".
 			provider?:   string
 			expression?: string
 			id?:         string

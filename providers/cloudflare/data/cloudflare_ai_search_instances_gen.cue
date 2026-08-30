@@ -182,6 +182,23 @@ cloudflare_ai_search_instances: {
 				// matches /admin/users and /admin/settings/advanced)
 				exclude_items?: [...string]
 				web_crawler?: close({
+					discover_options?: close({
+						depth?: number
+
+						// Maximum number of pages to crawl. New values are capped at 100000; instances
+						// configured before that cap may report a higher stored value, which the
+						// crawler clamps at run time.
+						limit?:                  number
+						include_external_links?: bool
+
+						// Available values: "all", "sitemaps", "links".
+						source?:             string
+						include_subdomains?: bool
+						max_age?:            number
+					})
+
+					// Available values: "sitemap", "feed-rss", "crawl".
+					parse_type?: string
 					parse_options?: close({
 						// List of path-to-selector mappings for extracting specific content from
 						// crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The
@@ -220,9 +237,6 @@ cloudflare_ai_search_instances: {
 						specific_sitemaps?: [...string]
 						use_browser_rendering?: bool
 					})
-
-					// Available values: "sitemap", "feed-rss", "crawl".
-					parse_type?: string
 					store_options?: close({
 						r2_jurisdiction?: string
 
@@ -446,6 +460,23 @@ cloudflare_ai_search_instances: {
 				// matches /admin/users and /admin/settings/advanced)
 				exclude_items?: [...string]
 				web_crawler?: close({
+					discover_options?: close({
+						depth?: number
+
+						// Maximum number of pages to crawl. New values are capped at 100000; instances
+						// configured before that cap may report a higher stored value, which the
+						// crawler clamps at run time.
+						limit?:                  number
+						include_external_links?: bool
+
+						// Available values: "all", "sitemaps", "links".
+						source?:             string
+						include_subdomains?: bool
+						max_age?:            number
+					})
+
+					// Available values: "sitemap", "feed-rss", "crawl".
+					parse_type?: string
 					parse_options?: close({
 						// List of path-to-selector mappings for extracting specific content from
 						// crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The
@@ -484,9 +515,6 @@ cloudflare_ai_search_instances: {
 						specific_sitemaps?: [...string]
 						use_browser_rendering?: bool
 					})
-
-					// Available values: "sitemap", "feed-rss", "crawl".
-					parse_type?: string
 					store_options?: close({
 						r2_jurisdiction?: string
 

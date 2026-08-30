@@ -23,7 +23,7 @@ cloudflare_d1_databases: {
 
 			// Specify the location to restrict the D1 database to run and store data. If
 			// this option is present, the location hint is ignored.
-			// Available values: "eu", "fedramp".
+			// Available values: "eu", "fedramp", "us".
 			jurisdiction?: string
 
 			// D1 database name.
@@ -41,7 +41,7 @@ cloudflare_d1_databases: {
 
 			// Specify the location to restrict the D1 database to run and store data. If
 			// this option is present, the location hint is ignored.
-			// Available values: "eu", "fedramp".
+			// Available values: "eu", "fedramp", "us".
 			jurisdiction?: string
 
 			// D1 database name.

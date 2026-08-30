@@ -62,15 +62,6 @@ cloudflare_organization: {
 		})
 		id?: string
 		meta?: close({
-			// Enable features for Organizations.
-			flags?: close({
-				account_creation?:  string
-				account_deletion?:  string
-				account_migration?: string
-				account_mobility?:  string
-				sub_org_creation?:  string
-			})
-
 			// Ordered chain of organization tags from the root organization down to
 			// (and including) this organization itself. Root organizations return a
 			// single-element array containing their own tag; sub-organizations return
@@ -78,6 +69,17 @@ cloudflare_organization: {
 			// constructing authorization scopes that need to cover every ancestor
 			// in the hierarchy.
 			hierarchy_tags?: [...string]
+
+			// Enable features for Organizations.
+			tenant_flags?: close({
+				account_creation?:      string
+				account_deletion?:      string
+				account_migration?:     string
+				account_mobility?:      string
+				enterprise_capability?: string
+				member_management?:     string
+				sub_org_creation?:      string
+			})
 			managed_by?: string
 		})
 		name?:            string

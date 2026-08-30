@@ -24,16 +24,16 @@ cloudflare_zero_trust_dlp_entries: {
 			})
 			created_at?: string
 
-			// Available values: "custom", "custom_prompt_topic", "predefined",
-			// "integration", "exact_data", "document_fingerprint", "word_list".
-			type?: string
+			// Whether this entry is deprecated for new use. This is computed from the static catalog and
+			// emitted only when true.
+			deprecated?: bool
 			pattern?: close({
 				regex?: string
 			})
-			description?: string
 
-			// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
-			upload_status?: string
+			// Available values: "custom", "custom_prompt_topic", "predefined",
+			// "integration", "exact_data", "document_fingerprint", "word_list".
+			type?: string
 
 			// A Predefined AI prompt classification topic entry.
 			variant?: close({
@@ -46,13 +46,17 @@ cloudflare_zero_trust_dlp_entries: {
 				// Available values: "PromptTopic", "General".
 				type?: string
 			})
-			enabled?:    bool
-			id?:         string
-			name?:       string
-			profile_id?: string
-			secret?:     bool
-			updated_at?: string
-			word_list?:  string
+			description?: string
+
+			// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+			upload_status?: string
+			enabled?:       bool
+			id?:            string
+			name?:          string
+			profile_id?:    string
+			secret?:        bool
+			updated_at?:    string
+			word_list?:     string
 		}), [...close({
 			// Only applies to custom word lists.
 			// Determines if the words should be matched in a case-sensitive manner
@@ -67,16 +71,16 @@ cloudflare_zero_trust_dlp_entries: {
 			})
 			created_at?: string
 
-			// Available values: "custom", "custom_prompt_topic", "predefined",
-			// "integration", "exact_data", "document_fingerprint", "word_list".
-			type?: string
+			// Whether this entry is deprecated for new use. This is computed from the static catalog and
+			// emitted only when true.
+			deprecated?: bool
 			pattern?: close({
 				regex?: string
 			})
-			description?: string
 
-			// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
-			upload_status?: string
+			// Available values: "custom", "custom_prompt_topic", "predefined",
+			// "integration", "exact_data", "document_fingerprint", "word_list".
+			type?: string
 
 			// A Predefined AI prompt classification topic entry.
 			variant?: close({
@@ -89,13 +93,17 @@ cloudflare_zero_trust_dlp_entries: {
 				// Available values: "PromptTopic", "General".
 				type?: string
 			})
-			enabled?:    bool
-			id?:         string
-			name?:       string
-			profile_id?: string
-			secret?:     bool
-			updated_at?: string
-			word_list?:  string
+			description?: string
+
+			// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+			upload_status?: string
+			enabled?:       bool
+			id?:            string
+			name?:          string
+			profile_id?:    string
+			secret?:        bool
+			updated_at?:    string
+			word_list?:     string
 		})]])
 	})
 }

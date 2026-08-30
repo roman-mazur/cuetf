@@ -98,7 +98,8 @@ cloudflare_zero_trust_access_application: {
 			// When omitted, all ports will match.
 			port_range?: string
 
-			// Available values: "public", "private".
+			// Available values: "public", "private", "via_mcp_server_portal", "worker",
+			// "preview_worker", "all_workers", "all_preview_workers".
 			type?: string
 
 			// The URI of the destination. Public destinations' URIs can include a domain
@@ -108,6 +109,10 @@ cloudflare_zero_trust_access_application: {
 
 			// The VNET ID to match the destination. When omitted, all VNETs will match.
 			vnet_id?: string
+
+			// The ID of the Cloudflare Worker to protect with Access. Required when type is
+			// `worker` or `preview_worker`.
+			worker_id?: string
 		}), [...close({
 			// The CIDR range of the destination. Single IPs will be computed as /32.
 			cidr?: string
@@ -127,7 +132,8 @@ cloudflare_zero_trust_access_application: {
 			// When omitted, all ports will match.
 			port_range?: string
 
-			// Available values: "public", "private".
+			// Available values: "public", "private", "via_mcp_server_portal", "worker",
+			// "preview_worker", "all_workers", "all_preview_workers".
 			type?: string
 
 			// The URI of the destination. Public destinations' URIs can include a domain
@@ -137,6 +143,10 @@ cloudflare_zero_trust_access_application: {
 
 			// The VNET ID to match the destination. When omitted, all VNETs will match.
 			vnet_id?: string
+
+			// The ID of the Cloudflare Worker to protect with Access. Required when type is
+			// `worker` or `preview_worker`.
+			worker_id?: string
 		})]])
 
 		// The primary hostname and path secured by Access. This domain will be

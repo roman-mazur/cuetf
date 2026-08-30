@@ -211,9 +211,40 @@ cloudflare_ai_search_instance: {
 		source_params?: close({
 			// List of path patterns to exclude. Uses micromatch glob syntax: * matches
 			// within a path segment, ** matches across path segments (e.g., /admin/**
-			// matches /admin/users and /admin/settings/advanced)
+			// matches /admin/users and /admin/settings/advanced). Most accounts are
+			// limited to 10 rules; contact support to raise it.
 			exclude_items?: [...string]
 			web_crawler?: close({
+				// Options for parse_type 'discover', where Browser Run discovers URLs by link
+				// following and sitemaps. Ignored for 'sitemap'.
+				discover_options?: close({
+					// Maximum link-follow depth from the seed URL.
+					depth?: number
+
+					// Follow links that point outside the source domain. Must stay `false` —
+					// discover crawls are restricted to the zone you own.
+					include_external_links?: bool
+
+					// Follow links to subdomains of the source host.
+					include_subdomains?: bool
+
+					// Maximum number of pages to crawl (1-100000).
+					limit?: number
+
+					// Maximum content age in seconds to accept (0–604800).
+					max_age?: number
+
+					// Where the crawler looks for URLs: 'sitemaps' reads sitemap XML only, 'links'
+					// follows page links only, 'all' does both.
+					// Available values: "all", "sitemaps", "links".
+					source?: string
+				})
+
+				// How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows
+				// links recursively and requires the source to be a Verified zone on this
+				// account.
+				// Available values: "sitemap", "discover".
+				parse_type?: string
 				parse_options?: close({
 					// List of path-to-selector mappings for extracting specific content from
 					// crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The
@@ -252,9 +283,6 @@ cloudflare_ai_search_instance: {
 					specific_sitemaps?: [...string]
 					use_browser_rendering?: bool
 				})
-
-				// Available values: "sitemap", "feed-rss", "crawl".
-				parse_type?: string
 				store_options?: close({
 					r2_jurisdiction?: string
 
@@ -266,7 +294,8 @@ cloudflare_ai_search_instance: {
 
 			// List of path patterns to include. Uses micromatch glob syntax: * matches
 			// within a path segment, ** matches across path segments (e.g., /blog/**
-			// matches /blog/post and /blog/2024/post)
+			// matches /blog/post and /blog/2024/post). Most accounts are limited to 10
+			// rules; contact support to raise it.
 			include_items?: [...string]
 			prefix?:          string
 			r2_jurisdiction?: string

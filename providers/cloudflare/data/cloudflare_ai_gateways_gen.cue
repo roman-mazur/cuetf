@@ -226,9 +226,12 @@ cloudflare_ai_gateways: {
 			is_default?:         bool
 
 			// Controls how Workers AI inference calls routed through this gateway are
-			// billed. Only 'postpaid' is currently supported.
-			// Available values: "postpaid".
+			// billed. 'postpaid' bills the account directly through Workers AI; 'unified'
+			// deducts credits via AI Gateway using neuron-based pricing and delegates
+			// billing to AI Gateway.
+			// Available values: "postpaid", "unified".
 			workers_ai_billing_mode?: string
+			log_classification?:      bool
 			log_management?:          number
 			logpush?:                 bool
 			logpush_public_key?:      string
@@ -453,9 +456,12 @@ cloudflare_ai_gateways: {
 			is_default?:         bool
 
 			// Controls how Workers AI inference calls routed through this gateway are
-			// billed. Only 'postpaid' is currently supported.
-			// Available values: "postpaid".
+			// billed. 'postpaid' bills the account directly through Workers AI; 'unified'
+			// deducts credits via AI Gateway using neuron-based pricing and delegates
+			// billing to AI Gateway.
+			// Available values: "postpaid", "unified".
 			workers_ai_billing_mode?: string
+			log_classification?:      bool
 			log_management?:          number
 			logpush?:                 bool
 			logpush_public_key?:      string

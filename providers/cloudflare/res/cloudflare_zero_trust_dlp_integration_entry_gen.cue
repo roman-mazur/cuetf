@@ -17,24 +17,23 @@ cloudflare_zero_trust_dlp_integration_entry: {
 			// Indicates whether this entry has any form of validation that is not an AI remote service.
 			available?: bool
 		})
-		created_at?:  string
+		created_at?: string
+
+		// Whether this entry is deprecated for new use. This is computed from the static catalog and
+		// emitted only when true.
+		deprecated?:  bool
 		description?: string
 		enabled!:     bool
 		entry_id!:    string
 		id?:          string
 		name?:        string
+		pattern?: close({
+			regex?: string
+		})
 
 		// This field is not used as the owning profile.
 		// For predefined entries it is already set to a predefined profile.
 		profile_id?: string
-		pattern?: close({
-			regex?: string
-		})
-		secret?: bool
-
-		// Available values: "custom", "custom_prompt_topic", "predefined",
-		// "integration", "exact_data", "document_fingerprint", "word_list".
-		type?: string
 		profiles?: matchN(1, [close({
 			id?:   string
 			name?: string
@@ -42,6 +41,11 @@ cloudflare_zero_trust_dlp_integration_entry: {
 			id?:   string
 			name?: string
 		})]])
+		secret?: bool
+
+		// Available values: "custom", "custom_prompt_topic", "predefined",
+		// "integration", "exact_data", "document_fingerprint", "word_list".
+		type?:       string
 		updated_at?: string
 
 		// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".

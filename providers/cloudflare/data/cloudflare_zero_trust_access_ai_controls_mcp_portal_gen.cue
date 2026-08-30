@@ -6,24 +6,37 @@ cloudflare_zero_trust_access_ai_controls_mcp_portal: {
 	close({
 		account_id?: string
 
-		// Allow remote code execution in Dynamic Workers (beta)
-		allow_code_mode?: bool
-		created_at?:      string
-		created_by?:      string
-		description?:     string
+		// Code Mode policy for this portal. `off`: Code Mode is unavailable; query
+		// parameters are ignored. `opt_in`: Code Mode is off by default; clients turn
+		// it on with `?codemode=search_and_execute`. `default_on`: Code Mode is on by
+		// default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is
+		// always on; query parameters are ignored. Defaults to `opt_in` when omitted
+		// on create. If both `code_mode` and `allow_code_mode` are sent, they must be
+		// consistent or the request returns a 400.
+		// Available values: "off", "opt_in", "default_on", "enforced".
+		code_mode?:  string
+		created_at?: string
+		created_by?: string
+
+		// Optional description of the MCP portal.
+		description?: string
 		filter?: close({
 			// Search by id, name, hostname
 			search?: string
 		})
+
+		// Hostname where the MCP portal is available.
 		hostname?: string
 
-		// portal id
+		// Unique identifier for the MCP portal.
 		id?:          string
 		modified_at?: string
 		modified_by?: string
-		name?:        string
 
-		// Route outbound MCP traffic through Zero Trust Secure Web Gateway
+		// Display name for the MCP portal.
+		name?: string
+
+		// Route outbound MCP traffic through Zero Trust Secure Web Gateway.
 		secure_web_gateway?: bool
 		servers?: matchN(1, [close({
 			// Safe subset of auth_credentials surfaced to the dashboard. Includes auth_mode
@@ -49,10 +62,11 @@ cloudflare_zero_trust_access_ai_controls_mcp_portal: {
 				has_client_secret?: bool
 			})
 
+			// Authentication method used to connect to the upstream MCP server.
 			// Available values: "oauth", "bearer", "unauthenticated".
-			auth_type?:   string
-			description?: string
-			error?:       string
+			auth_type?:        string
+			default_disabled?: bool
+			error?:            string
 			error_details?: close({
 				// Underlying error message
 				cause?: string
@@ -69,22 +83,42 @@ cloudflare_zero_trust_access_ai_controls_mcp_portal: {
 				// HTTP status code from the server
 				status_code?: number
 			})
-			created_at?:           string
-			hostname?:             string
-			last_successful_sync?: string
-			last_synced?:          string
-			modified_at?:          string
-			modified_by?:          string
-			name?:                 string
-			on_behalf?:            bool
+
+			// Whether administrative authentication is required before capabilities can be
+			// synced. Manual OAuth is user-managed and has no administrative
+			// authentication flow.
+			// Available values: "not_required", "required", "connected", "stale", "manual".
+			authentication_status?: string
+
+			// URL of the upstream MCP endpoint.
+			hostname?: string
+
+			// Unique identifier for the MCP server.
+			id?: string
+
+			// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback
+			// endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the
+			// customer portal hostname. New public server creates default to true;
+			// existing servers default to false from migration until explicitly updated.
+			// Effective behavior is gated by the gateway worker's per-env rollout mode KV
+			// key.
+			is_shared_oauth_callback_enabled?: bool
+			last_successful_sync?:             string
+			last_synced?:                      string
+			modified_at?:                      string
+			modified_by?:                      string
+
+			// Display name for the MCP server.
+			name?:      string
+			on_behalf?: bool
 			prompts?: [...{
 				[string]: string
 			}]
 
-			// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+			// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
 			secure_web_gateway?: bool
 
-			// server id
+			// Unique identifier for the MCP server.
 			server_id?: string
 
 			// Current sync state of the server
@@ -108,10 +142,7 @@ cloudflare_zero_trust_access_ai_controls_mcp_portal: {
 				server_alias?:       string
 				server_description?: string
 			})]])
-
-			// server id
-			id?:         string
-			created_by?: string
+			created_at?: string
 			updated_tools?: matchN(1, [close({
 				enabled?:            bool
 				name?:               string
@@ -128,14 +159,9 @@ cloudflare_zero_trust_access_ai_controls_mcp_portal: {
 				server_description?: string
 			})]])
 
-			// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback
-			// endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the
-			// customer portal hostname. New public server creates default to true;
-			// existing servers default to false from migration until explicitly updated.
-			// Effective behavior is gated by the gateway worker's per-env rollout mode KV
-			// key.
-			is_shared_oauth_callback_enabled?: bool
-			default_disabled?:                 bool
+			// Optional description of the MCP server.
+			description?: string
+			created_by?:  string
 		}), [...close({
 			// Safe subset of auth_credentials surfaced to the dashboard. Includes auth_mode
 			// (dcr|manual), has_client_secret, client_secret_version, and the OAuth
@@ -160,10 +186,11 @@ cloudflare_zero_trust_access_ai_controls_mcp_portal: {
 				has_client_secret?: bool
 			})
 
+			// Authentication method used to connect to the upstream MCP server.
 			// Available values: "oauth", "bearer", "unauthenticated".
-			auth_type?:   string
-			description?: string
-			error?:       string
+			auth_type?:        string
+			default_disabled?: bool
+			error?:            string
 			error_details?: close({
 				// Underlying error message
 				cause?: string
@@ -180,22 +207,42 @@ cloudflare_zero_trust_access_ai_controls_mcp_portal: {
 				// HTTP status code from the server
 				status_code?: number
 			})
-			created_at?:           string
-			hostname?:             string
-			last_successful_sync?: string
-			last_synced?:          string
-			modified_at?:          string
-			modified_by?:          string
-			name?:                 string
-			on_behalf?:            bool
+
+			// Whether administrative authentication is required before capabilities can be
+			// synced. Manual OAuth is user-managed and has no administrative
+			// authentication flow.
+			// Available values: "not_required", "required", "connected", "stale", "manual".
+			authentication_status?: string
+
+			// URL of the upstream MCP endpoint.
+			hostname?: string
+
+			// Unique identifier for the MCP server.
+			id?: string
+
+			// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback
+			// endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the
+			// customer portal hostname. New public server creates default to true;
+			// existing servers default to false from migration until explicitly updated.
+			// Effective behavior is gated by the gateway worker's per-env rollout mode KV
+			// key.
+			is_shared_oauth_callback_enabled?: bool
+			last_successful_sync?:             string
+			last_synced?:                      string
+			modified_at?:                      string
+			modified_by?:                      string
+
+			// Display name for the MCP server.
+			name?:      string
+			on_behalf?: bool
 			prompts?: [...{
 				[string]: string
 			}]
 
-			// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+			// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
 			secure_web_gateway?: bool
 
-			// server id
+			// Unique identifier for the MCP server.
 			server_id?: string
 
 			// Current sync state of the server
@@ -219,10 +266,7 @@ cloudflare_zero_trust_access_ai_controls_mcp_portal: {
 				server_alias?:       string
 				server_description?: string
 			})]])
-
-			// server id
-			id?:         string
-			created_by?: string
+			created_at?: string
 			updated_tools?: matchN(1, [close({
 				enabled?:            bool
 				name?:               string
@@ -239,14 +283,9 @@ cloudflare_zero_trust_access_ai_controls_mcp_portal: {
 				server_description?: string
 			})]])
 
-			// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback
-			// endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the
-			// customer portal hostname. New public server creates default to true;
-			// existing servers default to false from migration until explicitly updated.
-			// Effective behavior is gated by the gateway worker's per-env rollout mode KV
-			// key.
-			is_shared_oauth_callback_enabled?: bool
-			default_disabled?:                 bool
+			// Optional description of the MCP server.
+			description?: string
+			created_by?:  string
 		})]])
 	})
 }

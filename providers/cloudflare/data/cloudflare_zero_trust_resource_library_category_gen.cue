@@ -11,7 +11,7 @@ cloudflare_zero_trust_resource_library_category: {
 
 		// Returns the category description.
 		description?: string
-		id!:          string
+		id!:          number
 
 		// Returns the category name.
 		name?: string
