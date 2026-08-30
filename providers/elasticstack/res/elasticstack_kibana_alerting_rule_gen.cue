@@ -11,6 +11,40 @@ elasticstack_kibana_alerting_rule: {
 		// conditions for an alert to occur.
 		alert_delay?: number
 
+		// Linked assets for the alerting rule. Currently supports attaching an
+		// investigation guide so that runbooks and context are co-located with the
+		// alert configuration as code. Requires Elastic Stack 9.1 or higher to write;
+		// on stacks older than 9.5.0 the Kibana GET API does not return artifacts
+		// (elastic/kibana#247279), so `terraform import` will not populate this
+		// attribute and external changes to the guide made outside Terraform will not
+		// be detected by refresh. When `artifacts` is omitted from configuration on
+		// update, Terraform retains the previous value, so existing server-side
+		// artifacts are not cleared by that omission.
+		artifacts?: close({
+			// An investigation guide attached to the rule. Provide the guide either inline
+			// via `content`, or from a local file via `content_path` (in which case the
+			// provider tracks a SHA-256 `checksum` of the file to detect external
+			// changes). Exactly one of `content` or `content_path` must be set. Requires
+			// Elastic Stack 9.1 or higher to write; inline-`content` round-trips from the
+			// API and `terraform import` require 9.5.0+ (elastic/kibana#247279).
+			investigation_guide?: close({
+				// SHA-256 checksum of the file at `content_path`, used to detect drift.
+				// Computed; not user-settable.
+				checksum?: string
+
+				// Inline investigation guide content (Markdown). Mutually exclusive with `content_path`.
+				content?: string
+
+				// Path to a local file whose contents are used as the investigation guide. The
+				// provider computes a SHA-256 `checksum` of the file at plan time to detect
+				// external changes. Mutually exclusive with `content`.
+				content_path?: string
+			})
+		})
+
+		// The name of the application or feature that owns the rule.
+		consumer!: string
+
 		// Rule-level [flapping
 		// detection](https://www.elastic.co/guide/en/kibana/master/alerting-settings.html)
 		// (Kibana **8.16** or higher). When this object is set in configuration,
@@ -32,8 +66,8 @@ elasticstack_kibana_alerting_rule: {
 			status_change_threshold?: number
 		})
 
-		// The name of the application or feature that owns the rule.
-		consumer!: string
+		// Indicates if you want to run the rule on an interval basis.
+		enabled?: bool
 		timeouts?: close({
 			// A string that can be [parsed as a
 			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
@@ -62,9 +96,6 @@ elasticstack_kibana_alerting_rule: {
 			// "m" (minutes), "h" (hours).
 			update?: string
 		})
-
-		// Indicates if you want to run the rule on an interval basis.
-		enabled?: bool
 
 		// Generated ID for the alerting rule.
 		id?: string

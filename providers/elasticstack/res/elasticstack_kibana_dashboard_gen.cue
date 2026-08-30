@@ -1126,21 +1126,30 @@ elasticstack_kibana_dashboard: {
 				description?: string
 
 				// Severity bands to display. Each item sets either a named `severity` shortcut
-				// or a raw numeric `min`/`max` range, never both.
+				// or its equivalent numeric `min`/`max` pair, never both. `min`/`max` is not a
+				// general custom range: Kibana only accepts the five canonical pairs (see
+				// `severity`'s enum values) and rejects any other pair with an HTTP error at
+				// apply time.
 				severity_threshold?: matchN(1, [close({
-					// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+					// Numeric spelling of a canonical severity band's upper bound. Valid only with
+					// `min` when `severity` is unset and the pair matches a canonical band.
 					max?: number
 
-					// Lower bound of a raw severity range. Required when `severity` is omitted.
+					// Numeric spelling of a canonical severity band's lower bound. Required when
+					// `severity` is omitted. Kibana rejects a non-canonical value at apply time;
+					// not validated client-side.
 					min?: number
 
 					// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
 					severity?: string
 				}), [...close({
-					// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+					// Numeric spelling of a canonical severity band's upper bound. Valid only with
+					// `min` when `severity` is unset and the pair matches a canonical band.
 					max?: number
 
-					// Lower bound of a raw severity range. Required when `severity` is omitted.
+					// Numeric spelling of a canonical severity band's lower bound. Required when
+					// `severity` is omitted. Kibana rejects a non-canonical value at apply time;
+					// not validated client-side.
 					min?: number
 
 					// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
@@ -6817,21 +6826,30 @@ elasticstack_kibana_dashboard: {
 				description?: string
 
 				// Severity bands to display. Each item sets either a named `severity` shortcut
-				// or a raw numeric `min`/`max` range, never both.
+				// or its equivalent numeric `min`/`max` pair, never both. `min`/`max` is not a
+				// general custom range: Kibana only accepts the five canonical pairs (see
+				// `severity`'s enum values) and rejects any other pair with an HTTP error at
+				// apply time.
 				severity_threshold?: matchN(1, [close({
-					// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+					// Numeric spelling of a canonical severity band's upper bound. Valid only with
+					// `min` when `severity` is unset and the pair matches a canonical band.
 					max?: number
 
-					// Lower bound of a raw severity range. Required when `severity` is omitted.
+					// Numeric spelling of a canonical severity band's lower bound. Required when
+					// `severity` is omitted. Kibana rejects a non-canonical value at apply time;
+					// not validated client-side.
 					min?: number
 
 					// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
 					severity?: string
 				}), [...close({
-					// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+					// Numeric spelling of a canonical severity band's upper bound. Valid only with
+					// `min` when `severity` is unset and the pair matches a canonical band.
 					max?: number
 
-					// Lower bound of a raw severity range. Required when `severity` is omitted.
+					// Numeric spelling of a canonical severity band's lower bound. Required when
+					// `severity` is omitted. Kibana rejects a non-canonical value at apply time;
+					// not validated client-side.
 					min?: number
 
 					// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
@@ -13129,21 +13147,30 @@ elasticstack_kibana_dashboard: {
 					description?: string
 
 					// Severity bands to display. Each item sets either a named `severity` shortcut
-					// or a raw numeric `min`/`max` range, never both.
+					// or its equivalent numeric `min`/`max` pair, never both. `min`/`max` is not a
+					// general custom range: Kibana only accepts the five canonical pairs (see
+					// `severity`'s enum values) and rejects any other pair with an HTTP error at
+					// apply time.
 					severity_threshold?: matchN(1, [close({
-						// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+						// Numeric spelling of a canonical severity band's upper bound. Valid only with
+						// `min` when `severity` is unset and the pair matches a canonical band.
 						max?: number
 
-						// Lower bound of a raw severity range. Required when `severity` is omitted.
+						// Numeric spelling of a canonical severity band's lower bound. Required when
+						// `severity` is omitted. Kibana rejects a non-canonical value at apply time;
+						// not validated client-side.
 						min?: number
 
 						// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
 						severity?: string
 					}), [...close({
-						// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+						// Numeric spelling of a canonical severity band's upper bound. Valid only with
+						// `min` when `severity` is unset and the pair matches a canonical band.
 						max?: number
 
-						// Lower bound of a raw severity range. Required when `severity` is omitted.
+						// Numeric spelling of a canonical severity band's lower bound. Required when
+						// `severity` is omitted. Kibana rejects a non-canonical value at apply time;
+						// not validated client-side.
 						min?: number
 
 						// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
@@ -18820,21 +18847,30 @@ elasticstack_kibana_dashboard: {
 					description?: string
 
 					// Severity bands to display. Each item sets either a named `severity` shortcut
-					// or a raw numeric `min`/`max` range, never both.
+					// or its equivalent numeric `min`/`max` pair, never both. `min`/`max` is not a
+					// general custom range: Kibana only accepts the five canonical pairs (see
+					// `severity`'s enum values) and rejects any other pair with an HTTP error at
+					// apply time.
 					severity_threshold?: matchN(1, [close({
-						// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+						// Numeric spelling of a canonical severity band's upper bound. Valid only with
+						// `min` when `severity` is unset and the pair matches a canonical band.
 						max?: number
 
-						// Lower bound of a raw severity range. Required when `severity` is omitted.
+						// Numeric spelling of a canonical severity band's lower bound. Required when
+						// `severity` is omitted. Kibana rejects a non-canonical value at apply time;
+						// not validated client-side.
 						min?: number
 
 						// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
 						severity?: string
 					}), [...close({
-						// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+						// Numeric spelling of a canonical severity band's upper bound. Valid only with
+						// `min` when `severity` is unset and the pair matches a canonical band.
 						max?: number
 
-						// Lower bound of a raw severity range. Required when `severity` is omitted.
+						// Numeric spelling of a canonical severity band's lower bound. Required when
+						// `severity` is omitted. Kibana rejects a non-canonical value at apply time;
+						// not validated client-side.
 						min?: number
 
 						// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
@@ -24529,21 +24565,30 @@ elasticstack_kibana_dashboard: {
 					description?: string
 
 					// Severity bands to display. Each item sets either a named `severity` shortcut
-					// or a raw numeric `min`/`max` range, never both.
+					// or its equivalent numeric `min`/`max` pair, never both. `min`/`max` is not a
+					// general custom range: Kibana only accepts the five canonical pairs (see
+					// `severity`'s enum values) and rejects any other pair with an HTTP error at
+					// apply time.
 					severity_threshold?: matchN(1, [close({
-						// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+						// Numeric spelling of a canonical severity band's upper bound. Valid only with
+						// `min` when `severity` is unset and the pair matches a canonical band.
 						max?: number
 
-						// Lower bound of a raw severity range. Required when `severity` is omitted.
+						// Numeric spelling of a canonical severity band's lower bound. Required when
+						// `severity` is omitted. Kibana rejects a non-canonical value at apply time;
+						// not validated client-side.
 						min?: number
 
 						// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
 						severity?: string
 					}), [...close({
-						// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+						// Numeric spelling of a canonical severity band's upper bound. Valid only with
+						// `min` when `severity` is unset and the pair matches a canonical band.
 						max?: number
 
-						// Lower bound of a raw severity range. Required when `severity` is omitted.
+						// Numeric spelling of a canonical severity band's lower bound. Required when
+						// `severity` is omitted. Kibana rejects a non-canonical value at apply time;
+						// not validated client-side.
 						min?: number
 
 						// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
@@ -30220,21 +30265,30 @@ elasticstack_kibana_dashboard: {
 					description?: string
 
 					// Severity bands to display. Each item sets either a named `severity` shortcut
-					// or a raw numeric `min`/`max` range, never both.
+					// or its equivalent numeric `min`/`max` pair, never both. `min`/`max` is not a
+					// general custom range: Kibana only accepts the five canonical pairs (see
+					// `severity`'s enum values) and rejects any other pair with an HTTP error at
+					// apply time.
 					severity_threshold?: matchN(1, [close({
-						// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+						// Numeric spelling of a canonical severity band's upper bound. Valid only with
+						// `min` when `severity` is unset and the pair matches a canonical band.
 						max?: number
 
-						// Lower bound of a raw severity range. Required when `severity` is omitted.
+						// Numeric spelling of a canonical severity band's lower bound. Required when
+						// `severity` is omitted. Kibana rejects a non-canonical value at apply time;
+						// not validated client-side.
 						min?: number
 
 						// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).
 						severity?: string
 					}), [...close({
-						// Upper bound of a raw severity range. Valid only with `min` when `severity` is unset.
+						// Numeric spelling of a canonical severity band's upper bound. Valid only with
+						// `min` when `severity` is unset and the pair matches a canonical band.
 						max?: number
 
-						// Lower bound of a raw severity range. Required when `severity` is omitted.
+						// Numeric spelling of a canonical severity band's lower bound. Required when
+						// `severity` is omitted. Kibana rejects a non-canonical value at apply time;
+						// not validated client-side.
 						min?: number
 
 						// Named severity shortcut (`low`, `warning`, `minor`, `major`, `critical`).

@@ -60,7 +60,7 @@ elasticstack_fleet_integration: {
 		// Terraform state.
 		skip_destroy?: bool
 
-		// The Kibana space ID where this integration package should be installed.
+		// An identifier for the space. If space_id is not provided, the default space is used.
 		space_id?: string
 
 		// The integration package version.

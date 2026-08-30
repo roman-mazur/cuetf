@@ -58,7 +58,7 @@ elasticstack_fleet_proxy: {
 		// The proxy ID.
 		proxy_id?: string
 
-		// An identifier for the space. If not provided, the default space is used.
+		// An identifier for the space. If space_id is not provided, the default space is used.
 		space_id?: string
 
 		// The proxy URL.

@@ -3809,6 +3809,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 												optional:         true
 												computed:         true
 											}
+											force_merge_on_clone: {
+												type:             "bool"
+												description:      "Force-merges a clone of the managed index (with no replicas) before creating the searchable snapshot. Set to `false` to skip the clone and force-merge the managed index directly. Defaults to `true`. Cannot be set when `force_merge_index` is `false`. Setting `false` requires Elasticsearch **9.2.1** or later."
+												description_kind: "markdown"
+												optional:         true
+												computed:         true
+											}
 											snapshot_repository: {
 												type:             "string"
 												description:      "Repository used to store the snapshot. Required when the `searchable_snapshot` action is configured."
@@ -4025,6 +4032,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											optional:         true
 											computed:         true
 										}
+										force_merge_on_clone: {
+											type:             "bool"
+											description:      "Force-merges a clone of the managed index (with no replicas) before creating the searchable snapshot. Set to `false` to skip the clone and force-merge the managed index directly. Defaults to `true`. Cannot be set when `force_merge_index` is `false`. Setting `false` requires Elasticsearch **9.2.1** or later."
+											description_kind: "markdown"
+											optional:         true
+											computed:         true
+										}
 										snapshot_repository: {
 											type:             "string"
 											description:      "Repository used to store the snapshot. Required when the `searchable_snapshot` action is configured."
@@ -4185,6 +4199,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 												type:             "bool"
 												description:      "Force merges the managed index to one segment."
 												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											force_merge_on_clone: {
+												type:             "bool"
+												description:      "Force-merges a clone of the managed index (with no replicas) before creating the searchable snapshot. Set to `false` to skip the clone and force-merge the managed index directly. Defaults to `true`. Cannot be set when `force_merge_index` is `false`. Setting `false` requires Elasticsearch **9.2.1** or later."
+												description_kind: "markdown"
 												optional:         true
 												computed:         true
 											}
@@ -11474,7 +11495,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				attributes: {
 					actions: {
 						type:             "string"
-						description:      "The list of actions that will be run if the condition matches."
+						description:      "The list of actions that will be run if the condition matches. Elasticsearch-injected search-request defaults (`rest_total_hits_as_int`, `search_type`, `indices`), script `lang`, and logging-action `level` do not need to be set explicitly and will not cause spurious diffs."
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -11488,7 +11509,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					condition: {
 						type:             "string"
-						description:      "The condition that defines if the actions should be run."
+						description:      "The condition that defines if the actions should be run. Elasticsearch-injected search-request defaults (`rest_total_hits_as_int`, `search_type`, `indices`), script `lang`, and logging-action `level` do not need to be set explicitly and will not cause spurious diffs."
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -11501,7 +11522,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					input: {
 						type:             "string"
-						description:      "The input that defines the input that loads the data for the watch."
+						description:      "The input that defines the input that loads the data for the watch. Elasticsearch-injected search-request defaults (`rest_total_hits_as_int`, `search_type`, `indices`), script `lang`, and logging-action `level` do not need to be set explicitly and will not cause spurious diffs."
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -11555,7 +11576,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					transform: {
 						type:             "string"
-						description:      "Processes the watch payload to prepare it for the watch actions."
+						description:      "Processes the watch payload to prepare it for the watch actions. Elasticsearch-injected search-request defaults (`rest_total_hits_as_int`, `search_type`, `indices`), script `lang`, and logging-action `level` do not need to be set explicitly and will not cause spurious diffs."
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -12315,8 +12336,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					space_id: {
 						type:             "string"
-						description:      "The Kibana space ID where this integration package should be installed. Changing this value forces resource replacement."
-						description_kind: "plain"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -13431,8 +13452,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					space_id: {
 						type:             "string"
-						description:      "The Kibana space ID where this integration package should be installed."
-						description_kind: "plain"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -13800,6 +13821,356 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 
 					"""
 				description_kind: "plain"
+			}
+		}
+		elasticstack_fleet_managed_integration: {
+			version: 0
+			block: {
+				attributes: {
+					additional_datastreams_permissions: {
+						type: ["list", "string"]
+						description:      "Additional data stream permissions to grant beyond the package's defaults; updatable in-place."
+						description_kind: "markdown"
+						optional:         true
+					}
+					cloud_connector: {
+						nested_type: {
+							attributes: {
+								cloud_connector_id: {
+									type:             "string"
+									description:      "The ID of an existing cloud connector to associate with this policy."
+									description_kind: "markdown"
+									optional:         true
+								}
+								enabled: {
+									type:             "bool"
+									description:      "Whether the cloud connector is enabled for this policy."
+									description_kind: "markdown"
+									optional:         true
+								}
+								name: {
+									type:             "string"
+									description:      "The name of the cloud connector."
+									description_kind: "markdown"
+									optional:         true
+								}
+								target_csp: {
+									type:             "string"
+									description:      "The target cloud service provider for the cloud connector. One of `aws`, `azure`, or `gcp`."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "References an existing cloud connector for cross-account access. Changing any field forces replacement of the entire `cloud_connector` block."
+						description_kind: "markdown"
+						optional:         true
+					}
+					create_dataset_templates: {
+						type:             "bool"
+						description:      "Whether to create dataset templates when creating the policy. Create-only: sent on the create request only, not read back from the API. Changes after creation are a no-op until the resource is recreated."
+						description_kind: "markdown"
+						optional:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "The creation timestamp of the managed integration (ISO 8601)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The description of the managed integration; updatable in-place. An explicit empty string is rejected: it is indistinguishable from \"unset\" once round-tripped through the API (Kibana returns an omitted/empty description as `\"\"`, which this provider folds back to null), so setting `description = \"\"` would otherwise produce a permanent, non-converging diff. Omit the attribute instead of setting it to `\"\"`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					force: {
+						type:             "bool"
+						description:      "Force the create operation. Create-only: sent on the create request only and not read back from the API."
+						description_kind: "markdown"
+						optional:         true
+					}
+					force_delete: {
+						type:             "bool"
+						description:      "Force deletion of the policy, passed as `?force=true` on the delete request. Defaults to `false`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					global_data_tags: {
+						nested_type: {
+							attributes: {
+								number_value: {
+									type:             "number"
+									description:      "Number value for the tag. If this is set, `string_value` must not be defined."
+									description_kind: "markdown"
+									optional:         true
+								}
+								string_value: {
+									type:             "string"
+									description:      "String value for the tag. If this is set, `number_value` must not be defined."
+									description_kind: "markdown"
+									optional:         true
+								}
+							}
+							nesting_mode: "map"
+						}
+						description:      "Global data tags applied to the managed integration's data streams; updatable in-place. Keyed by tag name; set exactly one of `string_value` or `number_value` per entry."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The composite ID of the managed integration: `<space_id>/<policy_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					inputs: {
+						nested_type: {
+							attributes: {
+								condition: {
+									type:             "string"
+									description:      "Agent condition expression to evaluate whether to apply this input."
+									description_kind: "markdown"
+									optional:         true
+								}
+								enabled: {
+									type:             "bool"
+									description:      "Enable the input."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								streams: {
+									nested_type: {
+										attributes: {
+											condition: {
+												type:             "string"
+												description:      "Agent condition expression to evaluate whether to apply this stream."
+												description_kind: "markdown"
+												optional:         true
+											}
+											enabled: {
+												type:             "bool"
+												description:      "Enable the stream."
+												description_kind: "markdown"
+												optional:         true
+												computed:         true
+											}
+											vars: {
+												type:             "string"
+												description:      "Stream-level variables as JSON."
+												description_kind: "markdown"
+												optional:         true
+												sensitive:        true
+											}
+										}
+										nesting_mode: "map"
+									}
+									description:      "Input streams mapped by stream ID."
+									description_kind: "markdown"
+									optional:         true
+								}
+								vars: {
+									type:             "string"
+									description:      "Input-level variables as JSON. Computed (not purely Optional): some packages (e.g. cloud_security_posture/CSPM) populate informational input-level vars (such as CloudFormation quick-create template URLs) that are always present in the API response regardless of configuration; Computed with UseStateForUnknown lets those flow through without requiring the user to declare them."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+									sensitive:        true
+								}
+							}
+							nesting_mode: "map"
+						}
+						description:      "Policy inputs mapped by input type ID; updatable in-place."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the managed integration; updatable in-place."
+						description_kind: "markdown"
+						required:         true
+					}
+					namespace: {
+						type:             "string"
+						description:      "The namespace of the managed integration; forces replacement on change. An explicit empty string is rejected for the same reason as `description`: it is indistinguishable from \"unset\" once round-tripped through the API."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					package: {
+						nested_type: {
+							attributes: {
+								name: {
+									type:             "string"
+									description:      "The package name; forces replacement on change."
+									description_kind: "markdown"
+									required:         true
+								}
+								title: {
+									type:             "string"
+									description:      "The package title. If omitted, Kibana populates it from the package registry. Updatable in-place (not `RequiresReplace`)."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								version: {
+									type:             "string"
+									description:      "The package version; updatable in-place."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "The Fleet integration package this managed integration is based on."
+						description_kind: "markdown"
+						required:         true
+					}
+					policy_id: {
+						type:             "string"
+						description:      "The managed integration ID. Server-assigned if omitted; forces replacement on change."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					policy_template: {
+						type:             "string"
+						description:      "Policy template within the package, configured at create time. Not returned by GET; preserved from prior config on refresh. Null after import when unavailable. Changing it forces replacement."
+						description_kind: "markdown"
+						optional:         true
+					}
+					skip_topology_check: {
+						type:             "bool"
+						description:      "Skips the deployment-topology preflight check. Use only if you are certain this is running against a supported Elastic Cloud Hosted or Serverless deployment and the automatic detection is producing a false positive (e.g. due to non-standard network routing such as PrivateLink). Does not weaken version gating (Kibana 9.5.0+ is still enforced) -- it only bypasses the topology heuristic. Defaults to `false`. Create-only: consulted only during Create and not read back from the API."
+						description_kind: "markdown"
+						optional:         true
+					}
+					space_ids: {
+						type: ["set", "string"]
+						description:      "The list of spaces the managed integration belongs to; defaults to `[\"default\"]`; forces replacement on change."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The last-updated timestamp of the managed integration (ISO 8601)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					var_group_selections: {
+						type: ["map", "string"]
+						description:      "Top-level variable group selections, mapping group name to selected option; updatable in-place. Modeled at the top level only in v1; per-stream var_group_selections is deferred to a follow-up change."
+						description_kind: "markdown"
+						optional:         true
+					}
+					vars_json: {
+						type: "string"
+						description: """
+									Integration-level variables as JSON. Variables vary depending on the integration package. Updatable in-place.
+
+									The provider injects the '__tf_provider_context' property into this JSON object. In most cases this field will be ignored when computing the difference between the current and desired state. In some cases however, this property may be shown in the Terraform plan. Any changes to the '__tf_provider_context' property can be safely ignored. This property is used internally by the provider, and you should not set this property within your Terraform configuration.
+									"""
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+						sensitive:        true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Manages Fleet managed integrations, which provision agent runtime capacity in Elastic's own cloud infrastructure instead of on a host running Elastic Agent. The underlying Fleet managed integrations API requires Kibana 9.5.0 or later. It is only supported on **Elastic Cloud Hosted** and **Serverless** (Security or Observability) deployments; self-managed (on-premises) Kibana is not supported, and this resource refuses to run against a self-managed deployment it can positively identify as such."
+				description_kind: "markdown"
 			}
 		}
 		elasticstack_fleet_output: {
@@ -14282,7 +14653,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					space_id: {
 						type:             "string"
-						description:      "An identifier for the space. If not provided, the default space is used."
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -15333,6 +15704,50 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						type:             "number"
 						description:      "A number that indicates how many consecutive runs need to meet the rule conditions for an alert to occur."
 						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					artifacts: {
+						nested_type: {
+							attributes: investigation_guide: {
+								nested_type: {
+									attributes: {
+										checksum: {
+											type:             "string"
+											description:      "SHA-256 checksum of the file at `content_path`, used to detect drift. Computed; not user-settable."
+											description_kind: "markdown"
+											computed:         true
+										}
+										content: {
+											type:             "string"
+											description:      "Inline investigation guide content (Markdown). Mutually exclusive with `content_path`."
+											description_kind: "markdown"
+											optional:         true
+										}
+										content_path: {
+											type:             "string"
+											description:      "Path to a local file whose contents are used as the investigation guide. The provider computes a SHA-256 `checksum` of the file at plan time to detect external changes. Mutually exclusive with `content`."
+											description_kind: "markdown"
+											optional:         true
+										}
+									}
+									nesting_mode: "single"
+								}
+								description: """
+												An investigation guide attached to the rule. Provide the guide either inline via `content`, or from a local file via `content_path` (in which case the provider tracks a SHA-256 `checksum` of the file to detect external changes). Exactly one of `content` or `content_path` must be set. Requires Elastic Stack 9.1 or higher to write; inline-`content` round-trips from the API and `terraform import` require 9.5.0+ (elastic/kibana#247279).
+
+												"""
+								description_kind: "markdown"
+								optional:         true
+								computed:         true
+							}
+							nesting_mode: "single"
+						}
+						description: """
+									Linked assets for the alerting rule. Currently supports attaching an investigation guide so that runbooks and context are co-located with the alert configuration as code. Requires Elastic Stack 9.1 or higher to write; on stacks older than 9.5.0 the Kibana GET API does not return artifacts (elastic/kibana#247279), so `terraform import` will not populate this attribute and external changes to the guide made outside Terraform will not be detected by refresh. When `artifacts` is omitted from configuration on update, Terraform retains the previous value, so existing server-side artifacts are not cleared by that omission.
+
+									"""
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -17480,13 +17895,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													attributes: {
 														max: {
 															type:             "number"
-															description:      "Upper bound of a raw severity range. Valid only with `min` when `severity` is unset."
+															description:      "Numeric spelling of a canonical severity band's upper bound. Valid only with `min` when `severity` is unset and the pair matches a canonical band."
 															description_kind: "markdown"
 															optional:         true
 														}
 														min: {
 															type:             "number"
-															description:      "Lower bound of a raw severity range. Required when `severity` is omitted."
+															description:      "Numeric spelling of a canonical severity band's lower bound. Required when `severity` is omitted. Kibana rejects a non-canonical value at apply time; not validated client-side."
 															description_kind: "markdown"
 															optional:         true
 														}
@@ -17499,7 +17914,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 													}
 													nesting_mode: "list"
 												}
-												description:      "Severity bands to display. Each item sets either a named `severity` shortcut or a raw numeric `min`/`max` range, never both."
+												description:      "Severity bands to display. Each item sets either a named `severity` shortcut or its equivalent numeric `min`/`max` pair, never both. `min`/`max` is not a general custom range: Kibana only accepts the five canonical pairs (see `severity`'s enum values) and rejects any other pair with an HTTP error at apply time."
 												description_kind: "markdown"
 												optional:         true
 											}
@@ -26620,13 +27035,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																attributes: {
 																	max: {
 																		type:             "number"
-																		description:      "Upper bound of a raw severity range. Valid only with `min` when `severity` is unset."
+																		description:      "Numeric spelling of a canonical severity band's upper bound. Valid only with `min` when `severity` is unset and the pair matches a canonical band."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
 																	min: {
 																		type:             "number"
-																		description:      "Lower bound of a raw severity range. Required when `severity` is omitted."
+																		description:      "Numeric spelling of a canonical severity band's lower bound. Required when `severity` is omitted. Kibana rejects a non-canonical value at apply time; not validated client-side."
 																		description_kind: "markdown"
 																		optional:         true
 																	}
@@ -26639,7 +27054,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																}
 																nesting_mode: "list"
 															}
-															description:      "Severity bands to display. Each item sets either a named `severity` shortcut or a raw numeric `min`/`max` range, never both."
+															description:      "Severity bands to display. Each item sets either a named `severity` shortcut or its equivalent numeric `min`/`max` pair, never both. `min`/`max` is not a general custom range: Kibana only accepts the five canonical pairs (see `severity`'s enum values) and rejects any other pair with an HTTP error at apply time."
 															description_kind: "markdown"
 															optional:         true
 														}
@@ -34203,8 +34618,9 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					space_id: {
 						type:             "string"
 						description:      "An identifier for the space. If space_id is not provided, the default space is used."
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					success: {
 						type: "bool"
@@ -40944,7 +41360,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Generated id for the parameter."
+						description:      "The composite ID of the parameter: `<space_id>/<parameter_uuid>`."
 						description_kind: "markdown"
 						computed:         true
 					}
@@ -40957,6 +41373,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					share_across_spaces: {
 						type:             "bool"
 						description:      "Whether the parameter should be shared across spaces."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
@@ -41069,6 +41492,29 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 
 					See [Working with secrets and sensitive values](https://www.elastic.co/docs/solutions/observability/synthetics/work-with-params-secrets)
 					and [API docs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-synthetics)
+
+					Parameters are scoped to a Kibana space. Set `space_id` to the target space identifier; when omitted, the resource uses the `default` space (`space_id` is computed as `"default"`). Changing `space_id` forces replacement of the parameter.
+
+					The computed `id` is a composite identifier: `<space_id>/<parameter_uuid>`, where the UUID is assigned by Kibana.
+
+					Import accepts a bare parameter UUID (treated as the `default` space, with `id` set to `default/<parameter_uuid>`) or the composite form `<space_id>/<parameter_uuid>`.
+
+					**Example** (parameter in a named space):
+
+
+					```terraform
+					provider "elasticstack" {
+					  kibana {}
+					}
+
+					resource "elasticstack_kibana_synthetics_parameter" "example" {
+					  space_id    = "my-space"
+					  key         = "example_key"
+					  value       = "example_value"
+					  description = "Example description in a named space"
+					  tags        = ["tag-a", "tag-b"]
+					}
+					```
 
 					"""
 				description_kind: "markdown"
@@ -48177,13 +48623,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 					}
 					space_id: {
-						type: "string"
-						description: """
-									The Kibana space ID to query enrollment tokens from. When the agent policy is space-scoped, this must be set to match the policy's space. If not specified, queries the default space.
-
-									"""
-						description_kind: "plain"
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					tokens: {
 						nested_type: {
@@ -48483,9 +48927,10 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					space_id: {
 						type:             "string"
-						description:      "The Kibana space ID where this output is available."
-						description_kind: "plain"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: kibana_connection: {

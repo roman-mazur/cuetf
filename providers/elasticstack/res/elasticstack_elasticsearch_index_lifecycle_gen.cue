@@ -216,6 +216,13 @@ elasticstack_elasticsearch_index_lifecycle: {
 		// Force merges the managed index to one segment.
 		force_merge_index?: bool
 
+		// Force-merges a clone of the managed index (with no replicas) before creating
+		// the searchable snapshot. Set to `false` to skip the clone and force-merge
+		// the managed index directly. Defaults to `true`. Cannot be set when
+		// `force_merge_index` is `false`. Setting `false` requires Elasticsearch
+		// **9.2.1** or later.
+		force_merge_on_clone?: bool
+
 		// Repository used to store the snapshot. Required when the
 		// `searchable_snapshot` action is configured.
 		snapshot_repository?: string
@@ -246,6 +253,13 @@ elasticstack_elasticsearch_index_lifecycle: {
 	_#defs: "/$defs/frozen/$defs/searchable_snapshot": close({
 		// Force merges the managed index to one segment.
 		force_merge_index?: bool
+
+		// Force-merges a clone of the managed index (with no replicas) before creating
+		// the searchable snapshot. Set to `false` to skip the clone and force-merge
+		// the managed index directly. Defaults to `true`. Cannot be set when
+		// `force_merge_index` is `false`. Setting `false` requires Elasticsearch
+		// **9.2.1** or later.
+		force_merge_on_clone?: bool
 
 		// Repository used to store the snapshot. Required when the
 		// `searchable_snapshot` action is configured.
@@ -314,6 +328,13 @@ elasticstack_elasticsearch_index_lifecycle: {
 	_#defs: "/$defs/hot/$defs/searchable_snapshot": close({
 		// Force merges the managed index to one segment.
 		force_merge_index?: bool
+
+		// Force-merges a clone of the managed index (with no replicas) before creating
+		// the searchable snapshot. Set to `false` to skip the clone and force-merge
+		// the managed index directly. Defaults to `true`. Cannot be set when
+		// `force_merge_index` is `false`. Setting `false` requires Elasticsearch
+		// **9.2.1** or later.
+		force_merge_on_clone?: bool
 
 		// Repository used to store the snapshot. Required when the
 		// `searchable_snapshot` action is configured.
