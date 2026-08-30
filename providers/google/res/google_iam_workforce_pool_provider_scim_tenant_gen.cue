@@ -14,7 +14,7 @@ google_iam_workforce_pool_provider_scim_tenant: {
 		base_uri?: string
 
 		// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
-		claim_mapping?: [string]: string
+		claim_mapping!: [string]: string
 
 		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
 		// When a 'terraform destroy' or 'terraform apply' would delete the instance,

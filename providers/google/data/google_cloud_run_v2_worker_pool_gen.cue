@@ -55,12 +55,6 @@ google_cloud_run_v2_worker_pool: {
 		// Email address of the authenticated creator.
 		creator?: string
 
-		// One or more custom audiences that you want this worker pool to support.
-		// Specify each custom audience as the full URL in a string. The custom
-		// audiences are encoded in the token and used to authenticate requests.
-		// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-		custom_audiences?: [...string]
-
 		// The deletion time.
 		delete_time?: string
 
@@ -240,7 +234,6 @@ google_cloud_run_v2_worker_pool: {
 					http_get?: [...close({
 						http_headers?: [...close({
 							name?:  string
-							port?:  number
 							value?: string
 						})]
 						path?: string
@@ -266,7 +259,6 @@ google_cloud_run_v2_worker_pool: {
 					http_get?: [...close({
 						http_headers?: [...close({
 							name?:  string
-							port?:  number
 							value?: string
 						})]
 						path?: string

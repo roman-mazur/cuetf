@@ -123,10 +123,11 @@ google_bigquery_data_transfer_config: {
 		// The Secret Access Key of the AWS account transferring data from.
 		secret_access_key_wo?: string
 
-		// The version of the sensitive params - used to trigger updates of the
-		// write-only params. For more info see [updating write-only
+		// Triggers update of 'secret_access_key_wo' write-only. Increment this value
+		// when an update to 'secret_access_key_wo' is needed. For more info see
+		// [updating write-only
 		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-		secret_access_key_wo_version?: number
+		secret_access_key_wo_version?: string
 	})
 
 	#timeouts: close({

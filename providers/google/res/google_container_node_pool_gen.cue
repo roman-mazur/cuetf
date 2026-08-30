@@ -59,7 +59,10 @@ google_container_node_pool: {
 		// The name of the node pool. If left blank, Terraform will auto-generate a unique name.
 		name?: string
 
-		// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+		// Creates a unique name for the node pool beginning with the specified prefix.
+		// Conflicts with name. Max length is 31 characters. Prefixes with lengths
+		// longer than 14 characters will use a shortened UUID that will be more prone
+		// to collisions.
 		name_prefix?: string
 
 		// The number of nodes per instance group. This field can be used to update the

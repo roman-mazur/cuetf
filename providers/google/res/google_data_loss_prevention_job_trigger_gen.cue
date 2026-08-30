@@ -75,7 +75,6 @@ google_data_loss_prevention_job_trigger: {
 		deidentify?: matchN(1, [_#defs."/$defs/inspect_job/$defs/actions/$defs/deidentify", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/actions/$defs/deidentify"]])
 		job_notification_emails?: matchN(1, [_#defs."/$defs/inspect_job/$defs/actions/$defs/job_notification_emails", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/actions/$defs/job_notification_emails"]])
 		pub_sub?: matchN(1, [_#defs."/$defs/inspect_job/$defs/actions/$defs/pub_sub", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/actions/$defs/pub_sub"]])
-		publish_findings_to_cloud_data_catalog?: matchN(1, [_#defs."/$defs/inspect_job/$defs/actions/$defs/publish_findings_to_cloud_data_catalog", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/actions/$defs/publish_findings_to_cloud_data_catalog"]])
 		publish_findings_to_dataplex_catalog?: matchN(1, [_#defs."/$defs/inspect_job/$defs/actions/$defs/publish_findings_to_dataplex_catalog", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/actions/$defs/publish_findings_to_dataplex_catalog"]])
 		publish_summary_to_cscc?: matchN(1, [_#defs."/$defs/inspect_job/$defs/actions/$defs/publish_summary_to_cscc", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/actions/$defs/publish_summary_to_cscc"]])
 		publish_to_stackdriver?: matchN(1, [_#defs."/$defs/inspect_job/$defs/actions/$defs/publish_to_stackdriver", list.MaxItems(1) & [..._#defs."/$defs/inspect_job/$defs/actions/$defs/publish_to_stackdriver"]])
@@ -144,8 +143,6 @@ google_data_loss_prevention_job_trigger: {
 		// Cloud Pub/Sub topic to send notifications to.
 		topic!: string
 	})
-
-	_#defs: "/$defs/inspect_job/$defs/actions/$defs/publish_findings_to_cloud_data_catalog": close({})
 
 	_#defs: "/$defs/inspect_job/$defs/actions/$defs/publish_findings_to_dataplex_catalog": close({})
 

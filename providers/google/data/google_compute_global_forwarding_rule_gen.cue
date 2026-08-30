@@ -131,8 +131,8 @@ google_compute_global_forwarding_rule: {
 		// For more information about forwarding rules, refer to
 		// [Forwarding rule
 		// concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-		// Default value: "EXTERNAL" Possible values: ["EXTERNAL", "EXTERNAL_MANAGED",
-		// "INTERNAL_MANAGED", "INTERNAL_SELF_MANAGED"]
+		// Default value: "EXTERNAL_MANAGED" Possible values: ["EXTERNAL",
+		// "EXTERNAL_MANAGED", "INTERNAL_MANAGED", "INTERNAL_SELF_MANAGED"]
 		load_balancing_scheme?: string
 
 		// Opaque filter criteria used by Loadbalancer to restrict routing

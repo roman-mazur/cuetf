@@ -4,6 +4,9 @@ google_redis_cluster: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_redis_cluster")
 	close({
+		// Optional. The name of the ACL policy to attach to the cluster.
+		acl_policy?: string
+
 		// Optional. The authorization mode of the Redis cluster. If not provided, auth
 		// feature is disabled for the cluster. Default value: "AUTH_MODE_DISABLED"
 		// Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
@@ -93,6 +96,9 @@ google_redis_cluster: {
 			uris?: [...string]
 		})]
 		id?: string
+
+		// Optional. Whether the ACL policy is in sync with the cluster.
+		is_acl_policy_in_sync?: bool
 
 		// The KMS key used to encrypt the at-rest data of the cluster.
 		kms_key?: string

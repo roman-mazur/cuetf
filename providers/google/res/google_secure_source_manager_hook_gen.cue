@@ -24,7 +24,8 @@ google_secure_source_manager_hook: {
 		// Set to true to stop sending traffic.
 		disabled?: bool
 
-		// The events that trigger hook on. Possible values: ["PUSH", "PULL_REQUEST"]
+		// The events that trigger hook on. Possible values: ["PUSH", "PULL_REQUEST",
+		// "PULL_REQUEST_COMMENT"]
 		events?: [...string]
 
 		// The ID for the Hook.

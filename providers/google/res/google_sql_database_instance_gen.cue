@@ -388,6 +388,12 @@ google_sql_database_instance: {
 		// Pricing plan for this instance, can only be PER_USE.
 		pricing_plan?: string
 
+		// The acceptable replication lag, in seconds, after which a read replica
+		// recreates itself. The lag must persist for at least five minutes before
+		// recreation is triggered. This is a replica level field, and must be between
+		// 300 seconds (five minutes) and 31536000 seconds (one year).
+		replication_lag_max_seconds?: number
+
 		// When this parameter is set to true, Cloud SQL retains backups of the instance
 		// even after the instance is deleted. The ON_DEMAND backup will be retained
 		// until customer deletes the backup or the project. The AUTOMATED backup will
