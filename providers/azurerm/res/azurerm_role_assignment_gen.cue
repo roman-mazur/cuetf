@@ -23,5 +23,6 @@ azurerm_role_assignment: {
 		create?: string
 		delete?: string
 		read?:   string
+		update?: string
 	})
 }

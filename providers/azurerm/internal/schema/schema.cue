@@ -45292,6 +45292,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 					managed_disk_cmk_key_vault_id: {
 						type:             "string"
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 					}
 					managed_disk_cmk_key_vault_key_id: {
@@ -45327,6 +45328,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 					managed_services_cmk_key_vault_id: {
 						type:             "string"
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 					}
 					managed_services_cmk_key_vault_key_id: {
@@ -45533,6 +45535,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 					key_vault_id: {
 						type:             "string"
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 					}
 					key_vault_key_id: {
@@ -107927,7 +107930,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 					zones: {
 						type: ["set", "string"]
 						description_kind: "plain"
-						required:         true
+						optional:         true
 					}
 				}
 				block_types: {
@@ -115361,6 +115364,25 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						min_items: 1
 						max_items: 1
 					}
+					identity: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								identity_ids: {
+									type: ["set", "string"]
+									description_kind: "plain"
+									required:         true
+								}
+								type: {
+									type:             "string"
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
 					ingress_profile: {
 						nesting_mode: "list"
 						block: {
@@ -115441,9 +115463,69 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 									required:         true
 								}
 							}
+							block_types: load_balancer_profile: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										effective_outbound_ips: {
+											type: ["list", "string"]
+											description_kind: "plain"
+											computed:         true
+										}
+										managed_outbound_ip_count: {
+											type:             "number"
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									description_kind: "plain"
+								}
+								max_items: 1
+							}
 							description_kind: "plain"
 						}
 						min_items: 1
+						max_items: 1
+					}
+					platform_workload_identity_profile: {
+						nesting_mode: "list"
+						block: {
+							attributes: upgradeable_to: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							block_types: platform_workload_identity: {
+								nesting_mode: "set"
+								block: {
+									attributes: {
+										client_id: {
+											type:             "string"
+											description_kind: "plain"
+											computed:         true
+										}
+										identity_id: {
+											type:             "string"
+											description_kind: "plain"
+											required:         true
+										}
+										name: {
+											type:             "string"
+											description_kind: "plain"
+											required:         true
+										}
+										object_id: {
+											type:             "string"
+											description_kind: "plain"
+											computed:         true
+										}
+									}
+									description_kind: "plain"
+								}
+								min_items: 1
+							}
+							description_kind: "plain"
+						}
 						max_items: 1
 					}
 					service_principal: {
@@ -115464,7 +115546,6 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 							}
 							description_kind: "plain"
 						}
-						min_items: 1
 						max_items: 1
 					}
 					timeouts: {
@@ -118403,6 +118484,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 								optional:         true
 							}
 							read: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
 								type:             "string"
 								description_kind: "plain"
 								optional:         true
@@ -197110,6 +197196,24 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				description_kind: "plain"
 			}
 		}
+		azurerm_redhat_openshift_cluster: {
+			version: 0
+			block: {
+				attributes: {
+					resource_group_name: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					subscription_id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		azurerm_redis_cache: {
 			version: 0
 			block: {
@@ -197522,6 +197626,24 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_traffic_manager_profile: {
+			version: 0
+			block: {
+				attributes: {
+					resource_group_name: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					subscription_id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_user_assigned_identity: {
 			version: 0
 			block: {
 				attributes: {
@@ -199860,6 +199982,23 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				}
 			}
 		}
+		azurerm_redhat_openshift_cluster: {
+			version: 0
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				resource_group_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				subscription_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		azurerm_redis_cache: {
 			version: 0
 			attributes: {
@@ -200668,6 +200807,23 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_traffic_manager_profile: {
+			version: 0
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				resource_group_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				subscription_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		azurerm_user_assigned_identity: {
 			version: 0
 			attributes: {
 				name: {

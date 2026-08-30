@@ -18,7 +18,7 @@ azurerm_oracle_exadata_infrastructure: {
 		storage_count!:        number
 		storage_server_type?:  string
 		tags?: [string]: string
-		zones!: [...string]
+		zones?: [...string]
 	})
 
 	#maintenance_window: close({

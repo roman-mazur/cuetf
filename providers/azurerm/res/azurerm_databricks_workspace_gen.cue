@@ -17,7 +17,6 @@ azurerm_databricks_workspace: {
 		infrastructure_encryption_enabled?:                   bool
 		load_balancer_backend_address_pool_id?:               string
 		location!:                                            string
-		managed_disk_cmk_key_vault_id?:                       string
 		managed_disk_cmk_key_vault_key_id?:                   string
 		managed_disk_cmk_rotation_to_latest_version_enabled?: bool
 		managed_disk_identity?: [...close({
@@ -27,7 +26,6 @@ azurerm_databricks_workspace: {
 		})]
 		managed_resource_group_id?:             string
 		managed_resource_group_name?:           string
-		managed_services_cmk_key_vault_id?:     string
 		managed_services_cmk_key_vault_key_id?: string
 		name!:                                  string
 		network_security_group_rules_required?: string
