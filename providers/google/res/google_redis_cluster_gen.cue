@@ -16,6 +16,9 @@ google_redis_cluster: {
 		timeouts?: #timeouts
 		zone_distribution_config?: matchN(1, [#zone_distribution_config, list.MaxItems(1) & [...#zone_distribution_config]])
 
+		// Optional. The name of the ACL policy to attach to the cluster.
+		acl_policy?: string
+
 		// Optional. The authorization mode of the Redis cluster. If not provided, auth
 		// feature is disabled for the cluster. Default value: "AUTH_MODE_DISABLED"
 		// Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
@@ -65,6 +68,9 @@ google_redis_cluster: {
 		// This field represents the actual maintenance version of the cluster.
 		effective_maintenance_version?: string
 		id?:                            string
+
+		// Optional. Whether the ACL policy is in sync with the cluster.
+		is_acl_policy_in_sync?: bool
 
 		// The KMS key used to encrypt the at-rest data of the cluster.
 		kms_key?: string

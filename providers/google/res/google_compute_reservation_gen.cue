@@ -59,9 +59,6 @@ google_compute_reservation: {
 		name!:    string
 		project?: string
 
-		// The number of reservation blocks associated with this reservation.
-		reservation_block_count?: number
-
 		// Status information for Reservation resource.
 		resource_status?: [...close({
 			health_info?: [...close({

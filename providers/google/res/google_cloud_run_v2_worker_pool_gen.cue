@@ -449,7 +449,7 @@ google_cloud_run_v2_worker_pool: {
 
 	_#defs: "/$defs/template/$defs/containers/$defs/liveness_probe/$defs/http_get/$defs/http_headers": close({
 		// Required. The header field name
-		name?: string
+		name!: string
 
 		// Optional. The header field value
 		value?: string
@@ -524,7 +524,7 @@ google_cloud_run_v2_worker_pool: {
 
 	_#defs: "/$defs/template/$defs/containers/$defs/startup_probe/$defs/http_get/$defs/http_headers": close({
 		// Required. The header field name
-		name?: string
+		name!: string
 
 		// Optional. The header field value
 		value?: string

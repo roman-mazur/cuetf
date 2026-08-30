@@ -17,6 +17,10 @@ google_memorystore_instance: {
 		timeouts?: #timeouts
 		zone_distribution_config?: matchN(1, [#zone_distribution_config, list.MaxItems(1) & [...#zone_distribution_config]])
 
+		// The name of the ACL policy to attach to the instance.
+		// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
+		acl_policy?: string
+
 		// Optional. Immutable. Authorization mode of the instance. Possible values:
 		// AUTH_DISABLED
 		// IAM_AUTH.
@@ -86,6 +90,9 @@ google_memorystore_instance: {
 		// * Must not end with a hyphen
 		// * Must be unique within a location
 		instance_id!: string
+
+		// Whether the ACL policy is in sync with the cluster.
+		is_acl_policy_in_sync?: bool
 
 		// The KMS key used to encrypt the at-rest data of the cluster
 		kms_key?: string

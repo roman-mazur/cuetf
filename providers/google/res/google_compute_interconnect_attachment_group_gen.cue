@@ -56,7 +56,6 @@ google_compute_interconnect_attachment_group: {
 					facilities?: [...close({
 						facility?: string
 						zones?: [...close({
-							attachment?: [...string]
 							attachments?: [...string]
 							zone?: string
 						})]

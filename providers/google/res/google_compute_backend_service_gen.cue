@@ -122,7 +122,7 @@ google_compute_backend_service: {
 		// load balancing cannot be used with the other. For more information, refer to
 		// [Choosing a load
 		// balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-		// Default value: "EXTERNAL" Possible values: ["EXTERNAL",
+		// Default value: "EXTERNAL_MANAGED" Possible values: ["EXTERNAL",
 		// "INTERNAL_SELF_MANAGED", "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
 		load_balancing_scheme?: string
 
@@ -462,11 +462,29 @@ google_compute_backend_service: {
 		// OAuth2 Client ID for IAP
 		oauth2_client_id?: string
 
+		// OAuth2 Client ID for IAP
+		oauth2_client_id_wo?: string
+
+		// Triggers update of 'oauth2_client_id_wo' write-only. Increment this value
+		// when an update to 'oauth2_client_id_wo' is needed. For more info see
+		// [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		oauth2_client_id_wo_version?: string
+
 		// OAuth2 Client Secret for IAP
 		oauth2_client_secret?: string
 
 		// OAuth2 Client Secret SHA-256 for IAP
 		oauth2_client_secret_sha256?: string
+
+		// OAuth2 Client Secret for IAP
+		oauth2_client_secret_wo?: string
+
+		// Triggers update of 'oauth2_client_secret_wo' write-only. Increment this value
+		// when an update to 'oauth2_client_secret_wo' is needed. For more info see
+		// [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		oauth2_client_secret_wo_version?: string
 	})
 
 	#locality_lb_policies: close({

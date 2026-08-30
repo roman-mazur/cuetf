@@ -342,7 +342,8 @@ google_sql_database_instance: {
 					target_value?: number
 				})]
 			})]
-			retain_backups_on_delete?: bool
+			replication_lag_max_seconds?: number
+			retain_backups_on_delete?:    bool
 			sql_server_audit_config?: [...close({
 				bucket?:             string
 				retention_interval?: string

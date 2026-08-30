@@ -6,6 +6,7 @@ google_ces_toolset: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_ces_toolset")
 	close({
+		connector_toolset?: matchN(1, [#connector_toolset, list.MaxItems(1) & [...#connector_toolset]])
 		mcp_toolset?: matchN(1, [#mcp_toolset, list.MaxItems(1) & [...#mcp_toolset]])
 		open_api_toolset?: matchN(1, [#open_api_toolset, list.MaxItems(1) & [...#open_api_toolset]])
 		timeouts?: #timeouts
@@ -52,14 +53,30 @@ google_ces_toolset: {
 		// 'projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}'
 		name?: string
 
+		// The timeout for the toolset execution. If not set, the default timeout is
+		// 30 seconds for 'SYNCHRONOUS' toolsets and 60 seconds for 'ASYNCHRONOUS'
+		// toolsets.
+		timeout?: string
+		project?: string
+
 		// The ID to use for the toolset, which will become the final component of
 		// the toolset's resource name. If not provided, a unique ID will be
 		// automatically assigned for the toolset.
 		toolset_id!: string
-		project?:    string
 
 		// Timestamp when the toolset was last updated.
 		update_time?: string
+	})
+
+	#connector_toolset: close({
+		auth_config?: matchN(1, [_#defs."/$defs/connector_toolset/$defs/auth_config", list.MaxItems(1) & [..._#defs."/$defs/connector_toolset/$defs/auth_config"]])
+		connector_actions!: matchN(1, [_#defs."/$defs/connector_toolset/$defs/connector_actions", [_, ...] & [..._#defs."/$defs/connector_toolset/$defs/connector_actions"]])
+
+		// The full resource name of the referenced Integration Connectors
+		// Connection.
+		// Format:
+		// 'projects/{project}/locations/{location}/connections/{connection}'
+		connection!: string
 	})
 
 	#mcp_toolset: close({
@@ -114,6 +131,58 @@ google_ces_toolset: {
 
 		// Whether the tool is using fake mode.
 		enable_fake_mode?: bool
+	})
+
+	_#defs: "/$defs/connector_toolset/$defs/auth_config": close({
+		oauth2_auth_code_config?: matchN(1, [_#defs."/$defs/connector_toolset/$defs/auth_config/$defs/oauth2_auth_code_config", list.MaxItems(1) & [..._#defs."/$defs/connector_toolset/$defs/auth_config/$defs/oauth2_auth_code_config"]])
+		oauth2_jwt_bearer_config?: matchN(1, [_#defs."/$defs/connector_toolset/$defs/auth_config/$defs/oauth2_jwt_bearer_config", list.MaxItems(1) & [..._#defs."/$defs/connector_toolset/$defs/auth_config/$defs/oauth2_jwt_bearer_config"]])
+	})
+
+	_#defs: "/$defs/connector_toolset/$defs/auth_config/$defs/oauth2_auth_code_config": close({
+		// Oauth token parameter name to pass through.
+		// Must be in the format '$context.variables.<name_of_variable>'.
+		oauth_token!: string
+	})
+
+	_#defs: "/$defs/connector_toolset/$defs/auth_config/$defs/oauth2_jwt_bearer_config": close({
+		// Client parameter name to pass through.
+		// Must be in the format '$context.variables.<name_of_variable>'.
+		client_key!: string
+
+		// Issuer parameter name to pass through.
+		// Must be in the format '$context.variables.<name_of_variable>'.
+		issuer!: string
+
+		// Subject parameter name to pass through.
+		// Must be in the format '$context.variables.<name_of_variable>'.
+		subject!: string
+	})
+
+	_#defs: "/$defs/connector_toolset/$defs/connector_actions": close({
+		entity_operation?: matchN(1, [_#defs."/$defs/connector_toolset/$defs/connector_actions/$defs/entity_operation", list.MaxItems(1) & [..._#defs."/$defs/connector_toolset/$defs/connector_actions/$defs/entity_operation"]])
+
+		// ID of a Connection action for the tool to use.
+		connection_action_id?: string
+
+		// Entity fields to use as inputs for the operation.
+		input_fields?: [...string]
+
+		// Entity fields to return from the operation.
+		output_fields?: [...string]
+	})
+
+	_#defs: "/$defs/connector_toolset/$defs/connector_actions/$defs/entity_operation": close({
+		// ID of the entity.
+		entity_id!: string
+
+		// Operation to perform on the entity.
+		// Possible values:
+		// LIST
+		// GET
+		// CREATE
+		// UPDATE
+		// DELETE
+		operation!: string
 	})
 
 	_#defs: "/$defs/mcp_toolset/$defs/api_authentication": close({

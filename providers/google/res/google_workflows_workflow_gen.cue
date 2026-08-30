@@ -87,7 +87,7 @@ google_workflows_workflow: {
 		//
 		// ~> **Warning:** This field is currently optional but **will become REQUIRED**
 		// in version 8.0.0 of the provider to align with API constraints.
-		source_contents?: string
+		source_contents!: string
 
 		// State of the workflow deployment.
 		state?: string

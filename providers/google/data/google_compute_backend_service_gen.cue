@@ -182,10 +182,14 @@ google_compute_backend_service: {
 		// Settings for enabling Cloud Identity Aware Proxy.
 		// If OAuth client is not set, the Google-managed OAuth client is used.
 		iap?: [...close({
-			enabled?:                     bool
-			oauth2_client_id?:            string
-			oauth2_client_secret?:        string
-			oauth2_client_secret_sha256?: string
+			enabled?:                         bool
+			oauth2_client_id?:                string
+			oauth2_client_id_wo?:             string
+			oauth2_client_id_wo_version?:     string
+			oauth2_client_secret?:            string
+			oauth2_client_secret_sha256?:     string
+			oauth2_client_secret_wo?:         string
+			oauth2_client_secret_wo_version?: string
 		})]
 		id?: string
 
@@ -199,7 +203,7 @@ google_compute_backend_service: {
 		// load balancing cannot be used with the other. For more information, refer to
 		// [Choosing a load
 		// balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-		// Default value: "EXTERNAL" Possible values: ["EXTERNAL",
+		// Default value: "EXTERNAL_MANAGED" Possible values: ["EXTERNAL",
 		// "INTERNAL_SELF_MANAGED", "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
 		load_balancing_scheme?: string
 

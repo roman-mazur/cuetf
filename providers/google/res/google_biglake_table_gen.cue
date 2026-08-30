@@ -78,6 +78,8 @@ google_biglake_table: {
 	})
 
 	_#defs: "/$defs/hive_options/$defs/storage_descriptor": close({
+		serde_info?: matchN(1, [_#defs."/$defs/hive_options/$defs/storage_descriptor/$defs/serde_info", list.MaxItems(1) & [..._#defs."/$defs/hive_options/$defs/storage_descriptor/$defs/serde_info"]])
+
 		// The fully qualified Java class name of the input format.
 		input_format?: string
 
@@ -86,5 +88,10 @@ google_biglake_table: {
 
 		// The fully qualified Java class name of the output format.
 		output_format?: string
+	})
+
+	_#defs: "/$defs/hive_options/$defs/storage_descriptor/$defs/serde_info": close({
+		// The fully qualified Java class name of the serialization library.
+		serialization_lib?: string
 	})
 }

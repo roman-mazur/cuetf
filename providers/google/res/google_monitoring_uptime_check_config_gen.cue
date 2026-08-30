@@ -222,7 +222,9 @@ google_monitoring_uptime_check_config: {
 		// The password to authenticate.
 		password_wo?: string
 
-		// The password write-only version.
+		// Triggers update of 'password_wo' write-only. Increment this value when an
+		// update to 'password_wo' is needed. For more info see [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 		password_wo_version?: string
 
 		// The username to authenticate.

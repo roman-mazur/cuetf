@@ -135,7 +135,6 @@ provider: {
 		memcache_custom_endpoint?:                   string
 		memorystore_custom_endpoint?:                string
 		migration_center_custom_endpoint?:           string
-		ml_engine_custom_endpoint?:                  string
 		model_armor_custom_endpoint?:                string
 		model_armor_global_custom_endpoint?:         string
 		monitoring_custom_endpoint?:                 string
@@ -145,7 +144,6 @@ provider: {
 		network_management_custom_endpoint?:         string
 		network_security_custom_endpoint?:           string
 		network_services_custom_endpoint?:           string
-		notebooks_custom_endpoint?:                  string
 		observability_custom_endpoint?:              string
 		oracle_database_custom_endpoint?:            string
 		org_policy_custom_endpoint?:                 string

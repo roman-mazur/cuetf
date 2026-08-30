@@ -62,9 +62,6 @@ google_compute_reservation: {
 		})]
 		project?: string
 
-		// The number of reservation blocks associated with this reservation.
-		reservation_block_count?: number
-
 		// Sharing policy for reservations with Google Cloud managed services.
 		reservation_sharing_policy?: [...close({
 			service_share_type?: string

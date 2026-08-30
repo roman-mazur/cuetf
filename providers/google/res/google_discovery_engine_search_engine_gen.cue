@@ -99,11 +99,10 @@ google_discovery_engine_search_engine: {
 	#search_engine_config: close({
 		// The required subscription tier of this engine.
 		//
-		// They cannot be modified after engine creation. If the required subscription
-		// tier is search, user with higher license tier like assist can still access
-		// the standalone app associated with this engine. Possible values:
-		// ["SUBSCRIPTION_TIER_UNSPECIFIED", "SUBSCRIPTION_TIER_SEARCH",
-		// "SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT",
+		// If the required subscription tier is search, user with higher license tier
+		// like assist can still access the standalone app associated with this engine.
+		// Possible values: ["SUBSCRIPTION_TIER_UNSPECIFIED",
+		// "SUBSCRIPTION_TIER_SEARCH", "SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT",
 		// "SUBSCRIPTION_TIER_FRONTLINE_WORKER",
 		// "SUBSCRIPTION_TIER_AGENTSPACE_STARTER",
 		// "SUBSCRIPTION_TIER_AGENTSPACE_BUSINESS", "SUBSCRIPTION_TIER_ENTERPRISE",
