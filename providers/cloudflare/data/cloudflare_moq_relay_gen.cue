@@ -25,10 +25,14 @@ cloudflare_moq_relay: {
 				// object (not a bare string) so per-upstream configuration can be
 				// added in the future without another breaking change.
 				upstreams?: matchN(1, [close({
-					// Upstream MOQT server publisher URL.
+					// Upstream MOQT server publisher URL. Must be an absolute URL with a
+					// host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
+					// (WebTransport). Validated on update (PUT); rejected with 21013.
 					url?: string
 				}), [...close({
-					// Upstream MOQT server publisher URL.
+					// Upstream MOQT server publisher URL. Must be an absolute URL with a
+					// host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
+					// (WebTransport). Validated on update (PUT); rejected with 21013.
 					url?: string
 				})]])
 			})
@@ -49,7 +53,8 @@ cloudflare_moq_relay: {
 			// on the current page, to fetch the previous page).
 			created_before?: string
 
-			// Maximum number of relays to return per page.
+			// Maximum number of relays to return per page. Values above the maximum are
+			// clamped to it rather than rejected.
 			per_page?: number
 		})
 		id?:       string

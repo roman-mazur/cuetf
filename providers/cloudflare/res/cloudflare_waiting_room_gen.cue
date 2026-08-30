@@ -84,8 +84,9 @@ cloudflare_waiting_room: {
 		// Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP",
 		// "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR",
 		// "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI",
-		// "lt-LT", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU",
-		// "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
+		// "lt-LT", "lv-LV", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN",
+		// "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA",
+		// "vi-VN".
 		default_template_language?: string
 
 		// A note that you can use to add more details about the waiting room.

@@ -28,11 +28,35 @@ cloudflare_zero_trust_access_ai_controls_mcp_server: {
 			})
 			has_client_secret?: bool
 		})
+
+		// Static credential for the upstream MCP server. For auth_type "bearer", either
+		// a raw token string (e.g. "sk-abc123"), which is wrapped server-side as
+		// `Authorization: Bearer <token>`, or a JSON-encoded object of the form
+		// `{"headers":{"Header-Name":"value",...}}` for custom or multiple static
+		// headers (e.g. Cloudflare Access service tokens:
+		// `{"headers":{"cf-access-client-id":"...","cf-access-client-secret":"..."}}`).
 		auth_credentials?: string
-		created_at?:       string
-		created_by?:       string
-		description?:      string
-		error?:            string
+
+		// Authentication method used to connect to the upstream MCP server.
+		// Available values: "oauth", "bearer", "unauthenticated".
+		auth_type!: string
+
+		// Whether administrative authentication is required before capabilities can be
+		// synced. Manual OAuth is user-managed and has no administrative
+		// authentication flow.
+		// Available values: "not_required", "required", "connected", "stale", "manual".
+		authentication_status?: string
+
+		// Pre-registered OAuth client_secret. Write-only - accepted on create/update
+		// when auth_credentials.auth_mode is 'manual'. Stored AES-GCM-encrypted in
+		// server_oauth_secrets; never returned by read endpoints.
+		client_secret?: string
+		created_at?:    string
+		created_by?:    string
+
+		// Optional description of the MCP server.
+		description?: string
+		error?:       string
 		error_details?: close({
 			// Underlying error message
 			cause?: string
@@ -50,60 +74,87 @@ cloudflare_zero_trust_access_ai_controls_mcp_server: {
 			status_code?: number
 		})
 
-		// Available values: "oauth", "bearer", "unauthenticated".
-		auth_type!: string
-		hostname!:  string
+		// URL of the upstream MCP endpoint.
+		hostname!: string
+
+		// Unique identifier for the MCP server.
+		id!: string
 
 		// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback
 		// endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the
 		// customer portal hostname. Defaults to false (off); opt in per server by
-		// setting true. Effective behavior is gated by the gateway worker's per-env
-		// rollout mode KV key.
+		// setting true.
 		is_shared_oauth_callback_enabled?: bool
 		last_successful_sync?:             string
 		last_synced?:                      string
 		modified_at?:                      string
 		modified_by?:                      string
-		name!:                             string
+
+		// Display name for the MCP server.
+		name!: string
 		prompts?: [...{
 			[string]: string
 		}]
 
-		// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+		// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
 		secure_web_gateway?: bool
 		status?:             string
 		tools?: [...{
 			[string]: string
 		}]
+
+		// Server-wide prompt capability overrides.
 		updated_prompts?: matchN(1, [close({
-			alias?:       string
+			// Custom name exposed for the capability.
+			alias?: string
+
+			// Custom description exposed for the capability.
 			description?: string
-			enabled?:     bool
-			name!:        string
+
+			// Whether the capability is available through the MCP server.
+			enabled?: bool
+
+			// Name of the tool or prompt capability to override.
+			name!: string
 		}), [...close({
-			alias?:       string
+			// Custom name exposed for the capability.
+			alias?: string
+
+			// Custom description exposed for the capability.
 			description?: string
-			enabled?:     bool
-			name!:        string
+
+			// Whether the capability is available through the MCP server.
+			enabled?: bool
+
+			// Name of the tool or prompt capability to override.
+			name!: string
 		})]])
 
-		// Pre-registered OAuth client_secret. Write-only - accepted on create/update
-		// when auth_credentials.auth_mode is 'manual'. Stored AES-GCM-encrypted in
-		// server_oauth_secrets; never returned by read endpoints.
-		client_secret?: string
+		// Server-wide tool capability overrides.
 		updated_tools?: matchN(1, [close({
-			alias?:       string
-			description?: string
-			enabled?:     bool
-			name!:        string
-		}), [...close({
-			alias?:       string
-			description?: string
-			enabled?:     bool
-			name!:        string
-		})]])
+			// Custom name exposed for the capability.
+			alias?: string
 
-		// server id
-		id!: string
+			// Custom description exposed for the capability.
+			description?: string
+
+			// Whether the capability is available through the MCP server.
+			enabled?: bool
+
+			// Name of the tool or prompt capability to override.
+			name!: string
+		}), [...close({
+			// Custom name exposed for the capability.
+			alias?: string
+
+			// Custom description exposed for the capability.
+			description?: string
+
+			// Whether the capability is available through the MCP server.
+			enabled?: bool
+
+			// Name of the tool or prompt capability to override.
+			name!: string
+		})]])
 	})
 }

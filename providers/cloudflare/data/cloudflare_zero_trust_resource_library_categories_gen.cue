@@ -24,7 +24,7 @@ cloudflare_zero_trust_resource_library_categories: {
 			description?: string
 
 			// Returns the category ID.
-			id?: string
+			id?: number
 
 			// Returns the category name.
 			name?: string
@@ -36,7 +36,7 @@ cloudflare_zero_trust_resource_library_categories: {
 			description?: string
 
 			// Returns the category ID.
-			id?: string
+			id?: number
 
 			// Returns the category name.
 			name?: string

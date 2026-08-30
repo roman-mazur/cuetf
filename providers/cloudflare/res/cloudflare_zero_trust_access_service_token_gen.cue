@@ -25,7 +25,13 @@ cloudflare_zero_trust_access_service_token: {
 		// format `300ms` or `2h45m`, or the special value `forever` for non-expiring
 		// tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1
 		// year in hours (8760h).
-		duration?:   string
+		duration?: string
+
+		// Whether the service token is enabled. A disabled service token cannot be used
+		// to authenticate; both its current and previous `client_secret` stop being
+		// accepted, but the token itself is preserved and can be re-enabled at any
+		// time. Defaults to enabled when omitted on create.
+		enabled?:    bool
 		expires_at?: string
 
 		// The ID of the service token.

@@ -17,23 +17,23 @@ cloudflare_zero_trust_dlp_entry: {
 			// Indicates whether this entry has any form of validation that is not an AI remote service.
 			available?: bool
 		})
-		created_at?:  string
+		created_at?: string
+
+		// Whether this entry is deprecated for new use. This is computed from the static catalog and
+		// emitted only when true.
+		deprecated?:  bool
 		description?: string
 		enabled!:     bool
 		id?:          string
 		name!:        string
-		profile_id?:  string
-		secret?:      bool
-
-		// Available values: "custom", "predefined", "integration".
-		type?: string
 		pattern!: close({
 			regex!: string
 		})
-		updated_at?: string
+		profile_id?: string
+		secret?:     bool
 
-		// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
-		upload_status?: string
+		// Available values: "custom", "predefined", "integration".
+		type?: string
 		profiles?: matchN(1, [close({
 			id?:   string
 			name?: string
@@ -41,6 +41,10 @@ cloudflare_zero_trust_dlp_entry: {
 			id?:   string
 			name?: string
 		})]])
+		updated_at?: string
+
+		// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+		upload_status?: string
 
 		// A Predefined AI prompt classification topic entry.
 		variant?: close({

@@ -6,77 +6,162 @@ cloudflare_zero_trust_access_ai_controls_mcp_portal: {
 	close({
 		account_id!: string
 
-		// Allow remote code execution in Dynamic Workers (beta)
-		allow_code_mode?: bool
-		created_at?:      string
-		created_by?:      string
-		description?:     string
-		hostname!:        string
+		// Code Mode policy for this portal. `off`: Code Mode is unavailable; query
+		// parameters are ignored. `opt_in`: Code Mode is off by default; clients turn
+		// it on with `?codemode=search_and_execute`. `default_on`: Code Mode is on by
+		// default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is
+		// always on; query parameters are ignored. Defaults to `opt_in` when omitted
+		// on create. If both `code_mode` and `allow_code_mode` are sent, they must be
+		// consistent or the request returns a 400.
+		// Available values: "off", "opt_in", "default_on", "enforced".
+		code_mode?:  string
+		created_at?: string
+		created_by?: string
 
-		// portal id
+		// Optional description of the MCP portal.
+		description?: string
+
+		// Hostname where the MCP portal is available.
+		hostname!: string
+
+		// Unique identifier for the MCP portal.
 		id!:          string
 		modified_at?: string
 		modified_by?: string
-		name!:        string
 
-		// Route outbound MCP traffic through Zero Trust Secure Web Gateway
+		// Display name for the MCP portal.
+		name!: string
+
+		// Route outbound MCP traffic through Zero Trust Secure Web Gateway.
 		secure_web_gateway?: bool
+
+		// MCP servers attached to the portal and their portal-specific settings.
 		servers?: matchN(1, [close({
+			// Disable this server by default for clients connecting through the portal.
 			default_disabled?: bool
 
-			// server id
-			server_id!: string
+			// Portal-specific prompt overrides.
 			updated_prompts?: matchN(1, [close({
-				alias?:       string
+				// Custom name exposed for the capability.
+				alias?: string
+
+				// Custom description exposed for the capability.
 				description?: string
-				enabled?:     bool
-				name!:        string
+
+				// Whether the capability is available through the MCP server.
+				enabled?: bool
+
+				// Name of the tool or prompt capability to override.
+				name!: string
 			}), [...close({
-				alias?:       string
+				// Custom name exposed for the capability.
+				alias?: string
+
+				// Custom description exposed for the capability.
 				description?: string
-				enabled?:     bool
-				name!:        string
+
+				// Whether the capability is available through the MCP server.
+				enabled?: bool
+
+				// Name of the tool or prompt capability to override.
+				name!: string
 			})]])
+
+			// Use end-user OAuth credentials when connecting this server to the portal.
 			on_behalf?: bool
+
+			// Portal-specific tool overrides.
 			updated_tools?: matchN(1, [close({
-				alias?:       string
+				// Custom name exposed for the capability.
+				alias?: string
+
+				// Custom description exposed for the capability.
 				description?: string
-				enabled?:     bool
-				name!:        string
+
+				// Whether the capability is available through the MCP server.
+				enabled?: bool
+
+				// Name of the tool or prompt capability to override.
+				name!: string
 			}), [...close({
-				alias?:       string
+				// Custom name exposed for the capability.
+				alias?: string
+
+				// Custom description exposed for the capability.
 				description?: string
-				enabled?:     bool
-				name!:        string
+
+				// Whether the capability is available through the MCP server.
+				enabled?: bool
+
+				// Name of the tool or prompt capability to override.
+				name!: string
 			})]])
+
+			// Unique identifier for the MCP server.
+			server_id!: string
 		}), [...close({
+			// Disable this server by default for clients connecting through the portal.
 			default_disabled?: bool
 
-			// server id
-			server_id!: string
+			// Portal-specific prompt overrides.
 			updated_prompts?: matchN(1, [close({
-				alias?:       string
+				// Custom name exposed for the capability.
+				alias?: string
+
+				// Custom description exposed for the capability.
 				description?: string
-				enabled?:     bool
-				name!:        string
+
+				// Whether the capability is available through the MCP server.
+				enabled?: bool
+
+				// Name of the tool or prompt capability to override.
+				name!: string
 			}), [...close({
-				alias?:       string
+				// Custom name exposed for the capability.
+				alias?: string
+
+				// Custom description exposed for the capability.
 				description?: string
-				enabled?:     bool
-				name!:        string
+
+				// Whether the capability is available through the MCP server.
+				enabled?: bool
+
+				// Name of the tool or prompt capability to override.
+				name!: string
 			})]])
+
+			// Use end-user OAuth credentials when connecting this server to the portal.
 			on_behalf?: bool
+
+			// Portal-specific tool overrides.
 			updated_tools?: matchN(1, [close({
-				alias?:       string
+				// Custom name exposed for the capability.
+				alias?: string
+
+				// Custom description exposed for the capability.
 				description?: string
-				enabled?:     bool
-				name!:        string
+
+				// Whether the capability is available through the MCP server.
+				enabled?: bool
+
+				// Name of the tool or prompt capability to override.
+				name!: string
 			}), [...close({
-				alias?:       string
+				// Custom name exposed for the capability.
+				alias?: string
+
+				// Custom description exposed for the capability.
 				description?: string
-				enabled?:     bool
-				name!:        string
+
+				// Whether the capability is available through the MCP server.
+				enabled?: bool
+
+				// Name of the tool or prompt capability to override.
+				name!: string
 			})]])
+
+			// Unique identifier for the MCP server.
+			server_id!: string
 		})]])
 	})
 }

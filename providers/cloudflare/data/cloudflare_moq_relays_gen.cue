@@ -24,7 +24,8 @@ cloudflare_moq_relays: {
 		// Max items to fetch, default: 1000
 		max_items?: number
 
-		// Maximum number of relays to return per page.
+		// Maximum number of relays to return per page. Values above the maximum are
+		// clamped to it rather than rejected.
 		per_page?: number
 
 		// The items returned by the data source

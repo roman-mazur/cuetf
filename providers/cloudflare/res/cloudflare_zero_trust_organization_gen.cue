@@ -61,8 +61,8 @@ cloudflare_zero_trust_organization: {
 
 		// Configures multi-factor authentication (MFA) settings for an organization.
 		mfa_config?: close({
-			// Lists the MFA methods that users can authenticate with. `ssh_piv_key` is only
-			// relevant for infrastructure applications.
+			// Lists the MFA methods that users can authenticate with. The `piv_key` and
+			// `ssh_fido2_key` values are supported only for infrastructure applications.
 			allowed_authenticators?: [...string]
 
 			// Allows a user to skip MFA via Authentication Method Reference (AMR) matching
@@ -86,8 +86,9 @@ cloudflare_zero_trust_organization: {
 		// Determines whether global MFA settings apply to applications by default. The
 		// organization must have MFA enabled with at least one authentication method
 		// and a session duration configured. Note: 'allowed_authenticators' cannot
-		// only contain 'ssh_piv_key' if the organization has any non-infrastructure
-		// applications because PIV keys are only compatible with infrastructure apps.
+		// contain only the infrastructure SSH authenticators ('piv_key' and
+		// 'ssh_fido2_key') if the organization has any non-infrastructure
+		// applications.
 		mfa_required_for_all_apps?: bool
 
 		// Configures SSH PIV key requirements for MFA using hardware security keys.
@@ -132,6 +133,11 @@ cloudflare_zero_trust_organization: {
 		// this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`.
 		// Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
 		user_seat_expiration_inactive_time?: string
+
+		// When enabled, unsuccessful WARP authentication requests with a non-HTML
+		// Accept header return a 401 response instead of redirecting to the login
+		// page.
+		warp_auth_non_browser_401?: bool
 
 		// The amount of time that tokens issued for applications will be valid. Must be
 		// in the format `30m` or `2h45m`. Valid time units are: m, h.

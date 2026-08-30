@@ -125,9 +125,10 @@ cloudflare_ai_gateway: {
 		})
 
 		// gateway id
-		id?:             string
-		is_default?:     bool
-		log_management?: number
+		id?:                 string
+		is_default?:         bool
+		log_classification?: bool
+		log_management?:     number
 
 		// Available values: "STOP_INSERTING", "DELETE_OLDEST".
 		log_management_strategy?: string
@@ -231,8 +232,10 @@ cloudflare_ai_gateway: {
 		retry_max_attempts?: number
 
 		// Controls how Workers AI inference calls routed through this gateway are
-		// billed. Only 'postpaid' is currently supported.
-		// Available values: "postpaid".
+		// billed. 'postpaid' bills the account directly through Workers AI; 'unified'
+		// deducts credits via AI Gateway using neuron-based pricing and delegates
+		// billing to AI Gateway.
+		// Available values: "postpaid", "unified".
 		workers_ai_billing_mode?: string
 		zdr?:                     bool
 	})
