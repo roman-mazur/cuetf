@@ -6,7 +6,6 @@ azurerm_databricks_workspace_root_dbfs_customer_managed_key: {
 	close({
 		timeouts?:         #timeouts
 		id?:               string
-		key_vault_id?:     string
 		key_vault_key_id!: string
 		workspace_id!:     string
 	})

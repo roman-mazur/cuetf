@@ -8,10 +8,12 @@ azurerm_redhat_openshift_cluster: {
 	close({
 		api_server_profile!: matchN(1, [#api_server_profile, list.MaxItems(1) & [_, ...] & [...#api_server_profile]])
 		cluster_profile!: matchN(1, [#cluster_profile, list.MaxItems(1) & [_, ...] & [...#cluster_profile]])
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		ingress_profile!: matchN(1, [#ingress_profile, list.MaxItems(1) & [_, ...] & [...#ingress_profile]])
 		main_profile!: matchN(1, [#main_profile, list.MaxItems(1) & [_, ...] & [...#main_profile]])
 		network_profile!: matchN(1, [#network_profile, list.MaxItems(1) & [_, ...] & [...#network_profile]])
-		service_principal!: matchN(1, [#service_principal, list.MaxItems(1) & [_, ...] & [...#service_principal]])
+		platform_workload_identity_profile?: matchN(1, [#platform_workload_identity_profile, list.MaxItems(1) & [...#platform_workload_identity_profile]])
+		service_principal?: matchN(1, [#service_principal, list.MaxItems(1) & [...#service_principal]])
 		timeouts?: #timeouts
 		worker_profile!: matchN(1, [#worker_profile, list.MaxItems(1) & [_, ...] & [...#worker_profile]])
 		console_url?:         string
@@ -37,6 +39,11 @@ azurerm_redhat_openshift_cluster: {
 		version!:                     string
 	})
 
+	#identity: close({
+		identity_ids!: [...string]
+		type!: string
+	})
+
 	#ingress_profile: close({
 		ip_address?: string
 		name?:       string
@@ -51,10 +58,16 @@ azurerm_redhat_openshift_cluster: {
 	})
 
 	#network_profile: close({
+		load_balancer_profile?: matchN(1, [_#defs."/$defs/network_profile/$defs/load_balancer_profile", list.MaxItems(1) & [..._#defs."/$defs/network_profile/$defs/load_balancer_profile"]])
 		outbound_type?:                                string
 		pod_cidr!:                                     string
 		preconfigured_network_security_group_enabled?: bool
 		service_cidr!:                                 string
+	})
+
+	#platform_workload_identity_profile: close({
+		platform_workload_identity!: matchN(1, [_#defs."/$defs/platform_workload_identity_profile/$defs/platform_workload_identity", [_, ...] & [..._#defs."/$defs/platform_workload_identity_profile/$defs/platform_workload_identity"]])
+		upgradeable_to?: string
 	})
 
 	#service_principal: close({
@@ -76,5 +89,17 @@ azurerm_redhat_openshift_cluster: {
 		node_count!:                 number
 		subnet_id!:                  string
 		vm_size!:                    string
+	})
+
+	_#defs: "/$defs/network_profile/$defs/load_balancer_profile": close({
+		effective_outbound_ips?: [...string]
+		managed_outbound_ip_count!: number
+	})
+
+	_#defs: "/$defs/platform_workload_identity_profile/$defs/platform_workload_identity": close({
+		client_id?:   string
+		identity_id!: string
+		name!:        string
+		object_id?:   string
 	})
 }
