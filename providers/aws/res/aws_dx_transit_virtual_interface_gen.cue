@@ -16,7 +16,8 @@ aws_dx_transit_virtual_interface: {
 		amazon_side_asn?:     string
 		arn?:                 string
 		aws_device?:          string
-		bgp_asn!:             number
+		bgp_asn?:             number
+		bgp_asn_long?:        string
 		bgp_auth_key?:        string
 		connection_id!:       string
 		customer_address?:    string
