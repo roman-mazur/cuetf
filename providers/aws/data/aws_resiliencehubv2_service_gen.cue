@@ -7,6 +7,7 @@ aws_resiliencehubv2_service: {
 		arn!: string
 		associated_system?: [...close({
 			system_arn?: string
+			user_journey_ids?: [...string]
 		})]
 		description?: string
 		kms_key_id?:  string

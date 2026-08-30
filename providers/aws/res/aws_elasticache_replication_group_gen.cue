@@ -20,6 +20,8 @@ aws_elasticache_replication_group: {
 		at_rest_encryption_enabled?:     string
 		auth_token?:                     string
 		auth_token_update_strategy?:     string
+		auth_token_wo?:                  string
+		auth_token_wo_version?:          number
 		auto_minor_version_upgrade?:     string
 		automatic_failover_enabled?:     bool
 		cluster_enabled?:                bool

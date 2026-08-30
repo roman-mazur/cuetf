@@ -7,7 +7,7 @@ aws_secretsmanager_secret_rotation: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_secretsmanager_secret_rotation")
 	close({
 		external_secret_rotation_metadata?: matchN(1, [#external_secret_rotation_metadata, [...#external_secret_rotation_metadata]])
-		rotation_rules!: matchN(1, [#rotation_rules, list.MaxItems(1) & [_, ...] & [...#rotation_rules]])
+		rotation_rules?: matchN(1, [#rotation_rules, list.MaxItems(1) & [...#rotation_rules]])
 		external_secret_rotation_role_arn?: string
 
 		// Region where this resource will be

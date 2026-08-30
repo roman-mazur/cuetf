@@ -11,9 +11,11 @@ aws_observabilityadmin_centralization_rule_for_organization: {
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:    string
-		rule_arn?:  string
-		rule_name!: string
+		region?:                         string
+		rule_arn?:                       string
+		rule_name!:                      string
+		tag_propagation_failure_reason?: string
+		tag_propagation_status?:         string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 	})
@@ -48,6 +50,7 @@ aws_observabilityadmin_centralization_rule_for_organization: {
 		backup_configuration?: matchN(1, [_#defs."/$defs/rule/$defs/destination/$defs/destination_logs_configuration/$defs/backup_configuration", [..._#defs."/$defs/rule/$defs/destination/$defs/destination_logs_configuration/$defs/backup_configuration"]])
 		log_group_name_configuration?: matchN(1, [_#defs."/$defs/rule/$defs/destination/$defs/destination_logs_configuration/$defs/log_group_name_configuration", [..._#defs."/$defs/rule/$defs/destination/$defs/destination_logs_configuration/$defs/log_group_name_configuration"]])
 		logs_encryption_configuration?: matchN(1, [_#defs."/$defs/rule/$defs/destination/$defs/destination_logs_configuration/$defs/logs_encryption_configuration", [..._#defs."/$defs/rule/$defs/destination/$defs/destination_logs_configuration/$defs/logs_encryption_configuration"]])
+		tag_propagation_configuration?: matchN(1, [_#defs."/$defs/rule/$defs/destination/$defs/destination_logs_configuration/$defs/tag_propagation_configuration", [..._#defs."/$defs/rule/$defs/destination/$defs/destination_logs_configuration/$defs/tag_propagation_configuration"]])
 	})
 
 	_#defs: "/$defs/rule/$defs/destination/$defs/destination_logs_configuration/$defs/backup_configuration": close({
@@ -64,6 +67,11 @@ aws_observabilityadmin_centralization_rule_for_organization: {
 		encryption_scope?:                        string
 		encryption_strategy!:                     string
 		kms_key_arn?:                             string
+	})
+
+	_#defs: "/$defs/rule/$defs/destination/$defs/destination_logs_configuration/$defs/tag_propagation_configuration": close({
+		destination_role_arn!:             string
+		tag_conflict_resolution_strategy?: string
 	})
 
 	_#defs: "/$defs/rule/$defs/destination/$defs/destination_metrics_configuration": close({

@@ -64,6 +64,7 @@ aws_workspaces_directory: {
 	})
 
 	#workspace_access_properties: close({
+		access_endpoint_config?: matchN(1, [_#defs."/$defs/workspace_access_properties/$defs/access_endpoint_config", list.MaxItems(1) & [..._#defs."/$defs/workspace_access_properties/$defs/access_endpoint_config"]])
 		device_type_android?:    string
 		device_type_chromeos?:   string
 		device_type_ios?:        string
@@ -80,5 +81,15 @@ aws_workspaces_directory: {
 		enable_internet_access?:              bool
 		enable_maintenance_mode?:             bool
 		user_enabled_as_local_administrator?: bool
+	})
+
+	_#defs: "/$defs/workspace_access_properties/$defs/access_endpoint_config": close({
+		access_endpoints!: matchN(1, [_#defs."/$defs/workspace_access_properties/$defs/access_endpoint_config/$defs/access_endpoints", [_, ...] & [..._#defs."/$defs/workspace_access_properties/$defs/access_endpoint_config/$defs/access_endpoints"]])
+		internet_fallback_protocols?: [...string]
+	})
+
+	_#defs: "/$defs/workspace_access_properties/$defs/access_endpoint_config/$defs/access_endpoints": close({
+		access_endpoint_type!: string
+		vpc_endpoint_id!:      string
 	})
 }

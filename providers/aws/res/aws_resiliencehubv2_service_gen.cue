@@ -25,6 +25,7 @@ aws_resiliencehubv2_service: {
 
 	#associated_system: close({
 		system_arn!: string
+		user_journey_ids?: [...string]
 	})
 
 	#permission_model: close({
