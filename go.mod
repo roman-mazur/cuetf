@@ -7,7 +7,7 @@ tool cuelang.org/go/cmd/cue
 require (
 	cuelang.org/go v0.17.1
 	github.com/hashicorp/hcl/v2 v2.24.0
-	github.com/rogpeppe/go-internal v1.15.0
+	github.com/rogpeppe/go-internal v1.16.0
 )
 
 require (
