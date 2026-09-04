@@ -19589,531 +19589,6 @@ InstanceTypes: [{
     RebootMigrationSupport: "unsupported"
     SupportedInRegion:      true
 }, {
-    InstanceType:      "g4ad.16xlarge"
-    CurrentGeneration: true
-    FreeTierEligible:  false
-    SupportedUsageClasses: ["on-demand", "spot"]
-    SupportedRootDeviceTypes: ["ebs"]
-    SupportedVirtualizationTypes: ["hvm"]
-    BareMetal:  false
-    Hypervisor: "nitro"
-    ProcessorInfo: {
-        SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 3.0
-        Manufacturer:             "AMD"
-    }
-    VCpuInfo: {
-        DefaultVCpus:          64
-        DefaultCores:          32
-        DefaultThreadsPerCore: 2
-        ValidCores: [2, 4, 8, 16, 32]
-        ValidThreadsPerCore: [1, 2]
-    }
-    MemoryInfo: {
-        SizeInMiB: 262144
-    }
-    InstanceStorageSupported: true
-    InstanceStorageInfo: {
-        TotalSizeInGB: 2400
-        Disks: [{
-            SizeInGB: 1200
-            Count:    2
-            Type:     "ssd"
-        }]
-        NvmeSupport:       "required"
-        EncryptionSupport: "required"
-    }
-    EbsInfo: {
-        EbsOptimizedSupport: "default"
-        EncryptionSupport:   "supported"
-        EbsOptimizedInfo: {
-            BaselineBandwidthInMbps:  6300
-            BaselineThroughputInMBps: 787.5
-            BaselineIops:             26667
-            MaximumBandwidthInMbps:   6300
-            MaximumThroughputInMBps:  787.5
-            MaximumIops:              26667
-        }
-        NvmeSupport:           "required"
-        MaximumEbsAttachments: 21
-        AttachmentLimitType:   "shared"
-    }
-    NetworkInfo: {
-        NetworkPerformance:       "25 Gigabit"
-        MaximumNetworkInterfaces: 8
-        MaximumNetworkCards:      1
-        DefaultNetworkCardIndex:  0
-        NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "25 Gigabit"
-            MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          25.0
-            PeakBandwidthInGbps:              25.0
-            DefaultEnaQueueCountPerInterface: 32
-        }]
-        Ipv4AddressesPerInterface:    30
-        Ipv6AddressesPerInterface:    30
-        Ipv6Supported:                true
-        EnaSupport:                   "required"
-        EfaSupported:                 false
-        EncryptionInTransitSupported: true
-        EnaSrdSupported:              false
-        FlexibleEnaQueuesSupport:     "unsupported"
-        ConnectionTrackingConfiguration: {
-            DefaultTcpEstablishedTimeout: 432000
-            DefaultUdpTimeout:            30
-            DefaultUdpStreamTimeout:      180
-        }
-        SecondaryNetworkSupported: false
-    }
-    GpuInfo: {
-        Gpus: [{
-            Name:             "Radeon Pro V520"
-            Manufacturer:     "AMD"
-            Count:            4
-            LogicalGpuCount:  4
-            GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
-            MemoryInfo: {
-                SizeInMiB: 8192
-            }
-        }]
-        TotalGpuMemoryInMiB: 32768
-    }
-    PlacementGroupInfo: {
-        SupportedStrategies: ["cluster", "partition", "spread"]
-    }
-    HibernationSupported:          false
-    BurstablePerformanceSupported: false
-    DedicatedHostsSupported:       false
-    AutoRecoverySupported:         false
-    SupportedBootModes: ["legacy-bios"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
-    RebootMigrationSupport: "unsupported"
-    SupportedInRegion:      true
-}, {
-    InstanceType:      "g4ad.2xlarge"
-    CurrentGeneration: true
-    FreeTierEligible:  false
-    SupportedUsageClasses: ["on-demand", "spot"]
-    SupportedRootDeviceTypes: ["ebs"]
-    SupportedVirtualizationTypes: ["hvm"]
-    BareMetal:  false
-    Hypervisor: "nitro"
-    ProcessorInfo: {
-        SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 3.0
-        Manufacturer:             "AMD"
-    }
-    VCpuInfo: {
-        DefaultVCpus:          8
-        DefaultCores:          4
-        DefaultThreadsPerCore: 2
-        ValidCores: [2, 4]
-        ValidThreadsPerCore: [1, 2]
-    }
-    MemoryInfo: {
-        SizeInMiB: 32768
-    }
-    InstanceStorageSupported: true
-    InstanceStorageInfo: {
-        TotalSizeInGB: 300
-        Disks: [{
-            SizeInGB: 300
-            Count:    1
-            Type:     "ssd"
-        }]
-        NvmeSupport:       "required"
-        EncryptionSupport: "required"
-    }
-    EbsInfo: {
-        EbsOptimizedSupport: "default"
-        EncryptionSupport:   "supported"
-        EbsOptimizedInfo: {
-            BaselineBandwidthInMbps:  800
-            BaselineThroughputInMBps: 100.0
-            BaselineIops:             3400
-            MaximumBandwidthInMbps:   3170
-            MaximumThroughputInMBps:  396.25
-            MaximumIops:              13333
-        }
-        NvmeSupport:           "required"
-        MaximumEbsAttachments: 25
-        AttachmentLimitType:   "shared"
-    }
-    NetworkInfo: {
-        NetworkPerformance:       "Up to 10 Gigabit"
-        MaximumNetworkInterfaces: 2
-        MaximumNetworkCards:      1
-        DefaultNetworkCardIndex:  0
-        NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 10 Gigabit"
-            MaximumNetworkInterfaces:         2
-            BaselineBandwidthInGbps:          4.167
-            PeakBandwidthInGbps:              10.0
-            DefaultEnaQueueCountPerInterface: 8
-        }]
-        Ipv4AddressesPerInterface:    4
-        Ipv6AddressesPerInterface:    4
-        Ipv6Supported:                true
-        EnaSupport:                   "required"
-        EfaSupported:                 false
-        EncryptionInTransitSupported: true
-        EnaSrdSupported:              false
-        FlexibleEnaQueuesSupport:     "unsupported"
-        ConnectionTrackingConfiguration: {
-            DefaultTcpEstablishedTimeout: 432000
-            DefaultUdpTimeout:            30
-            DefaultUdpStreamTimeout:      180
-        }
-        SecondaryNetworkSupported: false
-    }
-    GpuInfo: {
-        Gpus: [{
-            Name:             "Radeon Pro V520"
-            Manufacturer:     "AMD"
-            Count:            1
-            LogicalGpuCount:  1
-            GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
-            MemoryInfo: {
-                SizeInMiB: 8192
-            }
-        }]
-        TotalGpuMemoryInMiB: 8192
-    }
-    PlacementGroupInfo: {
-        SupportedStrategies: ["cluster", "partition", "spread"]
-    }
-    HibernationSupported:          false
-    BurstablePerformanceSupported: false
-    DedicatedHostsSupported:       true
-    AutoRecoverySupported:         false
-    SupportedBootModes: ["legacy-bios"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
-    RebootMigrationSupport: "unsupported"
-    SupportedInRegion:      true
-}, {
-    InstanceType:      "g4ad.4xlarge"
-    CurrentGeneration: true
-    FreeTierEligible:  false
-    SupportedUsageClasses: ["on-demand", "spot"]
-    SupportedRootDeviceTypes: ["ebs"]
-    SupportedVirtualizationTypes: ["hvm"]
-    BareMetal:  false
-    Hypervisor: "nitro"
-    ProcessorInfo: {
-        SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 3.0
-        Manufacturer:             "AMD"
-    }
-    VCpuInfo: {
-        DefaultVCpus:          16
-        DefaultCores:          8
-        DefaultThreadsPerCore: 2
-        ValidCores: [2, 4, 8]
-        ValidThreadsPerCore: [1, 2]
-    }
-    MemoryInfo: {
-        SizeInMiB: 65536
-    }
-    InstanceStorageSupported: true
-    InstanceStorageInfo: {
-        TotalSizeInGB: 600
-        Disks: [{
-            SizeInGB: 600
-            Count:    1
-            Type:     "ssd"
-        }]
-        NvmeSupport:       "required"
-        EncryptionSupport: "required"
-    }
-    EbsInfo: {
-        EbsOptimizedSupport: "default"
-        EncryptionSupport:   "supported"
-        EbsOptimizedInfo: {
-            BaselineBandwidthInMbps:  1580
-            BaselineThroughputInMBps: 197.5
-            BaselineIops:             6700
-            MaximumBandwidthInMbps:   3170
-            MaximumThroughputInMBps:  396.25
-            MaximumIops:              13333
-        }
-        NvmeSupport:           "required"
-        MaximumEbsAttachments: 25
-        AttachmentLimitType:   "shared"
-    }
-    NetworkInfo: {
-        NetworkPerformance:       "Up to 10 Gigabit"
-        MaximumNetworkInterfaces: 3
-        MaximumNetworkCards:      1
-        DefaultNetworkCardIndex:  0
-        NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 10 Gigabit"
-            MaximumNetworkInterfaces:         3
-            BaselineBandwidthInGbps:          8.333
-            PeakBandwidthInGbps:              10.0
-            DefaultEnaQueueCountPerInterface: 32
-        }]
-        Ipv4AddressesPerInterface:    10
-        Ipv6AddressesPerInterface:    10
-        Ipv6Supported:                true
-        EnaSupport:                   "required"
-        EfaSupported:                 false
-        EncryptionInTransitSupported: true
-        EnaSrdSupported:              false
-        FlexibleEnaQueuesSupport:     "unsupported"
-        ConnectionTrackingConfiguration: {
-            DefaultTcpEstablishedTimeout: 432000
-            DefaultUdpTimeout:            30
-            DefaultUdpStreamTimeout:      180
-        }
-        SecondaryNetworkSupported: false
-    }
-    GpuInfo: {
-        Gpus: [{
-            Name:             "Radeon Pro V520"
-            Manufacturer:     "AMD"
-            Count:            1
-            LogicalGpuCount:  1
-            GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
-            MemoryInfo: {
-                SizeInMiB: 8192
-            }
-        }]
-        TotalGpuMemoryInMiB: 8192
-    }
-    PlacementGroupInfo: {
-        SupportedStrategies: ["cluster", "partition", "spread"]
-    }
-    HibernationSupported:          false
-    BurstablePerformanceSupported: false
-    DedicatedHostsSupported:       true
-    AutoRecoverySupported:         false
-    SupportedBootModes: ["legacy-bios"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
-    RebootMigrationSupport: "unsupported"
-    SupportedInRegion:      true
-}, {
-    InstanceType:      "g4ad.8xlarge"
-    CurrentGeneration: true
-    FreeTierEligible:  false
-    SupportedUsageClasses: ["on-demand", "spot"]
-    SupportedRootDeviceTypes: ["ebs"]
-    SupportedVirtualizationTypes: ["hvm"]
-    BareMetal:  false
-    Hypervisor: "nitro"
-    ProcessorInfo: {
-        SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 3.0
-        Manufacturer:             "AMD"
-    }
-    VCpuInfo: {
-        DefaultVCpus:          32
-        DefaultCores:          16
-        DefaultThreadsPerCore: 2
-        ValidCores: [2, 4, 8, 16]
-        ValidThreadsPerCore: [1, 2]
-    }
-    MemoryInfo: {
-        SizeInMiB: 131072
-    }
-    InstanceStorageSupported: true
-    InstanceStorageInfo: {
-        TotalSizeInGB: 1200
-        Disks: [{
-            SizeInGB: 1200
-            Count:    1
-            Type:     "ssd"
-        }]
-        NvmeSupport:       "required"
-        EncryptionSupport: "required"
-    }
-    EbsInfo: {
-        EbsOptimizedSupport: "default"
-        EncryptionSupport:   "supported"
-        EbsOptimizedInfo: {
-            BaselineBandwidthInMbps:  3170
-            BaselineThroughputInMBps: 396.25
-            BaselineIops:             13333
-            MaximumBandwidthInMbps:   3170
-            MaximumThroughputInMBps:  396.25
-            MaximumIops:              13333
-        }
-        NvmeSupport:           "required"
-        MaximumEbsAttachments: 24
-        AttachmentLimitType:   "shared"
-    }
-    NetworkInfo: {
-        NetworkPerformance:       "15 Gigabit"
-        MaximumNetworkInterfaces: 4
-        MaximumNetworkCards:      1
-        DefaultNetworkCardIndex:  0
-        NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "15 Gigabit"
-            MaximumNetworkInterfaces:         4
-            BaselineBandwidthInGbps:          15.0
-            PeakBandwidthInGbps:              15.0
-            DefaultEnaQueueCountPerInterface: 32
-        }]
-        Ipv4AddressesPerInterface:    15
-        Ipv6AddressesPerInterface:    15
-        Ipv6Supported:                true
-        EnaSupport:                   "required"
-        EfaSupported:                 false
-        EncryptionInTransitSupported: true
-        EnaSrdSupported:              false
-        FlexibleEnaQueuesSupport:     "unsupported"
-        ConnectionTrackingConfiguration: {
-            DefaultTcpEstablishedTimeout: 432000
-            DefaultUdpTimeout:            30
-            DefaultUdpStreamTimeout:      180
-        }
-        SecondaryNetworkSupported: false
-    }
-    GpuInfo: {
-        Gpus: [{
-            Name:             "Radeon Pro V520"
-            Manufacturer:     "AMD"
-            Count:            2
-            LogicalGpuCount:  2
-            GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
-            MemoryInfo: {
-                SizeInMiB: 8192
-            }
-        }]
-        TotalGpuMemoryInMiB: 16384
-    }
-    PlacementGroupInfo: {
-        SupportedStrategies: ["cluster", "partition", "spread"]
-    }
-    HibernationSupported:          false
-    BurstablePerformanceSupported: false
-    DedicatedHostsSupported:       true
-    AutoRecoverySupported:         false
-    SupportedBootModes: ["legacy-bios"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
-    RebootMigrationSupport: "unsupported"
-    SupportedInRegion:      true
-}, {
-    InstanceType:      "g4ad.xlarge"
-    CurrentGeneration: true
-    FreeTierEligible:  false
-    SupportedUsageClasses: ["on-demand", "spot"]
-    SupportedRootDeviceTypes: ["ebs"]
-    SupportedVirtualizationTypes: ["hvm"]
-    BareMetal:  false
-    Hypervisor: "nitro"
-    ProcessorInfo: {
-        SupportedArchitectures: ["x86_64"]
-        SustainedClockSpeedInGhz: 3.0
-        Manufacturer:             "AMD"
-    }
-    VCpuInfo: {
-        DefaultVCpus:          4
-        DefaultCores:          2
-        DefaultThreadsPerCore: 2
-        ValidCores: [2]
-        ValidThreadsPerCore: [1, 2]
-    }
-    MemoryInfo: {
-        SizeInMiB: 16384
-    }
-    InstanceStorageSupported: true
-    InstanceStorageInfo: {
-        TotalSizeInGB: 150
-        Disks: [{
-            SizeInGB: 150
-            Count:    1
-            Type:     "ssd"
-        }]
-        NvmeSupport:       "required"
-        EncryptionSupport: "required"
-    }
-    EbsInfo: {
-        EbsOptimizedSupport: "default"
-        EncryptionSupport:   "supported"
-        EbsOptimizedInfo: {
-            BaselineBandwidthInMbps:  400
-            BaselineThroughputInMBps: 50.0
-            BaselineIops:             1700
-            MaximumBandwidthInMbps:   3170
-            MaximumThroughputInMBps:  396.25
-            MaximumIops:              13333
-        }
-        NvmeSupport:           "required"
-        MaximumEbsAttachments: 25
-        AttachmentLimitType:   "shared"
-    }
-    NetworkInfo: {
-        NetworkPerformance:       "Up to 10 Gigabit"
-        MaximumNetworkInterfaces: 2
-        MaximumNetworkCards:      1
-        DefaultNetworkCardIndex:  0
-        NetworkCards: [{
-            NetworkCardIndex:                 0
-            NetworkPerformance:               "Up to 10 Gigabit"
-            MaximumNetworkInterfaces:         2
-            BaselineBandwidthInGbps:          2.0
-            PeakBandwidthInGbps:              10.0
-            DefaultEnaQueueCountPerInterface: 8
-        }]
-        Ipv4AddressesPerInterface:    4
-        Ipv6AddressesPerInterface:    4
-        Ipv6Supported:                true
-        EnaSupport:                   "required"
-        EfaSupported:                 false
-        EncryptionInTransitSupported: true
-        EnaSrdSupported:              false
-        FlexibleEnaQueuesSupport:     "unsupported"
-        ConnectionTrackingConfiguration: {
-            DefaultTcpEstablishedTimeout: 432000
-            DefaultUdpTimeout:            30
-            DefaultUdpStreamTimeout:      180
-        }
-        SecondaryNetworkSupported: false
-    }
-    GpuInfo: {
-        Gpus: [{
-            Name:             "Radeon Pro V520"
-            Manufacturer:     "AMD"
-            Count:            1
-            LogicalGpuCount:  1
-            GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
-            MemoryInfo: {
-                SizeInMiB: 8192
-            }
-        }]
-        TotalGpuMemoryInMiB: 8192
-    }
-    PlacementGroupInfo: {
-        SupportedStrategies: ["cluster", "partition", "spread"]
-    }
-    HibernationSupported:          false
-    BurstablePerformanceSupported: false
-    DedicatedHostsSupported:       true
-    AutoRecoverySupported:         false
-    SupportedBootModes: ["legacy-bios"]
-    NitroEnclavesSupport:   "unsupported"
-    NitroTpmSupport:        "unsupported"
-    PhcSupport:             "unsupported"
-    RebootMigrationSupport: "unsupported"
-    SupportedInRegion:      true
-}, {
     InstanceType:      "g4dn.12xlarge"
     CurrentGeneration: true
     FreeTierEligible:  false
@@ -20201,7 +19676,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -20420,7 +19895,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -20528,7 +20003,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -20639,7 +20114,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -20747,7 +20222,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -20852,7 +20327,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -21179,7 +20654,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21285,7 +20760,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21394,7 +20869,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21500,7 +20975,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21715,7 +21190,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21827,7 +21302,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21939,7 +21414,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22051,7 +21526,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22160,7 +21635,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22272,7 +21747,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22493,7 +21968,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22602,7 +22077,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22711,7 +22186,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.25
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 5722
             }
@@ -22929,7 +22404,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.125
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 2861
             }
@@ -23368,7 +22843,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.5
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 11444
             }
