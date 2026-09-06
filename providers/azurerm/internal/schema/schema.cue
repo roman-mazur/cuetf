@@ -70957,6 +70957,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 									description_kind: "plain"
 									computed:         true
 								}
+								retina_flow_logs_enabled: {
+									type:             "bool"
+									description_kind: "plain"
+									optional:         true
+								}
 							}
 							description_kind: "plain"
 						}
@@ -88993,6 +88998,35 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 					}
 				}
 				block_types: {
+					identity: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								identity_ids: {
+									type: ["set", "string"]
+									description_kind: "plain"
+									optional:         true
+								}
+								principal_id: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								tenant_id: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+								type: {
+									type:             "string"
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
 					plan: {
 						nesting_mode: "list"
 						block: {
@@ -111479,6 +111513,78 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 							}
 							description_kind: "plain"
 						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_playwright_workspace: {
+			version: 0
+			block: {
+				attributes: {
+					dataplane_uri: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					resource_group_name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						optional:         true
+					}
+					uuid: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							read: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
 					}
 				}
 				description_kind: "plain"
@@ -176439,6 +176545,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 								object_id:                 "string"
 								user_assigned_identity_id: "string"
 							}]]
+							retina_flow_logs_enabled: "bool"
 						}]]
 						description_kind: "plain"
 						computed:         true
@@ -186233,6 +186340,61 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				description_kind: "plain"
 			}
 		}
+		azurerm_playwright_workspace: {
+			version: 0
+			block: {
+				attributes: {
+					dataplane_uri: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					resource_group_name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					uuid: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: read: {
+							type:             "string"
+							description_kind: "plain"
+							optional:         true
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		azurerm_policy_assignment: {
 			version: 0
 			block: {
@@ -188762,6 +188924,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						type:             "string"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					role_definition_resource_id: {
+						type:             "string"
+						description_kind: "plain"
 						computed:         true
 					}
 					scope: {
@@ -196686,6 +196853,17 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				description_kind: "plain"
 			}
 		}
+		azurerm_cognitive_deployment: {
+			version: 0
+			block: {
+				attributes: cognitive_account_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
 		azurerm_federated_identity_credential: {
 			version: 0
 			block: {
@@ -197105,6 +197283,24 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 					type:             "string"
 					description_kind: "plain"
 					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_playwright_workspace: {
+			version: 0
+			block: {
+				attributes: {
+					resource_group_name: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					subscription_id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				description_kind: "plain"
 			}
@@ -198343,6 +198539,27 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_cognitive_account_connection_entra_id: {
+			version: 0
+			attributes: {
+				account_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				resource_group_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				subscription_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		azurerm_cognitive_deployment: {
 			version: 0
 			attributes: {
 				account_name: {
@@ -199775,6 +199992,23 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 					required_for_import: true
 				}
 				network_security_group_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				resource_group_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				subscription_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		azurerm_playwright_workspace: {
+			version: 0
+			attributes: {
+				name: {
 					type:                "string"
 					required_for_import: true
 				}

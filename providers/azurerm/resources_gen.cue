@@ -779,6 +779,7 @@ import (
 	_#res: "\(#azurermPrefix)_palo_alto_virtual_network_appliance": close({res.azurerm_palo_alto_virtual_network_appliance & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_pim_active_role_assignment": close({res.azurerm_pim_active_role_assignment & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_pim_eligible_role_assignment": close({res.azurerm_pim_eligible_role_assignment & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_playwright_workspace": close({res.azurerm_playwright_workspace & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_point_to_site_vpn_gateway": close({res.azurerm_point_to_site_vpn_gateway & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_policy_definition": close({res.azurerm_policy_definition & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_policy_set_definition": close({res.azurerm_policy_set_definition & cuetf.MetaArgs})
