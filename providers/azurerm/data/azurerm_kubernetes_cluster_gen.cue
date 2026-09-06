@@ -141,6 +141,7 @@ azurerm_kubernetes_cluster: {
 				object_id?:                 string
 				user_assigned_identity_id?: string
 			})]
+			retina_flow_logs_enabled?: bool
 		})]
 		open_service_mesh_enabled?:         bool
 		private_cluster_enabled?:           bool

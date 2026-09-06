@@ -296,6 +296,7 @@ import (
 	_#ds: "\(#azurermPrefix)_orchestrated_virtual_machine_scale_set": close({data.azurerm_orchestrated_virtual_machine_scale_set & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_palo_alto_local_rulestack": close({data.azurerm_palo_alto_local_rulestack & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_platform_image": close({data.azurerm_platform_image & cuetf.MetaArgs})
+	_#ds: "\(#azurermPrefix)_playwright_workspace": close({data.azurerm_playwright_workspace & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_policy_assignment": close({data.azurerm_policy_assignment & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_policy_definition_built_in": close({data.azurerm_policy_definition_built_in & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_policy_definition": close({data.azurerm_policy_definition & cuetf.MetaArgs})

@@ -17,9 +17,10 @@ azurerm_role_definition: {
 			not_actions?: [...string]
 			not_data_actions?: [...string]
 		})]
-		role_definition_id?: string
-		scope?:              string
-		type?:               string
+		role_definition_id?:          string
+		role_definition_resource_id?: string
+		scope?:                       string
+		type?:                        string
 	})
 
 	#timeouts: close({

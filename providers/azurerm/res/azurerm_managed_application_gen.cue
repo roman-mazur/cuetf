@@ -6,6 +6,7 @@ azurerm_managed_application: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_managed_application")
 	close({
+		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		plan?: matchN(1, [#plan, list.MaxItems(1) & [...#plan]])
 		timeouts?:                    #timeouts
 		application_definition_id?:   string
@@ -18,6 +19,13 @@ azurerm_managed_application: {
 		parameter_values?:    string
 		resource_group_name!: string
 		tags?: [string]: string
+	})
+
+	#identity: close({
+		identity_ids?: [...string]
+		principal_id?: string
+		tenant_id?:    string
+		type!:         string
 	})
 
 	#plan: close({
