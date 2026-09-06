@@ -19,5 +19,8 @@ scaleway_datawarehouse_user: {
 
 		// The region you want to attach the resource to
 		region?: string
+
+		// The Scaleway Resource Name (SRN) of the user
+		srn?: string
 	})
 }

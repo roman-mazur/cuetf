@@ -32,6 +32,9 @@ scaleway_flexible_ip: {
 		// The baremetal server associated with this flexible IP
 		server_id?: string
 
+		// The Scaleway Resource Name (SRN) of the flexible IP
+		srn?: string
+
 		// The status of the flexible IP
 		status?: string
 

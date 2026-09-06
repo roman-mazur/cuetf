@@ -22,6 +22,9 @@ scaleway_iam_saml: {
 		// The single sign-on URL of the SAML Identity Provider
 		single_sign_on_url?: string
 
+		// The Scaleway Resource Name (SRN) of the SAML configuration
+		srn?: string
+
 		// The status of the SAML configuration
 		status?: string
 	})

@@ -29,6 +29,9 @@ scaleway_iam_api_key: {
 		expires_at?: string
 		id?:         string
 
+		// The Scaleway Resource Name (SRN) of the API key
+		srn?: string
+
 		// The date and time of the last update of the iam api key
 		updated_at?: string
 

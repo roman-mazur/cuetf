@@ -23,6 +23,9 @@ scaleway_iam_application: {
 		// The organization_id the application is associated to
 		organization_id?: string
 
+		// The Scaleway Resource Name (SRN) of the application
+		srn?: string
+
 		// The tags associated with the application
 		tags?: [...string]
 

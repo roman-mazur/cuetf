@@ -29,6 +29,9 @@ scaleway_vpc_public_gateway_pat_rule: {
 		// The public port used in the PAT rule
 		public_port?: number
 
+		// The Scaleway Resource Name (SRN) of the PAT rule
+		srn?: string
+
 		// The date and time of the last update of the PAT rule
 		updated_at?: string
 

@@ -26,7 +26,10 @@ scaleway_iam_group: {
 		// The organization_id you want to attach the resource to
 		organization_id?: string
 
-		// The tags associated with the application
+		// The Scaleway Resource Name (SRN) of the group
+		srn?: string
+
+		// The tags associated with the group
 		tags?: [...string]
 
 		// The date and time of the last update of the group

@@ -32,6 +32,9 @@ scaleway_s2s_vpn_customer_gateway: {
 		// The region you want to attach the resource to
 		region?: string
 
+		// The Scaleway Resource Name (SRN) of the customer gateway
+		srn?: string
+
 		// The list of tags to apply to the customer gateway
 		tags?: [...string]
 

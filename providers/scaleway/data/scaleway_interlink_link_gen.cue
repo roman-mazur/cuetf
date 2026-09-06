@@ -76,6 +76,9 @@ scaleway_interlink_link: {
 			ipv6?: string
 		})]
 
+		// The Scaleway Resource Name (SRN) of the link
+		srn?: string
+
 		// Status of the link
 		status?: string
 

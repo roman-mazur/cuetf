@@ -38,6 +38,9 @@ scaleway_s2s_vpn_gateway: {
 		// The region you want to attach the resource to
 		region?: string
 
+		// The Scaleway Resource Name (SRN) of the VPN gateway
+		srn?: string
+
 		// The status of the VPN gateway
 		status?: string
 
