@@ -686,6 +686,11 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					description_kind: "plain"
 					optional:         true
 				}
+				network_managementv1_custom_endpoint: {
+					type:             "string"
+					description_kind: "plain"
+					optional:         true
+				}
 				network_security_custom_endpoint: {
 					type:             "string"
 					description_kind: "plain"
@@ -27337,9 +27342,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 					linked_dataset_map: {
 						type: ["set", ["object", {
-							linked_dataset: "string"
-							listing:        "string"
-							resource_name:  "string"
+							linked_dataset:             "string"
+							linked_pubsub_subscription: "string"
+							listing:                    "string"
+							resource_name:              "string"
 						}]]
 						description: """
 									Output only. Map of listing resource names to associated linked resource,
@@ -27350,8 +27356,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 					linked_resources: {
 						type: ["list", ["object", {
-							linked_dataset: "string"
-							listing:        "string"
+							linked_dataset:             "string"
+							linked_pubsub_subscription: "string"
+							listing:                    "string"
 						}]]
 						description:      "Output only. Linked resources created in the subscription. Only contains values if state = STATE_ACTIVE."
 						description_kind: "plain"
@@ -27492,7 +27499,502 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							description:      "The destination dataset for this subscription."
 							description_kind: "plain"
 						}
-						min_items: 1
+						max_items: 1
+					}
+					destination_pubsub_subscription: {
+						nesting_mode: "list"
+						block: {
+							block_types: pubsub_subscription: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										ack_deadline_seconds: {
+											type: "number"
+											description: """
+															The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to
+															acknowledge receipt before resending the message. In the interval after the message is delivered
+															and before it is acknowledged, it is considered to be outstanding. During that time period, the
+															message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is
+															used as the initial value for the ack deadline. To override this value for a given message, call
+															'ModifyAckDeadline' with the corresponding 'ack_id' if using non-streaming pull or send the
+															'ack_id' in a 'StreamingModifyAckDeadlineRequest' if using streaming pull. The minimum custom
+															deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600
+															seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push
+															delivery, this value is also used to set the request timeout for the call to the push endpoint.
+															If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver
+															the message.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										detached: {
+											type: "bool"
+											description: """
+															Indicates whether the subscription is detached from its topic. Detached subscriptions don't
+															receive messages from their topic and don't retain any backlog. 'Pull' and 'StreamingPull'
+															requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes
+															to the endpoint will not be made.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										enable_exactly_once_delivery: {
+											type: "bool"
+											description: """
+															If true, Pub/Sub provides the following guarantees for the delivery of a message with a given
+															value of 'message_id' on this subscription: The message sent to a subscriber is guaranteed not
+															to be resent before the message's acknowledgement deadline expires. An acknowledged message will
+															not be resent to a subscriber. Note that subscribers may still receive multiple copies of a
+															message when 'enableExactlyOnceDelivery' is true if the message was published multiple times by
+															a publisher client. These copies are considered distinct by Pub/Sub and have distinct 'message_id'
+															values.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										enable_message_ordering: {
+											type: "bool"
+											description: """
+															If true, messages published with the same 'ordering_key' in 'PubsubMessage'
+															will be delivered to the subscribers in the order in which they are received
+															by the Pub/Sub system. Otherwise, they may be delivered in any order.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										filter: {
+											type: "string"
+											description: """
+															An expression written in the Pub/Sub filter language. If non-empty, then only 'PubsubMessage's
+															whose 'attributes' field matches the filter are delivered on this subscription. If empty, then
+															no messages are filtered out.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										labels: {
+											type: ["map", "string"]
+											description:      "See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels)."
+											description_kind: "plain"
+											optional:         true
+										}
+										message_retention_duration: {
+											type: "string"
+											description: """
+															How long to retain unacknowledged messages in the subscription's backlog, from the moment a
+															message is published. If 'retainAckedMessages' is true, then this also configures the retention
+															of acknowledged messages, and thus configures how far back in time a Seek can be done. Defaults
+															to 7 days. Cannot be more than 31 days or less than 10 minutes.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										name: {
+											type:             "string"
+											description:      "Name of the subscription. Format is 'projects/{project}/subscriptions/{sub}'."
+											description_kind: "plain"
+											required:         true
+										}
+										retain_acked_messages: {
+											type: "bool"
+											description: """
+															Indicates whether to retain acknowledged messages. If true, then messages are not expunged from
+															the subscription's backlog, even if they are acknowledged, until they fall out of the
+															'messageRetentionDuration' window. This must be true if you would like to Seek to a timestamp
+															in the past to replay previously-acknowledged messages.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+									}
+									block_types: {
+										bigquery_config: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													drop_unknown_fields: {
+														type: "bool"
+														description: """
+																		When true and 'useTopicSchema' is true, any fields that are a part of the topic schema that are
+																		not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas
+																		must be kept in sync and any messages with extra fields are not written and remain in the
+																		subscription's backlog.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													service_account_email: {
+														type: "string"
+														description: """
+																		The service account to use to write to BigQuery. The subscription creator or updater that
+																		specifies this field must have 'iam.serviceAccounts.actAs' permission on the service account.
+																		If not specified, the Pub/Sub service agent,
+																		service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													table: {
+														type: "string"
+														description: """
+																		The name of the table to which to write data, of the form
+																		{projectId}.{datasetId}.{tableId}
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													use_table_schema: {
+														type: "bool"
+														description: """
+																		When true, use the BigQuery table's schema as the columns to write to in BigQuery.
+																		'useTableSchema' and 'useTopicSchema' cannot be enabled at the same time.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													use_topic_schema: {
+														type: "bool"
+														description: """
+																		When true, use the topic's schema as the columns to write to in BigQuery,
+																		if it exists. 'useTopicSchema' and 'useTableSchema' cannot be enabled at the same time.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													write_metadata: {
+														type: "bool"
+														description: """
+																		When true, write the subscription name, message_id, publish_time, attributes, and ordering_key
+																		to additional columns in the table. The subscription name, message_id, and publish_time fields
+																		are put in their own columns while all other message properties (other than data) are written
+																		to a JSON object in the attributes column.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												description:      "If delivery to BigQuery is used with this subscription, this field is used to configure it."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										cloud_storage_config: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													bucket: {
+														type: "string"
+														description: """
+																		User-provided name for the Cloud Storage bucket. The bucket must be created by the user.
+																		The bucket name must be without any prefix like "gs://". See the
+																		[bucket naming requirements](https://cloud.google.com/storage/docs/buckets#naming).
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													filename_datetime_format: {
+														type: "string"
+														description: """
+																		User-provided format string specifying how to represent datetimes in Cloud Storage filenames.
+																		See the [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													filename_prefix: {
+														type: "string"
+														description: """
+																		User-provided prefix for Cloud Storage filename. See the
+																		[object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													filename_suffix: {
+														type: "string"
+														description: """
+																		User-provided suffix for Cloud Storage filename. See the
+																		[object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+																		Must not end in "/".
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													max_bytes: {
+														type: "string"
+														description: """
+																		The maximum bytes that can be written to a Cloud Storage file before a new file is created.
+																		Min 1 KB, max 10 GiB. The maxBytes limit may be exceeded in cases where messages are larger
+																		than the limit.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													max_duration: {
+														type: "string"
+														description: """
+																		The maximum duration that can elapse before a new Cloud Storage file is created.
+																		Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's
+																		acknowledgement deadline.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													max_messages: {
+														type: "string"
+														description: """
+																		The maximum number of messages that can be written to a Cloud Storage file before a new file
+																		is created. Min 1000 messages.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													service_account_email: {
+														type: "string"
+														description: """
+																		The service account to use to write to Cloud Storage. The subscription creator or updater that
+																		specifies this field must have 'iam.serviceAccounts.actAs' permission on the service account.
+																		If not specified, the Pub/Sub service agent,
+																		service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												block_types: avro_config: {
+													nesting_mode: "list"
+													block: {
+														attributes: {
+															use_topic_schema: {
+																type: "bool"
+																description: """
+																					When true, the output Cloud Storage file will be serialized using
+																					the topic schema, if it exists.
+																					"""
+																description_kind: "plain"
+																optional:         true
+															}
+															write_metadata: {
+																type: "bool"
+																description: """
+																					When true, write the subscription name, message_id, publish_time, attributes, and ordering_key
+																					as additional fields in the output. The subscription name, message_id, and publish_time fields
+																					are put in their own fields while all other message properties other than data (for example,
+																					an ordering_key, if present) are added as entries in the attributes map.
+																					"""
+																description_kind: "plain"
+																optional:         true
+															}
+														}
+														description:      "If set, message data will be written to Cloud Storage in Avro format."
+														description_kind: "plain"
+													}
+													max_items: 1
+												}
+												description:      "If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										dead_letter_policy: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													dead_letter_topic: {
+														type: "string"
+														description: """
+																		The name of the topic to which dead letter messages should be published. Format is
+																		'projects/{project}/topics/{topic}'. The Pub/Sub service account associated with the enclosing
+																		subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com)
+																		must have permission to Publish() to this topic. The operation will fail if the topic does not exist.
+																		Users should ensure that there is a subscription attached to this topic since messages published to
+																		a topic with no subscriptions are lost.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													max_delivery_attempts: {
+														type: "number"
+														description: """
+																		The maximum number of delivery attempts for any message. The value must be between 5 and 100.
+																		The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times
+																		the acknowledgement deadline has been exceeded for the message). A NACK is any call to
+																		ModifyAckDeadline with a 0 deadline. Note that client libraries may automatically extend
+																		ack_deadlines. This field will be honored on a best effort basis. If this parameter is 0, a
+																		default value of 5 is used.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												description: """
+																A policy that specifies the conditions for dead lettering messages in this subscription. If
+																'deadLetterPolicy' is not set, dead lettering is disabled. The Pub/Sub service account associated
+																with this subscriptions's parent project (i.e.,
+																service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to
+																Acknowledge() messages on this subscription.
+																"""
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										expiration_policy: {
+											nesting_mode: "list"
+											block: {
+												attributes: ttl: {
+													type: "string"
+													description: """
+																		Specifies the "time-to-live" duration for an associated resource. The resource expires if it
+																		is not active for a period of 'ttl'. The definition of "activity" depends on the type of the
+																		associated resource. The minimum and maximum allowed values for 'ttl' depend on the type of
+																		the associated resource, as well. If 'ttl' is not set, the associated resource never expires.
+																		"""
+													description_kind: "plain"
+													optional:         true
+												}
+												description: """
+																A policy that specifies the conditions for this subscription's expiration. A subscription is
+																considered active as long as any connected subscriber is successfully consuming messages from
+																the subscription or is issuing operations on the subscription. If 'expirationPolicy' is not
+																set, a default policy with 'ttl' of 31 days will be used. The minimum allowed value for
+																'expirationPolicy.ttl' is 1 day. If 'expirationPolicy' is set, but 'expirationPolicy.ttl'
+																is not set, the subscription never expires.
+																"""
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										push_config: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													attributes: {
+														type: ["map", "string"]
+														description: """
+																		Endpoint configuration attributes that can be used to control different aspects of the message delivery.
+																		The only currently supported attribute is 'x-goog-version', which you can use to change the format of the
+																		pushed message. This attribute indicates the version of the data expected by the endpoint. This controls
+																		the shape of the pushed message (i.e., its fields and metadata). If not present during the
+																		'CreateSubscription' call, it will default to the version of the Pub/Sub API used to make such call.
+																		If not present in a 'ModifyPushConfig' call, its value will not be changed. 'GetSubscription' calls
+																		will always return a valid version, even if the subscription was created without this attribute.
+																		The only supported values for the 'x-goog-version' attribute are: 'v1beta1': uses the push format
+																		defined in the v1beta1 Pub/Sub API. 'v1' or 'v1beta2': uses the push format defined in the v1 Pub/Sub API.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													push_endpoint: {
+														type: "string"
+														description: """
+																		A URL locating the endpoint to which messages should be pushed.
+																		For example, a Webhook endpoint might use 'https://example.com/push'.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												block_types: {
+													no_wrapper: {
+														nesting_mode: "list"
+														block: {
+															attributes: write_metadata: {
+																type: "bool"
+																description: """
+																					When true, writes the Pub/Sub message metadata to 'x-goog-pubsub-<KEY>:<VAL>' headers of the
+																					HTTP request. Writes the Pub/Sub message attributes to '<KEY>:<VAL>' headers of the HTTP request.
+																					"""
+																description_kind: "plain"
+																optional:         true
+															}
+															description:      "When set, the payload to the push endpoint is not wrapped."
+															description_kind: "plain"
+														}
+														max_items: 1
+													}
+													oidc_token: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																audience: {
+																	type: "string"
+																	description: """
+																					Audience to be used when generating OIDC token. The audience claim identifies the recipients
+																					that the JWT is intended for. The audience value is a single case-sensitive string. Having
+																					multiple values (array) for the audience field is not supported. More info about the OIDC JWT
+																					token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified,
+																					the Push endpoint URL will be used.
+																					"""
+																	description_kind: "plain"
+																	optional:         true
+																}
+																service_account_email: {
+																	type: "string"
+																	description: """
+																					Service account email used for generating the OIDC token. For more information
+																					on setting up authentication, see Push subscriptions.
+																					"""
+																	description_kind: "plain"
+																	optional:         true
+																}
+															}
+															description: """
+																			If specified, Pub/Sub will generate and attach an OIDC JWT token as an
+																			Authorization header in the HTTP request for every pushed message.
+																			"""
+															description_kind: "plain"
+														}
+														max_items: 1
+													}
+												}
+												description:      "If push delivery is used with this subscription, this field is used to configure it."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										retry_policy: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													maximum_backoff: {
+														type: "string"
+														description: """
+																		The maximum delay between consecutive deliveries of a given message.
+																		Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													minimum_backoff: {
+														type: "string"
+														description: """
+																		The minimum delay between consecutive deliveries of a given message.
+																		Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												description: """
+																A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set,
+																the default retry policy is applied. This generally implies that messages will be retried as soon
+																as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement
+																deadline exceeded events for a given message.
+																"""
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+									}
+									description:      "Destination Pub/Sub subscription resource."
+									description_kind: "plain"
+								}
+								min_items: 1
+								max_items: 1
+							}
+							description:      "Destination Pub/Sub subscription to create for the subscriber."
+							description_kind: "plain"
+						}
 						max_items: 1
 					}
 					timeouts: {
@@ -38263,6 +38765,16 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									optional:         true
 								}
+								language_code_variable: {
+									type: "string"
+									description: """
+												The name of the variable that contains the language code to be used for
+												the Dialogflow session. If unspecified, the default language code of the
+												Dialogflow agent will be used.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
 								output_variable_mapping: {
 									type: ["map", "string"]
 									description: """
@@ -38790,11 +39302,128 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									}
 									max_items: 1
 								}
+								whatsapp_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											description: {
+												type:             "string"
+												description:      "The description of the Meta business page or profile."
+												description_kind: "plain"
+												computed:         true
+											}
+											display_name: {
+												type:             "string"
+												description:      "The fetched Meta business page name."
+												description_kind: "plain"
+												computed:         true
+											}
+											phone_number: {
+												type:             "string"
+												description:      "The phone number in E.164 format."
+												description_kind: "plain"
+												optional:         true
+											}
+											phone_number_id: {
+												type:             "string"
+												description:      "The Meta phone number ID."
+												description_kind: "plain"
+												required:         true
+											}
+											thumbnail_url: {
+												type:             "string"
+												description:      "The fetched Meta business profile thumbnail URL."
+												description_kind: "plain"
+												computed:         true
+											}
+											waba_id: {
+												type:             "string"
+												description:      "The WhatsApp Business Account ID."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Configuration specific to WhatsApp deployments."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
 							}
 							description: """
 										A ChannelProfile configures the agent's behavior for a specific communication
 										channel, such as web UI or telephony.
 										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					error_handling_settings: {
+						nesting_mode: "list"
+						block: {
+							attributes: error_handling_strategy: {
+								type: "string"
+								description: """
+												The strategy to use for error handling.
+												Possible values:
+												NONE
+												FALLBACK_RESPONSE
+												END_SESSION
+												"""
+								description_kind: "plain"
+								optional:         true
+							}
+							block_types: {
+								end_session_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: escalate_session: {
+											type: "bool"
+											description: """
+															Whether to escalate the session in EndSession. If session is escalated,
+															metadata in EndSession will contain session_escalated = true.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										description: """
+													Configuration for ending the session in case of system errors (e.g. LLM
+													errors).
+													"""
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								fallback_response_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											custom_fallback_messages: {
+												type: ["map", "string"]
+												description: """
+															The fallback messages in case of system errors (e.g. LLM errors),
+															mapped by supported language code
+															(https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											max_fallback_attempts: {
+												type: "number"
+												description: """
+															The maximum number of fallback attempts to make before the agent
+															emitting EndSession Signal.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Configuration for handling fallback responses."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+							}
+							description:      "Settings to describe how errors should be handled in the app."
 							description_kind: "plain"
 						}
 						max_items: 1
@@ -39004,11 +39633,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								conversation_logging_settings: {
 									nesting_mode: "list"
 									block: {
-										attributes: disable_conversation_logging: {
-											type:             "bool"
-											description:      "Whether to disable conversation logging for the sessions."
-											description_kind: "plain"
-											optional:         true
+										attributes: {
+											disable_conversation_logging: {
+												type:             "bool"
+												description:      "Whether to disable conversation logging for the sessions."
+												description_kind: "plain"
+												optional:         true
+											}
+											retention_window: {
+												type: "string"
+												description: """
+															Controls the retention window for the conversation.
+															If not set, the conversation will be retained for 365 days.
+															"""
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
 										}
 										description:      "Settings to describe the conversation logging behaviors for the app."
 										description_kind: "plain"
@@ -39298,6 +39939,26 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							description_kind: "plain"
 						}
 					}
+					vpc_sc_settings: {
+						nesting_mode: "list"
+						block: {
+							attributes: allowed_origins: {
+								type: ["list", "string"]
+								description: """
+												The allowed HTTP(s) origins that OpenAPI tools in the App are
+												able to directly call when VPC Service Controls are enabled. These strings
+												must match the origin exactly, including the port if specified. For
+												example, "https://example.com" or "https://example.com:443". This list does
+												not yet apply to Python tools that may make direct HTTP calls.
+												"""
+								description_kind: "plain"
+								optional:         true
+							}
+							description:      "VPC-SC settings for the app."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
 				}
 				description_kind: "plain"
 			}
@@ -39530,6 +40191,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									environment_id: "string"
 									flow_id:        "string"
 									input_variable_mapping: ["map", "string"]
+									language_code_variable: "string"
 									output_variable_mapping: ["map", "string"]
 								}]]
 								tools: ["list", "string"]
@@ -39580,11 +40242,29 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 										theme:            "string"
 										web_widget_title: "string"
 									}]]
+									whatsapp_config: ["list", ["object", {
+										description:     "string"
+										display_name:    "string"
+										phone_number:    "string"
+										phone_number_id: "string"
+										thumbnail_url:   "string"
+										waba_id:         "string"
+									}]]
 								}]]
 								deployment_count: "number"
 								description:      "string"
 								display_name:     "string"
-								etag:             "string"
+								error_handling_settings: ["list", ["object", {
+									end_session_config: ["list", ["object", {
+										escalate_session: "bool"
+									}]]
+									error_handling_strategy: "string"
+									fallback_response_config: ["list", ["object", {
+										custom_fallback_messages: ["map", "string"]
+										max_fallback_attempts: "number"
+									}]]
+								}]]
+								etag: "string"
 								evaluation_metrics_thresholds: ["list", ["object", {
 									golden_evaluation_metrics_thresholds: ["list", ["object", {
 										expectation_level_metrics_thresholds: ["list", ["object", {
@@ -39618,6 +40298,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									}]]
 									conversation_logging_settings: ["list", ["object", {
 										disable_conversation_logging: "bool"
+										retention_window:             "string"
 									}]]
 									redaction_config: ["list", ["object", {
 										deidentify_template: "string"
@@ -39655,6 +40336,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 										type:         "string"
 										unique_items: "bool"
 									}]]
+								}]]
+								vpc_sc_settings: ["list", ["object", {
+									allowed_origins: ["list", "string"]
 								}]]
 							}]]
 							examples: ["list", ["object", {
@@ -40252,6 +40936,42 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						min_items: 1
 						max_items: 1
 					}
+					instagram_credentials: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								auth_code: {
+									type:             "string"
+									description:      "The Meta auth code provided by the embedded signup flow."
+									description_kind: "plain"
+									optional:         true
+									sensitive:        true
+								}
+								auth_code_wo: {
+									type:             "string"
+									description:      "The Meta auth code provided by the embedded signup flow."
+									description_kind: "plain"
+									optional:         true
+									write_only:       true
+								}
+								auth_code_wo_version: {
+									type:             "string"
+									description:      "Triggers update of 'auth_code_wo' write-only. Increment this value when an update to 'auth_code_wo' is needed. For more info see [updating write-only arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)"
+									description_kind: "plain"
+									optional:         true
+								}
+								conversation_profile_id: {
+									type:             "string"
+									description:      "The Conversation Profile ID to use for the deployment."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description:      "Ephemeral Meta credentials required when configuring an Instagram channel profile."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
 					timeouts: {
 						nesting_mode: "single"
 						block: {
@@ -40274,6 +40994,80 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}
 							description_kind: "plain"
 						}
+					}
+					whatsapp_credentials: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								auth_code: {
+									type:             "string"
+									description:      "The Meta auth code provided by the embedded signup flow."
+									description_kind: "plain"
+									optional:         true
+									sensitive:        true
+								}
+								auth_code_wo: {
+									type:             "string"
+									description:      "The Meta auth code provided by the embedded signup flow."
+									description_kind: "plain"
+									optional:         true
+									write_only:       true
+								}
+								auth_code_wo_version: {
+									type:             "string"
+									description:      "Triggers update of 'auth_code_wo' write-only. Increment this value when an update to 'auth_code_wo' is needed. For more info see [updating write-only arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)"
+									description_kind: "plain"
+									optional:         true
+								}
+								business_account_id: {
+									type:             "string"
+									description:      "The Business Account ID to use for the phone number."
+									description_kind: "plain"
+									required:         true
+								}
+								conversation_profile_id: {
+									type:             "string"
+									description:      "The Conversation Profile ID to use for the deployment."
+									description_kind: "plain"
+									optional:         true
+								}
+								phone_number: {
+									type:             "string"
+									description:      "The phone number to register with WhatsApp."
+									description_kind: "plain"
+									required:         true
+								}
+								pin: {
+									type:             "string"
+									description:      "The 6-digit PIN created by the user for two-step verification."
+									description_kind: "plain"
+									optional:         true
+									sensitive:        true
+								}
+								pin_wo: {
+									type:             "string"
+									description:      "The 6-digit PIN created by the user for two-step verification."
+									description_kind: "plain"
+									optional:         true
+									write_only:       true
+								}
+								pin_wo_version: {
+									type:             "string"
+									description:      "Triggers update of 'pin_wo' write-only. Increment this value when an update to 'pin_wo' is needed. For more info see [updating write-only arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)"
+									description_kind: "plain"
+									optional:         true
+								}
+								waba_id: {
+									type:             "string"
+									description:      "The WhatsApp Business Account ID."
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description:      "Ephemeral Meta credentials required when configuring a WhatsApp channel profile."
+							description_kind: "plain"
+						}
+						max_items: 1
 					}
 				}
 				description_kind: "plain"
@@ -41562,6 +42356,28 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									url:              "string"
 								}]]
 								version: "string"
+							}]]
+							api_authentication: ["list", ["object", {
+								api_key_config: ["list", ["object", {
+									api_key_secret_version: "string"
+									key_name:               "string"
+									request_location:       "string"
+								}]]
+								bearer_token_config: ["list", ["object", {
+									token: "string"
+								}]]
+								oauth_config: ["list", ["object", {
+									client_id:             "string"
+									client_secret_version: "string"
+									oauth_grant_type:      "string"
+									scopes: ["list", "string"]
+									token_endpoint: "string"
+								}]]
+								service_account_auth_config: ["list", ["object", {
+									scopes: ["list", "string"]
+									service_account: "string"
+								}]]
+								service_agent_id_token_auth_config: ["list", ["object", {}]]
 							}]]
 							description: "string"
 							name:        "string"
@@ -60383,6 +61199,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											name: {
 												type:             "string"
 												description:      "Name of the container specified as a DNS_LABEL."
+												description_kind: "plain"
+												optional:         true
+											}
+											sandbox_launcher: {
+												type:             "bool"
+												description:      "Indicates that this container can act as a sandbox supervisor and launch sandboxes."
 												description_kind: "plain"
 												optional:         true
 											}
@@ -179434,6 +180256,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						optional:         true
 						computed:         true
 					}
+					last_user_update_time: {
+						type:             "string"
+						description:      "Timestamp of the most recent user-initiated update."
+						description_kind: "plain"
+						optional:         true
+					}
 					license_config_id: {
 						type:             "string"
 						description:      "The unique id of the license config."
@@ -186971,6 +187799,187 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}
 							description_kind: "plain"
 						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_eventarc_pipeline_iam_binding: {
+			version: 0
+			block: {
+				attributes: {
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					members: {
+						type: ["set", "string"]
+						description_kind: "plain"
+						required:         true
+					}
+					pipeline_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: condition: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							description: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							expression: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+							title: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						description_kind: "plain"
+					}
+					max_items: 1
+				}
+				description_kind: "plain"
+			}
+		}
+		google_eventarc_pipeline_iam_member: {
+			version: 0
+			block: {
+				attributes: {
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					member: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					pipeline_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: condition: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							description: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							expression: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+							title: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						description_kind: "plain"
+					}
+					max_items: 1
+				}
+				description_kind: "plain"
+			}
+		}
+		google_eventarc_pipeline_iam_policy: {
+			version: 0
+			block: {
+				attributes: {
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					pipeline_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					policy_data: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -232584,6 +233593,161 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_monitoring_snooze: {
+			version: 0
+			block: {
+				attributes: {
+					display_name: {
+						type:             "string"
+						description:      "A display name for the Snooze. This can be, at most, 512 unicode characters."
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Identifier. The name of the Snooze. The format is:
+									projects/[PROJECT_ID_OR_NUMBER]/snoozes/[SNOOZE_ID]
+									The ID of the Snooze will be generated by the system.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: {
+					criteria: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								filter: {
+									type: "string"
+									description: """
+												When you define a snooze, you can also define a filter for that snooze.
+												The filter is a string containing one or more key-value pairs. The string
+												uses the standard https://google.aip.dev/160 filter syntax. If you define
+												a filter for a snooze, then the snooze can only apply to one alert policy.
+												When the snooze is active, incidents won't be created when the incident
+												would have key-value pairs (labels) that match those specified by the
+												filter in the snooze.
+
+												Snooze filters support resource, metric, and metadata labels. If multiple
+												labels are used, then they must be connected with an AND operator. For
+												example, the following filter applies the snooze to incidents that have a
+												resource label with an instance ID of 1234567890, a metric label with an
+												instance name of test_group, a metadata user label with a key of foo and a
+												value of bar, and a metadata system label with a key of region and a value
+												of us-central1:
+
+												"filter": "resource.labels.instance_id=\\"1234567890\\" AND metric.labels.instance_name=\\"test_group\\" AND metadata.user_labels.foo=\\"bar\\" AND metadata.system_labels.region=\\"us-central1\\""
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								policies: {
+									type: ["list", "string"]
+									description: """
+												The specific AlertPolicy names for the alert that should be snoozed.
+												The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]
+												There is a limit of 16 policies per snooze. This limit is checked during
+												snooze creation. Exactly 1 alert policy is required if filter is specified
+												at the same time.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description: """
+										This defines the criteria for applying the Snooze.
+
+										~> **Note:** After a snooze is created, its criteria can't be modified.
+										Changing this block will force replacement of the resource.
+										"""
+							description_kind: "plain"
+						}
+						min_items: 1
+						max_items: 1
+					}
+					interval: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								end_time: {
+									type: "string"
+									description: """
+												The end of the time interval.
+												A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+												up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+												"2014-10-02T15:01:23.045123456Z".
+												"""
+									description_kind: "plain"
+									required:         true
+								}
+								start_time: {
+									type: "string"
+									description: """
+												The beginning of the time interval. The default value for the start time
+												is the end time. The start time must not be later than the end time.
+												A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
+												up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
+												"2014-10-02T15:01:23.045123456Z".
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description: """
+										The Snooze will be active from interval.start_time through interval.end_time.
+										interval.start_time cannot be in the past. There is a 15 second clock skew to
+										account for the time it takes for a request to reach the API from the UI.
+
+										~> **Note:** You can edit the name and period of an upcoming snooze, and you
+										can edit the name and end time of an active snooze. You can't edit a past
+										(expired) snooze.
+										"""
+							description_kind: "plain"
+						}
+						min_items: 1
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_monitoring_uptime_check_config: {
 			version: 0
 			block: {
@@ -238645,6 +239809,122 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}
 							description_kind: "plain"
 						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_network_management_network_monitoring_provider: {
+			version: 0
+			block: {
+				attributes: {
+					create_time: {
+						type:             "string"
+						description:      "The time the Network Monitoring Provider was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									The deletion policy for the Network Monitoring Provider.
+									Setting 'deletion_policy = "FORCE"' forces the deletion of all nested resources
+									(MonitoringPoints, NetworkPaths, WebPaths) belonging to this provider on deletion.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					errors: {
+						type: ["list", "string"]
+						description:      "The list of error messages detected for the Network Monitoring Provider."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the Network Monitoring Provider. Currently only 'global' is supported."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									The full resource name of the Network Monitoring Provider, in the format
+									'projects/{project}/locations/{location}/networkMonitoringProviders/{id}'.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					network_monitoring_provider_id: {
+						type: "string"
+						description: """
+									The ID to use for the Network Monitoring Provider. This will become the last
+									component of the provider's resource name.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					provider_type: {
+						type: "string"
+						description: """
+									The type of the Network Monitoring Provider.
+									Currently only 'EXTERNAL' is supported.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					provider_uri: {
+						type:             "string"
+						description:      "Link to the provider's UI."
+						description_kind: "plain"
+						computed:         true
+					}
+					state: {
+						type:             "string"
+						description:      "The current state of the Network Monitoring Provider."
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "The time the Network Monitoring Provider was last updated."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
 					}
 				}
 				description_kind: "plain"
@@ -245379,6 +246659,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+					forward_attributes: {
+						type: ["list", "string"]
+						description: """
+									List of the Envoy attributes to forward to the extension server. The attributes
+									provided here are included as part of the 'ProcessingRequest.attributes' field
+									(of type 'map'), where the keys are the attribute names. Refer to the
+									[documentation](https://cloud.google.com/service-extensions/docs/attributes)
+									for the names of attributes that can be forwarded. If omitted, no attributes
+									are sent. Each element is a string indicating the attribute name.
+									"""
+						description_kind: "plain"
+						optional:         true
 					}
 					forward_headers: {
 						type: ["list", "string"]
@@ -252224,6 +253517,135 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							description_kind: "plain"
 						}
 						min_items: 1
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_observability_bucket: {
+			version: 0
+			block: {
+				attributes: {
+					bucket_id: {
+						type:             "string"
+						description:      "A client-assigned identifier for the bucket."
+						description_kind: "plain"
+						required:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "Output only. Create timestamp."
+						description_kind: "plain"
+						computed:         true
+					}
+					delete_time: {
+						type:             "string"
+						description:      "Output only. Delete timestamp."
+						description_kind: "plain"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Description of the bucket."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "User friendly display name."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the bucket."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Identifier. Name of the bucket. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]"
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					purge_time: {
+						type:             "string"
+						description:      "Output only. Timestamp when the bucket in soft-deleted state is purged."
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Output only. Update timestamp."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					cmek_settings: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								kms_key: {
+									type:             "string"
+									description:      "The resource name for the configured Cloud KMS key. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+									description_kind: "plain"
+									optional:         true
+								}
+								kms_key_version: {
+									type:             "string"
+									description:      "The CryptoKeyVersion resource name for the configured Cloud KMS key. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+									description_kind: "plain"
+									computed:         true
+								}
+								service_account_id: {
+									type:             "string"
+									description:      "The service account used to access the key."
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							description:      "Settings for configuring CMEK for a bucket."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
 					}
 				}
 				description_kind: "plain"
@@ -280125,6 +281547,66 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_scc_notification_service_account: {
+			version: 0
+			block: {
+				attributes: {
+					email: {
+						type:             "string"
+						description:      "The email address of the Cloud Security Command Center Notification service account."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					member: {
+						type:             "string"
+						description:      "The Identity of the Cloud Security Command Center Notification service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions."
+						description_kind: "plain"
+						computed:         true
+					}
+					organization: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							read: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_scc_organization_custom_module: {
 			version: 0
 			block: {
@@ -287229,13 +288711,16 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					deletion_policy: {
 						type: "string"
 						description: """
-									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
-									When a 'terraform destroy' or 'terraform apply' would delete the instance,
-									the command will fail if this field is set to "PREVENT" in Terraform state.
-									When set to "ABANDON", the command will remove the resource from Terraform
-									management without updating or deleting the resource in the API.
-									When set to "DELETE", deleting the resource is allowed.
-
+									Whether Terraform will be prevented from destroying the connection. Defaults to "DELETE".
+									When set to "PREVENT", destroying the resource will fail.
+									When set to "ABANDON", the resource is removed from Terraform state without
+									deleting the connection in the API. The VPC peering created by this connection
+									is left in place, which will block deletion of the network.
+									When set to "DELETE", the connection is deleted.
+									When set to "REMOVE_PEERING", the connection is deleted, and if the API refuses
+									because service producer resources still use it, the VPC peering is removed from
+									the network instead so that the network can be deleted. Only use this once the
+									service instances using the connection (such as Cloud SQL) are already deleted.
 									"""
 						description_kind: "plain"
 						optional:         true
@@ -304203,6 +305688,28 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								}
 							}
 							block_types: {
+								build_spec: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											service_account: {
+												type:             "string"
+												description:      "Optional. The service account that the Cloud Build builder runs as."
+												description_kind: "plain"
+												optional:         true
+											}
+											worker_pool: {
+												type:             "string"
+												description:      "Optional. The resource name of the Cloud Build WorkerPool to use for the build."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Optional. Configuration for building container image."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
 								container_spec: {
 									nesting_mode: "list"
 									block: {
@@ -304288,6 +305795,44 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											}
 										}
 										block_types: {
+											agent_gateway_config: {
+												nesting_mode: "list"
+												block: {
+													block_types: {
+														agent_to_anywhere_config: {
+															nesting_mode: "list"
+															block: {
+																attributes: agent_gateway: {
+																	type:             "string"
+																	description:      "Required. The resource name of the Agent Gateway for outbound traffic."
+																	description_kind: "plain"
+																	required:         true
+																}
+																description:      "Optional. Configuration for traffic originating from the Reasoning Engine."
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
+														client_to_agent_config: {
+															nesting_mode: "list"
+															block: {
+																attributes: agent_gateway: {
+																	type:             "string"
+																	description:      "Required. The resource name of the Agent Gateway to use for inbound traffic."
+																	description_kind: "plain"
+																	required:         true
+																}
+																description:      "Optional. Configuration for traffic targeting the Reasoning Engine."
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
+													}
+													description:      "Optional. Agent Gateway configuration for a Reasoning Engine deployment."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
 											env: {
 												nesting_mode: "set"
 												block: {
@@ -304498,6 +306043,44 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									nesting_mode: "list"
 									block: {
 										block_types: {
+											agent_config_source: {
+												nesting_mode: "list"
+												block: {
+													block_types: {
+														adk_config: {
+															nesting_mode: "list"
+															block: {
+																attributes: json_config: {
+																	type:             "string"
+																	description:      "Required. The value of the ADK config in JSON format."
+																	description_kind: "plain"
+																	required:         true
+																}
+																description:      "Required. Configuration for the Agent Development Kit (ADK)."
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
+														inline_source: {
+															nesting_mode: "list"
+															block: {
+																attributes: source_archive: {
+																	type:             "string"
+																	description:      "Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file."
+																	description_kind: "plain"
+																	required:         true
+																}
+																description:      "Optional. Any additional files needed to interpret the config."
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
+													}
+													description:      "Optional. Specification for the deploying from agent config."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
 											developer_connect_source: {
 												nesting_mode: "list"
 												block: {
@@ -304939,27 +306522,116 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						computed:         true
 					}
 				}
-				block_types: timeouts: {
-					nesting_mode: "single"
-					block: {
-						attributes: {
-							create: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
+				block_types: {
+					gateway_configs: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								allowed_projects: {
+									type: ["list", "string"]
+									description: """
+												Additional consumer projects permitted to attach their own PSC endpoint
+												to this gateway's ServiceAttachment. This is the "decoupled" mode, where
+												the customer creates the PSC endpoint in a project other than this
+												gateway's network project. Each listed project is VPC-SC enforced: it
+												must be within the caller's service perimeter. The owning
+												SemanticGovernancePolicyEngine's own project is always permitted
+												implicitly and need not be listed. Format: projects/{project} (ID or number).
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								dns_record: {
+									type:             "string"
+									description:      "The fully qualified record name of the created A-record in Cloud DNS."
+									description_kind: "plain"
+									computed:         true
+								}
+								dns_zone_name: {
+									type:             "string"
+									description:      "FQDN of the private DNS zone to create DNS record set for PSC endpoint."
+									description_kind: "plain"
+									optional:         true
+								}
+								ip_address: {
+									type:             "string"
+									description:      "The private IP address of the PSC endpoint."
+									description_kind: "plain"
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description_kind: "plain"
+									required:         true
+								}
+								network: {
+									type: "string"
+									description: """
+												The URI of the network resource where PSC-E will be provisioned. If not
+												provided 'default' network will be used. Format:
+												projects/{project}/global/networks/{network}
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								psc_endpoint: {
+									type: "string"
+									description: """
+												The self-link or name of the Private Service Connect endpoint forwarding
+												rule.
+												"""
+									description_kind: "plain"
+									computed:         true
+								}
+								state: {
+									type: "string"
+									description: """
+												The state of the Gateway configuration. One of: STATE_UNSPECIFIED,
+												PROVISIONING, ACTIVE, DEPROVISIONING, INACTIVE, FAILED.
+												"""
+									description_kind: "plain"
+									computed:         true
+								}
+								subnetwork: {
+									type: "string"
+									description: """
+												The URI of the subnetwork resource where PSC-E will be provisioned. If
+												not provided 'default' subnet will be used from the same {location}
+												Format: projects/{project}/regions/{region}/subnetworks/{subnetwork}
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
 							}
-							delete: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
-							update: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
+							description: """
+										Configurations for gateways. The keys are user-defined names for each gateway.
+										At most 5 gateway configurations are allowed.
+										"""
+							description_kind: "plain"
 						}
-						description_kind: "plain"
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
 					}
 				}
 				description_kind: "plain"
@@ -318656,6 +320328,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								resources: ["list", ["object", {
 									limits: ["map", "string"]
 								}]]
+								sandbox_launcher: "bool"
 								startup_probe: ["list", ["object", {
 									failure_threshold: "number"
 									grpc: ["list", ["object", {
@@ -335444,6 +337117,47 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type:             "string"
 						description_kind: "plain"
 						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_eventarc_pipeline_iam_policy: {
+			version: 0
+			block: {
+				attributes: {
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					pipeline_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					policy_data: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -354428,6 +356142,91 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 		}
 	}
 	list_resource_schemas: {
+		google_apigee_addons_config: {
+			version: 0
+			block: description_kind: "plain"
+		}
+		google_apigee_api_product: {
+			version: 0
+			block: {
+				attributes: org_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		google_apigee_data_collector: {
+			version: 0
+			block: {
+				attributes: org_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		google_apigee_datastore: {
+			version: 0
+			block: {
+				attributes: org_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		google_apigee_endpoint_attachment: {
+			version: 0
+			block: {
+				attributes: org_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		google_apigee_envgroup: {
+			version: 0
+			block: {
+				attributes: org_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		google_apigee_environment_keyvaluemaps: {
+			version: 0
+			block: {
+				attributes: env_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		google_apigee_organization: {
+			version: 0
+			block: description_kind: "plain"
+		}
+		google_apigee_target_server: {
+			version: 0
+			block: {
+				attributes: env_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
 		google_bigquery_dataset: {
 			version: 0
 			block: {
@@ -354531,6 +356330,78 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						optional:         true
 					}
 					region: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_colab_notebook_execution: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_colab_runtime: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_colab_runtime_template: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_colab_schedule: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
 						type:             "string"
 						description_kind: "plain"
 						optional:         true
@@ -364540,6 +366411,35 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_eventarc_pipeline_iam_member: {
+			version: 1
+			attributes: {
+				condition_title: {
+					type:                "string"
+					optional_for_import: true
+				}
+				location: {
+					type:                "string"
+					optional_for_import: true
+				}
+				member: {
+					type:                "string"
+					required_for_import: true
+				}
+				pipeline_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				role: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		google_filestore_backup: {
 			version: 1
 			attributes: {
@@ -367636,6 +369536,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_monitoring_snooze: {
+			version: 1
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
 		google_monitoring_uptime_check_config: {
 			version: 1
 			attributes: {
@@ -368978,6 +370891,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					optional_for_import: true
 				}
 				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		google_observability_bucket: {
+			version: 1
+			attributes: {
+				bucket_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
 					type:                "string"
 					required_for_import: true
 				}

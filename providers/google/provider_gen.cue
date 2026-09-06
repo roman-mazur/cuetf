@@ -142,6 +142,7 @@ provider: {
 		network_connectivity_custom_endpoint?:       string
 		network_connectivityv1_custom_endpoint?:     string
 		network_management_custom_endpoint?:         string
+		network_managementv1_custom_endpoint?:       string
 		network_security_custom_endpoint?:           string
 		network_services_custom_endpoint?:           string
 		observability_custom_endpoint?:              string

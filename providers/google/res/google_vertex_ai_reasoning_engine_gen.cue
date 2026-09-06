@@ -66,6 +66,7 @@ google_vertex_ai_reasoning_engine: {
 	})
 
 	#spec: close({
+		build_spec?: matchN(1, [_#defs."/$defs/spec/$defs/build_spec", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/build_spec"]])
 		container_spec?: matchN(1, [_#defs."/$defs/spec/$defs/container_spec", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/container_spec"]])
 		deployment_spec?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/deployment_spec"]])
 		package_spec?: matchN(1, [_#defs."/$defs/spec/$defs/package_spec", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/package_spec"]])
@@ -363,6 +364,14 @@ google_vertex_ai_reasoning_engine: {
 		update?: string
 	})
 
+	_#defs: "/$defs/spec/$defs/build_spec": close({
+		// Optional. The service account that the Cloud Build builder runs as.
+		service_account?: string
+
+		// Optional. The resource name of the Cloud Build WorkerPool to use for the build.
+		worker_pool?: string
+	})
+
 	_#defs: "/$defs/spec/$defs/container_spec": close({
 		// The Artifact Registry Docker image URI (e.g.,
 		// 'us-central1-docker.pkg.dev/my-project/my-repo/my-image:tag') of the
@@ -375,6 +384,7 @@ google_vertex_ai_reasoning_engine: {
 	})
 
 	_#defs: "/$defs/spec/$defs/deployment_spec": close({
+		agent_gateway_config?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec/$defs/agent_gateway_config", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/deployment_spec/$defs/agent_gateway_config"]])
 		env?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec/$defs/env", [..._#defs."/$defs/spec/$defs/deployment_spec/$defs/env"]])
 		psc_interface_config?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec/$defs/psc_interface_config", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/deployment_spec/$defs/psc_interface_config"]])
 		secret_env?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec/$defs/secret_env", [..._#defs."/$defs/spec/$defs/deployment_spec/$defs/secret_env"]])
@@ -406,6 +416,21 @@ google_vertex_ai_reasoning_engine: {
 		// For more information, go to
 		// https://cloud.google.com/run/docs/configuring/memory-limits.
 		resource_limits?: [string]: string
+	})
+
+	_#defs: "/$defs/spec/$defs/deployment_spec/$defs/agent_gateway_config": close({
+		agent_to_anywhere_config?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec/$defs/agent_gateway_config/$defs/agent_to_anywhere_config", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/deployment_spec/$defs/agent_gateway_config/$defs/agent_to_anywhere_config"]])
+		client_to_agent_config?: matchN(1, [_#defs."/$defs/spec/$defs/deployment_spec/$defs/agent_gateway_config/$defs/client_to_agent_config", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/deployment_spec/$defs/agent_gateway_config/$defs/client_to_agent_config"]])
+	})
+
+	_#defs: "/$defs/spec/$defs/deployment_spec/$defs/agent_gateway_config/$defs/agent_to_anywhere_config": close({
+		// Required. The resource name of the Agent Gateway for outbound traffic.
+		agent_gateway!: string
+	})
+
+	_#defs: "/$defs/spec/$defs/deployment_spec/$defs/agent_gateway_config/$defs/client_to_agent_config": close({
+		// Required. The resource name of the Agent Gateway to use for inbound traffic.
+		agent_gateway!: string
 	})
 
 	_#defs: "/$defs/spec/$defs/deployment_spec/$defs/env": close({
@@ -487,10 +512,27 @@ google_vertex_ai_reasoning_engine: {
 	})
 
 	_#defs: "/$defs/spec/$defs/source_code_spec": close({
+		agent_config_source?: matchN(1, [_#defs."/$defs/spec/$defs/source_code_spec/$defs/agent_config_source", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/source_code_spec/$defs/agent_config_source"]])
 		developer_connect_source?: matchN(1, [_#defs."/$defs/spec/$defs/source_code_spec/$defs/developer_connect_source", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/source_code_spec/$defs/developer_connect_source"]])
 		image_spec?: matchN(1, [_#defs."/$defs/spec/$defs/source_code_spec/$defs/image_spec", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/source_code_spec/$defs/image_spec"]])
 		inline_source?: matchN(1, [_#defs."/$defs/spec/$defs/source_code_spec/$defs/inline_source", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/source_code_spec/$defs/inline_source"]])
 		python_spec?: matchN(1, [_#defs."/$defs/spec/$defs/source_code_spec/$defs/python_spec", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/source_code_spec/$defs/python_spec"]])
+	})
+
+	_#defs: "/$defs/spec/$defs/source_code_spec/$defs/agent_config_source": close({
+		adk_config?: matchN(1, [_#defs."/$defs/spec/$defs/source_code_spec/$defs/agent_config_source/$defs/adk_config", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/source_code_spec/$defs/agent_config_source/$defs/adk_config"]])
+		inline_source?: matchN(1, [_#defs."/$defs/spec/$defs/source_code_spec/$defs/agent_config_source/$defs/inline_source", list.MaxItems(1) & [..._#defs."/$defs/spec/$defs/source_code_spec/$defs/agent_config_source/$defs/inline_source"]])
+	})
+
+	_#defs: "/$defs/spec/$defs/source_code_spec/$defs/agent_config_source/$defs/adk_config": close({
+		// Required. The value of the ADK config in JSON format.
+		json_config!: string
+	})
+
+	_#defs: "/$defs/spec/$defs/source_code_spec/$defs/agent_config_source/$defs/inline_source": close({
+		// Required. Input only. The application source code archive, provided as a
+		// compressed tarball (.tar.gz) file.
+		source_archive!: string
 	})
 
 	_#defs: "/$defs/spec/$defs/source_code_spec/$defs/developer_connect_source": close({

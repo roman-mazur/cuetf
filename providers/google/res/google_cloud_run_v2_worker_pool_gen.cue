@@ -365,6 +365,9 @@ google_cloud_run_v2_worker_pool: {
 		// Name of the container specified as a DNS_LABEL.
 		name?: string
 
+		// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+		sandbox_launcher?: bool
+
 		// Container's working directory. If not specified, the container runtime's
 		// default will be used, which might be configured in the container image.
 		working_dir?: string

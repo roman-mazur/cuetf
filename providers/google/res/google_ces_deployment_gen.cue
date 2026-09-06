@@ -7,7 +7,9 @@ google_ces_deployment: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_ces_deployment")
 	close({
 		channel_profile!: matchN(1, [#channel_profile, list.MaxItems(1) & [_, ...] & [...#channel_profile]])
+		instagram_credentials?: matchN(1, [#instagram_credentials, list.MaxItems(1) & [...#instagram_credentials]])
 		timeouts?: #timeouts
+		whatsapp_credentials?: matchN(1, [#whatsapp_credentials, list.MaxItems(1) & [...#whatsapp_credentials]])
 
 		// Resource ID segment making up resource 'name'. It identifies the resource
 		// within its parent collection as described in https://google.aip.dev/122.
@@ -81,10 +83,62 @@ google_ces_deployment: {
 		profile_id?: string
 	})
 
+	#instagram_credentials: close({
+		// The Meta auth code provided by the embedded signup flow.
+		auth_code?: string
+
+		// The Meta auth code provided by the embedded signup flow.
+		auth_code_wo?: string
+
+		// Triggers update of 'auth_code_wo' write-only. Increment this value when an
+		// update to 'auth_code_wo' is needed. For more info see [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		auth_code_wo_version?: string
+
+		// The Conversation Profile ID to use for the deployment.
+		conversation_profile_id?: string
+	})
+
 	#timeouts: close({
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	#whatsapp_credentials: close({
+		// The Meta auth code provided by the embedded signup flow.
+		auth_code?: string
+
+		// The Meta auth code provided by the embedded signup flow.
+		auth_code_wo?: string
+
+		// Triggers update of 'auth_code_wo' write-only. Increment this value when an
+		// update to 'auth_code_wo' is needed. For more info see [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		auth_code_wo_version?: string
+
+		// The Business Account ID to use for the phone number.
+		business_account_id!: string
+
+		// The Conversation Profile ID to use for the deployment.
+		conversation_profile_id?: string
+
+		// The phone number to register with WhatsApp.
+		phone_number!: string
+
+		// The 6-digit PIN created by the user for two-step verification.
+		pin?: string
+
+		// The 6-digit PIN created by the user for two-step verification.
+		pin_wo?: string
+
+		// Triggers update of 'pin_wo' write-only. Increment this value when an update
+		// to 'pin_wo' is needed. For more info see [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		pin_wo_version?: string
+
+		// The WhatsApp Business Account ID.
+		waba_id!: string
 	})
 
 	_#defs: "/$defs/channel_profile/$defs/persona_property": close({
