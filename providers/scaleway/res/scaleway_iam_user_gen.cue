@@ -64,6 +64,9 @@ scaleway_iam_user: {
 		// Whether or not to send a welcome email that includes onboarding information
 		send_welcome_email?: bool
 
+		// The Scaleway Resource Name (SRN) of the user
+		srn?: string
+
 		// The status of user invitation
 		status?: string
 

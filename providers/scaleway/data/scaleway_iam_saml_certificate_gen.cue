@@ -16,6 +16,9 @@ scaleway_iam_saml_certificate: {
 		// The origin of the SAML certificate. Possible values are: `scaleway`, `identity_provider`.
 		origin?: string
 
+		// The Scaleway Resource Name (SRN) of the SAML certificate
+		srn?: string
+
 		// The type of the SAML certificate. Possible values are: `signing`, `encryption`.
 		type?: string
 	})

@@ -36,6 +36,9 @@ scaleway_ipam_ip: {
 		// The region you want to attach the resource to
 		region?: string
 
+		// The SRN of the IP
+		srn?: string
+
 		// The tags associated with the IP
 		tags?: [...string]
 

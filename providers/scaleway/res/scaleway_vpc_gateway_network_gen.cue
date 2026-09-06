@@ -24,6 +24,9 @@ scaleway_vpc_gateway_network: {
 		// The ID of the private network where connect to
 		private_network_id!: string
 
+		// The Scaleway Resource Name (SRN) of the gateway network
+		srn?: string
+
 		// The status of the Public Gateway's connection to the Private Network
 		status?: string
 

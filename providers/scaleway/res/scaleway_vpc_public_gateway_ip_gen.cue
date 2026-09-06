@@ -20,6 +20,9 @@ scaleway_vpc_public_gateway_ip: {
 		// reverse domain name for the IP address
 		reverse?: string
 
+		// The Scaleway Resource Name (SRN) of the IP
+		srn?: string
+
 		// The tags associated with public gateway IP
 		tags?: [...string]
 

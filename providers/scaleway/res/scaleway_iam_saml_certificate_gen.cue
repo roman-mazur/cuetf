@@ -22,6 +22,9 @@ scaleway_iam_saml_certificate: {
 		// The ID of the SAML configuration
 		saml_id?: string
 
+		// The Scaleway Resource Name (SRN) of the SAML certificate
+		srn?: string
+
 		// The type of the SAML certificate
 		type!: string
 	})

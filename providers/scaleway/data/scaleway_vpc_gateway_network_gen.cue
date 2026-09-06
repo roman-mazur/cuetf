@@ -44,6 +44,9 @@ scaleway_vpc_gateway_network: {
 		// The ID of the private network where connect to
 		private_network_id?: string
 
+		// The Scaleway Resource Name (SRN) of the gateway network
+		srn?: string
+
 		// The static IP address in CIDR on this network
 		static_address?: string
 

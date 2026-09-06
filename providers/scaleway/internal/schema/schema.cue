@@ -165,6 +165,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						required:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the SSH key"
+						description_kind: "plain"
+						computed:         true
+					}
 					updated_at: {
 						type:             "string"
 						description:      "The date and time of the last update of the iam SSH Key"
@@ -611,6 +617,210 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 
 					"""
 				description_kind: "plain"
+			}
+		}
+		scaleway_autoscaling_group: {
+			version: 0
+			block: {
+				attributes: {
+					created_at: {
+						type:             "string"
+						description:      "The creation timestamp of the AutoScaling Group."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the AutoScaling Group, in the `{zone}/{id}` format."
+						description_kind: "markdown"
+						computed:         true
+					}
+					load_balancer_configuration: {
+						nested_type: {
+							attributes: {
+								auto_healing: {
+									nested_type: {
+										attributes: {
+											enabled: {
+												type:             "bool"
+												description:      "Whether auto-healing is enabled."
+												description_kind: "markdown"
+												optional:         true
+												computed:         true
+											}
+											grace_period: {
+												type:             "string"
+												description:      "The grace period for health checks."
+												description_kind: "markdown"
+												optional:         true
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "The auto-healing configuration."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								backends: {
+									nested_type: {
+										attributes: {
+											address_family: {
+												type:             "string"
+												description:      "The IP address family (IPv4 or IPv6)."
+												description_kind: "markdown"
+												required:         true
+											}
+											backend_id: {
+												type:             "string"
+												description:      "The ID of the load balancer backend."
+												description_kind: "markdown"
+												required:         true
+											}
+											private_network_id: {
+												type:             "string"
+												description:      "The ID of the private network."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "list"
+									}
+									description:      "The list of load balancer backend configurations."
+									description_kind: "markdown"
+									required:         true
+								}
+								load_balancer_id: {
+									type:             "string"
+									description:      "The ID of the load balancer."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "The load balancer configuration."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the AutoScaling Group. If not provided, a random name will be generated."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project ID the AutoScaling Group belongs to. Defaults to the provider's project ID."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					scaling_policy: {
+						nested_type: {
+							attributes: {
+								cpu_target: {
+									type:             "number"
+									description:      "The target CPU utilization percentage to trigger scaling events."
+									description_kind: "markdown"
+									optional:         true
+								}
+								fixed_size: {
+									type:             "number"
+									description:      "The fixed number of instances for the group."
+									description_kind: "markdown"
+									optional:         true
+								}
+								maximum_size: {
+									type:             "number"
+									description:      "The maximum number of instances in the group."
+									description_kind: "markdown"
+									required:         true
+								}
+								memory_target: {
+									type:             "number"
+									description:      "The target memory utilization percentage to trigger scaling events."
+									description_kind: "markdown"
+									optional:         true
+								}
+								minimum_size: {
+									type:             "number"
+									description:      "The minimum number of instances in the group."
+									description_kind: "markdown"
+									required:         true
+								}
+								scale_in_cooldown: {
+									type:             "string"
+									description:      "The cooldown duration after a scale-in event."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								scale_in_step: {
+									type:             "number"
+									description:      "The number of instances to remove during scale-in event."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								scale_out_cooldown: {
+									type:             "string"
+									description:      "The cooldown duration after a scale-out event."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								scale_out_step: {
+									type:             "number"
+									description:      "The number of instances to add during scale-out event."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "The scaling policy configuration."
+						description_kind: "markdown"
+						required:         true
+					}
+					status: {
+						type:             "string"
+						description:      "The current status of the AutoScaling Group."
+						description_kind: "markdown"
+						computed:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "The tags associated with the AutoScaling Group."
+						description_kind: "markdown"
+						optional:         true
+					}
+					template_id: {
+						type:             "string"
+						description:      "The ID of the Instance Template used to create instances in this group."
+						description_kind: "markdown"
+						required:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The last update timestamp of the AutoScaling Group."
+						description_kind: "markdown"
+						computed:         true
+					}
+					zone: {
+						type:             "string"
+						description:      "The zone the AutoScaling Group is in."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				description:      "Manages a Scaleway AutoScaling Group."
+				description_kind: "markdown"
 			}
 		}
 		scaleway_autoscaling_instance_group: {
@@ -3644,6 +3854,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the database"
+						description_kind: "plain"
+						computed:         true
+					}
 				}
 				description_kind: "plain"
 			}
@@ -3746,6 +3962,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "Number of shards for the deployment. This value is immutable and cannot be changed after creation."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the deployment"
+						description_kind: "plain"
 						computed:         true
 					}
 					started: {
@@ -3889,6 +4111,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the user"
+						description_kind: "plain"
 						computed:         true
 					}
 				}
@@ -5627,6 +5855,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the flexible IP"
+						description_kind: "plain"
+						computed:         true
+					}
 					status: {
 						type:             "string"
 						description:      "The status of the flexible IP"
@@ -6516,6 +6750,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 						sensitive:        true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the API key"
+						description_kind: "plain"
+						computed:         true
+					}
 					updated_at: {
 						type:             "string"
 						description:      "The date and time of the last update of the iam api key"
@@ -6572,6 +6812,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "ID of organization the resource is associated to."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the application"
+						description_kind: "plain"
 						computed:         true
 					}
 					tags: {
@@ -6638,9 +6884,15 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the group"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
-						description:      "The tags associated with the application"
+						description:      "The tags associated with the group"
 						description_kind: "plain"
 						optional:         true
 					}
@@ -6752,6 +7004,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the policy"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags associated with the policy"
@@ -6846,6 +7104,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "markdown"
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the SAML configuration"
+						description_kind: "markdown"
+						computed:         true
+					}
 					status: {
 						type:             "string"
 						description:      "The status of the SAML configuration"
@@ -6902,6 +7166,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The ID of the SAML configuration"
 						description_kind: "markdown"
 						optional:         true
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the SAML certificate"
+						description_kind: "markdown"
 						computed:         true
 					}
 					type: {
@@ -7059,6 +7329,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						required:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the SSH key"
+						description_kind: "plain"
+						computed:         true
+					}
 					updated_at: {
 						type:             "string"
 						description:      "The date and time of the last update of the iam SSH Key"
@@ -7184,6 +7460,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "Whether or not to send a welcome email that includes onboarding information"
 						description_kind: "plain"
 						optional:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the user"
+						description_kind: "plain"
+						computed:         true
 					}
 					status: {
 						type:             "string"
@@ -8006,6 +8288,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The private network ID"
 						description_kind: "plain"
 						required:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
 					}
 					server_id: {
 						type:             "string"
@@ -8899,6 +9188,169 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_instance_template: {
+			version: 0
+			block: {
+				attributes: {
+					created_at: {
+						type:             "string"
+						description:      "The creation timestamp of the Instance Template."
+						description_kind: "markdown"
+						computed:         true
+					}
+					filesystem_ids: {
+						type: ["set", "string"]
+						description:      "The IDs of the filesystems to attach to the servers created using the Instance Template."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the Instance Template, in the `{zone}/{id}` format."
+						description_kind: "markdown"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the Instance Template. If not provided, a random name will be generated."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					placement_group_id: {
+						type:             "string"
+						description:      "The ID of the placement group to attach to the servers created using the Instance Template."
+						description_kind: "markdown"
+						optional:         true
+					}
+					private_networks: {
+						type: ["set", "string"]
+						description:      "The IDs of the private networks to attach to the servers created using the Instance Template."
+						description_kind: "markdown"
+						optional:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project ID the Instance Template belongs to. Defaults to the provider's project ID."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					public_ipv4_count: {
+						type:             "number"
+						description:      "The number of public IPv4 to attach to the servers created using the Instance Template."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					public_ipv6_count: {
+						type:             "number"
+						description:      "The number of public IPv6 to attach to the servers created using the Instance Template."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					security_group_id: {
+						type:             "string"
+						description:      "The ID of the security group to attach to the servers created using the Instance Template."
+						description_kind: "markdown"
+						optional:         true
+					}
+					server_tags: {
+						type: ["list", "string"]
+						description:      "The tags that will be assigned to the servers created using the Instance Template."
+						description_kind: "markdown"
+						optional:         true
+					}
+					server_type: {
+						type:             "string"
+						description:      "The commercial type of the server defined by the Instance Template."
+						description_kind: "markdown"
+						required:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "The tags associated with the Instance Template."
+						description_kind: "markdown"
+						optional:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "The last update timestamp of the Instance Template."
+						description_kind: "markdown"
+						computed:         true
+					}
+					volumes: {
+						nested_type: {
+							attributes: {
+								base_snapshot_id: {
+									type:             "string"
+									description:      "The ID of the base snapshot for the volume."
+									description_kind: "markdown"
+									optional:         true
+								}
+								image_label: {
+									type:             "string"
+									description:      "The label of the image used as base for the volume."
+									description_kind: "markdown"
+									optional:         true
+								}
+								name: {
+									type:             "string"
+									description:      "The name of volume. If not provided, a random name will be generated."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								perf_iops: {
+									type:             "number"
+									description:      "The performance IOPS of the volume."
+									description_kind: "markdown"
+									optional:         true
+								}
+								size_in_gb: {
+									type:             "number"
+									description:      "The size of the volume in gigabytes."
+									description_kind: "markdown"
+									required:         true
+								}
+								tags: {
+									type: ["list", "string"]
+									description:      "The tags associated with the volume."
+									description_kind: "markdown"
+									optional:         true
+								}
+								volume_type: {
+									type:             "string"
+									description:      "The type of volume."
+									description_kind: "markdown"
+									required:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "The specs of the volumes of the servers created using the Instance Template."
+						description_kind: "markdown"
+						optional:         true
+					}
+					windows_rdp_ssh_key_id: {
+						type:             "string"
+						description:      "The ID of the IAM SSH key used to encrypt the initial admin password on a Windows server. This will be repeated on all servers created using the Instance Template."
+						description_kind: "markdown"
+						optional:         true
+					}
+					zone: {
+						type:             "string"
+						description:      "The zone the Instance Template is in."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				description:      "Manages a Scaleway Instance Template."
+				description_kind: "markdown"
+			}
+		}
 		scaleway_instance_user_data: {
 			version: 0
 			block: {
@@ -9209,6 +9661,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the link"
+						description_kind: "plain"
+						computed:         true
+					}
 					status: {
 						type:             "string"
 						description:      "Status of the link"
@@ -9343,6 +9801,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the routing policy"
+						description_kind: "plain"
 						computed:         true
 					}
 					tags: {
@@ -9992,6 +10456,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							hostname: "string"
 						}]]
 						description:      "The reverses DNS for this IP"
+						description_kind: "plain"
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the IP"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -16661,6 +17131,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the connection"
+						description_kind: "plain"
+						computed:         true
+					}
 					status: {
 						type:             "string"
 						description:      "The status of the VPN gateway"
@@ -16869,6 +17345,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the customer gateway"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The list of tags to apply to the customer gateway"
@@ -16960,6 +17442,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the VPN gateway"
+						description_kind: "plain"
+						computed:         true
+					}
 					status: {
 						type:             "string"
 						description:      "The status of the VPN gateway"
@@ -16994,15 +17482,17 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							attributes: {
 								ipam_ipv4_id: {
 									type:             "string"
-									description:      " The ID of the IPAM IPv4 address to use as the public IP for the VPN gateway"
+									description:      "The ID of the IPAM IPv4 address to use as the public IP for the VPN gateway"
 									description_kind: "plain"
 									optional:         true
+									computed:         true
 								}
 								ipam_ipv6_id: {
 									type:             "string"
-									description:      " The ID of the IPAM IPv6 address to use as the public IP for the VPN gateway"
+									description:      "The ID of the IPAM IPv6 address to use as the public IP for the VPN gateway"
 									description_kind: "plain"
 									optional:         true
+									computed:         true
 								}
 							}
 							description:      "The public endpoint configuration of the VPN gateway"
@@ -17106,6 +17596,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the routing policy"
+						description_kind: "plain"
 						computed:         true
 					}
 					tags: {
@@ -18196,6 +18692,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						required:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the gateway network"
+						description_kind: "plain"
+						computed:         true
+					}
 					static_address: {
 						type:             "string"
 						description:      "The static IP address in CIDR on this network"
@@ -18698,6 +19200,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the public gateway"
+						description_kind: "plain"
+						computed:         true
+					}
 					status: {
 						type:             "string"
 						description:      "The status of the public gateway"
@@ -19045,6 +19553,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the IP"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags associated with public gateway IP"
@@ -19175,6 +19689,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The public port used in the PAT rule"
 						description_kind: "plain"
 						required:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the PAT rule"
+						description_kind: "plain"
+						computed:         true
 					}
 					updated_at: {
 						type:             "string"
@@ -19658,6 +20178,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					public_key: {
 						type:             "string"
 						description:      "The public SSH key"
+						description_kind: "plain"
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the SSH key"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -23474,6 +24000,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the flexible IP"
+						description_kind: "plain"
+						computed:         true
+					}
 					status: {
 						type:             "string"
 						description:      "The status of the flexible IP"
@@ -23877,6 +24409,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the API key"
+						description_kind: "plain"
+						computed:         true
+					}
 					updated_at: {
 						type:             "string"
 						description:      "The date and time of the last update of the iam api key"
@@ -23938,6 +24476,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The organization_id the application is associated to"
 						description_kind: "plain"
 						optional:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the application"
+						description_kind: "plain"
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
@@ -24007,9 +24551,15 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the group"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
-						description:      "The tags associated with the application"
+						description:      "The tags associated with the group"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -24104,6 +24654,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the policy"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags associated with the policy"
@@ -24164,6 +24720,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "markdown"
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the SAML configuration"
+						description_kind: "markdown"
+						computed:         true
+					}
 					status: {
 						type:             "string"
 						description:      "The status of the SAML configuration"
@@ -24205,6 +24767,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					origin: {
 						type:             "string"
 						description:      "The origin of the SAML certificate. Possible values are: `scaleway`, `identity_provider`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the SAML certificate"
 						description_kind: "markdown"
 						computed:         true
 					}
@@ -24361,6 +24929,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the SSH key"
+						description_kind: "plain"
+						computed:         true
+					}
 					ssh_key_id: {
 						type:             "string"
 						description:      "The ID of the SSH key"
@@ -24486,6 +25060,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					send_welcome_email: {
 						type:             "bool"
 						description:      "Whether or not to send a welcome email that includes onboarding information"
+						description_kind: "plain"
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the user"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -24937,6 +25517,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The ID of the Private NIC"
 						description_kind: "plain"
 						optional:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "The project_id you want to attach the resource to"
+						description_kind: "plain"
+						computed:         true
 					}
 					server_id: {
 						type:             "string"
@@ -25868,6 +26454,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the link"
+						description_kind: "plain"
+						computed:         true
+					}
 					status: {
 						type:             "string"
 						description:      "Status of the link"
@@ -26238,6 +26830,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the routing policy"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The list of tags associated with the routing policy"
@@ -26569,6 +27167,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The SRN of the IP"
+						description_kind: "plain"
 						computed:         true
 					}
 					tags: {
@@ -30520,6 +31124,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the connection"
+						description_kind: "plain"
+						computed:         true
+					}
 					status: {
 						type:             "string"
 						description:      "The status of the VPN gateway"
@@ -30618,6 +31228,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the customer gateway"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The list of tags to apply to the customer gateway"
@@ -30712,6 +31328,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the VPN gateway"
+						description_kind: "plain"
+						computed:         true
 					}
 					status: {
 						type:             "string"
@@ -30810,6 +31432,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The ID of the routing policy"
 						description_kind: "plain"
 						optional:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the routing policy"
+						description_kind: "plain"
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
@@ -31647,6 +32275,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the gateway network"
+						description_kind: "plain"
+						computed:         true
+					}
 					static_address: {
 						type:             "string"
 						description:      "The static IP address in CIDR on this network"
@@ -31978,6 +32612,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the public gateway"
+						description_kind: "plain"
+						computed:         true
+					}
 					status: {
 						type:             "string"
 						description:      "The status of the public gateway"
@@ -32268,6 +32908,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the IP"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags associated with public gateway IP"
@@ -32345,6 +32991,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					public_port: {
 						type:             "number"
 						description:      "The public port used in the PAT rule"
+						description_kind: "plain"
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the PAT rule"
 						description_kind: "plain"
 						computed:         true
 					}

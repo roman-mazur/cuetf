@@ -26,6 +26,9 @@ scaleway_account_ssh_key: {
 		// The public SSH key
 		public_key?: string
 
+		// The Scaleway Resource Name (SRN) of the SSH key
+		srn?: string
+
 		// The ID of the SSH key
 		ssh_key_id?: string
 

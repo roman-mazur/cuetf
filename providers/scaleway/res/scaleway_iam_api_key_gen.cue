@@ -32,6 +32,9 @@ scaleway_iam_api_key: {
 		// The secret Key of the iam api key
 		secret_key?: string
 
+		// The Scaleway Resource Name (SRN) of the API key
+		srn?: string
+
 		// The date and time of the last update of the iam api key
 		updated_at?: string
 

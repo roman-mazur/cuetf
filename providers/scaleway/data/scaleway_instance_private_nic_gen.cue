@@ -28,6 +28,9 @@ scaleway_instance_private_nic: {
 		// The ID of the Private NIC
 		private_nic_id?: string
 
+		// The project_id you want to attach the resource to
+		project_id?: string
+
 		// The server ID
 		server_id!: string
 

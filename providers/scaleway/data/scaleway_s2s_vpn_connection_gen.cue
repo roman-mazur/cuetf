@@ -92,6 +92,9 @@ scaleway_s2s_vpn_connection: {
 		// The BGP peer IP on customer side
 		secret_version?: number
 
+		// The Scaleway Resource Name (SRN) of the connection
+		srn?: string
+
 		// The status of the VPN gateway
 		status?: string
 

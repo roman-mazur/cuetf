@@ -40,6 +40,9 @@ scaleway_ipam_ip: {
 			hostname?: string
 		})]
 
+		// The Scaleway Resource Name (SRN) of the IP
+		srn?: string
+
 		// The tags associated with the IP
 		tags?: [...string]
 

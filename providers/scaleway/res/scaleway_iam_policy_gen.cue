@@ -31,6 +31,9 @@ scaleway_iam_policy: {
 		// ID of organization the resource is associated to.
 		organization_id?: string
 
+		// The Scaleway Resource Name (SRN) of the policy
+		srn?: string
+
 		// The tags associated with the policy
 		tags?: [...string]
 

@@ -68,6 +68,9 @@ scaleway_datawarehouse_deployment: {
 		// changed after creation.
 		shard_count?: number
 
+		// The Scaleway Resource Name (SRN) of the deployment
+		srn?: string
+
 		// Whether the deployment should be running (`true`) or stopped (`false`). Maps
 		// to the Start deployment and Stop deployment API actions.
 		started?: bool

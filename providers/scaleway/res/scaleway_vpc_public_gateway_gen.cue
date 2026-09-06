@@ -40,6 +40,9 @@ scaleway_vpc_public_gateway: {
 		// Trigger a refresh of the SSH keys for a given Public Gateway by changing this field's value
 		refresh_ssh_keys?: string
 
+		// The Scaleway Resource Name (SRN) of the public gateway
+		srn?: string
+
 		// The status of the public gateway
 		status?: string
 

@@ -29,6 +29,9 @@ scaleway_interlink_routing_policy: {
 		// The region you want to attach the resource to
 		region?: string
 
+		// The Scaleway Resource Name (SRN) of the routing policy
+		srn?: string
+
 		// The list of tags associated with the routing policy
 		tags?: [...string]
 

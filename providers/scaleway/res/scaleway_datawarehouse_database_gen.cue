@@ -16,5 +16,8 @@ scaleway_datawarehouse_database: {
 
 		// Size of the database (in GB).
 		size?: number
+
+		// The Scaleway Resource Name (SRN) of the database
+		srn?: string
 	})
 }
