@@ -4,6 +4,7 @@ google_vertex_ai_semantic_governance_policy_engine: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_semantic_governance_policy_engine")
 	close({
+		gateway_configs?: matchN(1, [#gateway_configs, [...#gateway_configs]])
 		timeouts?: #timeouts
 
 		// The time the SemanticGovernancePolicyEngine was created, in RFC3339
@@ -47,6 +48,45 @@ google_vertex_ai_semantic_governance_policy_engine: {
 		// The time the SemanticGovernancePolicyEngine was last updated, in
 		// RFC3339 UTC "Zulu" format.
 		update_time?: string
+	})
+
+	#gateway_configs: close({
+		// Additional consumer projects permitted to attach their own PSC endpoint
+		// to this gateway's ServiceAttachment. This is the "decoupled" mode, where
+		// the customer creates the PSC endpoint in a project other than this
+		// gateway's network project. Each listed project is VPC-SC enforced: it
+		// must be within the caller's service perimeter. The owning
+		// SemanticGovernancePolicyEngine's own project is always permitted
+		// implicitly and need not be listed. Format: projects/{project} (ID or number).
+		allowed_projects?: [...string]
+
+		// The fully qualified record name of the created A-record in Cloud DNS.
+		dns_record?: string
+
+		// FQDN of the private DNS zone to create DNS record set for PSC endpoint.
+		dns_zone_name?: string
+
+		// The private IP address of the PSC endpoint.
+		ip_address?: string
+		name!:       string
+
+		// The URI of the network resource where PSC-E will be provisioned. If not
+		// provided 'default' network will be used. Format:
+		// projects/{project}/global/networks/{network}
+		network?: string
+
+		// The self-link or name of the Private Service Connect endpoint forwarding
+		// rule.
+		psc_endpoint?: string
+
+		// The state of the Gateway configuration. One of: STATE_UNSPECIFIED,
+		// PROVISIONING, ACTIVE, DEPROVISIONING, INACTIVE, FAILED.
+		state?: string
+
+		// The URI of the subnetwork resource where PSC-E will be provisioned. If
+		// not provided 'default' subnet will be used from the same {location}
+		// Format: projects/{project}/regions/{region}/subnetworks/{subnetwork}
+		subnetwork?: string
 	})
 
 	#timeouts: close({

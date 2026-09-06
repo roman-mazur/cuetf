@@ -187,6 +187,11 @@ google_ces_agent: {
 		// parameters names to be sent to the Dialogflow agent as input.
 		input_variable_mapping?: [string]: string
 
+		// The name of the variable that contains the language code to be used for
+		// the Dialogflow session. If unspecified, the default language code of the
+		// Dialogflow agent will be used.
+		language_code_variable?: string
+
 		// The mapping of the Dialogflow session parameters names to the app
 		// variables names to be sent back to the CES agent after the Dialogflow
 		// agent execution ends.

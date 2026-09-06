@@ -250,6 +250,7 @@ google_cloud_run_v2_worker_pool: {
 				resources?: [...close({
 					limits?: [string]: string
 				})]
+				sandbox_launcher?: bool
 				startup_probe?: [...close({
 					failure_threshold?: number
 					grpc?: [...close({

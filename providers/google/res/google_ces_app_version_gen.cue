@@ -101,7 +101,8 @@ google_ces_app_version: {
 					agent?:          string
 					environment_id?: string
 					flow_id?:        string
-					input_variable_mapping?: [string]:  string
+					input_variable_mapping?: [string]: string
+					language_code_variable?: string
 					output_variable_mapping?: [string]: string
 				})]
 				tools?: [...string]
@@ -153,11 +154,29 @@ google_ces_app_version: {
 						theme?:            string
 						web_widget_title?: string
 					})]
+					whatsapp_config?: [...close({
+						description?:     string
+						display_name?:    string
+						phone_number?:    string
+						phone_number_id?: string
+						thumbnail_url?:   string
+						waba_id?:         string
+					})]
 				})]
 				deployment_count?: number
 				description?:      string
 				display_name?:     string
-				etag?:             string
+				error_handling_settings?: [...close({
+					end_session_config?: [...close({
+						escalate_session?: bool
+					})]
+					error_handling_strategy?: string
+					fallback_response_config?: [...close({
+						custom_fallback_messages?: [string]: string
+						max_fallback_attempts?: number
+					})]
+				})]
+				etag?: string
 				evaluation_metrics_thresholds?: [...close({
 					golden_evaluation_metrics_thresholds?: [...close({
 						expectation_level_metrics_thresholds?: [...close({
@@ -192,6 +211,7 @@ google_ces_app_version: {
 					})]
 					conversation_logging_settings?: [...close({
 						disable_conversation_logging?: bool
+						retention_window?:             string
 					})]
 					redaction_config?: [...close({
 						deidentify_template?: string
@@ -229,6 +249,9 @@ google_ces_app_version: {
 						type?:         string
 						unique_items?: bool
 					})]
+				})]
+				vpc_sc_settings?: [...close({
+					allowed_origins?: [...string]
 				})]
 			})]
 			examples?: [...close({

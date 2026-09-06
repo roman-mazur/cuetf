@@ -10,6 +10,7 @@ google_ces_app: {
 		client_certificate_settings?: matchN(1, [#client_certificate_settings, list.MaxItems(1) & [...#client_certificate_settings]])
 		data_store_settings?: matchN(1, [#data_store_settings, list.MaxItems(1) & [...#data_store_settings]])
 		default_channel_profile?: matchN(1, [#default_channel_profile, list.MaxItems(1) & [...#default_channel_profile]])
+		error_handling_settings?: matchN(1, [#error_handling_settings, list.MaxItems(1) & [...#error_handling_settings]])
 		evaluation_metrics_thresholds?: matchN(1, [#evaluation_metrics_thresholds, list.MaxItems(1) & [...#evaluation_metrics_thresholds]])
 		language_settings?: matchN(1, [#language_settings, list.MaxItems(1) & [...#language_settings]])
 		logging_settings?: matchN(1, [#logging_settings, list.MaxItems(1) & [...#logging_settings]])
@@ -17,6 +18,7 @@ google_ces_app: {
 		time_zone_settings?: matchN(1, [#time_zone_settings, list.MaxItems(1) & [...#time_zone_settings]])
 		timeouts?: #timeouts
 		variable_declarations?: matchN(1, [#variable_declarations, [...#variable_declarations]])
+		vpc_sc_settings?: matchN(1, [#vpc_sc_settings, list.MaxItems(1) & [...#vpc_sc_settings]])
 
 		// The ID to use for the app, which will become the final component of
 		// the app's resource name. If not provided, a unique ID will be
@@ -126,6 +128,7 @@ google_ces_app: {
 	#default_channel_profile: close({
 		persona_property?: matchN(1, [_#defs."/$defs/default_channel_profile/$defs/persona_property", list.MaxItems(1) & [..._#defs."/$defs/default_channel_profile/$defs/persona_property"]])
 		web_widget_config?: matchN(1, [_#defs."/$defs/default_channel_profile/$defs/web_widget_config", list.MaxItems(1) & [..._#defs."/$defs/default_channel_profile/$defs/web_widget_config"]])
+		whatsapp_config?: matchN(1, [_#defs."/$defs/default_channel_profile/$defs/whatsapp_config", list.MaxItems(1) & [..._#defs."/$defs/default_channel_profile/$defs/whatsapp_config"]])
 
 		// The type of the channel profile.
 		// Possible values:
@@ -147,6 +150,18 @@ google_ces_app: {
 
 		// The unique identifier of the channel profile.
 		profile_id?: string
+	})
+
+	#error_handling_settings: close({
+		end_session_config?: matchN(1, [_#defs."/$defs/error_handling_settings/$defs/end_session_config", list.MaxItems(1) & [..._#defs."/$defs/error_handling_settings/$defs/end_session_config"]])
+		fallback_response_config?: matchN(1, [_#defs."/$defs/error_handling_settings/$defs/fallback_response_config", list.MaxItems(1) & [..._#defs."/$defs/error_handling_settings/$defs/fallback_response_config"]])
+
+		// The strategy to use for error handling.
+		// Possible values:
+		// NONE
+		// FALLBACK_RESPONSE
+		// END_SESSION
+		error_handling_strategy?: string
 	})
 
 	#evaluation_metrics_thresholds: close({
@@ -216,6 +231,15 @@ google_ces_app: {
 		// The name of the variable. The name must start with a letter or underscore
 		// and contain only letters, numbers, or underscores.
 		name!: string
+	})
+
+	#vpc_sc_settings: close({
+		// The allowed HTTP(s) origins that OpenAPI tools in the App are
+		// able to directly call when VPC Service Controls are enabled. These strings
+		// must match the origin exactly, including the port if specified. For
+		// example, "https://example.com" or "https://example.com:443". This list does
+		// not yet apply to Python tools that may make direct HTTP calls.
+		allowed_origins?: [...string]
 	})
 
 	_#defs: "/$defs/audio_processing_config/$defs/ambient_sound_config": close({
@@ -296,6 +320,43 @@ google_ces_app: {
 		web_widget_title?: string
 	})
 
+	_#defs: "/$defs/default_channel_profile/$defs/whatsapp_config": close({
+		// The description of the Meta business page or profile.
+		description?: string
+
+		// The fetched Meta business page name.
+		display_name?: string
+
+		// The phone number in E.164 format.
+		phone_number?: string
+
+		// The Meta phone number ID.
+		phone_number_id!: string
+
+		// The fetched Meta business profile thumbnail URL.
+		thumbnail_url?: string
+
+		// The WhatsApp Business Account ID.
+		waba_id!: string
+	})
+
+	_#defs: "/$defs/error_handling_settings/$defs/end_session_config": close({
+		// Whether to escalate the session in EndSession. If session is escalated,
+		// metadata in EndSession will contain session_escalated = true.
+		escalate_session?: bool
+	})
+
+	_#defs: "/$defs/error_handling_settings/$defs/fallback_response_config": close({
+		// The fallback messages in case of system errors (e.g. LLM errors),
+		// mapped by supported language code
+		// (https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+		custom_fallback_messages?: [string]: string
+
+		// The maximum number of fallback attempts to make before the agent
+		// emitting EndSession Signal.
+		max_fallback_attempts?: number
+	})
+
 	_#defs: "/$defs/evaluation_metrics_thresholds/$defs/golden_evaluation_metrics_thresholds": close({
 		expectation_level_metrics_thresholds?: matchN(1, [_#defs."/$defs/evaluation_metrics_thresholds/$defs/golden_evaluation_metrics_thresholds/$defs/expectation_level_metrics_thresholds", list.MaxItems(1) & [..._#defs."/$defs/evaluation_metrics_thresholds/$defs/golden_evaluation_metrics_thresholds/$defs/expectation_level_metrics_thresholds"]])
 		turn_level_metrics_thresholds?: matchN(1, [_#defs."/$defs/evaluation_metrics_thresholds/$defs/golden_evaluation_metrics_thresholds/$defs/turn_level_metrics_thresholds", list.MaxItems(1) & [..._#defs."/$defs/evaluation_metrics_thresholds/$defs/golden_evaluation_metrics_thresholds/$defs/turn_level_metrics_thresholds"]])
@@ -360,6 +421,10 @@ google_ces_app: {
 	_#defs: "/$defs/logging_settings/$defs/conversation_logging_settings": close({
 		// Whether to disable conversation logging for the sessions.
 		disable_conversation_logging?: bool
+
+		// Controls the retention window for the conversation.
+		// If not set, the conversation will be retained for 365 days.
+		retention_window?: string
 	})
 
 	_#defs: "/$defs/logging_settings/$defs/redaction_config": close({

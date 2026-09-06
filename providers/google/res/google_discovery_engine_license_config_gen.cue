@@ -17,6 +17,9 @@ google_discovery_engine_license_config: {
 		free_trial?: bool
 		id?:         string
 
+		// Timestamp of the most recent user-initiated update.
+		last_user_update_time?: string
+
 		// The unique id of the license config.
 		license_config_id!: string
 

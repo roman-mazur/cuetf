@@ -180,6 +180,28 @@ google_ces_tool: {
 				})]
 				version?: string
 			})]
+			api_authentication?: [...close({
+				api_key_config?: [...close({
+					api_key_secret_version?: string
+					key_name?:               string
+					request_location?:       string
+				})]
+				bearer_token_config?: [...close({
+					token?: string
+				})]
+				oauth_config?: [...close({
+					client_id?:             string
+					client_secret_version?: string
+					oauth_grant_type?:      string
+					scopes?: [...string]
+					token_endpoint?: string
+				})]
+				service_account_auth_config?: [...close({
+					scopes?: [...string]
+					service_account?: string
+				})]
+				service_agent_id_token_auth_config?: [...close({})]
+			})]
 			description?: string
 			name?:        string
 		})]

@@ -6,12 +6,16 @@ google_service_networking_connection: {
 	close({
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
-		// the command will fail if this field is set to "PREVENT" in Terraform state.
-		// When set to "ABANDON", the command will remove the resource from Terraform
-		// management without updating or deleting the resource in the API.
-		// When set to "DELETE", deleting the resource is allowed.
+		// Whether Terraform will be prevented from destroying the connection. Defaults to "DELETE".
+		// When set to "PREVENT", destroying the resource will fail.
+		// When set to "ABANDON", the resource is removed from Terraform state without
+		// deleting the connection in the API. The VPC peering created by this connection
+		// is left in place, which will block deletion of the network.
+		// When set to "DELETE", the connection is deleted.
+		// When set to "REMOVE_PEERING", the connection is deleted, and if the API refuses
+		// because service producer resources still use it, the VPC peering is removed from
+		// the network instead so that the network can be deleted. Only use this once the
+		// service instances using the connection (such as Cloud SQL) are already deleted.
 		deletion_policy?: string
 		id?:              string
 

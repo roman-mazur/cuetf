@@ -248,6 +248,7 @@ import (
 	_#ds: "\(#googlePrefix)_dns_record_sets": close({data.google_dns_record_sets & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_endpoints_service_consumers_iam_policy": close({data.google_endpoints_service_consumers_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_endpoints_service_iam_policy": close({data.google_endpoints_service_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_eventarc_pipeline_iam_policy": close({data.google_eventarc_pipeline_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_filestore_instance": close({data.google_filestore_instance & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_firestore_document": close({data.google_firestore_document & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_folder": close({data.google_folder & cuetf.MetaArgs})
