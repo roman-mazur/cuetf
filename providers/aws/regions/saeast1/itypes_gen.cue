@@ -18787,7 +18787,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -18895,7 +18895,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -19003,7 +19003,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -19114,7 +19114,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -19222,7 +19222,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -19327,7 +19327,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -19436,7 +19436,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -19545,7 +19545,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -19869,7 +19869,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -20084,7 +20084,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -20190,7 +20190,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -20302,7 +20302,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -20414,7 +20414,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -20635,7 +20635,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -20856,7 +20856,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -20968,7 +20968,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21077,7 +21077,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21295,7 +21295,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.5
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 11444
             }
@@ -21404,7 +21404,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.125
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 2861
             }
@@ -21513,7 +21513,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.125
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 2861
             }
@@ -21622,7 +21622,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21734,7 +21734,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21843,7 +21843,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.5
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 11444
             }
@@ -56118,7 +56118,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.12xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -56203,7 +56203,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.16xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -56291,7 +56291,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.2xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -56376,7 +56376,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.4xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -56461,7 +56461,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.8xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -56546,7 +56546,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.large"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -56631,7 +56631,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.medium"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -56714,7 +56714,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.metal"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -56796,7 +56796,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -56881,7 +56881,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.12xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -56976,7 +56976,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.16xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -57074,7 +57074,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.2xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -57169,7 +57169,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.4xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -57264,7 +57264,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.8xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -57359,7 +57359,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.large"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -57454,7 +57454,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.medium"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -57547,7 +57547,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.metal"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -57639,7 +57639,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
