@@ -9,6 +9,7 @@ azurerm_netapp_volume: {
 		// The accept grow capacity pool for short term clone split property.
 		accept_grow_capacity_pool_for_short_term_clone_split?: string
 		account_name!:                                         string
+		breakthrough_mode_enabled?:                            bool
 		data_protection_advanced_ransomware?: [...close({
 			protection_enabled?: bool
 		})]

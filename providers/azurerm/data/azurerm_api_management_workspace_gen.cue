@@ -9,6 +9,7 @@ azurerm_api_management_workspace: {
 
 		// The display name of the API Management Workspace.
 		display_name?: string
+		description?:  string
 		id?:           string
 		name!:         string
 	})

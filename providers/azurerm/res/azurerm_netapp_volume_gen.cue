@@ -23,11 +23,15 @@ azurerm_netapp_volume: {
 		accept_grow_capacity_pool_for_short_term_clone_split?: string
 		account_name!:                                         string
 
+		// Indicates whether the large volume runs in Breakthrough Mode, placing it on
+		// dedicated capacity that delivers higher throughput and larger capacity.
+		breakthrough_mode_enabled?:       bool
+		azure_vmware_data_store_enabled?: bool
+
 		// Enable to allow Kerberos secured volumes. Requires appropriate export rules
 		// as well as the parent `azurerm_netapp_account` having a defined AD
 		// connection.
-		kerberos_enabled?:                bool
-		azure_vmware_data_store_enabled?: bool
+		kerberos_enabled?: bool
 
 		// Indicates whether the volume is a large volume.
 		large_volume_enabled?:             bool
