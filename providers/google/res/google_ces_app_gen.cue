@@ -65,6 +65,10 @@ google_ces_app: {
 		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
+		// Indicates whether the app is locked for changes. If the app is locked,
+		// modifications to the app resources will be rejected.
+		locked?: bool
+
 		// Metadata about the app. This field can be used to store additional
 		// information relevant to the app's details or intended usages.
 		metadata?: [string]: string
@@ -166,6 +170,14 @@ google_ces_app: {
 
 	#evaluation_metrics_thresholds: close({
 		golden_evaluation_metrics_thresholds?: matchN(1, [_#defs."/$defs/evaluation_metrics_thresholds/$defs/golden_evaluation_metrics_thresholds", list.MaxItems(1) & [..._#defs."/$defs/evaluation_metrics_thresholds/$defs/golden_evaluation_metrics_thresholds"]])
+
+		// The hallucination metric behavior for golden evaluations. Possible values:
+		// ["DISABLED", "ENABLED"]
+		golden_hallucination_metric_behavior?: string
+
+		// The hallucination metric behavior for scenario evaluations. Possible values:
+		// ["DISABLED", "ENABLED"]
+		scenario_hallucination_metric_behavior?: string
 	})
 
 	#language_settings: close({
@@ -196,6 +208,7 @@ google_ces_app: {
 		bigquery_export_settings?: matchN(1, [_#defs."/$defs/logging_settings/$defs/bigquery_export_settings", list.MaxItems(1) & [..._#defs."/$defs/logging_settings/$defs/bigquery_export_settings"]])
 		cloud_logging_settings?: matchN(1, [_#defs."/$defs/logging_settings/$defs/cloud_logging_settings", list.MaxItems(1) & [..._#defs."/$defs/logging_settings/$defs/cloud_logging_settings"]])
 		conversation_logging_settings?: matchN(1, [_#defs."/$defs/logging_settings/$defs/conversation_logging_settings", list.MaxItems(1) & [..._#defs."/$defs/logging_settings/$defs/conversation_logging_settings"]])
+		metric_analysis_settings?: matchN(1, [_#defs."/$defs/logging_settings/$defs/metric_analysis_settings", list.MaxItems(1) & [..._#defs."/$defs/logging_settings/$defs/metric_analysis_settings"]])
 		redaction_config?: matchN(1, [_#defs."/$defs/logging_settings/$defs/redaction_config", list.MaxItems(1) & [..._#defs."/$defs/logging_settings/$defs/redaction_config"]])
 	})
 
@@ -301,6 +314,8 @@ google_ces_app: {
 	})
 
 	_#defs: "/$defs/default_channel_profile/$defs/web_widget_config": close({
+		security_settings?: matchN(1, [_#defs."/$defs/default_channel_profile/$defs/web_widget_config/$defs/security_settings", list.MaxItems(1) & [..._#defs."/$defs/default_channel_profile/$defs/web_widget_config/$defs/security_settings"]])
+
 		// The modality of the web widget.
 		// Possible values:
 		// UNKNOWN_MODALITY
@@ -318,6 +333,30 @@ google_ces_app: {
 
 		// The title of the web widget.
 		web_widget_title?: string
+	})
+
+	_#defs: "/$defs/default_channel_profile/$defs/web_widget_config/$defs/security_settings": close({
+		// The origins that are allowed to host the web widget. An origin is
+		// defined by RFC 6454. If empty, all origins are allowed.
+		// A maximum of 100 origins is allowed.
+		// Example: "https://example.com"
+		allowed_origins?: [...string]
+
+		// Indicates whether origin check for the web widget is enabled.
+		// If 'true', the web widget will check the origin of the website that
+		// loads the web widget and only allow it to be loaded in the same origin
+		// or any of the allowed origins.
+		enable_origin_check?: bool
+
+		// Indicates whether public access to the web widget is enabled.
+		// If 'true', the web widget will be publicly accessible.
+		// If 'false', the web widget must be integrated with your own
+		// authentication and authorization system to return valid credentials for
+		// accessing the CES agent.
+		enable_public_access?: bool
+
+		// Indicates whether reCAPTCHA verification for the web widget is enabled.
+		enable_recaptcha?: bool
 	})
 
 	_#defs: "/$defs/default_channel_profile/$defs/whatsapp_config": close({
@@ -425,6 +464,13 @@ google_ces_app: {
 		// Controls the retention window for the conversation.
 		// If not set, the conversation will be retained for 365 days.
 		retention_window?: string
+	})
+
+	_#defs: "/$defs/logging_settings/$defs/metric_analysis_settings": close({
+		// Whether to collect conversation data for llm analysis metrics. If true,
+		// conversation data will not be collected for llm analysis metrics;
+		// otherwise, conversation data will be collected.
+		llm_metrics_opted_out?: bool
 	})
 
 	_#defs: "/$defs/logging_settings/$defs/redaction_config": close({

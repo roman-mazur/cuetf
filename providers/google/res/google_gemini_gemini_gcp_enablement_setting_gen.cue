@@ -39,6 +39,9 @@ google_gemini_gemini_gcp_enablement_setting: {
 		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
 
+		// Whether resource mutations should be enabled.
+		mutations_enabled?: bool
+
 		// Identifier. Name of the resource.
 		// Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{geminiGcpEnablementSetting}
 		name?: string

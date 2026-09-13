@@ -6,6 +6,7 @@ google_vertex_ai_reasoning_engine: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_vertex_ai_reasoning_engine")
 	close({
+		context_spec?: matchN(1, [#context_spec, list.MaxItems(1) & [...#context_spec]])
 		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
 		spec?: matchN(1, [#spec, list.MaxItems(1) & [...#spec]])
 		timeouts?: #timeouts
@@ -54,6 +55,10 @@ google_vertex_ai_reasoning_engine: {
 		// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
 		// format, with nanosecond resolution and up to nine fractional digits.
 		update_time?: string
+	})
+
+	#context_spec: close({
+		memory_bank_config?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config"]])
 	})
 
 	#encryption_spec: close({
@@ -362,6 +367,272 @@ google_vertex_ai_reasoning_engine: {
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config": close({
+		customization_configs?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs", [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs"]])
+		generation_config?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/generation_config", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/generation_config"]])
+		similarity_search_config?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/similarity_search_config", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/similarity_search_config"]])
+		structured_memory_configs?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/structured_memory_configs", [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/structured_memory_configs"]])
+		ttl_config?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/ttl_config", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/ttl_config"]])
+
+		// If true, no memory revisions will be created for any requests to the Memory Bank.
+		disable_memory_revisions?: bool
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs": close({
+		consolidation_config?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/consolidation_config", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/consolidation_config"]])
+		generate_memories_examples?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples", [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples"]])
+		memory_topics?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/memory_topics", [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/memory_topics"]])
+
+		// Indicates whether natural language memory generation should be disabled.
+		disable_natural_language_memories?: bool
+
+		// Optional. Generate memories in the third person if set to true.
+		enable_third_person_memories?: bool
+
+		// Optional. List of scope keys that this customization config applies to.
+		scope_keys?: [...string]
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/consolidation_config": close({
+		// Number of revisions to consider per candidate count.
+		revisions_per_candidate_count?: number
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples": close({
+		conversation_source?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source"]])
+		generated_memories?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/generated_memories", [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/generated_memories"]])
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source": close({
+		events?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events", [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events"]])
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events": close({
+		content!: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content"]])
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content": close({
+		parts!: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts", [_, ...] & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts"]])
+
+		// The producer of the content. Must be either 'user' or 'model'. If not set,
+		// the service will default to 'user'.
+		role?: string
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts": close({
+		audio_transcription?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/audio_transcription", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/audio_transcription"]])
+		code_execution_result?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/code_execution_result", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/code_execution_result"]])
+		executable_code?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/executable_code", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/executable_code"]])
+		file_data?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/file_data", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/file_data"]])
+		function_call?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/function_call", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/function_call"]])
+		function_response?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/function_response", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/function_response"]])
+		inline_data?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/inline_data", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/inline_data"]])
+		video_metadata?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/video_metadata", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/video_metadata"]])
+
+		// The text content of the part.
+		text?: string
+
+		// Indicates whether the part represents the model's thought process or reasoning.
+		thought?: bool
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/audio_transcription": close({
+		words?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/audio_transcription/$defs/words", [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/audio_transcription/$defs/words"]])
+
+		// A label identifying the speaker of this audio segment (e.g. spk_1, spk_2).
+		// Present when diarization is set.
+		speaker_label?: string
+
+		// The transcription text of this audio segment.
+		text!: string
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/audio_transcription/$defs/words": close({
+		// End offset in time of the word relative to the start of the audio.
+		end_offset?: string
+
+		// Start offset in time of the word relative to the start of the audio.
+		start_offset?: string
+
+		// Transcript of the word.
+		word!: string
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/code_execution_result": close({
+		// The identifier of the ExecutableCode part this result is for.
+		id?: string
+
+		// Outcome of the code execution. Possible values: ["OUTCOME_UNSPECIFIED",
+		// "OUTCOME_OK", "OUTCOME_FAILED", "OUTCOME_DEADLINE_EXCEEDED"]
+		outcome!: string
+
+		// Contains stdout when code execution is successful, stderr or other description otherwise.
+		output?: string
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/executable_code": close({
+		// The code to be executed.
+		code!: string
+
+		// Unique identifier of the ExecutableCode part.
+		id?: string
+
+		// Supported programming languages for the generated code. Possible values:
+		// ["LANGUAGE_UNSPECIFIED", "PYTHON", "BASH"]
+		language!: string
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/file_data": close({
+		// The URI of the file in Google Cloud Storage.
+		file_uri!: string
+
+		// The IANA standard MIME type of the source data.
+		mime_type!: string
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/function_call": close({
+		// The function parameters and values in JSON object format.
+		args?: string
+
+		// The unique id of the function call.
+		id?: string
+
+		// The name of the function to call.
+		name?: string
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/function_response": close({
+		// The id of the function call this response is for.
+		id?: string
+
+		// The name of the function to call.
+		name!: string
+
+		// The function response in JSON object format.
+		response?: string
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/inline_data": close({
+		// Raw bytes, which should be base64-encoded.
+		data!: string
+
+		// The IANA standard MIME type of the source data.
+		mime_type!: string
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/video_metadata": close({
+		// The end offset of the video.
+		end_offset?: string
+
+		// The start offset of the video.
+		start_offset?: string
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/generated_memories": close({
+		topics?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/generated_memories/$defs/topics", [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/generated_memories/$defs/topics"]])
+
+		// Represents the fact to generate a memory from.
+		fact!: string
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/generated_memories/$defs/topics": close({
+		// Represents the custom memory topic label.
+		custom_memory_topic_label?: string
+
+		// Represents the managed memory topic. Possible values: ["USER_PERSONAL_INFO",
+		// "USER_PREFERENCES", "KEY_CONVERSATION_DETAILS", "EXPLICIT_INSTRUCTIONS"]
+		managed_memory_topic?: string
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/memory_topics": close({
+		custom_memory_topic?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/memory_topics/$defs/custom_memory_topic", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/memory_topics/$defs/custom_memory_topic"]])
+		managed_memory_topic?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/memory_topics/$defs/managed_memory_topic", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/memory_topics/$defs/managed_memory_topic"]])
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/memory_topics/$defs/custom_memory_topic": close({
+		// Description of custom memory topic.
+		description?: string
+
+		// Label of custom memory topic.
+		label?: string
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/memory_topics/$defs/managed_memory_topic": close({
+		// Managed topic enum (e.g. USER_PREFERENCES, EXPLICIT_INSTRUCTIONS).
+		managed_topic_enum?: string
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/generation_config": close({
+		generation_trigger_config?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/generation_config/$defs/generation_trigger_config", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/generation_config/$defs/generation_trigger_config"]])
+
+		// The model used to generate memories. Format:
+		// projects/{project}/locations/{location}/publishers/google/models/{model}.
+		model!: string
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/generation_config/$defs/generation_trigger_config": close({
+		generation_rule?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/generation_config/$defs/generation_trigger_config/$defs/generation_rule", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/generation_config/$defs/generation_trigger_config/$defs/generation_rule"]])
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/generation_config/$defs/generation_trigger_config/$defs/generation_rule": close({
+		// Optional. Specifies to trigger generation when the event count reaches this limit.
+		event_count?: number
+
+		// Optional. Specifies to trigger generation at a fixed interval. The duration
+		// must have a minute-level granularity.
+		fixed_interval?: string
+
+		// Optional. Specifies to trigger generation if the stream is inactive for the
+		// specified duration after the most recent event. The duration must have a
+		// minute-level granularity.
+		idle_duration?: string
+
+		// Optional. Re-include the last N already-processed events in the next window.
+		overlap_event_count?: number
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/similarity_search_config": close({
+		// The model used to generate embeddings to lookup similar memories. Format:
+		// projects/{project}/locations/{location}/publishers/google/models/{model}.
+		embedding_model!: string
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/structured_memory_configs": close({
+		schema_configs?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/structured_memory_configs/$defs/schema_configs", [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/structured_memory_configs/$defs/schema_configs"]])
+
+		// Optional. List of scope keys that this structured memory config applies to.
+		scope_keys?: [...string]
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/structured_memory_configs/$defs/schema_configs": close({
+		// Required. Unique ID identifying the memory schema.
+		id!: string
+
+		// Optional. The memory schema defined as an OpenAPI Schema Object JSON string.
+		memory_schema?: string
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/ttl_config": close({
+		granular_ttl_config?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/ttl_config/$defs/granular_ttl_config", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/ttl_config/$defs/granular_ttl_config"]])
+
+		// The default TTL duration of the memories in the Memory Bank.
+		default_ttl?: string
+
+		// The default TTL duration of the memory revisions in the Memory Bank.
+		memory_revision_default_ttl?: string
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/ttl_config/$defs/granular_ttl_config": close({
+		// The TTL duration for memories uploaded via CreateMemory.
+		create_ttl?: string
+
+		// The TTL duration for memories newly generated via GenerateMemories.
+		generate_created_ttl?: string
+
+		// The TTL duration for memories updated via GenerateMemories.
+		generate_updated_ttl?: string
 	})
 
 	_#defs: "/$defs/spec/$defs/build_spec": close({
