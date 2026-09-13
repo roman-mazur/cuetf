@@ -926,6 +926,11 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					description_kind: "plain"
 					optional:         true
 				}
+				storage_ftp_custom_endpoint: {
+					type:             "string"
+					description_kind: "plain"
+					optional:         true
+				}
 				storage_insights_custom_endpoint: {
 					type:             "string"
 					description_kind: "plain"
@@ -17080,16 +17085,22 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 			version: 0
 			block: {
 				attributes: {
+					check_existing_usage: {
+						type:             "string"
+						description:      "Defines the behavior for checking existing usage when updating a key. Possible values: 'SKIP', 'CHECK'."
+						description_kind: "plain"
+						optional:         true
+					}
 					deletion_policy: {
 						type: "string"
 						description: """
-									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
-									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the resource,
 									the command will fail if this field is set to "PREVENT" in Terraform state.
 									When set to "ABANDON", the command will remove the resource from Terraform
 									management without updating or deleting the resource in the API.
-									When set to "DELETE", deleting the resource is allowed.
-
+									When set to "DELETE", deleting the resource is allowed, and existing traffic usage will be checked. If active usage was detected in the last 7 days, the request fails.
+									When set to "FORCE", deleting the resource will bypass the active traffic usage check.
 									"""
 						description_kind: "plain"
 						optional:         true
@@ -25037,6 +25048,1118 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_biglake_hive_catalog: {
+			version: 0
+			block: {
+				attributes: {
+					create_time: {
+						type:             "string"
+						description:      "Output only. The creation time of the catalog."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Description of the Hive catalog."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location_uri: {
+						type:             "string"
+						description:      "Cloud Storage location path where the catalog data will be stored. Format: gs://bucket/path/to/catalog"
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the Hive Catalog."
+						description_kind: "plain"
+						required:         true
+					}
+					primary_location: {
+						type: "string"
+						description: """
+									The primary location for mirroring the remote catalog metadata. It must be
+									a BigLake-supported location, and it should be proximate to the remote
+									catalog's location.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					replicas: {
+						type: ["list", ["object", {
+							region: "string"
+							state:  "string"
+						}]]
+						description:      "Output only. The replicas for the catalog metadata."
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Output only. The update time of the catalog."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_biglake_hive_catalog_iam_binding: {
+			version: 0
+			block: {
+				attributes: {
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					members: {
+						type: ["set", "string"]
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: condition: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							description: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							expression: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+							title: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						description_kind: "plain"
+					}
+					max_items: 1
+				}
+				description_kind: "plain"
+			}
+		}
+		google_biglake_hive_catalog_iam_member: {
+			version: 0
+			block: {
+				attributes: {
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					member: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: condition: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							description: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							expression: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+							title: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						description_kind: "plain"
+					}
+					max_items: 1
+				}
+				description_kind: "plain"
+			}
+		}
+		google_biglake_hive_catalog_iam_policy: {
+			version: 0
+			block: {
+				attributes: {
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					policy_data: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_biglake_hive_database: {
+			version: 0
+			block: {
+				attributes: {
+					catalog: {
+						type:             "string"
+						description:      "Hive catalog where the database to create is located."
+						description_kind: "plain"
+						required:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "Output only. The creation time of the database."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Description of the database."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location_uri: {
+						type: "string"
+						description: """
+									Cloud Storage location path where the database exists. If unspecified, the database will be stored in the catalog location.
+									Format: gs://bucket/path/to/database
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Database to create."
+						description_kind: "plain"
+						required:         true
+					}
+					parameters: {
+						type: ["map", "string"]
+						description:      "Additional parameters associated with the database."
+						description_kind: "plain"
+						optional:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Output only. The update time of the database."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_biglake_hive_database_iam_binding: {
+			version: 0
+			block: {
+				attributes: {
+					catalog: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					members: {
+						type: ["set", "string"]
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: condition: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							description: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							expression: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+							title: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						description_kind: "plain"
+					}
+					max_items: 1
+				}
+				description_kind: "plain"
+			}
+		}
+		google_biglake_hive_database_iam_member: {
+			version: 0
+			block: {
+				attributes: {
+					catalog: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					member: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: condition: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							description: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							expression: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+							title: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						description_kind: "plain"
+					}
+					max_items: 1
+				}
+				description_kind: "plain"
+			}
+		}
+		google_biglake_hive_database_iam_policy: {
+			version: 0
+			block: {
+				attributes: {
+					catalog: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					policy_data: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_biglake_hive_table: {
+			version: 0
+			block: {
+				attributes: {
+					catalog: {
+						type:             "string"
+						description:      "The Hive catalog where the table is located."
+						description_kind: "plain"
+						required:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "Output only. The creation time of the table."
+						description_kind: "plain"
+						computed:         true
+					}
+					database: {
+						type:             "string"
+						description:      "The Hive database where the table is located."
+						description_kind: "plain"
+						required:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Description of the table."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					last_access_time: {
+						type:             "string"
+						description:      "Output only. Last access time of the table."
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the table."
+						description_kind: "plain"
+						required:         true
+					}
+					parameters: {
+						type: ["map", "string"]
+						description:      "Additional parameters associated with the table."
+						description_kind: "plain"
+						optional:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					table_type: {
+						type:             "string"
+						description:      "Output only. The type of the table."
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Output only. The update time of the table"
+						description_kind: "plain"
+						computed:         true
+					}
+					view_expanded_text: {
+						type:             "string"
+						description:      "Expanded view text for Hive views. Empty for non-view."
+						description_kind: "plain"
+						optional:         true
+					}
+					view_original_text: {
+						type:             "string"
+						description:      "Original view text for Hive views. Empty for non-view."
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: {
+					partition_keys: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								comment: {
+									type:             "string"
+									description:      "Comment of the field."
+									description_kind: "plain"
+									optional:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Name of the field."
+									description_kind: "plain"
+									required:         true
+								}
+								type: {
+									type:             "string"
+									description:      "Type of the field."
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description:      "Partition keys of the table."
+							description_kind: "plain"
+						}
+					}
+					storage_descriptor: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								bucket_cols: {
+									type: ["list", "string"]
+									description:      "Reducer grouping columns, clustering columns, and bucketing columns."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								compressed: {
+									type:             "bool"
+									description:      "Whether the table data is compressed."
+									description_kind: "plain"
+									optional:         true
+								}
+								input_format: {
+									type:             "string"
+									description:      "The fully qualified Java class name of the input format."
+									description_kind: "plain"
+									optional:         true
+								}
+								location_uri: {
+									type:             "string"
+									description:      "The Cloud Storage URI where the table data is located."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								num_buckets: {
+									type:             "number"
+									description:      "The number of buckets in the table."
+									description_kind: "plain"
+									optional:         true
+								}
+								output_format: {
+									type:             "string"
+									description:      "The fully qualified Java class name of the output format."
+									description_kind: "plain"
+									optional:         true
+								}
+								parameters: {
+									type: ["map", "string"]
+									description:      "Key-value pairs for the storage descriptor."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								stored_as_sub_dirs: {
+									type:             "bool"
+									description:      "Whether the table is stored as sub directories."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							block_types: {
+								columns: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											comment: {
+												type:             "string"
+												description:      "Comment of the field."
+												description_kind: "plain"
+												optional:         true
+											}
+											name: {
+												type:             "string"
+												description:      "Name of the field."
+												description_kind: "plain"
+												required:         true
+											}
+											type: {
+												type:             "string"
+												description:      "Type of the field."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Specifies the columns of the table (the schema)."
+										description_kind: "plain"
+									}
+									min_items: 1
+								}
+								serde_info: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											description: {
+												type:             "string"
+												description:      "Description of the SerDe."
+												description_kind: "plain"
+												optional:         true
+											}
+											deserializer_class: {
+												type:             "string"
+												description:      "The fully qualified Java class name of the deserializer."
+												description_kind: "plain"
+												optional:         true
+											}
+											name: {
+												type:             "string"
+												description:      "Name of the SerDe, table name by default."
+												description_kind: "plain"
+												required:         true
+											}
+											parameters: {
+												type: ["map", "string"]
+												description:      "Parameters of the SerDe."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											serde_type: {
+												type:             "string"
+												description:      "The SerDe type. Possible values: [\"SERDE_TYPE_UNSPECIFIED\", \"HIVE\", \"SCHEMA_REGISTRY\"]"
+												description_kind: "plain"
+												optional:         true
+											}
+											serialization_lib: {
+												type:             "string"
+												description:      "The fully qualified Java class name of the serialization library."
+												description_kind: "plain"
+												required:         true
+											}
+											serializer_class: {
+												type:             "string"
+												description:      "The fully qualified Java class name of the serializer."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Serialization and deserialization information."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								skewed_info: {
+									nesting_mode: "list"
+									block: {
+										attributes: skewed_col_names: {
+											type: ["list", "string"]
+											description:      "The column names that are skewed."
+											description_kind: "plain"
+											required:         true
+										}
+										block_types: {
+											skewed_col_values: {
+												nesting_mode: "list"
+												block: {
+													attributes: values: {
+														type: ["list", "string"]
+														description_kind: "plain"
+														required:         true
+													}
+													description:      "The skewed column values."
+													description_kind: "plain"
+												}
+												min_items: 1
+											}
+											skewed_key_values_locations: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														location: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+														values: {
+															type: ["list", "string"]
+															description_kind: "plain"
+															required:         true
+														}
+													}
+													description:      "The skewed key values locations."
+													description_kind: "plain"
+												}
+												min_items: 1
+											}
+										}
+										description:      "Table data skew information."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								sort_cols: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											col: {
+												type:             "string"
+												description:      "The column name."
+												description_kind: "plain"
+												required:         true
+											}
+											order: {
+												type:             "number"
+												description:      "Sort order: 1 for Ascending, 0 for Descending."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Sort order of the data in each bucket."
+										description_kind: "plain"
+									}
+								}
+							}
+							description:      "Storage descriptor of the table."
+							description_kind: "plain"
+						}
+						min_items: 1
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_biglake_hive_table_iam_binding: {
+			version: 0
+			block: {
+				attributes: {
+					catalog: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					database: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					members: {
+						type: ["set", "string"]
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: condition: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							description: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							expression: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+							title: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						description_kind: "plain"
+					}
+					max_items: 1
+				}
+				description_kind: "plain"
+			}
+		}
+		google_biglake_hive_table_iam_member: {
+			version: 0
+			block: {
+				attributes: {
+					catalog: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					database: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					member: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: condition: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							description: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							expression: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+							title: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						description_kind: "plain"
+					}
+					max_items: 1
+				}
+				description_kind: "plain"
+			}
+		}
+		google_biglake_hive_table_iam_policy: {
+			version: 0
+			block: {
+				attributes: {
+					catalog: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					database: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					policy_data: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_biglake_iceberg_catalog: {
 			version: 0
 			block: {
@@ -29381,6 +30504,89 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}
 							description_kind: "plain"
 						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_bigquery_data_transfer_data_source_enrollment: {
+			version: 0
+			block: {
+				attributes: {
+					data_source_id: {
+						type: "string"
+						description: """
+									The ID of the data source to enroll. For Google Cloud Carbon Footprint exports this is
+									'61cede5a-0000-2440-ad42-883d24f8f7b8'. Call 'projects.dataSources.list' to see the data
+									sources currently enrolled in a project.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_name: {
+						type: "string"
+						description: """
+									User friendly name of the enrolled data source, for example
+									'Google Cloud Carbon Footprint Exports'.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					unenroll_location: {
+						type: "string"
+						description: """
+									The location whose 'unenrollDataSources' endpoint is called when this resource is destroyed.
+									Enrollment itself is project-wide and unenrolling through any location removes it everywhere;
+									this only exists because the API offers no project-level unenroll method. Override it only if
+									'us' is not routable for the project, for example under a data-residency organization policy.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
 					}
 				}
 				description_kind: "plain"
@@ -38950,6 +40156,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					locked: {
+						type: "bool"
+						description: """
+									Indicates whether the app is locked for changes. If the app is locked,
+									modifications to the app resources will be rejected.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
 					metadata: {
 						type: ["map", "string"]
 						description: """
@@ -39297,6 +40512,56 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												optional:         true
 											}
 										}
+										block_types: security_settings: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													allowed_origins: {
+														type: ["list", "string"]
+														description: """
+																		The origins that are allowed to host the web widget. An origin is
+																		defined by RFC 6454. If empty, all origins are allowed.
+																		A maximum of 100 origins is allowed.
+																		Example: "https://example.com"
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													enable_origin_check: {
+														type: "bool"
+														description: """
+																		Indicates whether origin check for the web widget is enabled.
+																		If 'true', the web widget will check the origin of the website that
+																		loads the web widget and only allow it to be loaded in the same origin
+																		or any of the allowed origins.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													enable_public_access: {
+														type: "bool"
+														description: """
+																		Indicates whether public access to the web widget is enabled.
+																		If 'true', the web widget will be publicly accessible.
+																		If 'false', the web widget must be integrated with your own
+																		authentication and authorization system to return valid credentials for
+																		accessing the CES agent.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													enable_recaptcha: {
+														type:             "bool"
+														description:      "Indicates whether reCAPTCHA verification for the web widget is enabled."
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												description:      "The security settings of the web widget."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
 										description:      "Message for configuration for the web widget."
 										description_kind: "plain"
 									}
@@ -39431,6 +40696,20 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					evaluation_metrics_thresholds: {
 						nesting_mode: "list"
 						block: {
+							attributes: {
+								golden_hallucination_metric_behavior: {
+									type:             "string"
+									description:      "The hallucination metric behavior for golden evaluations. Possible values: [\"DISABLED\", \"ENABLED\"]"
+									description_kind: "plain"
+									optional:         true
+								}
+								scenario_hallucination_metric_behavior: {
+									type:             "string"
+									description:      "The hallucination metric behavior for scenario evaluations. Possible values: [\"DISABLED\", \"ENABLED\"]"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
 							block_types: golden_evaluation_metrics_thresholds: {
 								nesting_mode: "list"
 								block: {
@@ -39652,6 +40931,27 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											}
 										}
 										description:      "Settings to describe the conversation logging behaviors for the app."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								metric_analysis_settings: {
+									nesting_mode: "list"
+									block: {
+										attributes: llm_metrics_opted_out: {
+											type: "bool"
+											description: """
+															Whether to collect conversation data for llm analysis metrics. If true,
+															conversation data will not be collected for llm analysis metrics;
+															otherwise, conversation data will be collected.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										description: """
+													Settings to describe the conversation data collection behaviors for the LLM
+													analysis pipeline for the app.
+													"""
 										description_kind: "plain"
 									}
 									max_items: 1
@@ -40271,9 +41571,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											tool_invocation_parameter_correctness_threshold: "number"
 										}]]
 										turn_level_metrics_thresholds: ["list", ["object", {
-											overall_tool_invocation_correctness_threshold: "number", semantic_similarity_success_threshold: "number"
+											overall_tool_invocation_correctness_threshold: "number"
+											semantic_similarity_success_threshold:         "number"
 										}]]
 									}]]
+									golden_hallucination_metric_behavior:   "string"
+									scenario_hallucination_metric_behavior: "string"
 								}]]
 								global_instruction: "string"
 								guardrails: ["list", "string"]
@@ -40299,6 +41602,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									conversation_logging_settings: ["list", ["object", {
 										disable_conversation_logging: "bool"
 										retention_window:             "string"
+									}]]
+									metric_analysis_settings: ["list", ["object", {
+										llm_metrics_opted_out: "bool"
 									}]]
 									redaction_config: ["list", ["object", {
 										deidentify_template: "string"
@@ -41655,6 +42961,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												description_kind: "plain"
 												optional:         true
 											}
+											proactive_execution_enabled: {
+												type: "bool"
+												description: """
+															If enabled, the callback will also be executed on intermediate model
+															outputs. This setting only affects after model callback.
+															**ENABLE WITH CAUTION**. Typically after model callback only needs to be
+															executed after receiving all model responses. Enabling proactive execution
+															may have negative implication on the execution cost and latency, and
+															should only be enabled in rare situations.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
 											python_code: {
 												type:             "string"
 												description:      "The python code to execute for the callback."
@@ -41685,6 +43004,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												description: """
 															Whether the callback is disabled. Disabled callbacks are ignored by the
 															agent.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											proactive_execution_enabled: {
+												type: "bool"
+												description: """
+															If enabled, the callback will also be executed on intermediate model
+															outputs. This setting only affects after model callback.
+															**ENABLE WITH CAUTION**. Typically after model callback only needs to be
+															executed after receiving all model responses. Enabling proactive execution
+															may have negative implication on the execution cost and latency, and
+															should only be enabled in rare situations.
 															"""
 												description_kind: "plain"
 												optional:         true
@@ -41723,6 +43055,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												description_kind: "plain"
 												optional:         true
 											}
+											proactive_execution_enabled: {
+												type: "bool"
+												description: """
+															If enabled, the callback will also be executed on intermediate model
+															outputs. This setting only affects after model callback.
+															**ENABLE WITH CAUTION**. Typically after model callback only needs to be
+															executed after receiving all model responses. Enabling proactive execution
+															may have negative implication on the execution cost and latency, and
+															should only be enabled in rare situations.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
 											python_code: {
 												type:             "string"
 												description:      "The python code to execute for the callback."
@@ -41753,6 +43098,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												description: """
 															Whether the callback is disabled. Disabled callbacks are ignored by the
 															agent.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											proactive_execution_enabled: {
+												type: "bool"
+												description: """
+															If enabled, the callback will also be executed on intermediate model
+															outputs. This setting only affects after model callback.
+															**ENABLE WITH CAUTION**. Typically after model callback only needs to be
+															executed after receiving all model responses. Enabling proactive execution
+															may have negative implication on the execution cost and latency, and
+															should only be enabled in rare situations.
 															"""
 												description_kind: "plain"
 												optional:         true
@@ -45135,6 +46493,238 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							description_kind: "plain"
 						}
 						max_items: 1
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_chronicle_case_close_definition: {
+			version: 0
+			block: {
+				attributes: {
+					case_close_definition_id: {
+						type:             "string"
+						description:      "The ID of the case close definition."
+						description_kind: "plain"
+						computed:         true
+					}
+					close_reason: {
+						type:             "string"
+						description:      "Specify why the case was closed. Possible values: [\"MALICIOUS\", \"NOT_MALICIOUS\", \"MAINTENANCE\", \"INCONCLUSIVE\"]"
+						description_kind: "plain"
+						required:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					instance: {
+						type:             "string"
+						description:      "The unique identifier for the Chronicle instance, which is the same as the customer ID."
+						description_kind: "plain"
+						required:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the resource. This is the geographical region where the Chronicle instance resides, such as \"us\" or \"europe-west2\"."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Identifier. The unique name(ID) of the CaseCloseDefinition.
+									Format:
+									projects/{project}/locations/{location}/instances/{instance}/caseCloseDefinitions/{case_close_definition}
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					root_cause: {
+						type:             "string"
+						description:      "Provides detailed description about the specific root cause option."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_chronicle_case_tag_definition: {
+			version: 0
+			block: {
+				attributes: {
+					can_be_case_title: {
+						type:             "bool"
+						description:      "When checked, the tag will be assigned as the title of the case if it meets the conditions."
+						description_kind: "plain"
+						required:         true
+					}
+					case_tag_definition_id: {
+						type:             "string"
+						description:      "The unique identifier of the CaseTagDefinition."
+						description_kind: "plain"
+						computed:         true
+					}
+					comparison_type: {
+						type:             "string"
+						description:      "The type of comparison to be used when comparing the value to the case. Possible values: [\"EXACT\", \"START_WITH\", \"CONTAIN\", \"ENDS_WITH\"]"
+						description_kind: "plain"
+						required:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "This is the name of the tag that will be applied to the case."
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					instance: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					location: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					match_criteria: {
+						type:             "string"
+						description:      "The criteria to match the case against. Possible values: [\"BY_VENDOR\", \"BY_PRODUCT\", \"BY_RULE_GENERATOR\", \"BY_ENTITY_PROPERTY_NAME\", \"DATA_DRIVEN\", \"SYSTEM\"]"
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Identifier. The unique name(ID) of the CaseTagDefinition.
+									Format:
+									projects/{project}/locations/{location}/instances/{instance}/caseTagDefinitions/{case_tag_definition_id}
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					priority: {
+						type: "number"
+						description: """
+									Note that Google Security Operations merges priority with other alerts and
+									entities and events so that the priority here is not absolute.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					property_name: {
+						type: "string"
+						description: """
+									Specific Entity property name to search in case.
+									This is relevant only when a SearchIn of type BY_ENTITY_PROPERTY_NAME was chosen.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					value: {
+						type:             "string"
+						description:      "Specific value to search in case - in addition to SearchIn property."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
 					}
 				}
 				description_kind: "plain"
@@ -143141,6 +144731,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											cadence: {
 												nesting_mode: "list"
 												block: {
+													attributes: refresh_frequency: {
+														type:             "string"
+														description:      "Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never. Possible values: [\"UPDATE_FREQUENCY_NEVER\", \"UPDATE_FREQUENCY_DAILY\", \"UPDATE_FREQUENCY_MONTHLY\"]"
+														description_kind: "plain"
+														optional:         true
+													}
 													block_types: {
 														inspect_template_modified_cadence: {
 															nesting_mode: "list"
@@ -194376,6 +195972,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					mutations_enabled: {
+						type:             "bool"
+						description:      "Whether resource mutations should be enabled."
+						description_kind: "plain"
+						optional:         true
+					}
 					name: {
 						type: "string"
 						description: """
@@ -214483,6 +216085,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									* projects/{project_id}/iap_web/compute-{region}
 									* projects/{project_id}/iap_web/compute/services/{service_id}
 									* projects/{project_id}/iap_web/compute-{region}/services/{service_id}
+									* projects/{project_id}/iap_web/forwarding_rule
+									* projects/{project_id}/iap_web/forwarding_rule-{region}
+									* projects/{project_id}/iap_web/forwarding_rule/services/{service_id}
+									* projects/{project_id}/iap_web/forwarding_rule-{region}/services/{service_id}
 									* projects/{project_id}/iap_web/appengine-{app_id}
 									* projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
 									* projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
@@ -253646,6 +255252,331 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}
 							description_kind: "plain"
 						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_observability_folder_settings: {
+			version: 0
+			block: {
+				attributes: {
+					default_storage_location: {
+						type:             "string"
+						description:      "The default storage location for new resources, e.g. buckets. Only valid for global location."
+						description_kind: "plain"
+						optional:         true
+					}
+					folder: {
+						type:             "string"
+						description:      "The folder ID."
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					kms_key_name: {
+						type:             "string"
+						description:      "The default Cloud KMS key to use for new resources. Only valid for regional locations."
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the settings."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The resource name of the settings."
+						description_kind: "plain"
+						computed:         true
+					}
+					service_account_id: {
+						type:             "string"
+						description:      "The service account used by Cloud Observability for this folder."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_observability_link: {
+			version: 0
+			block: {
+				attributes: {
+					bucket: {
+						type:             "string"
+						description:      "The bucket of the link."
+						description_kind: "plain"
+						required:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "Output only. Create timestamp."
+						description_kind: "plain"
+						computed:         true
+					}
+					dataset: {
+						type:             "string"
+						description:      "The dataset of the link."
+						description_kind: "plain"
+						required:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Description of the link."
+						description_kind: "plain"
+						optional:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "User friendly display name."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					link_id: {
+						type:             "string"
+						description:      "The client-assigned identifier for the link."
+						description_kind: "plain"
+						required:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the link."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Identifier. Name of the link. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID]/links/[LINK_ID]"
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_observability_organization_settings: {
+			version: 0
+			block: {
+				attributes: {
+					default_storage_location: {
+						type:             "string"
+						description:      "The default storage location for new resources, e.g. buckets. Only valid for global location."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					kms_key_name: {
+						type:             "string"
+						description:      "The default Cloud KMS key to use for new resources. Only valid for regional locations."
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the settings."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The resource name of the settings."
+						description_kind: "plain"
+						computed:         true
+					}
+					organization: {
+						type:             "string"
+						description:      "The organization ID."
+						description_kind: "plain"
+						required:         true
+					}
+					service_account_id: {
+						type:             "string"
+						description:      "The service account used by Cloud Observability for this organization."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_observability_project_settings: {
+			version: 0
+			block: {
+				attributes: {
+					default_storage_location: {
+						type:             "string"
+						description:      "The default storage location for new resources, e.g. buckets. Only valid for global location."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					kms_key_name: {
+						type:             "string"
+						description:      "The default Cloud KMS key to use for new resources. Only valid for regional locations."
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the settings."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The resource name of the settings."
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					service_account_id: {
+						type:             "string"
+						description:      "The service account used by Cloud Observability for this project."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
 					}
 				}
 				description_kind: "plain"
@@ -295249,6 +297180,347 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_storage_ftp_server: {
+			version: 0
+			block: {
+				attributes: {
+					access_type: {
+						type:             "string"
+						description:      "The access type for this SFTP server. Possible values: INTERNAL, EXTERNAL Possible values: [\"INTERNAL\", \"EXTERNAL\"]"
+						description_kind: "plain"
+						required:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "A display name for the server."
+						description_kind: "plain"
+						optional:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									A set of key/value label pairs to assign to the Storage FTP Server.
+
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location (region) of the Storage FTP Server."
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					server_id: {
+						type:             "string"
+						description:      "A unique ID for the server. Must start with a lowercase letter, and end with a lowercase letter or number. Can contain lowercase letters, numbers, and hyphens. Maximum 30 characters."
+						description_kind: "plain"
+						required:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					external_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: allowed_cidr_blocks: {
+								type: ["set", "string"]
+								description:      "A list of allowed IPv4 or IPv6 CIDR block ranges that can connect to this server."
+								description_kind: "plain"
+								optional:         true
+							}
+							description:      "Configuration for external access type SFTP servers."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					internal_config: {
+						nesting_mode: "list"
+						block: {
+							block_types: {
+								consumer_accept_list: {
+									nesting_mode: "set"
+									block: {
+										attributes: {
+											connection_limit: {
+												type:             "number"
+												description:      "The maximum number of Private Service Connect endpoints that can be created in the consumer project."
+												description_kind: "plain"
+												required:         true
+											}
+											project: {
+												type:             "string"
+												description:      "The project that is allowed to connect, in the format 'projects/{project}'."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "A list of consumer projects that are allowed to connect to this server."
+										description_kind: "plain"
+									}
+								}
+								consumer_reject_list: {
+									nesting_mode: "set"
+									block: {
+										attributes: project: {
+											type:             "string"
+											description:      "The project that is rejected from connecting, in the format 'projects/{project}'."
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "A list of consumer projects that are rejected from connecting to this server."
+										description_kind: "plain"
+									}
+								}
+							}
+							description:      "Configuration for internal access type SFTP servers."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_storage_ftp_user: {
+			version: 0
+			block: {
+				attributes: {
+					customer_service_account: {
+						type:             "string"
+						description:      "The email address of the service account associated with the user."
+						description_kind: "plain"
+						required:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									Resource labels that can contain user-provided metadata.
+
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location (region) of the Storage FTP User."
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					server_id: {
+						type:             "string"
+						description:      "The ID of the server."
+						description_kind: "plain"
+						required:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					user_id: {
+						type:             "string"
+						description:      "The unique ID for the user."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: {
+					storage_directory_mappings: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								bucket: {
+									type:             "string"
+									description:      "The Cloud Storage bucket name. Omit the gs://."
+									description_kind: "plain"
+									optional:         true
+								}
+								bucket_prefix: {
+									type:             "string"
+									description:      "The path of a folder within the bucket to set as the root directory for this directory mapping."
+									description_kind: "plain"
+									optional:         true
+								}
+								directory: {
+									type:             "string"
+									description:      "The directory path in the virtual file system."
+									description_kind: "plain"
+									optional:         true
+								}
+								permission: {
+									type:             "string"
+									description:      "The access level for the directory. For read-only access, set this value to READ_ONLY. For read and write access, set this value to READ_WRITE. Possible values: [\"READ_ONLY\", \"READ_WRITE\"]"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description:      "Directory mappings for the Storage FTP user."
+							description_kind: "plain"
+						}
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					user_credentials: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								credential_name: {
+									type:             "string"
+									description:      "The name of the credential."
+									description_kind: "plain"
+									optional:         true
+								}
+								credential_type: {
+									type:             "string"
+									description:      "The type of the credential."
+									description_kind: "plain"
+									optional:         true
+								}
+								ssh_public_key_body: {
+									type:             "string"
+									description:      "The SSH public key body. A file either absolute or relative path should be provided which contains the ssh public key using file() interpolation in Terraform, not recommended to have key as a literal string in config."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description:      "The credentials associated with the user."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_storage_hmac_key: {
 			version: 0
 			block: {
@@ -301013,6 +303285,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 															"""
 											description_kind: "plain"
 											optional:         true
+											computed:         true
 										}
 										min_replica_count: {
 											type: "number"
@@ -305366,6 +307639,606 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 				}
 				block_types: {
+					context_spec: {
+						nesting_mode: "list"
+						block: {
+							block_types: memory_bank_config: {
+								nesting_mode: "list"
+								block: {
+									attributes: disable_memory_revisions: {
+										type:             "bool"
+										description:      "If true, no memory revisions will be created for any requests to the Memory Bank."
+										description_kind: "plain"
+										optional:         true
+									}
+									block_types: {
+										customization_configs: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													disable_natural_language_memories: {
+														type:             "bool"
+														description:      "Indicates whether natural language memory generation should be disabled."
+														description_kind: "plain"
+														optional:         true
+													}
+													enable_third_person_memories: {
+														type:             "bool"
+														description:      "Optional. Generate memories in the third person if set to true."
+														description_kind: "plain"
+														optional:         true
+													}
+													scope_keys: {
+														type: ["list", "string"]
+														description:      "Optional. List of scope keys that this customization config applies to."
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												block_types: {
+													consolidation_config: {
+														nesting_mode: "list"
+														block: {
+															attributes: revisions_per_candidate_count: {
+																type:             "number"
+																description:      "Number of revisions to consider per candidate count."
+																description_kind: "plain"
+																optional:         true
+															}
+															description:      "Optional. Configuration for how many memory revisions Memory Bank considers when consolidating each memory candidate."
+															description_kind: "plain"
+														}
+														max_items: 1
+													}
+													generate_memories_examples: {
+														nesting_mode: "list"
+														block: {
+															block_types: {
+																conversation_source: {
+																	nesting_mode: "list"
+																	block: {
+																		block_types: events: {
+																			nesting_mode: "list"
+																			block: {
+																				block_types: content: {
+																					nesting_mode: "list"
+																					block: {
+																						attributes: role: {
+																							type:             "string"
+																							description:      "The producer of the content. Must be either 'user' or 'model'. If not set, the service will default to 'user'."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																						block_types: parts: {
+																							nesting_mode: "list"
+																							block: {
+																								attributes: {
+																									text: {
+																										type:             "string"
+																										description:      "The text content of the part."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									thought: {
+																										type:             "bool"
+																										description:      "Indicates whether the part represents the model's thought process or reasoning."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																								}
+																								block_types: {
+																									audio_transcription: {
+																										nesting_mode: "list"
+																										block: {
+																											attributes: {
+																												speaker_label: {
+																													type:             "string"
+																													description:      "A label identifying the speaker of this audio segment (e.g. spk_1, spk_2). Present when diarization is set."
+																													description_kind: "plain"
+																													optional:         true
+																												}
+																												text: {
+																													type:             "string"
+																													description:      "The transcription text of this audio segment."
+																													description_kind: "plain"
+																													required:         true
+																												}
+																											}
+																											block_types: words: {
+																												nesting_mode: "list"
+																												block: {
+																													attributes: {
+																														end_offset: {
+																															type:             "string"
+																															description:      "End offset in time of the word relative to the start of the audio."
+																															description_kind: "plain"
+																															optional:         true
+																														}
+																														start_offset: {
+																															type:             "string"
+																															description:      "Start offset in time of the word relative to the start of the audio."
+																															description_kind: "plain"
+																															optional:         true
+																														}
+																														word: {
+																															type:             "string"
+																															description:      "Transcript of the word."
+																															description_kind: "plain"
+																															required:         true
+																														}
+																													}
+																													description:      "Detailed word-level transcriptions and timing details. Present when word_timestamp is set."
+																													description_kind: "plain"
+																												}
+																											}
+																											description:      "Audio (input or output) transcription. This is only set when this Part contains audio data."
+																											description_kind: "plain"
+																										}
+																										max_items: 1
+																									}
+																									code_execution_result: {
+																										nesting_mode: "list"
+																										block: {
+																											attributes: {
+																												id: {
+																													type:             "string"
+																													description:      "The identifier of the ExecutableCode part this result is for."
+																													description_kind: "plain"
+																													optional:         true
+																												}
+																												outcome: {
+																													type:             "string"
+																													description:      "Outcome of the code execution. Possible values: [\"OUTCOME_UNSPECIFIED\", \"OUTCOME_OK\", \"OUTCOME_FAILED\", \"OUTCOME_DEADLINE_EXCEEDED\"]"
+																													description_kind: "plain"
+																													required:         true
+																												}
+																												output: {
+																													type:             "string"
+																													description:      "Contains stdout when code execution is successful, stderr or other description otherwise."
+																													description_kind: "plain"
+																													optional:         true
+																												}
+																											}
+																											description:      "Result of executing the ExecutableCode."
+																											description_kind: "plain"
+																										}
+																										max_items: 1
+																									}
+																									executable_code: {
+																										nesting_mode: "list"
+																										block: {
+																											attributes: {
+																												code: {
+																													type:             "string"
+																													description:      "The code to be executed."
+																													description_kind: "plain"
+																													required:         true
+																												}
+																												id: {
+																													type:             "string"
+																													description:      "Unique identifier of the ExecutableCode part."
+																													description_kind: "plain"
+																													optional:         true
+																												}
+																												language: {
+																													type:             "string"
+																													description:      "Supported programming languages for the generated code. Possible values: [\"LANGUAGE_UNSPECIFIED\", \"PYTHON\", \"BASH\"]"
+																													description_kind: "plain"
+																													required:         true
+																												}
+																											}
+																											description:      "Code generated by the model that is intended to be executed."
+																											description_kind: "plain"
+																										}
+																										max_items: 1
+																									}
+																									file_data: {
+																										nesting_mode: "list"
+																										block: {
+																											attributes: {
+																												file_uri: {
+																													type:             "string"
+																													description:      "The URI of the file in Google Cloud Storage."
+																													description_kind: "plain"
+																													required:         true
+																												}
+																												mime_type: {
+																													type:             "string"
+																													description:      "The IANA standard MIME type of the source data."
+																													description_kind: "plain"
+																													required:         true
+																												}
+																											}
+																											description:      "URI based data."
+																											description_kind: "plain"
+																										}
+																										max_items: 1
+																									}
+																									function_call: {
+																										nesting_mode: "list"
+																										block: {
+																											attributes: {
+																												args: {
+																													type:             "string"
+																													description:      "The function parameters and values in JSON object format."
+																													description_kind: "plain"
+																													optional:         true
+																												}
+																												id: {
+																													type:             "string"
+																													description:      "The unique id of the function call."
+																													description_kind: "plain"
+																													optional:         true
+																												}
+																												name: {
+																													type:             "string"
+																													description:      "The name of the function to call."
+																													description_kind: "plain"
+																													optional:         true
+																												}
+																											}
+																											description:      "A predicted function call returned from the model."
+																											description_kind: "plain"
+																										}
+																										max_items: 1
+																									}
+																									function_response: {
+																										nesting_mode: "list"
+																										block: {
+																											attributes: {
+																												id: {
+																													type:             "string"
+																													description:      "The id of the function call this response is for."
+																													description_kind: "plain"
+																													optional:         true
+																												}
+																												name: {
+																													type:             "string"
+																													description:      "The name of the function to call."
+																													description_kind: "plain"
+																													required:         true
+																												}
+																												response: {
+																													type:             "string"
+																													description:      "The function response in JSON object format."
+																													description_kind: "plain"
+																													optional:         true
+																												}
+																											}
+																											description:      "The result of a function call."
+																											description_kind: "plain"
+																										}
+																										max_items: 1
+																									}
+																									inline_data: {
+																										nesting_mode: "list"
+																										block: {
+																											attributes: {
+																												data: {
+																													type:             "string"
+																													description:      "Raw bytes, which should be base64-encoded."
+																													description_kind: "plain"
+																													required:         true
+																												}
+																												mime_type: {
+																													type:             "string"
+																													description:      "The IANA standard MIME type of the source data."
+																													description_kind: "plain"
+																													required:         true
+																												}
+																											}
+																											description:      "The inline data content of the part."
+																											description_kind: "plain"
+																										}
+																										max_items: 1
+																									}
+																									video_metadata: {
+																										nesting_mode: "list"
+																										block: {
+																											attributes: {
+																												end_offset: {
+																													type:             "string"
+																													description:      "The end offset of the video."
+																													description_kind: "plain"
+																													optional:         true
+																												}
+																												start_offset: {
+																													type:             "string"
+																													description:      "The start offset of the video."
+																													description_kind: "plain"
+																													optional:         true
+																												}
+																											}
+																											description:      "Video metadata."
+																											description_kind: "plain"
+																										}
+																										max_items: 1
+																									}
+																								}
+																								description:      "A list of Part objects that make up a single message."
+																								description_kind: "plain"
+																							}
+																							min_items: 1
+																						}
+																						description:      "Represents the content of the event."
+																						description_kind: "plain"
+																					}
+																					min_items: 1
+																					max_items: 1
+																				}
+																				description:      "Represents the input conversation events for the example."
+																				description_kind: "plain"
+																			}
+																		}
+																		description:      "A conversation source for the example."
+																		description_kind: "plain"
+																	}
+																	max_items: 1
+																}
+																generated_memories: {
+																	nesting_mode: "list"
+																	block: {
+																		attributes: fact: {
+																			type:             "string"
+																			description:      "Represents the fact to generate a memory from."
+																			description_kind: "plain"
+																			required:         true
+																		}
+																		block_types: topics: {
+																			nesting_mode: "list"
+																			block: {
+																				attributes: {
+																					custom_memory_topic_label: {
+																						type:             "string"
+																						description:      "Represents the custom memory topic label."
+																						description_kind: "plain"
+																						optional:         true
+																					}
+																					managed_memory_topic: {
+																						type:             "string"
+																						description:      "Represents the managed memory topic. Possible values: [\"USER_PERSONAL_INFO\", \"USER_PREFERENCES\", \"KEY_CONVERSATION_DETAILS\", \"EXPLICIT_INSTRUCTIONS\"]"
+																						description_kind: "plain"
+																						optional:         true
+																					}
+																				}
+																				description:      "Represents the list of topics that the memory should be associated with."
+																				description_kind: "plain"
+																			}
+																		}
+																		description:      "Represents the memories that are expected to be generated from the input conversation."
+																		description_kind: "plain"
+																	}
+																}
+															}
+															description:      "Provides examples of how to generate memories for a particular scope."
+															description_kind: "plain"
+														}
+													}
+													memory_topics: {
+														nesting_mode: "list"
+														block: {
+															block_types: {
+																custom_memory_topic: {
+																	nesting_mode: "list"
+																	block: {
+																		attributes: {
+																			description: {
+																				type:             "string"
+																				description:      "Description of custom memory topic."
+																				description_kind: "plain"
+																				optional:         true
+																			}
+																			label: {
+																				type:             "string"
+																				description:      "Label of custom memory topic."
+																				description_kind: "plain"
+																				optional:         true
+																			}
+																		}
+																		description:      "Optional. Custom memory topic."
+																		description_kind: "plain"
+																	}
+																	max_items: 1
+																}
+																managed_memory_topic: {
+																	nesting_mode: "list"
+																	block: {
+																		attributes: managed_topic_enum: {
+																			type:             "string"
+																			description:      "Managed topic enum (e.g. USER_PREFERENCES, EXPLICIT_INSTRUCTIONS)."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		description:      "Optional. Managed memory topic."
+																		description_kind: "plain"
+																	}
+																	max_items: 1
+																}
+															}
+															description:      "Optional. List of topics that the memory should be associated with."
+															description_kind: "plain"
+														}
+													}
+												}
+												description:      "Optional. Customization configs for how Agent Engine sub-resources manage context at different scope levels."
+												description_kind: "plain"
+											}
+										}
+										generation_config: {
+											nesting_mode: "list"
+											block: {
+												attributes: model: {
+													type:             "string"
+													description:      "The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}."
+													description_kind: "plain"
+													required:         true
+												}
+												block_types: generation_trigger_config: {
+													nesting_mode: "list"
+													block: {
+														block_types: generation_rule: {
+															nesting_mode: "list"
+															block: {
+																attributes: {
+																	event_count: {
+																		type:             "number"
+																		description:      "Optional. Specifies to trigger generation when the event count reaches this limit."
+																		description_kind: "plain"
+																		optional:         true
+																	}
+																	fixed_interval: {
+																		type: "string"
+																		description: """
+																								Optional. Specifies to trigger generation at a fixed interval. The duration
+																								must have a minute-level granularity.
+																								"""
+																		description_kind: "plain"
+																		optional:         true
+																	}
+																	idle_duration: {
+																		type: "string"
+																		description: """
+																								Optional. Specifies to trigger generation if the stream is inactive for the
+																								specified duration after the most recent event. The duration must have a
+																								minute-level granularity.
+																								"""
+																		description_kind: "plain"
+																		optional:         true
+																	}
+																	overlap_event_count: {
+																		type:             "number"
+																		description:      "Optional. Re-include the last N already-processed events in the next window."
+																		description_kind: "plain"
+																		optional:         true
+																	}
+																}
+																description: """
+																						Optional. The active rule that determines when to flush the buffer. If not set,
+																						then the stream will be force flushed immediately.
+																						"""
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
+														description:      "Optional. Configuration for triggering memory generation."
+														description_kind: "plain"
+													}
+													max_items: 1
+												}
+												description:      "Configuration for how to generate memories for the Memory Bank."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										similarity_search_config: {
+											nesting_mode: "list"
+											block: {
+												attributes: embedding_model: {
+													type:             "string"
+													description:      "The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}."
+													description_kind: "plain"
+													required:         true
+												}
+												description:      "Configuration for how to perform similarity search on memories."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										structured_memory_configs: {
+											nesting_mode: "list"
+											block: {
+												attributes: scope_keys: {
+													type: ["list", "string"]
+													description:      "Optional. List of scope keys that this structured memory config applies to."
+													description_kind: "plain"
+													optional:         true
+												}
+												block_types: schema_configs: {
+													nesting_mode: "list"
+													block: {
+														attributes: {
+															id: {
+																type:             "string"
+																description:      "Required. Unique ID identifying the memory schema."
+																description_kind: "plain"
+																required:         true
+															}
+															memory_schema: {
+																type:             "string"
+																description:      "Optional. The memory schema defined as an OpenAPI Schema Object JSON string."
+																description_kind: "plain"
+																optional:         true
+															}
+														}
+														description:      "Optional. List of schema configs that this structured memory config applies to."
+														description_kind: "plain"
+													}
+												}
+												description:      "Optional. Structured memory configurations for Agent Engine sub-resources."
+												description_kind: "plain"
+											}
+										}
+										ttl_config: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													default_ttl: {
+														type:             "string"
+														description:      "The default TTL duration of the memories in the Memory Bank."
+														description_kind: "plain"
+														optional:         true
+													}
+													memory_revision_default_ttl: {
+														type:             "string"
+														description:      "The default TTL duration of the memory revisions in the Memory Bank."
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												block_types: granular_ttl_config: {
+													nesting_mode: "list"
+													block: {
+														attributes: {
+															create_ttl: {
+																type:             "string"
+																description:      "The TTL duration for memories uploaded via CreateMemory."
+																description_kind: "plain"
+																optional:         true
+															}
+															generate_created_ttl: {
+																type:             "string"
+																description:      "The TTL duration for memories newly generated via GenerateMemories."
+																description_kind: "plain"
+																optional:         true
+															}
+															generate_updated_ttl: {
+																type:             "string"
+																description:      "The TTL duration for memories updated via GenerateMemories."
+																description_kind: "plain"
+																optional:         true
+															}
+														}
+														description:      "The granular TTL configuration of the memories in the Memory Bank."
+														description_kind: "plain"
+													}
+													max_items: 1
+												}
+												description:      "Configuration for automatic TTL (\"time-to-live\") of the memories in the Memory Bank."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+									}
+									description:      "Specification for a Memory Bank, which manages memories for the Agent Engine."
+									description_kind: "plain"
+								}
+								max_items: 1
+							}
+							description:      "Optional. Configuration for how Agent Engine sub-resources should manage context."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
 					encryption_spec: {
 						nesting_mode: "list"
 						block: {
@@ -316387,6 +319260,126 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_biglake_hive_catalog_iam_policy: {
+			version: 0
+			block: {
+				attributes: {
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					policy_data: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_biglake_hive_database_iam_policy: {
+			version: 0
+			block: {
+				attributes: {
+					catalog: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					policy_data: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_biglake_hive_table_iam_policy: {
+			version: 0
+			block: {
+				attributes: {
+					catalog: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					database: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					policy_data: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_biglake_iceberg_catalog_iam_policy: {
 			version: 0
 			block: {
@@ -326760,6 +329753,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								guest_accelerator_count: "number"
 								guest_accelerator_type:  "string"
 							}]]
+							architecture: "string"
 							deprecated: ["set", ["object", {
 								replacement: "string"
 								state:       "string"
@@ -343193,6 +346187,155 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_observability_folder_settings: {
+			version: 0
+			block: {
+				attributes: {
+					default_storage_location: {
+						type:             "string"
+						description:      "The default storage location for new resources, e.g. buckets. Only valid for global location."
+						description_kind: "plain"
+						computed:         true
+					}
+					folder: {
+						type:             "string"
+						description:      "The folder ID."
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					kms_key_name: {
+						type:             "string"
+						description:      "The default Cloud KMS key to use for new resources. Only valid for regional locations."
+						description_kind: "plain"
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the settings."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The resource name of the settings."
+						description_kind: "plain"
+						computed:         true
+					}
+					service_account_id: {
+						type:             "string"
+						description:      "The service account used by Cloud Observability for this folder."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_observability_organization_settings: {
+			version: 0
+			block: {
+				attributes: {
+					default_storage_location: {
+						type:             "string"
+						description:      "The default storage location for new resources, e.g. buckets. Only valid for global location."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					kms_key_name: {
+						type:             "string"
+						description:      "The default Cloud KMS key to use for new resources. Only valid for regional locations."
+						description_kind: "plain"
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the settings."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The resource name of the settings."
+						description_kind: "plain"
+						computed:         true
+					}
+					organization: {
+						type:             "string"
+						description:      "The organization ID."
+						description_kind: "plain"
+						required:         true
+					}
+					service_account_id: {
+						type:             "string"
+						description:      "The service account used by Cloud Observability for this organization."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_observability_project_settings: {
+			version: 0
+			block: {
+				attributes: {
+					default_storage_location: {
+						type:             "string"
+						description:      "The default storage location for new resources, e.g. buckets. Only valid for global location."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					kms_key_name: {
+						type:             "string"
+						description:      "The default Cloud KMS key to use for new resources. Only valid for regional locations."
+						description_kind: "plain"
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the settings."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The resource name of the settings."
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					service_account_id: {
+						type:             "string"
+						description:      "The service account used by Cloud Observability for this project."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_oracle_database_autonomous_database: {
 			version: 0
 			block: {
@@ -356227,6 +359370,39 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_app_engine_domain_mapping: {
+			version: 0
+			block: {
+				attributes: project: {
+					type:             "string"
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		google_app_engine_service_network_settings: {
+			version: 0
+			block: {
+				attributes: project: {
+					type:             "string"
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		google_app_engine_service_split_traffic: {
+			version: 0
+			block: {
+				attributes: project: {
+					type:             "string"
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
 		google_bigquery_dataset: {
 			version: 0
 			block: {
@@ -357058,6 +360234,96 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_contact_center_insights_analysis_rule: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_contact_center_insights_assessment_rule: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_contact_center_insights_auto_labeling_rule: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_contact_center_insights_qa_scorecard: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_contact_center_insights_view: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_discovery_engine_assistant: {
 			version: 0
 			block: {
@@ -357409,6 +360675,39 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_identity_platform_inbound_saml_config: {
+			version: 0
+			block: {
+				attributes: project: {
+					type:             "string"
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		google_identity_platform_oauth_idp_config: {
+			version: 0
+			block: {
+				attributes: project: {
+					type:             "string"
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		google_identity_platform_tenant: {
+			version: 0
+			block: {
+				attributes: project: {
+					type:             "string"
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
 		google_kms_crypto_key_version: {
 			version: 0
 			block: {
@@ -357553,6 +360852,186 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					type:             "string"
 					description_kind: "plain"
 					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		google_network_security_authz_policy: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_network_security_intercept_deployment: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_network_security_intercept_deployment_group: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_network_security_intercept_endpoint_group: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_network_security_intercept_endpoint_group_association: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_network_security_mirroring_deployment: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_network_security_mirroring_deployment_group: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_network_security_mirroring_endpoint: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_network_security_mirroring_endpoint_group: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_network_security_mirroring_endpoint_group_association: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				description_kind: "plain"
 			}
@@ -357854,6 +361333,34 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_secret_manager_secret_iam_member: {
+			version: 0
+			block: {
+				attributes: {
+					member: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					secret_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_service_account: {
 			version: 0
 			block: {
@@ -357935,6 +361442,186 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					type:             "string"
 					description_kind: "plain"
 					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		google_vertex_ai_dataset: {
+			version: 0
+			block: {
+				attributes: {
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_vertex_ai_deployment_resource_pool: {
+			version: 0
+			block: {
+				attributes: {
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_vertex_ai_evaluation_metric: {
+			version: 0
+			block: {
+				attributes: {
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_vertex_ai_feature_group: {
+			version: 0
+			block: {
+				attributes: {
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_vertex_ai_feature_online_store: {
+			version: 0
+			block: {
+				attributes: {
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_vertex_ai_featurestore: {
+			version: 0
+			block: {
+				attributes: {
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_vertex_ai_index: {
+			version: 0
+			block: {
+				attributes: {
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_vertex_ai_persistent_resource: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_vertex_ai_reasoning_engine: {
+			version: 0
+			block: {
+				attributes: {
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_vertex_ai_tensorboard: {
+			version: 0
+			block: {
+				attributes: {
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				description_kind: "plain"
 			}
@@ -359224,6 +362911,144 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_biglake_hive_catalog: {
+			version: 1
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		google_biglake_hive_catalog_iam_member: {
+			version: 1
+			attributes: {
+				condition_title: {
+					type:                "string"
+					optional_for_import: true
+				}
+				member: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				role: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_biglake_hive_database: {
+			version: 1
+			attributes: {
+				catalog: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		google_biglake_hive_database_iam_member: {
+			version: 1
+			attributes: {
+				catalog: {
+					type:                "string"
+					required_for_import: true
+				}
+				condition_title: {
+					type:                "string"
+					optional_for_import: true
+				}
+				member: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				role: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_biglake_hive_table: {
+			version: 1
+			attributes: {
+				catalog: {
+					type:                "string"
+					required_for_import: true
+				}
+				database: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		google_biglake_hive_table_iam_member: {
+			version: 1
+			attributes: {
+				catalog: {
+					type:                "string"
+					required_for_import: true
+				}
+				condition_title: {
+					type:                "string"
+					optional_for_import: true
+				}
+				database: {
+					type:                "string"
+					required_for_import: true
+				}
+				member: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				role: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		google_biglake_iceberg_catalog: {
 			version: 1
 			attributes: {
@@ -359593,6 +363418,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 			version: 1
 			attributes: {
 				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		google_bigquery_data_transfer_data_source_enrollment: {
+			version: 1
+			attributes: {
+				data_source_id: {
 					type:                "string"
 					required_for_import: true
 				}
@@ -360315,6 +364153,48 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 		google_chronicle_big_query_export: {
 			version: 1
 			attributes: {
+				instance: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		google_chronicle_case_close_definition: {
+			version: 1
+			attributes: {
+				case_close_definition_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				instance: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		google_chronicle_case_tag_definition: {
+			version: 1
+			attributes: {
+				case_tag_definition_id: {
+					type:                "string"
+					required_for_import: true
+				}
 				instance: {
 					type:                "string"
 					required_for_import: true
@@ -370917,6 +374797,70 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_observability_folder_settings: {
+			version: 1
+			attributes: {
+				folder: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_observability_link: {
+			version: 1
+			attributes: {
+				bucket: {
+					type:                "string"
+					required_for_import: true
+				}
+				dataset: {
+					type:                "string"
+					required_for_import: true
+				}
+				link_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		google_observability_organization_settings: {
+			version: 1
+			attributes: {
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				organization: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_observability_project_settings: {
+			version: 1
+			attributes: {
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
 		google_observability_trace_scope: {
 			version: 1
 			attributes: {
@@ -372808,6 +376752,44 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_storage_ftp_server: {
+			version: 1
+			attributes: {
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				server_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_storage_ftp_user: {
+			version: 1
+			attributes: {
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				server_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				user_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		google_storage_hmac_key: {
 			version: 1
 			attributes: {
@@ -373099,6 +377081,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					required_for_import: true
 				}
 				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		google_vertex_ai_endpoint_with_model_garden_deployment: {
+			version: 1
+			attributes: {
+				location: {
 					type:                "string"
 					required_for_import: true
 				}

@@ -187,6 +187,8 @@ google_ces_app_version: {
 							semantic_similarity_success_threshold?:         number
 						})]
 					})]
+					golden_hallucination_metric_behavior?:   string
+					scenario_hallucination_metric_behavior?: string
 				})]
 				global_instruction?: string
 				guardrails?: [...string]
@@ -212,6 +214,9 @@ google_ces_app_version: {
 					conversation_logging_settings?: [...close({
 						disable_conversation_logging?: bool
 						retention_window?:             string
+					})]
+					metric_analysis_settings?: [...close({
+						llm_metrics_opted_out?: bool
 					})]
 					redaction_config?: [...close({
 						deidentify_template?: string

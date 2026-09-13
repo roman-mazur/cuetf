@@ -9,12 +9,19 @@ google_apikeys_key: {
 		restrictions?: matchN(1, [#restrictions, list.MaxItems(1) & [...#restrictions]])
 		timeouts?: #timeouts
 
-		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
-		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// Defines the behavior for checking existing usage when updating a key.
+		// Possible values: 'SKIP', 'CHECK'.
+		check_existing_usage?: string
+
+		// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the resource,
 		// the command will fail if this field is set to "PREVENT" in Terraform state.
 		// When set to "ABANDON", the command will remove the resource from Terraform
 		// management without updating or deleting the resource in the API.
-		// When set to "DELETE", deleting the resource is allowed.
+		// When set to "DELETE", deleting the resource is allowed, and existing traffic
+		// usage will be checked. If active usage was detected in the last 7 days, the
+		// request fails.
+		// When set to "FORCE", deleting the resource will bypass the active traffic usage check.
 		deletion_policy?: string
 
 		// Human-readable display name of this API key. Modifiable by user.

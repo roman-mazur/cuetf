@@ -190,6 +190,7 @@ provider: {
 		storage_batch_operations_custom_endpoint?:      string
 		storage_control_custom_endpoint?:               string
 		storage_custom_endpoint?:                       string
+		storage_ftp_custom_endpoint?:                   string
 		storage_insights_custom_endpoint?:              string
 		storage_transfer_custom_endpoint?:              string
 		tags_custom_endpoint?:                          string

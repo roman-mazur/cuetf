@@ -13,6 +13,7 @@ google_compute_machine_types: {
 				guest_accelerator_count?: number
 				guest_accelerator_type?:  string
 			})]
+			architecture?: string
 			deprecated?: [...close({
 				replacement?: string
 				state?:       string

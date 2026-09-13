@@ -248,6 +248,12 @@ google_data_loss_prevention_discovery_config: {
 		inspect_template_modified_cadence?: matchN(1, [_#defs."/$defs/targets/$defs/big_query_target/$defs/cadence/$defs/inspect_template_modified_cadence", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/big_query_target/$defs/cadence/$defs/inspect_template_modified_cadence"]])
 		schema_modified_cadence?: matchN(1, [_#defs."/$defs/targets/$defs/big_query_target/$defs/cadence/$defs/schema_modified_cadence", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/big_query_target/$defs/cadence/$defs/schema_modified_cadence"]])
 		table_modified_cadence?: matchN(1, [_#defs."/$defs/targets/$defs/big_query_target/$defs/cadence/$defs/table_modified_cadence", list.MaxItems(1) & [..._#defs."/$defs/targets/$defs/big_query_target/$defs/cadence/$defs/table_modified_cadence"]])
+
+		// Frequency at which profiles should be updated, regardless of whether the
+		// underlying resource has changed. Defaults to never. Possible values:
+		// ["UPDATE_FREQUENCY_NEVER", "UPDATE_FREQUENCY_DAILY",
+		// "UPDATE_FREQUENCY_MONTHLY"]
+		refresh_frequency?: string
 	})
 
 	_#defs: "/$defs/targets/$defs/big_query_target/$defs/cadence/$defs/inspect_template_modified_cadence": close({
