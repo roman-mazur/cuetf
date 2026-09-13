@@ -124,7 +124,7 @@ aws_bedrockagentcore_gateway: {
 	})
 
 	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint/$defs/self_managed_lattice_resource": close({
-		resource_configuration_identifier!: string
+		resource_configuration_identifier?: string
 	})
 
 	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint_overrides": close({
@@ -147,7 +147,7 @@ aws_bedrockagentcore_gateway: {
 	})
 
 	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint_overrides/$defs/private_endpoint/$defs/self_managed_lattice_resource": close({
-		resource_configuration_identifier!: string
+		resource_configuration_identifier?: string
 	})
 
 	_#defs: "/$defs/interceptor_configuration/$defs/input_configuration": close({

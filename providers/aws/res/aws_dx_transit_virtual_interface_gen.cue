@@ -11,22 +11,25 @@ aws_dx_transit_virtual_interface: {
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:              string
-		amazon_address?:      string
-		amazon_side_asn?:     string
-		arn?:                 string
-		aws_device?:          string
-		bgp_asn?:             number
-		bgp_asn_long?:        string
-		bgp_auth_key?:        string
-		connection_id!:       string
-		customer_address?:    string
-		dx_gateway_id!:       string
-		id?:                  string
-		jumbo_frame_capable?: bool
-		mtu?:                 number
-		name!:                string
-		sitelink_enabled?:    bool
+		region?:                           string
+		amazon_address?:                   string
+		amazon_side_asn?:                  string
+		arn?:                              string
+		aws_device?:                       string
+		bgp_asn?:                          number
+		bgp_asn_long?:                     string
+		bgp_auth_key?:                     string
+		connection_id!:                    string
+		customer_address?:                 string
+		dx_gateway_id!:                    string
+		id?:                               string
+		jumbo_frame_capable?:              bool
+		mtu?:                              number
+		name!:                             string
+		prefix_pool_allocated_count_ipv4?: number
+		prefix_pool_allocated_count_ipv6?: number
+		rate_limit?:                       string
+		sitelink_enabled?:                 bool
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		vlan!: number

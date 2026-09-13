@@ -24,6 +24,7 @@ aws_synthetics_canary: {
 		failure_retention_period?: number
 		handler!:                  string
 		id?:                       string
+		kms_key_arn?:              string
 		name!:                     string
 		runtime_version!:          string
 		s3_bucket?:                string

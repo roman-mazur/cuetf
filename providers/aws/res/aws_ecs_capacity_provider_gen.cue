@@ -30,6 +30,7 @@ aws_ecs_capacity_provider: {
 	})
 
 	#managed_instances_provider: close({
+		auto_repair_configuration?: matchN(1, [_#defs."/$defs/managed_instances_provider/$defs/auto_repair_configuration", list.MaxItems(1) & [..._#defs."/$defs/managed_instances_provider/$defs/auto_repair_configuration"]])
 		infrastructure_optimization?: matchN(1, [_#defs."/$defs/managed_instances_provider/$defs/infrastructure_optimization", list.MaxItems(1) & [..._#defs."/$defs/managed_instances_provider/$defs/infrastructure_optimization"]])
 		instance_launch_template!: matchN(1, [_#defs."/$defs/managed_instances_provider/$defs/instance_launch_template", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/managed_instances_provider/$defs/instance_launch_template"]])
 		infrastructure_role_arn!: string
@@ -42,6 +43,10 @@ aws_ecs_capacity_provider: {
 		minimum_scaling_step_size?: number
 		status?:                    string
 		target_capacity?:           number
+	})
+
+	_#defs: "/$defs/managed_instances_provider/$defs/auto_repair_configuration": close({
+		actions_status?: string
 	})
 
 	_#defs: "/$defs/managed_instances_provider/$defs/infrastructure_optimization": close({

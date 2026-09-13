@@ -156,7 +156,7 @@ aws_bedrockagentcore_agent_runtime: {
 	})
 
 	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint/$defs/self_managed_lattice_resource": close({
-		resource_configuration_identifier!: string
+		resource_configuration_identifier?: string
 	})
 
 	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint_overrides": close({
@@ -179,7 +179,7 @@ aws_bedrockagentcore_agent_runtime: {
 	})
 
 	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint_overrides/$defs/private_endpoint/$defs/self_managed_lattice_resource": close({
-		resource_configuration_identifier!: string
+		resource_configuration_identifier?: string
 	})
 
 	_#defs: "/$defs/filesystem_configuration/$defs/efs_access_point": close({

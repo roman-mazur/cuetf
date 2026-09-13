@@ -44,6 +44,15 @@ aws_eks_cluster_versions: {
 							default_value?: string
 						})]
 					})]
+					pod_gc_controller_config?: [...close({
+						terminated_pod_gc_threshold?: [...close({
+							constraints?: [...close({
+								max?: number
+								min?: number
+							})]
+							default_value?: number
+						})]
+					})]
 				})]
 				kube_scheduler_config?: [...close({
 					node_resources_fit?: [...close({
@@ -110,6 +119,15 @@ aws_eks_cluster_versions: {
 									min?: string
 								})]
 								default_value?: string
+							})]
+						})]
+						pod_gc_controller_config?: [...close({
+							terminated_pod_gc_threshold?: [...close({
+								constraints?: [...close({
+									max?: number
+									min?: number
+								})]
+								default_value?: number
 							})]
 						})]
 					})]

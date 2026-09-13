@@ -42,6 +42,9 @@ aws_eks_cluster: {
 			horizontal_pod_autoscaler_controller_config?: [...close({
 				horizontal_pod_autoscaler_sync_period?: string
 			})]
+			pod_gc_controller_config?: [...close({
+				terminated_pod_gc_threshold?: number
+			})]
 		})]
 		kube_scheduler_config?: [...close({
 			node_resources_fit?: [...close({

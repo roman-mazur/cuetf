@@ -118,15 +118,19 @@ aws_bedrockagentcore_harness: {
 	#model: close({
 		bedrock_model_config?: matchN(1, [_#defs."/$defs/model/$defs/bedrock_model_config", [..._#defs."/$defs/model/$defs/bedrock_model_config"]])
 		gemini_model_config?: matchN(1, [_#defs."/$defs/model/$defs/gemini_model_config", [..._#defs."/$defs/model/$defs/gemini_model_config"]])
+		litellm_model_config?: matchN(1, [_#defs."/$defs/model/$defs/litellm_model_config", [..._#defs."/$defs/model/$defs/litellm_model_config"]])
 		openai_model_config?: matchN(1, [_#defs."/$defs/model/$defs/openai_model_config", [..._#defs."/$defs/model/$defs/openai_model_config"]])
 	})
 
 	#skill: close({
-		path!: string
+		aws_skills?: matchN(1, [_#defs."/$defs/skill/$defs/aws_skills", [..._#defs."/$defs/skill/$defs/aws_skills"]])
+		git?: matchN(1, [_#defs."/$defs/skill/$defs/git", [..._#defs."/$defs/skill/$defs/git"]])
+		s3?: matchN(1, [_#defs."/$defs/skill/$defs/s3", [..._#defs."/$defs/skill/$defs/s3"]])
+		path?: string
 	})
 
 	#system_prompt: close({
-		text!: string
+		text?: string
 	})
 
 	#timeouts: close({
@@ -208,7 +212,7 @@ aws_bedrockagentcore_harness: {
 	})
 
 	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint/$defs/self_managed_lattice_resource": close({
-		resource_configuration_identifier!: string
+		resource_configuration_identifier?: string
 	})
 
 	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint_overrides": close({
@@ -231,7 +235,7 @@ aws_bedrockagentcore_harness: {
 	})
 
 	_#defs: "/$defs/authorizer_configuration/$defs/custom_jwt_authorizer/$defs/private_endpoint_overrides/$defs/private_endpoint/$defs/self_managed_lattice_resource": close({
-		resource_configuration_identifier!: string
+		resource_configuration_identifier?: string
 	})
 
 	_#defs: "/$defs/environment/$defs/agentcore_runtime_environment": close({
@@ -305,27 +309,61 @@ aws_bedrockagentcore_harness: {
 	})
 
 	_#defs: "/$defs/model/$defs/bedrock_model_config": close({
-		max_tokens?:  number
-		model_id!:    string
-		temperature?: number
-		top_p?:       number
+		additional_params?: string
+		api_format?:        string
+		max_tokens?:        number
+		model_id!:          string
+		temperature?:       number
+		top_p?:             number
 	})
 
 	_#defs: "/$defs/model/$defs/gemini_model_config": close({
-		api_key_arn!: string
-		max_tokens?:  number
-		model_id!:    string
-		temperature?: number
-		top_k?:       number
-		top_p?:       number
+		additional_params?: string
+		api_key_arn!:       string
+		max_tokens?:        number
+		model_id!:          string
+		temperature?:       number
+		top_k?:             number
+		top_p?:             number
+	})
+
+	_#defs: "/$defs/model/$defs/litellm_model_config": close({
+		additional_params?: string
+		api_base?:          string
+		api_key_arn?:       string
+		max_tokens?:        number
+		model_id!:          string
+		temperature?:       number
+		top_p?:             number
 	})
 
 	_#defs: "/$defs/model/$defs/openai_model_config": close({
-		api_key_arn!: string
-		max_tokens?:  number
-		model_id!:    string
-		temperature?: number
-		top_p?:       number
+		additional_params?: string
+		api_format?:        string
+		api_key_arn!:       string
+		max_tokens?:        number
+		model_id!:          string
+		temperature?:       number
+		top_p?:             number
+	})
+
+	_#defs: "/$defs/skill/$defs/aws_skills": close({
+		paths?: [...string]
+	})
+
+	_#defs: "/$defs/skill/$defs/git": close({
+		auth?: matchN(1, [_#defs."/$defs/skill/$defs/git/$defs/auth", [..._#defs."/$defs/skill/$defs/git/$defs/auth"]])
+		path?: string
+		url!:  string
+	})
+
+	_#defs: "/$defs/skill/$defs/git/$defs/auth": close({
+		credential_arn!: string
+		username?:       string
+	})
+
+	_#defs: "/$defs/skill/$defs/s3": close({
+		uri!: string
 	})
 
 	_#defs: "/$defs/tool/$defs/config": close({

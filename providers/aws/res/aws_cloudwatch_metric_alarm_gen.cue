@@ -8,6 +8,7 @@ aws_cloudwatch_metric_alarm: {
 	close({
 		evaluation_criteria?: matchN(1, [#evaluation_criteria, list.MaxItems(1) & [...#evaluation_criteria]])
 		metric_query?: matchN(1, [#metric_query, [...#metric_query]])
+		warm_up_configuration?: matchN(1, [#warm_up_configuration, list.MaxItems(1) & [...#warm_up_configuration]])
 		actions_enabled?: bool
 
 		// Region where this resource will be
@@ -53,6 +54,11 @@ aws_cloudwatch_metric_alarm: {
 		label?:       string
 		period?:      number
 		return_data?: bool
+	})
+
+	#warm_up_configuration: close({
+		only_start_evaluating_after_warm_up_period_ends?: bool
+		warm_up_period_duration_in_minutes!:              number
 	})
 
 	_#defs: "/$defs/evaluation_criteria/$defs/promql_criteria": close({

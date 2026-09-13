@@ -23,6 +23,7 @@ aws_dx_hosted_public_virtual_interface: {
 		id?:               string
 		name!:             string
 		owner_account_id!: string
+		rate_limit?:       string
 		route_filter_prefixes!: [...string]
 		vlan!: number
 	})

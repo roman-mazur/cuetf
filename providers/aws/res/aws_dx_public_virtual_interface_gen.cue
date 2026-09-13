@@ -22,6 +22,7 @@ aws_dx_public_virtual_interface: {
 		customer_address?: string
 		id?:               string
 		name!:             string
+		rate_limit?:       string
 		route_filter_prefixes!: [...string]
 		tags?: [string]:     string
 		tags_all?: [string]: string

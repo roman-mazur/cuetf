@@ -106,6 +106,7 @@ aws_db_instance: {
 		upgrade_storage_config?: bool
 		username?:               string
 		vpc_security_group_ids?: [...string]
+		warning_event_categories?: [...string]
 	})
 
 	#blue_green_update: close({

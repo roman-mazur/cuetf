@@ -46,6 +46,7 @@ aws_rds_cluster_instance: {
 		storage_encrypted?:                     bool
 		tags?: [string]:     string
 		tags_all?: [string]: string
+		warning_event_categories?: [...string]
 		writer?: bool
 	})
 
