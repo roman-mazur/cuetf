@@ -33,8 +33,11 @@ azurerm_postgresql_flexible_server: {
 		resource_group_name!:               string
 		sku_name?:                          string
 		source_server_id?:                  string
+		storage_iops?:                      number
 		storage_mb?:                        number
+		storage_throughput?:                number
 		storage_tier?:                      string
+		storage_type?:                      string
 		tags?: [string]: string
 		version?: string
 		zone?:    string

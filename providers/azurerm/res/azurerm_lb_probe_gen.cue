@@ -8,13 +8,14 @@ azurerm_lb_probe: {
 		id?:                  string
 		interval_in_seconds?: number
 		load_balancer_rules?: [...string]
-		loadbalancer_id!:  string
-		name!:             string
-		number_of_probes?: number
-		port!:             number
-		probe_threshold?:  number
-		protocol?:         string
-		request_path?:     string
+		loadbalancer_id!:              string
+		name!:                         string
+		no_healthy_backends_behavior?: string
+		number_of_probes?:             number
+		port!:                         number
+		probe_threshold?:              number
+		protocol?:                     string
+		request_path?:                 string
 	})
 
 	#timeouts: close({

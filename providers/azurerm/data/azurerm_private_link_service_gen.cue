@@ -7,6 +7,8 @@ azurerm_private_link_service: {
 		timeouts?: #timeouts
 		alias?:    string
 		auto_approval_subscription_ids?: [...string]
+		destination_ip_address?: string
+		fqdns?: [...string]
 		id?: string
 		load_balancer_frontend_ip_configuration_ids?: [...string]
 		location?: string

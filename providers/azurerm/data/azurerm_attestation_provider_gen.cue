@@ -4,14 +4,18 @@ azurerm_attestation_provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_attestation_provider")
 	close({
-		timeouts?:            #timeouts
-		attestation_uri?:     string
-		id?:                  string
-		location?:            string
-		name!:                string
-		resource_group_name!: string
+		timeouts?:                   #timeouts
+		attestation_uri?:            string
+		id?:                         string
+		location?:                   string
+		name!:                       string
+		open_enclave_policy_base64?: string
+		resource_group_name!:        string
+		sev_snp_policy_base64?:      string
+		sgx_enclave_policy_base64?:  string
 		tags?: [string]: string
-		trust_model?: string
+		tpm_policy_base64?: string
+		trust_model?:       string
 	})
 
 	#timeouts: close({

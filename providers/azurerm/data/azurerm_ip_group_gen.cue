@@ -6,6 +6,8 @@ azurerm_ip_group: {
 	close({
 		timeouts?: #timeouts
 		cidrs?: [...string]
+		firewall_ids?: [...string]
+		firewall_policy_ids?: [...string]
 		id?:                  string
 		location?:            string
 		name!:                string
