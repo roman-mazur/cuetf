@@ -17,6 +17,7 @@ aws_appconfig_hosted_configuration_version: {
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:         string
+		version_label?:  string
 		version_number?: number
 	})
 }

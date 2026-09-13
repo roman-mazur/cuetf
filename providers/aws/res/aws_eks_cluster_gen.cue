@@ -80,6 +80,7 @@ aws_eks_cluster: {
 
 	#kube_controller_manager_config: close({
 		horizontal_pod_autoscaler_controller_config?: matchN(1, [_#defs."/$defs/kube_controller_manager_config/$defs/horizontal_pod_autoscaler_controller_config", list.MaxItems(1) & [..._#defs."/$defs/kube_controller_manager_config/$defs/horizontal_pod_autoscaler_controller_config"]])
+		pod_gc_controller_config?: matchN(1, [_#defs."/$defs/kube_controller_manager_config/$defs/pod_gc_controller_config", list.MaxItems(1) & [..._#defs."/$defs/kube_controller_manager_config/$defs/pod_gc_controller_config"]])
 	})
 
 	#kube_scheduler_config: close({
@@ -146,6 +147,10 @@ aws_eks_cluster: {
 
 	_#defs: "/$defs/kube_controller_manager_config/$defs/horizontal_pod_autoscaler_controller_config": close({
 		horizontal_pod_autoscaler_sync_period?: string
+	})
+
+	_#defs: "/$defs/kube_controller_manager_config/$defs/pod_gc_controller_config": close({
+		terminated_pod_gc_threshold?: number
 	})
 
 	_#defs: "/$defs/kube_scheduler_config/$defs/node_resources_fit": close({

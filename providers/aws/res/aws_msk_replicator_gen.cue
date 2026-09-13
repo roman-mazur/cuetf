@@ -27,8 +27,11 @@ aws_msk_replicator: {
 	})
 
 	#kafka_cluster: close({
-		amazon_msk_cluster!: matchN(1, [_#defs."/$defs/kafka_cluster/$defs/amazon_msk_cluster", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/kafka_cluster/$defs/amazon_msk_cluster"]])
-		vpc_config!: matchN(1, [_#defs."/$defs/kafka_cluster/$defs/vpc_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/kafka_cluster/$defs/vpc_config"]])
+		amazon_msk_cluster?: matchN(1, [_#defs."/$defs/kafka_cluster/$defs/amazon_msk_cluster", list.MaxItems(1) & [..._#defs."/$defs/kafka_cluster/$defs/amazon_msk_cluster"]])
+		apache_kafka_cluster?: matchN(1, [_#defs."/$defs/kafka_cluster/$defs/apache_kafka_cluster", list.MaxItems(1) & [..._#defs."/$defs/kafka_cluster/$defs/apache_kafka_cluster"]])
+		client_authentication?: matchN(1, [_#defs."/$defs/kafka_cluster/$defs/client_authentication", list.MaxItems(1) & [..._#defs."/$defs/kafka_cluster/$defs/client_authentication"]])
+		encryption_in_transit?: matchN(1, [_#defs."/$defs/kafka_cluster/$defs/encryption_in_transit", list.MaxItems(1) & [..._#defs."/$defs/kafka_cluster/$defs/encryption_in_transit"]])
+		vpc_config?: matchN(1, [_#defs."/$defs/kafka_cluster/$defs/vpc_config", list.MaxItems(1) & [..._#defs."/$defs/kafka_cluster/$defs/vpc_config"]])
 	})
 
 	#log_delivery: close({
@@ -39,10 +42,12 @@ aws_msk_replicator: {
 		consumer_group_replication!: matchN(1, [_#defs."/$defs/replication_info_list/$defs/consumer_group_replication", [_, ...] & [..._#defs."/$defs/replication_info_list/$defs/consumer_group_replication"]])
 		topic_replication!: matchN(1, [_#defs."/$defs/replication_info_list/$defs/topic_replication", [_, ...] & [..._#defs."/$defs/replication_info_list/$defs/topic_replication"]])
 		source_kafka_cluster_alias?: string
-		source_kafka_cluster_arn!:   string
+		source_kafka_cluster_arn?:   string
+		source_kafka_cluster_id?:    string
 		target_compression_type!:    string
 		target_kafka_cluster_alias?: string
-		target_kafka_cluster_arn!:   string
+		target_kafka_cluster_arn?:   string
+		target_kafka_cluster_id?:    string
 	})
 
 	#timeouts: close({
@@ -53,6 +58,29 @@ aws_msk_replicator: {
 
 	_#defs: "/$defs/kafka_cluster/$defs/amazon_msk_cluster": close({
 		msk_cluster_arn!: string
+	})
+
+	_#defs: "/$defs/kafka_cluster/$defs/apache_kafka_cluster": close({
+		apache_kafka_cluster_id!: string
+		bootstrap_broker_string!: string
+	})
+
+	_#defs: "/$defs/kafka_cluster/$defs/client_authentication": close({
+		mtls?: matchN(1, [_#defs."/$defs/kafka_cluster/$defs/client_authentication/$defs/mtls", list.MaxItems(1) & [..._#defs."/$defs/kafka_cluster/$defs/client_authentication/$defs/mtls"]])
+		sasl_scram?: matchN(1, [_#defs."/$defs/kafka_cluster/$defs/client_authentication/$defs/sasl_scram", list.MaxItems(1) & [..._#defs."/$defs/kafka_cluster/$defs/client_authentication/$defs/sasl_scram"]])
+	})
+
+	_#defs: "/$defs/kafka_cluster/$defs/client_authentication/$defs/mtls": close({
+		secret_arn!: string
+	})
+
+	_#defs: "/$defs/kafka_cluster/$defs/client_authentication/$defs/sasl_scram": close({
+		mechanism!:  string
+		secret_arn!: string
+	})
+
+	_#defs: "/$defs/kafka_cluster/$defs/encryption_in_transit": close({
+		root_ca_certificate!: string
 	})
 
 	_#defs: "/$defs/kafka_cluster/$defs/vpc_config": close({

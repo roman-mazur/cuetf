@@ -11,9 +11,11 @@ aws_dx_hosted_private_virtual_interface_accepter: {
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:        string
-		dx_gateway_id?: string
-		id?:            string
+		region?:                           string
+		dx_gateway_id?:                    string
+		id?:                               string
+		prefix_pool_allocated_count_ipv4?: number
+		prefix_pool_allocated_count_ipv6?: number
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		virtual_interface_id!: string

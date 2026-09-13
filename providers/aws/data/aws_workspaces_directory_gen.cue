@@ -45,6 +45,13 @@ aws_workspaces_directory: {
 		tenancy?:            string
 		user_identity_type?: string
 		workspace_access_properties?: [...close({
+			access_endpoint_config?: [...close({
+				access_endpoints?: [...close({
+					access_endpoint_type?: string
+					vpc_endpoint_id?:      string
+				})]
+				internet_fallback_protocols?: [...string]
+			})]
 			device_type_android?:    string
 			device_type_chromeos?:   string
 			device_type_ios?:        string

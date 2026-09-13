@@ -50,6 +50,7 @@ aws_bedrockagentcore_gateway_target: {
 
 	#target_configuration: close({
 		http?: matchN(1, [_#defs."/$defs/target_configuration/$defs/http", [..._#defs."/$defs/target_configuration/$defs/http"]])
+		inference?: matchN(1, [_#defs."/$defs/target_configuration/$defs/inference", [..._#defs."/$defs/target_configuration/$defs/inference"]])
 		mcp?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp", [..._#defs."/$defs/target_configuration/$defs/mcp"]])
 	})
 
@@ -124,20 +125,112 @@ aws_bedrockagentcore_gateway_target: {
 	})
 
 	_#defs: "/$defs/private_endpoint/$defs/self_managed_lattice_resource": close({
-		resource_configuration_identifier!: string
+		resource_configuration_identifier?: string
 	})
 
 	_#defs: "/$defs/target_configuration/$defs/http": close({
 		agentcore_runtime?: matchN(1, [_#defs."/$defs/target_configuration/$defs/http/$defs/agentcore_runtime", [..._#defs."/$defs/target_configuration/$defs/http/$defs/agentcore_runtime"]])
+		passthrough?: matchN(1, [_#defs."/$defs/target_configuration/$defs/http/$defs/passthrough", [..._#defs."/$defs/target_configuration/$defs/http/$defs/passthrough"]])
 	})
 
 	_#defs: "/$defs/target_configuration/$defs/http/$defs/agentcore_runtime": close({
+		schema?: matchN(1, [_#defs."/$defs/target_configuration/$defs/http/$defs/agentcore_runtime/$defs/schema", [..._#defs."/$defs/target_configuration/$defs/http/$defs/agentcore_runtime/$defs/schema"]])
 		arn!:       string
 		qualifier?: string
 	})
 
+	_#defs: "/$defs/target_configuration/$defs/http/$defs/agentcore_runtime/$defs/schema": close({
+		source?: matchN(1, [_#defs."/$defs/target_configuration/$defs/http/$defs/agentcore_runtime/$defs/schema/$defs/source", [..._#defs."/$defs/target_configuration/$defs/http/$defs/agentcore_runtime/$defs/schema/$defs/source"]])
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/http/$defs/agentcore_runtime/$defs/schema/$defs/source": close({
+		inline_payload?: matchN(1, [_#defs."/$defs/target_configuration/$defs/http/$defs/agentcore_runtime/$defs/schema/$defs/source/$defs/inline_payload", [..._#defs."/$defs/target_configuration/$defs/http/$defs/agentcore_runtime/$defs/schema/$defs/source/$defs/inline_payload"]])
+		s3?: matchN(1, [_#defs."/$defs/target_configuration/$defs/http/$defs/agentcore_runtime/$defs/schema/$defs/source/$defs/s3", [..._#defs."/$defs/target_configuration/$defs/http/$defs/agentcore_runtime/$defs/schema/$defs/source/$defs/s3"]])
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/http/$defs/agentcore_runtime/$defs/schema/$defs/source/$defs/inline_payload": close({
+		payload!: string
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/http/$defs/agentcore_runtime/$defs/schema/$defs/source/$defs/s3": close({
+		bucket_owner_account_id?: string
+		uri?:                     string
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/http/$defs/passthrough": close({
+		schema?: matchN(1, [_#defs."/$defs/target_configuration/$defs/http/$defs/passthrough/$defs/schema", [..._#defs."/$defs/target_configuration/$defs/http/$defs/passthrough/$defs/schema"]])
+		stickiness_configuration?: matchN(1, [_#defs."/$defs/target_configuration/$defs/http/$defs/passthrough/$defs/stickiness_configuration", [..._#defs."/$defs/target_configuration/$defs/http/$defs/passthrough/$defs/stickiness_configuration"]])
+		endpoint!:                                   string
+		protocol_type!:                              string
+		static_query_parameter_conflict_resolution?: string
+		static_query_parameters?: [string]: string
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/http/$defs/passthrough/$defs/schema": close({
+		source?: matchN(1, [_#defs."/$defs/target_configuration/$defs/http/$defs/passthrough/$defs/schema/$defs/source", [..._#defs."/$defs/target_configuration/$defs/http/$defs/passthrough/$defs/schema/$defs/source"]])
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/http/$defs/passthrough/$defs/schema/$defs/source": close({
+		inline_payload?: matchN(1, [_#defs."/$defs/target_configuration/$defs/http/$defs/passthrough/$defs/schema/$defs/source/$defs/inline_payload", [..._#defs."/$defs/target_configuration/$defs/http/$defs/passthrough/$defs/schema/$defs/source/$defs/inline_payload"]])
+		s3?: matchN(1, [_#defs."/$defs/target_configuration/$defs/http/$defs/passthrough/$defs/schema/$defs/source/$defs/s3", [..._#defs."/$defs/target_configuration/$defs/http/$defs/passthrough/$defs/schema/$defs/source/$defs/s3"]])
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/http/$defs/passthrough/$defs/schema/$defs/source/$defs/inline_payload": close({
+		payload!: string
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/http/$defs/passthrough/$defs/schema/$defs/source/$defs/s3": close({
+		bucket_owner_account_id?: string
+		uri?:                     string
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/http/$defs/passthrough/$defs/stickiness_configuration": close({
+		composite_identifier?: [...string]
+		identifier!: string
+		timeout?:    number
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/inference": close({
+		connector?: matchN(1, [_#defs."/$defs/target_configuration/$defs/inference/$defs/connector", [..._#defs."/$defs/target_configuration/$defs/inference/$defs/connector"]])
+		provider?: matchN(1, [_#defs."/$defs/target_configuration/$defs/inference/$defs/provider", [..._#defs."/$defs/target_configuration/$defs/inference/$defs/provider"]])
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/inference/$defs/connector": close({
+		source?: matchN(1, [_#defs."/$defs/target_configuration/$defs/inference/$defs/connector/$defs/source", [..._#defs."/$defs/target_configuration/$defs/inference/$defs/connector/$defs/source"]])
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/inference/$defs/connector/$defs/source": close({
+		connector_id!: string
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/inference/$defs/provider": close({
+		model_mapping?: matchN(1, [_#defs."/$defs/target_configuration/$defs/inference/$defs/provider/$defs/model_mapping", [..._#defs."/$defs/target_configuration/$defs/inference/$defs/provider/$defs/model_mapping"]])
+		operation?: matchN(1, [_#defs."/$defs/target_configuration/$defs/inference/$defs/provider/$defs/operation", [..._#defs."/$defs/target_configuration/$defs/inference/$defs/provider/$defs/operation"]])
+		endpoint!: string
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/inference/$defs/provider/$defs/model_mapping": close({
+		provider_prefix?: matchN(1, [_#defs."/$defs/target_configuration/$defs/inference/$defs/provider/$defs/model_mapping/$defs/provider_prefix", [..._#defs."/$defs/target_configuration/$defs/inference/$defs/provider/$defs/model_mapping/$defs/provider_prefix"]])
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/inference/$defs/provider/$defs/model_mapping/$defs/provider_prefix": close({
+		separator?: string
+		strip?:     bool
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/inference/$defs/provider/$defs/operation": close({
+		model?: matchN(1, [_#defs."/$defs/target_configuration/$defs/inference/$defs/provider/$defs/operation/$defs/model", [..._#defs."/$defs/target_configuration/$defs/inference/$defs/provider/$defs/operation/$defs/model"]])
+		path!:          string
+		provider_path?: string
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/inference/$defs/provider/$defs/operation/$defs/model": close({
+		model!: string
+	})
+
 	_#defs: "/$defs/target_configuration/$defs/mcp": close({
 		api_gateway?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/api_gateway", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/api_gateway"]])
+		connector?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/connector", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/connector"]])
 		lambda?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/lambda", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/lambda"]])
 		mcp_server?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/mcp_server", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/mcp_server"]])
 		open_api_schema?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/open_api_schema", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/open_api_schema"]])
@@ -165,6 +258,30 @@ aws_bedrockagentcore_gateway_target: {
 		method!:      string
 		name!:        string
 		path!:        string
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/connector": close({
+		configuration?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/connector/$defs/configuration", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/connector/$defs/configuration"]])
+		source?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/connector/$defs/source", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/connector/$defs/source"]])
+		enabled?: [...string]
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/connector/$defs/configuration": close({
+		parameter_override?: matchN(1, [_#defs."/$defs/target_configuration/$defs/mcp/$defs/connector/$defs/configuration/$defs/parameter_override", [..._#defs."/$defs/target_configuration/$defs/mcp/$defs/connector/$defs/configuration/$defs/parameter_override"]])
+		description?:      string
+		name!:             string
+		parameter_values?: string
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/connector/$defs/configuration/$defs/parameter_override": close({
+		description?: string
+		path!:        string
+		visible?:     bool
+	})
+
+	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/connector/$defs/source": close({
+		connector_id!: string
+		version?:      string
 	})
 
 	_#defs: "/$defs/target_configuration/$defs/mcp/$defs/lambda": close({

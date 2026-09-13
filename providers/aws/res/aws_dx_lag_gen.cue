@@ -15,6 +15,12 @@ aws_dx_lag: {
 		name!:                   string
 		owner_account_id?:       string
 		provider_name?:          string
+		rate_limiter_status?: [...close({
+			in_use?:          number
+			max_allowed?:     number
+			remaining?:       number
+			total_bandwidth?: string
+		})]
 
 		// Region where this resource will be
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).

@@ -93,6 +93,7 @@ aws_rds_cluster: {
 		tags_all?: [string]: string
 		upgrade_rollout_order?: string
 		vpc_security_group_ids?: [...string]
+		warning_event_categories?: [...string]
 	})
 
 	#restore_to_point_in_time: close({
