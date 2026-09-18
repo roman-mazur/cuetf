@@ -12589,7 +12589,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -12675,7 +12675,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -12761,7 +12761,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -12847,7 +12847,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -12933,7 +12933,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -13019,7 +13019,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -13105,7 +13105,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -13191,7 +13191,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -13277,7 +13277,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -13363,7 +13363,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -13449,7 +13449,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -13535,7 +13535,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -13624,7 +13624,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -13710,7 +13710,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -13796,7 +13796,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -14043,7 +14043,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -17224,7 +17224,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -17314,7 +17314,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -17404,7 +17404,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -17494,7 +17494,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -17584,7 +17584,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -17674,7 +17674,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -17764,7 +17764,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -17854,7 +17854,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -17944,7 +17944,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -18034,7 +18034,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -18124,7 +18124,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -18214,7 +18214,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -18304,7 +18304,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -18397,7 +18397,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -18487,7 +18487,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -18577,7 +18577,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -18670,7 +18670,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -18932,7 +18932,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -20159,7 +20159,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -20378,7 +20378,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -20597,7 +20597,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -20705,7 +20705,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -21137,7 +21137,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21243,7 +21243,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21352,7 +21352,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21458,7 +21458,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21567,7 +21567,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21785,7 +21785,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22009,7 +22009,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22230,7 +22230,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22451,7 +22451,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22669,7 +22669,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.25
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 5722
             }
@@ -22996,7 +22996,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.125
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 2861
             }
@@ -23108,7 +23108,7 @@ InstanceTypes: [{
             Count:            2
             LogicalGpuCount:  2
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 98304
             }
@@ -23227,7 +23227,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 98304
             }
@@ -23336,7 +23336,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 98304
             }
@@ -23469,7 +23469,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 98304
             }
@@ -23578,7 +23578,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 98304
             }
@@ -23690,7 +23690,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 98304
             }
@@ -24020,7 +24020,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.5
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 11444
             }
@@ -26296,7 +26296,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -26392,7 +26392,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -26488,7 +26488,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -26587,7 +26587,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -26683,7 +26683,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -26782,7 +26782,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -26878,7 +26878,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -26974,7 +26974,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -27251,7 +27251,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -27347,7 +27347,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -27443,7 +27443,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -27539,7 +27539,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -27635,7 +27635,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -27731,7 +27731,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -27827,7 +27827,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -27933,7 +27933,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -28029,7 +28029,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -28313,7 +28313,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -44806,7 +44806,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -44892,7 +44892,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -44978,7 +44978,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -45064,7 +45064,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -45150,7 +45150,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -45236,7 +45236,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -45322,7 +45322,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -45408,7 +45408,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -45494,7 +45494,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -45580,7 +45580,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -45666,7 +45666,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -45752,7 +45752,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -45841,7 +45841,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -45927,7 +45927,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -46013,7 +46013,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -46260,7 +46260,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -48526,7 +48526,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -48616,7 +48616,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -48706,7 +48706,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -48796,7 +48796,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -48886,7 +48886,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -48976,7 +48976,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -49066,7 +49066,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -49156,7 +49156,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -49246,7 +49246,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -49336,7 +49336,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -49426,7 +49426,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -49516,7 +49516,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -49606,7 +49606,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -49699,7 +49699,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -49789,7 +49789,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -49879,7 +49879,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -49972,7 +49972,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -50234,7 +50234,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -50324,7 +50324,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -50424,7 +50424,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -50524,7 +50524,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -50624,7 +50624,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -50724,7 +50724,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -50824,7 +50824,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -50927,7 +50927,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -51027,7 +51027,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -51127,7 +51127,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -51230,7 +51230,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -51522,7 +51522,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -52262,7 +52262,7 @@ InstanceTypes: [{
     InstanceType:      "p5e.48xlarge"
     CurrentGeneration: true
     FreeTierEligible:  false
-    SupportedUsageClasses: ["capacity-block", "on-demand"]
+    SupportedUsageClasses: ["capacity-block", "on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
     SupportedVirtualizationTypes: ["hvm"]
     BareMetal:  false
@@ -61945,7 +61945,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.12xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -62030,7 +62030,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.16xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -62118,7 +62118,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.2xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -62203,7 +62203,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.4xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -62288,7 +62288,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.8xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -62373,7 +62373,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.large"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -62458,7 +62458,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.medium"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -62541,7 +62541,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.metal"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -62623,7 +62623,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7g.xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -62708,7 +62708,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.12xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -62803,7 +62803,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.16xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -62901,7 +62901,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.2xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -62996,7 +62996,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.4xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -63091,7 +63091,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.8xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -63186,7 +63186,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.large"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -63281,7 +63281,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.medium"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -63374,7 +63374,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.metal"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -63466,7 +63466,7 @@ InstanceTypes: [{
     SupportedInRegion:      true
 }, {
     InstanceType:      "r7gd.xlarge"
-    CurrentGeneration: true
+    CurrentGeneration: false
     FreeTierEligible:  false
     SupportedUsageClasses: ["on-demand", "spot"]
     SupportedRootDeviceTypes: ["ebs"]
@@ -63571,7 +63571,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -63657,7 +63657,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -63743,7 +63743,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -63829,7 +63829,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -63915,7 +63915,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -64004,7 +64004,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -64090,7 +64090,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -64176,7 +64176,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -64423,7 +64423,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.2
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -66689,7 +66689,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -66779,7 +66779,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -66869,7 +66869,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -66959,7 +66959,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -67049,7 +67049,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -67139,7 +67139,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -67229,7 +67229,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -67319,7 +67319,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -67409,7 +67409,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -67499,7 +67499,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -67589,7 +67589,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -67679,7 +67679,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -67769,7 +67769,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -67862,7 +67862,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -67952,7 +67952,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -68042,7 +68042,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -68135,7 +68135,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -68397,7 +68397,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -68487,7 +68487,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -68587,7 +68587,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -68687,7 +68687,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -68787,7 +68787,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -68887,7 +68887,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -68987,7 +68987,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -69090,7 +69090,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -69190,7 +69190,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -69290,7 +69290,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -69393,7 +69393,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -69685,7 +69685,7 @@ InstanceTypes: [{
     ProcessorInfo: {
         SupportedArchitectures: ["x86_64"]
         SustainedClockSpeedInGhz: 3.9
-        SupportedFeatures: ["nested-virtualization"]
+        SupportedFeatures: ["nested-virtualization", "metal-compatibility"]
         Manufacturer: "Intel"
     }
     VCpuInfo: {
@@ -72032,6 +72032,354 @@ InstanceTypes: [{
         SupportedVersions: ["2.0"]
     }
     PhcSupport:             "unsupported"
+    RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
+}, {
+    InstanceType:      "t8i.medium"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          2
+        DefaultCores:          1
+        DefaultThreadsPerCore: 2
+        ValidCores: [1]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 4096
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  347
+            BaselineThroughputInMBps: 43.375
+            BaselineIops:             2000
+            MaximumBandwidthInMbps:   5000
+            MaximumThroughputInMBps:  625.0
+            MaximumIops:              20000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 6.25 Gigabit"
+        MaximumNetworkInterfaces: 3
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 6.25 Gigabit"
+            MaximumNetworkInterfaces:         3
+            BaselineBandwidthInGbps:          0.256
+            PeakBandwidthInGbps:              6.25
+            DefaultEnaQueueCountPerInterface: 1
+            MaximumEnaQueueCount:             2
+            MaximumEnaQueueCountPerInterface: 1
+        }]
+        Ipv4AddressesPerInterface:    6
+        Ipv6AddressesPerInterface:    6
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported:          false
+        Ipv4AddressesPerSecondaryInterface: 0
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       false
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
+}, {
+    InstanceType:      "t8i.micro"
+    CurrentGeneration: true
+    FreeTierEligible:  true
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          2
+        DefaultCores:          1
+        DefaultThreadsPerCore: 2
+        ValidCores: [1]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 1024
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  87
+            BaselineThroughputInMBps: 10.875
+            BaselineIops:             500
+            MaximumBandwidthInMbps:   5000
+            MaximumThroughputInMBps:  625.0
+            MaximumIops:              20000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 6.25 Gigabit"
+        MaximumNetworkInterfaces: 2
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 6.25 Gigabit"
+            MaximumNetworkInterfaces:         2
+            BaselineBandwidthInGbps:          0.064
+            PeakBandwidthInGbps:              6.25
+            DefaultEnaQueueCountPerInterface: 1
+            MaximumEnaQueueCount:             1
+            MaximumEnaQueueCountPerInterface: 1
+        }]
+        Ipv4AddressesPerInterface:    2
+        Ipv6AddressesPerInterface:    2
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported:          false
+        Ipv4AddressesPerSecondaryInterface: 0
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       false
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
+}, {
+    InstanceType:      "t8i.nano"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          2
+        DefaultCores:          1
+        DefaultThreadsPerCore: 2
+        ValidCores: [1]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 512
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  43
+            BaselineThroughputInMBps: 5.375
+            BaselineIops:             250
+            MaximumBandwidthInMbps:   5000
+            MaximumThroughputInMBps:  625.0
+            MaximumIops:              20000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 6.25 Gigabit"
+        MaximumNetworkInterfaces: 2
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 6.25 Gigabit"
+            MaximumNetworkInterfaces:         2
+            BaselineBandwidthInGbps:          0.032
+            PeakBandwidthInGbps:              6.25
+            DefaultEnaQueueCountPerInterface: 1
+            MaximumEnaQueueCount:             1
+            MaximumEnaQueueCountPerInterface: 1
+        }]
+        Ipv4AddressesPerInterface:    2
+        Ipv6AddressesPerInterface:    2
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported:          false
+        Ipv4AddressesPerSecondaryInterface: 0
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       false
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
+    RebootMigrationSupport: "supported"
+    SupportedInRegion:      true
+}, {
+    InstanceType:      "t8i.small"
+    CurrentGeneration: true
+    FreeTierEligible:  true
+    SupportedUsageClasses: ["on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.9
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          2
+        DefaultCores:          1
+        DefaultThreadsPerCore: 2
+        ValidCores: [1]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 2048
+    }
+    InstanceStorageSupported: false
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  174
+            BaselineThroughputInMBps: 21.75
+            BaselineIops:             1500
+            MaximumBandwidthInMbps:   5000
+            MaximumThroughputInMBps:  625.0
+            MaximumIops:              20000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 32
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "Up to 6.25 Gigabit"
+        MaximumNetworkInterfaces: 3
+        MaximumNetworkCards:      1
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "Up to 6.25 Gigabit"
+            MaximumNetworkInterfaces:         3
+            BaselineBandwidthInGbps:          0.128
+            PeakBandwidthInGbps:              6.25
+            DefaultEnaQueueCountPerInterface: 1
+            MaximumEnaQueueCount:             2
+            MaximumEnaQueueCountPerInterface: 1
+        }]
+        Ipv4AddressesPerInterface:    4
+        Ipv6AddressesPerInterface:    4
+        Ipv6Supported:                true
+        EnaSupport:                   "required"
+        EfaSupported:                 false
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported:          false
+        Ipv4AddressesPerSecondaryInterface: 0
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["partition", "spread"]
+    }
+    HibernationSupported:          true
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       false
+    AutoRecoverySupported:         true
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "unsupported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "supported"
     RebootMigrationSupport: "supported"
     SupportedInRegion:      true
 }, {
