@@ -6472,7 +6472,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource."
+						description:      "Internal identifier of the resource"
 						description_kind: "markdown"
 						computed:         true
 					}
@@ -6656,7 +6656,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal composite identifier of the resource."
+						description:      "Internal identifier of the resource"
 						description_kind: "markdown"
 						computed:         true
 					}
@@ -6836,7 +6836,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal composite identifier of the resource."
+						description:      "Internal identifier of the resource"
 						description_kind: "markdown"
 						computed:         true
 					}
@@ -7575,7 +7575,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource."
+						description:      "Internal identifier of the resource"
 						description_kind: "markdown"
 						computed:         true
 					}
@@ -7932,7 +7932,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				attributes: {
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource."
+						description:      "Internal identifier of the resource"
 						description_kind: "markdown"
 						computed:         true
 					}
@@ -8159,7 +8159,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					id: {
 						type:             "string"
-						description:      "Internal identifier of the resource in the format `<cluster_uuid>/<deployment_id>`."
+						description:      "Internal identifier of the resource"
 						description_kind: "markdown"
 						computed:         true
 					}
@@ -11748,7 +11748,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					space_ids: {
 						type: ["set", "string"]
 						description:      "The Kibana space IDs where this download source is available. When set, the download source will be created and managed within the specified space. Note: The order of space IDs does not matter as this is a set."
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -12084,24 +12084,21 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							attributes: {
 								number_value: {
 									type:             "number"
-									description:      "Number value for the field. If this is set, string_value must not be defined."
-									description_kind: "plain"
+									description:      "Number value for the tag. If this is set, `string_value` must not be defined."
+									description_kind: "markdown"
 									optional:         true
 								}
 								string_value: {
 									type:             "string"
-									description:      "String value for the field. If this is set, number_value must not be defined."
-									description_kind: "plain"
+									description:      "String value for the tag. If this is set, `number_value` must not be defined."
+									description_kind: "markdown"
 									optional:         true
 								}
 							}
 							nesting_mode: "map"
 						}
-						description: """
-									User-defined data tags to apply to all inputs. Values can be strings (string_value) or numbers (number_value) but not both. Example -- key1 = {string_value = value1}, key2 = {number_value = 42}
-
-									"""
-						description_kind: "plain"
+						description:      "User-defined tags. Keyed by tag name; each entry must set exactly one of `string_value` or `number_value`."
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -12196,7 +12193,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					space_ids: {
 						type: ["set", "string"]
 						description:      "The Kibana space IDs that this agent policy should be available in. When not specified, defaults to [\"default\"]. Note: The order of space IDs does not matter as this is a set."
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -13334,7 +13331,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					space_ids: {
 						type: ["set", "string"]
 						description:      "The Kibana space IDs where this integration policy is available. When set, must match the space_ids of the referenced agent policy. If not set, will be inherited from the agent policy."
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -13567,6 +13564,15 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			version: 3
 			block: {
 				attributes: {
+					additional_datastreams_permissions: {
+						type: ["list", "string"]
+						description: """
+									Data streams the integration's Elasticsearch API key may write to in addition to those the integration package declares. Set this when a custom ingest pipeline uses a `reroute` processor whose destination lies outside the package's own data streams; without it, rerouted documents are rejected with a `security_exception`. In the Kibana UI this control appears as "Add a reroute processor permission" under the policy's advanced options. Entries may be exact data stream names (`metrics-elastic_agent.my_dataset-default`) or patterns (`logs-custom-*`), and Kibana validates them against the space's allowed namespace prefixes. Requires Elastic Stack 9.1.0 or above. To revoke previously granted permissions, remove this attribute; an empty list is not accepted.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
 					agent_policy_id: {
 						type:             "string"
 						description:      "ID of the agent policy."
@@ -13739,7 +13745,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									The Kibana space IDs where this integration policy is available. When set, must match the space_ids of the referenced agent policy. Note: The order of space IDs does not matter as this is a set.
 
 									"""
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -13916,7 +13922,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							nesting_mode: "map"
 						}
-						description:      "Global data tags applied to the managed integration's data streams; updatable in-place. Keyed by tag name; set exactly one of `string_value` or `number_value` per entry."
+						description:      "User-defined tags. Keyed by tag name; each entry must set exactly one of `string_value` or `number_value`."
 						description_kind: "markdown"
 						optional:         true
 					}
@@ -14441,7 +14447,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									The Kibana space IDs where this output is available. When set, the output will be created and managed within the specified space. Note: The order of space IDs does not matter as this is a set.
 
 									"""
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -14799,7 +14805,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									The Kibana space IDs where this server host is available. When set, the server host will be created and managed within the specified space. Note: The order of space IDs does not matter as this is a set.
 
 									"""
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -15709,42 +15715,62 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					artifacts: {
 						nested_type: {
-							attributes: investigation_guide: {
-								nested_type: {
-									attributes: {
-										checksum: {
+							attributes: {
+								dashboards: {
+									nested_type: {
+										attributes: id: {
 											type:             "string"
-											description:      "SHA-256 checksum of the file at `content_path`, used to detect drift. Computed; not user-settable."
+											description:      "The Kibana dashboard saved-object id."
 											description_kind: "markdown"
-											computed:         true
+											required:         true
 										}
-										content: {
-											type:             "string"
-											description:      "Inline investigation guide content (Markdown). Mutually exclusive with `content_path`."
-											description_kind: "markdown"
-											optional:         true
-										}
-										content_path: {
-											type:             "string"
-											description:      "Path to a local file whose contents are used as the investigation guide. The provider computes a SHA-256 `checksum` of the file at plan time to detect external changes. Mutually exclusive with `content`."
-											description_kind: "markdown"
-											optional:         true
-										}
+										nesting_mode: "list"
 									}
-									nesting_mode: "single"
+									description: """
+												A list of Kibana dashboards linked to the rule, each referenced by its saved-object `id`. Links related dashboards alongside the alert configuration as code. Requires Elastic Stack 9.1 or higher to write; the linked ids round-trip from the API and `terraform import` populates them only on 9.5.0+ (elastic/kibana#247279). Order is significant (this is an ordered list).
+
+												"""
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
 								}
-								description: """
+								investigation_guide: {
+									nested_type: {
+										attributes: {
+											checksum: {
+												type:             "string"
+												description:      "SHA-256 checksum of the file at `content_path`, used to detect drift. Computed; not user-settable."
+												description_kind: "markdown"
+												computed:         true
+											}
+											content: {
+												type:             "string"
+												description:      "Inline investigation guide content (Markdown). Mutually exclusive with `content_path`."
+												description_kind: "markdown"
+												optional:         true
+											}
+											content_path: {
+												type:             "string"
+												description:      "Path to a local file whose contents are used as the investigation guide. The provider computes a SHA-256 `checksum` of the file at plan time to detect external changes. Mutually exclusive with `content`."
+												description_kind: "markdown"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description: """
 												An investigation guide attached to the rule. Provide the guide either inline via `content`, or from a local file via `content_path` (in which case the provider tracks a SHA-256 `checksum` of the file to detect external changes). Exactly one of `content` or `content_path` must be set. Requires Elastic Stack 9.1 or higher to write; inline-`content` round-trips from the API and `terraform import` require 9.5.0+ (elastic/kibana#247279).
 
 												"""
-								description_kind: "markdown"
-								optional:         true
-								computed:         true
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
 							}
 							nesting_mode: "single"
 						}
 						description: """
-									Linked assets for the alerting rule. Currently supports attaching an investigation guide so that runbooks and context are co-located with the alert configuration as code. Requires Elastic Stack 9.1 or higher to write; on stacks older than 9.5.0 the Kibana GET API does not return artifacts (elastic/kibana#247279), so `terraform import` will not populate this attribute and external changes to the guide made outside Terraform will not be detected by refresh. When `artifacts` is omitted from configuration on update, Terraform retains the previous value, so existing server-side artifacts are not cleared by that omission.
+									Linked assets for the alerting rule: an investigation guide and/or references to related dashboards, so that runbooks and context are co-located with the alert configuration as code. At least one of `investigation_guide` or `dashboards` must be set. Requires Elastic Stack 9.1 or higher to write; on stacks older than 9.5.0 the Kibana GET API does not return artifacts (elastic/kibana#247279), so `terraform import` will not populate this attribute and external changes to artifacts made outside Terraform will not be detected by refresh. Omitting this attribute does not clear artifacts already stored on the rule in Kibana.
 
 									"""
 						description_kind: "markdown"

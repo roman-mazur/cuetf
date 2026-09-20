@@ -11,16 +11,30 @@ elasticstack_kibana_alerting_rule: {
 		// conditions for an alert to occur.
 		alert_delay?: number
 
-		// Linked assets for the alerting rule. Currently supports attaching an
-		// investigation guide so that runbooks and context are co-located with the
-		// alert configuration as code. Requires Elastic Stack 9.1 or higher to write;
-		// on stacks older than 9.5.0 the Kibana GET API does not return artifacts
+		// Linked assets for the alerting rule: an investigation guide and/or references
+		// to related dashboards, so that runbooks and context are co-located with the
+		// alert configuration as code. At least one of `investigation_guide` or
+		// `dashboards` must be set. Requires Elastic Stack 9.1 or higher to write; on
+		// stacks older than 9.5.0 the Kibana GET API does not return artifacts
 		// (elastic/kibana#247279), so `terraform import` will not populate this
-		// attribute and external changes to the guide made outside Terraform will not
-		// be detected by refresh. When `artifacts` is omitted from configuration on
-		// update, Terraform retains the previous value, so existing server-side
-		// artifacts are not cleared by that omission.
+		// attribute and external changes to artifacts made outside Terraform will not
+		// be detected by refresh. Omitting this attribute does not clear artifacts
+		// already stored on the rule in Kibana.
 		artifacts?: close({
+			// A list of Kibana dashboards linked to the rule, each referenced by its
+			// saved-object `id`. Links related dashboards alongside the alert
+			// configuration as code. Requires Elastic Stack 9.1 or higher to write; the
+			// linked ids round-trip from the API and `terraform import` populates them
+			// only on 9.5.0+ (elastic/kibana#247279). Order is significant (this is an
+			// ordered list).
+			dashboards?: matchN(1, [close({
+				// The Kibana dashboard saved-object id.
+				id!: string
+			}), [...close({
+				// The Kibana dashboard saved-object id.
+				id!: string
+			})]])
+
 			// An investigation guide attached to the rule. Provide the guide either inline
 			// via `content`, or from a local file via `content_path` (in which case the
 			// provider tracks a SHA-256 `checksum` of the file to detect external

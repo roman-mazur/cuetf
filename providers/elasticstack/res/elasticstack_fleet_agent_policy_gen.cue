@@ -115,14 +115,13 @@ elasticstack_fleet_agent_policy: {
 		// The description of the agent policy.
 		description?: string
 
-		// User-defined data tags to apply to all inputs. Values can be strings
-		// (string_value) or numbers (number_value) but not both. Example -- key1 =
-		// {string_value = value1}, key2 = {number_value = 42}
+		// User-defined tags. Keyed by tag name; each entry must set exactly one of
+		// `string_value` or `number_value`.
 		global_data_tags?: [string]: close({
-			// Number value for the field. If this is set, string_value must not be defined.
+			// Number value for the tag. If this is set, `string_value` must not be defined.
 			number_value?: number
 
-			// String value for the field. If this is set, number_value must not be defined.
+			// String value for the tag. If this is set, `number_value` must not be defined.
 			string_value?: string
 		})
 

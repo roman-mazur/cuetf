@@ -40,7 +40,7 @@ elasticstack_elasticsearch_ml_filter: {
 		// A string that uniquely identifies a filter.
 		filter_id!: string
 
-		// Internal identifier of the resource.
+		// Internal identifier of the resource
 		id?: string
 
 		// The items of the filter. A wildcard `*` can be used at the beginning or the
