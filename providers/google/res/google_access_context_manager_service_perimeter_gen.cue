@@ -24,7 +24,10 @@ google_access_context_manager_service_perimeter: {
 		// Description of the ServicePerimeter and its use. Does not affect
 		// behavior.
 		description?: string
-		id?:          string
+
+		// The etag for the version of the ServicePerimeter that this request is based on.
+		etag?: string
+		id?:   string
 
 		// Resource name for the ServicePerimeter. The short_name component must
 		// begin with a letter and only include alphanumeric and '_'.

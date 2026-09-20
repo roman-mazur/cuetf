@@ -189,6 +189,7 @@ import (
 	_#ds: "\(#googlePrefix)_compute_routers": close({data.google_compute_routers & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_compute_security_policy": close({data.google_compute_security_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_compute_service_attachment": close({data.google_compute_service_attachment & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_compute_service_attachments": close({data.google_compute_service_attachments & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_compute_snapshot": close({data.google_compute_snapshot & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_compute_snapshot_iam_policy": close({data.google_compute_snapshot_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_compute_ssl_certificate": close({data.google_compute_ssl_certificate & cuetf.MetaArgs})

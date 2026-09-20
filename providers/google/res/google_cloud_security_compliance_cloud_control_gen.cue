@@ -152,6 +152,7 @@ google_cloud_security_compliance_cloud_control: {
 	})
 
 	_#defs: "/$defs/parameter_spec/$defs/default_value/$defs/oneof_value/$defs/parameter_value": close({
+		oneof_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value"]])
 		string_list_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value"]])
 
 		// Represents a boolean value.
@@ -162,6 +163,31 @@ google_cloud_security_compliance_cloud_control: {
 
 		// Represents a string value.
 		string_value?: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value": close({
+		parameter_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value"]])
+
+		// The name of the parameter.
+		name?: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value": close({
+		string_list_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value"]])
+
+		// Represents a boolean value.
+		bool_value?: bool
+
+		// Represents a double value.
+		number_value?: number
+
+		// Represents a string value.
+		string_value?: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value": close({
+		// The strings in the list.
+		values!: [...string]
 	})
 
 	_#defs: "/$defs/parameter_spec/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value": close({
@@ -176,6 +202,7 @@ google_cloud_security_compliance_cloud_control: {
 
 	_#defs: "/$defs/parameter_spec/$defs/sub_parameters": close({
 		default_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/default_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/default_value"]])
+		sub_parameters?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters", [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters"]])
 		substitution_rules?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/substitution_rules", [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/substitution_rules"]])
 		validation?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/validation", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/validation"]])
 
@@ -223,6 +250,7 @@ google_cloud_security_compliance_cloud_control: {
 	})
 
 	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/default_value/$defs/oneof_value/$defs/parameter_value": close({
+		oneof_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value"]])
 		string_list_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value"]])
 
 		// Represents a boolean value.
@@ -235,6 +263,31 @@ google_cloud_security_compliance_cloud_control: {
 		string_value?: string
 	})
 
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value": close({
+		parameter_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value"]])
+
+		// The name of the parameter.
+		name?: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value": close({
+		string_list_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value"]])
+
+		// Represents a boolean value.
+		bool_value?: bool
+
+		// Represents a double value.
+		number_value?: number
+
+		// Represents a string value.
+		string_value?: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value": close({
+		// The strings in the list.
+		values!: [...string]
+	})
+
 	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value": close({
 		// The strings in the list.
 		values!: [...string]
@@ -243,6 +296,160 @@ google_cloud_security_compliance_cloud_control: {
 	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/default_value/$defs/string_list_value": close({
 		// The strings in the list.
 		values!: [...string]
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters": close({
+		default_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/default_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/default_value"]])
+		substitution_rules?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/substitution_rules", [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/substitution_rules"]])
+		validation?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation"]])
+
+		// The description of the parameter. The maximum length is 2000 characters.
+		description?: string
+
+		// The display name of the parameter. The maximum length is 200 characters.
+		display_name?: string
+
+		// if the parameter is required
+		is_required!: bool
+
+		// The name of the parameter.
+		name!: string
+
+		// Parameter value type.
+		// Possible values:
+		// STRING
+		// BOOLEAN
+		// STRINGLIST
+		// NUMBER
+		// ONEOF
+		value_type!: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/default_value": close({
+		oneof_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/default_value/$defs/oneof_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/default_value/$defs/oneof_value"]])
+		string_list_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/default_value/$defs/string_list_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/default_value/$defs/string_list_value"]])
+
+		// Represents a boolean value.
+		bool_value?: bool
+
+		// Represents a double value.
+		number_value?: number
+
+		// Represents a string value.
+		string_value?: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/default_value/$defs/oneof_value": close({
+		parameter_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/default_value/$defs/oneof_value/$defs/parameter_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/default_value/$defs/oneof_value/$defs/parameter_value"]])
+
+		// The name of the parameter.
+		name?: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/default_value/$defs/oneof_value/$defs/parameter_value": close({
+		string_list_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value"]])
+
+		// Represents a boolean value.
+		bool_value?: bool
+
+		// Represents a double value.
+		number_value?: number
+
+		// Represents a string value.
+		string_value?: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/default_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value": close({
+		// The strings in the list.
+		values!: [...string]
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/default_value/$defs/string_list_value": close({
+		// The strings in the list.
+		values!: [...string]
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/substitution_rules": close({
+		attribute_substitution_rule?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/substitution_rules/$defs/attribute_substitution_rule", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/substitution_rules/$defs/attribute_substitution_rule"]])
+		placeholder_substitution_rule?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/substitution_rules/$defs/placeholder_substitution_rule", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/substitution_rules/$defs/placeholder_substitution_rule"]])
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/substitution_rules/$defs/attribute_substitution_rule": close({
+		// Fully qualified proto attribute path (in dot notation).
+		// Example: rules[0].cel_expression.resource_types_values
+		attribute?: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/substitution_rules/$defs/placeholder_substitution_rule": close({
+		// Fully qualified proto attribute path (e.g., dot notation)
+		attribute?: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation": close({
+		allowed_values?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/allowed_values", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/allowed_values"]])
+		int_range?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/int_range", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/int_range"]])
+		regexp_pattern?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/regexp_pattern", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/regexp_pattern"]])
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/allowed_values": close({
+		values!: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values", [_, ...] & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values"]])
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values": close({
+		oneof_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value"]])
+		string_list_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/string_list_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/string_list_value"]])
+
+		// Represents a boolean value.
+		bool_value?: bool
+
+		// Represents a double value.
+		number_value?: number
+
+		// Represents a string value.
+		string_value?: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value": close({
+		parameter_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value"]])
+
+		// The name of the parameter.
+		name?: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value": close({
+		string_list_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value"]])
+
+		// Represents a boolean value.
+		bool_value?: bool
+
+		// Represents a double value.
+		number_value?: number
+
+		// Represents a string value.
+		string_value?: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value": close({
+		// The strings in the list.
+		values!: [...string]
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/string_list_value": close({
+		// The strings in the list.
+		values!: [...string]
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/int_range": close({
+		// Maximum allowed value for the numeric parameter (inclusive).
+		max!: string
+
+		// Minimum allowed value for the numeric parameter (inclusive).
+		min!: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/sub_parameters/$defs/validation/$defs/regexp_pattern": close({
+		// Regex Pattern to match the value(s) of parameter.
+		pattern!: string
 	})
 
 	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/substitution_rules": close({
@@ -293,6 +500,7 @@ google_cloud_security_compliance_cloud_control: {
 	})
 
 	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value": close({
+		oneof_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value"]])
 		string_list_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value"]])
 
 		// Represents a boolean value.
@@ -303,6 +511,31 @@ google_cloud_security_compliance_cloud_control: {
 
 		// Represents a string value.
 		string_value?: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value": close({
+		parameter_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value"]])
+
+		// The name of the parameter.
+		name?: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value": close({
+		string_list_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value"]])
+
+		// Represents a boolean value.
+		bool_value?: bool
+
+		// Represents a double value.
+		number_value?: number
+
+		// Represents a string value.
+		string_value?: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value": close({
+		// The strings in the list.
+		values!: [...string]
 	})
 
 	_#defs: "/$defs/parameter_spec/$defs/sub_parameters/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value": close({
@@ -376,6 +609,7 @@ google_cloud_security_compliance_cloud_control: {
 	})
 
 	_#defs: "/$defs/parameter_spec/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value": close({
+		oneof_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value"]])
 		string_list_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value"]])
 
 		// Represents a boolean value.
@@ -386,6 +620,31 @@ google_cloud_security_compliance_cloud_control: {
 
 		// Represents a string value.
 		string_value?: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value": close({
+		parameter_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value"]])
+
+		// The name of the parameter.
+		name?: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value": close({
+		string_list_value?: matchN(1, [_#defs."/$defs/parameter_spec/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value", list.MaxItems(1) & [..._#defs."/$defs/parameter_spec/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value"]])
+
+		// Represents a boolean value.
+		bool_value?: bool
+
+		// Represents a double value.
+		number_value?: number
+
+		// Represents a string value.
+		string_value?: string
+	})
+
+	_#defs: "/$defs/parameter_spec/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value": close({
+		// The strings in the list.
+		values!: [...string]
 	})
 
 	_#defs: "/$defs/parameter_spec/$defs/validation/$defs/allowed_values/$defs/values/$defs/oneof_value/$defs/parameter_value/$defs/string_list_value": close({

@@ -2823,6 +2823,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						optional:         true
 					}
+					etag: {
+						type:             "string"
+						description:      "The etag for the version of the ServicePerimeter that this request is based on."
+						description_kind: "plain"
+						computed:         true
+					}
 					id: {
 						type:             "string"
 						description_kind: "plain"
@@ -10505,8 +10511,13 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						required:         true
 					}
 					user_type: {
-						type:             "string"
-						description:      "The type of this user. Possible values: [\"ALLOYDB_BUILT_IN\", \"ALLOYDB_IAM_USER\"]"
+						type: "string"
+						description: """
+									The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+									the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+									AlloyDB clusters support IAM group authentication. See
+									https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details. Possible values: ["ALLOYDB_BUILT_IN", "ALLOYDB_IAM_USER", "ALLOYDB_IAM_GROUP"]
+									"""
 						description_kind: "plain"
 						required:         true
 					}
@@ -30513,6 +30524,24 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 			version: 0
 			block: {
 				attributes: {
+					authorization_type: {
+						type:             "string"
+						description:      "Indicates the type of authorization."
+						description_kind: "plain"
+						computed:         true
+					}
+					client_id: {
+						type:             "string"
+						description:      "Data source client id which should be used to receive refresh token."
+						description_kind: "plain"
+						computed:         true
+					}
+					data_refresh_type: {
+						type:             "string"
+						description:      "Data refresh type."
+						description_kind: "plain"
+						computed:         true
+					}
 					data_source_id: {
 						type: "string"
 						description: """
@@ -30522,6 +30551,18 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									"""
 						description_kind: "plain"
 						required:         true
+					}
+					default_data_refresh_window_days: {
+						type:             "number"
+						description:      "Default data refresh window on days."
+						description_kind: "plain"
+						computed:         true
+					}
+					default_schedule: {
+						type:             "string"
+						description:      "Default data transfer schedule."
+						description_kind: "plain"
+						computed:         true
 					}
 					deletion_policy: {
 						type: "string"
@@ -30538,6 +30579,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						optional:         true
 						computed:         true
 					}
+					description: {
+						type:             "string"
+						description:      "User friendly data source description string."
+						description_kind: "plain"
+						computed:         true
+					}
 					display_name: {
 						type: "string"
 						description: """
@@ -30547,16 +30594,73 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						computed:         true
 					}
+					help_url: {
+						type:             "string"
+						description:      "Url to the documentation about the data source."
+						description_kind: "plain"
+						computed:         true
+					}
 					id: {
 						type:             "string"
 						description_kind: "plain"
 						optional:         true
 						computed:         true
 					}
+					manual_runs_disabled: {
+						type:             "bool"
+						description:      "Disables support for manual transfer runs."
+						description_kind: "plain"
+						computed:         true
+					}
+					minimum_schedule_interval: {
+						type:             "string"
+						description:      "The minimum interval between two scheduled runs."
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The resource name of the data source."
+						description_kind: "plain"
+						computed:         true
+					}
+					parameters: {
+						type: ["list", ["object", {
+							allowed_values: ["list", "string"]
+							deprecated:             "bool"
+							description:            "string"
+							display_name:           "string"
+							immutable:              "bool"
+							max_list_size:          "number"
+							max_value:              "number"
+							min_value:              "number"
+							param_id:               "string"
+							required:               "bool"
+							type:                   "string"
+							validation_description: "string"
+							validation_help_url:    "string"
+							validation_regex:       "string"
+						}]]
+						description:      "Data source parameters."
+						description_kind: "plain"
+						computed:         true
+					}
 					project: {
 						type:             "string"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					scopes: {
+						type: ["list", "string"]
+						description:      "Api auth scopes for which refresh token needs to be obtained."
+						description_kind: "plain"
+						computed:         true
+					}
+					supports_custom_schedule: {
+						type:             "bool"
+						description:      "Specifies whether the data source supports a user defined schedule."
+						description_kind: "plain"
 						computed:         true
 					}
 					unenroll_location: {
@@ -30569,6 +30673,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									"""
 						description_kind: "plain"
 						optional:         true
+					}
+					update_deadline_seconds: {
+						type:             "number"
+						description:      "The number of seconds to wait for a transfer to start before declaring the failure."
+						description_kind: "plain"
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -40057,6 +40167,111 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							description_kind: "plain"
 						}
 					}
+					transfer_rules: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								child_agent: {
+									type: "string"
+									description: """
+												The resource name of the child agent the rule applies to.
+												Format: 'projects/{project}/locations/{location}/apps/{app}/agents/{agent}'
+												"""
+									description_kind: "plain"
+									required:         true
+								}
+								direction: {
+									type:             "string"
+									description:      "The direction of the transfer. Possible values: [\"PARENT_TO_CHILD\", \"CHILD_TO_PARENT\"]"
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							block_types: {
+								deterministic_transfer: {
+									nesting_mode: "list"
+									block: {
+										block_types: {
+											expression_condition: {
+												nesting_mode: "list"
+												block: {
+													attributes: expression: {
+														type:             "string"
+														description:      "The string representation of cloud.api.Expression condition."
+														description_kind: "plain"
+														required:         true
+													}
+													description: """
+																A rule that evaluates a session state condition. If the condition
+																evaluates to true, the transfer occurs.
+																"""
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											python_code_condition: {
+												nesting_mode: "list"
+												block: {
+													attributes: python_code: {
+														type: "string"
+														description: """
+																		The python code to execute. The function must be named
+																		'should_trigger_transfer_callback'.
+																		"""
+														description_kind: "plain"
+														required:         true
+													}
+													description: """
+																A rule that uses Python code block to evaluate the conditions. If the
+																condition evaluates to true, the transfer occurs.
+																"""
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+										}
+										description: """
+													Deterministic transfer rule. When the condition evaluates to true, the
+													transfer occurs.
+													"""
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								disable_planner_transfer: {
+									nesting_mode: "list"
+									block: {
+										block_types: expression_condition: {
+											nesting_mode: "list"
+											block: {
+												attributes: expression: {
+													type:             "string"
+													description:      "The string representation of cloud.api.Expression condition."
+													description_kind: "plain"
+													required:         true
+												}
+												description: """
+																If the condition evaluates to true, planner will not be allowed to
+																transfer to the target agent.
+																"""
+												description_kind: "plain"
+											}
+											min_items: 1
+											max_items: 1
+										}
+										description:      "A rule that prevents the planner from transferring to the target agent."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+							}
+							description: """
+										List of transfer rules for the agent.
+										If multiple rules match, the first one in the list will be used.
+										"""
+							description_kind: "plain"
+						}
+					}
 				}
 				description_kind: "plain"
 			}
@@ -40731,6 +40946,28 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											}
 											max_items: 1
 										}
+										tool_matching_settings: {
+											nesting_mode: "list"
+											block: {
+												attributes: extra_tool_call_behavior: {
+													type: "string"
+													description: """
+																		Defines the behavior when an extra tool call is encountered. An extra
+																		tool call is a tool call that is present in the execution but does
+																		not match any tool call in the golden expectation. Possible values: ["FAIL", "ALLOW"]
+																		"""
+													description_kind: "plain"
+													optional:         true
+												}
+												description: """
+																The tool matching settings. An extra tool call is a tool call that is
+																present in the execution but does not match any tool call in the golden
+																expectation.
+																"""
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
 										turn_level_metrics_thresholds: {
 											nesting_mode: "list"
 											block: {
@@ -40740,6 +40977,18 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 														description: """
 																		The success threshold for overall tool invocation correctness. Must be
 																		a float between 0 and 1. Default is 1.0.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													semantic_similarity_channel: {
+														type: "string"
+														description: """
+																		The semantic similarity channel to use for evaluation.
+																		Possible values:
+																		SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+																		TEXT
+																		AUDIO
 																		"""
 														description_kind: "plain"
 														optional:         true
@@ -41499,6 +41748,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									tool_ids: ["list", "string"]
 									toolset: "string"
 								}]]
+								transfer_rules: ["list", ["object", {
+									child_agent: "string"
+									deterministic_transfer: ["list", ["object", {
+										expression_condition: ["list", ["object", {
+											expression: "string"
+										}]]
+										python_code_condition: ["list", ["object", {
+											python_code: "string"
+										}]]
+									}]]
+									direction: "string"
+									disable_planner_transfer: ["list", ["object", {
+										expression_condition: ["list", ["object", {
+											expression: "string"
+										}]]
+									}]]
+								}]]
 								update_time: "string"
 							}]]
 							app: ["list", ["object", {
@@ -41570,8 +41836,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 										expectation_level_metrics_thresholds: ["list", ["object", {
 											tool_invocation_parameter_correctness_threshold: "number"
 										}]]
+										tool_matching_settings: ["list", ["object", {
+											extra_tool_call_behavior: "string"
+										}]]
 										turn_level_metrics_thresholds: ["list", ["object", {
 											overall_tool_invocation_correctness_threshold: "number"
+											semantic_similarity_channel:                   "string"
 											semantic_similarity_success_threshold:         "number"
 										}]]
 									}]]
@@ -42107,6 +42377,8 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												CONTACT_CENTER_AS_A_SERVICE
 												FIVE9
 												CONTACT_CENTER_INTEGRATION
+												WHATSAPP
+												INSTAGRAM
 												"""
 									description_kind: "plain"
 									optional:         true
@@ -42228,6 +42500,52 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											max_items: 1
 										}
 										description:      "Message for configuration for the web widget."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								whatsapp_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											description: {
+												type:             "string"
+												description:      "Output only. The description of the Meta business page or profile."
+												description_kind: "plain"
+												computed:         true
+											}
+											display_name: {
+												type:             "string"
+												description:      "Output only. The fetched Meta business page name."
+												description_kind: "plain"
+												computed:         true
+											}
+											phone_number: {
+												type:             "string"
+												description:      "Optional. The phone number in E.164 format."
+												description_kind: "plain"
+												optional:         true
+											}
+											phone_number_id: {
+												type:             "string"
+												description:      "Required. The Meta phone number ID."
+												description_kind: "plain"
+												required:         true
+											}
+											thumbnail_url: {
+												type:             "string"
+												description:      "Output only. The fetched Meta business profile thumbnail URL."
+												description_kind: "plain"
+												computed:         true
+											}
+											waba_id: {
+												type:             "string"
+												description:      "Required. The WhatsApp Business Account ID."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Configuration specific to WhatsApp deployments."
 										description_kind: "plain"
 									}
 									max_items: 1
@@ -45865,6 +46183,33 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									}
 									max_items: 1
 								}
+								tool_overrides: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											description_override: {
+												type:             "string"
+												description:      "The description override for the tool."
+												description_kind: "plain"
+												optional:         true
+											}
+											name_override: {
+												type:             "string"
+												description:      "The name override for the tool."
+												description_kind: "plain"
+												optional:         true
+											}
+											tool: {
+												type:             "string"
+												description:      "The name of the tool to be overridden."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "A list of tool overrides for the toolset."
+										description_kind: "plain"
+									}
+								}
 							}
 							description: """
 										A toolset that contains a list of tools that are offered by the MCP
@@ -46568,6 +46913,104 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description:      "Provides detailed description about the specific root cause option."
 						description_kind: "plain"
 						required:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_chronicle_case_stage_definition: {
+			version: 0
+			block: {
+				attributes: {
+					case_stage_definition_id: {
+						type:             "string"
+						description:      "The unique identifier for the CaseStageDefinition."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "The display name of the stage. The display name must be unique within the instance. The display name must not contain special characters."
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					instance: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					location: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Identifier. The resource name of the CaseStageDefinition.
+									Format:
+									projects/{project}/locations/{location}/instances/{instance}/caseStageDefinitions/{case_stage_definition}
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					order: {
+						type:             "number"
+						description:      "Defines the case stage order in the lifetime of a case."
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -49100,6 +49543,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						optional:         true
 					}
+					base64_image: {
+						type:             "string"
+						description:      "Environment icon."
+						description_kind: "plain"
+						optional:         true
+					}
 					contact: {
 						type: "string"
 						description: """
@@ -49190,6 +49639,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					instance_uri: {
+						type: "string"
+						description: """
+									URL of the environment. Used to route UI links to the correct SIEM instance
+									when making cross-SecOps requests from SOAR.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
 					location: {
 						type:             "string"
 						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
@@ -49218,28 +49676,67 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
-				}
-				block_types: timeouts: {
-					nesting_mode: "single"
-					block: {
-						attributes: {
-							create: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
-							delete: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
-							update: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
-						}
+					weight: {
+						type: "number"
+						description: """
+									The weight of the environment, enabling customers to control distribution
+									of resources between the separate environments in a single instance of
+									Chronicle SOAR.
+									"""
 						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: {
+					dynamic_parameters: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								dynamic_parameter_id: {
+									type:             "number"
+									description:      "The ID of the dynamic parameter."
+									description_kind: "plain"
+									required:         true
+								}
+								environment_id: {
+									type:             "number"
+									description:      "The ID of the environment."
+									description_kind: "plain"
+									computed:         true
+								}
+								value: {
+									type:             "string"
+									description:      "The value of the dynamic parameter."
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description:      "Additional custom properties for enriching the environment."
+							description_kind: "plain"
+						}
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
 					}
 				}
 				description_kind: "plain"
@@ -64286,19 +64783,77 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																	optional:         true
 																}
 															}
-															block_types: string_list_value: {
-																nesting_mode: "list"
-																block: {
-																	attributes: values: {
-																		type: ["list", "string"]
-																		description:      "The strings in the list."
+															block_types: {
+																oneof_value: {
+																	nesting_mode: "list"
+																	block: {
+																		attributes: name: {
+																			type:             "string"
+																			description:      "The name of the parameter."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		block_types: parameter_value: {
+																			nesting_mode: "list"
+																			block: {
+																				attributes: {
+																					bool_value: {
+																						type:             "bool"
+																						description:      "Represents a boolean value."
+																						description_kind: "plain"
+																						optional:         true
+																					}
+																					number_value: {
+																						type:             "number"
+																						description:      "Represents a double value."
+																						description_kind: "plain"
+																						optional:         true
+																					}
+																					string_value: {
+																						type:             "string"
+																						description:      "Represents a string value."
+																						description_kind: "plain"
+																						optional:         true
+																					}
+																				}
+																				block_types: string_list_value: {
+																					nesting_mode: "list"
+																					block: {
+																						attributes: values: {
+																							type: ["list", "string"]
+																							description:      "The strings in the list."
+																							description_kind: "plain"
+																							required:         true
+																						}
+																						description:      "A list of strings."
+																						description_kind: "plain"
+																					}
+																					max_items: 1
+																				}
+																				description:      "The value of the parameter."
+																				description_kind: "plain"
+																			}
+																			max_items: 1
+																		}
+																		description:      "Sub-parameter values."
 																		description_kind: "plain"
-																		required:         true
 																	}
-																	description:      "A list of strings."
-																	description_kind: "plain"
+																	max_items: 1
 																}
-																max_items: 1
+																string_list_value: {
+																	nesting_mode: "list"
+																	block: {
+																		attributes: values: {
+																			type: ["list", "string"]
+																			description:      "The strings in the list."
+																			description_kind: "plain"
+																			required:         true
+																		}
+																		description:      "A list of strings."
+																		description_kind: "plain"
+																	}
+																	max_items: 1
+																}
 															}
 															description:      "The value of the parameter."
 															description_kind: "plain"
@@ -64430,19 +64985,77 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																				optional:         true
 																			}
 																		}
-																		block_types: string_list_value: {
-																			nesting_mode: "list"
-																			block: {
-																				attributes: values: {
-																					type: ["list", "string"]
-																					description:      "The strings in the list."
+																		block_types: {
+																			oneof_value: {
+																				nesting_mode: "list"
+																				block: {
+																					attributes: name: {
+																						type:             "string"
+																						description:      "The name of the parameter."
+																						description_kind: "plain"
+																						optional:         true
+																					}
+																					block_types: parameter_value: {
+																						nesting_mode: "list"
+																						block: {
+																							attributes: {
+																								bool_value: {
+																									type:             "bool"
+																									description:      "Represents a boolean value."
+																									description_kind: "plain"
+																									optional:         true
+																								}
+																								number_value: {
+																									type:             "number"
+																									description:      "Represents a double value."
+																									description_kind: "plain"
+																									optional:         true
+																								}
+																								string_value: {
+																									type:             "string"
+																									description:      "Represents a string value."
+																									description_kind: "plain"
+																									optional:         true
+																								}
+																							}
+																							block_types: string_list_value: {
+																								nesting_mode: "list"
+																								block: {
+																									attributes: values: {
+																										type: ["list", "string"]
+																										description:      "The strings in the list."
+																										description_kind: "plain"
+																										required:         true
+																									}
+																									description:      "A list of strings."
+																									description_kind: "plain"
+																								}
+																								max_items: 1
+																							}
+																							description:      "The value of the parameter."
+																							description_kind: "plain"
+																						}
+																						max_items: 1
+																					}
+																					description:      "Sub-parameter values."
 																					description_kind: "plain"
-																					required:         true
 																				}
-																				description:      "A list of strings."
-																				description_kind: "plain"
+																				max_items: 1
 																			}
-																			max_items: 1
+																			string_list_value: {
+																				nesting_mode: "list"
+																				block: {
+																					attributes: values: {
+																						type: ["list", "string"]
+																						description:      "The strings in the list."
+																						description_kind: "plain"
+																						required:         true
+																					}
+																					description:      "A list of strings."
+																					description_kind: "plain"
+																				}
+																				max_items: 1
+																			}
 																		}
 																		description:      "The value of the parameter."
 																		description_kind: "plain"
@@ -64473,6 +65086,349 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 													description_kind: "plain"
 												}
 												max_items: 1
+											}
+											sub_parameters: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														description: {
+															type:             "string"
+															description:      "The description of the parameter. The maximum length is 2000 characters."
+															description_kind: "plain"
+															optional:         true
+														}
+														display_name: {
+															type:             "string"
+															description:      "The display name of the parameter. The maximum length is 200 characters."
+															description_kind: "plain"
+															optional:         true
+														}
+														is_required: {
+															type:             "bool"
+															description:      "if the parameter is required"
+															description_kind: "plain"
+															required:         true
+														}
+														name: {
+															type:             "string"
+															description:      "The name of the parameter."
+															description_kind: "plain"
+															required:         true
+														}
+														value_type: {
+															type: "string"
+															description: """
+																		Parameter value type.
+																		Possible values:
+																		STRING
+																		BOOLEAN
+																		STRINGLIST
+																		NUMBER
+																		ONEOF
+																		"""
+															description_kind: "plain"
+															required:         true
+														}
+													}
+													block_types: {
+														default_value: {
+															nesting_mode: "list"
+															block: {
+																attributes: {
+																	bool_value: {
+																		type:             "bool"
+																		description:      "Represents a boolean value."
+																		description_kind: "plain"
+																		optional:         true
+																	}
+																	number_value: {
+																		type:             "number"
+																		description:      "Represents a double value."
+																		description_kind: "plain"
+																		optional:         true
+																	}
+																	string_value: {
+																		type:             "string"
+																		description:      "Represents a string value."
+																		description_kind: "plain"
+																		optional:         true
+																	}
+																}
+																block_types: {
+																	oneof_value: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: name: {
+																				type:             "string"
+																				description:      "The name of the parameter."
+																				description_kind: "plain"
+																				optional:         true
+																			}
+																			block_types: parameter_value: {
+																				nesting_mode: "list"
+																				block: {
+																					attributes: {
+																						bool_value: {
+																							type:             "bool"
+																							description:      "Represents a boolean value."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																						number_value: {
+																							type:             "number"
+																							description:      "Represents a double value."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																						string_value: {
+																							type:             "string"
+																							description:      "Represents a string value."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																					}
+																					block_types: string_list_value: {
+																						nesting_mode: "list"
+																						block: {
+																							attributes: values: {
+																								type: ["list", "string"]
+																								description:      "The strings in the list."
+																								description_kind: "plain"
+																								required:         true
+																							}
+																							description:      "A list of strings."
+																							description_kind: "plain"
+																						}
+																						max_items: 1
+																					}
+																					description:      "The value of the parameter."
+																					description_kind: "plain"
+																				}
+																				max_items: 1
+																			}
+																			description:      "Sub-parameter values."
+																			description_kind: "plain"
+																		}
+																		max_items: 1
+																	}
+																	string_list_value: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: values: {
+																				type: ["list", "string"]
+																				description:      "The strings in the list."
+																				description_kind: "plain"
+																				required:         true
+																			}
+																			description:      "A list of strings."
+																			description_kind: "plain"
+																		}
+																		max_items: 1
+																	}
+																}
+																description:      "Possible parameter value types."
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
+														substitution_rules: {
+															nesting_mode: "list"
+															block: {
+																block_types: {
+																	attribute_substitution_rule: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: attribute: {
+																				type: "string"
+																				description: """
+																								Fully qualified proto attribute path (in dot notation).
+																								Example: rules[0].cel_expression.resource_types_values
+																								"""
+																				description_kind: "plain"
+																				optional:         true
+																			}
+																			description:      "Attribute at the given path is substituted entirely."
+																			description_kind: "plain"
+																		}
+																		max_items: 1
+																	}
+																	placeholder_substitution_rule: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: attribute: {
+																				type:             "string"
+																				description:      "Fully qualified proto attribute path (e.g., dot notation)"
+																				description_kind: "plain"
+																				optional:         true
+																			}
+																			description:      "Placeholder is substituted in the rendered string."
+																			description_kind: "plain"
+																		}
+																		max_items: 1
+																	}
+																}
+																description:      "List of parameter substitutions."
+																description_kind: "plain"
+															}
+														}
+														validation: {
+															nesting_mode: "list"
+															block: {
+																block_types: {
+																	allowed_values: {
+																		nesting_mode: "list"
+																		block: {
+																			block_types: values: {
+																				nesting_mode: "list"
+																				block: {
+																					attributes: {
+																						bool_value: {
+																							type:             "bool"
+																							description:      "Represents a boolean value."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																						number_value: {
+																							type:             "number"
+																							description:      "Represents a double value."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																						string_value: {
+																							type:             "string"
+																							description:      "Represents a string value."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																					}
+																					block_types: {
+																						oneof_value: {
+																							nesting_mode: "list"
+																							block: {
+																								attributes: name: {
+																									type:             "string"
+																									description:      "The name of the parameter."
+																									description_kind: "plain"
+																									optional:         true
+																								}
+																								block_types: parameter_value: {
+																									nesting_mode: "list"
+																									block: {
+																										attributes: {
+																											bool_value: {
+																												type:             "bool"
+																												description:      "Represents a boolean value."
+																												description_kind: "plain"
+																												optional:         true
+																											}
+																											number_value: {
+																												type:             "number"
+																												description:      "Represents a double value."
+																												description_kind: "plain"
+																												optional:         true
+																											}
+																											string_value: {
+																												type:             "string"
+																												description:      "Represents a string value."
+																												description_kind: "plain"
+																												optional:         true
+																											}
+																										}
+																										block_types: string_list_value: {
+																											nesting_mode: "list"
+																											block: {
+																												attributes: values: {
+																													type: ["list", "string"]
+																													description:      "The strings in the list."
+																													description_kind: "plain"
+																													required:         true
+																												}
+																												description:      "A list of strings."
+																												description_kind: "plain"
+																											}
+																											max_items: 1
+																										}
+																										description:      "The value of the parameter."
+																										description_kind: "plain"
+																									}
+																									max_items: 1
+																								}
+																								description:      "Sub-parameter values."
+																								description_kind: "plain"
+																							}
+																							max_items: 1
+																						}
+																						string_list_value: {
+																							nesting_mode: "list"
+																							block: {
+																								attributes: values: {
+																									type: ["list", "string"]
+																									description:      "The strings in the list."
+																									description_kind: "plain"
+																									required:         true
+																								}
+																								description:      "A list of strings."
+																								description_kind: "plain"
+																							}
+																							max_items: 1
+																						}
+																					}
+																					description:      "List of allowed values for the parameter."
+																					description_kind: "plain"
+																				}
+																				min_items: 1
+																			}
+																			description:      "Allowed set of values for the parameter."
+																			description_kind: "plain"
+																		}
+																		max_items: 1
+																	}
+																	int_range: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				max: {
+																					type:             "string"
+																					description:      "Maximum allowed value for the numeric parameter (inclusive)."
+																					description_kind: "plain"
+																					required:         true
+																				}
+																				min: {
+																					type:             "string"
+																					description:      "Minimum allowed value for the numeric parameter (inclusive)."
+																					description_kind: "plain"
+																					required:         true
+																				}
+																			}
+																			description:      "Number range for number parameters."
+																			description_kind: "plain"
+																		}
+																		max_items: 1
+																	}
+																	regexp_pattern: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: pattern: {
+																				type:             "string"
+																				description:      "Regex Pattern to match the value(s) of parameter."
+																				description_kind: "plain"
+																				required:         true
+																			}
+																			description:      "Regular Expression Validator for parameter values."
+																			description_kind: "plain"
+																		}
+																		max_items: 1
+																	}
+																}
+																description:      "Validation of the parameter."
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
+													}
+													description:      "The parameter spec of the cloud control."
+													description_kind: "plain"
+												}
 											}
 											substitution_rules: {
 												nesting_mode: "list"
@@ -64577,19 +65533,77 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																									optional:         true
 																								}
 																							}
-																							block_types: string_list_value: {
-																								nesting_mode: "list"
-																								block: {
-																									attributes: values: {
-																										type: ["list", "string"]
-																										description:      "The strings in the list."
+																							block_types: {
+																								oneof_value: {
+																									nesting_mode: "list"
+																									block: {
+																										attributes: name: {
+																											type:             "string"
+																											description:      "The name of the parameter."
+																											description_kind: "plain"
+																											optional:         true
+																										}
+																										block_types: parameter_value: {
+																											nesting_mode: "list"
+																											block: {
+																												attributes: {
+																													bool_value: {
+																														type:             "bool"
+																														description:      "Represents a boolean value."
+																														description_kind: "plain"
+																														optional:         true
+																													}
+																													number_value: {
+																														type:             "number"
+																														description:      "Represents a double value."
+																														description_kind: "plain"
+																														optional:         true
+																													}
+																													string_value: {
+																														type:             "string"
+																														description:      "Represents a string value."
+																														description_kind: "plain"
+																														optional:         true
+																													}
+																												}
+																												block_types: string_list_value: {
+																													nesting_mode: "list"
+																													block: {
+																														attributes: values: {
+																															type: ["list", "string"]
+																															description:      "The strings in the list."
+																															description_kind: "plain"
+																															required:         true
+																														}
+																														description:      "A list of strings."
+																														description_kind: "plain"
+																													}
+																													max_items: 1
+																												}
+																												description:      "The value of the parameter."
+																												description_kind: "plain"
+																											}
+																											max_items: 1
+																										}
+																										description:      "Sub-parameter values."
 																										description_kind: "plain"
-																										required:         true
 																									}
-																									description:      "A list of strings."
-																									description_kind: "plain"
+																									max_items: 1
 																								}
-																								max_items: 1
+																								string_list_value: {
+																									nesting_mode: "list"
+																									block: {
+																										attributes: values: {
+																											type: ["list", "string"]
+																											description:      "The strings in the list."
+																											description_kind: "plain"
+																											required:         true
+																										}
+																										description:      "A list of strings."
+																										description_kind: "plain"
+																									}
+																									max_items: 1
+																								}
 																							}
 																							description:      "The value of the parameter."
 																							description_kind: "plain"
@@ -64776,19 +65790,77 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																						optional:         true
 																					}
 																				}
-																				block_types: string_list_value: {
-																					nesting_mode: "list"
-																					block: {
-																						attributes: values: {
-																							type: ["list", "string"]
-																							description:      "The strings in the list."
+																				block_types: {
+																					oneof_value: {
+																						nesting_mode: "list"
+																						block: {
+																							attributes: name: {
+																								type:             "string"
+																								description:      "The name of the parameter."
+																								description_kind: "plain"
+																								optional:         true
+																							}
+																							block_types: parameter_value: {
+																								nesting_mode: "list"
+																								block: {
+																									attributes: {
+																										bool_value: {
+																											type:             "bool"
+																											description:      "Represents a boolean value."
+																											description_kind: "plain"
+																											optional:         true
+																										}
+																										number_value: {
+																											type:             "number"
+																											description:      "Represents a double value."
+																											description_kind: "plain"
+																											optional:         true
+																										}
+																										string_value: {
+																											type:             "string"
+																											description:      "Represents a string value."
+																											description_kind: "plain"
+																											optional:         true
+																										}
+																									}
+																									block_types: string_list_value: {
+																										nesting_mode: "list"
+																										block: {
+																											attributes: values: {
+																												type: ["list", "string"]
+																												description:      "The strings in the list."
+																												description_kind: "plain"
+																												required:         true
+																											}
+																											description:      "A list of strings."
+																											description_kind: "plain"
+																										}
+																										max_items: 1
+																									}
+																									description:      "The value of the parameter."
+																									description_kind: "plain"
+																								}
+																								max_items: 1
+																							}
+																							description:      "Sub-parameter values."
 																							description_kind: "plain"
-																							required:         true
 																						}
-																						description:      "A list of strings."
-																						description_kind: "plain"
+																						max_items: 1
 																					}
-																					max_items: 1
+																					string_list_value: {
+																						nesting_mode: "list"
+																						block: {
+																							attributes: values: {
+																								type: ["list", "string"]
+																								description:      "The strings in the list."
+																								description_kind: "plain"
+																								required:         true
+																							}
+																							description:      "A list of strings."
+																							description_kind: "plain"
+																						}
+																						max_items: 1
+																					}
 																				}
 																				description:      "The value of the parameter."
 																				description_kind: "plain"
@@ -93936,6 +95008,121 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description:      "An array of URLs where each entry is the URL of a subnet provided by the service consumer to use for endpoints in the producers that connect to this network attachment."
 						description_kind: "plain"
 						required:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_compute_network_edge_security_service: {
+			version: 0
+			block: {
+				attributes: {
+					creation_timestamp: {
+						type:             "string"
+						description:      "Creation timestamp in RFC3339 text format."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Free-text description of the resource."
+						description_kind: "plain"
+						optional:         true
+					}
+					fingerprint: {
+						type: "string"
+						description: """
+									Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a NetworkEdgeSecurityService.
+									An up-to-date fingerprint must be provided in order to update the NetworkEdgeSecurityService, otherwise the request will fail with error 412 conditionNotMet.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the resource. Provided by the client when the resource is created."
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region of the gateway security policy."
+						description_kind: "plain"
+						optional:         true
+					}
+					security_policy: {
+						type:             "string"
+						description:      "The resource URL for the network edge security service associated with this network edge security service."
+						description_kind: "plain"
+						optional:         true
+					}
+					self_link: {
+						type:             "string"
+						description:      "Server-defined URL for the resource."
+						description_kind: "plain"
+						computed:         true
+					}
+					self_link_with_service_id: {
+						type:             "string"
+						description:      "Server-defined URL for this resource with the resource id."
+						description_kind: "plain"
+						computed:         true
+					}
+					service_id: {
+						type:             "string"
+						description:      "The unique identifier for the resource. This identifier is defined by the server."
+						description_kind: "plain"
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -125389,6 +126576,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description:      "Location for Cloud Build logs and artifacts."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					deletion_policy: {
 						type: "string"
@@ -139694,6 +140882,1022 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_data_loss_prevention_content_policy: {
+			version: 0
+			block: {
+				attributes: {
+					create_time: {
+						type:             "string"
+						description:      "Output only. The creation timestamp of a ContentPolicy."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "Display name (max 63 chars)."
+						description_kind: "plain"
+						optional:         true
+					}
+					errors: {
+						type: ["list", ["object", {
+							details: ["list", ["object", {
+								code: "number"
+								details: ["list", ["map", "string"]]
+								message: "string"
+							}]]
+							extra_info: "string"
+							timestamps: ["list", "string"]
+						}]]
+						description:      "Output only. A stream of errors encountered when the policy was applied. Output only field. Will return the last 100 errors."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The resource name of the content policy. Set by the server."
+						description_kind: "plain"
+						computed:         true
+					}
+					parent: {
+						type: "string"
+						description: """
+									The parent of the content policy in any of the following formats:
+
+									* 'projects/{{project}}/locations/{{location}}'
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Output only. The last update timestamp of a ContentPolicy."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					default_action: {
+						nesting_mode: "list"
+						block: {
+							attributes: return_verdict: {
+								type: "string"
+								description: """
+												If set, the verdict will be returned to the user.
+												Possible values: ["ALLOW", "BLOCK"] Possible values: ["ALLOW", "BLOCK"]
+												"""
+								description_kind: "plain"
+								optional:         true
+							}
+							description:      "Action to take if the content is scanned and no rules match. Defaults to returning an ALLOW verdict if not set."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					failed_to_scan_supported_file_type: {
+						nesting_mode: "list"
+						block: {
+							attributes: return_verdict: {
+								type: "string"
+								description: """
+												If set, the verdict will be returned to the user.
+												Possible values: ["ALLOW", "BLOCK"] Possible values: ["ALLOW", "BLOCK"]
+												"""
+								description_kind: "plain"
+								optional:         true
+							}
+							description:      "Action to take if the content is a supported file type and size but fails to be scanned, for example because the file is encrypted or corrupted."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					input_too_large: {
+						nesting_mode: "list"
+						block: {
+							attributes: return_verdict: {
+								type: "string"
+								description: """
+												If set, the verdict will be returned to the user.
+												Possible values: ["ALLOW", "BLOCK"] Possible values: ["ALLOW", "BLOCK"]
+												"""
+								description_kind: "plain"
+								optional:         true
+							}
+							description:      "Action to take if the content is a supported file type but is too large to be scanned."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					inspect_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								content_options: {
+									type: ["list", "string"]
+									description:      "List of options defining data content to scan. If empty, text, images, and other content will be included. Possible values: [\"CONTENT_TEXT\", \"CONTENT_IMAGE\"]"
+									description_kind: "plain"
+									optional:         true
+								}
+								exclude_info_types: {
+									type:             "bool"
+									description:      "When true, excludes type information of the findings."
+									description_kind: "plain"
+									optional:         true
+								}
+								include_quote: {
+									type:             "bool"
+									description:      "When true, a contextual quote from the data that triggered a finding is included in the response."
+									description_kind: "plain"
+									optional:         true
+								}
+								min_likelihood: {
+									type:             "string"
+									description:      "Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info Default value: \"POSSIBLE\" Possible values: [\"VERY_UNLIKELY\", \"UNLIKELY\", \"POSSIBLE\", \"LIKELY\", \"VERY_LIKELY\"]"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							block_types: {
+								custom_info_types: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											exclusion_type: {
+												type:             "string"
+												description:      "If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching. Possible values: [\"EXCLUSION_TYPE_EXCLUDE\"]"
+												description_kind: "plain"
+												optional:         true
+											}
+											likelihood: {
+												type: "string"
+												description: """
+															Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
+															specified by the rule. Default value: "VERY_LIKELY" Possible values: ["VERY_UNLIKELY", "UNLIKELY", "POSSIBLE", "LIKELY", "VERY_LIKELY"]
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										block_types: {
+											dictionary: {
+												nesting_mode: "list"
+												block: {
+													block_types: {
+														cloud_storage_path: {
+															nesting_mode: "list"
+															block: {
+																attributes: path: {
+																	type:             "string"
+																	description:      "A url representing a file or path (no wildcards) in Cloud Storage. Example: 'gs://[BUCKET_NAME]/dictionary.txt'"
+																	description_kind: "plain"
+																	required:         true
+																}
+																description:      "Newline-delimited file of words in Cloud Storage. Only a single file is accepted."
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
+														word_list: {
+															nesting_mode: "list"
+															block: {
+																attributes: words: {
+																	type: ["list", "string"]
+																	description: """
+																					Words or phrases defining the dictionary. The dictionary must contain at least one
+																					phrase and every phrase must contain at least 2 characters that are letters or digits.
+																					"""
+																	description_kind: "plain"
+																	required:         true
+																}
+																description:      "List of words or phrases to search for."
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
+													}
+													description:      "Dictionary which defines the rule."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											info_type: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														name: {
+															type: "string"
+															description: """
+																		Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+																		listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+																		"""
+															description_kind: "plain"
+															required:         true
+														}
+														version: {
+															type:             "string"
+															description:      "Version name for this InfoType."
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													block_types: sensitivity_score: {
+														nesting_mode: "list"
+														block: {
+															attributes: score: {
+																type:             "string"
+																description:      "The sensitivity score applied to the resource. Possible values: [\"SENSITIVITY_LOW\", \"SENSITIVITY_MODERATE\", \"SENSITIVITY_HIGH\"]"
+																description_kind: "plain"
+																required:         true
+															}
+															description:      "Optional custom sensitivity for this InfoType. This only applies to data profiling."
+															description_kind: "plain"
+														}
+														max_items: 1
+													}
+													description: """
+																CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+																infoTypes and that infoType is specified in 'info_types' field. Specifying the latter adds findings to the
+																one detected by the system. If built-in info type is not specified in 'info_types' list then the name is
+																treated as a custom info type.
+																"""
+													description_kind: "plain"
+												}
+												min_items: 1
+												max_items: 1
+											}
+											regex: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														group_indexes: {
+															type: ["list", "number"]
+															description:      "The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included."
+															description_kind: "plain"
+															optional:         true
+														}
+														pattern: {
+															type: "string"
+															description: """
+																		Pattern defining the regular expression.
+																		Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+																		"""
+															description_kind: "plain"
+															required:         true
+														}
+													}
+													description:      "Regular expression which defines the rule."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											sensitivity_score: {
+												nesting_mode: "list"
+												block: {
+													attributes: score: {
+														type:             "string"
+														description:      "The sensitivity score applied to the resource. Possible values: [\"SENSITIVITY_LOW\", \"SENSITIVITY_MODERATE\", \"SENSITIVITY_HIGH\"]"
+														description_kind: "plain"
+														required:         true
+													}
+													description:      "Optional custom sensitivity for this InfoType. This only applies to data profiling."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											stored_type: {
+												nesting_mode: "list"
+												block: {
+													attributes: name: {
+														type: "string"
+														description: """
+																		Resource name of the requested StoredInfoType, for example 'organizations/433245324/storedInfoTypes/432452342'
+																		or 'projects/project-id/storedInfoTypes/432452342'.
+																		"""
+														description_kind: "plain"
+														required:         true
+													}
+													description:      "A reference to a StoredInfoType to use with scanning."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											surrogate_type: {
+												nesting_mode: "list"
+												block: {
+													description:      "Message for detecting output from deidentification transformations that support reversing."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+										}
+										description:      "Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more."
+										description_kind: "plain"
+									}
+								}
+								info_types: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											name: {
+												type: "string"
+												description: """
+															Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+															at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+															"""
+												description_kind: "plain"
+												required:         true
+											}
+											version: {
+												type:             "string"
+												description:      "Version of the information type to use. By default, the version is set to stable"
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										block_types: sensitivity_score: {
+											nesting_mode: "list"
+											block: {
+												attributes: score: {
+													type:             "string"
+													description:      "The sensitivity score applied to the resource. Possible values: [\"SENSITIVITY_LOW\", \"SENSITIVITY_MODERATE\", \"SENSITIVITY_HIGH\"]"
+													description_kind: "plain"
+													required:         true
+												}
+												description:      "Optional custom sensitivity for this InfoType. This only applies to data profiling."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										description: """
+													Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+													or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+
+													When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+													By default this may be all types, but may change over time as detectors are updated.
+													"""
+										description_kind: "plain"
+									}
+								}
+								limits: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											max_findings_per_item: {
+												type:             "number"
+												description:      "Max number of findings that will be returned for each item scanned. The maximum returned is 2000."
+												description_kind: "plain"
+												required:         true
+											}
+											max_findings_per_request: {
+												type:             "number"
+												description:      "Max number of findings that will be returned per request/job. The maximum returned is 2000."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										block_types: max_findings_per_info_type: {
+											nesting_mode: "list"
+											block: {
+												attributes: max_findings: {
+													type:             "number"
+													description:      "Max findings limit for the given infoType."
+													description_kind: "plain"
+													required:         true
+												}
+												block_types: info_type: {
+													nesting_mode: "list"
+													block: {
+														attributes: {
+															name: {
+																type: "string"
+																description: """
+																					Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+																					at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+																					"""
+																description_kind: "plain"
+																required:         true
+															}
+															version: {
+																type:             "string"
+																description:      "Version name for this InfoType."
+																description_kind: "plain"
+																optional:         true
+															}
+														}
+														block_types: sensitivity_score: {
+															nesting_mode: "list"
+															block: {
+																attributes: score: {
+																	type:             "string"
+																	description:      "The sensitivity score applied to the resource. Possible values: [\"SENSITIVITY_LOW\", \"SENSITIVITY_MODERATE\", \"SENSITIVITY_HIGH\"]"
+																	description_kind: "plain"
+																	required:         true
+																}
+																description:      "Optional custom sensitivity for this InfoType. This only applies to data profiling."
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
+														description: """
+																			Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+																			not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+																			specified in another InfoTypeLimit.
+																			"""
+														description_kind: "plain"
+													}
+													max_items: 1
+												}
+												description:      "Configuration of findings limit given for specified infoTypes."
+												description_kind: "plain"
+											}
+										}
+										description:      "Configuration to control the number of findings returned."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								min_likelihood_per_info_type: {
+									nesting_mode: "list"
+									block: {
+										attributes: min_likelihood: {
+											type:             "string"
+											description:      "Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info. Possible values: [\"VERY_UNLIKELY\", \"UNLIKELY\", \"POSSIBLE\", \"LIKELY\", \"VERY_LIKELY\"]"
+											description_kind: "plain"
+											required:         true
+										}
+										block_types: info_type: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													name: {
+														type: "string"
+														description: """
+																		Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+																		at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+																		"""
+														description_kind: "plain"
+														required:         true
+													}
+													version: {
+														type:             "string"
+														description:      "Version name for this InfoType."
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												description: """
+																Type of information the likeliness threshold applies to. Only one likelihood per info_type should be provided.
+																If InfoTypeLikelihood does not have an info_type, the configuration fails.
+																"""
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										description: """
+													Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+													The system only returns a finding if its likelihood is above this threshold. If this field
+													is not set, the system uses the InspectConfig min_likelihood.
+													"""
+										description_kind: "plain"
+									}
+								}
+								rule_set: {
+									nesting_mode: "list"
+									block: {
+										block_types: {
+											info_types: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														name: {
+															type: "string"
+															description: """
+																		Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+																		at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+																		"""
+															description_kind: "plain"
+															required:         true
+														}
+														version: {
+															type:             "string"
+															description:      "Version name for this InfoType."
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													block_types: sensitivity_score: {
+														nesting_mode: "list"
+														block: {
+															attributes: score: {
+																type:             "string"
+																description:      "The sensitivity score applied to the resource. Possible values: [\"SENSITIVITY_LOW\", \"SENSITIVITY_MODERATE\", \"SENSITIVITY_HIGH\"]"
+																description_kind: "plain"
+																required:         true
+															}
+															description:      "Optional custom sensitivity for this InfoType. This only applies to data profiling."
+															description_kind: "plain"
+														}
+														max_items: 1
+													}
+													description:      "List of infoTypes this rule set is applied to."
+													description_kind: "plain"
+												}
+												min_items: 1
+											}
+											rules: {
+												nesting_mode: "list"
+												block: {
+													block_types: {
+														exclusion_rule: {
+															nesting_mode: "list"
+															block: {
+																attributes: matching_type: {
+																	type:             "string"
+																	description:      "How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType Possible values: [\"MATCHING_TYPE_FULL_MATCH\", \"MATCHING_TYPE_PARTIAL_MATCH\", \"MATCHING_TYPE_INVERSE_MATCH\"]"
+																	description_kind: "plain"
+																	required:         true
+																}
+																block_types: {
+																	dictionary: {
+																		nesting_mode: "list"
+																		block: {
+																			block_types: {
+																				cloud_storage_path: {
+																					nesting_mode: "list"
+																					block: {
+																						attributes: path: {
+																							type:             "string"
+																							description:      "A url representing a file or path (no wildcards) in Cloud Storage. Example: 'gs://[BUCKET_NAME]/dictionary.txt'"
+																							description_kind: "plain"
+																							required:         true
+																						}
+																						description:      "Newline-delimited file of words in Cloud Storage. Only a single file is accepted."
+																						description_kind: "plain"
+																					}
+																					max_items: 1
+																				}
+																				word_list: {
+																					nesting_mode: "list"
+																					block: {
+																						attributes: words: {
+																							type: ["list", "string"]
+																							description: """
+																											Words or phrases defining the dictionary. The dictionary must contain at least one
+																											phrase and every phrase must contain at least 2 characters that are letters or digits.
+																											"""
+																							description_kind: "plain"
+																							required:         true
+																						}
+																						description:      "List of words or phrases to search for."
+																						description_kind: "plain"
+																					}
+																					max_items: 1
+																				}
+																			}
+																			description:      "Dictionary which defines the rule."
+																			description_kind: "plain"
+																		}
+																		max_items: 1
+																	}
+																	exclude_by_hotword: {
+																		nesting_mode: "list"
+																		block: {
+																			block_types: {
+																				hotword_regex: {
+																					nesting_mode: "list"
+																					block: {
+																						attributes: {
+																							group_indexes: {
+																								type: ["list", "number"]
+																								description: """
+																											The index of the submatch to extract as findings. When not specified,
+																											the entire match is returned. No more than 3 may be included.
+																											"""
+																								description_kind: "plain"
+																								optional:         true
+																							}
+																							pattern: {
+																								type: "string"
+																								description: """
+																											Pattern defining the regular expression. Its syntax
+																											(https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+																											"""
+																								description_kind: "plain"
+																								required:         true
+																							}
+																						}
+																						description:      "Regular expression pattern defining what qualifies as a hotword."
+																						description_kind: "plain"
+																					}
+																					min_items: 1
+																					max_items: 1
+																				}
+																				proximity: {
+																					nesting_mode: "list"
+																					block: {
+																						attributes: {
+																							window_after: {
+																								type:             "number"
+																								description:      "Number of characters after the finding to consider."
+																								description_kind: "plain"
+																								optional:         true
+																							}
+																							window_before: {
+																								type:             "number"
+																								description:      "Number of characters before the finding to consider."
+																								description_kind: "plain"
+																								optional:         true
+																							}
+																						}
+																						description: """
+																									Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+																									exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+																									used to match substrings of the finding itself. For example, the certainty of a phone number regex
+																									'(\\d{3}) \\d{3}-\\d{4}' could be adjusted upwards if the area code is known to be the local area code of a company
+																									office using the hotword regex '(xxx)', where 'xxx' is the area code in question.
+																									"""
+																						description_kind: "plain"
+																					}
+																					min_items: 1
+																					max_items: 1
+																				}
+																			}
+																			description: """
+																						Drop if the hotword rule is contained in the proximate context.
+																						For tabular data, the context includes the column name.
+																						"""
+																			description_kind: "plain"
+																		}
+																		max_items: 1
+																	}
+																	exclude_info_types: {
+																		nesting_mode: "list"
+																		block: {
+																			block_types: info_types: {
+																				nesting_mode: "list"
+																				block: {
+																					attributes: {
+																						name: {
+																							type: "string"
+																							description: """
+																											Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+																											at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+																											"""
+																							description_kind: "plain"
+																							required:         true
+																						}
+																						version: {
+																							type:             "string"
+																							description:      "Version name for this InfoType."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																					}
+																					block_types: sensitivity_score: {
+																						nesting_mode: "list"
+																						block: {
+																							attributes: score: {
+																								type:             "string"
+																								description:      "The sensitivity score applied to the resource. Possible values: [\"SENSITIVITY_LOW\", \"SENSITIVITY_MODERATE\", \"SENSITIVITY_HIGH\"]"
+																								description_kind: "plain"
+																								required:         true
+																							}
+																							description:      "Optional custom sensitivity for this InfoType. This only applies to data profiling."
+																							description_kind: "plain"
+																						}
+																						max_items: 1
+																					}
+																					description:      "If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results."
+																					description_kind: "plain"
+																				}
+																				min_items: 1
+																			}
+																			description:      "Set of infoTypes for which findings would affect this rule."
+																			description_kind: "plain"
+																		}
+																		max_items: 1
+																	}
+																	regex: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				group_indexes: {
+																					type: ["list", "number"]
+																					description:      "The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included."
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				pattern: {
+																					type: "string"
+																					description: """
+																								Pattern defining the regular expression.
+																								Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+																								"""
+																					description_kind: "plain"
+																					required:         true
+																				}
+																			}
+																			description:      "Regular expression which defines the rule."
+																			description_kind: "plain"
+																		}
+																		max_items: 1
+																	}
+																}
+																description:      "The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results."
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
+														hotword_rule: {
+															nesting_mode: "list"
+															block: {
+																block_types: {
+																	hotword_regex: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				group_indexes: {
+																					type: ["list", "number"]
+																					description: """
+																								The index of the submatch to extract as findings. When not specified,
+																								the entire match is returned. No more than 3 may be included.
+																								"""
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				pattern: {
+																					type: "string"
+																					description: """
+																								Pattern defining the regular expression. Its syntax
+																								(https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+																								"""
+																					description_kind: "plain"
+																					required:         true
+																				}
+																			}
+																			description:      "Regular expression pattern defining what qualifies as a hotword."
+																			description_kind: "plain"
+																		}
+																		min_items: 1
+																		max_items: 1
+																	}
+																	likelihood_adjustment: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				fixed_likelihood: {
+																					type:             "string"
+																					description:      "Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set. Possible values: [\"VERY_UNLIKELY\", \"UNLIKELY\", \"POSSIBLE\", \"LIKELY\", \"VERY_LIKELY\"]"
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				relative_likelihood: {
+																					type: "number"
+																					description: """
+																								Increase or decrease the likelihood by the specified number of levels. For example,
+																								if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
+																								then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
+																								Likelihood may never drop below VERY_UNLIKELY or exceed VERY_LIKELY, so applying an
+																								adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
+																								will result in a final likelihood of LIKELY. Either this or fixed_likelihood can be set.
+																								"""
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																			}
+																			description:      "Likelihood adjustment to apply to all matching findings."
+																			description_kind: "plain"
+																		}
+																		min_items: 1
+																		max_items: 1
+																	}
+																	proximity: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				window_after: {
+																					type:             "number"
+																					description:      "Number of characters after the finding to consider. Either this or window_before must be specified"
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				window_before: {
+																					type:             "number"
+																					description:      "Number of characters before the finding to consider. Either this or window_after must be specified"
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																			}
+																			description: """
+																						Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+																						exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+																						used to match substrings of the finding itself. For example, the certainty of a phone number regex
+																						'(\\d{3}) \\d{3}-\\d{4}' could be adjusted upwards if the area code is known to be the local area code of a company
+																						office using the hotword regex '(xxx)', where 'xxx' is the area code in question.
+																						"""
+																			description_kind: "plain"
+																		}
+																		min_items: 1
+																		max_items: 1
+																	}
+																}
+																description:      "Hotword-based detection rule."
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
+													}
+													description:      "Set of rules to be applied to infoTypes. The rules are applied in order."
+													description_kind: "plain"
+												}
+												min_items: 1
+											}
+										}
+										description: """
+													Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
+													other rules are executed in the order they are specified for each info type.
+													"""
+										description_kind: "plain"
+									}
+								}
+							}
+							description:      "InspectConfig to use to produce findings."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					logging_configs: {
+						nesting_mode: "list"
+						block: {
+							block_types: log_to_big_query: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										dataset_id: {
+											type:             "string"
+											description:      "The dataset ID of the BigQuery table to log to."
+											description_kind: "plain"
+											required:         true
+										}
+										project_id: {
+											type:             "string"
+											description:      "The project ID of the BigQuery table to log to."
+											description_kind: "plain"
+											required:         true
+										}
+										table_id: {
+											type:             "string"
+											description:      "The table ID of the BigQuery table to log to."
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									description:      "Log actions to BigQuery."
+									description_kind: "plain"
+								}
+								max_items: 1
+							}
+							description:      "Log the actions taken by the content policy to external systems."
+							description_kind: "plain"
+						}
+					}
+					rules: {
+						nesting_mode: "list"
+						block: {
+							block_types: {
+								action: {
+									nesting_mode: "list"
+									block: {
+										attributes: return_verdict: {
+											type: "string"
+											description: """
+															If set, the verdict will be returned to the user.
+															Possible values: ["ALLOW", "BLOCK"] Possible values: ["ALLOW", "BLOCK"]
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										description:      "The action to take if the rule matches."
+										description_kind: "plain"
+									}
+									min_items: 1
+									max_items: 1
+								}
+								conditions: {
+									nesting_mode: "list"
+									block: {
+										block_types: info_type_condition: {
+											nesting_mode: "list"
+											block: {
+												attributes: min_count: {
+													type:             "number"
+													description:      "The minimum number of findings required for this condition to be met. Defaults to 1."
+													description_kind: "plain"
+													optional:         true
+												}
+												block_types: {
+													any_info_type: {
+														nesting_mode: "list"
+														block: {
+															description:      "Match any info type."
+															description_kind: "plain"
+														}
+														max_items: 1
+													}
+													info_types: {
+														nesting_mode: "list"
+														block: {
+															attributes: info_type_names: {
+																type: ["list", "string"]
+																description:      "List of info type names."
+																description_kind: "plain"
+																required:         true
+															}
+															description:      "List of info types to match."
+															description_kind: "plain"
+														}
+														max_items: 1
+													}
+												}
+												description:      "A condition based on info types."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										description:      "List of conditions that must be met for this rule to apply."
+										description_kind: "plain"
+									}
+								}
+							}
+							description:      "Policies to apply, based on the findings returned by inspection. The first rule to match applies."
+							description_kind: "plain"
+						}
+						min_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					unsupported_file_type: {
+						nesting_mode: "list"
+						block: {
+							attributes: return_verdict: {
+								type: "string"
+								description: """
+												If set, the verdict will be returned to the user.
+												Possible values: ["ALLOW", "BLOCK"] Possible values: ["ALLOW", "BLOCK"]
+												"""
+								description_kind: "plain"
+								optional:         true
+							}
+							description:      "Action to take if the content is an unsupported file type."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_data_loss_prevention_deidentify_template: {
 			version: 0
 			block: {
@@ -152765,11 +154969,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					data_documentation_spec: {
 						nesting_mode: "list"
 						block: {
-							attributes: catalog_publishing_enabled: {
-								type:             "bool"
-								description:      "If set, the latest DataScan job result will be published to Knowledge Catalog."
-								description_kind: "plain"
-								optional:         true
+							attributes: {
+								catalog_publishing_enabled: {
+									type:             "bool"
+									description:      "If set, the latest DataScan job result will be published to Knowledge Catalog."
+									description_kind: "plain"
+									optional:         true
+								}
+								sql_dialect: {
+									type: "string"
+									description: """
+												The SQL dialect to use in the generated SQL queries.
+												If not specified, the default dialect is Google SQL. Possible values: ["GOOGLE_SQL", "SPARK_SQL"]
+												"""
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
 							}
 							description:      "DataDocumentationScan related setting."
 							description_kind: "plain"
@@ -164529,12 +166745,14 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																				description:      "Optional. Size in GB of the boot disk (default is 500GB)."
 																				description_kind: "plain"
 																				optional:         true
+																				computed:         true
 																			}
 																			boot_disk_type: {
 																				type:             "string"
 																				description:      "Optional. Type of the boot disk (default is \"pd-standard\"). Valid values: \"pd-balanced\" (Persistent Disk Balanced Solid State Drive), \"pd-ssd\" (Persistent Disk Solid State Drive), or \"pd-standard\" (Persistent Disk Hard Disk Drive). See [Disk types](https://cloud.google.com/compute/docs/disks#disk-types)."
 																				description_kind: "plain"
 																				optional:         true
+																				computed:         true
 																			}
 																			num_local_ssds: {
 																				type:             "number"
@@ -164545,6 +166763,85 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																			}
 																		}
 																		description:      "Optional. Disk option config settings."
+																		description_kind: "plain"
+																	}
+																	max_items: 1
+																}
+																instance_flexibility_policy: {
+																	nesting_mode: "list"
+																	block: {
+																		attributes: {
+																			instance_machine_types: {
+																				type: ["map", "string"]
+																				description:      "Output only. A map of instance names to their machine type."
+																				description_kind: "plain"
+																				computed:         true
+																			}
+																			instance_selection_results: {
+																				type: ["list", ["object", {
+																					machine_type: "string"
+																					vm_count:     "number"
+																				}]]
+																				description:      "Output only. A list of instance selection results that were successfully allocated."
+																				description_kind: "plain"
+																				computed:         true
+																			}
+																		}
+																		block_types: instance_selection_list: {
+																			nesting_mode: "list"
+																			block: {
+																				attributes: {
+																					machine_types: {
+																						type: ["list", "string"]
+																						description:      "Optional. Full machine-type names, e.g. \"n1-standard-16\"."
+																						description_kind: "plain"
+																						optional:         true
+																						computed:         true
+																					}
+																					rank: {
+																						type:             "number"
+																						description:      "Optional. Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference."
+																						description_kind: "plain"
+																						optional:         true
+																						computed:         true
+																					}
+																				}
+																				block_types: disk_config: {
+																					nesting_mode: "list"
+																					block: {
+																						attributes: {
+																							boot_disk_size_gb: {
+																								type:             "number"
+																								description:      "Optional. Size in GB of the boot disk (default is 500GB)."
+																								description_kind: "plain"
+																								optional:         true
+																								computed:         true
+																							}
+																							boot_disk_type: {
+																								type:             "string"
+																								description:      "Optional. Type of the boot disk (default is \"pd-standard\"). Valid values: \"pd-balanced\" (Persistent Disk Balanced Solid State Drive), \"pd-ssd\" (Persistent Disk Solid State Drive), or \"pd-standard\" (Persistent Disk Hard Disk Drive). See [Disk types](https://cloud.google.com/compute/docs/disks#disk-types)."
+																								description_kind: "plain"
+																								optional:         true
+																								computed:         true
+																							}
+																							num_local_ssds: {
+																								type:             "number"
+																								description:      "Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries."
+																								description_kind: "plain"
+																								optional:         true
+																								computed:         true
+																							}
+																						}
+																						description:      "Optional. Disk configuration to apply to the instances in this instance selection."
+																						description_kind: "plain"
+																					}
+																					max_items: 1
+																				}
+																				description:      "Optional. List of instance selection options that the group will use when creating new VMs."
+																				description_kind: "plain"
+																			}
+																		}
+																		description:      "Optional. Instance flexibility Policy allowing a mixture of VM shapes."
 																		description_kind: "plain"
 																	}
 																	max_items: 1
@@ -164643,12 +166940,14 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																				description:      "Optional. Size in GB of the boot disk (default is 500GB)."
 																				description_kind: "plain"
 																				optional:         true
+																				computed:         true
 																			}
 																			boot_disk_type: {
 																				type:             "string"
 																				description:      "Optional. Type of the boot disk (default is \"pd-standard\"). Valid values: \"pd-balanced\" (Persistent Disk Balanced Solid State Drive), \"pd-ssd\" (Persistent Disk Solid State Drive), or \"pd-standard\" (Persistent Disk Hard Disk Drive). See [Disk types](https://cloud.google.com/compute/docs/disks#disk-types)."
 																				description_kind: "plain"
 																				optional:         true
+																				computed:         true
 																			}
 																			num_local_ssds: {
 																				type:             "number"
@@ -164659,6 +166958,111 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																			}
 																		}
 																		description:      "Optional. Disk option config settings."
+																		description_kind: "plain"
+																	}
+																	max_items: 1
+																}
+																instance_flexibility_policy: {
+																	nesting_mode: "list"
+																	block: {
+																		attributes: {
+																			instance_machine_types: {
+																				type: ["map", "string"]
+																				description:      "Output only. A map of instance names to their machine type."
+																				description_kind: "plain"
+																				computed:         true
+																			}
+																			instance_selection_results: {
+																				type: ["list", ["object", {
+																					machine_type: "string"
+																					vm_count:     "number"
+																				}]]
+																				description:      "Output only. A list of instance selection results that were successfully allocated."
+																				description_kind: "plain"
+																				computed:         true
+																			}
+																		}
+																		block_types: {
+																			instance_selection_list: {
+																				nesting_mode: "list"
+																				block: {
+																					attributes: {
+																						machine_types: {
+																							type: ["list", "string"]
+																							description:      "Optional. Full machine-type names, e.g. \"n1-standard-16\"."
+																							description_kind: "plain"
+																							optional:         true
+																							computed:         true
+																						}
+																						rank: {
+																							type:             "number"
+																							description:      "Optional. Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference."
+																							description_kind: "plain"
+																							optional:         true
+																							computed:         true
+																						}
+																					}
+																					block_types: disk_config: {
+																						nesting_mode: "list"
+																						block: {
+																							attributes: {
+																								boot_disk_size_gb: {
+																									type:             "number"
+																									description:      "Optional. Size in GB of the boot disk (default is 500GB)."
+																									description_kind: "plain"
+																									optional:         true
+																									computed:         true
+																								}
+																								boot_disk_type: {
+																									type:             "string"
+																									description:      "Optional. Type of the boot disk (default is \"pd-standard\"). Valid values: \"pd-balanced\" (Persistent Disk Balanced Solid State Drive), \"pd-ssd\" (Persistent Disk Solid State Drive), or \"pd-standard\" (Persistent Disk Hard Disk Drive). See [Disk types](https://cloud.google.com/compute/docs/disks#disk-types)."
+																									description_kind: "plain"
+																									optional:         true
+																									computed:         true
+																								}
+																								num_local_ssds: {
+																									type:             "number"
+																									description:      "Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries."
+																									description_kind: "plain"
+																									optional:         true
+																									computed:         true
+																								}
+																							}
+																							description:      "Optional. Disk configuration to apply to the instances in this instance selection."
+																							description_kind: "plain"
+																						}
+																						max_items: 1
+																					}
+																					description:      "Optional. List of instance selection options that the group will use when creating new VMs."
+																					description_kind: "plain"
+																				}
+																			}
+																			provisioning_model_mix: {
+																				nesting_mode: "list"
+																				block: {
+																					attributes: {
+																						standard_capacity_base: {
+																							type:             "number"
+																							description:      "Optional. The base capacity that will always use Standard VMs to avoid risk of premature allocation."
+																							description_kind: "plain"
+																							optional:         true
+																							computed:         true
+																						}
+																						standard_capacity_percent_above_base: {
+																							type:             "number"
+																							description:      "Optional. The percentage of target capacity that will use Standard VMs above standardCapacityBase."
+																							description_kind: "plain"
+																							optional:         true
+																							computed:         true
+																						}
+																					}
+																					description:      "Optional. Strategy for provisioning model mix for secondary worker instances."
+																					description_kind: "plain"
+																				}
+																				max_items: 1
+																			}
+																		}
+																		description:      "Optional. Instance flexibility Policy allowing a mixture of VM shapes and provisioning models."
 																		description_kind: "plain"
 																	}
 																	max_items: 1
@@ -164893,12 +167297,14 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																				description:      "Optional. Size in GB of the boot disk (default is 500GB)."
 																				description_kind: "plain"
 																				optional:         true
+																				computed:         true
 																			}
 																			boot_disk_type: {
 																				type:             "string"
 																				description:      "Optional. Type of the boot disk (default is \"pd-standard\"). Valid values: \"pd-balanced\" (Persistent Disk Balanced Solid State Drive), \"pd-ssd\" (Persistent Disk Solid State Drive), or \"pd-standard\" (Persistent Disk Hard Disk Drive). See [Disk types](https://cloud.google.com/compute/docs/disks#disk-types)."
 																				description_kind: "plain"
 																				optional:         true
+																				computed:         true
 																			}
 																			num_local_ssds: {
 																				type:             "number"
@@ -164909,6 +167315,85 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																			}
 																		}
 																		description:      "Optional. Disk option config settings."
+																		description_kind: "plain"
+																	}
+																	max_items: 1
+																}
+																instance_flexibility_policy: {
+																	nesting_mode: "list"
+																	block: {
+																		attributes: {
+																			instance_machine_types: {
+																				type: ["map", "string"]
+																				description:      "Output only. A map of instance names to their machine type."
+																				description_kind: "plain"
+																				computed:         true
+																			}
+																			instance_selection_results: {
+																				type: ["list", ["object", {
+																					machine_type: "string"
+																					vm_count:     "number"
+																				}]]
+																				description:      "Output only. A list of instance selection results that were successfully allocated."
+																				description_kind: "plain"
+																				computed:         true
+																			}
+																		}
+																		block_types: instance_selection_list: {
+																			nesting_mode: "list"
+																			block: {
+																				attributes: {
+																					machine_types: {
+																						type: ["list", "string"]
+																						description:      "Optional. Full machine-type names, e.g. \"n1-standard-16\"."
+																						description_kind: "plain"
+																						optional:         true
+																						computed:         true
+																					}
+																					rank: {
+																						type:             "number"
+																						description:      "Optional. Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference."
+																						description_kind: "plain"
+																						optional:         true
+																						computed:         true
+																					}
+																				}
+																				block_types: disk_config: {
+																					nesting_mode: "list"
+																					block: {
+																						attributes: {
+																							boot_disk_size_gb: {
+																								type:             "number"
+																								description:      "Optional. Size in GB of the boot disk (default is 500GB)."
+																								description_kind: "plain"
+																								optional:         true
+																								computed:         true
+																							}
+																							boot_disk_type: {
+																								type:             "string"
+																								description:      "Optional. Type of the boot disk (default is \"pd-standard\"). Valid values: \"pd-balanced\" (Persistent Disk Balanced Solid State Drive), \"pd-ssd\" (Persistent Disk Solid State Drive), or \"pd-standard\" (Persistent Disk Hard Disk Drive). See [Disk types](https://cloud.google.com/compute/docs/disks#disk-types)."
+																								description_kind: "plain"
+																								optional:         true
+																								computed:         true
+																							}
+																							num_local_ssds: {
+																								type:             "number"
+																								description:      "Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries."
+																								description_kind: "plain"
+																								optional:         true
+																								computed:         true
+																							}
+																						}
+																						description:      "Optional. Disk configuration to apply to the instances in this instance selection."
+																						description_kind: "plain"
+																					}
+																					max_items: 1
+																				}
+																				description:      "Optional. List of instance selection options that the group will use when creating new VMs."
+																				description_kind: "plain"
+																			}
+																		}
+																		description:      "Optional. Instance flexibility Policy allowing a mixture of VM shapes."
 																		description_kind: "plain"
 																	}
 																	max_items: 1
@@ -195899,6 +198384,295 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_gemini_gda_observability_setting: {
+			version: 0
+			block: {
+				attributes: {
+					create_time: {
+						type:             "string"
+						description:      "Create time stamp."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					gda_observability_setting_id: {
+						type:             "string"
+						description:      "Id of the Gda Observability Setting."
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									Labels as key value pairs.
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Identifier. Name of the resource.
+									Format:projects/{project}/locations/{location}/gdaObservabilitySettings/{gdaObservabilitySetting}
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Update time stamp."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					conversational_analytics_setting: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								feedback_enabled: {
+									type:             "bool"
+									description:      "Whether to enable feedback."
+									description_kind: "plain"
+									optional:         true
+								}
+								logging_enabled: {
+									type:             "bool"
+									description:      "Whether to enable logging."
+									description_kind: "plain"
+									optional:         true
+								}
+								metrics_enabled: {
+									type:             "bool"
+									description:      "Whether to enable metrics."
+									description_kind: "plain"
+									optional:         true
+								}
+								traces_enabled: {
+									type:             "bool"
+									description:      "Whether to enable traces."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description:      "Message describing Setting for Conversational Analytics."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_gemini_gda_observability_setting_binding: {
+			version: 0
+			block: {
+				attributes: {
+					create_time: {
+						type:             "string"
+						description:      "Create time stamp."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					gda_observability_setting_id: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									Labels as key value pairs.
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Identifier. Name of the resource.
+									Format:projects/{project}/locations/{location}/gdaObservabilitySettings/{setting}/settingBindings/{setting_binding}
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					product: {
+						type:             "string"
+						description:      "Product type of the setting binding. Values include GEMINI_IN_LOOKER. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.gdaObservabilitySettings.settingBindings) for a complete list."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					setting_binding_id: {
+						type:             "string"
+						description:      "Id of the setting binding."
+						description_kind: "plain"
+						required:         true
+					}
+					target: {
+						type:             "string"
+						description:      "Target of the binding."
+						description_kind: "plain"
+						required:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Update time stamp."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_gemini_gemini_gcp_enablement_setting: {
 			version: 0
 			block: {
@@ -200524,11 +203298,29 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						optional:         true
 					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
 					id: {
 						type:             "string"
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									Labels for this Fleet.
+
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
 					}
 					project: {
 						type:             "string"
@@ -200541,6 +203333,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							code: "string"
 						}]]
 						description:      "The state of the fleet resource."
+						description_kind: "plain"
+						computed:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
 						description_kind: "plain"
 						computed:         true
 					}
@@ -200593,6 +203394,33 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											}
 										}
 										description:      "Enable/Disable binary authorization features for the cluster."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								compliance_posture_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: mode: {
+											type:             "string"
+											description:      "Sets which mode to use for Compliance Posture features. Possible values: [\"DISABLED\", \"ENABLED\"]"
+											description_kind: "plain"
+											optional:         true
+										}
+										block_types: compliance_standards: {
+											nesting_mode: "list"
+											block: {
+												attributes: standard: {
+													type:             "string"
+													description:      "Name of the compliance standard."
+													description_kind: "plain"
+													optional:         true
+												}
+												description:      "List of enabled compliance standards."
+												description_kind: "plain"
+											}
+										}
+										description:      "Enable/Disable Compliance Posture features for the cluster."
 										description_kind: "plain"
 									}
 									max_items: 1
@@ -227295,6 +230123,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 			version: 0
 			block: {
 				attributes: {
+					bootstrap_address: {
+						type:             "string"
+						description:      "The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection"
+						description_kind: "plain"
+						computed:         true
+					}
 					cluster_id: {
 						type:             "string"
 						description:      "The ID to use for the cluster, which will become the final component of the cluster's name. The ID must be 1-63 characters long, and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' to comply with RFC 1035. This value is structured like: 'my-cluster-id'."
@@ -227361,6 +230195,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type:             "string"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					public_cluster_details: {
+						type: ["list", ["object", {
+							discovery_dns_records: ["list", "string"]
+							external_ip_addresses: ["list", "string"]
+						}]]
+						description:      "Details of the public cluster feature for the Kafka cluster."
+						description_kind: "plain"
 						computed:         true
 					}
 					state: {
@@ -227435,19 +230278,35 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							block_types: access_config: {
 								nesting_mode: "list"
 								block: {
-									block_types: network_configs: {
-										nesting_mode: "list"
-										block: {
-											attributes: subnet: {
-												type:             "string"
-												description:      "Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. There can only be one subnet per network, and the subnet must be located in the same region as the cluster. The project may differ. The name of the subnet must be in the format 'projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET'."
+									block_types: {
+										network_configs: {
+											nesting_mode: "list"
+											block: {
+												attributes: subnet: {
+													type:             "string"
+													description:      "Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. There can only be one subnet per network, and the subnet must be located in the same region as the cluster. The project may differ. The name of the subnet must be in the format 'projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET'."
+													description_kind: "plain"
+													required:         true
+												}
+												description:      "Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one 'network_configs' block. Max of 10 subnets per cluster. Additional subnets may be specified with additional 'network_configs' blocks."
 												description_kind: "plain"
-												required:         true
 											}
-											description:      "Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one 'network_configs' block. Max of 10 subnets per cluster. Additional subnets may be specified with additional 'network_configs' blocks."
-											description_kind: "plain"
+											min_items: 1
 										}
-										min_items: 1
+										public_cluster_config: {
+											nesting_mode: "list"
+											block: {
+												attributes: allowed_source_ip_ranges: {
+													type: ["list", "string"]
+													description:      "A list of IPv4 addresses or CIDR ranges that are allowed to connect to the cluster. To protect your cluster, allow access from only trusted external IP ranges. Don't expose your cluster to untrusted ranges."
+													description_kind: "plain"
+													required:         true
+												}
+												description:      "Public connection configuration for the Kafka cluster."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
 									}
 									description:      "The configuration of access to the Kafka cluster."
 									description_kind: "plain"
@@ -272069,6 +274928,16 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						optional:         true
 						computed:         true
 					}
+					tags: {
+						type: ["map", "string"]
+						description: """
+									A map of resource manager tags.
+									Resource manager tag keys and values have the same definition as resource manager tags.
+									Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
 					terraform_labels: {
 						type: ["map", "string"]
 						description: """
@@ -272328,6 +275197,16 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description: """
+									A map of resource manager tags.
+									Resource manager tag keys and values have the same definition as resource manager tags.
+									Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+									"""
+						description_kind: "plain"
+						optional:         true
 					}
 					terraform_labels: {
 						type: ["map", "string"]
@@ -307427,6 +310306,234 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_vertex_ai_rag_corpus: {
+			version: 0
+			block: {
+				attributes: {
+					corpus_status: {
+						type: ["list", ["object", {
+							error_status: "string"
+							state:        "string"
+						}]]
+						description:      "Output only. RagCorpus state."
+						description_kind: "plain"
+						computed:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "Output only. Timestamp when this RagCorpus was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Optional. The description of the RagCorpus."
+						description_kind: "plain"
+						optional:         true
+					}
+					display_name: {
+						type: "string"
+						description: """
+									Required. The display name of the RagCorpus. The name can be up to 128
+									characters long and can consist of any UTF-8 characters.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									The generated name of the RagCorpus, in the format
+									projects/{project}/locations/{location}/ragCorpora/{rag_corpus}.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region of the RagCorpus. eg europe-west4"
+						description_kind: "plain"
+						required:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Output only. Timestamp when this RagCorpus was last updated."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					encryption_spec: {
+						nesting_mode: "list"
+						block: {
+							attributes: kms_key_name: {
+								type: "string"
+								description: """
+												Required. The Cloud KMS resource identifier of the customer managed
+												encryption key used to protect the resource. Has the form:
+												projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
+												The key needs to be in the same region as where the resource is
+												created.
+												"""
+								description_kind: "plain"
+								required:         true
+							}
+							description: """
+										Optional. Immutable. The CMEK key name used to encrypt at-rest data
+										related to this corpus. Only applicable to RagManagedDb option for Vector
+										DB. This field can only be set at corpus creation time, and cannot be
+										updated or deleted.
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					vector_db_config: {
+						nesting_mode: "list"
+						block: {
+							block_types: {
+								rag_embedding_model_config: {
+									nesting_mode: "list"
+									block: {
+										block_types: vertex_prediction_endpoint: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													endpoint: {
+														type: "string"
+														description: """
+																		Required. The endpoint resource name. Format:
+																		projects/{project}/locations/{location}/publishers/{publisher}/models/{model}
+																		or projects/{project}/locations/{location}/endpoints/{endpoint}.
+																		"""
+														description_kind: "plain"
+														required:         true
+													}
+													model: {
+														type:             "string"
+														description:      "Output only. The resource name of the model that is deployed on the endpoint."
+														description_kind: "plain"
+														computed:         true
+													}
+													model_version_id: {
+														type:             "string"
+														description:      "Output only. Version ID of the model that is deployed on the endpoint."
+														description_kind: "plain"
+														computed:         true
+													}
+												}
+												description:      "The Vertex AI Prediction Endpoint used for dense vector search."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										description:      "Optional. Immutable. The embedding model config of the Vector DB."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								rag_managed_db: {
+									nesting_mode: "list"
+									block: {
+										block_types: {
+											ann: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														leaf_count: {
+															type:             "number"
+															description:      "Number of leaf nodes in the tree-based structure. Default value is 500."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														tree_depth: {
+															type:             "number"
+															description:      "The depth of the tree-based structure. Only depth values of 2 and 3 are supported. Default value is 2."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+													}
+													description:      "Performs an ANN search on RagCorpus."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											knn: {
+												nesting_mode: "list"
+												block: {
+													description:      "Performs a KNN search on RagCorpus. This is the default choice if not specified."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+										}
+										description:      "The config for the default RAG-managed Vector DB."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+							}
+							description:      "Optional. Immutable. The config for the RAG-managed Vector DB."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_vertex_ai_rag_engine_config: {
 			version: 0
 			block: {
@@ -309415,20 +312522,34 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									optional:         true
 								}
 								dns_record: {
-									type:             "string"
-									description:      "The fully qualified record name of the created A-record in Cloud DNS."
+									type: "string"
+									description: """
+												The fully qualified record name of the A-record the backend writes into
+												'dns_zone_name' for this gateway. Populated after the gateway reaches
+												'ACTIVE'; empty until then.
+												"""
 									description_kind: "plain"
 									computed:         true
 								}
 								dns_zone_name: {
-									type:             "string"
-									description:      "FQDN of the private DNS zone to create DNS record set for PSC endpoint."
+									type: "string"
+									description: """
+												The name of the private Cloud DNS managed zone in which the backend
+												creates the DNS record set for this gateway's PSC endpoint. This is the
+												managed-zone resource name, not a fully-qualified domain name. The zone
+												must already exist and be attached to the gateway's VPC at provision
+												time. The name must match '^[a-z0-9.-]{1,63}$'. Must be set together
+												with 'network' and 'subnetwork' (all three or none).
+												"""
 									description_kind: "plain"
 									optional:         true
 								}
 								ip_address: {
-									type:             "string"
-									description:      "The private IP address of the PSC endpoint."
+									type: "string"
+									description: """
+												The private IP address of the PSC endpoint. This field is currently
+												always empty and is slated for deprecation; do not depend on it.
+												"""
 									description_kind: "plain"
 									computed:         true
 								}
@@ -309440,9 +312561,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								network: {
 									type: "string"
 									description: """
-												The URI of the network resource where PSC-E will be provisioned. If not
-												provided 'default' network will be used. Format:
-												projects/{project}/global/networks/{network}
+												The URI of the network resource where the gateway's PSC endpoint is
+												provisioned. Format: projects/{project}/global/networks/{network}.
+												'network', 'subnetwork', and 'dns_zone_name' must all be set together
+												or all omitted; setting only some is rejected by the API.
 												"""
 									description_kind: "plain"
 									optional:         true
@@ -309460,7 +312582,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									type: "string"
 									description: """
 												The state of the Gateway configuration. One of: STATE_UNSPECIFIED,
-												PROVISIONING, ACTIVE, DEPROVISIONING, INACTIVE, FAILED.
+												PROVISIONING, ACTIVE, DEPROVISIONING, INACTIVE, FAILED. A 'FAILED'
+												gateway is surfaced here without a provider error; the engine as a
+												whole may still be 'ACTIVE'.
 												"""
 									description_kind: "plain"
 									computed:         true
@@ -309468,17 +312592,20 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								subnetwork: {
 									type: "string"
 									description: """
-												The URI of the subnetwork resource where PSC-E will be provisioned. If
-												not provided 'default' subnet will be used from the same {location}
-												Format: projects/{project}/regions/{region}/subnetworks/{subnetwork}
+												The URI of the subnetwork resource where the gateway's PSC endpoint is
+												provisioned. Format:
+												projects/{project}/regions/{region}/subnetworks/{subnetwork}. Must be
+												set together with 'network' and 'dns_zone_name' (all three or none).
 												"""
 									description_kind: "plain"
 									optional:         true
 								}
 							}
 							description: """
-										Configurations for gateways. The keys are user-defined names for each gateway.
-										At most 5 gateway configurations are allowed.
+										Configurations for gateways, keyed by a user-defined gateway name. At most
+										5 gateway configurations are allowed. Each gateway name must be 1-63
+										characters, start with a lowercase letter, contain only lowercase letters,
+										numbers and hyphens, and not end with a hyphen.
 										"""
 							description_kind: "plain"
 						}
@@ -334687,6 +337814,76 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_compute_service_attachments: {
+			version: 0
+			block: {
+				attributes: {
+					filter: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					service_attachments: {
+						type: ["list", ["object", {
+							connected_endpoints: ["list", ["object", {
+								consumer_network: "string"
+								endpoint:         "string"
+								nat_ips: ["list", "string"]
+								propagated_connection_count: "number"
+								psc_connection_id:           "string"
+								status:                      "string"
+							}]]
+							connection_preference: "string"
+							consumer_accept_lists: ["set", ["object", {
+								connection_limit:  "number"
+								endpoint_url:      "string"
+								network_url:       "string"
+								project_id_or_num: "string"
+							}]]
+							consumer_reject_lists: ["set", "string"]
+							deletion_policy: "string"
+							description:     "string"
+							domain_names: ["list", "string"]
+							enable_proxy_protocol: "bool"
+							fingerprint:           "string"
+							name:                  "string"
+							nat_subnets: ["set", "string"]
+							project:                     "string"
+							propagated_connection_limit: "number"
+							psc_service_attachment_id: ["list", ["object", {
+								high: "string"
+								low:  "string"
+							}]]
+							reconcile_connections:                    "bool"
+							region:                                   "string"
+							self_link:                                "string"
+							send_propagated_connection_limit_if_zero: "bool"
+							show_nat_ips:                             "bool"
+							target_service:                           "string"
+						}]]
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_compute_snapshot: {
 			version: 0
 			block: {
@@ -348495,6 +351692,16 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						optional:         true
 					}
+					tags: {
+						type: ["map", "string"]
+						description: """
+									A map of resource manager tags.
+									Resource manager tag keys and values have the same definition as resource manager tags.
+									Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
 					terraform_labels: {
 						type: ["map", "string"]
 						description: """
@@ -348661,6 +351868,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								iam_policy_uid_principal:  "string"
 							}]]
 							project: "string"
+							tags: ["map", "string"]
 							terraform_labels: ["map", "string"]
 							update_time: "string"
 						}]]
@@ -348785,6 +351993,16 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type:             "string"
 						description_kind: "plain"
 						optional:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description: """
+									A map of resource manager tags.
+									Resource manager tag keys and values have the same definition as resource manager tags.
+									Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+									"""
+						description_kind: "plain"
+						computed:         true
 					}
 					terraform_labels: {
 						type: ["map", "string"]
@@ -348970,6 +352188,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								iam_policy_uid_principal:  "string"
 							}]]
 							project: "string"
+							tags: ["map", "string"]
 							terraform_labels: ["map", "string"]
 							update_time: "string"
 						}]]
@@ -361322,6 +364541,34 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_pubsub_topic_iam_member: {
+			version: 0
+			block: {
+				attributes: {
+					member: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					topic: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_secret_manager_secret: {
 			version: 0
 			block: {
@@ -361585,6 +364832,24 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type:             "string"
 						description_kind: "plain"
 						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_vertex_ai_rag_corpus: {
+			version: 0
+			block: {
+				attributes: {
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
 					}
 				}
 				description_kind: "plain"
@@ -364188,6 +367453,27 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_chronicle_case_stage_definition: {
+			version: 1
+			attributes: {
+				case_stage_definition_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				instance: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
 		google_chronicle_case_tag_definition: {
 			version: 1
 			attributes: {
@@ -366253,6 +369539,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_compute_network_edge_security_service: {
+			version: 1
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
 		google_compute_network_endpoint: {
 			version: 1
 			attributes: {
@@ -368044,6 +371347,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 			version: 1
 			attributes: {
 				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				parent: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_data_loss_prevention_content_policy: {
+			version: 1
+			attributes: {
+				name: {
 					type:                "string"
 					required_for_import: true
 				}
@@ -370797,6 +374113,44 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 			version: 1
 			attributes: {
 				data_sharing_with_google_setting_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					optional_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				setting_binding_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_gemini_gda_observability_setting: {
+			version: 1
+			attributes: {
+				gda_observability_setting_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		google_gemini_gda_observability_setting_binding: {
+			version: 1
+			attributes: {
+				gda_observability_setting_id: {
 					type:                "string"
 					required_for_import: true
 				}
@@ -376208,6 +379562,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_secret_manager_secret_version: {
+			version: 1
+			attributes: {
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				secret: {
+					type:                "string"
+					required_for_import: true
+				}
+				version: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		google_secure_source_manager_branch_rule: {
 			version: 1
 			attributes: {
@@ -377287,6 +380658,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				project: {
 					type:                "string"
 					optional_for_import: true
+				}
+			}
+		}
+		google_vertex_ai_rag_corpus: {
+			version: 1
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				region: {
+					type:                "string"
+					required_for_import: true
 				}
 			}
 		}

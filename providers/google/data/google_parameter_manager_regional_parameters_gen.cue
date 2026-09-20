@@ -25,6 +25,7 @@ google_parameter_manager_regional_parameters: {
 				iam_policy_uid_principal?:  string
 			})]
 			project?: string
+			tags?: [string]:             string
 			terraform_labels?: [string]: string
 			update_time?: string
 		})]

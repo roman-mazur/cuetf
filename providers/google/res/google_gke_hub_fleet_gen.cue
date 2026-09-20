@@ -27,13 +27,29 @@ google_gke_hub_fleet: {
 		// Allowed characters are: lowercase and uppercase letters, numbers, hyphen,
 		// single-quote, double-quote, space, and exclamation point.
 		display_name?: string
-		id?:           string
+
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
+		effective_labels?: [string]: string
+		id?: string
+
+		// Labels for this Fleet.
+		//
+		//
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+		labels?: [string]: string
 
 		// The state of the fleet resource.
 		state?: [...close({
 			code?: string
 		})]
 		project?: string
+
+		// The combination of labels configured directly on the resource
+		// and default labels configured on the provider.
+		terraform_labels?: [string]: string
 
 		// Google-generated UUID for this resource. This is unique across all
 		// Fleet resources. If a Fleet resource is deleted and another
@@ -46,6 +62,7 @@ google_gke_hub_fleet: {
 
 	#default_cluster_config: close({
 		binary_authorization_config?: matchN(1, [_#defs."/$defs/default_cluster_config/$defs/binary_authorization_config", list.MaxItems(1) & [..._#defs."/$defs/default_cluster_config/$defs/binary_authorization_config"]])
+		compliance_posture_config?: matchN(1, [_#defs."/$defs/default_cluster_config/$defs/compliance_posture_config", list.MaxItems(1) & [..._#defs."/$defs/default_cluster_config/$defs/compliance_posture_config"]])
 		security_posture_config?: matchN(1, [_#defs."/$defs/default_cluster_config/$defs/security_posture_config", list.MaxItems(1) & [..._#defs."/$defs/default_cluster_config/$defs/security_posture_config"]])
 	})
 
@@ -68,6 +85,18 @@ google_gke_hub_fleet: {
 		// platform policies have the following format:
 		// 'projects/{project_number}/platforms/gke/policies/{policy_id}'.
 		name?: string
+	})
+
+	_#defs: "/$defs/default_cluster_config/$defs/compliance_posture_config": close({
+		compliance_standards?: matchN(1, [_#defs."/$defs/default_cluster_config/$defs/compliance_posture_config/$defs/compliance_standards", [..._#defs."/$defs/default_cluster_config/$defs/compliance_posture_config/$defs/compliance_standards"]])
+
+		// Sets which mode to use for Compliance Posture features. Possible values: ["DISABLED", "ENABLED"]
+		mode?: string
+	})
+
+	_#defs: "/$defs/default_cluster_config/$defs/compliance_posture_config/$defs/compliance_standards": close({
+		// Name of the compliance standard.
+		standard?: string
 	})
 
 	_#defs: "/$defs/default_cluster_config/$defs/security_posture_config": close({

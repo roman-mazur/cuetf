@@ -83,6 +83,7 @@ google_ces_toolset: {
 		api_authentication?: matchN(1, [_#defs."/$defs/mcp_toolset/$defs/api_authentication", list.MaxItems(1) & [..._#defs."/$defs/mcp_toolset/$defs/api_authentication"]])
 		service_directory_config?: matchN(1, [_#defs."/$defs/mcp_toolset/$defs/service_directory_config", list.MaxItems(1) & [..._#defs."/$defs/mcp_toolset/$defs/service_directory_config"]])
 		tls_config?: matchN(1, [_#defs."/$defs/mcp_toolset/$defs/tls_config", list.MaxItems(1) & [..._#defs."/$defs/mcp_toolset/$defs/tls_config"]])
+		tool_overrides?: matchN(1, [_#defs."/$defs/mcp_toolset/$defs/tool_overrides", [..._#defs."/$defs/mcp_toolset/$defs/tool_overrides"]])
 
 		// The custom headers to send in the request to the MCP server. The values
 		// must be in the format '$context.variables.<name_of_variable>' and can be
@@ -290,6 +291,17 @@ google_ces_toolset: {
 		// The name of the allowed custom CA certificates. This
 		// can be used to disambiguate the custom CA certificates.
 		display_name!: string
+	})
+
+	_#defs: "/$defs/mcp_toolset/$defs/tool_overrides": close({
+		// The description override for the tool.
+		description_override?: string
+
+		// The name override for the tool.
+		name_override?: string
+
+		// The name of the tool to be overridden.
+		tool!: string
 	})
 
 	_#defs: "/$defs/open_api_toolset/$defs/api_authentication": close({

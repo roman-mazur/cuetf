@@ -105,6 +105,10 @@ google_dataplex_datascan: {
 	#data_documentation_spec: close({
 		// If set, the latest DataScan job result will be published to Knowledge Catalog.
 		catalog_publishing_enabled?: bool
+
+		// The SQL dialect to use in the generated SQL queries.
+		// If not specified, the default dialect is Google SQL. Possible values: ["GOOGLE_SQL", "SPARK_SQL"]
+		sql_dialect?: string
 	})
 
 	#data_profile_spec: close({

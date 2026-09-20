@@ -60,19 +60,28 @@ google_vertex_ai_semantic_governance_policy_engine: {
 		// implicitly and need not be listed. Format: projects/{project} (ID or number).
 		allowed_projects?: [...string]
 
-		// The fully qualified record name of the created A-record in Cloud DNS.
+		// The fully qualified record name of the A-record the backend writes into
+		// 'dns_zone_name' for this gateway. Populated after the gateway reaches
+		// 'ACTIVE'; empty until then.
 		dns_record?: string
 
-		// FQDN of the private DNS zone to create DNS record set for PSC endpoint.
+		// The name of the private Cloud DNS managed zone in which the backend
+		// creates the DNS record set for this gateway's PSC endpoint. This is the
+		// managed-zone resource name, not a fully-qualified domain name. The zone
+		// must already exist and be attached to the gateway's VPC at provision
+		// time. The name must match '^[a-z0-9.-]{1,63}$'. Must be set together
+		// with 'network' and 'subnetwork' (all three or none).
 		dns_zone_name?: string
 
-		// The private IP address of the PSC endpoint.
+		// The private IP address of the PSC endpoint. This field is currently
+		// always empty and is slated for deprecation; do not depend on it.
 		ip_address?: string
 		name!:       string
 
-		// The URI of the network resource where PSC-E will be provisioned. If not
-		// provided 'default' network will be used. Format:
-		// projects/{project}/global/networks/{network}
+		// The URI of the network resource where the gateway's PSC endpoint is
+		// provisioned. Format: projects/{project}/global/networks/{network}.
+		// 'network', 'subnetwork', and 'dns_zone_name' must all be set together
+		// or all omitted; setting only some is rejected by the API.
 		network?: string
 
 		// The self-link or name of the Private Service Connect endpoint forwarding
@@ -80,12 +89,15 @@ google_vertex_ai_semantic_governance_policy_engine: {
 		psc_endpoint?: string
 
 		// The state of the Gateway configuration. One of: STATE_UNSPECIFIED,
-		// PROVISIONING, ACTIVE, DEPROVISIONING, INACTIVE, FAILED.
+		// PROVISIONING, ACTIVE, DEPROVISIONING, INACTIVE, FAILED. A 'FAILED'
+		// gateway is surfaced here without a provider error; the engine as a
+		// whole may still be 'ACTIVE'.
 		state?: string
 
-		// The URI of the subnetwork resource where PSC-E will be provisioned. If
-		// not provided 'default' subnet will be used from the same {location}
-		// Format: projects/{project}/regions/{region}/subnetworks/{subnetwork}
+		// The URI of the subnetwork resource where the gateway's PSC endpoint is
+		// provisioned. Format:
+		// projects/{project}/regions/{region}/subnetworks/{subnetwork}. Must be
+		// set together with 'network' and 'dns_zone_name' (all three or none).
 		subnetwork?: string
 	})
 

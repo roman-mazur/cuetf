@@ -398,6 +398,7 @@ google_ces_app: {
 
 	_#defs: "/$defs/evaluation_metrics_thresholds/$defs/golden_evaluation_metrics_thresholds": close({
 		expectation_level_metrics_thresholds?: matchN(1, [_#defs."/$defs/evaluation_metrics_thresholds/$defs/golden_evaluation_metrics_thresholds/$defs/expectation_level_metrics_thresholds", list.MaxItems(1) & [..._#defs."/$defs/evaluation_metrics_thresholds/$defs/golden_evaluation_metrics_thresholds/$defs/expectation_level_metrics_thresholds"]])
+		tool_matching_settings?: matchN(1, [_#defs."/$defs/evaluation_metrics_thresholds/$defs/golden_evaluation_metrics_thresholds/$defs/tool_matching_settings", list.MaxItems(1) & [..._#defs."/$defs/evaluation_metrics_thresholds/$defs/golden_evaluation_metrics_thresholds/$defs/tool_matching_settings"]])
 		turn_level_metrics_thresholds?: matchN(1, [_#defs."/$defs/evaluation_metrics_thresholds/$defs/golden_evaluation_metrics_thresholds/$defs/turn_level_metrics_thresholds", list.MaxItems(1) & [..._#defs."/$defs/evaluation_metrics_thresholds/$defs/golden_evaluation_metrics_thresholds/$defs/turn_level_metrics_thresholds"]])
 	})
 
@@ -407,10 +408,24 @@ google_ces_app: {
 		tool_invocation_parameter_correctness_threshold?: number
 	})
 
+	_#defs: "/$defs/evaluation_metrics_thresholds/$defs/golden_evaluation_metrics_thresholds/$defs/tool_matching_settings": close({
+		// Defines the behavior when an extra tool call is encountered. An extra
+		// tool call is a tool call that is present in the execution but does
+		// not match any tool call in the golden expectation. Possible values: ["FAIL", "ALLOW"]
+		extra_tool_call_behavior?: string
+	})
+
 	_#defs: "/$defs/evaluation_metrics_thresholds/$defs/golden_evaluation_metrics_thresholds/$defs/turn_level_metrics_thresholds": close({
 		// The success threshold for overall tool invocation correctness. Must be
 		// a float between 0 and 1. Default is 1.0.
 		overall_tool_invocation_correctness_threshold?: number
+
+		// The semantic similarity channel to use for evaluation.
+		// Possible values:
+		// SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+		// TEXT
+		// AUDIO
+		semantic_similarity_channel?: string
 
 		// The success threshold for semantic similarity. Must be an integer
 		// between 0 and 4. Default is >= 3.
