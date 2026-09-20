@@ -76,7 +76,7 @@ azurerm_storage_account: {
 		primary_web_microsoft_endpoint?:                 string
 		primary_web_microsoft_host?:                     string
 		provisioned_billing_model_version?:              string
-		public_network_access_enabled?:                  bool
+		public_network_access?:                          string
 		queue_encryption_key_type?:                      string
 		resource_group_name!:                            string
 		secondary_access_key?:                           string

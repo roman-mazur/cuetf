@@ -5,8 +5,10 @@ azurerm_public_ip_prefix: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_public_ip_prefix")
 	close({
 		timeouts?:            #timeouts
+		custom_ip_prefix_id?: string
 		id?:                  string
 		ip_prefix?:           string
+		ip_version?:          string
 		location?:            string
 		name!:                string
 		prefix_length?:       number

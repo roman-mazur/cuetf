@@ -134087,10 +134087,18 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						description_kind: "plain"
 						optional:         true
 					}
+					public_network_access: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					public_network_access_enabled: {
 						type:             "bool"
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
+						computed:         true
 					}
 					queue_encryption_key_type: {
 						type:             "string"
@@ -188412,6 +188420,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			version: 0
 			block: {
 				attributes: {
+					custom_ip_prefix_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
 					id: {
 						type:             "string"
 						description_kind: "plain"
@@ -188419,6 +188432,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						computed:         true
 					}
 					ip_prefix: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					ip_version: {
 						type:             "string"
 						description_kind: "plain"
 						computed:         true
@@ -192096,6 +192114,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						computed:         true
 					}
 					primary_web_microsoft_host: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					public_network_access: {
 						type:             "string"
 						description_kind: "plain"
 						computed:         true
@@ -196842,6 +196865,24 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 		}
 	}
 	list_resource_schemas: {
+		azurerm_analysis_services_server: {
+			version: 0
+			block: {
+				attributes: {
+					resource_group_name: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					subscription_id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		azurerm_application_gateway: {
 			version: 0
 			block: {
@@ -196861,6 +196902,24 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_application_insights_standard_web_test: {
+			version: 0
+			block: {
+				attributes: {
+					resource_group_name: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					subscription_id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_application_insights_workbook: {
 			version: 0
 			block: {
 				attributes: {
@@ -196908,6 +196967,24 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_arc_kubernetes_provisioned_cluster: {
+			version: 0
+			block: {
+				attributes: {
+					resource_group_name: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					subscription_id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_attestation_provider: {
 			version: 0
 			block: {
 				attributes: {
@@ -196987,6 +197064,17 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			version: 0
 			block: {
 				attributes: cdn_frontdoor_profile_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_cdn_frontdoor_origin: {
+			version: 0
+			block: {
+				attributes: cdn_frontdoor_origin_group_id: {
 					type:             "string"
 					description_kind: "plain"
 					required:         true
@@ -197096,6 +197184,17 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				description_kind: "plain"
 			}
 		}
+		azurerm_eventhub_consumer_group: {
+			version: 0
+			block: {
+				attributes: eventhub_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
 		azurerm_federated_identity_credential: {
 			version: 0
 			block: {
@@ -197191,6 +197290,24 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_kubernetes_automatic_cluster: {
+			version: 0
+			block: {
+				attributes: {
+					resource_group_name: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					subscription_id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_linux_virtual_machine: {
 			version: 0
 			block: {
 				attributes: {
@@ -198125,6 +198242,17 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				description_kind: "plain"
 			}
 		}
+		azurerm_virtual_hub_connection: {
+			version: 0
+			block: {
+				attributes: virtual_hub_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
 		azurerm_virtual_network: {
 			version: 0
 			block: {
@@ -198670,6 +198798,31 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			version: 0
 			attributes: {
 				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				profile_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				resource_group_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				subscription_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		azurerm_cdn_frontdoor_origin: {
+			version: 0
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				origin_group_name: {
 					type:                "string"
 					required_for_import: true
 				}
@@ -199559,6 +199712,31 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				}
 			}
 		}
+		azurerm_eventhub_consumer_group: {
+			version: 0
+			attributes: {
+				eventhub_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				namespace_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				resource_group_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				subscription_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		azurerm_federated_identity_credential: {
 			version: 0
 			attributes: {
@@ -199733,6 +199911,23 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_linux_function_app: {
+			version: 0
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				resource_group_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				subscription_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		azurerm_linux_virtual_machine: {
 			version: 0
 			attributes: {
 				name: {
