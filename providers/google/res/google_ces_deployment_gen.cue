@@ -57,6 +57,7 @@ google_ces_deployment: {
 	#channel_profile: close({
 		persona_property?: matchN(1, [_#defs."/$defs/channel_profile/$defs/persona_property", list.MaxItems(1) & [..._#defs."/$defs/channel_profile/$defs/persona_property"]])
 		web_widget_config?: matchN(1, [_#defs."/$defs/channel_profile/$defs/web_widget_config", list.MaxItems(1) & [..._#defs."/$defs/channel_profile/$defs/web_widget_config"]])
+		whatsapp_config?: matchN(1, [_#defs."/$defs/channel_profile/$defs/whatsapp_config", list.MaxItems(1) & [..._#defs."/$defs/channel_profile/$defs/whatsapp_config"]])
 
 		// The type of the channel profile.
 		// Possible values:
@@ -68,6 +69,8 @@ google_ces_deployment: {
 		// CONTACT_CENTER_AS_A_SERVICE
 		// FIVE9
 		// CONTACT_CENTER_INTEGRATION
+		// WHATSAPP
+		// INSTAGRAM
 		channel_type?: string
 
 		// Whether to disable user barge-in control in the conversation.
@@ -193,5 +196,25 @@ google_ces_deployment: {
 
 		// Indicates whether reCAPTCHA verification for the web widget is enabled.
 		enable_recaptcha?: bool
+	})
+
+	_#defs: "/$defs/channel_profile/$defs/whatsapp_config": close({
+		// Output only. The description of the Meta business page or profile.
+		description?: string
+
+		// Output only. The fetched Meta business page name.
+		display_name?: string
+
+		// Optional. The phone number in E.164 format.
+		phone_number?: string
+
+		// Required. The Meta phone number ID.
+		phone_number_id!: string
+
+		// Output only. The fetched Meta business profile thumbnail URL.
+		thumbnail_url?: string
+
+		// Required. The WhatsApp Business Account ID.
+		waba_id!: string
 	})
 }

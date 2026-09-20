@@ -4,10 +4,14 @@ google_chronicle_environment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_chronicle_environment")
 	close({
+		dynamic_parameters?: matchN(1, [#dynamic_parameters, [...#dynamic_parameters]])
 		timeouts?: #timeouts
 
 		// Environment nicknames.
 		aliases_json?: string
+
+		// Environment icon.
+		base64_image?: string
 
 		// MAX_NAME_LENGTH = 256
 		// Name of the contact for the environment.
@@ -57,6 +61,10 @@ google_chronicle_environment: {
 		// within its parent collection as described in https://google.aip.dev/122.
 		instance!: string
 
+		// URL of the environment. Used to route UI links to the correct SIEM instance
+		// when making cross-SecOps requests from SOAR.
+		instance_uri?: string
+
 		// Resource ID segment making up resource 'name'. It identifies the resource
 		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
@@ -69,6 +77,22 @@ google_chronicle_environment: {
 		// Environment data retention in months.
 		retention_duration!: number
 		project?:            string
+
+		// The weight of the environment, enabling customers to control distribution
+		// of resources between the separate environments in a single instance of
+		// Chronicle SOAR.
+		weight?: number
+	})
+
+	#dynamic_parameters: close({
+		// The ID of the dynamic parameter.
+		dynamic_parameter_id!: number
+
+		// The ID of the environment.
+		environment_id?: number
+
+		// The value of the dynamic parameter.
+		value!: string
 	})
 
 	#timeouts: close({

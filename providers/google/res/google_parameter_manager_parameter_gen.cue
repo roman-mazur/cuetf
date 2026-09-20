@@ -64,10 +64,16 @@ google_parameter_manager_parameter: {
 			iam_policy_uid_principal?:  string
 		})]
 
+		// A map of resource manager tags.
+		// Resource manager tag keys and values have the same definition as resource manager tags.
+		// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format
+		// tagValues/{tag_value_id}.
+		tags?: [string]: string
+		project?: string
+
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		project?: string
 
 		// The time at which the Parameter was updated.
 		update_time?: string

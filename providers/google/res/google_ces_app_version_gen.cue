@@ -110,6 +110,23 @@ google_ces_app_version: {
 					tool_ids?: [...string]
 					toolset?: string
 				})]
+				transfer_rules?: [...close({
+					child_agent?: string
+					deterministic_transfer?: [...close({
+						expression_condition?: [...close({
+							expression?: string
+						})]
+						python_code_condition?: [...close({
+							python_code?: string
+						})]
+					})]
+					direction?: string
+					disable_planner_transfer?: [...close({
+						expression_condition?: [...close({
+							expression?: string
+						})]
+					})]
+				})]
 				update_time?: string
 			})]
 			app?: [...close({
@@ -182,8 +199,12 @@ google_ces_app_version: {
 						expectation_level_metrics_thresholds?: [...close({
 							tool_invocation_parameter_correctness_threshold?: number
 						})]
+						tool_matching_settings?: [...close({
+							extra_tool_call_behavior?: string
+						})]
 						turn_level_metrics_thresholds?: [...close({
 							overall_tool_invocation_correctness_threshold?: number
+							semantic_similarity_channel?:                   string
 							semantic_similarity_success_threshold?:         number
 						})]
 					})]

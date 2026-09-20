@@ -760,6 +760,7 @@ google_dataproc_workflow_template: {
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config": close({
 		accelerators?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/accelerators", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/accelerators"]])
 		disk_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/disk_config"]])
+		instance_flexibility_policy?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/instance_flexibility_policy", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/instance_flexibility_policy"]])
 
 		// Optional. The Compute Engine image resource used for cluster instances. The
 		// URI can represent an image or image family. Image examples: *
@@ -853,9 +854,56 @@ google_dataproc_workflow_template: {
 		num_local_ssds?: number
 	})
 
+	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/instance_flexibility_policy": close({
+		instance_selection_list?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list"]])
+
+		// Output only. A map of instance names to their machine type.
+		instance_machine_types?: [string]: string
+
+		// Output only. A list of instance selection results that were successfully allocated.
+		instance_selection_results?: [...close({
+			machine_type?: string
+			vm_count?:     number
+		})]
+	})
+
+	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list": close({
+		disk_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config"]])
+
+		// Optional. Full machine-type names, e.g. "n1-standard-16".
+		machine_types?: [...string]
+
+		// Optional. Preference of this instance selection. Lower number means higher
+		// preference. Dataproc will first try to create a VM based on the machine-type
+		// with priority rank and fallback to next rank based on availability. Machine
+		// types and instance selections with the same priority have the same
+		// preference.
+		rank?: number
+	})
+
+	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config": close({
+		// Optional. Size in GB of the boot disk (default is 500GB).
+		boot_disk_size_gb?: number
+
+		// Optional. Type of the boot disk (default is "pd-standard"). Valid values:
+		// "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd"
+		// (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard
+		// Disk Drive). See [Disk
+		// types](https://cloud.google.com/compute/docs/disks#disk-types).
+		boot_disk_type?: string
+
+		// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are
+		// not attached, the boot disk is used to store runtime logs and
+		// [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If
+		// one or more SSDs are attached, this runtime bulk data is spread across them,
+		// and the boot disk contains only basic config and installed binaries.
+		num_local_ssds?: number
+	})
+
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config": close({
 		accelerators?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/accelerators", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/accelerators"]])
 		disk_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/disk_config"]])
+		instance_flexibility_policy?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/instance_flexibility_policy", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/instance_flexibility_policy"]])
 
 		// Optional. The Compute Engine image resource used for cluster instances. The
 		// URI can represent an image or image family. Image examples: *
@@ -947,6 +995,63 @@ google_dataproc_workflow_template: {
 		// one or more SSDs are attached, this runtime bulk data is spread across them,
 		// and the boot disk contains only basic config and installed binaries.
 		num_local_ssds?: number
+	})
+
+	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/instance_flexibility_policy": close({
+		instance_selection_list?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list"]])
+		provisioning_model_mix?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/instance_flexibility_policy/$defs/provisioning_model_mix", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/instance_flexibility_policy/$defs/provisioning_model_mix"]])
+
+		// Output only. A map of instance names to their machine type.
+		instance_machine_types?: [string]: string
+
+		// Output only. A list of instance selection results that were successfully allocated.
+		instance_selection_results?: [...close({
+			machine_type?: string
+			vm_count?:     number
+		})]
+	})
+
+	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list": close({
+		disk_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config"]])
+
+		// Optional. Full machine-type names, e.g. "n1-standard-16".
+		machine_types?: [...string]
+
+		// Optional. Preference of this instance selection. Lower number means higher
+		// preference. Dataproc will first try to create a VM based on the machine-type
+		// with priority rank and fallback to next rank based on availability. Machine
+		// types and instance selections with the same priority have the same
+		// preference.
+		rank?: number
+	})
+
+	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config": close({
+		// Optional. Size in GB of the boot disk (default is 500GB).
+		boot_disk_size_gb?: number
+
+		// Optional. Type of the boot disk (default is "pd-standard"). Valid values:
+		// "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd"
+		// (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard
+		// Disk Drive). See [Disk
+		// types](https://cloud.google.com/compute/docs/disks#disk-types).
+		boot_disk_type?: string
+
+		// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are
+		// not attached, the boot disk is used to store runtime logs and
+		// [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If
+		// one or more SSDs are attached, this runtime bulk data is spread across them,
+		// and the boot disk contains only basic config and installed binaries.
+		num_local_ssds?: number
+	})
+
+	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/instance_flexibility_policy/$defs/provisioning_model_mix": close({
+		// Optional. The base capacity that will always use Standard VMs to avoid risk
+		// of premature allocation.
+		standard_capacity_base?: number
+
+		// Optional. The percentage of target capacity that will use Standard VMs above
+		// standardCapacityBase.
+		standard_capacity_percent_above_base?: number
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/security_config": close({
@@ -1046,6 +1151,7 @@ google_dataproc_workflow_template: {
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config": close({
 		accelerators?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/accelerators", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/accelerators"]])
 		disk_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/disk_config"]])
+		instance_flexibility_policy?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/instance_flexibility_policy", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/instance_flexibility_policy"]])
 
 		// Optional. The Compute Engine image resource used for cluster instances. The
 		// URI can represent an image or image family. Image examples: *
@@ -1121,6 +1227,52 @@ google_dataproc_workflow_template: {
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/disk_config": close({
+		// Optional. Size in GB of the boot disk (default is 500GB).
+		boot_disk_size_gb?: number
+
+		// Optional. Type of the boot disk (default is "pd-standard"). Valid values:
+		// "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd"
+		// (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard
+		// Disk Drive). See [Disk
+		// types](https://cloud.google.com/compute/docs/disks#disk-types).
+		boot_disk_type?: string
+
+		// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are
+		// not attached, the boot disk is used to store runtime logs and
+		// [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If
+		// one or more SSDs are attached, this runtime bulk data is spread across them,
+		// and the boot disk contains only basic config and installed binaries.
+		num_local_ssds?: number
+	})
+
+	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/instance_flexibility_policy": close({
+		instance_selection_list?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list"]])
+
+		// Output only. A map of instance names to their machine type.
+		instance_machine_types?: [string]: string
+
+		// Output only. A list of instance selection results that were successfully allocated.
+		instance_selection_results?: [...close({
+			machine_type?: string
+			vm_count?:     number
+		})]
+	})
+
+	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list": close({
+		disk_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config"]])
+
+		// Optional. Full machine-type names, e.g. "n1-standard-16".
+		machine_types?: [...string]
+
+		// Optional. Preference of this instance selection. Lower number means higher
+		// preference. Dataproc will first try to create a VM based on the machine-type
+		// with priority rank and fallback to next rank based on availability. Machine
+		// types and instance selections with the same priority have the same
+		// preference.
+		rank?: number
+	})
+
+	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config": close({
 		// Optional. Size in GB of the boot disk (default is 500GB).
 		boot_disk_size_gb?: number
 

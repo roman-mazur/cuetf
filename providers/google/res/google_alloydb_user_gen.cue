@@ -40,7 +40,12 @@ google_alloydb_user: {
 		// The database role name of the user.
 		user_id!: string
 
-		// The type of this user. Possible values: ["ALLOYDB_BUILT_IN", "ALLOYDB_IAM_USER"]
+		// The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+		// the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+		// AlloyDB clusters support IAM group authentication. See
+		// https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for
+		// details. Possible values: ["ALLOYDB_BUILT_IN", "ALLOYDB_IAM_USER",
+		// "ALLOYDB_IAM_GROUP"]
 		user_type!: string
 	})
 

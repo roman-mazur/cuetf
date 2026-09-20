@@ -13,6 +13,10 @@ google_managed_kafka_cluster: {
 		timeouts?: #timeouts
 		tls_config?: matchN(1, [#tls_config, list.MaxItems(1) & [...#tls_config]])
 
+		// The bootstrap address of the Kafka cluster. Use port :9092 for SASL
+		// connection and :9192 for mTLS connection
+		bootstrap_address?: string
+
 		// The ID to use for the cluster, which will become the final component of the
 		// cluster's name. The ID must be 1-63 characters long, and match the regular
 		// expression '[a-z]([-a-z0-9]*[a-z0-9])?' to comply with RFC 1035. This value
@@ -54,10 +58,16 @@ google_managed_kafka_cluster: {
 		// 'projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID'.
 		name?: string
 
+		// Details of the public cluster feature for the Kafka cluster.
+		public_cluster_details?: [...close({
+			discovery_dns_records?: [...string]
+			external_ip_addresses?: [...string]
+		})]
+		project?: string
+
 		// The current state of the cluster. Possible values: 'STATE_UNSPECIFIED',
 		// 'CREATING', 'ACTIVE', 'DELETING'.
-		state?:   string
-		project?: string
+		state?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
@@ -118,6 +128,7 @@ google_managed_kafka_cluster: {
 
 	_#defs: "/$defs/gcp_config/$defs/access_config": close({
 		network_configs!: matchN(1, [_#defs."/$defs/gcp_config/$defs/access_config/$defs/network_configs", [_, ...] & [..._#defs."/$defs/gcp_config/$defs/access_config/$defs/network_configs"]])
+		public_cluster_config?: matchN(1, [_#defs."/$defs/gcp_config/$defs/access_config/$defs/public_cluster_config", list.MaxItems(1) & [..._#defs."/$defs/gcp_config/$defs/access_config/$defs/public_cluster_config"]])
 	})
 
 	_#defs: "/$defs/gcp_config/$defs/access_config/$defs/network_configs": close({
@@ -128,6 +139,13 @@ google_managed_kafka_cluster: {
 		// of the subnet must be in the format
 		// 'projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET'.
 		subnet!: string
+	})
+
+	_#defs: "/$defs/gcp_config/$defs/access_config/$defs/public_cluster_config": close({
+		// A list of IPv4 addresses or CIDR ranges that are allowed to connect to the
+		// cluster. To protect your cluster, allow access from only trusted external IP
+		// ranges. Don't expose your cluster to untrusted ranges.
+		allowed_source_ip_ranges!: [...string]
 	})
 
 	_#defs: "/$defs/tls_config/$defs/trust_config": close({

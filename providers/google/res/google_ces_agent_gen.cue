@@ -17,6 +17,7 @@ google_ces_agent: {
 		remote_dialogflow_agent?: matchN(1, [#remote_dialogflow_agent, list.MaxItems(1) & [...#remote_dialogflow_agent]])
 		timeouts?: #timeouts
 		toolsets?: matchN(1, [#toolsets, [...#toolsets]])
+		transfer_rules?: matchN(1, [#transfer_rules, [...#transfer_rules]])
 
 		// The ID to use for the agent, which will become the final component of
 		// the agent's resource name. If not provided, a unique ID will be
@@ -221,5 +222,42 @@ google_ces_agent: {
 		// Format:
 		// 'projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}'
 		toolset!: string
+	})
+
+	#transfer_rules: close({
+		deterministic_transfer?: matchN(1, [_#defs."/$defs/transfer_rules/$defs/deterministic_transfer", list.MaxItems(1) & [..._#defs."/$defs/transfer_rules/$defs/deterministic_transfer"]])
+		disable_planner_transfer?: matchN(1, [_#defs."/$defs/transfer_rules/$defs/disable_planner_transfer", list.MaxItems(1) & [..._#defs."/$defs/transfer_rules/$defs/disable_planner_transfer"]])
+
+		// The resource name of the child agent the rule applies to.
+		// Format: 'projects/{project}/locations/{location}/apps/{app}/agents/{agent}'
+		child_agent!: string
+
+		// The direction of the transfer. Possible values: ["PARENT_TO_CHILD", "CHILD_TO_PARENT"]
+		direction!: string
+	})
+
+	_#defs: "/$defs/transfer_rules/$defs/deterministic_transfer": close({
+		expression_condition?: matchN(1, [_#defs."/$defs/transfer_rules/$defs/deterministic_transfer/$defs/expression_condition", list.MaxItems(1) & [..._#defs."/$defs/transfer_rules/$defs/deterministic_transfer/$defs/expression_condition"]])
+		python_code_condition?: matchN(1, [_#defs."/$defs/transfer_rules/$defs/deterministic_transfer/$defs/python_code_condition", list.MaxItems(1) & [..._#defs."/$defs/transfer_rules/$defs/deterministic_transfer/$defs/python_code_condition"]])
+	})
+
+	_#defs: "/$defs/transfer_rules/$defs/deterministic_transfer/$defs/expression_condition": close({
+		// The string representation of cloud.api.Expression condition.
+		expression!: string
+	})
+
+	_#defs: "/$defs/transfer_rules/$defs/deterministic_transfer/$defs/python_code_condition": close({
+		// The python code to execute. The function must be named
+		// 'should_trigger_transfer_callback'.
+		python_code!: string
+	})
+
+	_#defs: "/$defs/transfer_rules/$defs/disable_planner_transfer": close({
+		expression_condition!: matchN(1, [_#defs."/$defs/transfer_rules/$defs/disable_planner_transfer/$defs/expression_condition", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/transfer_rules/$defs/disable_planner_transfer/$defs/expression_condition"]])
+	})
+
+	_#defs: "/$defs/transfer_rules/$defs/disable_planner_transfer/$defs/expression_condition": close({
+		// The string representation of cloud.api.Expression condition.
+		expression!: string
 	})
 }
