@@ -39,7 +39,7 @@ elasticstack_elasticsearch_ml_calendar_job: {
 			update?: string
 		})
 
-		// Internal composite identifier of the resource.
+		// Internal identifier of the resource
 		id?: string
 
 		// Anomaly detection **job identifier** or **job group name** to attach to the

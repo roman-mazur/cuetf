@@ -6,7 +6,7 @@ elasticstack_elasticsearch_ml_trained_model_alias: {
 	close({
 		elasticsearch_connection?: matchN(1, [#elasticsearch_connection, [...#elasticsearch_connection]])
 
-		// Internal identifier of the resource.
+		// Internal identifier of the resource
 		id?: string
 		timeouts?: close({
 			// A string that can be [parsed as a

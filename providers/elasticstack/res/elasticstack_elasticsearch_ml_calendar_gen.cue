@@ -42,7 +42,7 @@ elasticstack_elasticsearch_ml_calendar: {
 		// A description of the calendar.
 		description?: string
 
-		// Internal identifier of the resource.
+		// Internal identifier of the resource
 		id?: string
 	})
 

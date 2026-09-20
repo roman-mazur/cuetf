@@ -28,7 +28,7 @@ elasticstack_elasticsearch_ml_trained_model_deployment: {
 		// When `true`, passes `force=true` to the Stop Deployment API on destroy.
 		force_stop?: bool
 
-		// Internal identifier of the resource in the format `<cluster_uuid>/<deployment_id>`.
+		// Internal identifier of the resource
 		id?: string
 
 		// The unique identifier of the trained model to deploy.

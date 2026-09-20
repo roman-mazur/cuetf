@@ -30,9 +30,8 @@ elasticstack_fleet_managed_integration: {
 		// creation are a no-op until the resource is recreated.
 		create_dataset_templates?: bool
 
-		// Global data tags applied to the managed integration's data streams; updatable
-		// in-place. Keyed by tag name; set exactly one of `string_value` or
-		// `number_value` per entry.
+		// User-defined tags. Keyed by tag name; each entry must set exactly one of
+		// `string_value` or `number_value`.
 		global_data_tags?: [string]: close({
 			// Number value for the tag. If this is set, `string_value` must not be defined.
 			number_value?: number

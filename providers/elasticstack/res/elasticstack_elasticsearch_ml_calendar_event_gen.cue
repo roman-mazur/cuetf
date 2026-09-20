@@ -54,7 +54,7 @@ elasticstack_elasticsearch_ml_calendar_event: {
 		// Elasticsearch API.
 		force_time_shift?: string
 
-		// Internal composite identifier of the resource.
+		// Internal identifier of the resource
 		id?: string
 
 		// If true, model updates are not generated for buckets that fall inside the

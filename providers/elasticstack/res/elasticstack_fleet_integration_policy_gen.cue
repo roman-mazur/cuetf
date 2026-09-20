@@ -6,8 +6,18 @@ elasticstack_fleet_integration_policy: {
 	close({
 		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
 
-		// ID of the agent policy.
-		agent_policy_id?: string
+		// Data streams the integration's Elasticsearch API key may write to in addition
+		// to those the integration package declares. Set this when a custom ingest
+		// pipeline uses a `reroute` processor whose destination lies outside the
+		// package's own data streams; without it, rerouted documents are rejected with
+		// a `security_exception`. In the Kibana UI this control appears as "Add a
+		// reroute processor permission" under the policy's advanced options. Entries
+		// may be exact data stream names (`metrics-elastic_agent.my_dataset-default`)
+		// or patterns (`logs-custom-*`), and Kibana validates them against the space's
+		// allowed namespace prefixes. Requires Elastic Stack 9.1.0 or above. To revoke
+		// previously granted permissions, remove this attribute; an empty list is not
+		// accepted.
+		additional_datastreams_permissions?: [...string]
 
 		// Integration inputs mapped by input ID.
 		inputs?: [string]: close({
@@ -47,6 +57,9 @@ elasticstack_fleet_integration_policy: {
 			// Input-level variables as JSON.
 			vars?: string
 		})
+
+		// ID of the agent policy.
+		agent_policy_id?: string
 
 		// List of agent policy IDs.
 		agent_policy_ids?: [...string]
