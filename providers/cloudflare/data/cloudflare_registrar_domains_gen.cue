@@ -4,8 +4,8 @@ cloudflare_registrar_domains: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_registrar_domains")
 	close({
-		// Identifier
-		account_id?: string
+		// Identifier.
+		account_id!: string
 
 		// Max items to fetch, default: 1000
 		max_items?: number
@@ -35,19 +35,19 @@ cloudflare_registrar_domains: {
 				// Contact fax number.
 				fax?: string
 
-				// User's first name
+				// User's first name.
 				first_name?: string
 
 				// Contact Identifier.
 				id?: string
 
-				// User's last name
+				// User's last name.
 				last_name?: string
 
 				// Name of organization.
 				organization?: string
 
-				// User's telephone number
+				// User's telephone number.
 				phone?: string
 
 				// State.
@@ -57,31 +57,31 @@ cloudflare_registrar_domains: {
 				zip?: string
 			})
 
-			// Indicates if the domain can be registered as a new domain.
+			// Indicates eligibility to register the domain as a new domain.
 			can_register?: bool
 
 			// Statuses for domain transfers into Cloudflare Registrar.
 			transfer_in?: close({
-				// Form of authorization has been accepted by the registrant.
+				// Status of the registrant authorization step.
 				// Available values: "needed", "ok".
 				accept_foa?: string
 
-				// Shows transfer status with the registry.
+				// Status of the registry transfer-approval step.
 				// Available values: "needed", "ok", "pending", "trying", "rejected", "unknown".
 				approve_transfer?: string
 
 				// Indicates if cancellation is still possible.
 				can_cancel_transfer?: bool
 
-				// Privacy guards are disabled at the foreign registrar.
+				// Status of the privacy-guard disabling step at the foreign registrar.
 				// Available values: "needed", "ok", "unknown".
 				disable_privacy?: string
 
-				// Auth code has been entered and verified.
+				// Status of the auth-code entry and verification step.
 				// Available values: "needed", "ok", "pending", "trying", "rejected".
 				enter_auth_code?: string
 
-				// Domain is unlocked at the foreign registrar.
+				// Status of the domain-unlock step at the foreign registrar.
 				// Available values: "needed", "ok", "pending", "trying", "unknown".
 				unlock_domain?: string
 			})
@@ -101,12 +101,12 @@ cloudflare_registrar_domains: {
 			// Shows whether a registrar lock is in place for a domain.
 			locked?: bool
 
-			// A comma-separated list of registry status codes. A full list of status codes
-			// can be found at [EPP Status
-			// Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
+			// A comma-separated list of registry status codes. Refer to [EPP Status
+			// Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en)
+			// for the full list.
 			registry_statuses?: string
 
-			// Whether a particular TLD is currently supported by Cloudflare Registrar.
+			// Indicates whether Cloudflare Registrar currently supports a particular TLD.
 			// Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list
 			// of supported TLDs.
 			supported_tld?: bool
@@ -137,19 +137,19 @@ cloudflare_registrar_domains: {
 				// Contact fax number.
 				fax?: string
 
-				// User's first name
+				// User's first name.
 				first_name?: string
 
 				// Contact Identifier.
 				id?: string
 
-				// User's last name
+				// User's last name.
 				last_name?: string
 
 				// Name of organization.
 				organization?: string
 
-				// User's telephone number
+				// User's telephone number.
 				phone?: string
 
 				// State.
@@ -159,31 +159,31 @@ cloudflare_registrar_domains: {
 				zip?: string
 			})
 
-			// Indicates if the domain can be registered as a new domain.
+			// Indicates eligibility to register the domain as a new domain.
 			can_register?: bool
 
 			// Statuses for domain transfers into Cloudflare Registrar.
 			transfer_in?: close({
-				// Form of authorization has been accepted by the registrant.
+				// Status of the registrant authorization step.
 				// Available values: "needed", "ok".
 				accept_foa?: string
 
-				// Shows transfer status with the registry.
+				// Status of the registry transfer-approval step.
 				// Available values: "needed", "ok", "pending", "trying", "rejected", "unknown".
 				approve_transfer?: string
 
 				// Indicates if cancellation is still possible.
 				can_cancel_transfer?: bool
 
-				// Privacy guards are disabled at the foreign registrar.
+				// Status of the privacy-guard disabling step at the foreign registrar.
 				// Available values: "needed", "ok", "unknown".
 				disable_privacy?: string
 
-				// Auth code has been entered and verified.
+				// Status of the auth-code entry and verification step.
 				// Available values: "needed", "ok", "pending", "trying", "rejected".
 				enter_auth_code?: string
 
-				// Domain is unlocked at the foreign registrar.
+				// Status of the domain-unlock step at the foreign registrar.
 				// Available values: "needed", "ok", "pending", "trying", "unknown".
 				unlock_domain?: string
 			})
@@ -203,12 +203,12 @@ cloudflare_registrar_domains: {
 			// Shows whether a registrar lock is in place for a domain.
 			locked?: bool
 
-			// A comma-separated list of registry status codes. A full list of status codes
-			// can be found at [EPP Status
-			// Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
+			// A comma-separated list of registry status codes. Refer to [EPP Status
+			// Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en)
+			// for the full list.
 			registry_statuses?: string
 
-			// Whether a particular TLD is currently supported by Cloudflare Registrar.
+			// Indicates whether Cloudflare Registrar currently supports a particular TLD.
 			// Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list
 			// of supported TLDs.
 			supported_tld?: bool

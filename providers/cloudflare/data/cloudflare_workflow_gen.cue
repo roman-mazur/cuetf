@@ -12,17 +12,7 @@ cloudflare_workflow: {
 			search?: string
 		})
 		id?: string
-		instances?: close({
-			complete?:          number
-			errored?:           number
-			paused?:            number
-			queued?:            number
-			rolling_back?:      number
-			running?:           number
-			terminated?:        number
-			waiting?:           number
-			waiting_for_pause?: number
-		})
+		instances?: [string]: number
 		modified_on?: string
 		name?:        string
 		schedules?: matchN(1, [close({

@@ -7,35 +7,33 @@ cloudflare_cloud_connector_rules: {
 		// Identifier.
 		id?: string
 		rules?: matchN(1, [close({
-			description?: string
+			// Cloud Provider type
+			// Available values: "aws_s3", "cloudflare_r2", "gcp_storage", "azure_storage", "oci_storage".
+			cloud_connector_rules_provider?: string
 
 			// Parameters of Cloud Connector Rule
 			parameters?: close({
 				// Host to perform Cloud Connection to
 				host?: string
 			})
-			enabled?: bool
-
-			// Cloud Provider type
-			// Available values: "aws_s3", "cloudflare_r2", "gcp_storage", "azure_storage", "oci_storage".
-			provider?:   string
-			expression?: string
-			id?:         string
+			description?: string
+			enabled?:     bool
+			expression?:  string
+			id?:          string
 		}), [...close({
-			description?: string
+			// Cloud Provider type
+			// Available values: "aws_s3", "cloudflare_r2", "gcp_storage", "azure_storage", "oci_storage".
+			cloud_connector_rules_provider?: string
 
 			// Parameters of Cloud Connector Rule
 			parameters?: close({
 				// Host to perform Cloud Connection to
 				host?: string
 			})
-			enabled?: bool
-
-			// Cloud Provider type
-			// Available values: "aws_s3", "cloudflare_r2", "gcp_storage", "azure_storage", "oci_storage".
-			provider?:   string
-			expression?: string
-			id?:         string
+			description?: string
+			enabled?:     bool
+			expression?:  string
+			id?:          string
 		})]])
 
 		// Identifier.

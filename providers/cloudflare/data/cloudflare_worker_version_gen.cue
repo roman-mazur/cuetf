@@ -148,6 +148,11 @@ cloudflare_worker_version: {
 			// Identifier of the D1 database to bind to.
 			id?: string
 
+			// Enables Gateway identity for the binding. Requires network_id to be
+			// "cf1:network" and cannot be combined with tunnel_id.
+			// Available values: "runtime-email-alpha".
+			identity?: string
+
 			// Name of the Vectorize index to bind to.
 			index_name?: string
 
@@ -161,7 +166,7 @@ cloudflare_worker_version: {
 			// The
 			// [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
 			// of the R2 bucket.
-			// Available values: "eu", "fedramp", "fedramp-high".
+			// Available values: "eu", "fedramp", "fedramp-high", "us".
 			jurisdiction?: string
 
 			// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
@@ -331,6 +336,11 @@ cloudflare_worker_version: {
 			// Identifier of the D1 database to bind to.
 			id?: string
 
+			// Enables Gateway identity for the binding. Requires network_id to be
+			// "cf1:network" and cannot be combined with tunnel_id.
+			// Available values: "runtime-email-alpha".
+			identity?: string
+
 			// Name of the Vectorize index to bind to.
 			index_name?: string
 
@@ -344,7 +354,7 @@ cloudflare_worker_version: {
 			// The
 			// [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
 			// of the R2 bucket.
-			// Available values: "eu", "fedramp", "fedramp-high".
+			// Available values: "eu", "fedramp", "fedramp-high", "us".
 			jurisdiction?: string
 
 			// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".

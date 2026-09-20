@@ -6,6 +6,22 @@ cloudflare_zero_trust_resource_library_applications: {
 	close({
 		account_id!: string
 
+		// Return only the listed properties on each application, as a comma-separated list.
+		// Use this to keep responses small when you only need part of each application — for
+		// example populating a picker with `fields=id,name` instead of downloading every
+		// hostname and IP subnet.
+		//
+		// Omit this parameter to receive the full application object.
+		//
+		// `id` is always returned.
+		//
+		// Selectable properties: `id`, `name`, `human_id`, `version`, `hostnames`,
+		// `support_domains`, `ip_subnets`, `port_protocols`, `supported`, `gen_ai_score`,
+		// `application_confidence_score`, `created_at`, `updated_at`, `review_status`.
+		//
+		// Unknown or empty property names return `400`.
+		fields?: string
+
 		// Filter applications using key:value format. Supported filter keys:
 		// - name: Filter by application name (e.g., name:HR)
 		// - id: Filter by application ID (e.g., id:498)
@@ -19,6 +35,8 @@ cloudflare_zero_trust_resource_library_applications: {
 		// - category_name: Filter by category name (e.g., category_name:HR).
 		// - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS).
 		// Values: GATEWAY, ACCESS, CASB.
+		// - review_status: Filter by the account's Gateway review status. Values:
+		// approved, unapproved, in_review, unreviewed.
 		// .
 		filter?: string
 
@@ -31,8 +49,10 @@ cloudflare_zero_trust_resource_library_applications: {
 		// Offset of results to return.
 		offset?: number
 
-		// Order results by field name and direction (e.g., name:asc). Ignored when
-		// search is provided; results are ranked by relevance instead.
+		// Order results using field:direction format. Supported fields are name, id, human_id,
+		// category_id, application_type, application_confidence_score, and gen_ai_score.
+		// Supported directions are asc and desc. Ignored when search is provided; results are
+		// ranked by relevance instead.
 		order_by?: string
 
 		// The items returned by the data source
@@ -78,6 +98,11 @@ cloudflare_zero_trust_resource_library_applications: {
 
 			// Port and protocol pairs matched by the application.
 			port_protocols?: [...string]
+
+			// The account-specific Gateway review status. Applications with no assigned
+			// review status are returned as `unreviewed`.
+			// Available values: "approved", "unapproved", "in_review", "unreviewed".
+			review_status?: string
 
 			// Support domains matched by the application.
 			support_domains?: [...string]
@@ -132,6 +157,11 @@ cloudflare_zero_trust_resource_library_applications: {
 
 			// Port and protocol pairs matched by the application.
 			port_protocols?: [...string]
+
+			// The account-specific Gateway review status. Applications with no assigned
+			// review status are returned as `unreviewed`.
+			// Available values: "approved", "unapproved", "in_review", "unreviewed".
+			review_status?: string
 
 			// Support domains matched by the application.
 			support_domains?: [...string]

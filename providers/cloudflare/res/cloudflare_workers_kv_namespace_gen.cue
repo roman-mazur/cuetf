@@ -10,6 +10,11 @@ cloudflare_workers_kv_namespace: {
 		// Namespace identifier tag.
 		id?: string
 
+		// Specify the jurisdiction to restrict the KV namespace to durably store data
+		// within. Can only be set at namespace creation time.
+		// Available values: "eu", "fedramp", "us".
+		jurisdiction?: string
+
 		// True if keys written on the URL will be URL-decoded before storing. For
 		// example, if set to "true", a key written on the URL as "%3F" will be stored
 		// as "?".

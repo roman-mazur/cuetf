@@ -68,13 +68,14 @@ cloudflare_organizations: {
 
 				// Enable features for Organizations.
 				tenant_flags?: close({
-					account_creation?:      string
-					account_deletion?:      string
-					account_migration?:     string
-					account_mobility?:      string
-					enterprise_capability?: string
-					member_management?:     string
-					sub_org_creation?:      string
+					account_creation?:                         string
+					account_creation_applies_tenant_defaults?: string
+					account_deletion?:                         string
+					account_migration?:                        string
+					account_mobility?:                         string
+					enterprise_capability?:                    string
+					member_management?:                        string
+					sub_org_creation?:                         string
 				})
 				managed_by?: string
 			})
@@ -104,13 +105,14 @@ cloudflare_organizations: {
 
 				// Enable features for Organizations.
 				tenant_flags?: close({
-					account_creation?:      string
-					account_deletion?:      string
-					account_migration?:     string
-					account_mobility?:      string
-					enterprise_capability?: string
-					member_management?:     string
-					sub_org_creation?:      string
+					account_creation?:                         string
+					account_creation_applies_tenant_defaults?: string
+					account_deletion?:                         string
+					account_migration?:                        string
+					account_mobility?:                         string
+					enterprise_capability?:                    string
+					member_management?:                        string
+					sub_org_creation?:                         string
 				})
 				managed_by?: string
 			})

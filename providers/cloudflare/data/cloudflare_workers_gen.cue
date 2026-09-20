@@ -66,13 +66,17 @@ cloudflare_workers: {
 					persist?: bool
 
 					// Controls how inbound trace context (traceparent/tracestate) headers on
-					// incoming requests are handled. "authenticated" (default) honors inbound
-					// trace context only when accompanied by a valid trace auth token. "accept"
-					// unconditionally accepts inbound trace context. Requires the trace
-					// propagation feature to be enabled.
+					// incoming requests are handled. "authenticated" honors inbound trace context
+					// only when accompanied by a valid trace auth token. "accept" unconditionally
+					// accepts inbound trace context. Requires the trace propagation feature to be
+					// enabled. Returns null when the trace propagation feature is not enabled for
+					// the account.
 					// Available values: "authenticated", "accept".
 					propagation_policy?: string
 				})
+
+				// Whether query strings are removed from request URLs in logs and traces.
+				redact_query_string?: bool
 			})
 
 			// When the Worker's most recent deployment was created. `null` if the Worker
@@ -304,13 +308,17 @@ cloudflare_workers: {
 					persist?: bool
 
 					// Controls how inbound trace context (traceparent/tracestate) headers on
-					// incoming requests are handled. "authenticated" (default) honors inbound
-					// trace context only when accompanied by a valid trace auth token. "accept"
-					// unconditionally accepts inbound trace context. Requires the trace
-					// propagation feature to be enabled.
+					// incoming requests are handled. "authenticated" honors inbound trace context
+					// only when accompanied by a valid trace auth token. "accept" unconditionally
+					// accepts inbound trace context. Requires the trace propagation feature to be
+					// enabled. Returns null when the trace propagation feature is not enabled for
+					// the account.
 					// Available values: "authenticated", "accept".
 					propagation_policy?: string
 				})
+
+				// Whether query strings are removed from request URLs in logs and traces.
+				redact_query_string?: bool
 			})
 
 			// When the Worker's most recent deployment was created. `null` if the Worker

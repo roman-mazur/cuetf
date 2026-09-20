@@ -5,15 +5,18 @@ cloudflare_content_scanning_expression: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_content_scanning_expression")
 	close({
 		body!: matchN(1, [close({
-			// Defines the ruleset expression to use in matching content objects.
+			// Defines the custom content extraction expression used to reach content objects in the request.
 			payload!: string
 		}), [...close({
-			// Defines the ruleset expression to use in matching content objects.
+			// Defines the custom content extraction expression used to reach content objects in the request.
 			payload!: string
 		})]])
 
-		// defines the unique ID for this custom scan expression.
+		// Defines the unique ID for this Content Scanning custom expression.
 		id?: string
+
+		// Defines the custom content extraction expression used to reach content objects in the request.
+		payload?: string
 
 		// Defines an identifier.
 		zone_id!: string

@@ -432,6 +432,17 @@ cloudflare_ruleset: {
 				// Available values: "set", "add", "remove".
 				operation?: string
 
+				// Controls whether Cloudflare fetches a large asset from the origin as a series
+				// of range requests instead of one whole-body request.
+				origin_range_requests?: close({
+					// Whether to use range requests. `default` is the behaviour the zone gets without this rule.
+					// Available values: "on", "off", "default".
+					mode!: string
+				})
+
+				// Whether to enable Opportunistic Encryption.
+				opportunistic_encryption?: bool
+
 				// A set of overrides to apply to the target ruleset.
 				overrides?: close({
 					// An action to override all rules with. This option has lower precedence than
@@ -515,8 +526,8 @@ cloudflare_ruleset: {
 					sensitivity_level?: string
 				})
 
-				// Whether to enable Opportunistic Encryption.
-				opportunistic_encryption?: bool
+				// Whether Cloudflare will aim to strictly adhere to RFC 7234.
+				origin_cache_control?: bool
 
 				// Set the private cache control directive.
 				private?: close({
@@ -531,24 +542,11 @@ cloudflare_ruleset: {
 					qualifiers?: [...string]
 				})
 
-				// Whether Cloudflare will aim to strictly adhere to RFC 7234.
-				origin_cache_control?: bool
-
-				// Set the proxy-revalidate cache control directive.
-				proxy_revalidate?: close({
-					// Whether to apply the directive only to Cloudflare's cache.
-					cloudflare_only?: bool
-
-					// The operation to perform.
-					// Available values: "set", "remove".
-					operation!: string
-				})
-
 				// Whether to generate Cloudflare error pages for issues from the origin server.
 				origin_error_page_passthru?: bool
 
-				// Set the public cache control directive.
-				public?: close({
+				// Set the proxy-revalidate cache control directive.
+				proxy_revalidate?: close({
 					// Whether to apply the directive only to Cloudflare's cache.
 					cloudflare_only?: bool
 
@@ -571,6 +569,20 @@ cloudflare_ruleset: {
 				// "magic_transit_ratelimit".
 				phases?: [...string]
 
+				// Set the public cache control directive.
+				public?: close({
+					// Whether to apply the directive only to Cloudflare's cache.
+					cloudflare_only?: bool
+
+					// The operation to perform.
+					// Available values: "set", "remove".
+					operation!: string
+				})
+
+				// The Polish level to configure.
+				// Available values: "off", "lossless", "lossy", "webp".
+				polish?: string
+
 				// The raw response fields to log.
 				raw_response_fields?: matchN(1, [close({
 					// The name of the response header.
@@ -586,9 +598,9 @@ cloudflare_ruleset: {
 					preserve_duplicates?: bool
 				})]])
 
-				// The Polish level to configure.
-				// Available values: "off", "lossless", "lossy", "webp".
-				polish?: string
+				// A list of legacy security products to skip the execution of.
+				// Available values: "bic", "hot", "rateLimit", "securityLevel", "uaBlock", "waf", "zoneLockdown".
+				products?: [...string]
 
 				// The raw request fields to log.
 				request_fields?: matchN(1, [close({
@@ -599,9 +611,12 @@ cloudflare_ruleset: {
 					name!: string
 				})]])
 
-				// A list of legacy security products to skip the execution of.
-				// Available values: "bic", "hot", "rateLimit", "securityLevel", "uaBlock", "waf", "zoneLockdown".
-				products?: [...string]
+				// A timeout value between two successive read operations to use for your origin
+				// server. Historically, the timeout value between two read options from
+				// Cloudflare to an origin server is 100 seconds. If you are attempting to
+				// reduce HTTP 524 errors because of timeouts from an origin server, try
+				// increasing this timeout value.
+				read_timeout?: number
 
 				// The response to show when the block is applied.
 				response?: close({
@@ -615,12 +630,8 @@ cloudflare_ruleset: {
 					status_code!: number
 				})
 
-				// A timeout value between two successive read operations to use for your origin
-				// server. Historically, the timeout value between two read options from
-				// Cloudflare to an origin server is 100 seconds. If you are attempting to
-				// reduce HTTP 524 errors because of timeouts from an origin server, try
-				// increasing this timeout value.
-				read_timeout?: number
+				// Whether to redirect verified AI training crawlers to canonical URLs.
+				redirects_for_ai_training?: bool
 
 				// The transformed response fields to log.
 				response_fields?: matchN(1, [close({
@@ -637,8 +648,9 @@ cloudflare_ruleset: {
 					preserve_duplicates?: bool
 				})]])
 
-				// Whether to redirect verified AI training crawlers to canonical URLs.
-				redirects_for_ai_training?: bool
+				// The request body buffering mode to configure.
+				// Available values: "none", "standard", "full".
+				request_body_buffering?: string
 
 				// Set the s-maxage cache control directive.
 				s_maxage?: close({
@@ -653,9 +665,9 @@ cloudflare_ruleset: {
 					value?: number
 				})
 
-				// The request body buffering mode to configure.
-				// Available values: "none", "standard", "full".
-				request_body_buffering?: string
+				// Whether Cloudflare should respect strong ETag (entity tag) headers. If false,
+				// Cloudflare converts strong ETag headers to weak ETag headers.
+				respect_strong_etags?: bool
 
 				// When to serve stale content from cache.
 				serve_stale?: close({
@@ -664,9 +676,9 @@ cloudflare_ruleset: {
 					disable_stale_while_updating?: bool
 				})
 
-				// Whether Cloudflare should respect strong ETag (entity tag) headers. If false,
-				// Cloudflare converts strong ETag headers to weak ETag headers.
-				respect_strong_etags?: bool
+				// The response body buffering mode to configure.
+				// Available values: "none", "standard".
+				response_body_buffering?: string
 
 				// A Server Name Indication (SNI) override.
 				sni?: close({
@@ -674,28 +686,11 @@ cloudflare_ruleset: {
 					value!: string
 				})
 
-				// The response body buffering mode to configure.
-				// Available values: "none", "standard".
-				response_body_buffering?: string
-
-				// Set the stale-if-error cache control directive.
-				stale_if_error?: close({
-					// Whether to apply the directive only to Cloudflare's cache.
-					cloudflare_only?: bool
-
-					// The operation to perform.
-					// Available values: "set", "remove".
-					operation!: string
-
-					// The value for the directive in seconds.
-					value?: number
-				})
-
 				// Whether to enable Rocket Loader.
 				rocket_loader?: bool
 
-				// Set the stale-while-revalidate cache control directive.
-				stale_while_revalidate?: close({
+				// Set the stale-if-error cache control directive.
+				stale_if_error?: close({
 					// Whether to apply the directive only to Cloudflare's cache.
 					cloudflare_only?: bool
 
@@ -711,6 +706,23 @@ cloudflare_ruleset: {
 				// execution of. This option is incompatible with the ruleset option.
 				rules?: [string]: [...string]
 
+				// Set the stale-while-revalidate cache control directive.
+				stale_while_revalidate?: close({
+					// Whether to apply the directive only to Cloudflare's cache.
+					cloudflare_only?: bool
+
+					// The operation to perform.
+					// Available values: "set", "remove".
+					operation!: string
+
+					// The value for the directive in seconds.
+					value?: number
+				})
+
+				// A ruleset to skip the execution of. This option is incompatible with the rulesets option.
+				// Available values: "current".
+				ruleset?: string
+
 				// The transformed request fields to log.
 				transformed_request_fields?: matchN(1, [close({
 					// The name of the header.
@@ -720,9 +732,9 @@ cloudflare_ruleset: {
 					name!: string
 				})]])
 
-				// A ruleset to skip the execution of. This option is incompatible with the rulesets option.
-				// Available values: "current".
-				ruleset?: string
+				// A list of ruleset IDs to skip the execution of. This option is incompatible
+				// with the ruleset and phases options.
+				rulesets?: [...string]
 
 				// A URI rewrite.
 				uri?: close({
@@ -745,9 +757,9 @@ cloudflare_ruleset: {
 					})
 				})
 
-				// A list of ruleset IDs to skip the execution of. This option is incompatible
-				// with the ruleset and phases options.
-				rulesets?: [...string]
+				// The Security Level to configure.
+				// Available values: "off", "essentially_off", "low", "medium", "high", "under_attack".
+				security_level?: string
 
 				// Controls how cached responses vary based on request headers. `default` is
 				// required and applies to any Vary response header that does not have a
@@ -773,10 +785,6 @@ cloudflare_ruleset: {
 						media_types?: [...string]
 					})
 				})
-
-				// The Security Level to configure.
-				// Available values: "off", "essentially_off", "low", "medium", "high", "under_attack".
-				security_level?: string
 
 				// Whether to enable Server-Side Excludes.
 				server_side_excludes?: bool
@@ -1256,6 +1264,17 @@ cloudflare_ruleset: {
 				// Available values: "set", "add", "remove".
 				operation?: string
 
+				// Controls whether Cloudflare fetches a large asset from the origin as a series
+				// of range requests instead of one whole-body request.
+				origin_range_requests?: close({
+					// Whether to use range requests. `default` is the behaviour the zone gets without this rule.
+					// Available values: "on", "off", "default".
+					mode!: string
+				})
+
+				// Whether to enable Opportunistic Encryption.
+				opportunistic_encryption?: bool
+
 				// A set of overrides to apply to the target ruleset.
 				overrides?: close({
 					// An action to override all rules with. This option has lower precedence than
@@ -1339,8 +1358,8 @@ cloudflare_ruleset: {
 					sensitivity_level?: string
 				})
 
-				// Whether to enable Opportunistic Encryption.
-				opportunistic_encryption?: bool
+				// Whether Cloudflare will aim to strictly adhere to RFC 7234.
+				origin_cache_control?: bool
 
 				// Set the private cache control directive.
 				private?: close({
@@ -1355,24 +1374,11 @@ cloudflare_ruleset: {
 					qualifiers?: [...string]
 				})
 
-				// Whether Cloudflare will aim to strictly adhere to RFC 7234.
-				origin_cache_control?: bool
-
-				// Set the proxy-revalidate cache control directive.
-				proxy_revalidate?: close({
-					// Whether to apply the directive only to Cloudflare's cache.
-					cloudflare_only?: bool
-
-					// The operation to perform.
-					// Available values: "set", "remove".
-					operation!: string
-				})
-
 				// Whether to generate Cloudflare error pages for issues from the origin server.
 				origin_error_page_passthru?: bool
 
-				// Set the public cache control directive.
-				public?: close({
+				// Set the proxy-revalidate cache control directive.
+				proxy_revalidate?: close({
 					// Whether to apply the directive only to Cloudflare's cache.
 					cloudflare_only?: bool
 
@@ -1395,6 +1401,20 @@ cloudflare_ruleset: {
 				// "magic_transit_ratelimit".
 				phases?: [...string]
 
+				// Set the public cache control directive.
+				public?: close({
+					// Whether to apply the directive only to Cloudflare's cache.
+					cloudflare_only?: bool
+
+					// The operation to perform.
+					// Available values: "set", "remove".
+					operation!: string
+				})
+
+				// The Polish level to configure.
+				// Available values: "off", "lossless", "lossy", "webp".
+				polish?: string
+
 				// The raw response fields to log.
 				raw_response_fields?: matchN(1, [close({
 					// The name of the response header.
@@ -1410,9 +1430,9 @@ cloudflare_ruleset: {
 					preserve_duplicates?: bool
 				})]])
 
-				// The Polish level to configure.
-				// Available values: "off", "lossless", "lossy", "webp".
-				polish?: string
+				// A list of legacy security products to skip the execution of.
+				// Available values: "bic", "hot", "rateLimit", "securityLevel", "uaBlock", "waf", "zoneLockdown".
+				products?: [...string]
 
 				// The raw request fields to log.
 				request_fields?: matchN(1, [close({
@@ -1423,9 +1443,12 @@ cloudflare_ruleset: {
 					name!: string
 				})]])
 
-				// A list of legacy security products to skip the execution of.
-				// Available values: "bic", "hot", "rateLimit", "securityLevel", "uaBlock", "waf", "zoneLockdown".
-				products?: [...string]
+				// A timeout value between two successive read operations to use for your origin
+				// server. Historically, the timeout value between two read options from
+				// Cloudflare to an origin server is 100 seconds. If you are attempting to
+				// reduce HTTP 524 errors because of timeouts from an origin server, try
+				// increasing this timeout value.
+				read_timeout?: number
 
 				// The response to show when the block is applied.
 				response?: close({
@@ -1439,12 +1462,8 @@ cloudflare_ruleset: {
 					status_code!: number
 				})
 
-				// A timeout value between two successive read operations to use for your origin
-				// server. Historically, the timeout value between two read options from
-				// Cloudflare to an origin server is 100 seconds. If you are attempting to
-				// reduce HTTP 524 errors because of timeouts from an origin server, try
-				// increasing this timeout value.
-				read_timeout?: number
+				// Whether to redirect verified AI training crawlers to canonical URLs.
+				redirects_for_ai_training?: bool
 
 				// The transformed response fields to log.
 				response_fields?: matchN(1, [close({
@@ -1461,8 +1480,9 @@ cloudflare_ruleset: {
 					preserve_duplicates?: bool
 				})]])
 
-				// Whether to redirect verified AI training crawlers to canonical URLs.
-				redirects_for_ai_training?: bool
+				// The request body buffering mode to configure.
+				// Available values: "none", "standard", "full".
+				request_body_buffering?: string
 
 				// Set the s-maxage cache control directive.
 				s_maxage?: close({
@@ -1477,9 +1497,9 @@ cloudflare_ruleset: {
 					value?: number
 				})
 
-				// The request body buffering mode to configure.
-				// Available values: "none", "standard", "full".
-				request_body_buffering?: string
+				// Whether Cloudflare should respect strong ETag (entity tag) headers. If false,
+				// Cloudflare converts strong ETag headers to weak ETag headers.
+				respect_strong_etags?: bool
 
 				// When to serve stale content from cache.
 				serve_stale?: close({
@@ -1488,9 +1508,9 @@ cloudflare_ruleset: {
 					disable_stale_while_updating?: bool
 				})
 
-				// Whether Cloudflare should respect strong ETag (entity tag) headers. If false,
-				// Cloudflare converts strong ETag headers to weak ETag headers.
-				respect_strong_etags?: bool
+				// The response body buffering mode to configure.
+				// Available values: "none", "standard".
+				response_body_buffering?: string
 
 				// A Server Name Indication (SNI) override.
 				sni?: close({
@@ -1498,28 +1518,11 @@ cloudflare_ruleset: {
 					value!: string
 				})
 
-				// The response body buffering mode to configure.
-				// Available values: "none", "standard".
-				response_body_buffering?: string
-
-				// Set the stale-if-error cache control directive.
-				stale_if_error?: close({
-					// Whether to apply the directive only to Cloudflare's cache.
-					cloudflare_only?: bool
-
-					// The operation to perform.
-					// Available values: "set", "remove".
-					operation!: string
-
-					// The value for the directive in seconds.
-					value?: number
-				})
-
 				// Whether to enable Rocket Loader.
 				rocket_loader?: bool
 
-				// Set the stale-while-revalidate cache control directive.
-				stale_while_revalidate?: close({
+				// Set the stale-if-error cache control directive.
+				stale_if_error?: close({
 					// Whether to apply the directive only to Cloudflare's cache.
 					cloudflare_only?: bool
 
@@ -1535,6 +1538,23 @@ cloudflare_ruleset: {
 				// execution of. This option is incompatible with the ruleset option.
 				rules?: [string]: [...string]
 
+				// Set the stale-while-revalidate cache control directive.
+				stale_while_revalidate?: close({
+					// Whether to apply the directive only to Cloudflare's cache.
+					cloudflare_only?: bool
+
+					// The operation to perform.
+					// Available values: "set", "remove".
+					operation!: string
+
+					// The value for the directive in seconds.
+					value?: number
+				})
+
+				// A ruleset to skip the execution of. This option is incompatible with the rulesets option.
+				// Available values: "current".
+				ruleset?: string
+
 				// The transformed request fields to log.
 				transformed_request_fields?: matchN(1, [close({
 					// The name of the header.
@@ -1544,9 +1564,9 @@ cloudflare_ruleset: {
 					name!: string
 				})]])
 
-				// A ruleset to skip the execution of. This option is incompatible with the rulesets option.
-				// Available values: "current".
-				ruleset?: string
+				// A list of ruleset IDs to skip the execution of. This option is incompatible
+				// with the ruleset and phases options.
+				rulesets?: [...string]
 
 				// A URI rewrite.
 				uri?: close({
@@ -1569,9 +1589,9 @@ cloudflare_ruleset: {
 					})
 				})
 
-				// A list of ruleset IDs to skip the execution of. This option is incompatible
-				// with the ruleset and phases options.
-				rulesets?: [...string]
+				// The Security Level to configure.
+				// Available values: "off", "essentially_off", "low", "medium", "high", "under_attack".
+				security_level?: string
 
 				// Controls how cached responses vary based on request headers. `default` is
 				// required and applies to any Vary response header that does not have a
@@ -1597,10 +1617,6 @@ cloudflare_ruleset: {
 						media_types?: [...string]
 					})
 				})
-
-				// The Security Level to configure.
-				// Available values: "off", "essentially_off", "low", "medium", "high", "under_attack".
-				security_level?: string
 
 				// Whether to enable Server-Side Excludes.
 				server_side_excludes?: bool

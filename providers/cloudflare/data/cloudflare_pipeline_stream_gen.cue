@@ -17,6 +17,8 @@ cloudflare_pipeline_stream: {
 			// Specifies the public ID of the pipeline.
 			pipeline_id?: string
 		})
+
+		// Defines the data format of the events.
 		format?: close({
 			// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
 			compression?: string
@@ -32,9 +34,6 @@ cloudflare_pipeline_stream: {
 			type?:         string
 			unstructured?: bool
 		})
-
-		// Specifies the public ID of the stream.
-		id?: string
 		http?: close({
 			// Indicates that authentication is required for the HTTP endpoint.
 			authentication?: bool
@@ -47,10 +46,15 @@ cloudflare_pipeline_stream: {
 			// Indicates that the HTTP endpoint is enabled.
 			enabled?: bool
 		})
+
+		// Specifies the public ID of the stream.
+		id?:          string
 		modified_at?: string
 
 		// Indicates the name of the Stream.
 		name?: string
+
+		// Defines the schema of the events in the data stream.
 		schema?: close({
 			fields?: matchN(1, [close({
 				metadata_key?: string
@@ -78,21 +82,6 @@ cloudflare_pipeline_stream: {
 				sql_name?: string
 			})]])
 			inferred?: bool
-			format?: close({
-				// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-				compression?: string
-
-				// Available values: "number", "string", "bytes".
-				decimal_encoding?: string
-				row_group_bytes?:  number
-
-				// Available values: "rfc3339", "unix_millis".
-				timestamp_format?: string
-
-				// Available values: "json", "parquet".
-				type?:         string
-				unstructured?: bool
-			})
 		})
 
 		// Specifies the public ID of the stream.

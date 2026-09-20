@@ -6,6 +6,12 @@ cloudflare_workflow: {
 	close({
 		account_id!: string
 		class_name!: string
+		concurrency?: close({
+			// Maximum number of instances of this workflow that can run concurrently.
+			// Additional instances are queued and started as running instances complete.
+			// Must not exceed the account concurrency limit.
+			limit?: number
+		})
 		created_on?: string
 
 		// Default retention applied to instances of this version when they do not set their own retention.
@@ -17,17 +23,7 @@ cloudflare_workflow: {
 			success_retention?: _
 		})
 		id?: string
-		instances?: close({
-			complete?:          number
-			errored?:           number
-			paused?:            number
-			queued?:            number
-			rolling_back?:      number
-			running?:           number
-			terminated?:        number
-			waiting?:           number
-			waiting_for_pause?: number
-		})
+		instances?: [string]: number
 		is_deleted?: number
 		limits?: close({
 			steps?: number

@@ -47,6 +47,11 @@ cloudflare_oauth_clients: {
 			// URL of the client's logo.
 			logo_uri?: string
 
+			// Scopes that the authorizing user may decline during consent. Each value must
+			// also appear in `scopes`. The scopes `openid`, `offline`, and
+			// `offline_access` cannot be optional.
+			optional_scopes?: [...string]
+
 			// URL that points to a privacy policy document.
 			policy_uri?: string
 
@@ -117,6 +122,11 @@ cloudflare_oauth_clients: {
 
 			// URL of the client's logo.
 			logo_uri?: string
+
+			// Scopes that the authorizing user may decline during consent. Each value must
+			// also appear in `scopes`. The scopes `openid`, `offline`, and
+			// `offline_access` cannot be optional.
+			optional_scopes?: [...string]
 
 			// URL that points to a privacy policy document.
 			policy_uri?: string

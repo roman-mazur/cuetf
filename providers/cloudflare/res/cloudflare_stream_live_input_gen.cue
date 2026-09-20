@@ -37,6 +37,16 @@ cloudflare_stream_live_input: {
 		// The date and time the live input was last modified.
 		modified?: string
 
+		// Details for playing a live input's broadcast using the HLS or DASH manifests.
+		// URLs reference the live input ID.
+		playback?: close({
+			// The DASH manifest URL used to play live video, referencing the live input ID.
+			dash?: string
+
+			// The HLS manifest URL used to play live video, referencing the live input ID.
+			hls?: string
+		})
+
 		// When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS),
 		// reducing glass-to-glass latency for viewers at the cost of reduced player
 		// compatibility.

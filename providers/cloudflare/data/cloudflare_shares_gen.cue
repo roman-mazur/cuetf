@@ -60,7 +60,7 @@ cloudflare_shares: {
 				// Resource Type.
 				// Available values: "custom-ruleset", "gateway-policy",
 				// "gateway-destination-ip", "gateway-block-page-settings",
-				// "gateway-extended-email-matching", "idp-federation-grant".
+				// "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 				resource_type?: string
 
 				// Resource Version.
@@ -91,7 +91,7 @@ cloudflare_shares: {
 				// Resource Type.
 				// Available values: "custom-ruleset", "gateway-policy",
 				// "gateway-destination-ip", "gateway-block-page-settings",
-				// "gateway-extended-email-matching", "idp-federation-grant".
+				// "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 				resource_type?: string
 
 				// Resource Version.
@@ -172,7 +172,7 @@ cloudflare_shares: {
 				// Resource Type.
 				// Available values: "custom-ruleset", "gateway-policy",
 				// "gateway-destination-ip", "gateway-block-page-settings",
-				// "gateway-extended-email-matching", "idp-federation-grant".
+				// "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 				resource_type?: string
 
 				// Resource Version.
@@ -203,7 +203,7 @@ cloudflare_shares: {
 				// Resource Type.
 				// Available values: "custom-ruleset", "gateway-policy",
 				// "gateway-destination-ip", "gateway-block-page-settings",
-				// "gateway-extended-email-matching", "idp-federation-grant".
+				// "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 				resource_type?: string
 
 				// Resource Version.
