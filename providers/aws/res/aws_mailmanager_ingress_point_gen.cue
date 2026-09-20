@@ -21,6 +21,7 @@ aws_mailmanager_ingress_point: {
 		name!:                   string
 		rule_set_id!:            string
 		status?:                 string
+		status_to_update?:       string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		tls_policy?:        string

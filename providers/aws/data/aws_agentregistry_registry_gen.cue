@@ -27,9 +27,41 @@ aws_agentregistry_registry: {
 						inbound_token_claim_value_type?: string
 					})]
 					discovery_url?: string
+					private_endpoint?: [...close({
+						managed_vpc_resource?: [...close({
+							endpoint_ip_address_type?: string
+							routing_domain?:           string
+							security_group_ids?: [...string]
+							subnet_ids?: [...string]
+							tags?: [string]: string
+							vpc_identifier?: string
+						})]
+						self_managed_lattice_resource?: [...close({
+							resource_configuration_identifier?: string
+						})]
+					})]
+					private_endpoint_override?: [...close({
+						domain?: string
+						private_endpoint?: [...close({
+							managed_vpc_resource?: [...close({
+								endpoint_ip_address_type?: string
+								routing_domain?:           string
+								security_group_ids?: [...string]
+								subnet_ids?: [...string]
+								tags?: [string]: string
+								vpc_identifier?: string
+							})]
+							self_managed_lattice_resource?: [...close({
+								resource_configuration_identifier?: string
+							})]
+						})]
+					})]
 				})]
 			})]
 			authorizer_type?: string
+		})]
+		encryption_configuration?: [...close({
+			kms_key_arn?: string
 		})]
 		name?: string
 
