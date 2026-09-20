@@ -14,7 +14,8 @@ aws_dx_bgp_peer: {
 		region?:               string
 		amazon_address?:       string
 		aws_device?:           string
-		bgp_asn!:              number
+		bgp_asn?:              number
+		bgp_asn_long?:         string
 		bgp_auth_key?:         string
 		bgp_peer_id?:          string
 		bgp_status?:           string
