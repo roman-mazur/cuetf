@@ -12,18 +12,6 @@ cloudflare_workflows: {
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			class_name?: string
-			instances?: close({
-				complete?:          number
-				errored?:           number
-				paused?:            number
-				queued?:            number
-				rolling_back?:      number
-				running?:           number
-				terminated?:        number
-				waiting?:           number
-				waiting_for_pause?: number
-			})
-			created_on?: string
 			schedules?: matchN(1, [close({
 				cron?:          string
 				next_instance?: string
@@ -31,25 +19,15 @@ cloudflare_workflows: {
 				cron?:          string
 				next_instance?: string
 			})]])
-			id?:           string
+			created_on?: string
+			id?:         string
+			instances?: [string]: number
 			modified_on?:  string
 			name?:         string
 			script_name?:  string
 			triggered_on?: string
 		}), [...close({
 			class_name?: string
-			instances?: close({
-				complete?:          number
-				errored?:           number
-				paused?:            number
-				queued?:            number
-				rolling_back?:      number
-				running?:           number
-				terminated?:        number
-				waiting?:           number
-				waiting_for_pause?: number
-			})
-			created_on?: string
 			schedules?: matchN(1, [close({
 				cron?:          string
 				next_instance?: string
@@ -57,7 +35,9 @@ cloudflare_workflows: {
 				cron?:          string
 				next_instance?: string
 			})]])
-			id?:           string
+			created_on?: string
+			id?:         string
+			instances?: [string]: number
 			modified_on?:  string
 			name?:         string
 			script_name?:  string

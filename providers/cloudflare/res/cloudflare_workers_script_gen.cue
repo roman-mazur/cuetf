@@ -476,6 +476,24 @@ cloudflare_workers_script: {
 			type!: string
 		})
 
+		// Additional modules and data files to include in the multipart Worker upload.
+		// Map keys are multipart part names referenced by binding `part` values and
+		// module imports.
+		files?: [string]: close({
+			// Base64-encoded file content.
+			content_base64?: string
+
+			// Path to the file content.
+			content_file?: string
+
+			// SHA-256 hash of the file content, used to detect changes and remote drift.
+			content_sha256?: string
+
+			// Content type of the file, such as `application/wasm`, `text/plain`, or
+			// `application/octet-stream`.
+			content_type!: string
+		})
+
 		// The names of handlers exported as part of the default export.
 		handlers?: [...string]
 

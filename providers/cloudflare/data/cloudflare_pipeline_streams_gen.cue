@@ -22,6 +22,8 @@ cloudflare_pipeline_streams: {
 
 			// Indicates the endpoint URL of this stream.
 			endpoint?: string
+
+			// Defines the data format of the events.
 			format?: close({
 				// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
 				compression?: string
@@ -37,9 +39,6 @@ cloudflare_pipeline_streams: {
 				type?:         string
 				unstructured?: bool
 			})
-
-			// Indicates a unique identifier for this stream.
-			id?: string
 			http?: close({
 				// Indicates that authentication is required for the HTTP endpoint.
 				authentication?: bool
@@ -53,8 +52,10 @@ cloudflare_pipeline_streams: {
 				enabled?: bool
 			})
 
-			// Indicates the name of the Stream.
-			name?: string
+			// Indicates a unique identifier for this stream.
+			id?: string
+
+			// Defines the schema of the events in the data stream.
 			schema?: close({
 				fields?: matchN(1, [close({
 					metadata_key?: string
@@ -82,35 +83,25 @@ cloudflare_pipeline_streams: {
 					sql_name?: string
 				})]])
 				inferred?: bool
-				format?: close({
-					// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-					compression?: string
-
-					// Available values: "number", "string", "bytes".
-					decimal_encoding?: string
-					row_group_bytes?:  number
-
-					// Available values: "rfc3339", "unix_millis".
-					timestamp_format?: string
-
-					// Available values: "json", "parquet".
-					type?:         string
-					unstructured?: bool
-				})
 			})
 			modified_at?: string
 
-			// Indicates the current version of this stream.
-			version?: number
+			// Indicates the name of the Stream.
+			name?: string
 			worker_binding?: close({
 				// Indicates that the worker binding is enabled.
 				enabled?: bool
 			})
+
+			// Indicates the current version of this stream.
+			version?: number
 		}), [...close({
 			created_at?: string
 
 			// Indicates the endpoint URL of this stream.
 			endpoint?: string
+
+			// Defines the data format of the events.
 			format?: close({
 				// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
 				compression?: string
@@ -126,9 +117,6 @@ cloudflare_pipeline_streams: {
 				type?:         string
 				unstructured?: bool
 			})
-
-			// Indicates a unique identifier for this stream.
-			id?: string
 			http?: close({
 				// Indicates that authentication is required for the HTTP endpoint.
 				authentication?: bool
@@ -142,8 +130,10 @@ cloudflare_pipeline_streams: {
 				enabled?: bool
 			})
 
-			// Indicates the name of the Stream.
-			name?: string
+			// Indicates a unique identifier for this stream.
+			id?: string
+
+			// Defines the schema of the events in the data stream.
 			schema?: close({
 				fields?: matchN(1, [close({
 					metadata_key?: string
@@ -171,30 +161,18 @@ cloudflare_pipeline_streams: {
 					sql_name?: string
 				})]])
 				inferred?: bool
-				format?: close({
-					// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-					compression?: string
-
-					// Available values: "number", "string", "bytes".
-					decimal_encoding?: string
-					row_group_bytes?:  number
-
-					// Available values: "rfc3339", "unix_millis".
-					timestamp_format?: string
-
-					// Available values: "json", "parquet".
-					type?:         string
-					unstructured?: bool
-				})
 			})
 			modified_at?: string
 
-			// Indicates the current version of this stream.
-			version?: number
+			// Indicates the name of the Stream.
+			name?: string
 			worker_binding?: close({
 				// Indicates that the worker binding is enabled.
 				enabled?: bool
 			})
+
+			// Indicates the current version of this stream.
+			version?: number
 		})]])
 	})
 }

@@ -46,6 +46,9 @@ cloudflare_zero_trust_access_group: {
 				common_name!: string
 			})
 			device_posture?: close({
+				// The ID of the account that owns the device posture integration.
+				account_id?: string
+
 				// The ID of a device posture integration.
 				integration_uid!: string
 			})
@@ -182,6 +185,9 @@ cloudflare_zero_trust_access_group: {
 				common_name!: string
 			})
 			device_posture?: close({
+				// The ID of the account that owns the device posture integration.
+				account_id?: string
+
 				// The ID of a device posture integration.
 				integration_uid!: string
 			})
@@ -324,6 +330,9 @@ cloudflare_zero_trust_access_group: {
 				common_name!: string
 			})
 			device_posture?: close({
+				// The ID of the account that owns the device posture integration.
+				account_id?: string
+
 				// The ID of a device posture integration.
 				integration_uid!: string
 			})
@@ -460,6 +469,9 @@ cloudflare_zero_trust_access_group: {
 				common_name!: string
 			})
 			device_posture?: close({
+				// The ID of the account that owns the device posture integration.
+				account_id?: string
+
 				// The ID of a device posture integration.
 				integration_uid!: string
 			})
@@ -606,6 +618,9 @@ cloudflare_zero_trust_access_group: {
 				common_name!: string
 			})
 			device_posture?: close({
+				// The ID of the account that owns the device posture integration.
+				account_id?: string
+
 				// The ID of a device posture integration.
 				integration_uid!: string
 			})
@@ -742,6 +757,9 @@ cloudflare_zero_trust_access_group: {
 				common_name!: string
 			})
 			device_posture?: close({
+				// The ID of the account that owns the device posture integration.
+				account_id?: string
+
 				// The ID of a device posture integration.
 				integration_uid!: string
 			})

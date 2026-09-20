@@ -4,8 +4,7 @@ cloudflare_magic_transit_connectors: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_magic_transit_connectors")
 	close({
-		// Account identifier
-		account_id?: string
+		account_id!: string
 
 		// Filter connectors by device type.
 		// Available values: "MANAGED", "LICENSED".
@@ -38,6 +37,8 @@ cloudflare_magic_transit_connectors: {
 			last_updated?:                    string
 			license_key?:                     string
 			notes?:                           string
+			primary?:                         bool
+			site_id?:                         string
 			timezone?:                        string
 		}), [...close({
 			activated?: bool
@@ -62,6 +63,8 @@ cloudflare_magic_transit_connectors: {
 			last_updated?:                    string
 			license_key?:                     string
 			notes?:                           string
+			primary?:                         bool
+			site_id?:                         string
 			timezone?:                        string
 		})]])
 	})

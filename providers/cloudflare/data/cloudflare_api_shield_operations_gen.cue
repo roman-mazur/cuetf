@@ -101,15 +101,9 @@ cloudflare_api_shield_operations: {
 						// UUID.
 						id?: string
 
-						// True if schema is Cloudflare-provided.
-						is_learned?: bool
-
 						// Schema file name.
 						name?: string
 					})
-
-					// Deprecated. Always false.
-					learned_available?: bool
 
 					// Action taken on requests failing validation.
 					// Available values: "none", "log", "block".
@@ -226,15 +220,9 @@ cloudflare_api_shield_operations: {
 						// UUID.
 						id?: string
 
-						// True if schema is Cloudflare-provided.
-						is_learned?: bool
-
 						// Schema file name.
 						name?: string
 					})
-
-					// Deprecated. Always false.
-					learned_available?: bool
 
 					// Action taken on requests failing validation.
 					// Available values: "none", "log", "block".

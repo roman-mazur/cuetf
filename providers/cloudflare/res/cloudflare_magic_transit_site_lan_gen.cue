@@ -108,9 +108,6 @@ cloudflare_magic_transit_site_lan: {
 
 				// A valid IPv4 address.
 				dhcp_pool_start?: string
-
-				// A valid IPv4 address.
-				dns_server?: string
 				dns_servers?: [...string]
 
 				// Mapping of MAC addresses to IP addresses

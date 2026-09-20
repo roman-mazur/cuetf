@@ -19,6 +19,11 @@ cloudflare_workers_kv_namespace: {
 		// Namespace identifier tag.
 		id?: string
 
+		// Specify the jurisdiction to restrict the KV namespace to durably store data
+		// within. Can only be set at namespace creation time.
+		// Available values: "eu", "fedramp", "us".
+		jurisdiction?: string
+
 		// Namespace identifier tag.
 		namespace_id?: string
 

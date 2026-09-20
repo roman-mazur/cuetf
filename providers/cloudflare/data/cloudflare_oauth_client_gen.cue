@@ -45,6 +45,11 @@ cloudflare_oauth_client: {
 		// The unique identifier for an OAuth client.
 		oauth_client_id!: string
 
+		// Scopes that the authorizing user may decline during consent. Each value must
+		// also appear in `scopes`. The scopes `openid`, `offline`, and
+		// `offline_access` cannot be optional.
+		optional_scopes?: [...string]
+
 		// URL that points to a privacy policy document.
 		policy_uri?: string
 

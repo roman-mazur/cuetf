@@ -67,8 +67,11 @@ cloudflare_pipeline_sink: {
 
 		// Specifies the publid ID of the sink.
 		id?: string
+
+		// Defines the output data format of a sink.
 		format?: close({
-			// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+			// Specifies the compression applied to JSON sink output.
+			// Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
 			compression?: string
 
 			// Available values: "number", "string", "bytes".
@@ -86,6 +89,8 @@ cloudflare_pipeline_sink: {
 
 		// Defines the name of the Sink.
 		name?: string
+
+		// Defines the schema of the events in the data stream.
 		schema?: close({
 			fields?: matchN(1, [close({
 				metadata_key?: string
@@ -113,21 +118,6 @@ cloudflare_pipeline_sink: {
 				sql_name?: string
 			})]])
 			inferred?: bool
-			format?: close({
-				// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-				compression?: string
-
-				// Available values: "number", "string", "bytes".
-				decimal_encoding?: string
-				row_group_bytes?:  number
-
-				// Available values: "rfc3339", "unix_millis".
-				timestamp_format?: string
-
-				// Available values: "json", "parquet".
-				type?:         string
-				unstructured?: bool
-			})
 		})
 
 		// Specifies the publid ID of the sink.

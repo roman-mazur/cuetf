@@ -86,11 +86,20 @@ cloudflare_zero_trust_access_identity_providers: {
 				// Note: Requires `saml_certificate_set_id` to be set when `true`.
 				enable_encryption?: bool
 
+				// Asks the IdP to reauthenticate the user for each SAML authentication request.
+				force_authn?: bool
+
 				// X509 certificate to verify the signature in the SAML authentication response
 				idp_public_certs?: [...string]
 
 				// IdP Entity ID or Issuer URL
 				issuer_url?: string
+
+				// The maximum URL length the IdP accepts for the SSO redirect URL.
+				// When the constructed SSO URL would exceed this length, the RelayState
+				// is stored server-side and a short nonce is passed to the IdP instead.
+				// Set this if your IdP enforces a URL length limit.
+				max_sso_url_length?: number
 
 				// Your okta account url
 				okta_account?: string
@@ -304,11 +313,20 @@ cloudflare_zero_trust_access_identity_providers: {
 				// Note: Requires `saml_certificate_set_id` to be set when `true`.
 				enable_encryption?: bool
 
+				// Asks the IdP to reauthenticate the user for each SAML authentication request.
+				force_authn?: bool
+
 				// X509 certificate to verify the signature in the SAML authentication response
 				idp_public_certs?: [...string]
 
 				// IdP Entity ID or Issuer URL
 				issuer_url?: string
+
+				// The maximum URL length the IdP accepts for the SSO redirect URL.
+				// When the constructed SSO URL would exceed this length, the RelayState
+				// is stored server-side and a short nonce is passed to the IdP instead.
+				// Set this if your IdP enforces a URL length limit.
+				max_sso_url_length?: number
 
 				// Your okta account url
 				okta_account?: string
