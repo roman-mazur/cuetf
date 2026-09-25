@@ -50,6 +50,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -129,6 +130,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -208,6 +210,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -287,6 +290,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -365,6 +369,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -444,6 +449,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -524,6 +530,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.3
             PeakBandwidthInGbps:              1.2
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    6
         Ipv6AddressesPerInterface:    0
@@ -612,6 +619,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    0
@@ -703,6 +711,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -794,6 +803,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -877,6 +887,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -960,6 +971,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.5
             PeakBandwidthInGbps:              1.2
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -1051,6 +1063,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.7
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -1132,6 +1145,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -1213,6 +1227,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -1294,6 +1309,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -1375,6 +1391,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.625
             PeakBandwidthInGbps:              1.2
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -1456,6 +1473,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              2.8
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -1537,6 +1555,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -1621,6 +1640,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -1705,6 +1725,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -1789,6 +1810,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -1873,6 +1895,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -1957,6 +1980,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -2041,6 +2065,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -2122,6 +2147,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -2203,6 +2229,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -2287,6 +2314,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -2371,6 +2399,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          20.0
             PeakBandwidthInGbps:              20.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -2455,6 +2484,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          20.0
             PeakBandwidthInGbps:              20.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -2539,6 +2569,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -2623,6 +2654,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -2707,6 +2739,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -2791,6 +2824,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -2875,6 +2909,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -2969,6 +3004,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -3063,6 +3099,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          20.0
             PeakBandwidthInGbps:              20.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -3157,6 +3194,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          20.0
             PeakBandwidthInGbps:              20.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -3251,6 +3289,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -3345,6 +3384,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -3439,6 +3479,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -3533,6 +3574,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -3627,6 +3669,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -3721,6 +3764,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -3815,6 +3859,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -3909,6 +3954,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -4003,6 +4049,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -4097,6 +4144,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -4191,6 +4239,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -4285,6 +4334,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -4376,6 +4426,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -4467,6 +4518,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -4551,6 +4603,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -4638,6 +4691,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -4722,6 +4776,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          15.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -4806,6 +4861,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 30
         Ipv6AddressesPerInterface: 30
@@ -4893,6 +4949,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -4974,6 +5031,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -5058,6 +5116,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -5143,6 +5202,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          18.75
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -5228,6 +5288,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -5312,6 +5373,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          37.5
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -5397,6 +5459,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.125
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -5481,6 +5544,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -5565,6 +5629,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -5653,6 +5718,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          6.25
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -5738,6 +5804,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.5
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -5823,6 +5890,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.781
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -5904,6 +5972,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -5989,6 +6058,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.562
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -6073,6 +6143,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          20.0
             PeakBandwidthInGbps:              20.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -6157,6 +6228,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -6241,6 +6313,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -6325,6 +6398,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -6409,6 +6483,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -6493,6 +6568,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -6575,6 +6651,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -6656,6 +6733,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -6737,6 +6815,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -6831,6 +6910,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          20.0
             PeakBandwidthInGbps:              20.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -6925,6 +7005,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -7019,6 +7100,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -7113,6 +7195,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -7207,6 +7290,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -7301,6 +7385,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -7393,6 +7478,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -7484,6 +7570,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -7575,6 +7662,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -7659,6 +7747,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          75.0
             PeakBandwidthInGbps:              75.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -7743,6 +7832,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -7830,6 +7920,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.5
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -7914,6 +8005,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -7998,6 +8090,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -8082,6 +8175,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -8166,6 +8260,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.6
             PeakBandwidthInGbps:              16.0
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -8250,6 +8345,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          6.3
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -8337,6 +8433,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -8424,6 +8521,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                120
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -8511,6 +8609,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                120
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -8598,6 +8697,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -8685,6 +8785,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                120
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -8775,6 +8876,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -8862,6 +8964,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -8949,6 +9052,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -9031,6 +9135,7 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 8
             MaximumEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -9118,6 +9223,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -9215,6 +9321,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -9312,6 +9419,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                120
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -9409,6 +9517,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                120
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -9506,6 +9615,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -9603,6 +9713,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                120
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -9703,6 +9814,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -9800,6 +9912,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -9897,6 +10010,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -9989,6 +10103,7 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 8
             MaximumEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -10086,6 +10201,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -10173,6 +10289,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -10261,6 +10378,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                240
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -10349,6 +10467,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                480
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -10437,6 +10556,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -10525,6 +10645,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                256
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                    1
             NetworkPerformance:                  "Up to 170 Gigabit"
@@ -10535,6 +10656,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                256
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -10626,6 +10748,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -10714,6 +10837,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -10802,6 +10926,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -10884,6 +11009,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          200.0
             PeakBandwidthInGbps:              200.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                 1
             NetworkPerformance:               "Up to 170 Gigabit"
@@ -10891,6 +11017,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          200.0
             PeakBandwidthInGbps:              200.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -10979,6 +11106,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -11064,6 +11192,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          18.75
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -11149,6 +11278,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -11234,6 +11364,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          37.5
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -11319,6 +11450,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.125
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -11404,6 +11536,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -11489,6 +11622,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -11577,6 +11711,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          6.25
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -11662,6 +11797,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.5
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -11747,6 +11883,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.781
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -11830,6 +11967,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.39
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -11912,6 +12050,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -11997,6 +12136,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.562
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -12082,6 +12222,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          22.5
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -12167,6 +12308,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          30.0
             PeakBandwidthInGbps:              30.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -12255,6 +12397,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.75
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -12340,6 +12483,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          7.5
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -12425,6 +12569,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          15.0
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -12510,6 +12655,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.937
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -12593,6 +12739,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.52
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -12675,6 +12822,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          30.0
             PeakBandwidthInGbps:              30.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -12760,6 +12908,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.876
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -12855,6 +13004,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          22.5
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -12950,6 +13100,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          30.0
             PeakBandwidthInGbps:              30.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -13048,6 +13199,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.75
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -13143,6 +13295,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          7.5
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -13238,6 +13391,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          15.0
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -13333,6 +13487,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.937
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -13426,6 +13581,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.52
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -13518,6 +13674,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          30.0
             PeakBandwidthInGbps:              30.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -13613,6 +13770,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.876
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -13699,6 +13857,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          9.375
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -13785,6 +13944,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.5
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -13871,6 +14031,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.562
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -13957,6 +14118,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.125
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -14043,6 +14205,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          6.25
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -14129,6 +14292,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.39
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -14215,6 +14379,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.781
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -14301,6 +14466,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          18.75
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -14387,6 +14553,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -14473,6 +14640,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          37.5
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -14559,6 +14727,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.125
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -14645,6 +14814,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -14734,6 +14904,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          6.25
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -14820,6 +14991,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.5
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -14906,6 +15078,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.781
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -14988,6 +15161,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          37.5
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -15067,6 +15241,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -15153,6 +15328,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.562
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -15238,6 +15414,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          22.5
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -15324,6 +15501,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          30.0
             PeakBandwidthInGbps:              30.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -15410,6 +15588,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          40.0
             PeakBandwidthInGbps:              40.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -15499,6 +15678,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.75
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -15585,6 +15765,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -15674,6 +15855,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          7.5
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -15760,6 +15942,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          15.0
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -15846,6 +16029,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.937
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -15930,6 +16114,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.52
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -16013,6 +16198,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          40.0
             PeakBandwidthInGbps:              40.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -16096,6 +16282,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -16182,6 +16369,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.875
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -16278,6 +16466,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          22.5
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -16374,6 +16563,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          30.0
             PeakBandwidthInGbps:              30.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -16470,6 +16660,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          40.0
             PeakBandwidthInGbps:              40.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -16569,6 +16760,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.75
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -16665,6 +16857,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -16764,6 +16957,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          7.5
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -16860,6 +17054,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          15.0
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -16956,6 +17151,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.937
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -17050,6 +17246,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.52
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -17143,6 +17340,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          40.0
             PeakBandwidthInGbps:              40.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -17236,6 +17434,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -17332,6 +17531,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.875
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -17421,6 +17621,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                192
             MaximumEnaQueueCountPerInterface:    64
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -17509,6 +17710,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                256
             MaximumEnaQueueCountPerInterface:    64
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -17600,6 +17802,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                384
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -17691,6 +17894,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -17797,6 +18001,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                384
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                    1
             NetworkPerformance:                  "300 Gigabit"
@@ -17807,6 +18012,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                384
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -17898,6 +18104,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -17986,6 +18193,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -18074,6 +18282,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -18160,6 +18369,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    1
             MaximumEnaQueueCount:                2
             MaximumEnaQueueCountPerInterface:    1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -18248,6 +18458,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -18337,6 +18548,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                96
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -18427,6 +18639,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -18517,6 +18730,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -18607,6 +18821,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -18697,6 +18912,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -18787,6 +19003,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    1
             MaximumEnaQueueCount:                3
             MaximumEnaQueueCountPerInterface:    1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    20
         Ipv6AddressesPerInterface:    20
@@ -18877,6 +19094,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                8
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -18967,6 +19185,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                192
             MaximumEnaQueueCountPerInterface:    64
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -19057,6 +19276,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                256
             MaximumEnaQueueCountPerInterface:    64
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -19147,6 +19367,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                384
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -19237,6 +19458,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -19327,6 +19549,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                512
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -19417,6 +19640,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                768
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -19510,6 +19734,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -19600,6 +19825,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -19690,6 +19916,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                1536
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -19783,6 +20010,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    20
         Ipv6AddressesPerInterface:    20
@@ -19869,6 +20097,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                768
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -19955,6 +20184,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                1536
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -20045,6 +20275,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -20134,6 +20365,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                192
             MaximumEnaQueueCountPerInterface:    64
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -20222,6 +20454,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                256
             MaximumEnaQueueCountPerInterface:    64
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -20310,6 +20543,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                256
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -20398,6 +20632,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -20486,6 +20721,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                512
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -20574,6 +20810,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                768
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -20665,6 +20902,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -20753,6 +20991,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -20859,6 +21098,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                768
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                    1
             NetworkPerformance:                  "300 Gigabit"
@@ -20869,6 +21109,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                768
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -20960,6 +21201,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                8
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    20
         Ipv6AddressesPerInterface:    20
@@ -21048,6 +21290,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -21143,6 +21386,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -21234,6 +21478,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -21325,6 +21570,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -21416,6 +21662,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              2.8
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -21507,6 +21754,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          6.0
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    5
         Ipv6AddressesPerInterface:    5
@@ -21601,6 +21849,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.5
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -21695,6 +21944,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    20
         Ipv6AddressesPerInterface:    20
@@ -21789,6 +22039,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.0
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    3
         Ipv6AddressesPerInterface:    3
@@ -21883,6 +22134,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          75.0
             PeakBandwidthInGbps:              75.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -21977,6 +22229,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.5
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    5
         Ipv6AddressesPerInterface:    5
@@ -22071,6 +22324,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -22165,6 +22419,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          40.0
             PeakBandwidthInGbps:              40.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -22259,6 +22514,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    20
         Ipv6AddressesPerInterface:    20
@@ -22353,6 +22609,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          6.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    3
         Ipv6AddressesPerInterface:    3
@@ -22447,6 +22704,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 30
         Ipv6AddressesPerInterface: 30
@@ -22558,6 +22816,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 15
         Ipv6AddressesPerInterface: 15
@@ -22584,7 +22843,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -22669,6 +22928,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -22692,7 +22952,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["graphics", "ml-ai"]
+            Workloads: ["ml-ai", "graphics"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -22777,6 +23037,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          20.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -22885,6 +23146,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 15
         Ipv6AddressesPerInterface: 15
@@ -22993,6 +23255,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -23101,6 +23364,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -23124,7 +23388,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -23199,6 +23463,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -23294,6 +23559,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -23389,6 +23655,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -23484,6 +23751,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -23507,7 +23775,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -23576,6 +23844,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -23671,6 +23940,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -23764,6 +24034,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -23861,6 +24132,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -23952,6 +24224,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -24035,6 +24308,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -24126,6 +24400,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.7
             PeakBandwidthInGbps:              2.8
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -24217,6 +24492,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -24308,6 +24584,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -24399,6 +24676,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -24490,6 +24768,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -24581,6 +24860,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -24672,6 +24952,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -24763,6 +25044,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 30
         Ipv6AddressesPerInterface: 30
@@ -24860,6 +25142,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -24957,6 +25240,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          8.4
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -25051,6 +25335,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.5
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -25145,6 +25430,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -25239,6 +25525,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.1
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -25330,6 +25617,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -25424,6 +25712,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          4.2
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -25518,6 +25807,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          37.5
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -25613,6 +25903,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          4.687
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -25705,6 +25996,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          9.375
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -25797,6 +26089,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          18.75
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -25889,6 +26182,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.781
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -25981,6 +26275,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.875
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -26073,6 +26368,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          28.125
             PeakBandwidthInGbps:              28.125
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -26167,6 +26463,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          37.5
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -26261,6 +26558,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          56.25
             PeakBandwidthInGbps:              56.25
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -26355,6 +26653,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          4.687
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -26449,6 +26748,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          75.0
             PeakBandwidthInGbps:              75.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -26546,6 +26846,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          9.375
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -26640,6 +26941,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          18.75
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -26734,6 +27036,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.781
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -26825,6 +27128,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          75.0
             PeakBandwidthInGbps:              75.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -26919,6 +27223,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.875
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -27014,6 +27319,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          28.125
             PeakBandwidthInGbps:              28.125
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -27110,6 +27416,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          37.5
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -27206,6 +27513,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          56.25
             PeakBandwidthInGbps:              56.25
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -27305,6 +27613,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          4.687
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -27401,6 +27710,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -27500,6 +27810,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          9.375
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -27596,6 +27907,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -27692,6 +28004,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.171
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -27784,6 +28097,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          56.25
             PeakBandwidthInGbps:              56.25
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -27873,6 +28187,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -27969,6 +28284,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.343
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -28065,6 +28381,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -28161,6 +28478,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          37.5
             PeakBandwidthInGbps:              75.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -28257,6 +28575,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -28353,6 +28672,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          8.333
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -28449,6 +28769,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.5
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -28545,6 +28866,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                 1
             NetworkPerformance:               "100 Gigabit"
@@ -28552,6 +28874,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -28651,6 +28974,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.5
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -28747,6 +29071,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.083
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -28839,6 +29164,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -28928,6 +29254,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                 1
             NetworkPerformance:               "100 Gigabit"
@@ -28935,6 +29262,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -29031,6 +29359,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          4.166
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -29126,6 +29455,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          28.125
             PeakBandwidthInGbps:              28.125
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -29221,6 +29551,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          37.5
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -29316,6 +29647,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          56.25
             PeakBandwidthInGbps:              56.25
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -29411,6 +29743,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          4.688
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -29506,6 +29839,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -29604,6 +29938,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          9.375
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -29699,6 +30034,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -29794,6 +30130,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.172
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -29886,6 +30223,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          56.25
             PeakBandwidthInGbps:              56.25
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -29975,6 +30313,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -30070,6 +30409,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.344
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -30168,6 +30508,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                192
             MaximumEnaQueueCountPerInterface:    64
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -30266,6 +30607,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                288
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -30364,6 +30706,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                384
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -30462,6 +30805,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -30560,6 +30904,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                48
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -30658,6 +31003,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                768
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                    1
             NetworkPerformance:                  "Up to 300 Gigabit"
@@ -30668,6 +31014,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                768
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -30769,6 +31116,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                96
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -30867,6 +31215,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -30961,6 +31310,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface: 16
             MaximumEnaQueueCount:             384
             MaximumEnaQueueCountPerInterface: 128
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -31052,6 +31402,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface: 32
             MaximumEnaQueueCount:             768
             MaximumEnaQueueCountPerInterface: 128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                 1
             NetworkPerformance:               "Up to 300 Gigabit"
@@ -31061,6 +31412,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface: 32
             MaximumEnaQueueCount:             768
             MaximumEnaQueueCountPerInterface: 128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -31159,6 +31511,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -31254,6 +31607,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -31351,6 +31705,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.5
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -31445,6 +31800,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -31539,6 +31895,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -31633,6 +31990,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.125
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -31727,6 +32085,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          6.25
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -31811,6 +32170,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 30
         Ipv6AddressesPerInterface: 30
@@ -31923,6 +32283,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -32032,6 +32393,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -32141,6 +32503,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -32250,6 +32613,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -32359,6 +32723,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -32468,6 +32833,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          16.667
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -32577,6 +32943,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.083
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -32696,6 +33063,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.5
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -32787,6 +33155,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -32878,6 +33247,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -32969,6 +33339,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.125
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -33060,6 +33431,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.562
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -33151,6 +33523,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          6.25
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -33239,6 +33612,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.7
             PeakBandwidthInGbps:              2.8
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    0
@@ -33319,6 +33693,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.3
             PeakBandwidthInGbps:              1.2
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    6
         Ipv6AddressesPerInterface:    0
@@ -33399,6 +33774,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.3
             PeakBandwidthInGbps:              1.2
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    0
@@ -33487,6 +33863,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    0
@@ -33577,6 +33954,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.7
             PeakBandwidthInGbps:              2.8
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    0
@@ -33667,6 +34045,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    0
@@ -33749,6 +34128,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.3
             PeakBandwidthInGbps:              1.2
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    0
@@ -33840,6 +34220,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    0
@@ -33923,6 +34304,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.7
             PeakBandwidthInGbps:              2.8
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    0
@@ -34004,6 +34386,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.3
             PeakBandwidthInGbps:              1.2
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    6
         Ipv6AddressesPerInterface:    0
@@ -34095,6 +34478,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    0
@@ -34176,6 +34560,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -34257,6 +34642,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -34338,6 +34724,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -34419,6 +34806,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -34500,6 +34888,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.45
             PeakBandwidthInGbps:              1.2
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -34581,6 +34970,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              2.8
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -34662,6 +35052,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -34746,6 +35137,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          20.0
             PeakBandwidthInGbps:              20.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -34830,6 +35222,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -34914,6 +35307,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -34998,6 +35392,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -35082,6 +35477,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -35166,6 +35562,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -35247,6 +35644,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -35328,6 +35726,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -35412,6 +35811,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -35496,6 +35896,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -35580,6 +35981,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          20.0
             PeakBandwidthInGbps:              20.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -35664,6 +36066,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -35748,6 +36151,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -35832,6 +36236,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          7.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -35916,6 +36321,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -36000,6 +36406,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -36094,6 +36501,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -36188,6 +36596,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -36282,6 +36691,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          20.0
             PeakBandwidthInGbps:              20.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -36376,6 +36786,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -36470,6 +36881,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -36564,6 +36976,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          7.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -36658,6 +37071,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -36752,6 +37166,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -36846,6 +37261,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -36940,6 +37356,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          20.0
             PeakBandwidthInGbps:              20.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -37034,6 +37451,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -37128,6 +37546,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -37222,6 +37641,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -37316,6 +37736,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -37410,6 +37831,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -37501,6 +37923,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -37592,6 +38015,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -37686,6 +38110,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -37780,6 +38205,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          75.0
             PeakBandwidthInGbps:              75.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -37874,6 +38300,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -37971,6 +38398,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          8.125
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -38065,6 +38493,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          16.25
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -38159,6 +38588,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -38253,6 +38683,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.1
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -38344,6 +38775,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -38438,6 +38870,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          4.1
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -38522,6 +38955,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -38606,6 +39040,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          75.0
             PeakBandwidthInGbps:              75.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -38690,6 +39125,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -38777,6 +39213,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          8.125
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -38861,6 +39298,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          16.25
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -38945,6 +39383,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -39029,6 +39468,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.1
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -39110,6 +39550,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -39194,6 +39635,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          4.1
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -39278,6 +39720,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -39365,6 +39808,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -39449,6 +39893,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          15.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -39533,6 +39978,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -39617,6 +40063,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -39698,6 +40145,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -39782,6 +40230,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -39866,6 +40315,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          18.75
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -39950,6 +40400,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -40034,6 +40485,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          37.5
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -40119,6 +40571,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.125
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -40203,6 +40656,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -40287,6 +40741,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -40375,6 +40830,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          6.25
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -40460,6 +40916,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.5
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -40545,6 +41002,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.781
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -40626,6 +41084,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -40711,6 +41170,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.562
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -40795,6 +41255,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          20.0
             PeakBandwidthInGbps:              20.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -40879,6 +41340,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -40963,6 +41425,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -41047,6 +41510,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -41131,6 +41595,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -41215,6 +41680,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -41297,6 +41763,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -41378,6 +41845,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -41459,6 +41927,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -41553,6 +42022,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          20.0
             PeakBandwidthInGbps:              20.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -41647,6 +42117,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -41741,6 +42212,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -41835,6 +42307,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -41929,6 +42402,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -42023,6 +42497,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -42115,6 +42590,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -42206,6 +42682,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -42297,6 +42774,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -42384,6 +42862,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -42471,6 +42950,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                120
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -42558,6 +43038,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                120
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -42645,6 +43126,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -42732,6 +43214,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                120
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -42822,6 +43305,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -42909,6 +43393,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -42996,6 +43481,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -43078,6 +43564,7 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 8
             MaximumEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -43165,6 +43652,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -43262,6 +43750,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -43359,6 +43848,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                120
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -43456,6 +43946,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                120
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -43553,6 +44044,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -43650,6 +44142,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                120
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -43750,6 +44243,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -43847,6 +44341,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -43944,6 +44439,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -44036,6 +44532,7 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 8
             MaximumEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -44133,6 +44630,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -44230,6 +44728,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -44328,6 +44827,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                240
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -44426,6 +44926,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                480
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -44524,6 +45025,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -44622,6 +45124,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                256
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                    1
             NetworkPerformance:                  "Up to 170 Gigabit"
@@ -44632,6 +45135,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                256
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -44733,6 +45237,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -44831,6 +45336,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -44929,6 +45435,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -45021,6 +45528,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          200.0
             PeakBandwidthInGbps:              200.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                 1
             NetworkPerformance:               "Up to 170 Gigabit"
@@ -45028,6 +45536,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          200.0
             PeakBandwidthInGbps:              200.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -45126,6 +45635,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -45214,6 +45724,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -45302,6 +45813,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                240
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -45390,6 +45902,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                480
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -45478,6 +45991,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -45566,6 +46080,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                256
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                    1
             NetworkPerformance:                  "Up to 170 Gigabit"
@@ -45576,6 +46091,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                256
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -45667,6 +46183,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -45755,6 +46272,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -45843,6 +46361,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -45925,6 +46444,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          200.0
             PeakBandwidthInGbps:              200.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                 1
             NetworkPerformance:               "Up to 170 Gigabit"
@@ -45932,6 +46452,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          200.0
             PeakBandwidthInGbps:              200.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -46020,6 +46541,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -46105,6 +46627,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          22.5
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -46190,6 +46713,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          30.0
             PeakBandwidthInGbps:              30.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -46278,6 +46802,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.75
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -46363,6 +46888,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          7.5
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -46448,6 +46974,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          15.0
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -46533,6 +47060,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.937
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -46616,6 +47144,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.52
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -46698,6 +47227,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          30.0
             PeakBandwidthInGbps:              30.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -46783,6 +47313,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.876
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -46878,6 +47409,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          22.5
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -46973,6 +47505,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          30.0
             PeakBandwidthInGbps:              30.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -47071,6 +47604,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.75
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -47166,6 +47700,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          7.5
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -47261,6 +47796,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          15.0
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -47356,6 +47892,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.937
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -47449,6 +47986,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.52
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -47541,6 +48079,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          30.0
             PeakBandwidthInGbps:              30.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -47636,6 +48175,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.876
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -47722,6 +48262,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          9.375
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -47808,6 +48349,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.5
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -47894,6 +48436,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.562
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -47980,6 +48523,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.125
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -48066,6 +48610,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          6.25
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -48152,6 +48697,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.39
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -48238,6 +48784,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.781
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -48324,6 +48871,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          18.75
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -48410,6 +48958,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -48496,6 +49045,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          37.5
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -48582,6 +49132,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.125
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -48668,6 +49219,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -48757,6 +49309,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          6.25
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -48843,6 +49396,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.5
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -48929,6 +49483,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.781
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -49011,6 +49566,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          37.5
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -49090,6 +49646,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -49176,6 +49733,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.562
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -49261,6 +49819,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          22.5
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -49347,6 +49906,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          30.0
             PeakBandwidthInGbps:              30.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -49433,6 +49993,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          40.0
             PeakBandwidthInGbps:              40.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -49522,6 +50083,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.75
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -49608,6 +50170,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -49697,6 +50260,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          7.5
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -49783,6 +50347,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          15.0
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -49869,6 +50434,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.937
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -49953,6 +50519,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.52
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -50036,6 +50603,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          40.0
             PeakBandwidthInGbps:              40.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -50119,6 +50687,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -50205,6 +50774,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.875
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -50295,6 +50865,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                96
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -50385,6 +50956,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -50475,6 +51047,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -50565,6 +51138,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -50655,6 +51229,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -50745,6 +51320,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    1
             MaximumEnaQueueCount:                3
             MaximumEnaQueueCountPerInterface:    1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    20
         Ipv6AddressesPerInterface:    20
@@ -50835,6 +51411,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                8
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -50925,6 +51502,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                192
             MaximumEnaQueueCountPerInterface:    64
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -51015,6 +51593,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                256
             MaximumEnaQueueCountPerInterface:    64
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -51105,6 +51684,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                384
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -51195,6 +51775,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -51285,6 +51866,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                512
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -51375,6 +51957,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                768
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -51468,6 +52051,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -51558,6 +52142,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -51648,6 +52233,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                1536
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -51741,6 +52327,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    20
         Ipv6AddressesPerInterface:    20
@@ -51827,6 +52414,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                768
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -51913,6 +52501,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                1536
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -52003,6 +52592,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -52092,6 +52682,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                192
             MaximumEnaQueueCountPerInterface:    64
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -52181,6 +52772,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                256
             MaximumEnaQueueCountPerInterface:    64
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -52270,6 +52862,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                384
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -52359,6 +52952,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -52448,6 +53042,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                768
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -52540,6 +53135,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -52629,6 +53225,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -52718,6 +53315,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    20
         Ipv6AddressesPerInterface:    20
@@ -52805,6 +53403,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    1
             MaximumEnaQueueCount:                2
             MaximumEnaQueueCountPerInterface:    1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    20
         Ipv6AddressesPerInterface:    20
@@ -52891,6 +53490,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                768
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -52980,6 +53580,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -53079,6 +53680,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                192
             MaximumEnaQueueCountPerInterface:    64
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -53178,6 +53780,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                256
             MaximumEnaQueueCountPerInterface:    64
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -53277,6 +53880,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                384
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -53376,6 +53980,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -53475,6 +54080,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                768
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -53577,6 +54183,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -53676,6 +54283,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -53775,6 +54383,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    20
         Ipv6AddressesPerInterface:    20
@@ -53872,6 +54481,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    1
             MaximumEnaQueueCount:                2
             MaximumEnaQueueCountPerInterface:    1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    20
         Ipv6AddressesPerInterface:    20
@@ -53968,6 +54578,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                768
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -54067,6 +54678,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -54150,6 +54762,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -54228,6 +54841,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -54319,6 +54933,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                 1
             NetworkPerformance:               "100 Gigabit"
@@ -54326,6 +54941,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                 2
             NetworkPerformance:               "100 Gigabit"
@@ -54333,6 +54949,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                 3
             NetworkPerformance:               "100 Gigabit"
@@ -54340,6 +54957,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -54448,6 +55066,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -54539,6 +55158,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -54622,6 +55242,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -54705,6 +55326,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.5
             PeakBandwidthInGbps:              1.2
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -54796,6 +55418,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.7
             PeakBandwidthInGbps:              2.8
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -54877,6 +55500,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -54958,6 +55582,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -55039,6 +55664,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -55120,6 +55746,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -55201,6 +55828,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -55282,6 +55910,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -55363,6 +55992,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -55447,6 +56077,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          20.0
             PeakBandwidthInGbps:              20.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -55531,6 +56162,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -55615,6 +56247,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -55699,6 +56332,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -55783,6 +56417,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -55867,6 +56502,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -55948,6 +56584,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -56029,6 +56666,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -56113,6 +56751,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -56197,6 +56836,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -56281,6 +56921,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          20.0
             PeakBandwidthInGbps:              20.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -56365,6 +57006,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -56449,6 +57091,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -56533,6 +57176,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          7.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -56617,6 +57261,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -56701,6 +57346,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -56795,6 +57441,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -56889,6 +57536,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -56983,6 +57631,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          20.0
             PeakBandwidthInGbps:              20.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -57077,6 +57726,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -57171,6 +57821,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -57265,6 +57916,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          7.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -57359,6 +58011,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -57453,6 +58106,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -57537,6 +58191,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -57621,6 +58276,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          20.0
             PeakBandwidthInGbps:              20.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -57705,6 +58361,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -57789,6 +58446,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -57873,6 +58531,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -57957,6 +58616,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -58041,6 +58701,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -58122,6 +58783,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -58203,6 +58865,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -58297,6 +58960,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -58391,6 +59055,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          20.0
             PeakBandwidthInGbps:              20.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -58485,6 +59150,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -58579,6 +59245,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -58673,6 +59340,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -58767,6 +59435,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -58861,6 +59530,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -58952,6 +59622,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -59043,6 +59714,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -59137,6 +59809,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -59231,6 +59904,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          75.0
             PeakBandwidthInGbps:              75.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -59325,6 +59999,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -59422,6 +60097,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          8.125
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -59516,6 +60192,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          16.25
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -59610,6 +60287,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -59704,6 +60382,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.1
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -59795,6 +60474,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -59889,6 +60569,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          4.1
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -59973,6 +60654,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -60057,6 +60739,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          75.0
             PeakBandwidthInGbps:              75.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -60141,6 +60824,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -60228,6 +60912,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          8.125
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -60312,6 +60997,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          16.25
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -60396,6 +61082,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -60480,6 +61167,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.1
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -60561,6 +61249,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -60645,6 +61334,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          4.1
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -60729,6 +61419,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          18.75
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -60813,6 +61504,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -60897,6 +61589,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          37.5
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -60982,6 +61675,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.125
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -61066,6 +61760,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -61150,6 +61845,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -61238,6 +61934,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          6.25
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -61322,6 +62019,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.5
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -61407,6 +62105,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.781
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -61488,6 +62187,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -61573,6 +62273,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.562
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -61657,6 +62358,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          20.0
             PeakBandwidthInGbps:              20.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -61741,6 +62443,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -61825,6 +62528,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -61909,6 +62613,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -61993,6 +62698,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -62077,6 +62783,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -62159,6 +62866,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -62240,6 +62948,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -62321,6 +63030,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -62415,6 +63125,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          20.0
             PeakBandwidthInGbps:              20.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -62509,6 +63220,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -62603,6 +63315,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -62697,6 +63410,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -62791,6 +63505,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -62885,6 +63600,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -62977,6 +63693,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -63068,6 +63785,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -63159,6 +63877,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -63246,6 +63965,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -63333,6 +64053,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                120
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -63420,6 +64141,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                120
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -63507,6 +64229,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -63594,6 +64317,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                120
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -63684,6 +64408,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -63771,6 +64496,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -63858,6 +64584,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -63940,6 +64667,7 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 8
             MaximumEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -64027,6 +64755,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -64124,6 +64853,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -64221,6 +64951,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                120
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -64318,6 +65049,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                120
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -64415,6 +65147,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -64512,6 +65245,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                120
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -64612,6 +65346,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -64709,6 +65444,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -64806,6 +65542,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -64898,6 +65635,7 @@ InstanceTypes: [{
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 8
             MaximumEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -64995,6 +65733,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -65092,6 +65831,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -65190,6 +65930,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                240
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -65288,6 +66029,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                480
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -65386,6 +66128,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -65484,6 +66227,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                256
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                    1
             NetworkPerformance:                  "Up to 170 Gigabit"
@@ -65494,6 +66238,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                256
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -65595,6 +66340,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -65693,6 +66439,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -65791,6 +66538,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -65883,6 +66631,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          200.0
             PeakBandwidthInGbps:              200.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                 1
             NetworkPerformance:               "Up to 170 Gigabit"
@@ -65890,6 +66639,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          200.0
             PeakBandwidthInGbps:              200.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -65988,6 +66738,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -66076,6 +66827,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -66164,6 +66916,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                240
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -66252,6 +67005,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                480
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -66340,6 +67094,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -66428,6 +67183,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                256
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                    1
             NetworkPerformance:                  "Up to 170 Gigabit"
@@ -66438,6 +67194,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                256
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -66529,6 +67286,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -66617,6 +67375,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -66705,6 +67464,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -66787,6 +67547,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          200.0
             PeakBandwidthInGbps:              200.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                 1
             NetworkPerformance:               "Up to 170 Gigabit"
@@ -66794,6 +67555,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          200.0
             PeakBandwidthInGbps:              200.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -66882,6 +67644,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -66967,6 +67730,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          22.5
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -67052,6 +67816,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          30.0
             PeakBandwidthInGbps:              30.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -67140,6 +67905,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.75
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -67225,6 +67991,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          7.5
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -67310,6 +68077,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          15.0
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -67395,6 +68163,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.937
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -67478,6 +68247,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.52
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -67560,6 +68330,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          30.0
             PeakBandwidthInGbps:              30.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -67645,6 +68416,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.876
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -67740,6 +68512,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          22.5
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -67835,6 +68608,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          30.0
             PeakBandwidthInGbps:              30.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -67933,6 +68707,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.75
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -68028,6 +68803,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          7.5
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -68123,6 +68899,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          15.0
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -68218,6 +68995,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.937
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -68311,6 +69089,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.52
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -68403,6 +69182,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          30.0
             PeakBandwidthInGbps:              30.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -68498,6 +69278,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.876
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -68584,6 +69365,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          18.75
             PeakBandwidthInGbps:              18.75
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -68670,6 +69452,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -68756,6 +69539,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          37.5
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -68842,6 +69626,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.125
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -68928,6 +69713,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -69017,6 +69803,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          6.25
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -69103,6 +69890,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.5
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -69189,6 +69977,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.781
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -69271,6 +70060,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          37.5
             PeakBandwidthInGbps:              37.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -69350,6 +70140,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -69436,6 +70227,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.562
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -69521,6 +70313,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          22.5
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -69607,6 +70400,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          30.0
             PeakBandwidthInGbps:              30.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -69693,6 +70487,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          40.0
             PeakBandwidthInGbps:              40.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -69782,6 +70577,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.75
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -69868,6 +70664,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -69957,6 +70754,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          7.5
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -70043,6 +70841,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          15.0
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -70129,6 +70928,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.937
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -70213,6 +71013,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.52
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -70296,6 +71097,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          40.0
             PeakBandwidthInGbps:              40.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -70379,6 +71181,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -70465,6 +71268,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.875
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -70561,6 +71365,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          22.5
             PeakBandwidthInGbps:              22.5
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -70657,6 +71462,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          30.0
             PeakBandwidthInGbps:              30.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -70753,6 +71559,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          40.0
             PeakBandwidthInGbps:              40.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -70852,6 +71659,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          3.75
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -70948,6 +71756,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -71047,6 +71856,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          7.5
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -71143,6 +71953,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          15.0
             PeakBandwidthInGbps:              15.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -71239,6 +72050,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.937
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -71333,6 +72145,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.52
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -71426,6 +72239,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          40.0
             PeakBandwidthInGbps:              40.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -71519,6 +72333,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -71615,6 +72430,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.875
             PeakBandwidthInGbps:              12.5
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -71705,6 +72521,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                96
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -71795,6 +72612,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -71885,6 +72703,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -71975,6 +72794,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -72065,6 +72885,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -72155,6 +72976,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    1
             MaximumEnaQueueCount:                3
             MaximumEnaQueueCountPerInterface:    1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    20
         Ipv6AddressesPerInterface:    20
@@ -72245,6 +73067,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                8
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -72335,6 +73158,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                192
             MaximumEnaQueueCountPerInterface:    64
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -72425,6 +73249,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                256
             MaximumEnaQueueCountPerInterface:    64
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -72515,6 +73340,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                384
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -72605,6 +73431,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -72695,6 +73522,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                512
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -72785,6 +73613,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                768
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -72878,6 +73707,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -72968,6 +73798,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -73058,6 +73889,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                1536
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -73151,6 +73983,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    20
         Ipv6AddressesPerInterface:    20
@@ -73237,6 +74070,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                768
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -73323,6 +74157,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                1536
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -73413,6 +74248,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -73488,6 +74324,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.07
             PeakBandwidthInGbps:              0.28
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    2
         Ipv6AddressesPerInterface:    0
@@ -73559,6 +74396,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.0
             PeakBandwidthInGbps:              1.024
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -73630,6 +74468,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.512
             PeakBandwidthInGbps:              1.024
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    12
         Ipv6AddressesPerInterface:    12
@@ -73701,6 +74540,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.256
             PeakBandwidthInGbps:              1.024
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    6
         Ipv6AddressesPerInterface:    6
@@ -73772,6 +74612,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.064
             PeakBandwidthInGbps:              1.024
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    2
         Ipv6AddressesPerInterface:    2
@@ -73843,6 +74684,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.032
             PeakBandwidthInGbps:              0.512
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    2
         Ipv6AddressesPerInterface:    2
@@ -73914,6 +74756,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.128
             PeakBandwidthInGbps:              1.024
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -73985,6 +74828,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              1.024
             DefaultEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -74066,6 +74910,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.048
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -74150,6 +74995,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.512
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    12
         Ipv6AddressesPerInterface:    12
@@ -74234,6 +75080,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.256
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    6
         Ipv6AddressesPerInterface:    6
@@ -74318,6 +75165,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.064
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    2
         Ipv6AddressesPerInterface:    2
@@ -74402,6 +75250,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.032
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    2
         Ipv6AddressesPerInterface:    2
@@ -74486,6 +75335,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.128
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -74570,6 +75420,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.024
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -74654,6 +75505,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.048
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -74738,6 +75590,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.512
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    12
         Ipv6AddressesPerInterface:    12
@@ -74822,6 +75675,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.256
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    6
         Ipv6AddressesPerInterface:    6
@@ -74906,6 +75760,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.064
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    2
         Ipv6AddressesPerInterface:    2
@@ -74990,6 +75845,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.032
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    2
         Ipv6AddressesPerInterface:    2
@@ -75074,6 +75930,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.128
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -75158,6 +76015,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.024
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -75242,6 +76100,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.048
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -75326,6 +76185,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.512
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    12
         Ipv6AddressesPerInterface:    12
@@ -75410,6 +76270,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.256
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    6
         Ipv6AddressesPerInterface:    6
@@ -75494,6 +76355,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.064
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    2
         Ipv6AddressesPerInterface:    2
@@ -75578,6 +76440,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.032
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    2
         Ipv6AddressesPerInterface:    2
@@ -75662,6 +76525,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.128
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -75746,6 +76610,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.024
             PeakBandwidthInGbps:              5.0
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -75832,6 +76697,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface: 1
             MaximumEnaQueueCount:             2
             MaximumEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    6
         Ipv6AddressesPerInterface:    6
@@ -75919,6 +76785,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface: 1
             MaximumEnaQueueCount:             1
             MaximumEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    2
         Ipv6AddressesPerInterface:    2
@@ -76006,6 +76873,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface: 1
             MaximumEnaQueueCount:             1
             MaximumEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    2
         Ipv6AddressesPerInterface:    2
@@ -76093,6 +76961,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface: 1
             MaximumEnaQueueCount:             2
             MaximumEnaQueueCountPerInterface: 1
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    4
         Ipv6AddressesPerInterface:    4
@@ -76178,6 +77047,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -76259,6 +77129,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -76340,6 +77211,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -76421,6 +77293,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -76509,6 +77382,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -76597,6 +77471,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -76685,6 +77560,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                 1
             NetworkPerformance:               "100 Gigabit"
@@ -76692,6 +77568,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -76790,6 +77667,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -76881,6 +77759,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -76972,6 +77851,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          10.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -77063,6 +77943,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -77154,6 +78035,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -77245,6 +78127,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -77336,6 +78219,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -77427,6 +78311,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.625
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -77518,6 +78403,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -77612,6 +78498,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          75.0
             PeakBandwidthInGbps:              75.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -77706,6 +78593,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -77800,6 +78688,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -77894,6 +78783,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -77988,6 +78878,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          75.0
             PeakBandwidthInGbps:              75.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -78082,6 +78973,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -78176,6 +79068,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -78273,6 +79166,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.5
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -78367,6 +79261,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -78458,6 +79353,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 50
         Ipv6AddressesPerInterface: 50
@@ -78552,6 +79448,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.875
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -78640,6 +79537,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                192
             MaximumEnaQueueCountPerInterface:    64
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -78730,6 +79628,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                256
             MaximumEnaQueueCountPerInterface:    64
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -78820,6 +79719,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                384
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -78910,6 +79810,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                32
             MaximumEnaQueueCountPerInterface:    8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -79000,6 +79901,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    16
             MaximumEnaQueueCount:                512
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    64
         Ipv6AddressesPerInterface:    64
@@ -79090,6 +79992,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                768
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -79183,6 +80086,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                64
             MaximumEnaQueueCountPerInterface:    16
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -79273,6 +80177,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                1024
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -79366,6 +80271,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    8
             MaximumEnaQueueCount:                128
             MaximumEnaQueueCountPerInterface:    32
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -79456,6 +80362,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                1536
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -79549,6 +80456,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    2
             MaximumEnaQueueCount:                6
             MaximumEnaQueueCountPerInterface:    2
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    20
         Ipv6AddressesPerInterface:    20
@@ -79635,6 +80543,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                768
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -79721,6 +80630,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    32
             MaximumEnaQueueCount:                1536
             MaximumEnaQueueCountPerInterface:    128
+            InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
         Ipv4AddressesPerInterface: 64
         Ipv6AddressesPerInterface: 64
@@ -79811,6 +80721,7 @@ InstanceTypes: [{
             DefaultEnaQueueCountPerInterface:    4
             MaximumEnaQueueCount:                16
             MaximumEnaQueueCountPerInterface:    4
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -79907,6 +80818,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -80001,6 +80913,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          2.5
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
@@ -80095,6 +81008,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          5.0
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -80189,6 +81103,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          12.0
             PeakBandwidthInGbps:              12.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    30
         Ipv6AddressesPerInterface:    30
@@ -80283,6 +81198,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          0.75
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    10
         Ipv6AddressesPerInterface:    10
@@ -80374,6 +81290,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    50
         Ipv6AddressesPerInterface:    50
@@ -80465,6 +81382,7 @@ InstanceTypes: [{
             BaselineBandwidthInGbps:          1.25
             PeakBandwidthInGbps:              10.0
             DefaultEnaQueueCountPerInterface: 8
+            InterfaceTypes: ["interface"]
         }]
         Ipv4AddressesPerInterface:    15
         Ipv6AddressesPerInterface:    15
