@@ -3925,19 +3925,6 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
-					public_network: {
-						type: ["list", ["object", {
-							dns_record: "string"
-							id:         "string"
-							services: ["list", ["object", {
-								port:     "number"
-								protocol: "string"
-							}]]
-						}]]
-						description:      "Public endpoint configuration. A public endpoint is created by default."
-						description_kind: "plain"
-						computed:         true
-					}
 					ram_per_cpu: {
 						type:             "number"
 						description:      "RAM per CPU (GB)"
@@ -4035,6 +4022,38 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 								}
 							}
 							description:      "Private network to expose your datawarehouse deployment"
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					public_network: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								dns_record: {
+									type:             "string"
+									description:      "DNS record for the public endpoint"
+									description_kind: "plain"
+									computed:         true
+								}
+								id: {
+									type:             "string"
+									description:      "ID of the public endpoint"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								services: {
+									type: ["list", ["object", {
+										port:     "number"
+										protocol: "string"
+									}]]
+									description:      "List of services exposed on the public endpoint"
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							description:      "Public endpoint configuration. A public endpoint is created only when this block is defined."
 							description_kind: "plain"
 						}
 						max_items: 1
@@ -12424,6 +12443,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					host: {
+						type:             "string"
+						description:      "When connecting to backend servers, use this value as the HTTP `Host` header or TLS SNI. This allows routing to specific services on the backend server that are configured to respond to particular hostnames"
+						description_kind: "plain"
+						optional:         true
+					}
 					id: {
 						type:             "string"
 						description_kind: "plain"
@@ -14075,7 +14100,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					version: {
 						type:             "string"
-						description:      "MongoDB version of the instance"
+						description:      "MongoDB version of the instance (e.g. '7.0'). Changing this value may trigger a blue/green upgrade that updates the Terraform state with a new instance ID"
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -27987,6 +28012,176 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "plain"
 			}
 		}
+		scaleway_kafka_version: {
+			version: 0
+			block: {
+				attributes: {
+					available_settings: {
+						nested_type: {
+							attributes: {
+								bool_property: {
+									nested_type: {
+										attributes: default_value: {
+											type:             "bool"
+											description:      "The default value of the setting."
+											description_kind: "markdown"
+											computed:         true
+										}
+										nesting_mode: "single"
+									}
+									description:      "Boolean property, if the setting is a boolean."
+									description_kind: "markdown"
+									computed:         true
+								}
+								description: {
+									type:             "string"
+									description:      "The setting description."
+									description_kind: "markdown"
+									computed:         true
+								}
+								float_property: {
+									nested_type: {
+										attributes: {
+											default_value: {
+												type:             "number"
+												description:      "The default value of the setting."
+												description_kind: "markdown"
+												computed:         true
+											}
+											max: {
+												type:             "number"
+												description:      "The maximum value of the setting."
+												description_kind: "markdown"
+												computed:         true
+											}
+											min: {
+												type:             "number"
+												description:      "The minimum value of the setting."
+												description_kind: "markdown"
+												computed:         true
+											}
+											unit: {
+												type:             "string"
+												description:      "The unit of the setting."
+												description_kind: "markdown"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Float property, if the setting is a float."
+									description_kind: "markdown"
+									computed:         true
+								}
+								hot_configurable: {
+									type:             "bool"
+									description:      "Whether the setting can be applied without a restart."
+									description_kind: "markdown"
+									computed:         true
+								}
+								int_property: {
+									nested_type: {
+										attributes: {
+											default_value: {
+												type:             "number"
+												description:      "The default value of the setting."
+												description_kind: "markdown"
+												computed:         true
+											}
+											max: {
+												type:             "number"
+												description:      "The maximum value of the setting."
+												description_kind: "markdown"
+												computed:         true
+											}
+											min: {
+												type:             "number"
+												description:      "The minimum value of the setting."
+												description_kind: "markdown"
+												computed:         true
+											}
+											unit: {
+												type:             "string"
+												description:      "The unit of the setting."
+												description_kind: "markdown"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Integer property, if the setting is an integer."
+									description_kind: "markdown"
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "The setting name."
+									description_kind: "markdown"
+									computed:         true
+								}
+								string_property: {
+									nested_type: {
+										attributes: {
+											default_value: {
+												type:             "string"
+												description:      "The default value of the setting."
+												description_kind: "markdown"
+												computed:         true
+											}
+											string_constraint: {
+												type:             "string"
+												description:      "The string constraint of the setting (e.g. a regex)."
+												description_kind: "markdown"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "String property, if the setting is a string."
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "The cluster configuration settings available for clusters running this version."
+						description_kind: "markdown"
+						computed:         true
+					}
+					end_of_life_at: {
+						type:             "string"
+						description:      "The end-of-life date of the version (RFC 3339 format)."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of the version, in the `{region}/{version}` format."
+						description_kind: "markdown"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The Kafka version name. Use `latest` to retrieve the most recent available version."
+						description_kind: "markdown"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region the Kafka version is available in."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				description: """
+					The `scaleway_kafka_version` data source is used to retrieve information about an available Kafka version.
+
+					Refer to the [Kafka documentation](https://www.scaleway.com/en/docs/clusters-for-kafka/) and [API documentation](https://www.scaleway.com/en/developers/api/clusters-for-kafka) for more information.
+					"""
+				description_kind: "markdown"
+			}
+		}
 		scaleway_key_manager_key: {
 			version: 0
 			block: {
@@ -28492,6 +28687,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					host: {
+						type:             "string"
+						description:      "When connecting to backend servers, use this value as the HTTP `Host` header or TLS SNI. This allows routing to specific services on the backend server that are configured to respond to particular hostnames"
+						description_kind: "plain"
+						computed:         true
+					}
 					id: {
 						type:             "string"
 						description_kind: "plain"
@@ -28633,6 +28834,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							health_check_port:        "number"
 							health_check_tcp: ["list", ["object", {}]]
 							health_check_timeout:     "string"
+							host:                     "string"
 							id:                       "string"
 							ignore_ssl_server_verify: "bool"
 							lb_id:                    "string"
@@ -29621,7 +29823,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					version: {
 						type:             "string"
-						description:      "MongoDB version of the instance"
+						description:      "MongoDB version of the instance (e.g. '7.0'). Changing this value may trigger a blue/green upgrade that updates the Terraform state with a new instance ID"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -36629,11 +36831,14 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			}
 		}
 		scaleway_rdb_database: {
-			version: 0
+			version: 1
 			attributes: {
-				id: {
+				database_name: {
 					type:                "string"
-					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				instance_id: {
+					type:                "string"
 					required_for_import: true
 				}
 				region: {
@@ -36674,16 +36879,23 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			}
 		}
 		scaleway_rdb_privilege: {
-			version: 0
+			version: 1
 			attributes: {
-				id: {
+				database_name: {
 					type:                "string"
-					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				instance_id: {
+					type:                "string"
 					required_for_import: true
 				}
 				region: {
 					type:                "string"
 					description:         "The region of the resource"
+					required_for_import: true
+				}
+				user_name: {
+					type:                "string"
 					required_for_import: true
 				}
 			}
@@ -36719,11 +36931,14 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			}
 		}
 		scaleway_rdb_user: {
-			version: 0
+			version: 1
 			attributes: {
-				id: {
+				instance_id: {
 					type:                "string"
-					description:         "The id of the resource (UUID format)"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
 					required_for_import: true
 				}
 				region: {
