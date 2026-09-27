@@ -115,6 +115,11 @@ google_secret_manager_secret: {
 		// This must be unique within the project.
 		secret_id!: string
 
+		// This defines the type of the secret. Enforces certain structural requirements
+		// on the SecretVersions.
+		// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+		secret_type?: string
+
 		// A map of resource manager tags.
 		// Resource manager tag keys and values have the same definition as resource manager tags.
 		// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format

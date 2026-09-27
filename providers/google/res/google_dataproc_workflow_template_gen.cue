@@ -836,6 +836,19 @@ google_dataproc_workflow_template: {
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/disk_config": close({
+		attached_disk_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/disk_config/$defs/attached_disk_config", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/disk_config/$defs/attached_disk_config"]])
+
+		// Optional. Indicates how many IOPS to provision for the disk. This sets the
+		// number of I/O operations per second that the disk can handle. This field is
+		// supported only if boot_disk_type is hyperdisk-balanced.
+		boot_disk_provisioned_iops?: number
+
+		// Optional. Indicates how much throughput to provision for the disk. This sets
+		// the number of throughput mb per second that the disk can handle. Values must
+		// be greater than or equal to 1. This field is supported only if
+		// boot_disk_type is hyperdisk-balanced.
+		boot_disk_provisioned_throughput?: number
+
 		// Optional. Size in GB of the boot disk (default is 500GB).
 		boot_disk_size_gb?: number
 
@@ -846,12 +859,35 @@ google_dataproc_workflow_template: {
 		// types](https://cloud.google.com/compute/docs/disks#disk-types).
 		boot_disk_type?: string
 
-		// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are
+		// Optional. Interface type of local SSDs (default is "scsi"). Valid values:
+		// "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory
+		// Express).
+		local_ssd_interface?: string
+
+		// Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are
 		// not attached, the boot disk is used to store runtime logs and
 		// [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If
 		// one or more SSDs are attached, this runtime bulk data is spread across them,
 		// and the boot disk contains only basic config and installed binaries.
 		num_local_ssds?: number
+	})
+
+	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/disk_config/$defs/attached_disk_config": close({
+		// Optional. Size of the attached disk, specified in GB.
+		disk_size_gb?: number
+
+		// Optional. The disk type of the attached disk. Currently only supports
+		// Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`,
+		// `hyperdisk-throughput`.
+		disk_type?: string
+
+		// Optional. Indicates how many IOPS to provision for the disk. This sets the
+		// number of I/O operations per second that the disk can handle.
+		provisioned_iops?: number
+
+		// Optional. Indicates how much throughput to provision for the disk. This sets
+		// the number of throughput mb per second that the disk can handle.
+		provisioned_throughput?: number
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/instance_flexibility_policy": close({
@@ -882,6 +918,19 @@ google_dataproc_workflow_template: {
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config": close({
+		attached_disk_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config/$defs/attached_disk_config", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config/$defs/attached_disk_config"]])
+
+		// Optional. Indicates how many IOPS to provision for the disk. This sets the
+		// number of I/O operations per second that the disk can handle. This field is
+		// supported only if boot_disk_type is hyperdisk-balanced.
+		boot_disk_provisioned_iops?: number
+
+		// Optional. Indicates how much throughput to provision for the disk. This sets
+		// the number of throughput mb per second that the disk can handle. Values must
+		// be greater than or equal to 1. This field is supported only if
+		// boot_disk_type is hyperdisk-balanced.
+		boot_disk_provisioned_throughput?: number
+
 		// Optional. Size in GB of the boot disk (default is 500GB).
 		boot_disk_size_gb?: number
 
@@ -892,12 +941,35 @@ google_dataproc_workflow_template: {
 		// types](https://cloud.google.com/compute/docs/disks#disk-types).
 		boot_disk_type?: string
 
-		// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are
+		// Optional. Interface type of local SSDs (default is "scsi"). Valid values:
+		// "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory
+		// Express).
+		local_ssd_interface?: string
+
+		// Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are
 		// not attached, the boot disk is used to store runtime logs and
 		// [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If
 		// one or more SSDs are attached, this runtime bulk data is spread across them,
 		// and the boot disk contains only basic config and installed binaries.
 		num_local_ssds?: number
+	})
+
+	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config/$defs/attached_disk_config": close({
+		// Optional. Size of the attached disk, specified in GB.
+		disk_size_gb?: number
+
+		// Optional. The disk type of the attached disk. Currently only supports
+		// Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`,
+		// `hyperdisk-throughput`.
+		disk_type?: string
+
+		// Optional. Indicates how many IOPS to provision for the disk. This sets the
+		// number of I/O operations per second that the disk can handle.
+		provisioned_iops?: number
+
+		// Optional. Indicates how much throughput to provision for the disk. This sets
+		// the number of throughput mb per second that the disk can handle.
+		provisioned_throughput?: number
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config": close({
@@ -979,6 +1051,19 @@ google_dataproc_workflow_template: {
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/disk_config": close({
+		attached_disk_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/disk_config/$defs/attached_disk_config", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/disk_config/$defs/attached_disk_config"]])
+
+		// Optional. Indicates how many IOPS to provision for the disk. This sets the
+		// number of I/O operations per second that the disk can handle. This field is
+		// supported only if boot_disk_type is hyperdisk-balanced.
+		boot_disk_provisioned_iops?: number
+
+		// Optional. Indicates how much throughput to provision for the disk. This sets
+		// the number of throughput mb per second that the disk can handle. Values must
+		// be greater than or equal to 1. This field is supported only if
+		// boot_disk_type is hyperdisk-balanced.
+		boot_disk_provisioned_throughput?: number
+
 		// Optional. Size in GB of the boot disk (default is 500GB).
 		boot_disk_size_gb?: number
 
@@ -989,12 +1074,35 @@ google_dataproc_workflow_template: {
 		// types](https://cloud.google.com/compute/docs/disks#disk-types).
 		boot_disk_type?: string
 
-		// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are
+		// Optional. Interface type of local SSDs (default is "scsi"). Valid values:
+		// "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory
+		// Express).
+		local_ssd_interface?: string
+
+		// Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are
 		// not attached, the boot disk is used to store runtime logs and
 		// [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If
 		// one or more SSDs are attached, this runtime bulk data is spread across them,
 		// and the boot disk contains only basic config and installed binaries.
 		num_local_ssds?: number
+	})
+
+	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/disk_config/$defs/attached_disk_config": close({
+		// Optional. Size of the attached disk, specified in GB.
+		disk_size_gb?: number
+
+		// Optional. The disk type of the attached disk. Currently only supports
+		// Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`,
+		// `hyperdisk-throughput`.
+		disk_type?: string
+
+		// Optional. Indicates how many IOPS to provision for the disk. This sets the
+		// number of I/O operations per second that the disk can handle.
+		provisioned_iops?: number
+
+		// Optional. Indicates how much throughput to provision for the disk. This sets
+		// the number of throughput mb per second that the disk can handle.
+		provisioned_throughput?: number
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/instance_flexibility_policy": close({
@@ -1026,6 +1134,19 @@ google_dataproc_workflow_template: {
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config": close({
+		attached_disk_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config/$defs/attached_disk_config", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config/$defs/attached_disk_config"]])
+
+		// Optional. Indicates how many IOPS to provision for the disk. This sets the
+		// number of I/O operations per second that the disk can handle. This field is
+		// supported only if boot_disk_type is hyperdisk-balanced.
+		boot_disk_provisioned_iops?: number
+
+		// Optional. Indicates how much throughput to provision for the disk. This sets
+		// the number of throughput mb per second that the disk can handle. Values must
+		// be greater than or equal to 1. This field is supported only if
+		// boot_disk_type is hyperdisk-balanced.
+		boot_disk_provisioned_throughput?: number
+
 		// Optional. Size in GB of the boot disk (default is 500GB).
 		boot_disk_size_gb?: number
 
@@ -1036,12 +1157,35 @@ google_dataproc_workflow_template: {
 		// types](https://cloud.google.com/compute/docs/disks#disk-types).
 		boot_disk_type?: string
 
-		// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are
+		// Optional. Interface type of local SSDs (default is "scsi"). Valid values:
+		// "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory
+		// Express).
+		local_ssd_interface?: string
+
+		// Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are
 		// not attached, the boot disk is used to store runtime logs and
 		// [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If
 		// one or more SSDs are attached, this runtime bulk data is spread across them,
 		// and the boot disk contains only basic config and installed binaries.
 		num_local_ssds?: number
+	})
+
+	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config/$defs/attached_disk_config": close({
+		// Optional. Size of the attached disk, specified in GB.
+		disk_size_gb?: number
+
+		// Optional. The disk type of the attached disk. Currently only supports
+		// Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`,
+		// `hyperdisk-throughput`.
+		disk_type?: string
+
+		// Optional. Indicates how many IOPS to provision for the disk. This sets the
+		// number of I/O operations per second that the disk can handle.
+		provisioned_iops?: number
+
+		// Optional. Indicates how much throughput to provision for the disk. This sets
+		// the number of throughput mb per second that the disk can handle.
+		provisioned_throughput?: number
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/instance_flexibility_policy/$defs/provisioning_model_mix": close({
@@ -1227,6 +1371,19 @@ google_dataproc_workflow_template: {
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/disk_config": close({
+		attached_disk_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/disk_config/$defs/attached_disk_config", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/disk_config/$defs/attached_disk_config"]])
+
+		// Optional. Indicates how many IOPS to provision for the disk. This sets the
+		// number of I/O operations per second that the disk can handle. This field is
+		// supported only if boot_disk_type is hyperdisk-balanced.
+		boot_disk_provisioned_iops?: number
+
+		// Optional. Indicates how much throughput to provision for the disk. This sets
+		// the number of throughput mb per second that the disk can handle. Values must
+		// be greater than or equal to 1. This field is supported only if
+		// boot_disk_type is hyperdisk-balanced.
+		boot_disk_provisioned_throughput?: number
+
 		// Optional. Size in GB of the boot disk (default is 500GB).
 		boot_disk_size_gb?: number
 
@@ -1237,12 +1394,35 @@ google_dataproc_workflow_template: {
 		// types](https://cloud.google.com/compute/docs/disks#disk-types).
 		boot_disk_type?: string
 
-		// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are
+		// Optional. Interface type of local SSDs (default is "scsi"). Valid values:
+		// "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory
+		// Express).
+		local_ssd_interface?: string
+
+		// Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are
 		// not attached, the boot disk is used to store runtime logs and
 		// [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If
 		// one or more SSDs are attached, this runtime bulk data is spread across them,
 		// and the boot disk contains only basic config and installed binaries.
 		num_local_ssds?: number
+	})
+
+	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/disk_config/$defs/attached_disk_config": close({
+		// Optional. Size of the attached disk, specified in GB.
+		disk_size_gb?: number
+
+		// Optional. The disk type of the attached disk. Currently only supports
+		// Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`,
+		// `hyperdisk-throughput`.
+		disk_type?: string
+
+		// Optional. Indicates how many IOPS to provision for the disk. This sets the
+		// number of I/O operations per second that the disk can handle.
+		provisioned_iops?: number
+
+		// Optional. Indicates how much throughput to provision for the disk. This sets
+		// the number of throughput mb per second that the disk can handle.
+		provisioned_throughput?: number
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/instance_flexibility_policy": close({
@@ -1273,6 +1453,19 @@ google_dataproc_workflow_template: {
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config": close({
+		attached_disk_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config/$defs/attached_disk_config", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config/$defs/attached_disk_config"]])
+
+		// Optional. Indicates how many IOPS to provision for the disk. This sets the
+		// number of I/O operations per second that the disk can handle. This field is
+		// supported only if boot_disk_type is hyperdisk-balanced.
+		boot_disk_provisioned_iops?: number
+
+		// Optional. Indicates how much throughput to provision for the disk. This sets
+		// the number of throughput mb per second that the disk can handle. Values must
+		// be greater than or equal to 1. This field is supported only if
+		// boot_disk_type is hyperdisk-balanced.
+		boot_disk_provisioned_throughput?: number
+
 		// Optional. Size in GB of the boot disk (default is 500GB).
 		boot_disk_size_gb?: number
 
@@ -1283,11 +1476,34 @@ google_dataproc_workflow_template: {
 		// types](https://cloud.google.com/compute/docs/disks#disk-types).
 		boot_disk_type?: string
 
-		// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are
+		// Optional. Interface type of local SSDs (default is "scsi"). Valid values:
+		// "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory
+		// Express).
+		local_ssd_interface?: string
+
+		// Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are
 		// not attached, the boot disk is used to store runtime logs and
 		// [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If
 		// one or more SSDs are attached, this runtime bulk data is spread across them,
 		// and the boot disk contains only basic config and installed binaries.
 		num_local_ssds?: number
+	})
+
+	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/instance_flexibility_policy/$defs/instance_selection_list/$defs/disk_config/$defs/attached_disk_config": close({
+		// Optional. Size of the attached disk, specified in GB.
+		disk_size_gb?: number
+
+		// Optional. The disk type of the attached disk. Currently only supports
+		// Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`,
+		// `hyperdisk-throughput`.
+		disk_type?: string
+
+		// Optional. Indicates how many IOPS to provision for the disk. This sets the
+		// number of I/O operations per second that the disk can handle.
+		provisioned_iops?: number
+
+		// Optional. Indicates how much throughput to provision for the disk. This sets
+		// the number of throughput mb per second that the disk can handle.
+		provisioned_throughput?: number
 	})
 }

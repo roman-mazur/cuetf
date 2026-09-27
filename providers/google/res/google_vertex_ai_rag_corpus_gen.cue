@@ -9,6 +9,7 @@ google_vertex_ai_rag_corpus: {
 		encryption_spec?: matchN(1, [#encryption_spec, list.MaxItems(1) & [...#encryption_spec]])
 		timeouts?: #timeouts
 		vector_db_config?: matchN(1, [#vector_db_config, list.MaxItems(1) & [...#vector_db_config]])
+		vertex_ai_search_config?: matchN(1, [#vertex_ai_search_config, list.MaxItems(1) & [...#vertex_ai_search_config]])
 
 		// Output only. RagCorpus state.
 		corpus_status?: [...close({
@@ -63,8 +64,37 @@ google_vertex_ai_rag_corpus: {
 	})
 
 	#vector_db_config: close({
+		api_auth?: matchN(1, [_#defs."/$defs/vector_db_config/$defs/api_auth", list.MaxItems(1) & [..._#defs."/$defs/vector_db_config/$defs/api_auth"]])
+		pinecone?: matchN(1, [_#defs."/$defs/vector_db_config/$defs/pinecone", list.MaxItems(1) & [..._#defs."/$defs/vector_db_config/$defs/pinecone"]])
 		rag_embedding_model_config?: matchN(1, [_#defs."/$defs/vector_db_config/$defs/rag_embedding_model_config", list.MaxItems(1) & [..._#defs."/$defs/vector_db_config/$defs/rag_embedding_model_config"]])
 		rag_managed_db?: matchN(1, [_#defs."/$defs/vector_db_config/$defs/rag_managed_db", list.MaxItems(1) & [..._#defs."/$defs/vector_db_config/$defs/rag_managed_db"]])
+		vertex_vector_search?: matchN(1, [_#defs."/$defs/vector_db_config/$defs/vertex_vector_search", list.MaxItems(1) & [..._#defs."/$defs/vector_db_config/$defs/vertex_vector_search"]])
+	})
+
+	#vertex_ai_search_config: close({
+		// Vertex AI Search Serving Config resource full name. For example,
+		// projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config}
+		// or
+		// projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/servingConfigs/{serving_config}.
+		serving_config!: string
+	})
+
+	_#defs: "/$defs/vector_db_config/$defs/api_auth": close({
+		api_key_config?: matchN(1, [_#defs."/$defs/vector_db_config/$defs/api_auth/$defs/api_key_config", list.MaxItems(1) & [..._#defs."/$defs/vector_db_config/$defs/api_auth/$defs/api_key_config"]])
+	})
+
+	_#defs: "/$defs/vector_db_config/$defs/api_auth/$defs/api_key_config": close({
+		// The SecretManager secret version resource name storing API key.
+		// e.g. projects/{project}/secrets/{secret}/versions/{version}
+		api_key_secret_version?: string
+
+		// The API key string.
+		api_key_string?: string
+	})
+
+	_#defs: "/$defs/vector_db_config/$defs/pinecone": close({
+		// Pinecone index name. This value cannot be changed after it's set.
+		index_name!: string
 	})
 
 	_#defs: "/$defs/vector_db_config/$defs/rag_embedding_model_config": close({
@@ -99,4 +129,14 @@ google_vertex_ai_rag_corpus: {
 	})
 
 	_#defs: "/$defs/vector_db_config/$defs/rag_managed_db/$defs/knn": close({})
+
+	_#defs: "/$defs/vector_db_config/$defs/vertex_vector_search": close({
+		// The resource name of the Index.
+		// Format: projects/{project}/locations/{location}/indexes/{index}
+		index!: string
+
+		// The resource name of the Index Endpoint.
+		// Format: projects/{project}/locations/{location}/indexEndpoints/{index_endpoint}
+		index_endpoint!: string
+	})
 }

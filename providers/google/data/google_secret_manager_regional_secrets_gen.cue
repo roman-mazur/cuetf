@@ -31,7 +31,8 @@ google_secret_manager_regional_secrets: {
 				next_rotation_time?: string
 				rotation_period?:    string
 			})]
-			secret_id?: string
+			secret_id?:   string
+			secret_type?: string
 			tags?: [string]:             string
 			terraform_labels?: [string]: string
 			topics?: [...close({

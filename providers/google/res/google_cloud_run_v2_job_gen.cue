@@ -245,6 +245,10 @@ google_cloud_run_v2_job: {
 		// This field follows Kubernetes annotations' namespacing, limits, and rules.
 		annotations?: [string]: string
 
+		// If true, the system will start the execution within the next 12 hours
+		// depending on available capacity.
+		delay_execution?: bool
+
 		// Unstructured key value map that can be used to organize and categorize
 		// objects. User-provided labels are shared with Google's billing system, so
 		// they can be used to filter,
@@ -347,6 +351,9 @@ google_cloud_run_v2_job: {
 
 		// Name of the container specified as a DNS_LABEL.
 		name?: string
+
+		// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+		sandbox_launcher?: bool
 
 		// Container's working directory. If not specified, the container runtime's
 		// default will be used, which might be configured in the container image.

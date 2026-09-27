@@ -1,0 +1,98 @@
+package res
+
+import "list"
+
+google_network_services_agent_connectivity_template: {
+	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
+	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_network_services_agent_connectivity_template")
+	close({
+		egress_network_config?: matchN(1, [#egress_network_config, list.MaxItems(1) & [...#egress_network_config]])
+		timeouts?: #timeouts
+
+		// The path of the access.
+		// The path is immutable once set. Exactly one path can be set. Possible values:
+		// ["CLIENT_TO_AGENT", "AGENT_TO_ANYWHERE"]
+		access_path!: string
+
+		// The types of network access provided to the gateway.
+		// Both PUBLIC and PRIVATE can be configured. Possible values: ["PUBLIC", "PRIVATE"]
+		access_types?: [...string]
+
+		// Short name of the AgentConnectivityTemplate resource.
+		agent_connectivity_template_id!: string
+
+		// The timestamp when the resource was created.
+		create_time?: string
+
+		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+		// the command will fail if this field is set to "PREVENT" in Terraform state.
+		// When set to "ABANDON", the command will remove the resource from Terraform
+		// management without updating or deleting the resource in the API.
+		// When set to "DELETE", deleting the resource is allowed.
+		deletion_policy?: string
+
+		// A free-text description of the resource. Max length 1024 characters.
+		description?: string
+
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
+		effective_labels?: [string]: string
+
+		// Etag of the resource.
+		// If this is provided, it must match the server's etag. If the provided etag
+		// does not match the server's etag, the request will fail with a 409 ABORTED
+		// error.
+		etag?: string
+		id?:   string
+
+		// Set of label tags associated with the AgentConnectivityTemplate resource.
+		//
+		//
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+		labels?: [string]: string
+
+		// The location of the AgentConnectivityTemplate.
+		location!: string
+
+		// Identifier. Name of the resource.
+		name?: string
+
+		// The combination of labels configured directly on the resource
+		// and default labels configured on the provider.
+		terraform_labels?: [string]: string
+		project?: string
+
+		// The timestamp when the resource was updated.
+		update_time?: string
+	})
+
+	#egress_network_config: close({
+		dns_peering_config?: matchN(1, [_#defs."/$defs/egress_network_config/$defs/dns_peering_config", list.MaxItems(1) & [..._#defs."/$defs/egress_network_config/$defs/dns_peering_config"]])
+
+		// The network attachment resource name.
+		// Format: projects/{project}/regions/{region}/networkAttachments/{network_attachment_id}
+		network_attachment?: string
+
+		// The VPC egress setting. Possible values: ["ALL_TRAFFIC", "PRIVATE_RANGES_ONLY"]
+		vpc_egress?: string
+	})
+
+	#timeouts: close({
+		create?: string
+		delete?: string
+		update?: string
+	})
+
+	_#defs: "/$defs/egress_network_config/$defs/dns_peering_config": close({
+		// The domain name to peer for DNS resolution. Must be a fully
+		// qualified domain name ending with a dot (for example, 'example.com.').
+		domain!: string
+
+		// The URI of the target VPC network for DNS peering. Must be of the
+		// form 'projects/{project}/global/networks/{network}'.
+		target_network!: string
+	})
+}

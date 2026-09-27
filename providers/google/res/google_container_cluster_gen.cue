@@ -575,7 +575,6 @@ google_container_cluster: {
 		gcfs_config?: matchN(1, [_#defs."/$defs/node_config/$defs/gcfs_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/gcfs_config"]])
 		guest_accelerator?: matchN(1, [_#defs."/$defs/node_config/$defs/guest_accelerator", [..._#defs."/$defs/node_config/$defs/guest_accelerator"]])
 		gvnic?: matchN(1, [_#defs."/$defs/node_config/$defs/gvnic", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/gvnic"]])
-		host_maintenance_policy?: matchN(1, [_#defs."/$defs/node_config/$defs/host_maintenance_policy", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/host_maintenance_policy"]])
 		kubelet_config?: matchN(1, [_#defs."/$defs/node_config/$defs/kubelet_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/kubelet_config"]])
 		linux_node_config?: matchN(1, [_#defs."/$defs/node_config/$defs/linux_node_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/linux_node_config"]])
 		local_nvme_ssd_block_config?: matchN(1, [_#defs."/$defs/node_config/$defs/local_nvme_ssd_block_config", list.MaxItems(1) & [..._#defs."/$defs/node_config/$defs/local_nvme_ssd_block_config"]])
@@ -1292,7 +1291,9 @@ google_container_cluster: {
 		// Whether the node should have nested virtualization enabled.
 		enable_nested_virtualization?: bool
 
-		// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+		// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to
+		// the PMU is assumed. For existing node pools with no PMU, setting STANDARD
+		// may not produce a diff; recreate the node pool to apply it.
 		performance_monitoring_unit?: string
 
 		// The number of threads per physical core. To disable simultaneous
@@ -1463,11 +1464,6 @@ google_container_cluster: {
 	_#defs: "/$defs/node_config/$defs/gvnic": close({
 		// Whether or not gvnic is enabled
 		enabled!: bool
-	})
-
-	_#defs: "/$defs/node_config/$defs/host_maintenance_policy": close({
-		// .
-		maintenance_interval!: string
 	})
 
 	_#defs: "/$defs/node_config/$defs/kubelet_config": close({
@@ -1928,7 +1924,6 @@ google_container_cluster: {
 		gcfs_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/gcfs_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/gcfs_config"]])
 		guest_accelerator?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/guest_accelerator", [..._#defs."/$defs/node_pool/$defs/node_config/$defs/guest_accelerator"]])
 		gvnic?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/gvnic", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/gvnic"]])
-		host_maintenance_policy?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/host_maintenance_policy", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/host_maintenance_policy"]])
 		kubelet_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/kubelet_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/kubelet_config"]])
 		linux_node_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/linux_node_config"]])
 		local_nvme_ssd_block_config?: matchN(1, [_#defs."/$defs/node_pool/$defs/node_config/$defs/local_nvme_ssd_block_config", list.MaxItems(1) & [..._#defs."/$defs/node_pool/$defs/node_config/$defs/local_nvme_ssd_block_config"]])
@@ -2038,7 +2033,9 @@ google_container_cluster: {
 		// Whether the node should have nested virtualization enabled.
 		enable_nested_virtualization?: bool
 
-		// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+		// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to
+		// the PMU is assumed. For existing node pools with no PMU, setting STANDARD
+		// may not produce a diff; recreate the node pool to apply it.
 		performance_monitoring_unit?: string
 
 		// The number of threads per physical core. To disable simultaneous
@@ -2209,11 +2206,6 @@ google_container_cluster: {
 	_#defs: "/$defs/node_pool/$defs/node_config/$defs/gvnic": close({
 		// Whether or not gvnic is enabled
 		enabled!: bool
-	})
-
-	_#defs: "/$defs/node_pool/$defs/node_config/$defs/host_maintenance_policy": close({
-		// .
-		maintenance_interval!: string
 	})
 
 	_#defs: "/$defs/node_pool/$defs/node_config/$defs/kubelet_config": close({

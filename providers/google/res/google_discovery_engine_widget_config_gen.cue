@@ -71,6 +71,7 @@ google_discovery_engine_widget_config: {
 	#ui_settings: close({
 		data_store_ui_configs?: matchN(1, [_#defs."/$defs/ui_settings/$defs/data_store_ui_configs", [..._#defs."/$defs/ui_settings/$defs/data_store_ui_configs"]])
 		generative_answer_config?: matchN(1, [_#defs."/$defs/ui_settings/$defs/generative_answer_config", list.MaxItems(1) & [..._#defs."/$defs/ui_settings/$defs/generative_answer_config"]])
+		search_addon_spec?: matchN(1, [_#defs."/$defs/ui_settings/$defs/search_addon_spec", list.MaxItems(1) & [..._#defs."/$defs/ui_settings/$defs/search_addon_spec"]])
 
 		// The default ordering for search results if specified.
 		// Used to set SearchRequest#orderBy on applicable requests.
@@ -108,6 +109,11 @@ google_discovery_engine_widget_config: {
 		// Controls whether result extract is display and how (snippet or extractive answer).
 		// Default to no result if unspecified. Possible values: ["SNIPPET", "EXTRACTIVE_ANSWER"]
 		result_description_type?: string
+
+		// Whether to show the admin-configured display name for data connectors in
+		// the widget sources UI (instead of the connector kind). Opt-in; defaults
+		// to false.
+		source_admin_display_name_enabled?: bool
 	})
 
 	_#defs: "/$defs/homepage_setting/$defs/shortcuts": close({
@@ -200,5 +206,19 @@ google_discovery_engine_widget_config: {
 
 		// The number of top results to generate the answer from. Up to 10.
 		result_count?: number
+	})
+
+	_#defs: "/$defs/ui_settings/$defs/search_addon_spec": close({
+		// If true, generative answer add-on is disabled. Generative answer
+		// add-on includes natural language to filters and simple answers.
+		generative_answer_add_on_disabled?: bool
+
+		// If true, disables event re-ranking and personalization to optimize KPIs
+		// & personalize results.
+		kpi_personalization_add_on_disabled?: bool
+
+		// If true, semantic add-on is disabled. Semantic add-on includes
+		// embeddings and jetstream.
+		semantic_add_on_disabled?: bool
 	})
 }

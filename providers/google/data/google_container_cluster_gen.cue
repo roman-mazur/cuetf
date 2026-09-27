@@ -631,9 +631,6 @@ google_container_cluster: {
 			gvnic?: [...close({
 				enabled?: bool
 			})]
-			host_maintenance_policy?: [...close({
-				maintenance_interval?: string
-			})]
 			image_type?: string
 			kubelet_config?: [...close({
 				allowed_unsafe_sysctls?: [...string]
@@ -947,9 +944,6 @@ google_container_cluster: {
 				})]
 				gvnic?: [...close({
 					enabled?: bool
-				})]
-				host_maintenance_policy?: [...close({
-					maintenance_interval?: string
 				})]
 				image_type?: string
 				kubelet_config?: [...close({
