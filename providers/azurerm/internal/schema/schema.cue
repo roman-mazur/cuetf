@@ -22218,7 +22218,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_cdn_endpoint_custom_domain: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					cdn_endpoint_id: {
@@ -57794,7 +57794,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				attributes: {
 					app_settings: {
 						type: ["map", "string"]
-						description:      "A map of key-value pairs for [App Settings](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings) and custom values."
+						description:      "A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -66011,8 +66011,19 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 								connection_string: {
 									type:             "string"
 									description_kind: "plain"
-									required:         true
+									optional:         true
 									sensitive:        true
+								}
+								connection_string_wo: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+									write_only:       true
+								}
+								connection_string_wo_version: {
+									type:             "number"
+									description_kind: "plain"
+									optional:         true
 								}
 								id: {
 									type:             "string"
@@ -75206,7 +75217,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				attributes: {
 					app_settings: {
 						type: ["map", "string"]
-						description:      "A map of key-value pairs for [App Settings](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings) and custom values."
+						description:      "A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -75260,6 +75271,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 					enabled: {
 						type:             "bool"
 						description:      "Is the Linux Function App enabled."
+						description_kind: "plain"
+						optional:         true
+					}
+					end_to_end_tls_encryption_enabled: {
+						type:             "bool"
 						description_kind: "plain"
 						optional:         true
 					}
@@ -76892,7 +76908,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				attributes: {
 					app_settings: {
 						type: ["map", "string"]
-						description:      "A map of key-value pairs for [App Settings](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings) and custom values."
+						description:      "A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -76946,6 +76962,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 					enabled: {
 						type:             "bool"
 						description:      "Is the Linux Function App Slot enabled."
+						description_kind: "plain"
+						optional:         true
+					}
+					end_to_end_tls_encryption_enabled: {
+						type:             "bool"
 						description_kind: "plain"
 						optional:         true
 					}
@@ -80075,6 +80096,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						description_kind: "plain"
 						optional:         true
 					}
+					end_to_end_tls_encryption_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+					}
 					ftp_publish_basic_authentication_enabled: {
 						type:             "bool"
 						description_kind: "plain"
@@ -81864,6 +81890,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						computed:         true
 					}
 					enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+					}
+					end_to_end_tls_encryption_enabled: {
 						type:             "bool"
 						description_kind: "plain"
 						optional:         true
@@ -91830,6 +91861,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						description_kind: "plain"
 						computed:         true
 						sensitive:        true
+					}
+					cosmos_db_network_bypass_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
 					}
 					create_mode: {
 						type:             "string"
@@ -136094,6 +136130,115 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				description_kind: "plain"
 			}
 		}
+		azurerm_storage_discovery_workspace: {
+			version: 0
+			block: {
+				attributes: {
+					description: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					resource_group_name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					sku: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						optional:         true
+					}
+					workspace_roots: {
+						type: ["set", "string"]
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: {
+					scope: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								display_name: {
+									type:             "string"
+									description_kind: "plain"
+									required:         true
+								}
+								resource_types: {
+									type: ["set", "string"]
+									description_kind: "plain"
+									required:         true
+								}
+								tag_keys_only: {
+									type: ["set", "string"]
+									description_kind: "plain"
+									optional:         true
+								}
+								tags: {
+									type: ["map", "string"]
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+						min_items: 1
+						max_items: 10
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		azurerm_storage_encryption_scope: {
 			version: 0
 			block: {
@@ -141342,7 +141487,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_synapse_firewall_rule: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					end_ip_address: {
@@ -141404,7 +141549,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_synapse_integration_runtime_azure: {
-			version: 1
+			version: 2
 			block: {
 				attributes: {
 					compute_type: {
@@ -141481,7 +141626,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_synapse_integration_runtime_self_hosted: {
-			version: 1
+			version: 2
 			block: {
 				attributes: {
 					authorization_key_primary: {
@@ -152881,7 +153026,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				attributes: {
 					app_settings: {
 						type: ["map", "string"]
-						description:      "A map of key-value pairs for [App Settings](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings) and custom values."
+						description:      "A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -152935,6 +153080,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 					enabled: {
 						type:             "bool"
 						description:      "Is the Windows Function App enabled."
+						description_kind: "plain"
+						optional:         true
+					}
+					end_to_end_tls_encryption_enabled: {
+						type:             "bool"
 						description_kind: "plain"
 						optional:         true
 					}
@@ -154512,7 +154662,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				attributes: {
 					app_settings: {
 						type: ["map", "string"]
-						description:      "A map of key-value pairs for [App Settings](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings) and custom values."
+						description:      "A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -154568,6 +154718,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 					enabled: {
 						type:             "bool"
 						description:      "Is the Windows Function App Slot enabled."
+						description_kind: "plain"
+						optional:         true
+					}
+					end_to_end_tls_encryption_enabled: {
+						type:             "bool"
 						description_kind: "plain"
 						optional:         true
 					}
@@ -157719,6 +157874,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						description_kind: "plain"
 						optional:         true
 					}
+					end_to_end_tls_encryption_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+					}
 					ftp_publish_basic_authentication_enabled: {
 						type:             "bool"
 						description_kind: "plain"
@@ -159621,6 +159781,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						computed:         true
 					}
 					enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+					}
+					end_to_end_tls_encryption_enabled: {
 						type:             "bool"
 						description_kind: "plain"
 						optional:         true
@@ -173717,6 +173882,32 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 					}
 					ipv4_enabled: {
 						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					ipv6: {
+						type: ["list", ["object", {
+							enabled: "bool"
+							microsoft_peering: ["list", ["object", {
+								advertised_communities: ["list", "string"]
+								advertised_public_prefixes: ["list", "string"]
+								customer_asn:          "number"
+								routing_registry_name: "string"
+							}]]
+							primary_peer_address_prefix:   "string"
+							route_filter_id:               "string"
+							secondary_peer_address_prefix: "string"
+						}]]
+						description_kind: "plain"
+						computed:         true
+					}
+					microsoft_peering_config: {
+						type: ["list", ["object", {
+							advertised_communities: ["list", "string"]
+							advertised_public_prefixes: ["list", "string"]
+							customer_asn:          "number"
+							routing_registry_name: "string"
+						}]]
 						description_kind: "plain"
 						computed:         true
 					}
@@ -190102,6 +190293,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						description_kind: "plain"
 						computed:         true
 					}
+					maximum_message_size_in_kb: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
 					name: {
 						type:             "string"
 						description_kind: "plain"
@@ -190369,6 +190565,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						computed:         true
 					}
 					max_size_in_megabytes: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					maximum_message_size_in_kb: {
 						type:             "number"
 						description_kind: "plain"
 						computed:         true
@@ -197049,6 +197250,24 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				description_kind: "plain"
 			}
 		}
+		azurerm_batch_account: {
+			version: 0
+			block: {
+				attributes: {
+					resource_group_name: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					subscription_id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		azurerm_batch_application: {
 			version: 0
 			block: {
@@ -197056,6 +197275,24 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 					type:             "string"
 					description_kind: "plain"
 					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_capacity_reservation_group: {
+			version: 0
+			block: {
+				attributes: {
+					resource_group_name: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					subscription_id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				description_kind: "plain"
 			}
@@ -197075,6 +197312,17 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			version: 0
 			block: {
 				attributes: cdn_frontdoor_origin_group_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_cdn_frontdoor_origin_group: {
+			version: 0
+			block: {
+				attributes: cdn_frontdoor_profile_id: {
 					type:             "string"
 					description_kind: "plain"
 					required:         true
@@ -197326,6 +197574,24 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_log_analytics_workspace: {
+			version: 0
+			block: {
+				attributes: {
+					resource_group_name: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					subscription_id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_monitor_action_group: {
 			version: 0
 			block: {
 				attributes: {
@@ -198823,6 +199089,27 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 					required_for_import: true
 				}
 				origin_group_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				profile_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				resource_group_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				subscription_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		azurerm_cdn_frontdoor_origin_group: {
+			version: 0
+			attributes: {
+				name: {
 					type:                "string"
 					required_for_import: true
 				}
@@ -201156,6 +201443,23 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 					required_for_import: true
 				}
 				storage_account_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				subscription_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		azurerm_storage_discovery_workspace: {
+			version: 0
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				resource_group_name: {
 					type:                "string"
 					required_for_import: true
 				}

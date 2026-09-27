@@ -1004,6 +1004,7 @@ import (
 	_#res: "\(#azurermPrefix)_storage_container_immutability_policy": close({res.azurerm_storage_container_immutability_policy & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_storage_data_lake_gen2_filesystem": close({res.azurerm_storage_data_lake_gen2_filesystem & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_storage_data_lake_gen2_path": close({res.azurerm_storage_data_lake_gen2_path & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_storage_discovery_workspace": close({res.azurerm_storage_discovery_workspace & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_storage_encryption_scope": close({res.azurerm_storage_encryption_scope & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_storage_management_policy": close({res.azurerm_storage_management_policy & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_storage_mover_agent": close({res.azurerm_storage_mover_agent & cuetf.MetaArgs})

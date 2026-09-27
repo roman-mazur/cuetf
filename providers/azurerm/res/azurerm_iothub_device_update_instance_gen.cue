@@ -17,8 +17,10 @@ azurerm_iothub_device_update_instance: {
 	})
 
 	#diagnostic_storage_account: close({
-		connection_string!: string
-		id!:                string
+		connection_string?:            string
+		connection_string_wo?:         string
+		connection_string_wo_version?: number
+		id!:                           string
 	})
 
 	#timeouts: close({

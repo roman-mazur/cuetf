@@ -16,7 +16,7 @@ azurerm_function_app_flex_consumption: {
 		timeouts?: #timeouts
 
 		// A map of key-value pairs for [App
-		// Settings](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings)
+		// Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 		// and custom values.
 		app_settings?: [string]: string
 

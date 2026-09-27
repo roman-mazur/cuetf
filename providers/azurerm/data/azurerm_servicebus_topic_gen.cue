@@ -12,6 +12,7 @@ azurerm_servicebus_topic: {
 		express_enabled?:                         bool
 		id?:                                      string
 		max_size_in_megabytes?:                   number
+		maximum_message_size_in_kb?:              number
 		name!:                                    string
 		namespace_id!:                            string
 		partitioning_enabled?:                    bool

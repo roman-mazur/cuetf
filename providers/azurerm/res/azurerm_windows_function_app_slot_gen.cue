@@ -16,7 +16,7 @@ azurerm_windows_function_app_slot: {
 		timeouts?: #timeouts
 
 		// A map of key-value pairs for [App
-		// Settings](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings)
+		// Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 		// and custom values.
 		app_settings?: [string]: string
 
@@ -50,28 +50,29 @@ azurerm_windows_function_app_slot: {
 		default_hostname?: string
 
 		// Is the Windows Function App Slot enabled.
-		enabled?:                                  bool
-		ftp_publish_basic_authentication_enabled?: bool
+		enabled?:                           bool
+		end_to_end_tls_encryption_enabled?: bool
 
 		// The ID of the Windows Function App this Slot is a member of.
-		function_app_id!: string
+		function_app_id!:                          string
+		ftp_publish_basic_authentication_enabled?: bool
 
 		// The runtime version associated with the Function App Slot.
 		functions_extension_version?: string
 
 		// Can the Function App Slot only be accessed via HTTPS?
-		https_only?:             bool
-		hosting_environment_id?: string
+		https_only?: bool
 
 		// The User Assigned Identity to use for Key Vault access.
 		key_vault_reference_identity_id?: string
+		hosting_environment_id?:          string
 
 		// The Kind value for this Windows Function App Slot.
 		kind?: string
-		id?:   string
 
 		// Specifies the name of the Windows Function App Slot.
 		name!: string
+		id?:   string
 
 		// A list of outbound IP addresses. For example `["52.23.25.3", "52.143.43.12"]`.
 		outbound_ip_address_list?: [...string]
@@ -99,15 +100,15 @@ azurerm_windows_function_app_slot: {
 
 		// The Key Vault Secret ID, including version, that contains the Connection
 		// String to connect to the storage account for this Function App.
-		storage_key_vault_secret_id?:   string
-		public_network_access_enabled?: bool
+		storage_key_vault_secret_id?: string
 
 		// Should the Function App Slot use its Managed Identity to access storage?
 		storage_uses_managed_identity?: bool
-		service_plan_id?:               string
+		public_network_access_enabled?: bool
 
 		// Is container image pull over virtual network enabled? Defaults to `false`.
 		vnet_image_pull_enabled?: bool
+		service_plan_id?:         string
 		site_credential?: [...close({
 			name?:     string
 			password?: string

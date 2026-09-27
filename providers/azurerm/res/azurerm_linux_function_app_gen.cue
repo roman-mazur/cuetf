@@ -17,7 +17,7 @@ azurerm_linux_function_app: {
 		timeouts?: #timeouts
 
 		// A map of key-value pairs for [App
-		// Settings](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings)
+		// Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 		// and custom values.
 		app_settings?: [string]: string
 
@@ -53,37 +53,38 @@ azurerm_linux_function_app: {
 		functions_extension_version?: string
 
 		// Can the Function App only be accessed via HTTPS?
-		https_only?:                               bool
-		ftp_publish_basic_authentication_enabled?: bool
+		https_only?:                        bool
+		end_to_end_tls_encryption_enabled?: bool
 
 		// The User Assigned Identity to use for Key Vault access.
-		key_vault_reference_identity_id?: string
+		key_vault_reference_identity_id?:          string
+		ftp_publish_basic_authentication_enabled?: bool
 
 		// Specifies the name of the Function App.
-		name!:                   string
-		hosting_environment_id?: string
+		name!: string
 
 		// The ID of the App Service Plan within which to create this Function App
-		service_plan_id!: string
+		service_plan_id!:        string
+		hosting_environment_id?: string
 
 		// The access key which will be used to access the storage account for the Function App.
 		storage_account_access_key?: string
-		id?:                         string
 
 		// The backend storage account name which will be used by this Function App.
 		storage_account_name?: string
+		id?:                   string
 
 		// The Key Vault Secret ID, including version, that contains the Connection
 		// String to connect to the storage account for this Function App.
 		storage_key_vault_secret_id?: string
-		kind?:                        string
 
 		// Should the Function App use its Managed Identity to access storage?
 		storage_uses_managed_identity?: bool
-		location!:                      string
+		kind?:                          string
 
 		// Is container image pull over virtual network enabled? Defaults to `false`.
 		vnet_image_pull_enabled?: bool
+		location!:                string
 
 		// The local path and filename of the Zip packaged application to deploy to this
 		// Linux Function App. **Note:** Using this value requires either
