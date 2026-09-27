@@ -33,7 +33,12 @@ aws_ecs_service: {
 				hook_details?:    string
 				hook_target_arn?: string
 				lifecycle_stages?: [...string]
-				role_arn?: string
+				role_arn?:    string
+				target_type?: string
+				timeout_configuration?: [...close({
+					action?:             string
+					timeout_in_minutes?: string
+				})]
 			})]
 			linear_configuration?: [...close({
 				step_bake_time_in_minutes?: string

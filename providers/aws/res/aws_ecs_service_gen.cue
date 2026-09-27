@@ -143,10 +143,17 @@ aws_ecs_service: {
 	})
 
 	_#defs: "/$defs/deployment_configuration/$defs/lifecycle_hook": close({
+		timeout_configuration?: matchN(1, [_#defs."/$defs/deployment_configuration/$defs/lifecycle_hook/$defs/timeout_configuration", list.MaxItems(1) & [..._#defs."/$defs/deployment_configuration/$defs/lifecycle_hook/$defs/timeout_configuration"]])
 		hook_details?:    string
-		hook_target_arn!: string
+		hook_target_arn?: string
 		lifecycle_stages!: [...string]
-		role_arn!: string
+		role_arn?:    string
+		target_type?: string
+	})
+
+	_#defs: "/$defs/deployment_configuration/$defs/lifecycle_hook/$defs/timeout_configuration": close({
+		action?:             string
+		timeout_in_minutes?: string
 	})
 
 	_#defs: "/$defs/deployment_configuration/$defs/linear_configuration": close({
