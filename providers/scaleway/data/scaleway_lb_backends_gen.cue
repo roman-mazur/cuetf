@@ -29,6 +29,7 @@ scaleway_lb_backends: {
 			health_check_port?:        number
 			health_check_tcp?: [...close({})]
 			health_check_timeout?:     string
+			host?:                     string
 			id?:                       string
 			ignore_ssl_server_verify?: bool
 			lb_id?:                    string

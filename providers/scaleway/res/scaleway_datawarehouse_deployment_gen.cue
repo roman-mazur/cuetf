@@ -7,6 +7,7 @@ scaleway_datawarehouse_deployment: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_datawarehouse_deployment")
 	close({
 		private_network?: matchN(1, [#private_network, list.MaxItems(1) & [...#private_network]])
+		public_network?: matchN(1, [#public_network, list.MaxItems(1) & [...#public_network]])
 		timeouts?: #timeouts
 
 		// Maximum CPU count
@@ -44,16 +45,6 @@ scaleway_datawarehouse_deployment: {
 
 		// The project_id you want to attach the resource to
 		project_id?: string
-
-		// Public endpoint configuration. A public endpoint is created by default.
-		public_network?: [...close({
-			dns_record?: string
-			id?:         string
-			services?: [...close({
-				port?:     number
-				protocol?: string
-			})]
-		})]
 
 		// RAM per CPU (GB)
 		ram_per_cpu!: number
@@ -99,6 +90,20 @@ scaleway_datawarehouse_deployment: {
 		pn_id!: string
 
 		// List of services exposed on the private endpoint
+		services?: [...close({
+			port?:     number
+			protocol?: string
+		})]
+	})
+
+	#public_network: close({
+		// DNS record for the public endpoint
+		dns_record?: string
+
+		// ID of the public endpoint
+		id?: string
+
+		// List of services exposed on the public endpoint
 		services?: [...close({
 			port?:     number
 			protocol?: string

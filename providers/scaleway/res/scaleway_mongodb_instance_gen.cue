@@ -73,7 +73,8 @@ scaleway_mongodb_instance: {
 		// Name of the user created when the cluster is created
 		user_name?: string
 
-		// MongoDB version of the instance
+		// MongoDB version of the instance (e.g. '7.0'). Changing this value may trigger
+		// a blue/green upgrade that updates the Terraform state with a new instance ID
 		version?: string
 
 		// Volume size (in GB)

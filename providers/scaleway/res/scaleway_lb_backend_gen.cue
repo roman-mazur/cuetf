@@ -45,7 +45,12 @@ scaleway_lb_backend: {
 		// Time to wait between two consecutive health checks when a backend server is
 		// in a transient state (going UP or DOWN)
 		health_check_transient_delay?: string
-		id?:                           string
+
+		// When connecting to backend servers, use this value as the HTTP `Host` header
+		// or TLS SNI. This allows routing to specific services on the backend server
+		// that are configured to respond to particular hostnames
+		host?: string
+		id?:   string
 
 		// Specifies whether the Load Balancer should check the backend server’s
 		// certificate before initiating a connection
