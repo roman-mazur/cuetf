@@ -8014,6 +8014,40 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									}
 									max_items: 1
 								}
+								methodology_export_options: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											append_methodology: {
+												type:             "bool"
+												description:      "If true, append the detailed methodology to the final response."
+												description_kind: "plain"
+												optional:         true
+											}
+											export_format: {
+												type: "string"
+												description: """
+															Format for methodology export.
+															Possible values:
+															MARKDOWN
+															HTML
+															PDF
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											export_methodology_artifact: {
+												type:             "bool"
+												description:      "If true, export the detailed methodology as a separate artifact."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Options for methodology export."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
 								slide_generation_options: {
 									nesting_mode: "list"
 									block: {
@@ -42873,10 +42907,38 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											}
 											max_items: 1
 										}
+										blob: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													data: {
+														type:             "string"
+														description:      "Raw bytes of the blob."
+														description_kind: "plain"
+														required:         true
+													}
+													mime_type: {
+														type:             "string"
+														description:      "The IANA standard MIME type of the source data."
+														description_kind: "plain"
+														required:         true
+													}
+												}
+												description:      "Represents a blob input or output in the conversation."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
 										image: {
 											nesting_mode: "list"
 											block: {
 												attributes: {
+													alt_text: {
+														type:             "string"
+														description:      "The alternative text for the image."
+														description_kind: "plain"
+														optional:         true
+													}
 													data: {
 														type:             "string"
 														description:      "Raw bytes of the image."
@@ -43929,6 +43991,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									token_endpoint: "string"
 								}]]
 								service_account_auth_config: ["list", ["object", {
+									scopes: ["list", "string"]
 									service_account: "string"
 								}]]
 								service_agent_id_token_auth_config: ["list", ["object", {}]]
@@ -43983,6 +44046,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									token_endpoint: "string"
 								}]]
 								service_account_auth_config: ["list", ["object", {
+									scopes: ["list", "string"]
 									service_account: "string"
 								}]]
 								service_agent_id_token_auth_config: ["list", ["object", {}]]
@@ -60219,6 +60283,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									optional:         true
 								}
+								delay_execution: {
+									type:             "bool"
+									description:      "If true, the system will start the execution within the next 12 hours depending on available capacity."
+									description_kind: "plain"
+									optional:         true
+								}
 								labels: {
 									type: ["map", "string"]
 									description: """
@@ -60327,6 +60397,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 													name: {
 														type:             "string"
 														description:      "Name of the container specified as a DNS_LABEL."
+														description_kind: "plain"
+														optional:         true
+													}
+													sandbox_launcher: {
+														type:             "bool"
+														description:      "Indicates that this container can act as a sandbox supervisor and launch sandboxes."
 														description_kind: "plain"
 														optional:         true
 													}
@@ -62562,6 +62638,34 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											}
 										}
 										description:      "VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								workload_identity_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											identity: {
+												type:             "string"
+												description:      "The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates."
+												description_kind: "plain"
+												optional:         true
+											}
+											identity_certificate_enabled: {
+												type:             "bool"
+												description:      "Controls whether an instance receives a MWLID certificate."
+												description_kind: "plain"
+												optional:         true
+											}
+											identity_type: {
+												type:             "string"
+												description:      "The type of identity to use. Possible values: [\"IDENTITY_TYPE_SERVICE_ACCOUNT\", \"IDENTITY_TYPE_WORKLOAD_IDENTITY\", \"IDENTITY_TYPE_AGENT_IDENTITY\"]"
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Workload identity settings for this Revision."
 										description_kind: "plain"
 									}
 									max_items: 1
@@ -132849,7 +132953,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											}
 											performance_monitoring_unit: {
 												type:             "string"
-												description:      "Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed."
+												description:      "Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it."
 												description_kind: "plain"
 												optional:         true
 											}
@@ -133236,20 +133340,6 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											required:         true
 										}
 										description:      "Enable or disable gvnic in the node pool."
-										description_kind: "plain"
-									}
-									max_items: 1
-								}
-								host_maintenance_policy: {
-									nesting_mode: "list"
-									block: {
-										attributes: maintenance_interval: {
-											type:             "string"
-											description:      "."
-											description_kind: "plain"
-											required:         true
-										}
-										description:      "The maintenance policy for the hosts on which the GKE VMs run on."
 										description_kind: "plain"
 									}
 									max_items: 1
@@ -134520,7 +134610,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 														}
 														performance_monitoring_unit: {
 															type:             "string"
-															description:      "Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed."
+															description:      "Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it."
 															description_kind: "plain"
 															optional:         true
 														}
@@ -134907,20 +134997,6 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 														required:         true
 													}
 													description:      "Enable or disable gvnic in the node pool."
-													description_kind: "plain"
-												}
-												max_items: 1
-											}
-											host_maintenance_policy: {
-												nesting_mode: "list"
-												block: {
-													attributes: maintenance_interval: {
-														type:             "string"
-														description:      "."
-														description_kind: "plain"
-														required:         true
-													}
-													description:      "The maintenance policy for the hosts on which the GKE VMs run on."
 													description_kind: "plain"
 												}
 												max_items: 1
@@ -137140,7 +137216,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											}
 											performance_monitoring_unit: {
 												type:             "string"
-												description:      "Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed."
+												description:      "Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it."
 												description_kind: "plain"
 												optional:         true
 											}
@@ -137527,20 +137603,6 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											required:         true
 										}
 										description:      "Enable or disable gvnic in the node pool."
-										description_kind: "plain"
-									}
-									max_items: 1
-								}
-								host_maintenance_policy: {
-									nesting_mode: "list"
-									block: {
-										attributes: maintenance_interval: {
-											type:             "string"
-											description:      "."
-											description_kind: "plain"
-											required:         true
-										}
-										description:      "The maintenance policy for the hosts on which the GKE VMs run on."
 										description_kind: "plain"
 									}
 									max_items: 1
@@ -166740,6 +166802,20 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																	nesting_mode: "list"
 																	block: {
 																		attributes: {
+																			boot_disk_provisioned_iops: {
+																				type:             "number"
+																				description:      "Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. This field is supported only if boot_disk_type is hyperdisk-balanced."
+																				description_kind: "plain"
+																				optional:         true
+																				computed:         true
+																			}
+																			boot_disk_provisioned_throughput: {
+																				type:             "number"
+																				description:      "Optional. Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1. This field is supported only if boot_disk_type is hyperdisk-balanced."
+																				description_kind: "plain"
+																				optional:         true
+																				computed:         true
+																			}
 																			boot_disk_size_gb: {
 																				type:             "number"
 																				description:      "Optional. Size in GB of the boot disk (default is 500GB)."
@@ -166754,12 +166830,56 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																				optional:         true
 																				computed:         true
 																			}
-																			num_local_ssds: {
-																				type:             "number"
-																				description:      "Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries."
+																			local_ssd_interface: {
+																				type:             "string"
+																				description:      "Optional. Interface type of local SSDs (default is \"scsi\"). Valid values: \"scsi\" (Small Computer System Interface), \"nvme\" (Non-Volatile Memory Express)."
 																				description_kind: "plain"
 																				optional:         true
 																				computed:         true
+																			}
+																			num_local_ssds: {
+																				type:             "number"
+																				description:      "Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries."
+																				description_kind: "plain"
+																				optional:         true
+																				computed:         true
+																			}
+																		}
+																		block_types: attached_disk_config: {
+																			nesting_mode: "list"
+																			block: {
+																				attributes: {
+																					disk_size_gb: {
+																						type:             "number"
+																						description:      "Optional. Size of the attached disk, specified in GB."
+																						description_kind: "plain"
+																						optional:         true
+																						computed:         true
+																					}
+																					disk_type: {
+																						type:             "string"
+																						description:      "Optional. The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`."
+																						description_kind: "plain"
+																						optional:         true
+																						computed:         true
+																					}
+																					provisioned_iops: {
+																						type:             "number"
+																						description:      "Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle."
+																						description_kind: "plain"
+																						optional:         true
+																						computed:         true
+																					}
+																					provisioned_throughput: {
+																						type:             "number"
+																						description:      "Optional. Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle."
+																						description_kind: "plain"
+																						optional:         true
+																						computed:         true
+																					}
+																				}
+																				description:      "Optional. Attached disk configuration."
+																				description_kind: "plain"
 																			}
 																		}
 																		description:      "Optional. Disk option config settings."
@@ -166810,6 +166930,20 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																					nesting_mode: "list"
 																					block: {
 																						attributes: {
+																							boot_disk_provisioned_iops: {
+																								type:             "number"
+																								description:      "Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. This field is supported only if boot_disk_type is hyperdisk-balanced."
+																								description_kind: "plain"
+																								optional:         true
+																								computed:         true
+																							}
+																							boot_disk_provisioned_throughput: {
+																								type:             "number"
+																								description:      "Optional. Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1. This field is supported only if boot_disk_type is hyperdisk-balanced."
+																								description_kind: "plain"
+																								optional:         true
+																								computed:         true
+																							}
 																							boot_disk_size_gb: {
 																								type:             "number"
 																								description:      "Optional. Size in GB of the boot disk (default is 500GB)."
@@ -166824,12 +166958,56 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																								optional:         true
 																								computed:         true
 																							}
-																							num_local_ssds: {
-																								type:             "number"
-																								description:      "Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries."
+																							local_ssd_interface: {
+																								type:             "string"
+																								description:      "Optional. Interface type of local SSDs (default is \"scsi\"). Valid values: \"scsi\" (Small Computer System Interface), \"nvme\" (Non-Volatile Memory Express)."
 																								description_kind: "plain"
 																								optional:         true
 																								computed:         true
+																							}
+																							num_local_ssds: {
+																								type:             "number"
+																								description:      "Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries."
+																								description_kind: "plain"
+																								optional:         true
+																								computed:         true
+																							}
+																						}
+																						block_types: attached_disk_config: {
+																							nesting_mode: "list"
+																							block: {
+																								attributes: {
+																									disk_size_gb: {
+																										type:             "number"
+																										description:      "Optional. Size of the attached disk, specified in GB."
+																										description_kind: "plain"
+																										optional:         true
+																										computed:         true
+																									}
+																									disk_type: {
+																										type:             "string"
+																										description:      "Optional. The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`."
+																										description_kind: "plain"
+																										optional:         true
+																										computed:         true
+																									}
+																									provisioned_iops: {
+																										type:             "number"
+																										description:      "Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle."
+																										description_kind: "plain"
+																										optional:         true
+																										computed:         true
+																									}
+																									provisioned_throughput: {
+																										type:             "number"
+																										description:      "Optional. Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle."
+																										description_kind: "plain"
+																										optional:         true
+																										computed:         true
+																									}
+																								}
+																								description:      "Optional. Attached disk configuration."
+																								description_kind: "plain"
 																							}
 																						}
 																						description:      "Optional. Disk configuration to apply to the instances in this instance selection."
@@ -166935,6 +167113,20 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																	nesting_mode: "list"
 																	block: {
 																		attributes: {
+																			boot_disk_provisioned_iops: {
+																				type:             "number"
+																				description:      "Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. This field is supported only if boot_disk_type is hyperdisk-balanced."
+																				description_kind: "plain"
+																				optional:         true
+																				computed:         true
+																			}
+																			boot_disk_provisioned_throughput: {
+																				type:             "number"
+																				description:      "Optional. Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1. This field is supported only if boot_disk_type is hyperdisk-balanced."
+																				description_kind: "plain"
+																				optional:         true
+																				computed:         true
+																			}
 																			boot_disk_size_gb: {
 																				type:             "number"
 																				description:      "Optional. Size in GB of the boot disk (default is 500GB)."
@@ -166949,12 +167141,56 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																				optional:         true
 																				computed:         true
 																			}
-																			num_local_ssds: {
-																				type:             "number"
-																				description:      "Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries."
+																			local_ssd_interface: {
+																				type:             "string"
+																				description:      "Optional. Interface type of local SSDs (default is \"scsi\"). Valid values: \"scsi\" (Small Computer System Interface), \"nvme\" (Non-Volatile Memory Express)."
 																				description_kind: "plain"
 																				optional:         true
 																				computed:         true
+																			}
+																			num_local_ssds: {
+																				type:             "number"
+																				description:      "Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries."
+																				description_kind: "plain"
+																				optional:         true
+																				computed:         true
+																			}
+																		}
+																		block_types: attached_disk_config: {
+																			nesting_mode: "list"
+																			block: {
+																				attributes: {
+																					disk_size_gb: {
+																						type:             "number"
+																						description:      "Optional. Size of the attached disk, specified in GB."
+																						description_kind: "plain"
+																						optional:         true
+																						computed:         true
+																					}
+																					disk_type: {
+																						type:             "string"
+																						description:      "Optional. The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`."
+																						description_kind: "plain"
+																						optional:         true
+																						computed:         true
+																					}
+																					provisioned_iops: {
+																						type:             "number"
+																						description:      "Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle."
+																						description_kind: "plain"
+																						optional:         true
+																						computed:         true
+																					}
+																					provisioned_throughput: {
+																						type:             "number"
+																						description:      "Optional. Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle."
+																						description_kind: "plain"
+																						optional:         true
+																						computed:         true
+																					}
+																				}
+																				description:      "Optional. Attached disk configuration."
+																				description_kind: "plain"
 																			}
 																		}
 																		description:      "Optional. Disk option config settings."
@@ -167006,6 +167242,20 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																						nesting_mode: "list"
 																						block: {
 																							attributes: {
+																								boot_disk_provisioned_iops: {
+																									type:             "number"
+																									description:      "Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. This field is supported only if boot_disk_type is hyperdisk-balanced."
+																									description_kind: "plain"
+																									optional:         true
+																									computed:         true
+																								}
+																								boot_disk_provisioned_throughput: {
+																									type:             "number"
+																									description:      "Optional. Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1. This field is supported only if boot_disk_type is hyperdisk-balanced."
+																									description_kind: "plain"
+																									optional:         true
+																									computed:         true
+																								}
 																								boot_disk_size_gb: {
 																									type:             "number"
 																									description:      "Optional. Size in GB of the boot disk (default is 500GB)."
@@ -167020,12 +167270,56 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																									optional:         true
 																									computed:         true
 																								}
-																								num_local_ssds: {
-																									type:             "number"
-																									description:      "Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries."
+																								local_ssd_interface: {
+																									type:             "string"
+																									description:      "Optional. Interface type of local SSDs (default is \"scsi\"). Valid values: \"scsi\" (Small Computer System Interface), \"nvme\" (Non-Volatile Memory Express)."
 																									description_kind: "plain"
 																									optional:         true
 																									computed:         true
+																								}
+																								num_local_ssds: {
+																									type:             "number"
+																									description:      "Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries."
+																									description_kind: "plain"
+																									optional:         true
+																									computed:         true
+																								}
+																							}
+																							block_types: attached_disk_config: {
+																								nesting_mode: "list"
+																								block: {
+																									attributes: {
+																										disk_size_gb: {
+																											type:             "number"
+																											description:      "Optional. Size of the attached disk, specified in GB."
+																											description_kind: "plain"
+																											optional:         true
+																											computed:         true
+																										}
+																										disk_type: {
+																											type:             "string"
+																											description:      "Optional. The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`."
+																											description_kind: "plain"
+																											optional:         true
+																											computed:         true
+																										}
+																										provisioned_iops: {
+																											type:             "number"
+																											description:      "Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle."
+																											description_kind: "plain"
+																											optional:         true
+																											computed:         true
+																										}
+																										provisioned_throughput: {
+																											type:             "number"
+																											description:      "Optional. Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle."
+																											description_kind: "plain"
+																											optional:         true
+																											computed:         true
+																										}
+																									}
+																									description:      "Optional. Attached disk configuration."
+																									description_kind: "plain"
 																								}
 																							}
 																							description:      "Optional. Disk configuration to apply to the instances in this instance selection."
@@ -167292,6 +167586,20 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																	nesting_mode: "list"
 																	block: {
 																		attributes: {
+																			boot_disk_provisioned_iops: {
+																				type:             "number"
+																				description:      "Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. This field is supported only if boot_disk_type is hyperdisk-balanced."
+																				description_kind: "plain"
+																				optional:         true
+																				computed:         true
+																			}
+																			boot_disk_provisioned_throughput: {
+																				type:             "number"
+																				description:      "Optional. Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1. This field is supported only if boot_disk_type is hyperdisk-balanced."
+																				description_kind: "plain"
+																				optional:         true
+																				computed:         true
+																			}
 																			boot_disk_size_gb: {
 																				type:             "number"
 																				description:      "Optional. Size in GB of the boot disk (default is 500GB)."
@@ -167306,12 +167614,56 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																				optional:         true
 																				computed:         true
 																			}
-																			num_local_ssds: {
-																				type:             "number"
-																				description:      "Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries."
+																			local_ssd_interface: {
+																				type:             "string"
+																				description:      "Optional. Interface type of local SSDs (default is \"scsi\"). Valid values: \"scsi\" (Small Computer System Interface), \"nvme\" (Non-Volatile Memory Express)."
 																				description_kind: "plain"
 																				optional:         true
 																				computed:         true
+																			}
+																			num_local_ssds: {
+																				type:             "number"
+																				description:      "Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries."
+																				description_kind: "plain"
+																				optional:         true
+																				computed:         true
+																			}
+																		}
+																		block_types: attached_disk_config: {
+																			nesting_mode: "list"
+																			block: {
+																				attributes: {
+																					disk_size_gb: {
+																						type:             "number"
+																						description:      "Optional. Size of the attached disk, specified in GB."
+																						description_kind: "plain"
+																						optional:         true
+																						computed:         true
+																					}
+																					disk_type: {
+																						type:             "string"
+																						description:      "Optional. The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`."
+																						description_kind: "plain"
+																						optional:         true
+																						computed:         true
+																					}
+																					provisioned_iops: {
+																						type:             "number"
+																						description:      "Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle."
+																						description_kind: "plain"
+																						optional:         true
+																						computed:         true
+																					}
+																					provisioned_throughput: {
+																						type:             "number"
+																						description:      "Optional. Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle."
+																						description_kind: "plain"
+																						optional:         true
+																						computed:         true
+																					}
+																				}
+																				description:      "Optional. Attached disk configuration."
+																				description_kind: "plain"
 																			}
 																		}
 																		description:      "Optional. Disk option config settings."
@@ -167362,6 +167714,20 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																					nesting_mode: "list"
 																					block: {
 																						attributes: {
+																							boot_disk_provisioned_iops: {
+																								type:             "number"
+																								description:      "Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. This field is supported only if boot_disk_type is hyperdisk-balanced."
+																								description_kind: "plain"
+																								optional:         true
+																								computed:         true
+																							}
+																							boot_disk_provisioned_throughput: {
+																								type:             "number"
+																								description:      "Optional. Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1. This field is supported only if boot_disk_type is hyperdisk-balanced."
+																								description_kind: "plain"
+																								optional:         true
+																								computed:         true
+																							}
 																							boot_disk_size_gb: {
 																								type:             "number"
 																								description:      "Optional. Size in GB of the boot disk (default is 500GB)."
@@ -167376,12 +167742,56 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																								optional:         true
 																								computed:         true
 																							}
-																							num_local_ssds: {
-																								type:             "number"
-																								description:      "Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries."
+																							local_ssd_interface: {
+																								type:             "string"
+																								description:      "Optional. Interface type of local SSDs (default is \"scsi\"). Valid values: \"scsi\" (Small Computer System Interface), \"nvme\" (Non-Volatile Memory Express)."
 																								description_kind: "plain"
 																								optional:         true
 																								computed:         true
+																							}
+																							num_local_ssds: {
+																								type:             "number"
+																								description:      "Optional. Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries."
+																								description_kind: "plain"
+																								optional:         true
+																								computed:         true
+																							}
+																						}
+																						block_types: attached_disk_config: {
+																							nesting_mode: "list"
+																							block: {
+																								attributes: {
+																									disk_size_gb: {
+																										type:             "number"
+																										description:      "Optional. Size of the attached disk, specified in GB."
+																										description_kind: "plain"
+																										optional:         true
+																										computed:         true
+																									}
+																									disk_type: {
+																										type:             "string"
+																										description:      "Optional. The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`."
+																										description_kind: "plain"
+																										optional:         true
+																										computed:         true
+																									}
+																									provisioned_iops: {
+																										type:             "number"
+																										description:      "Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle."
+																										description_kind: "plain"
+																										optional:         true
+																										computed:         true
+																									}
+																									provisioned_throughput: {
+																										type:             "number"
+																										description:      "Optional. Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle."
+																										description_kind: "plain"
+																										optional:         true
+																										computed:         true
+																									}
+																								}
+																								description:      "Optional. Attached disk configuration."
+																								description_kind: "plain"
 																							}
 																						}
 																						description:      "Optional. Disk configuration to apply to the instances in this instance selection."
@@ -181745,35 +182155,106 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											output: {
 												nesting_mode: "list"
 												block: {
-													block_types: summary_suggestion: {
-														nesting_mode: "list"
-														block: {
-															block_types: summary_sections: {
-																nesting_mode: "list"
-																block: {
-																	attributes: {
-																		section: {
-																			type:             "string"
-																			description:      "Required. Name of the section."
-																			description_kind: "plain"
-																			required:         true
+													block_types: {
+														summary_suggestion: {
+															nesting_mode: "list"
+															block: {
+																block_types: summary_sections: {
+																	nesting_mode: "list"
+																	block: {
+																		attributes: {
+																			section: {
+																				type:             "string"
+																				description:      "Required. Name of the section."
+																				description_kind: "plain"
+																				required:         true
+																			}
+																			summary: {
+																				type:             "string"
+																				description:      "Required. Summary text for the section."
+																				description_kind: "plain"
+																				required:         true
+																			}
 																		}
-																		summary: {
-																			type:             "string"
-																			description:      "Required. Summary text for the section."
-																			description_kind: "plain"
-																			required:         true
-																		}
+																		description:      "Required. All the parts of generated summary."
+																		description_kind: "plain"
 																	}
-																	description:      "Required. All the parts of generated summary."
-																	description_kind: "plain"
+																	min_items: 1
 																}
-																min_items: 1
+																description:      "Optional. Suggested summary."
+																description_kind: "plain"
 															}
-															description:      "Optional. Suggested summary."
-															description_kind: "plain"
+															max_items: 1
 														}
-														max_items: 1
+														tool_call_info: {
+															nesting_mode: "list"
+															block: {
+																block_types: {
+																	tool_call: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				action: {
+																					type:             "string"
+																					description:      "The name of the tool's action associated with this call."
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				tool: {
+																					type:             "string"
+																					description:      "The tool associated with this call."
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																			}
+																			description:      "Request for a tool call."
+																			description_kind: "plain"
+																		}
+																		min_items: 1
+																		max_items: 1
+																	}
+																	tool_call_result: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: action: {
+																				type:             "string"
+																				description:      "The name of the tool's action associated with this call."
+																				description_kind: "plain"
+																				optional:         true
+																			}
+																			block_types: error: {
+																				nesting_mode: "list"
+																				block: {
+																					attributes: {
+																						message: {
+																							type:             "string"
+																							description:      "The error message of the function."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																						retryable: {
+																							type:             "bool"
+																							description:      "Specifies whether the tool call is retryable."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																					}
+																					description:      "An error produced by the tool call."
+																					description_kind: "plain"
+																				}
+																				max_items: 1
+																			}
+																			description:      "Response for a tool call."
+																			description_kind: "plain"
+																		}
+																		min_items: 1
+																		max_items: 1
+																	}
+																}
+																description:      "List of request and response for tool calls executed."
+																description_kind: "plain"
+															}
+														}
 													}
 													description:      "Required. Example output of the model."
 													description_kind: "plain"
@@ -183658,6 +184139,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						optional:         true
 					}
+					tag: {
+						type:             "string"
+						description:      "User-facing, version-independent label for this connector."
+						description_kind: "plain"
+						optional:         true
+					}
 					update_time: {
 						type:             "string"
 						description:      "Timestamp when the DataConnector was updated."
@@ -183842,6 +184329,51 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							description:      "List of entities from the connected data source to ingest."
 							description_kind: "plain"
 						}
+					}
+					metadata: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								author: {
+									type:             "string"
+									description:      "The party that authored the connector, e.g. \"Google\" or a third-party provider name."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								description: {
+									type:             "string"
+									description:      "Human-readable description of the connector."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								note: {
+									type:             "string"
+									description:      "Free-form, multi-line note about the connector's capabilities."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								short_description: {
+									type:             "string"
+									description:      "Short, subtitle-length description of the connector."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								title: {
+									type:             "string"
+									description:      "Display title of the connector."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							description:      "User-facing metadata for the connector."
+							description_kind: "plain"
+						}
+						max_items: 1
 					}
 					timeouts: {
 						nesting_mode: "single"
@@ -186037,6 +186569,16 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									optional:         true
 								}
+								source_admin_display_name_enabled: {
+									type: "bool"
+									description: """
+												Whether to show the admin-configured display name for data connectors in
+												the widget sources UI (instead of the connector kind). Opt-in; defaults
+												to false.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
 							}
 							block_types: {
 								data_store_ui_configs: {
@@ -186199,6 +186741,47 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											}
 										}
 										description:      "Describes generative answer configuration."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								search_addon_spec: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											generative_answer_add_on_disabled: {
+												type: "bool"
+												description: """
+															If true, generative answer add-on is disabled. Generative answer
+															add-on includes natural language to filters and simple answers.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											kpi_personalization_add_on_disabled: {
+												type: "bool"
+												description: """
+															If true, disables event re-ranking and personalization to optimize KPIs
+															& personalize results.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											semantic_add_on_disabled: {
+												type: "bool"
+												description: """
+															If true, semantic add-on is disabled. Semantic add-on includes
+															embeddings and jetstream.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description: """
+													SearchAddonSpec is used to disable add-ons for search. By default, if this
+													field is not specified, add-ons are enabled wherever applicable.
+													This field is only supported for search requests.
+													"""
 										description_kind: "plain"
 									}
 									max_items: 1
@@ -192834,8 +193417,13 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								capacity_gb: {
 									type: "number"
 									description: """
-												File share capacity in GiB. This must be at least 1024 GiB
-												for the standard tier, or 2560 GiB for the premium tier.
+												File share capacity in GiB. Acceptable instance capacities for each tier are as follows:
+												* BASIC_HDD: 1024-65433 GiB in 1 GiB increments or its multiples.
+												* BASIC_SSD: 2560-65433 GiB in 1 GiB increments or its multiples.
+												* HIGH_SCALE_SSD: 10240-102400 GiB in 2560 GiB increments or its multiples.
+												* ZONAL: 100-102400 GiB (100-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
+												* ENTERPRISE: 1024-10240 GiB in 256 GiB increments or its multiples.
+												* REGIONAL: 1024-102400 GiB (100-102400 GiB in supported regions): ((100 or 1024)-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
 												"""
 									description_kind: "plain"
 									required:         true
@@ -198892,6 +199480,295 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					product: {
 						type:             "string"
 						description:      "Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					setting_binding_id: {
+						type:             "string"
+						description:      "Id of the setting binding."
+						description_kind: "plain"
+						required:         true
+					}
+					target: {
+						type:             "string"
+						description:      "Target of the binding."
+						description_kind: "plain"
+						required:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Update time stamp."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_gemini_gibq_observability_setting: {
+			version: 0
+			block: {
+				attributes: {
+					create_time: {
+						type:             "string"
+						description:      "Create time stamp."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					gibq_observability_setting_id: {
+						type:             "string"
+						description:      "Id of the requesting object."
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									Labels as key value pairs.
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Identifier. Name of the resource.
+									Format:projects/{project}/locations/{location}/gibqObservabilitySettings/{gibq_observability_setting}
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Update time stamp."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					conversational_analytics_setting: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								feedback_enabled: {
+									type:             "bool"
+									description:      "Whether to enable feedback."
+									description_kind: "plain"
+									optional:         true
+								}
+								logging_enabled: {
+									type:             "bool"
+									description:      "Whether to enable logging."
+									description_kind: "plain"
+									optional:         true
+								}
+								metrics_enabled: {
+									type:             "bool"
+									description:      "Whether to enable metrics."
+									description_kind: "plain"
+									optional:         true
+								}
+								traces_enabled: {
+									type:             "bool"
+									description:      "Whether to enable traces."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description:      "Settings for Conversational Analytics, which can be used to enable observability features."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_gemini_gibq_observability_setting_binding: {
+			version: 0
+			block: {
+				attributes: {
+					create_time: {
+						type:             "string"
+						description:      "Create time stamp."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					gibq_observability_setting_id: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									Labels as key value pairs.
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Identifier. Name of the resource.
+									Format:projects/{project}/locations/{location}/gibqObservabilitySettings/{setting}/settingBindings/{setting_binding}
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					product: {
+						type:             "string"
+						description:      "Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.gibqObservabilitySettings.settingBindings) for a complete list."
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -250811,10 +251688,230 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_network_services_agent_connectivity_template: {
+			version: 0
+			block: {
+				attributes: {
+					access_path: {
+						type: "string"
+						description: """
+									The path of the access.
+									The path is immutable once set. Exactly one path can be set. Possible values: ["CLIENT_TO_AGENT", "AGENT_TO_ANYWHERE"]
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					access_types: {
+						type: ["list", "string"]
+						description: """
+									The types of network access provided to the gateway.
+									Both PUBLIC and PRIVATE can be configured. Possible values: ["PUBLIC", "PRIVATE"]
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					agent_connectivity_template_id: {
+						type:             "string"
+						description:      "Short name of the AgentConnectivityTemplate resource."
+						description_kind: "plain"
+						required:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The timestamp when the resource was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "A free-text description of the resource. Max length 1024 characters."
+						description_kind: "plain"
+						optional:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					etag: {
+						type: "string"
+						description: """
+									Etag of the resource.
+									If this is provided, it must match the server's etag. If the provided etag
+									does not match the server's etag, the request will fail with a 409 ABORTED
+									error.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									Set of label tags associated with the AgentConnectivityTemplate resource.
+
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the AgentConnectivityTemplate."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Identifier. Name of the resource."
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "The timestamp when the resource was updated."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					egress_network_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								network_attachment: {
+									type: "string"
+									description: """
+												The network attachment resource name.
+												Format: projects/{project}/regions/{region}/networkAttachments/{network_attachment_id}
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								vpc_egress: {
+									type:             "string"
+									description:      "The VPC egress setting. Possible values: [\"ALL_TRAFFIC\", \"PRIVATE_RANGES_ONLY\"]"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							block_types: dns_peering_config: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										domain: {
+											type: "string"
+											description: """
+															The domain name to peer for DNS resolution. Must be a fully
+															qualified domain name ending with a dot (for example, 'example.com.').
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+										target_network: {
+											type: "string"
+											description: """
+															The URI of the target VPC network for DNS peering. Must be of the
+															form 'projects/{project}/global/networks/{network}'.
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									description: """
+													DNS peering configuration for the AgentConnectivityTemplate.
+													When set, the gateway will resolve queries for the configured
+													'domain' via Cloud DNS in the specified 'targetNetwork'.
+													"""
+									description_kind: "plain"
+								}
+								max_items: 1
+							}
+							description:      "Configuration for egress network traffic."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_network_services_agent_gateway: {
 			version: 0
 			block: {
 				attributes: {
+					agent_connectivity_template: {
+						type: "string"
+						description: """
+									The resource name of the AgentConnectivityTemplate.
+									Must be of format
+									'projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}'
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
 					agent_gateway_card: {
 						type: ["list", ["object", {
 							mtls_endpoint: "string"
@@ -289565,6 +290662,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					secret_type: {
+						type: "string"
+						description: """
+									This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+									For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
 					tags: {
 						type: ["map", "string"]
 						description: """
@@ -290142,6 +291248,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description:      "This must be unique within the project."
 						description_kind: "plain"
 						required:         true
+					}
+					secret_type: {
+						type: "string"
+						description: """
+									This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+									For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+									"""
+						description_kind: "plain"
+						optional:         true
 					}
 					tags: {
 						type: ["map", "string"]
@@ -310442,6 +311557,54 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						nesting_mode: "list"
 						block: {
 							block_types: {
+								api_auth: {
+									nesting_mode: "list"
+									block: {
+										block_types: api_key_config: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													api_key_secret_version: {
+														type: "string"
+														description: """
+																		The SecretManager secret version resource name storing API key.
+																		e.g. projects/{project}/secrets/{secret}/versions/{version}
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													api_key_string: {
+														type:             "string"
+														description:      "The API key string."
+														description_kind: "plain"
+														optional:         true
+														sensitive:        true
+													}
+												}
+												description:      "The API secret."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										description:      "Authentication config for the chosen Vector DB."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								pinecone: {
+									nesting_mode: "list"
+									block: {
+										attributes: index_name: {
+											type:             "string"
+											description:      "Pinecone index name. This value cannot be changed after it's set."
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "The config for the Pinecone."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
 								rag_embedding_model_config: {
 									nesting_mode: "list"
 									block: {
@@ -310524,8 +311687,55 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									}
 									max_items: 1
 								}
+								vertex_vector_search: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											index: {
+												type: "string"
+												description: """
+															The resource name of the Index.
+															Format: projects/{project}/locations/{location}/indexes/{index}
+															"""
+												description_kind: "plain"
+												required:         true
+											}
+											index_endpoint: {
+												type: "string"
+												description: """
+															The resource name of the Index Endpoint.
+															Format: projects/{project}/locations/{location}/indexEndpoints/{index_endpoint}
+															"""
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "The config for the Vertex Vector Search."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
 							}
 							description:      "Optional. Immutable. The config for the RAG-managed Vector DB."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					vertex_ai_search_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: serving_config: {
+								type: "string"
+								description: """
+												Vertex AI Search Serving Config resource full name. For example,
+												projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config}
+												or
+												projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/servingConfigs/{serving_config}.
+												"""
+								description_kind: "plain"
+								required:         true
+							}
+							description:      "Optional. Immutable. The config for the Vertex AI Search."
 							description_kind: "plain"
 						}
 						max_items: 1
@@ -325371,6 +326581,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					template: {
 						type: ["list", ["object", {
 							annotations: ["map", "string"]
+							delay_execution: "bool"
 							labels: ["map", "string"]
 							parallelism: "number"
 							task_count:  "number"
@@ -325397,6 +326608,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									resources: ["list", ["object", {
 										limits: ["map", "string"]
 									}]]
+									sandbox_launcher: "bool"
 									startup_probe: ["list", ["object", {
 										failure_threshold: "number"
 										grpc: ["list", ["object", {
@@ -326026,6 +327238,11 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									subnetwork: "string"
 									tags: ["list", "string"]
 								}]]
+							}]]
+							workload_identity_config: ["list", ["object", {
+								identity:                     "string"
+								identity_certificate_enabled: "bool"
+								identity_type:                "string"
 							}]]
 						}]]
 						description:      "The template used to create revisions for this Service."
@@ -327071,6 +328288,134 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									WebhookConfig describes the configuration of a trigger that creates
 									a build whenever a webhook is sent to a trigger's webhook URL.
 									"""
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_cloudbuild_worker_pool: {
+			version: 0
+			block: {
+				attributes: {
+					annotations: {
+						type: ["map", "string"]
+						description: """
+									User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+
+									**Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+									Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "Output only. Time at which the request to create the `WorkerPool` was received."
+						description_kind: "plain"
+						computed:         true
+					}
+					delete_time: {
+						type:             "string"
+						description:      "Output only. Time at which the request to delete the `WorkerPool` was received."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters."
+						description_kind: "plain"
+						computed:         true
+					}
+					effective_annotations: {
+						type: ["map", "string"]
+						description:      "All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location for the resource"
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "User-defined name of the `WorkerPool`."
+						description_kind: "plain"
+						required:         true
+					}
+					network_config: {
+						type: ["list", ["object", {
+							peered_network:          "string"
+							peered_network_ip_range: "string"
+						}]]
+						description:      "Network configuration for the `WorkerPool`."
+						description_kind: "plain"
+						computed:         true
+					}
+					private_service_connect: {
+						type: ["list", ["object", {
+							network_attachment: "string"
+							route_all_traffic:  "bool"
+						}]]
+						description:      "Private Service Connect configuration for the pool."
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description:      "The project for the resource"
+						description_kind: "plain"
+						optional:         true
+					}
+					state: {
+						type:             "string"
+						description:      "Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED"
+						description_kind: "plain"
+						computed:         true
+					}
+					uid: {
+						type:             "string"
+						description:      "Output only. A unique identifier for the `WorkerPool`."
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Output only. Time at which the request to update the `WorkerPool` was received."
+						description_kind: "plain"
+						computed:         true
+					}
+					worker_config: {
+						type: ["list", ["object", {
+							disk_size_gb:                 "number"
+							enable_nested_virtualization: "bool"
+							machine_type:                 "string"
+							no_external_ip:               "bool"
+						}]]
+						description:      "Configuration to be used for a creating workers in the `WorkerPool`."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -340280,9 +341625,6 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							gvnic: ["list", ["object", {
 								enabled: "bool"
 							}]]
-							host_maintenance_policy: ["list", ["object", {
-								maintenance_interval: "string"
-							}]]
 							image_type: "string"
 							kubelet_config: ["list", ["object", {
 								allowed_unsafe_sysctls: ["list", "string"]
@@ -340593,9 +341935,6 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								}]]
 								gvnic: ["list", ["object", {
 									enabled: "bool"
-								}]]
-								host_maintenance_policy: ["list", ["object", {
-									maintenance_interval: "string"
 								}]]
 								image_type: "string"
 								kubelet_config: ["list", ["object", {
@@ -341026,7 +342365,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type:             "bool"
 						description:      "If true, the provider will not refresh the inline node_pool state from the API during cluster reads. Set this to true only when all node pools are managed via separate google_container_node_pool resources; it substantially improves plan/apply performance on clusters with a high node pool count. Must not be set to true when inline node_pool blocks are defined on this resource."
 						description_kind: "plain"
-						computed:         true
+						optional:         true
 					}
 					subnetwork: {
 						type:             "string"
@@ -354980,6 +356319,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					secret_type: {
+						type: "string"
+						description: """
+									This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+									For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["map", "string"]
 						description: """
@@ -355270,7 +356618,8 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								next_rotation_time: "string"
 								rotation_period:    "string"
 							}]]
-							secret_id: "string"
+							secret_id:   "string"
+							secret_type: "string"
 							tags: ["map", "string"]
 							terraform_labels: ["map", "string"]
 							topics: ["list", ["object", {
@@ -355448,6 +356797,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description:      "This must be unique within the project."
 						description_kind: "plain"
 						required:         true
+					}
+					secret_type: {
+						type: "string"
+						description: """
+									This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+									For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+									"""
+						description_kind: "plain"
+						computed:         true
 					}
 					tags: {
 						type: ["map", "string"]
@@ -355723,7 +357081,8 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								next_rotation_time: "string"
 								rotation_period:    "string"
 							}]]
-							secret_id: "string"
+							secret_id:   "string"
+							secret_type: "string"
 							tags: ["map", "string"]
 							terraform_labels: ["map", "string"]
 							topics: ["list", ["object", {
@@ -374206,6 +375565,44 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_gemini_gibq_observability_setting: {
+			version: 1
+			attributes: {
+				gibq_observability_setting_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					optional_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		google_gemini_gibq_observability_setting_binding: {
+			version: 1
+			attributes: {
+				gibq_observability_setting_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					optional_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				setting_binding_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		google_gemini_logging_setting: {
 			version: 1
 			attributes: {
@@ -377711,6 +379108,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					required_for_import: true
 				}
 				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		google_network_services_agent_connectivity_template: {
+			version: 1
+			attributes: {
+				agent_connectivity_template_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
 					type:                "string"
 					required_for_import: true
 				}

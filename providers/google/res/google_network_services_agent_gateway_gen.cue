@@ -11,6 +11,11 @@ google_network_services_agent_gateway: {
 		self_managed?: matchN(1, [#self_managed, list.MaxItems(1) & [...#self_managed]])
 		timeouts?: #timeouts
 
+		// The resource name of the AgentConnectivityTemplate.
+		// Must be of format
+		// 'projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}'
+		agent_connectivity_template?: string
+
 		// AgentGatewayOutputCard contains informational output-only fields.
 		agent_gateway_card?: [...close({
 			mtls_endpoint?: string

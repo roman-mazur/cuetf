@@ -101,6 +101,7 @@ google_agentic_applications_analyst_agent_persona: {
 
 	#artifacts_config: close({
 		document_generation_options?: matchN(1, [_#defs."/$defs/artifacts_config/$defs/document_generation_options", list.MaxItems(1) & [..._#defs."/$defs/artifacts_config/$defs/document_generation_options"]])
+		methodology_export_options?: matchN(1, [_#defs."/$defs/artifacts_config/$defs/methodology_export_options", list.MaxItems(1) & [..._#defs."/$defs/artifacts_config/$defs/methodology_export_options"]])
 		slide_generation_options?: matchN(1, [_#defs."/$defs/artifacts_config/$defs/slide_generation_options", list.MaxItems(1) & [..._#defs."/$defs/artifacts_config/$defs/slide_generation_options"]])
 		visualization_options?: matchN(1, [_#defs."/$defs/artifacts_config/$defs/visualization_options", list.MaxItems(1) & [..._#defs."/$defs/artifacts_config/$defs/visualization_options"]])
 	})
@@ -391,6 +392,21 @@ google_agentic_applications_analyst_agent_persona: {
 
 		// The mime type of the file.
 		mime_type!: string
+	})
+
+	_#defs: "/$defs/artifacts_config/$defs/methodology_export_options": close({
+		// If true, append the detailed methodology to the final response.
+		append_methodology?: bool
+
+		// Format for methodology export.
+		// Possible values:
+		// MARKDOWN
+		// HTML
+		// PDF
+		export_format?: string
+
+		// If true, export the detailed methodology as a separate artifact.
+		export_methodology_artifact?: bool
 	})
 
 	_#defs: "/$defs/artifacts_config/$defs/slide_generation_options": close({

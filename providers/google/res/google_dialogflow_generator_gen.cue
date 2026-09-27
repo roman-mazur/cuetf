@@ -128,6 +128,7 @@ google_dialogflow_generator: {
 
 	_#defs: "/$defs/summarization_context/$defs/few_shot_examples/$defs/output": close({
 		summary_suggestion?: matchN(1, [_#defs."/$defs/summarization_context/$defs/few_shot_examples/$defs/output/$defs/summary_suggestion", list.MaxItems(1) & [..._#defs."/$defs/summarization_context/$defs/few_shot_examples/$defs/output/$defs/summary_suggestion"]])
+		tool_call_info?: matchN(1, [_#defs."/$defs/summarization_context/$defs/few_shot_examples/$defs/output/$defs/tool_call_info", [..._#defs."/$defs/summarization_context/$defs/few_shot_examples/$defs/output/$defs/tool_call_info"]])
 	})
 
 	_#defs: "/$defs/summarization_context/$defs/few_shot_examples/$defs/output/$defs/summary_suggestion": close({
@@ -140,6 +141,34 @@ google_dialogflow_generator: {
 
 		// Required. Summary text for the section.
 		summary!: string
+	})
+
+	_#defs: "/$defs/summarization_context/$defs/few_shot_examples/$defs/output/$defs/tool_call_info": close({
+		tool_call!: matchN(1, [_#defs."/$defs/summarization_context/$defs/few_shot_examples/$defs/output/$defs/tool_call_info/$defs/tool_call", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/summarization_context/$defs/few_shot_examples/$defs/output/$defs/tool_call_info/$defs/tool_call"]])
+		tool_call_result!: matchN(1, [_#defs."/$defs/summarization_context/$defs/few_shot_examples/$defs/output/$defs/tool_call_info/$defs/tool_call_result", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/summarization_context/$defs/few_shot_examples/$defs/output/$defs/tool_call_info/$defs/tool_call_result"]])
+	})
+
+	_#defs: "/$defs/summarization_context/$defs/few_shot_examples/$defs/output/$defs/tool_call_info/$defs/tool_call": close({
+		// The name of the tool's action associated with this call.
+		action?: string
+
+		// The tool associated with this call.
+		tool?: string
+	})
+
+	_#defs: "/$defs/summarization_context/$defs/few_shot_examples/$defs/output/$defs/tool_call_info/$defs/tool_call_result": close({
+		error?: matchN(1, [_#defs."/$defs/summarization_context/$defs/few_shot_examples/$defs/output/$defs/tool_call_info/$defs/tool_call_result/$defs/error", list.MaxItems(1) & [..._#defs."/$defs/summarization_context/$defs/few_shot_examples/$defs/output/$defs/tool_call_info/$defs/tool_call_result/$defs/error"]])
+
+		// The name of the tool's action associated with this call.
+		action?: string
+	})
+
+	_#defs: "/$defs/summarization_context/$defs/few_shot_examples/$defs/output/$defs/tool_call_info/$defs/tool_call_result/$defs/error": close({
+		// The error message of the function.
+		message?: string
+
+		// Specifies whether the tool call is retryable.
+		retryable?: bool
 	})
 
 	_#defs: "/$defs/summarization_context/$defs/few_shot_examples/$defs/summarization_section_list": close({

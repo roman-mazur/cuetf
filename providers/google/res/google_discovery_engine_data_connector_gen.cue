@@ -10,6 +10,7 @@ google_discovery_engine_data_connector: {
 		bap_config?: matchN(1, [#bap_config, list.MaxItems(1) & [...#bap_config]])
 		destination_configs?: matchN(1, [#destination_configs, [...#destination_configs]])
 		entities?: matchN(1, [#entities, [...#entities]])
+		metadata?: matchN(1, [#metadata, list.MaxItems(1) & [...#metadata]])
 		timeouts?: #timeouts
 
 		// State of the action connector. This reflects whether the action connector
@@ -204,6 +205,9 @@ google_discovery_engine_data_connector: {
 		// 'PERIODIC', 'STREAMING'.
 		sync_mode?: string
 
+		// User-facing, version-independent label for this connector.
+		tag?: string
+
 		// Timestamp when the DataConnector was updated.
 		update_time?: string
 	})
@@ -271,6 +275,23 @@ google_discovery_engine_data_connector: {
 
 		// The parameters for the entity to facilitate data ingestion.
 		params?: string
+	})
+
+	#metadata: close({
+		// The party that authored the connector, e.g. "Google" or a third-party provider name.
+		author?: string
+
+		// Human-readable description of the connector.
+		description?: string
+
+		// Free-form, multi-line note about the connector's capabilities.
+		note?: string
+
+		// Short, subtitle-length description of the connector.
+		short_description?: string
+
+		// Display title of the connector.
+		title?: string
 	})
 
 	#timeouts: close({

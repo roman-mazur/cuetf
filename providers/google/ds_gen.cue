@@ -112,6 +112,7 @@ import (
 	_#ds: "\(#googlePrefix)_cloud_run_v2_worker_pool_iam_policy": close({data.google_cloud_run_v2_worker_pool_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_cloud_tasks_queue_iam_policy": close({data.google_cloud_tasks_queue_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_cloudbuild_trigger": close({data.google_cloudbuild_trigger & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloudbuild_worker_pool": close({data.google_cloudbuild_worker_pool & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_cloudbuildv2_connection_iam_policy": close({data.google_cloudbuildv2_connection_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_clouddeploy_custom_target_type_iam_policy": close({data.google_clouddeploy_custom_target_type_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_clouddeploy_delivery_pipeline_iam_policy": close({data.google_clouddeploy_delivery_pipeline_iam_policy & cuetf.MetaArgs})

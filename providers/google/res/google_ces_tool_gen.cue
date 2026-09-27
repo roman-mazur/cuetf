@@ -91,6 +91,7 @@ google_ces_tool: {
 					token_endpoint?: string
 				})]
 				service_account_auth_config?: [...close({
+					scopes?: [...string]
 					service_account?: string
 				})]
 				service_agent_id_token_auth_config?: [...close({})]
@@ -138,6 +139,7 @@ google_ces_tool: {
 					token_endpoint?: string
 				})]
 				service_account_auth_config?: [...close({
+					scopes?: [...string]
 					service_account?: string
 				})]
 				service_agent_id_token_auth_config?: [...close({})]

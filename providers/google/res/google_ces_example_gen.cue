@@ -80,6 +80,7 @@ google_ces_example: {
 
 	_#defs: "/$defs/messages/$defs/chunks": close({
 		agent_transfer?: matchN(1, [_#defs."/$defs/messages/$defs/chunks/$defs/agent_transfer", list.MaxItems(1) & [..._#defs."/$defs/messages/$defs/chunks/$defs/agent_transfer"]])
+		blob?: matchN(1, [_#defs."/$defs/messages/$defs/chunks/$defs/blob", list.MaxItems(1) & [..._#defs."/$defs/messages/$defs/chunks/$defs/blob"]])
 		image?: matchN(1, [_#defs."/$defs/messages/$defs/chunks/$defs/image", list.MaxItems(1) & [..._#defs."/$defs/messages/$defs/chunks/$defs/image"]])
 		tool_call?: matchN(1, [_#defs."/$defs/messages/$defs/chunks/$defs/tool_call", list.MaxItems(1) & [..._#defs."/$defs/messages/$defs/chunks/$defs/tool_call"]])
 		tool_response?: matchN(1, [_#defs."/$defs/messages/$defs/chunks/$defs/tool_response", list.MaxItems(1) & [..._#defs."/$defs/messages/$defs/chunks/$defs/tool_response"]])
@@ -102,7 +103,18 @@ google_ces_example: {
 		target_agent!: string
 	})
 
+	_#defs: "/$defs/messages/$defs/chunks/$defs/blob": close({
+		// Raw bytes of the blob.
+		data!: string
+
+		// The IANA standard MIME type of the source data.
+		mime_type!: string
+	})
+
 	_#defs: "/$defs/messages/$defs/chunks/$defs/image": close({
+		// The alternative text for the image.
+		alt_text?: string
+
 		// Raw bytes of the image.
 		data!: string
 

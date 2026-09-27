@@ -407,6 +407,11 @@ google_cloud_run_v2_service: {
 					tags?: [...string]
 				})]
 			})]
+			workload_identity_config?: [...close({
+				identity?:                     string
+				identity_certificate_enabled?: bool
+				identity_type?:                string
+			})]
 		})]
 
 		// The Condition of this Service, containing its readiness status, and detailed

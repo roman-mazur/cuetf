@@ -342,6 +342,7 @@ google_cloud_run_v2_service: {
 		scaling?: matchN(1, [_#defs."/$defs/template/$defs/scaling", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/scaling"]])
 		volumes?: matchN(1, [_#defs."/$defs/template/$defs/volumes", [..._#defs."/$defs/template/$defs/volumes"]])
 		vpc_access?: matchN(1, [_#defs."/$defs/template/$defs/vpc_access", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/vpc_access"]])
+		workload_identity_config?: matchN(1, [_#defs."/$defs/template/$defs/workload_identity_config", list.MaxItems(1) & [..._#defs."/$defs/template/$defs/workload_identity_config"]])
 
 		// Unstructured key value map that may be set by external tools to store and
 		// arbitrary metadata. They are not queryable and should be preserved when
@@ -909,5 +910,18 @@ google_cloud_run_v2_service: {
 
 		// Network tags applied to this Cloud Run service.
 		tags?: [...string]
+	})
+
+	_#defs: "/$defs/template/$defs/workload_identity_config": close({
+		// The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+		identity?: string
+
+		// Controls whether an instance receives a MWLID certificate.
+		identity_certificate_enabled?: bool
+
+		// The type of identity to use. Possible values:
+		// ["IDENTITY_TYPE_SERVICE_ACCOUNT", "IDENTITY_TYPE_WORKLOAD_IDENTITY",
+		// "IDENTITY_TYPE_AGENT_IDENTITY"]
+		identity_type?: string
 	})
 }

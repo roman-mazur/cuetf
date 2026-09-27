@@ -193,7 +193,8 @@ google_cloud_run_v2_job: {
 		// The template used to create executions for this Job.
 		template?: [...close({
 			annotations?: [string]: string
-			labels?: [string]:      string
+			delay_execution?: bool
+			labels?: [string]: string
 			parallelism?: number
 			task_count?:  number
 			template?: [...close({
@@ -220,6 +221,7 @@ google_cloud_run_v2_job: {
 					resources?: [...close({
 						limits?: [string]: string
 					})]
+					sandbox_launcher?: bool
 					startup_probe?: [...close({
 						failure_threshold?: number
 						grpc?: [...close({
