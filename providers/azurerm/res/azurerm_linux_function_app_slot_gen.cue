@@ -16,7 +16,7 @@ azurerm_linux_function_app_slot: {
 		timeouts?: #timeouts
 
 		// A map of key-value pairs for [App
-		// Settings](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings)
+		// Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 		// and custom values.
 		app_settings?: [string]: string
 
@@ -52,36 +52,37 @@ azurerm_linux_function_app_slot: {
 		function_app_id!: string
 
 		// The runtime version associated with the Function App Slot.
-		functions_extension_version?:              string
-		ftp_publish_basic_authentication_enabled?: bool
+		functions_extension_version?:       string
+		end_to_end_tls_encryption_enabled?: bool
 
 		// Can the Function App Slot only be accessed via HTTPS?
-		https_only?: bool
+		https_only?:                               bool
+		ftp_publish_basic_authentication_enabled?: bool
 
 		// The User Assigned Identity to use for Key Vault access.
 		key_vault_reference_identity_id?: string
 
 		// Specifies the name of the Function App Slot.
-		name!:                   string
-		hosting_environment_id?: string
+		name!: string
 
 		// The access key which will be used to access the storage account for the Function App Slot.
 		storage_account_access_key?: string
+		hosting_environment_id?:     string
 
 		// The backend storage account name which will be used by this Function App Slot.
 		storage_account_name?: string
-		id?:                   string
 
 		// The Key Vault Secret ID, including version, that contains the Connection
 		// String to connect to the storage account for this Function App.
 		storage_key_vault_secret_id?: string
+		id?:                          string
 
 		// Should the Function App Slot use its Managed Identity to access storage?
 		storage_uses_managed_identity?: bool
-		kind?:                          string
 
 		// Is container image pull over virtual network enabled? Defaults to `false`.
 		vnet_image_pull_enabled?: bool
+		kind?:                    string
 		outbound_ip_address_list?: [...string]
 		outbound_ip_addresses?: string
 		possible_outbound_ip_address_list?: [...string]

@@ -19,12 +19,13 @@ azurerm_mongo_cluster: {
 			name?:        string
 			value?:       string
 		})]
-		create_mode?:            string
-		data_api_mode_enabled?:  bool
-		high_availability_mode?: string
-		id?:                     string
-		location!:               string
-		name!:                   string
+		cosmos_db_network_bypass_enabled?: bool
+		create_mode?:                      string
+		data_api_mode_enabled?:            bool
+		high_availability_mode?:           string
+		id?:                               string
+		location!:                         string
+		name!:                             string
 		preview_features?: [...string]
 		public_network_access?: string
 		resource_group_name!:   string

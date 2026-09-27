@@ -31,6 +31,7 @@ azurerm_windows_web_app_slot: {
 		custom_domain_verification_id?:            string
 		default_hostname?:                         string
 		enabled?:                                  bool
+		end_to_end_tls_encryption_enabled?:        bool
 		ftp_publish_basic_authentication_enabled?: bool
 		hosting_environment_id?:                   string
 		https_only?:                               bool
