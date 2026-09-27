@@ -996,6 +996,7 @@ import (
 	_#res: "\(#awsPrefix)_memorydb_user": close({res.aws_memorydb_user & cuetf.MetaArgs})
 	_#res: "\(#awsPrefix)_mq_broker": close({res.aws_mq_broker & cuetf.MetaArgs})
 	_#res: "\(#awsPrefix)_mq_configuration": close({res.aws_mq_configuration & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_msk_channel": close({res.aws_msk_channel & cuetf.MetaArgs})
 	_#res: "\(#awsPrefix)_msk_cluster": close({res.aws_msk_cluster & cuetf.MetaArgs})
 	_#res: "\(#awsPrefix)_msk_cluster_policy": close({res.aws_msk_cluster_policy & cuetf.MetaArgs})
 	_#res: "\(#awsPrefix)_msk_configuration": close({res.aws_msk_configuration & cuetf.MetaArgs})

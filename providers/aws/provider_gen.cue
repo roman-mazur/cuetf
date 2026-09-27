@@ -306,6 +306,9 @@ provider: {
 		bedrockagentcore?: string
 
 		// Use this to override the default service endpoint URL
+		bedrockruntime?: string
+
+		// Use this to override the default service endpoint URL
 		billing?: string
 
 		// Use this to override the default service endpoint URL
