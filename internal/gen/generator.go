@@ -278,7 +278,11 @@ func processSchema(cfg *Config, logf clog.Logf, name string, s *schemaData, dir 
 		logf("DONE%s: %s at %s", timeInfo, name, dir)
 	}()
 
-	inputFile, err := os.Create(filepath.Join(dir, name+"-input.json"))
+	tmpDir := filepath.Join(dir, "tmp", name)
+	_ = os.RemoveAll(tmpDir)
+	_ = os.MkdirAll(tmpDir, 0777)
+
+	inputFile, err := os.Create(filepath.Join(tmpDir, name+"-input.json"))
 	if err != nil {
 		panic(err)
 	}
@@ -291,7 +295,7 @@ func processSchema(cfg *Config, logf clog.Logf, name string, s *schemaData, dir 
 	tmpPkgName := "tmp_" + pkgName + "_" + name
 
 	createFile(
-		filepath.Join(dir, name+"-transform.cue"),
+		filepath.Join(tmpDir, name+"-transform.cue"),
 		fmt.Sprintf(transformCode, tmpPkgName, modulePath, path.Join(filepath.Base(dir), name)),
 	)
 
@@ -359,12 +363,6 @@ pkg_name=%q
 def_name=%q
 
 tmp_dir="./tmp/$def_name"
-
-[ -d "$tmp_dir" ] && rm -rf "$tmp_dir"
-mkdir -p "$tmp_dir" 2>/dev/null
-
-mv "$def_name"-input.json "$tmp_dir"
-mv "$def_name"-transform.cue "$tmp_dir"
 
 mkdir "$tmp_dir/$pkg_name"
 
