@@ -15583,7 +15583,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -16022,7 +16022,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -16892,7 +16892,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -17040,7 +17040,7 @@ InstanceTypes: [{
         DefaultVCpus:          48
         DefaultCores:          24
         DefaultThreadsPerCore: 2
-        ValidCores: [1, 2, 3, 6, 9, 12, 15, 18, 21, 24]
+        ValidCores: [3, 6, 9, 12, 15, 18, 21, 24]
         ValidThreadsPerCore: [1, 2]
     }
     MemoryInfo: {
@@ -17112,7 +17112,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -17153,7 +17153,7 @@ InstanceTypes: [{
         DefaultVCpus:          64
         DefaultCores:          32
         DefaultThreadsPerCore: 2
-        ValidCores: [1, 2, 3, 4, 8, 12, 16, 20, 24, 28, 32]
+        ValidCores: [4, 8, 12, 16, 20, 24, 28, 32]
         ValidThreadsPerCore: [1, 2]
     }
     MemoryInfo: {
@@ -17266,7 +17266,7 @@ InstanceTypes: [{
         DefaultVCpus:          96
         DefaultCores:          48
         DefaultThreadsPerCore: 2
-        ValidCores: [1, 2, 3, 4, 5, 6, 12, 18, 24, 30, 36, 42, 48]
+        ValidCores: [6, 12, 18, 24, 30, 36, 42, 48]
         ValidThreadsPerCore: [1, 2]
     }
     MemoryInfo: {
@@ -17489,7 +17489,7 @@ InstanceTypes: [{
         DefaultVCpus:          192
         DefaultCores:          96
         DefaultThreadsPerCore: 2
-        ValidCores: [4, 6, 8, 10, 12, 24, 36, 48, 60, 72, 84, 96]
+        ValidCores: [12, 24, 36, 48, 60, 72, 84, 96]
         ValidThreadsPerCore: [1, 2]
     }
     MemoryInfo: {
@@ -17671,7 +17671,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -17712,7 +17712,7 @@ InstanceTypes: [{
         DefaultVCpus:          32
         DefaultCores:          16
         DefaultThreadsPerCore: 2
-        ValidCores: [1, 2, 4, 6, 8, 10, 12, 14, 16]
+        ValidCores: [2, 4, 6, 8, 10, 12, 14, 16]
         ValidThreadsPerCore: [1, 2]
     }
     MemoryInfo: {
@@ -17784,7 +17784,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -18004,7 +18004,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -18045,7 +18045,7 @@ InstanceTypes: [{
         DefaultVCpus:          32
         DefaultCores:          16
         DefaultThreadsPerCore: 2
-        ValidCores: [1, 2, 4, 6, 8, 10, 12, 14, 16]
+        ValidCores: [2, 4, 6, 8, 10, 12, 14, 16]
         ValidThreadsPerCore: [1, 2]
     }
     MemoryInfo: {
@@ -18117,7 +18117,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -22587,7 +22587,7 @@ InstanceTypes: [{
         AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
-        NetworkPerformance:       "Up to 25 Gigabit"
+        NetworkPerformance:       "25 Gigabit"
         MaximumNetworkInterfaces: 8
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
@@ -22595,7 +22595,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "25 Gigabit"
             MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          12.5
+            BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
             InterfaceTypes: ["interface"]
@@ -22873,18 +22873,18 @@ InstanceTypes: [{
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
             NetworkCardIndex:                 0
-            NetworkPerformance:               "100 Gigabit"
+            NetworkPerformance:               "Up to 200 Gigabit"
             MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          100.0
-            PeakBandwidthInGbps:              100.0
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
             DefaultEnaQueueCountPerInterface: 32
             InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                 1
-            NetworkPerformance:               "100 Gigabit"
+            NetworkPerformance:               "Up to 200 Gigabit"
             MaximumNetworkInterfaces:         7
-            BaselineBandwidthInGbps:          100.0
-            PeakBandwidthInGbps:              100.0
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
             DefaultEnaQueueCountPerInterface: 32
             InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
@@ -59554,7 +59554,7 @@ InstanceTypes: [{
         SupportedStrategies: ["partition", "spread"]
     }
     HibernationSupported:          true
-    BurstablePerformanceSupported: false
+    BurstablePerformanceSupported: true
     DedicatedHostsSupported:       false
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
@@ -59642,7 +59642,7 @@ InstanceTypes: [{
         SupportedStrategies: ["partition", "spread"]
     }
     HibernationSupported:          true
-    BurstablePerformanceSupported: false
+    BurstablePerformanceSupported: true
     DedicatedHostsSupported:       false
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
@@ -59730,7 +59730,7 @@ InstanceTypes: [{
         SupportedStrategies: ["partition", "spread"]
     }
     HibernationSupported:          true
-    BurstablePerformanceSupported: false
+    BurstablePerformanceSupported: true
     DedicatedHostsSupported:       false
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
@@ -59818,7 +59818,7 @@ InstanceTypes: [{
         SupportedStrategies: ["partition", "spread"]
     }
     HibernationSupported:          true
-    BurstablePerformanceSupported: false
+    BurstablePerformanceSupported: true
     DedicatedHostsSupported:       false
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
