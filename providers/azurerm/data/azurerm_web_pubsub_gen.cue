@@ -4,12 +4,24 @@ azurerm_web_pubsub: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/azurerm_web_pubsub")
 	close({
-		timeouts?:                      #timeouts
-		aad_auth_enabled?:              bool
-		capacity?:                      number
-		external_ip?:                   string
-		hostname?:                      string
-		id?:                            string
+		timeouts?:         #timeouts
+		aad_auth_enabled?: bool
+		capacity?:         number
+		external_ip?:      string
+		hostname?:         string
+		id?:               string
+		identity?: [...close({
+			identity_ids?: [...string]
+			principal_id?: string
+			tenant_id?:    string
+			type?:         string
+		})]
+		live_trace?: [...close({
+			connectivity_logs_enabled?: bool
+			enabled?:                   bool
+			http_request_logs_enabled?: bool
+			messaging_logs_enabled?:    bool
+		})]
 		local_auth_enabled?:            bool
 		location?:                      string
 		name!:                          string

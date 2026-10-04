@@ -9,6 +9,8 @@ azurerm_public_ip: {
 		ddos_protection_mode?:    string
 		ddos_protection_plan_id?: string
 		domain_name_label?:       string
+		domain_name_label_scope?: string
+		edge_zone?:               string
 		fqdn?:                    string
 		id?:                      string
 		idle_timeout_in_minutes?: number
@@ -17,9 +19,11 @@ azurerm_public_ip: {
 		ip_version?:          string
 		location?:            string
 		name!:                string
+		public_ip_prefix_id?: string
 		resource_group_name!: string
 		reverse_fqdn?:        string
 		sku?:                 string
+		sku_tier?:            string
 		tags?: [string]: string
 		zones?: [...string]
 	})

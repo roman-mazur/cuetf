@@ -7,9 +7,13 @@ azurerm_network_interface: {
 		timeouts?:                       #timeouts
 		accelerated_networking_enabled?: bool
 		applied_dns_servers?: [...string]
+		auxiliary_mode?: string
+		auxiliary_sku?:  string
 		dns_servers?: [...string]
-		id?:                      string
-		internal_dns_name_label?: string
+		edge_zone?:                   string
+		id?:                          string
+		internal_dns_name_label?:     string
+		internal_domain_name_suffix?: string
 		ip_configuration?: [...close({
 			application_gateway_backend_address_pools_ids?: [...string]
 			application_security_group_ids?: [...string]
