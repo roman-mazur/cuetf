@@ -26,6 +26,7 @@ aws_sns_topic: {
 		lambda_failure_feedback_role_arn?:         string
 		lambda_success_feedback_role_arn?:         string
 		lambda_success_feedback_sample_rate?:      number
+		maximum_message_size?:                     number
 		name?:                                     string
 		name_prefix?:                              string
 		owner?:                                    string
