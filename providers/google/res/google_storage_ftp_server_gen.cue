@@ -47,6 +47,12 @@ google_storage_ftp_server: {
 		server_id!: string
 		project?:   string
 
+		// The email address of the service agent associated with the SFTP server.
+		service_agent?: string
+
+		// The operational lifecycle state of the SFTP server.
+		state?: string
+
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
@@ -55,11 +61,17 @@ google_storage_ftp_server: {
 	#external_config: close({
 		// A list of allowed IPv4 or IPv6 CIDR block ranges that can connect to this server.
 		allowed_cidr_blocks?: [...string]
+
+		// The public IP address of the external load balancer for the SFTP server.
+		ip_address?: string
 	})
 
 	#internal_config: close({
 		consumer_accept_list?: matchN(1, [_#defs."/$defs/internal_config/$defs/consumer_accept_list", [..._#defs."/$defs/internal_config/$defs/consumer_accept_list"]])
 		consumer_reject_list?: matchN(1, [_#defs."/$defs/internal_config/$defs/consumer_reject_list", [..._#defs."/$defs/internal_config/$defs/consumer_reject_list"]])
+
+		// The Private Service Connect service attachment URI for the SFTP server.
+		service_attachment?: string
 	})
 
 	#timeouts: close({

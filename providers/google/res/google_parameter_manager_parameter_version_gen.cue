@@ -9,6 +9,11 @@ google_parameter_manager_parameter_version: {
 		// The time at which the Parameter Version was created.
 		create_time?: string
 
+		// The integrity checksum of the payload. If provided, the server will verify
+		// that the checksum matches the payload. If not provided, the server will
+		// generate the checksum.
+		data_crc32c?: string
+
 		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
 		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
 		// the command will fail if this field is set to "PREVENT" in Terraform state.

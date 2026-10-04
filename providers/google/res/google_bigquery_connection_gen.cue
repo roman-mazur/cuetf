@@ -174,7 +174,15 @@ google_bigquery_connection: {
 
 	_#defs: "/$defs/cloud_sql/$defs/credential": close({
 		// Password for database.
-		password!: string
+		password?: string
+
+		// Password for database.
+		password_wo?: string
+
+		// Triggers update of 'password_wo' write-only. Increment this value when an
+		// update to 'password_wo' is needed. For more info see [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		password_wo_version?: string
 
 		// Username for database.
 		username!: string

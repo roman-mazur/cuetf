@@ -71,6 +71,7 @@ google_network_services_agent_connectivity_template: {
 
 	#egress_network_config: close({
 		dns_peering_config?: matchN(1, [_#defs."/$defs/egress_network_config/$defs/dns_peering_config", list.MaxItems(1) & [..._#defs."/$defs/egress_network_config/$defs/dns_peering_config"]])
+		tls_config?: matchN(1, [_#defs."/$defs/egress_network_config/$defs/tls_config", list.MaxItems(1) & [..._#defs."/$defs/egress_network_config/$defs/tls_config"]])
 
 		// The network attachment resource name.
 		// Format: projects/{project}/regions/{region}/networkAttachments/{network_attachment_id}
@@ -87,12 +88,24 @@ google_network_services_agent_connectivity_template: {
 	})
 
 	_#defs: "/$defs/egress_network_config/$defs/dns_peering_config": close({
-		// The domain name to peer for DNS resolution. Must be a fully
-		// qualified domain name ending with a dot (for example, 'example.com.').
-		domain!: string
+		// The list of domain names to peer for DNS resolution. Each entry
+		// must be a fully qualified domain name ending with a dot
+		// (for example, 'example.com.'). At least one domain must be
+		// specified between 'domain' and 'domains'.
+		domains?: [...string]
 
 		// The URI of the target VPC network for DNS peering. Must be of the
 		// form 'projects/{project}/global/networks/{network}'.
 		target_network!: string
+	})
+
+	_#defs: "/$defs/egress_network_config/$defs/tls_config": close({
+		// Defines whether additional roots should be trusted. Possible values:
+		// ["NO_ADDITIONAL_ROOTS", "PUBLICLY_TRUSTED_ROOTS"]
+		additional_roots!: string
+
+		// The trust config resource name.
+		// Format: projects/{project}/locations/{location}/trustConfigs/{trust_config}
+		trust_config?: string
 	})
 }

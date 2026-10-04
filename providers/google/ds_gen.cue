@@ -340,6 +340,7 @@ import (
 	_#ds: "\(#googlePrefix)_network_management_connectivity_tests": close({data.google_network_management_connectivity_tests & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_network_security_address_group_iam_policy": close({data.google_network_security_address_group_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_network_security_address_groups": close({data.google_network_security_address_groups & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_network_services_gateway": close({data.google_network_services_gateway & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_notebooks_instance_iam_policy": close({data.google_notebooks_instance_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_notebooks_runtime_iam_policy": close({data.google_notebooks_runtime_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_observability_folder_settings": close({data.google_observability_folder_settings & cuetf.MetaArgs})

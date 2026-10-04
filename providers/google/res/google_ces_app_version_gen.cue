@@ -54,34 +54,40 @@ google_ces_app_version: {
 		snapshot?: [...close({
 			agents?: [...close({
 				after_agent_callbacks?: [...close({
-					description?: string
-					disabled?:    bool
-					python_code?: string
+					description?:                 string
+					disabled?:                    bool
+					proactive_execution_enabled?: bool
+					python_code?:                 string
 				})]
 				after_model_callbacks?: [...close({
-					description?: string
-					disabled?:    bool
-					python_code?: string
+					description?:                 string
+					disabled?:                    bool
+					proactive_execution_enabled?: bool
+					python_code?:                 string
 				})]
 				after_tool_callbacks?: [...close({
-					description?: string
-					disabled?:    bool
-					python_code?: string
+					description?:                 string
+					disabled?:                    bool
+					proactive_execution_enabled?: bool
+					python_code?:                 string
 				})]
 				before_agent_callbacks?: [...close({
-					description?: string
-					disabled?:    bool
-					python_code?: string
+					description?:                 string
+					disabled?:                    bool
+					proactive_execution_enabled?: bool
+					python_code?:                 string
 				})]
 				before_model_callbacks?: [...close({
-					description?: string
-					disabled?:    bool
-					python_code?: string
+					description?:                 string
+					disabled?:                    bool
+					proactive_execution_enabled?: bool
+					python_code?:                 string
 				})]
 				before_tool_callbacks?: [...close({
-					description?: string
-					disabled?:    bool
-					python_code?: string
+					description?:                 string
+					disabled?:                    bool
+					proactive_execution_enabled?: bool
+					python_code?:                 string
 				})]
 				child_agents?: [...string]
 				create_time?:       string
@@ -342,24 +348,28 @@ google_ces_app_version: {
 				})]
 				code_callback?: [...close({
 					after_agent_callback?: [...close({
-						description?: string
-						disabled?:    bool
-						python_code?: string
+						description?:                 string
+						disabled?:                    bool
+						proactive_execution_enabled?: bool
+						python_code?:                 string
 					})]
 					after_model_callback?: [...close({
-						description?: string
-						disabled?:    bool
-						python_code?: string
+						description?:                 string
+						disabled?:                    bool
+						proactive_execution_enabled?: bool
+						python_code?:                 string
 					})]
 					before_agent_callback?: [...close({
-						description?: string
-						disabled?:    bool
-						python_code?: string
+						description?:                 string
+						disabled?:                    bool
+						proactive_execution_enabled?: bool
+						python_code?:                 string
 					})]
 					before_model_callback?: [...close({
-						description?: string
-						disabled?:    bool
-						python_code?: string
+						description?:                 string
+						disabled?:                    bool
+						proactive_execution_enabled?: bool
+						python_code?:                 string
 					})]
 				})]
 				content_filter?: [...close({

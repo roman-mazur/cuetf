@@ -205,6 +205,9 @@ google_cloud_run_v2_service: {
 		reconciling?: bool
 		project?:     string
 
+		// Enables SSH access to the Service.
+		ssh_enabled?: bool
+
 		// A map of resource manager tags.
 		// Resource manager tag keys and values have the same definition as resource manager tags.
 		// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format
@@ -784,6 +787,18 @@ google_cloud_run_v2_service: {
 	})
 
 	_#defs: "/$defs/template/$defs/scaling": close({
+		// Determines a threshold for concurrency utilization before scaling begins.
+		// Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable
+		// concurrency utilization as threshold for scaling. CPU and concurrency
+		// scaling cannot both be disabled.
+		concurrency_utilization?: number
+
+		// Determines a threshold for CPU utilization before scaling begins. Accepted
+		// values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU
+		// utilization as threshold for scaling. CPU and concurrency scaling cannot
+		// both be disabled.
+		cpu_utilization?: number
+
 		// Maximum number of serving instances that this resource should have. Must not
 		// be less than minimum instance count. If absent, Cloud Run will calculate
 		// a default value based on the project's available container instances quota in

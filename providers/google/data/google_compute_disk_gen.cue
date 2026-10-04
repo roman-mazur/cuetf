@@ -60,11 +60,15 @@ google_compute_disk: {
 		// the disk will be encrypted using an automatically generated key and
 		// you do not need to provide a key to use the disk later.
 		disk_encryption_key?: [...close({
-			kms_key_self_link?:       string
-			kms_key_service_account?: string
-			raw_key?:                 string
-			rsa_encrypted_key?:       string
-			sha256?:                  string
+			kms_key_self_link?:            string
+			kms_key_service_account?:      string
+			raw_key?:                      string
+			raw_key_wo?:                   string
+			raw_key_wo_version?:           string
+			rsa_encrypted_key?:            string
+			rsa_encrypted_key_wo?:         string
+			rsa_encrypted_key_wo_version?: string
+			sha256?:                       string
 		})]
 
 		// The unique identifier for the resource. This identifier is defined by the server.

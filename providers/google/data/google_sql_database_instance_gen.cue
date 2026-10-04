@@ -57,7 +57,11 @@ google_sql_database_instance: {
 			dns_scope?:       string
 			name?:            string
 		})]
-		encryption_key_name?: string
+
+		// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only
+		// supported on Zonal C4A PG and MySQL instances.
+		encryption_confidential_mode?: bool
+		encryption_key_name?:          string
 
 		// Whether to enforce the new SQL network architecture.
 		enforce_new_sql_network_architecture?: bool

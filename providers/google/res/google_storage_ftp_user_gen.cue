@@ -8,7 +8,7 @@ google_storage_ftp_user: {
 	close({
 		storage_directory_mappings?: matchN(1, [#storage_directory_mappings, [...#storage_directory_mappings]])
 		timeouts?: #timeouts
-		user_credentials?: matchN(1, [#user_credentials, list.MaxItems(1) & [...#user_credentials]])
+		user_credentials?: matchN(1, [#user_credentials, list.MaxItems(10) & [...#user_credentials]])
 
 		// The email address of the service account associated with the user.
 		customer_service_account!: string
@@ -41,12 +41,18 @@ google_storage_ftp_user: {
 		server_id!: string
 		project?:   string
 
+		// The provisioning status of the user.
+		state?: string
+
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
 
 		// The unique ID for the user.
 		user_id!: string
+
+		// The SFTP login username for the user.
+		username?: string
 	})
 
 	#storage_directory_mappings: close({

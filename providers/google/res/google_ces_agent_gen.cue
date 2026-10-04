@@ -14,6 +14,7 @@ google_ces_agent: {
 		before_tool_callbacks?: matchN(1, [#before_tool_callbacks, [...#before_tool_callbacks]])
 		llm_agent?: matchN(1, [#llm_agent, list.MaxItems(1) & [...#llm_agent]])
 		model_settings?: matchN(1, [#model_settings, list.MaxItems(1) & [...#model_settings]])
+		remote_a2a_agent?: matchN(1, [#remote_a2a_agent, list.MaxItems(1) & [...#remote_a2a_agent]])
 		remote_dialogflow_agent?: matchN(1, [#remote_dialogflow_agent, list.MaxItems(1) & [...#remote_dialogflow_agent]])
 		timeouts?: #timeouts
 		toolsets?: matchN(1, [#toolsets, [...#toolsets]])
@@ -92,6 +93,14 @@ google_ces_agent: {
 		// agent.
 		disabled?: bool
 
+		// If enabled, the callback will also be executed on intermediate model
+		// outputs. This setting only affects after model callback.
+		// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+		// executed after receiving all model responses. Enabling proactive execution
+		// may have negative implication on the execution cost and latency, and
+		// should only be enabled in rare situations.
+		proactive_execution_enabled?: bool
+
 		// The python code to execute for the callback.
 		python_code!: string
 	})
@@ -103,6 +112,14 @@ google_ces_agent: {
 		// Whether the callback is disabled. Disabled callbacks are ignored by the
 		// agent.
 		disabled?: bool
+
+		// If enabled, the callback will also be executed on intermediate model
+		// outputs. This setting only affects after model callback.
+		// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+		// executed after receiving all model responses. Enabling proactive execution
+		// may have negative implication on the execution cost and latency, and
+		// should only be enabled in rare situations.
+		proactive_execution_enabled?: bool
 
 		// The python code to execute for the callback.
 		python_code!: string
@@ -116,6 +133,14 @@ google_ces_agent: {
 		// agent.
 		disabled?: bool
 
+		// If enabled, the callback will also be executed on intermediate model
+		// outputs. This setting only affects after model callback.
+		// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+		// executed after receiving all model responses. Enabling proactive execution
+		// may have negative implication on the execution cost and latency, and
+		// should only be enabled in rare situations.
+		proactive_execution_enabled?: bool
+
 		// The python code to execute for the callback.
 		python_code!: string
 	})
@@ -127,6 +152,14 @@ google_ces_agent: {
 		// Whether the callback is disabled. Disabled callbacks are ignored by the
 		// agent.
 		disabled?: bool
+
+		// If enabled, the callback will also be executed on intermediate model
+		// outputs. This setting only affects after model callback.
+		// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+		// executed after receiving all model responses. Enabling proactive execution
+		// may have negative implication on the execution cost and latency, and
+		// should only be enabled in rare situations.
+		proactive_execution_enabled?: bool
 
 		// The python code to execute for the callback.
 		python_code!: string
@@ -140,6 +173,14 @@ google_ces_agent: {
 		// agent.
 		disabled?: bool
 
+		// If enabled, the callback will also be executed on intermediate model
+		// outputs. This setting only affects after model callback.
+		// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+		// executed after receiving all model responses. Enabling proactive execution
+		// may have negative implication on the execution cost and latency, and
+		// should only be enabled in rare situations.
+		proactive_execution_enabled?: bool
+
 		// The python code to execute for the callback.
 		python_code!: string
 	})
@@ -151,6 +192,14 @@ google_ces_agent: {
 		// Whether the callback is disabled. Disabled callbacks are ignored by the
 		// agent.
 		disabled?: bool
+
+		// If enabled, the callback will also be executed on intermediate model
+		// outputs. This setting only affects after model callback.
+		// **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+		// executed after receiving all model responses. Enabling proactive execution
+		// may have negative implication on the execution cost and latency, and
+		// should only be enabled in rare situations.
+		proactive_execution_enabled?: bool
 
 		// The python code to execute for the callback.
 		python_code!: string
@@ -168,6 +217,10 @@ google_ces_agent: {
 		// produce responses that are more predictable. Higher temperatures produce
 		// responses that are more creative.
 		temperature?: number
+	})
+
+	#remote_a2a_agent: close({
+		a2a_config!: matchN(1, [_#defs."/$defs/remote_a2a_agent/$defs/a2a_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/remote_a2a_agent/$defs/a2a_config"]])
 	})
 
 	#remote_dialogflow_agent: close({
@@ -234,6 +287,159 @@ google_ces_agent: {
 
 		// The direction of the transfer. Possible values: ["PARENT_TO_CHILD", "CHILD_TO_PARENT"]
 		direction!: string
+	})
+
+	_#defs: "/$defs/remote_a2a_agent/$defs/a2a_config": close({
+		agent_card?: matchN(1, [_#defs."/$defs/remote_a2a_agent/$defs/a2a_config/$defs/agent_card", list.MaxItems(1) & [..._#defs."/$defs/remote_a2a_agent/$defs/a2a_config/$defs/agent_card"]])
+		api_authentication?: matchN(1, [_#defs."/$defs/remote_a2a_agent/$defs/a2a_config/$defs/api_authentication", list.MaxItems(1) & [..._#defs."/$defs/remote_a2a_agent/$defs/a2a_config/$defs/api_authentication"]])
+
+		// Reference to the agent in the Agent Registry.
+		// Format: 'projects/{project}/locations/{location}/agents/{agent}'
+		agent_registry?: string
+
+		// If not empty, interactions with the remote A2A agent will use this context
+		// ID. This context_id field can refer to a session variable like
+		// '$context.variables.order_agent_session_id'.
+		context_id?: string
+
+		// Mapping of input variable names of remote agent to GECX variable names.
+		input_variable_mapping?: [string]: string
+
+		// Mapping of output variable names of remote agent to GECX variable names.
+		output_variable_mapping?: [string]: string
+
+		// Whether streaming is enabled for the remote agent.
+		streaming_enabled?: bool
+	})
+
+	_#defs: "/$defs/remote_a2a_agent/$defs/a2a_config/$defs/agent_card": close({
+		skills!: matchN(1, [_#defs."/$defs/remote_a2a_agent/$defs/a2a_config/$defs/agent_card/$defs/skills", [_, ...] & [..._#defs."/$defs/remote_a2a_agent/$defs/a2a_config/$defs/agent_card/$defs/skills"]])
+		supported_interfaces!: matchN(1, [_#defs."/$defs/remote_a2a_agent/$defs/a2a_config/$defs/agent_card/$defs/supported_interfaces", [_, ...] & [..._#defs."/$defs/remote_a2a_agent/$defs/a2a_config/$defs/agent_card/$defs/supported_interfaces"]])
+
+		// A description of the agent's domain of action/solution space.
+		description!: string
+
+		// A human-readable name for the agent.
+		name!: string
+
+		// The version of the agent.
+		version!: string
+	})
+
+	_#defs: "/$defs/remote_a2a_agent/$defs/a2a_config/$defs/agent_card/$defs/skills": close({
+		// A detailed description of the skill.
+		description!: string
+
+		// Example prompts or scenarios that this skill can handle.
+		examples?: [...string]
+
+		// A unique identifier for the agent's skill.
+		id!: string
+
+		// The set of supported input media types for this skill, overriding the
+		// agent's defaults.
+		input_modes?: [...string]
+
+		// A human-readable name for the skill.
+		name!: string
+
+		// The set of supported output media types for this skill, overriding the
+		// agent's defaults.
+		output_modes?: [...string]
+
+		// A set of keywords describing the skill's capabilities.
+		tags!: [...string]
+	})
+
+	_#defs: "/$defs/remote_a2a_agent/$defs/a2a_config/$defs/agent_card/$defs/supported_interfaces": close({
+		// The protocol binding supported at this URL. The core ones officially
+		// supported are JSONRPC, GRPC and HTTP+JSON.
+		protocol_binding!: string
+
+		// The version of the A2A protocol this interface exposes.
+		// Examples: "0.3", "1.0"
+		protocol_version!: string
+
+		// Tenant ID to be used in the request when calling the agent.
+		tenant?: string
+
+		// The URL where this interface is available. Must be a valid absolute HTTPS
+		// URL in production.
+		url!: string
+	})
+
+	_#defs: "/$defs/remote_a2a_agent/$defs/a2a_config/$defs/api_authentication": close({
+		api_key_config?: matchN(1, [_#defs."/$defs/remote_a2a_agent/$defs/a2a_config/$defs/api_authentication/$defs/api_key_config", list.MaxItems(1) & [..._#defs."/$defs/remote_a2a_agent/$defs/a2a_config/$defs/api_authentication/$defs/api_key_config"]])
+		bearer_token_config?: matchN(1, [_#defs."/$defs/remote_a2a_agent/$defs/a2a_config/$defs/api_authentication/$defs/bearer_token_config", list.MaxItems(1) & [..._#defs."/$defs/remote_a2a_agent/$defs/a2a_config/$defs/api_authentication/$defs/bearer_token_config"]])
+		oauth_config?: matchN(1, [_#defs."/$defs/remote_a2a_agent/$defs/a2a_config/$defs/api_authentication/$defs/oauth_config", list.MaxItems(1) & [..._#defs."/$defs/remote_a2a_agent/$defs/a2a_config/$defs/api_authentication/$defs/oauth_config"]])
+		service_account_auth_config?: matchN(1, [_#defs."/$defs/remote_a2a_agent/$defs/a2a_config/$defs/api_authentication/$defs/service_account_auth_config", list.MaxItems(1) & [..._#defs."/$defs/remote_a2a_agent/$defs/a2a_config/$defs/api_authentication/$defs/service_account_auth_config"]])
+	})
+
+	_#defs: "/$defs/remote_a2a_agent/$defs/a2a_config/$defs/api_authentication/$defs/api_key_config": close({
+		// The name of the SecretManager secret version resource storing the API key.
+		// Format: 'projects/{project}/secrets/{secret}/versions/{version}'
+		// Note: You should grant 'roles/secretmanager.secretAccessor' role to the CES
+		// service agent
+		// 'service-@gcp-sa-ces.iam.gserviceaccount.com'.
+		api_key_secret_version!: string
+
+		// The parameter name or the header name of the API key.
+		// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key"
+		// would be the parameter name.
+		key_name!: string
+
+		// Key location in the request.
+		// Possible values:
+		// HEADER
+		// QUERY_STRING
+		request_location!: string
+	})
+
+	_#defs: "/$defs/remote_a2a_agent/$defs/a2a_config/$defs/api_authentication/$defs/bearer_token_config": close({
+		// The bearer token.
+		// Must be in the format '$context.variables.<name_of_variable>'.
+		token!: string
+	})
+
+	_#defs: "/$defs/remote_a2a_agent/$defs/a2a_config/$defs/api_authentication/$defs/oauth_config": close({
+		// The client ID from the OAuth provider.
+		client_id!: string
+
+		// The name of the SecretManager secret version resource storing the
+		// client secret.
+		// Format: 'projects/{project}/secrets/{secret}/versions/{version}'
+		//
+		// Note: You should grant 'roles/secretmanager.secretAccessor' role to the CES
+		// service agent
+		// 'service-@gcp-sa-ces.iam.gserviceaccount.com'.
+		client_secret_version!: string
+
+		// OAuth grant types.
+		// Possible values:
+		// CLIENT_CREDENTIAL
+		oauth_grant_type!: string
+
+		// The OAuth scopes to grant.
+		scopes?: [...string]
+
+		// The token endpoint in the OAuth provider to exchange for an access token.
+		token_endpoint!: string
+	})
+
+	_#defs: "/$defs/remote_a2a_agent/$defs/a2a_config/$defs/api_authentication/$defs/service_account_auth_config": close({
+		// The OAuth scopes to grant. If not specified, the default scope
+		// 'https://www.googleapis.com/auth/cloud-platform' is used.
+		scopes?: [...string]
+
+		// The email address of the service account used for authenticatation. CES
+		// uses this service account to exchange an access token and the access token
+		// is then sent in the 'Authorization' header of the request.
+		//
+		// The service account must have the
+		// 'roles/iam.serviceAccountTokenCreator' role granted to the
+		// CES service agent
+		// 'service-@gcp-sa-ces.iam.gserviceaccount.com'.
+		service_account!: string
 	})
 
 	_#defs: "/$defs/transfer_rules/$defs/deterministic_transfer": close({

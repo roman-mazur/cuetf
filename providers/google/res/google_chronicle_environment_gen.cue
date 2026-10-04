@@ -74,6 +74,14 @@ google_chronicle_environment: {
 		// projects/{project}/locations/{location}/instances/{instance}/environments/{environment}
 		name?: string
 
+		// The optional parallel SIEM instance used as a data source. Used to route
+		// API requests to the correct SIEM instance when making cross-SecOps requests
+		// from SOAR. For most customers, this is not required, since the parent
+		// instance is used as the data source by default.
+		// Format:
+		// projects/{project}/locations/{location}/instances/{instance}
+		parallel_instance?: string
+
 		// Environment data retention in months.
 		retention_duration!: number
 		project?:            string
