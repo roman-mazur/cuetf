@@ -30,6 +30,9 @@ cloudflare_share_recipient: {
 		// Share Recipient identifier tag.
 		id?: string
 
+		// Include resources in the response.
+		include_resources?: bool
+
 		// When the share was modified.
 		modified?: string
 

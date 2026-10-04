@@ -23,8 +23,9 @@ cloudflare_zero_trust_dlp_custom_profile: {
 		data_tags?: [...string]
 
 		// The description of the profile.
-		description?: string
-		id?:          string
+		description?:    string
+		id?:             string
+		integration_id?: string
 
 		// The name of the profile.
 		name?:        string

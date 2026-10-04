@@ -80,6 +80,43 @@ cloudflare_zero_trust_dns_location: {
 				})]])
 			})
 		})
+		filter?: close({
+			// Sort direction. Only takes effect when `order_by` is also provided; it
+			// is ignored otherwise. When `direction` is omitted the effective
+			// direction is field-specific: `created_at` and `updated_at` default to
+			// descending (newest first); `name` defaults to ascending.
+			// * `asc` — ascending.
+			// * `desc` — descending.
+			// Available values: "asc", "desc".
+			direction?: string
+
+			// Filter the returned locations by one or more `field:value` pairs.
+			// Repeat the parameter to apply multiple filters; they are combined with
+			// logical AND (a location must satisfy every filter to be returned).
+			//
+			// Supported fields and their matching behaviour:
+			// * `name` — case-insensitive substring match on the location name.
+			// * `id` — substring match on the location ID (UUID), with or without dashes.
+			// * `is_default` — whether it is the default for the account.
+			//
+			// Each entry must match one of the per-field patterns below:
+			// * the field must be one of `name`, `id`, or `is_default`;
+			// * `name`/`id` accept any value;
+			// * `is_default` only accepts `true` or `false`; any other value returns `400`
+			filter?: [...string]
+
+			// Field to sort the returned locations by. When omitted, the order of
+			// results is unspecified. Supported values:
+			// * `name` — sort alphabetically by location name.
+			// * `created_at` — sort by creation time; defaults to descending unless `direction` is set.
+			// * `updated_at` — sort by last-modified time; defaults to descending unless `direction` is set.
+			// Available values: "name", "created_at", "updated_at".
+			order_by?: string
+
+			// Case-insensitive substring match on the location name. When combined
+			// with `filter`, both must match (logical AND).
+			search?: string
+		})
 		id?: string
 
 		// Defines the automatically generated IPv6 destination IP assigned to this
@@ -94,7 +131,7 @@ cloudflare_zero_trust_dns_location: {
 		// Show the backup destination IPv4 address from the pair identified
 		// dns_destination_ips_id. This field read-only.
 		ipv4_destination_backup?: string
-		location_id!:             string
+		location_id?:             string
 
 		// Controls how DNS response TTLs are capped for this location relative to the
 		// account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to

@@ -19,10 +19,8 @@ cloudflare_worker_version: {
 			workers_triggered_by?: string
 		})
 
-		// Date indicating targeted support in the Workers runtime. Backwards
-		// incompatible fixes to the runtime following this date will not affect this
-		// Worker.
-		compatibility_date?: string
+		// Email of the user who created the version.
+		author_email?: string
 
 		// Configuration for assets within a Worker.
 		//
@@ -36,6 +34,12 @@ cloudflare_worker_version: {
 
 			// Configuration for assets within a Worker.
 			config?: close({
+				// The public URL path prefix under which assets are served. A null request
+				// value resets it to `/`; responses represent the root as `/`. All versions in
+				// a gradual deployment must use the same canonical value. To change it, first
+				// deploy the version containing the change at 100%.
+				base_path?: string
+
 				// Determines the redirects and rewrites of requests for HTML content.
 				// Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
 				html_handling?: string
@@ -62,10 +66,8 @@ cloudflare_worker_version: {
 			jwt?: string
 		})
 
-		// Flags that enable or disable certain features in the Workers runtime. Used to
-		// enable upcoming features or opt in or out of specific changes not included
-		// in a `compatibility_date`.
-		compatibility_flags?: [...string]
+		// Identifier of the user who created the version.
+		author_id?: string
 
 		// List of bindings attached to a Worker. You can find more about bindings on
 		// our docs:
@@ -230,6 +232,9 @@ cloudflare_worker_version: {
 			// ID of the store containing the secret.
 			store_id?: string
 
+			// ID of a K2 stream owned by the account deploying the Worker.
+			stream?: string
+
 			// The text value to use.
 			text?: string
 
@@ -241,8 +246,8 @@ cloudflare_worker_version: {
 			// "analytics_engine", "assets", "browser", "d1", "data_blob",
 			// "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit",
 			// "images", "json", "kv_namespace", "media", "mtls_certificate", "plain_text",
-			// "pipelines", "queue", "ratelimit", "r2_bucket", "secret_text", "send_email",
-			// "service", "text_blob", "vectorize", "version_metadata",
+			// "pipelines", "k2", "queue", "ratelimit", "r2_bucket", "secret_text",
+			// "send_email", "service", "text_blob", "vectorize", "version_metadata",
 			// "secrets_store_secret", "flagship", "secret_key", "workflow", "wasm_module",
 			// "vpc_service", "vpc_network".
 			type!: string
@@ -418,6 +423,9 @@ cloudflare_worker_version: {
 			// ID of the store containing the secret.
 			store_id?: string
 
+			// ID of a K2 stream owned by the account deploying the Worker.
+			stream?: string
+
 			// The text value to use.
 			text?: string
 
@@ -429,8 +437,8 @@ cloudflare_worker_version: {
 			// "analytics_engine", "assets", "browser", "d1", "data_blob",
 			// "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit",
 			// "images", "json", "kv_namespace", "media", "mtls_certificate", "plain_text",
-			// "pipelines", "queue", "ratelimit", "r2_bucket", "secret_text", "send_email",
-			// "service", "text_blob", "vectorize", "version_metadata",
+			// "pipelines", "k2", "queue", "ratelimit", "r2_bucket", "secret_text",
+			// "send_email", "service", "text_blob", "vectorize", "version_metadata",
 			// "secrets_store_secret", "flagship", "secret_key", "workflow", "wasm_module",
 			// "vpc_service", "vpc_network".
 			type!: string
@@ -448,8 +456,10 @@ cloudflare_worker_version: {
 			workflow_name?: string
 		})]])
 
-		// When the version was created.
-		created_on?: string
+		// Date indicating targeted support in the Workers runtime. Backwards
+		// incompatible fixes to the runtime following this date will not affect this
+		// Worker.
+		compatibility_date?: string
 
 		// Global CacheW configuration for the Worker. When caching is on,
 		// the platform provisions a `cloudflare.app` zone for the Worker.
@@ -466,8 +476,10 @@ cloudflare_worker_version: {
 			enabled?: bool
 		})
 
-		// Version identifier.
-		id?: string
+		// Flags that enable or disable certain features in the Workers runtime. Used to
+		// enable upcoming features or opt in or out of specific changes not included
+		// in a `compatibility_date`.
+		compatibility_flags?: [...string]
 
 		// List of containers attached to a Worker. Containers can only be attached to
 		// Durable Object classes of this Worker script.
@@ -479,9 +491,11 @@ cloudflare_worker_version: {
 			class_name!: string
 		})]])
 
-		// The name of the main module in the `modules` array (e.g. the name of the
-		// module that exports a `fetch` handler).
-		main_module?: string
+		// When the version was created.
+		created_on?: string
+
+		// If true, a deployment will be created that sends 100% of traffic to the new version.
+		deploy?: bool
 
 		// Declarative exports for the version, including Durable Object
 		// classes (with their `storage` backend) and named Worker
@@ -542,10 +556,157 @@ cloudflare_worker_version: {
 			type!: string
 		})
 
-		// The base64-encoded main script content. This is only returned for service
-		// worker syntax workers (not ES modules). Used when importing existing workers
-		// that use the older service worker syntax.
-		main_script_base64?: string
+		// Summary of the declarative exports reconciliation that ran on this upload.
+		// Populated only when the uploaded metadata included an `exports` block.
+		// Durable Object entries drive reconciliation; `type: worker` entries do not
+		// contribute to this summary.
+		exports_reconciliation?: close({
+			// Class names for which a new namespace was provisioned.
+			created?: [...string]
+
+			// Non-blocking info entries (stale tombstones, tombstone applied with class
+			// still in code). See `exports_reconciliation_info`.
+			info?: matchN(1, [close({
+				// The class name the info entry is about.
+				class?: string
+
+				// Human-readable explanation.
+				message?: string
+
+				// The provisioned namespace the entry relates to, when applicable.
+				namespace_id?: string
+
+				// Other Workers in the account that still bind to the affected class. Advisory:
+				// while non-empty the tombstone is not yet safe to remove — redeploy these
+				// Workers with bindings re-pointed first.
+				referencing_scripts?: [...string]
+
+				// Stable, machine-readable tag identifying which reconciliation scenario
+				// produced an error, warning, or info entry. Clients may branch on this value
+				// instead of parsing `message`.
+				scenario?: string
+			}), [...close({
+				// The class name the info entry is about.
+				class?: string
+
+				// Human-readable explanation.
+				message?: string
+
+				// The provisioned namespace the entry relates to, when applicable.
+				namespace_id?: string
+
+				// Other Workers in the account that still bind to the affected class. Advisory:
+				// while non-empty the tombstone is not yet safe to remove — redeploy these
+				// Workers with bindings re-pointed first.
+				referencing_scripts?: [...string]
+
+				// Stable, machine-readable tag identifying which reconciliation scenario
+				// produced an error, warning, or info entry. Clients may branch on this value
+				// instead of parsing `message`.
+				scenario?: string
+			})]])
+
+			// Class names whose namespace was deleted by a `deleted` tombstone.
+			deleted?: [...string]
+
+			// Applied `renamed` tombstones.
+			renamed?: matchN(1, [close({
+				// The original (source) class name.
+				from?: string
+
+				// The new class name (`renamed_to`).
+				to?: string
+			}), [...close({
+				// The original (source) class name.
+				from?: string
+
+				// The new class name (`renamed_to`).
+				to?: string
+			})]])
+
+			// Source class names whose tombstone entry is now stale and safe to delete from
+			// `exports` (no remaining referencing scripts).
+			removable_entries?: [...string]
+
+			// Phase-1 transfer hints recorded on the target side.
+			transfer_pending?: matchN(1, [close({
+				// The target-side class name awaiting transfer.
+				class?: string
+
+				// The source script the namespace will be transferred from.
+				from?: string
+			}), [...close({
+				// The target-side class name awaiting transfer.
+				class?: string
+
+				// The source script the namespace will be transferred from.
+				from?: string
+			})]])
+
+			// Class names whose provisioned namespace was mutated in place.
+			updated?: [...string]
+
+			// Committed `transferred` tombstones (phase-2).
+			transferred?: matchN(1, [close({
+				// The source class name that was transferred.
+				class?: string
+
+				// The transfer phase. Currently always `committed`.
+				phase?: string
+
+				// The destination script that now owns the namespace.
+				to?: string
+			}), [...close({
+				// The source class name that was transferred.
+				class?: string
+
+				// The transfer phase. Currently always `committed`.
+				phase?: string
+
+				// The destination script that now owns the namespace.
+				to?: string
+			})]])
+
+			// Non-blocking warnings. See `exports_reconciliation_warning`.
+			warnings?: matchN(1, [close({
+				// The class name the warning is about.
+				class?: string
+
+				// Human-readable explanation of the warning.
+				message?: string
+
+				// The provisioned namespace the warning relates to, when applicable.
+				namespace_id?: string
+
+				// Stable, machine-readable tag identifying which reconciliation scenario
+				// produced an error, warning, or info entry. Clients may branch on this value
+				// instead of parsing `message`.
+				scenario?: string
+			}), [...close({
+				// The class name the warning is about.
+				class?: string
+
+				// Human-readable explanation of the warning.
+				message?: string
+
+				// The provisioned namespace the warning relates to, when applicable.
+				namespace_id?: string
+
+				// Stable, machine-readable tag identifying which reconciliation scenario
+				// produced an error, warning, or info entry. Clients may branch on this value
+				// instead of parsing `message`.
+				scenario?: string
+			})]])
+		})
+
+		// Version identifier.
+		id?: string
+
+		// Whether to include the `modules` property of the version in the response,
+		// which contains code and sourcemap content and may add several megabytes to
+		// the response size.
+		// Available values: "modules".
+		include?: string
 
 		// Resource limits enforced at runtime.
 		limits?: close({
@@ -555,6 +716,15 @@ cloudflare_worker_version: {
 			// Subrequest limit per request.
 			subrequests?: number
 		})
+
+		// The name of the main module in the `modules` array (e.g. the name of the
+		// module that exports a `fetch` handler).
+		main_module?: string
+
+		// The base64-encoded main script content. This is only returned for service
+		// worker syntax workers (not ES modules). Used when importing existing workers
+		// that use the older service worker syntax.
+		main_script_base64?: string
 
 		// Durable Object migration tag. Set when the version is deployed. Omitted if
 		// the version has not been deployed or the Worker does not use Durable
@@ -665,9 +835,6 @@ cloudflare_worker_version: {
 			old_tag?: string
 		})
 
-		// The integer version number, starting from one.
-		"number"?: number
-
 		// Code, sourcemaps, and other content used at runtime.
 		//
 		// This includes
@@ -710,8 +877,8 @@ cloudflare_worker_version: {
 			name!: string
 		})]])
 
-		// The client used to create the version.
-		source?: string
+		// The integer version number, starting from one.
+		"number"?: number
 
 		// The list of npm packages that were installed and used when this Worker
 		// version was built.
@@ -734,10 +901,6 @@ cloudflare_worker_version: {
 			// The version constraint as written in package.json.
 			package_json_version!: string
 		})]])
-
-		// Time in milliseconds spent on [Worker
-		// startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
-		startup_time_ms?: number
 
 		// Configuration for [Smart
 		// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
@@ -778,6 +941,13 @@ cloudflare_worker_version: {
 			// Cloud region for targeted placement in format 'provider:region'.
 			region?: string
 		})
+
+		// The client used to create the version.
+		source?: string
+
+		// Time in milliseconds spent on [Worker
+		// startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+		startup_time_ms?: number
 
 		// All routable URLs that always point to this version. Does not include alias
 		// URLs, since aliases can be updated to point to a different version.

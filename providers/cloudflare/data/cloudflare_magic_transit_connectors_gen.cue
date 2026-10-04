@@ -37,8 +37,6 @@ cloudflare_magic_transit_connectors: {
 			last_updated?:                    string
 			license_key?:                     string
 			notes?:                           string
-			primary?:                         bool
-			site_id?:                         string
 			timezone?:                        string
 		}), [...close({
 			activated?: bool
@@ -63,8 +61,6 @@ cloudflare_magic_transit_connectors: {
 			last_updated?:                    string
 			license_key?:                     string
 			notes?:                           string
-			primary?:                         bool
-			site_id?:                         string
 			timezone?:                        string
 		})]])
 	})

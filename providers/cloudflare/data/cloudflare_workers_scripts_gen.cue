@@ -133,6 +133,15 @@ cloudflare_workers_scripts: {
 				// Whether observability is enabled for the Worker.
 				enabled?: bool
 
+				// Real-time Issues settings for the Worker.
+				issues?: close({
+					// Whether real-time Issues are enabled for the Worker.
+					enabled?: bool
+				})
+
+				// The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
+				head_sampling_rate?: number
+
 				// Log settings for the Worker.
 				logs?: close({
 					// A list of destinations where logs will be exported to.
@@ -153,8 +162,8 @@ cloudflare_workers_scripts: {
 					persist?: bool
 				})
 
-				// The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
-				head_sampling_rate?: number
+				// Whether query strings are removed from request URLs in logs and traces.
+				redact_query_string?: bool
 
 				// Trace settings for the Worker.
 				traces?: close({
@@ -179,9 +188,6 @@ cloudflare_workers_scripts: {
 					// Available values: "authenticated", "accept".
 					propagation_policy?: string
 				})
-
-				// Whether query strings are removed from request URLs in logs and traces.
-				redact_query_string?: bool
 			})
 
 			// Hashed script content, can be used in a If-None-Match header when updating.
@@ -420,6 +426,15 @@ cloudflare_workers_scripts: {
 				// Whether observability is enabled for the Worker.
 				enabled?: bool
 
+				// Real-time Issues settings for the Worker.
+				issues?: close({
+					// Whether real-time Issues are enabled for the Worker.
+					enabled?: bool
+				})
+
+				// The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
+				head_sampling_rate?: number
+
 				// Log settings for the Worker.
 				logs?: close({
 					// A list of destinations where logs will be exported to.
@@ -440,8 +455,8 @@ cloudflare_workers_scripts: {
 					persist?: bool
 				})
 
-				// The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
-				head_sampling_rate?: number
+				// Whether query strings are removed from request URLs in logs and traces.
+				redact_query_string?: bool
 
 				// Trace settings for the Worker.
 				traces?: close({
@@ -466,9 +481,6 @@ cloudflare_workers_scripts: {
 					// Available values: "authenticated", "accept".
 					propagation_policy?: string
 				})
-
-				// Whether query strings are removed from request URLs in logs and traces.
-				redact_query_string?: bool
 			})
 
 			// Hashed script content, can be used in a If-None-Match header when updating.

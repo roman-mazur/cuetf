@@ -15,9 +15,15 @@ cloudflare_magic_wan_gre_tunnel: {
 				// ASN used on the customer end of the BGP session
 				customer_asn?: number
 
+				// ID of the BGP filter profile applied to routes advertised to the customer.
+				export_filter_id?: string
+
 				// Prefixes in this list will be advertised to the customer device, in addition
 				// to the routes in the Magic routing table.
 				extra_prefixes?: [...string]
+
+				// ID of the BGP filter profile applied to routes received from the customer.
+				import_filter_id?: string
 
 				// MD5 key to use for session authentication.
 				//

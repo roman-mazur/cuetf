@@ -32,6 +32,12 @@ cloudflare_share: {
 		// Share identifier tag.
 		id?: string
 
+		// Include recipient counts in the response.
+		include_recipient_counts?: bool
+
+		// Include resources in the response.
+		include_resources?: bool
+
 		// Available values: "sent", "received".
 		kind?: string
 

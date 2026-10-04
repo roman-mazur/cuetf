@@ -33,8 +33,7 @@ cloudflare_d1_database: {
 		jurisdiction?: string
 
 		// D1 database name.
-		name?:       string
-		num_tables?: number
+		name?: string
 
 		// Configuration for D1 read replication.
 		read_replication?: close({

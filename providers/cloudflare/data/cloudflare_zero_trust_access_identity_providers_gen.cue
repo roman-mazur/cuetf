@@ -122,7 +122,7 @@ cloudflare_zero_trust_access_identity_providers: {
 				// providing account selection experience listing all the accounts either in
 				// session or any remembered account or an option to choose to use a different
 				// account altogether.
-				// Available values: "login", "select_account", "none".
+				// Available values: "login", "select_account", "none", "consent".
 				prompt?:       string
 				redirect_url?: string
 
@@ -146,6 +146,10 @@ cloudflare_zero_trust_access_identity_providers: {
 
 				// The token_endpoint URL of your IdP
 				token_url?: string
+
+				// Whether to use a previously authenticated Access email as a Google login hint
+				// when exactly one email matches the Workspace domain.
+				use_login_hint?: bool
 			})
 
 			// UUID.
@@ -349,7 +353,7 @@ cloudflare_zero_trust_access_identity_providers: {
 				// providing account selection experience listing all the accounts either in
 				// session or any remembered account or an option to choose to use a different
 				// account altogether.
-				// Available values: "login", "select_account", "none".
+				// Available values: "login", "select_account", "none", "consent".
 				prompt?:       string
 				redirect_url?: string
 
@@ -373,6 +377,10 @@ cloudflare_zero_trust_access_identity_providers: {
 
 				// The token_endpoint URL of your IdP
 				token_url?: string
+
+				// Whether to use a previously authenticated Access email as a Google login hint
+				// when exactly one email matches the Workspace domain.
+				use_login_hint?: bool
 			})
 
 			// UUID.

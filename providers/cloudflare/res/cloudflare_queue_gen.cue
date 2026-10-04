@@ -12,13 +12,38 @@ cloudflare_queue: {
 			settings?: close({
 				// The maximum number of messages to include in a batch.
 				batch_size?: number
+				email?: matchN(1, [close({
+					// The email address.
+					id?: string
+				}), [...close({
+					// The email address.
+					id?: string
+				})]])
 
 				// Maximum number of concurrent consumers that may consume from this Queue. Set
 				// to `null` to automatically opt in to the platform's maximum (recommended).
 				max_concurrency?: number
 
+				// PagerDuty notification destinations.
+				pagerduty?: matchN(1, [close({
+					// UUID.
+					id?: string
+				}), [...close({
+					// UUID.
+					id?: string
+				})]])
+
 				// The maximum number of retries
 				max_retries?: number
+
+				// Webhook notification destinations.
+				webhooks?: matchN(1, [close({
+					// UUID.
+					id?: string
+				}), [...close({
+					// UUID.
+					id?: string
+				})]])
 
 				// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
 				max_wait_time_ms?: number
@@ -39,7 +64,7 @@ cloudflare_queue: {
 			script_name?: string
 			queue_name?:  string
 
-			// Available values: "worker", "http_pull".
+			// Available values: "worker", "http_pull", "notification".
 			type?: string
 		}), [...close({
 			// A Resource identifier.
@@ -47,13 +72,38 @@ cloudflare_queue: {
 			settings?: close({
 				// The maximum number of messages to include in a batch.
 				batch_size?: number
+				email?: matchN(1, [close({
+					// The email address.
+					id?: string
+				}), [...close({
+					// The email address.
+					id?: string
+				})]])
 
 				// Maximum number of concurrent consumers that may consume from this Queue. Set
 				// to `null` to automatically opt in to the platform's maximum (recommended).
 				max_concurrency?: number
 
+				// PagerDuty notification destinations.
+				pagerduty?: matchN(1, [close({
+					// UUID.
+					id?: string
+				}), [...close({
+					// UUID.
+					id?: string
+				})]])
+
 				// The maximum number of retries
 				max_retries?: number
+
+				// Webhook notification destinations.
+				webhooks?: matchN(1, [close({
+					// UUID.
+					id?: string
+				}), [...close({
+					// UUID.
+					id?: string
+				})]])
 
 				// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
 				max_wait_time_ms?: number
@@ -74,13 +124,16 @@ cloudflare_queue: {
 			script_name?: string
 			queue_name?:  string
 
-			// Available values: "worker", "http_pull".
+			// Available values: "worker", "http_pull", "notification".
 			type?: string
 		})]])
 		consumers_total_count?: number
 		created_on?:            string
 		id?:                    string
-		modified_on?:           string
+
+		// Available values: "eu", "us", "fedramp".
+		jurisdiction?: string
+		modified_on?:  string
 		producers?: matchN(1, [close({
 			bucket_name?: string
 

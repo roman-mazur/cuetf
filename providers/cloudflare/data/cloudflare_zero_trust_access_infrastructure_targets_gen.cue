@@ -102,6 +102,9 @@ cloudflare_zero_trust_access_infrastructure_targets: {
 
 			// Date and time at which the target was modified
 			modified_at?: string
+
+			// Tags assigned to the target. Empty when no tags are assigned.
+			tags?: [string]: string
 		}), [...close({
 			// Date and time at which the target was created
 			created_at?: string
@@ -137,7 +140,15 @@ cloudflare_zero_trust_access_infrastructure_targets: {
 
 			// Date and time at which the target was modified
 			modified_at?: string
+
+			// Tags assigned to the target. Empty when no tags are assigned.
+			tags?: [string]: string
 		})]])
+
+		// Filter by tag key:value pairs. Multiple `tag` params are AND'd.
+		// Format: `tag=key:value` (e.g., `tag=environment:production`).
+		// Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+		tag?: [...string]
 
 		// Filters for targets that have any of the following UUIDs. Specify
 		// `target_ids` multiple times in query parameter to build list of

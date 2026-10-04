@@ -17,8 +17,8 @@ cloudflare_flagship_flag: {
 		// When false, the flag bypasses all rules and always serves `default_variation`.
 		enabled!: bool
 
-		// Flag key (slug).
-		flag_key?: string
+		// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
+		id?: string
 
 		// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 		key!: string
@@ -4094,11 +4094,6 @@ cloudflare_flagship_flag: {
 			// Variation served when this rule matches. Must be a key in `variations`.
 			serve_variation!: string
 		})]])
-
-		// Value type of the flag's variations. Inferred from the variation values on
-		// write, so it may be omitted in requests.
-		// Available values: "boolean", "string", "number", "json".
-		type?:       string
 		updated_at?: string
 		updated_by?: string
 

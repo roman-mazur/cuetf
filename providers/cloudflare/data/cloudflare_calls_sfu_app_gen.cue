@@ -16,7 +16,7 @@ cloudflare_calls_sfu_app: {
 		// The date and time the item was last modified.
 		modified?: string
 
-		// A short description of Calls app, not shown to end users.
+		// A short description of a Realtime SFU app, not shown to end users.
 		name?: string
 
 		// A Cloudflare-generated unique identifier for a item.

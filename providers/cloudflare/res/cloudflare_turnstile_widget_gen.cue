@@ -25,10 +25,25 @@ cloudflare_turnstile_widget: {
 		// before this field existed.
 		// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
 		deployed_via?: string
+
+		// Direction to order widgets.
+		// Available values: "asc", "desc".
+		direction?: string
 		domains!: [...string]
 
 		// Return the Ephemeral ID in /siteverify (ENT only).
 		ephemeral_id?: bool
+
+		// Filter widgets by field using case-insensitive substring matching.
+		// Format: `field:value`
+		//
+		// Supported fields:
+		// - `name` - Filter by widget name (e.g., `filter=name:login-form`)
+		// - `sitekey` - Filter by sitekey (e.g., `filter=sitekey:0x4AAA`)
+		//
+		// Returns 400 Bad Request if the field is unsupported or format is invalid.
+		// An empty filter value returns all results.
+		filter?: string
 
 		// Widget item identifier tag.
 		id?: string
@@ -53,6 +68,16 @@ cloudflare_turnstile_widget: {
 
 		// Do not show any Cloudflare branding on the widget (ENT only).
 		offlabel?: bool
+
+		// Field to order widgets by.
+		// Available values: "id", "sitekey", "name", "created_on", "modified_on".
+		order?: string
+
+		// Page number of paginated results.
+		page?: number
+
+		// Number of items per page.
+		per_page?: number
 
 		// Region where this widget can be used. This cannot be changed after creation.
 		// Available values: "world", "china".

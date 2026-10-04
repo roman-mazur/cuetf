@@ -32,9 +32,13 @@ cloudflare_account: {
 			enforce_twofactor?: bool
 		})
 
-		// information related to the tenant unit, and optionally, an id of the unit to
-		// create the account on. see
-		// https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+		// Set to `true` and omit `unit` to create a standalone Free Account. If
+		// provided, this field must be `true`.
+		standalone?: bool
+
+		// Information related to the tenant unit. Provide its ID and omit `standalone`
+		// to create the Account within an Organization. See
+		// https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
 		unit?: close({
 			// Tenant unit ID
 			id?: string

@@ -17,7 +17,7 @@ cloudflare_r2_bucket: {
 		id?: string
 
 		// Jurisdiction where objects in this bucket are guaranteed to be stored.
-		// Available values: "default", "eu", "fedramp", "us".
+		// Available values: "default", "eu", "us", "fedramp", "fedramp-high".
 		jurisdiction?: string
 
 		// Location of the bucket.

@@ -33,8 +33,6 @@ cloudflare_magic_transit_connector: {
 		last_updated?:                 string
 		license_key?:                  string
 		notes?:                        string
-		primary?:                      bool
-		site_id?:                      string
 		timezone?:                     string
 	})
 }

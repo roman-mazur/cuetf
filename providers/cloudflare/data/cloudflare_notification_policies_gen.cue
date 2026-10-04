@@ -131,6 +131,10 @@ cloudflare_notification_policies: {
 				// Used for configuring advanced_ddos_attack_l7_alert
 				target_zone_name?: [...string]
 
+				// Access service token IDs to include for expiring_service_token_alert. Omit
+				// this property to include all current and future service tokens.
+				token_id?: [...string]
+
 				// Used for configuring traffic_anomalies_alert
 				traffic_exclusions?: [...string]
 
@@ -351,6 +355,10 @@ cloudflare_notification_policies: {
 
 				// Used for configuring advanced_ddos_attack_l7_alert
 				target_zone_name?: [...string]
+
+				// Access service token IDs to include for expiring_service_token_alert. Omit
+				// this property to include all current and future service tokens.
+				token_id?: [...string]
 
 				// Used for configuring traffic_anomalies_alert
 				traffic_exclusions?: [...string]

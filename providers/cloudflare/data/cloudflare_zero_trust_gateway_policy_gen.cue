@@ -47,6 +47,32 @@ cloudflare_zero_trust_gateway_policy: {
 			// and expire globally at the specified expires_at time.
 			expires_at?: string
 		})
+		filter?: close({
+			// Sort direction. When `order_by` is omitted, this controls the direction
+			// of the existing precedence ordering. Shared rules remain first in either
+			// direction. Accepted values are `asc` and `desc`.
+			// Available values: "asc", "desc".
+			direction?: string
+
+			// Filter the returned rules by one or more `field:value` pairs. Repeat the
+			// parameter to combine filters with logical AND.
+			//
+			// Supported fields are `name`, `id`, `action`, `enabled`, `source_account`,
+			// `is_shared`, `filters`, and `expression` (max 1024 bytes). The `source_account`
+			// value is matched as a normalized UUID substring. The `filters` value must
+			// be one of the rule filter names and matches a member of the rule's `filters`
+			// array. The `expression` filter performs a case-insensitive literal
+			// substring match across traffic, identity, and device posture expressions.
+			filter?: [...string]
+
+			// Field to sort the returned rules by. Supported values are `name`,
+			// `created_at`, `updated_at`, and `precedence`.
+			// Available values: "name", "created_at", "updated_at", "precedence".
+			order_by?: string
+
+			// Case-insensitive substring search across rule name and description.
+			search?: string
+		})
 
 		// Specify the protocol or layer to evaluate the traffic, identity, and device
 		// posture expressions. Can only contain a single value.
@@ -75,7 +101,7 @@ cloudflare_zero_trust_gateway_policy: {
 		read_only?: bool
 
 		// Identify the API resource with a UUID.
-		rule_id!: string
+		rule_id?: string
 
 		// Defines settings for this rule. Settings apply only to specific rule types
 		// and must use compatible selectors. If Terraform detects drift, confirm the

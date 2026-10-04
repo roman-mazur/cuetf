@@ -26,6 +26,10 @@ cloudflare_email_routing_dns: {
 		// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 		status?: string
 
+		// Deprecated. When supplied, the response shape differs from the documented
+		// default and is not modeled in generated SDKs. Do not rely on this parameter.
+		subdomain?: string
+
 		// Whether subaddressing (plus-addressing) is honored when matching incoming
 		// mail against routing rules.
 		support_subaddress?: bool

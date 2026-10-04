@@ -15,6 +15,9 @@ cloudflare_api_shield_schema: {
 
 		// Name of the schema
 		name?: string
+
+		// Omit the source-files of schemas and only retrieve their meta-data.
+		omit_source?: bool
 		schema?: close({
 			created_at?: string
 

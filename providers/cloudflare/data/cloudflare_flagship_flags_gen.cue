@@ -4098,17 +4098,19 @@ cloudflare_flagship_flags: {
 			enabled?: bool
 
 			// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
+			id?: string
+
+			// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 			key?: string
 
-			// Value type of the flag's variations. Inferred from the variation values on
-			// write, so it may be omitted in requests.
+			// Server-inferred value type shared by all of the flag's variations.
 			// Available values: "boolean", "string", "number", "json".
 			type?:       string
 			updated_at?: string
 
-			// Map of variation name to value. All values must be the same type (boolean,
-			// string, number, or JSON object/array). Each serialized value must be 10KB or
-			// smaller.
+			// Map of variation name to value. All values share the same type (boolean,
+			// string, number, or JSON object/array), and each serialized value stays
+			// within 10KB.
 			variations?: [string]: string
 			updated_by?: string
 		}), [...close({
@@ -8192,17 +8194,19 @@ cloudflare_flagship_flags: {
 			enabled?: bool
 
 			// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
+			id?: string
+
+			// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 			key?: string
 
-			// Value type of the flag's variations. Inferred from the variation values on
-			// write, so it may be omitted in requests.
+			// Server-inferred value type shared by all of the flag's variations.
 			// Available values: "boolean", "string", "number", "json".
 			type?:       string
 			updated_at?: string
 
-			// Map of variation name to value. All values must be the same type (boolean,
-			// string, number, or JSON object/array). Each serialized value must be 10KB or
-			// smaller.
+			// Map of variation name to value. All values share the same type (boolean,
+			// string, number, or JSON object/array), and each serialized value stays
+			// within 10KB.
 			variations?: [string]: string
 			updated_by?: string
 		})]])

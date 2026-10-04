@@ -9,6 +9,11 @@ cloudflare_api_shield_operation: {
 		// during insertion. This will further be Cloudflare-normalized upon insertion.
 		// See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
 		endpoint!: string
+
+		// Add feature(s) to the results. The feature name that is given here
+		// corresponds to the resulting feature object. Have a look at the top-level
+		// object description for more details on the specific meaning.
+		feature?: [...string]
 		features?: close({
 			// API Routing settings on endpoint.
 			api_routing?: close({
@@ -152,6 +157,11 @@ cloudflare_api_shield_operation: {
 				request_body?: [string]: string
 			})
 		})
+
+		// When true, includes OpenAPI schemas (both uploaded and learned) for the
+		// operation in the response. Due to the conversion overhead, this parameter is
+		// only supported on single-operation retrieval.
+		with_schemas?: bool
 
 		// Identifier.
 		zone_id!: string

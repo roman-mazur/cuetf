@@ -9,44 +9,44 @@ cloudflare_snippet_rules_list: {
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// An informative description of the rule.
+			// Provide an informative description of the rule.
 			description?: string
 
-			// Whether the rule should be executed.
+			// Indicate whether to execute the rule.
 			enabled?: bool
 
-			// The expression defining which traffic will match the rule.
+			// Define the expression that determines which traffic matches the rule.
 			expression?: string
 
-			// The unique ID of the rule.
+			// Specify the unique ID of the rule.
 			id?: string
 
-			// The timestamp of when the rule was last modified.
+			// Specify the timestamp of when the rule was last modified.
 			last_updated?: string
 
-			// The identifying name of the snippet.
+			// Identify the snippet.
 			snippet_name?: string
 		}), [...close({
-			// An informative description of the rule.
+			// Provide an informative description of the rule.
 			description?: string
 
-			// Whether the rule should be executed.
+			// Indicate whether to execute the rule.
 			enabled?: bool
 
-			// The expression defining which traffic will match the rule.
+			// Define the expression that determines which traffic matches the rule.
 			expression?: string
 
-			// The unique ID of the rule.
+			// Specify the unique ID of the rule.
 			id?: string
 
-			// The timestamp of when the rule was last modified.
+			// Specify the timestamp of when the rule was last modified.
 			last_updated?: string
 
-			// The identifying name of the snippet.
+			// Identify the snippet.
 			snippet_name?: string
 		})]])
 
-		// The unique ID of the zone.
+		// Use this field to specify the unique ID of the zone.
 		zone_id!: string
 	})
 }

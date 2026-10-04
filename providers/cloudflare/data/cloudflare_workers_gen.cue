@@ -28,6 +28,15 @@ cloudflare_workers: {
 				// Whether observability is enabled for the Worker.
 				enabled?: bool
 
+				// Real-time Issues settings for the Worker.
+				issues?: close({
+					// Whether real-time Issues are enabled for the Worker.
+					enabled?: bool
+				})
+
+				// The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+				head_sampling_rate?: number
+
 				// Log settings for the Worker.
 				logs?: close({
 					// A list of destinations where logs will be exported to.
@@ -48,8 +57,8 @@ cloudflare_workers: {
 					persist?: bool
 				})
 
-				// The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
-				head_sampling_rate?: number
+				// Whether query strings are removed from request URLs in logs and traces.
+				redact_query_string?: bool
 
 				// Trace settings for the Worker.
 				traces?: close({
@@ -74,14 +83,156 @@ cloudflare_workers: {
 					// Available values: "authenticated", "accept".
 					propagation_policy?: string
 				})
-
-				// Whether query strings are removed from request URLs in logs and traces.
-				redact_query_string?: bool
 			})
 
 			// When the Worker's most recent deployment was created. `null` if the Worker
 			// has never been deployed.
 			deployed_on?: string
+
+			// Template configuration used when creating new Previews for this Worker.
+			previews_base_config?: close({
+				// Cache options used when creating new Previews.
+				cache_options?: close({
+					// Whether cached responses are shared across Worker version
+					// uploads. This is independent of `enabled`. It can stay true
+					// while caching is off, so the preference survives turning
+					// caching off and back on.
+					cross_version_cache?: bool
+
+					// Whether caching is enabled for this Worker.
+					enabled?: bool
+				})
+
+				// Whether logpush is enabled when creating new Previews.
+				logpush?: bool
+
+				// Bindings used when creating new Previews, keyed by binding name.
+				env?: [string]: close({
+					// The kind of resource that the binding provides.
+					type?: string
+				})
+
+				// Resource limits enforced at runtime for newly created Previews.
+				limits?: close({
+					// The amount of CPU time this Worker can use in milliseconds.
+					cpu_ms?: number
+
+					// The number of subrequests this Worker can make per request.
+					subrequests?: number
+				})
+
+				// Observability settings used when creating new Previews.
+				observability?: close({
+					// Whether observability is enabled for the Worker.
+					enabled?: bool
+
+					// Real-time Issues settings for the Worker.
+					issues?: close({
+						// Whether real-time Issues are enabled for the Worker.
+						enabled?: bool
+					})
+
+					// The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+					head_sampling_rate?: number
+
+					// Log settings for the Worker.
+					logs?: close({
+						// A list of destinations where logs will be exported to.
+						destinations?: [...string]
+
+						// Whether logs are enabled for the Worker.
+						enabled?: bool
+
+						// The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).
+						head_sampling_rate?: number
+
+						// Whether [invocation
+						// logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs)
+						// are enabled for the Worker.
+						invocation_logs?: bool
+
+						// Whether log persistence is enabled for the Worker.
+						persist?: bool
+					})
+
+					// Whether query strings are removed from request URLs in logs and traces.
+					redact_query_string?: bool
+
+					// Trace settings for the Worker.
+					traces?: close({
+						// A list of destinations where traces will be exported to.
+						destinations?: [...string]
+
+						// Whether traces are enabled for the Worker.
+						enabled?: bool
+
+						// The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
+						head_sampling_rate?: number
+
+						// Whether trace persistence is enabled for the Worker.
+						persist?: bool
+
+						// Controls how inbound trace context (traceparent/tracestate) headers on
+						// incoming requests are handled. "authenticated" honors inbound trace context
+						// only when accompanied by a valid trace auth token. "accept" unconditionally
+						// accepts inbound trace context. Requires the trace propagation feature to be
+						// enabled. Returns null when the trace propagation feature is not enabled for
+						// the account.
+						// Available values: "authenticated", "accept".
+						propagation_policy?: string
+					})
+				})
+
+				// Placement configuration used when creating new Previews.
+				placement?: close({
+					// TCP host and port for targeted placement.
+					host?: string
+
+					// Array of placement targets (currently limited to single target).
+					target?: matchN(1, [close({
+						// TCP host:port for targeted placement.
+						host?: string
+
+						// HTTP hostname for targeted placement.
+						hostname?: string
+
+						// Cloud region in format 'provider:region'.
+						region?: string
+					}), [...close({
+						// TCP host:port for targeted placement.
+						host?: string
+
+						// HTTP hostname for targeted placement.
+						hostname?: string
+
+						// Cloud region in format 'provider:region'.
+						region?: string
+					})]])
+
+					// HTTP hostname for targeted placement.
+					hostname?: string
+
+					// Enables [Smart
+					// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+					// Available values: "smart", "targeted".
+					mode?: string
+
+					// Cloud region for targeted placement in format 'provider:region'.
+					region?: string
+				})
+
+				// Other Workers that should consume logs from newly created Previews.
+				tail_consumers?: matchN(1, [close({
+					// Name of the consumer Worker.
+					name?: string
+				}), [...close({
+					// Name of the consumer Worker.
+					name?: string
+				})]])
+			})
+
+			// Immutable ID of the Worker.
+			id?: string
 
 			// Other resources that reference the Worker and depend on it existing.
 			references?: close({
@@ -210,8 +361,8 @@ cloudflare_workers: {
 				})]])
 			})
 
-			// Immutable ID of the Worker.
-			id?: string
+			// Whether logpush is enabled for the Worker.
+			logpush?: bool
 
 			// Subdomain settings for the Worker.
 			subdomain?: close({
@@ -241,8 +392,8 @@ cloudflare_workers: {
 				url?: string
 			})
 
-			// Whether logpush is enabled for the Worker.
-			logpush?: bool
+			// Name of the Worker.
+			name?: string
 
 			// Other Workers that should consume logs from the Worker.
 			tail_consumers?: matchN(1, [close({
@@ -252,9 +403,6 @@ cloudflare_workers: {
 				// Name of the consumer Worker.
 				name?: string
 			})]])
-
-			// Name of the Worker.
-			name?: string
 
 			// Tags associated with the Worker.
 			tags?: [...string]
@@ -270,6 +418,15 @@ cloudflare_workers: {
 				// Whether observability is enabled for the Worker.
 				enabled?: bool
 
+				// Real-time Issues settings for the Worker.
+				issues?: close({
+					// Whether real-time Issues are enabled for the Worker.
+					enabled?: bool
+				})
+
+				// The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+				head_sampling_rate?: number
+
 				// Log settings for the Worker.
 				logs?: close({
 					// A list of destinations where logs will be exported to.
@@ -290,8 +447,8 @@ cloudflare_workers: {
 					persist?: bool
 				})
 
-				// The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
-				head_sampling_rate?: number
+				// Whether query strings are removed from request URLs in logs and traces.
+				redact_query_string?: bool
 
 				// Trace settings for the Worker.
 				traces?: close({
@@ -316,14 +473,156 @@ cloudflare_workers: {
 					// Available values: "authenticated", "accept".
 					propagation_policy?: string
 				})
-
-				// Whether query strings are removed from request URLs in logs and traces.
-				redact_query_string?: bool
 			})
 
 			// When the Worker's most recent deployment was created. `null` if the Worker
 			// has never been deployed.
 			deployed_on?: string
+
+			// Template configuration used when creating new Previews for this Worker.
+			previews_base_config?: close({
+				// Cache options used when creating new Previews.
+				cache_options?: close({
+					// Whether cached responses are shared across Worker version
+					// uploads. This is independent of `enabled`. It can stay true
+					// while caching is off, so the preference survives turning
+					// caching off and back on.
+					cross_version_cache?: bool
+
+					// Whether caching is enabled for this Worker.
+					enabled?: bool
+				})
+
+				// Whether logpush is enabled when creating new Previews.
+				logpush?: bool
+
+				// Bindings used when creating new Previews, keyed by binding name.
+				env?: [string]: close({
+					// The kind of resource that the binding provides.
+					type?: string
+				})
+
+				// Resource limits enforced at runtime for newly created Previews.
+				limits?: close({
+					// The amount of CPU time this Worker can use in milliseconds.
+					cpu_ms?: number
+
+					// The number of subrequests this Worker can make per request.
+					subrequests?: number
+				})
+
+				// Observability settings used when creating new Previews.
+				observability?: close({
+					// Whether observability is enabled for the Worker.
+					enabled?: bool
+
+					// Real-time Issues settings for the Worker.
+					issues?: close({
+						// Whether real-time Issues are enabled for the Worker.
+						enabled?: bool
+					})
+
+					// The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+					head_sampling_rate?: number
+
+					// Log settings for the Worker.
+					logs?: close({
+						// A list of destinations where logs will be exported to.
+						destinations?: [...string]
+
+						// Whether logs are enabled for the Worker.
+						enabled?: bool
+
+						// The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).
+						head_sampling_rate?: number
+
+						// Whether [invocation
+						// logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs)
+						// are enabled for the Worker.
+						invocation_logs?: bool
+
+						// Whether log persistence is enabled for the Worker.
+						persist?: bool
+					})
+
+					// Whether query strings are removed from request URLs in logs and traces.
+					redact_query_string?: bool
+
+					// Trace settings for the Worker.
+					traces?: close({
+						// A list of destinations where traces will be exported to.
+						destinations?: [...string]
+
+						// Whether traces are enabled for the Worker.
+						enabled?: bool
+
+						// The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
+						head_sampling_rate?: number
+
+						// Whether trace persistence is enabled for the Worker.
+						persist?: bool
+
+						// Controls how inbound trace context (traceparent/tracestate) headers on
+						// incoming requests are handled. "authenticated" honors inbound trace context
+						// only when accompanied by a valid trace auth token. "accept" unconditionally
+						// accepts inbound trace context. Requires the trace propagation feature to be
+						// enabled. Returns null when the trace propagation feature is not enabled for
+						// the account.
+						// Available values: "authenticated", "accept".
+						propagation_policy?: string
+					})
+				})
+
+				// Placement configuration used when creating new Previews.
+				placement?: close({
+					// TCP host and port for targeted placement.
+					host?: string
+
+					// Array of placement targets (currently limited to single target).
+					target?: matchN(1, [close({
+						// TCP host:port for targeted placement.
+						host?: string
+
+						// HTTP hostname for targeted placement.
+						hostname?: string
+
+						// Cloud region in format 'provider:region'.
+						region?: string
+					}), [...close({
+						// TCP host:port for targeted placement.
+						host?: string
+
+						// HTTP hostname for targeted placement.
+						hostname?: string
+
+						// Cloud region in format 'provider:region'.
+						region?: string
+					})]])
+
+					// HTTP hostname for targeted placement.
+					hostname?: string
+
+					// Enables [Smart
+					// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+					// Available values: "smart", "targeted".
+					mode?: string
+
+					// Cloud region for targeted placement in format 'provider:region'.
+					region?: string
+				})
+
+				// Other Workers that should consume logs from newly created Previews.
+				tail_consumers?: matchN(1, [close({
+					// Name of the consumer Worker.
+					name?: string
+				}), [...close({
+					// Name of the consumer Worker.
+					name?: string
+				})]])
+			})
+
+			// Immutable ID of the Worker.
+			id?: string
 
 			// Other resources that reference the Worker and depend on it existing.
 			references?: close({
@@ -452,8 +751,8 @@ cloudflare_workers: {
 				})]])
 			})
 
-			// Immutable ID of the Worker.
-			id?: string
+			// Whether logpush is enabled for the Worker.
+			logpush?: bool
 
 			// Subdomain settings for the Worker.
 			subdomain?: close({
@@ -483,8 +782,8 @@ cloudflare_workers: {
 				url?: string
 			})
 
-			// Whether logpush is enabled for the Worker.
-			logpush?: bool
+			// Name of the Worker.
+			name?: string
 
 			// Other Workers that should consume logs from the Worker.
 			tail_consumers?: matchN(1, [close({
@@ -494,9 +793,6 @@ cloudflare_workers: {
 				// Name of the consumer Worker.
 				name?: string
 			})]])
-
-			// Name of the Worker.
-			name?: string
 
 			// Tags associated with the Worker.
 			tags?: [...string]

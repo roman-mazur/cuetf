@@ -43,6 +43,11 @@ cloudflare_logpush_job: {
 		// [Filters](https://developers.cloudflare.com/logs/reference/filters/).
 		filter?: string
 
+		// When true, excludes DDoS attack traffic from logs. This option is supported
+		// for the `http_requests`, `firewall_events`, and `network_analytics_logs`
+		// datasets.
+		filter_attack_traffic?: bool
+
 		// Unique id of the job.
 		id?: number
 
@@ -134,8 +139,9 @@ cloudflare_logpush_job: {
 			// sub-templates, etc.
 			record_template?: string
 
-			// Floating number to specify sampling rate. Sampling is applied on top of
-			// filtering, and regardless of the current `sample_interval` of the data.
+			// Specifies the sampling rate as a floating number greater than 0 and at most
+			// 1. Sampling is applied on top of filtering, and regardless of the current
+			// `sample_interval` of the data.
 			sample_rate?: number
 
 			// String to specify the format for timestamps, such as `unixnano`, `unix`,

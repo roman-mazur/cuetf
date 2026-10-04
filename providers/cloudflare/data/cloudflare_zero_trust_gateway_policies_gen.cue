@@ -6,8 +6,30 @@ cloudflare_zero_trust_gateway_policies: {
 	close({
 		account_id?: string
 
+		// Sort direction. When `order_by` is omitted, this controls the direction
+		// of the existing precedence ordering. Shared rules remain first in either
+		// direction. Accepted values are `asc` and `desc`.
+		// Available values: "asc", "desc".
+		direction?: string
+
+		// Filter the returned rules by one or more `field:value` pairs. Repeat the
+		// parameter to combine filters with logical AND.
+		//
+		// Supported fields are `name`, `id`, `action`, `enabled`, `source_account`,
+		// `is_shared`, `filters`, and `expression` (max 1024 bytes). The `source_account`
+		// value is matched as a normalized UUID substring. The `filters` value must
+		// be one of the rule filter names and matches a member of the rule's `filters`
+		// array. The `expression` filter performs a case-insensitive literal
+		// substring match across traffic, identity, and device posture expressions.
+		filter?: [...string]
+
 		// Max items to fetch, default: 1000
 		max_items?: number
+
+		// Field to sort the returned rules by. Supported values are `name`,
+		// `created_at`, `updated_at`, and `precedence`.
+		// Available values: "name", "created_at", "updated_at", "precedence".
+		order_by?: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
@@ -945,5 +967,8 @@ cloudflare_zero_trust_gateway_policies: {
 			// Indicate a warning for a misconfigured rule, if any.
 			warning_status?: string
 		})]])
+
+		// Case-insensitive substring search across rule name and description.
+		search?: string
 	})
 }

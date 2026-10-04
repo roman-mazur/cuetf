@@ -16,9 +16,16 @@ cloudflare_flagship_flag: {
 
 		// When false, the flag bypasses all rules and always serves `default_variation`.
 		enabled?: bool
+		filter?: close({
+			// Max items to return (1–200).
+			limit?: string
+		})
 
 		// Flag key (slug).
-		flag_key!: string
+		flag_key?: string
+
+		// Flag key (slug).
+		id?: string
 
 		// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 		key?: string

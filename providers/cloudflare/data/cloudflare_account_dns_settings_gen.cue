@@ -14,6 +14,8 @@ cloudflare_account_dns_settings: {
 		// [Enforce
 		// DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
 		enforce_dns_only?: bool
+
+		// Default settings for new zones created in this account.
 		zone_defaults?: close({
 			// Whether to flatten all CNAME records in the zone. Note that, due to DNS
 			// limitations, a CNAME record at the zone apex will always be flattened.

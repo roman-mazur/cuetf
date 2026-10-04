@@ -30,6 +30,12 @@ cloudflare_workers_script: {
 
 			// Configuration for assets within a Worker.
 			config?: close({
+				// The public URL path prefix under which assets are served. A null request
+				// value resets it to `/`; responses represent the root as `/`. All versions in
+				// a gradual deployment must use the same canonical value. To change it, first
+				// deploy the version containing the change at 100%.
+				base_path?: string
+
 				// The contents of a _headers file (used to attach custom headers on asset responses).
 				headers?: string
 
@@ -217,6 +223,9 @@ cloudflare_workers_script: {
 			// ID of the store containing the secret.
 			store_id?: string
 
+			// ID of a K2 stream owned by the account deploying the Worker.
+			stream?: string
+
 			// The text value to use.
 			text?: string
 
@@ -391,6 +400,9 @@ cloudflare_workers_script: {
 			// ID of the store containing the secret.
 			store_id?: string
 
+			// ID of a K2 stream owned by the account deploying the Worker.
+			stream?: string
+
 			// The text value to use.
 			text?: string
 
@@ -493,6 +505,12 @@ cloudflare_workers_script: {
 			// `application/octet-stream`.
 			content_type!: string
 		})
+
+		// If true, delete the Worker even when other Workers still reference it.
+		// Service bindings in those Workers may be left broken. Durable Object
+		// namespaces implemented by the deleted Worker are deleted even if other
+		// Workers reference them.
+		force?: bool
 
 		// The names of handlers exported as part of the default export.
 		handlers?: [...string]
@@ -662,6 +680,15 @@ cloudflare_workers_script: {
 			// Whether observability is enabled for the Worker.
 			enabled!: bool
 
+			// Real-time Issues settings for the Worker.
+			issues?: close({
+				// Whether real-time Issues are enabled for the Worker.
+				enabled?: bool
+			})
+
+			// The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
+			head_sampling_rate?: number
+
 			// Log settings for the Worker.
 			logs?: close({
 				// A list of destinations where logs will be exported to.
@@ -681,9 +708,6 @@ cloudflare_workers_script: {
 				// Whether log persistence is enabled for the Worker.
 				persist?: bool
 			})
-
-			// The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
-			head_sampling_rate?: number
 
 			// Trace settings for the Worker.
 			traces?: close({

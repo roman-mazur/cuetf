@@ -26,6 +26,10 @@ cloudflare_email_routing_settings: {
 		// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 		status?: string
 
+		// Whether subaddressing (plus-addressing) is honored when matching incoming
+		// mail against routing rules.
+		support_subaddress?: bool
+
 		// Identifier.
 		zone_id!: string
 	})

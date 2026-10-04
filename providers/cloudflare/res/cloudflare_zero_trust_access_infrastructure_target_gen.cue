@@ -44,5 +44,9 @@ cloudflare_zero_trust_access_infrastructure_target: {
 
 		// Date and time at which the target was modified
 		modified_at?: string
+
+		// Optional tags to associate with the target. Keys and values are
+		// user-defined strings.
+		tags?: [string]: string
 	})
 }

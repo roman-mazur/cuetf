@@ -19,8 +19,11 @@ cloudflare_workflows: {
 				cron?:          string
 				next_instance?: string
 			})]])
-			created_on?: string
-			id?:         string
+
+			// Whether the bound Worker was deleted, leaving this Workflow inactive.
+			script_deleted?: bool
+			created_on?:     string
+			id?:             string
 			instances?: [string]: number
 			modified_on?:  string
 			name?:         string
@@ -35,8 +38,11 @@ cloudflare_workflows: {
 				cron?:          string
 				next_instance?: string
 			})]])
-			created_on?: string
-			id?:         string
+
+			// Whether the bound Worker was deleted, leaving this Workflow inactive.
+			script_deleted?: bool
+			created_on?:     string
+			id?:             string
 			instances?: [string]: number
 			modified_on?:  string
 			name?:         string

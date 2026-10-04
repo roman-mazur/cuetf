@@ -5,6 +5,7 @@ cloudflare_observatory_scheduled_test: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_observatory_scheduled_test")
 	close({
 		// The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+		// Available values: "DAILY", "WEEKLY".
 		frequency?: string
 
 		// A URL.

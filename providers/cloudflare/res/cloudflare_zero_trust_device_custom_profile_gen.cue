@@ -18,6 +18,17 @@ cloudflare_zero_trust_device_custom_profile: {
 		// The amount of time in seconds to reconnect after having been disabled.
 		auto_connect?: number
 
+		// Browser extension proxy settings. Required when profile_type is
+		// browser_extension and invalid for WARP profiles.
+		browser_extension_config?: close({
+			// Whether the user may disable the browser extension proxy.
+			// Available values: "unlocked", "locked".
+			proxy_control!: string
+
+			// Whether the browser extension proxy is active.
+			proxy_enabled!: bool
+		})
+
 		// Turn on the captive portal after the specified amount of time.
 		captive_portal?: number
 
@@ -158,7 +169,7 @@ cloudflare_zero_trust_device_custom_profile: {
 		// "identity.email", "identity.groups.id", "identity.groups.name",
 		// "identity.groups.email", "identity.service_token_uuid",
 		// "identity.saml_attributes", "network", "os.name", "os.version".
-		match!: string
+		match?: string
 
 		// The name of the device settings profile.
 		name!:      string
@@ -167,6 +178,10 @@ cloudflare_zero_trust_device_custom_profile: {
 		// The precedence of the policy. Lower values indicate higher precedence.
 		// Policies will be evaluated in ascending order of this field.
 		precedence?: number
+
+		// The client type to which the device settings profile applies.
+		// Available values: "warp", "browser_extension".
+		profile_type?: string
 
 		// Determines if the operating system will register WARP's local interface IP
 		// with your on-premises DNS server.
@@ -204,6 +219,9 @@ cloudflare_zero_trust_device_custom_profile: {
 
 		// Determines which tunnel protocol to use.
 		tunnel_protocol?: string
+
+		// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+		uninstall_protection?: bool
 
 		// Virtual network access settings for the device.
 		virtual_networks?: close({

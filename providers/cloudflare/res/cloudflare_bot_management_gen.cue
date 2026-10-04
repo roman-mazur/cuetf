@@ -4,9 +4,24 @@ cloudflare_bot_management: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_bot_management")
 	close({
+		// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+		ai_bots_migration_opt_out?: bool
+
 		// Enable rule to block AI Scrapers and Crawlers.
 		// Available values: "block", "disabled", "only_on_ad_pages".
 		ai_bots_protection?: string
+
+		// Configure robots.txt policy for AI model training bots.
+		// Available values: "disabled", "disallow", "block", "only_on_ad_pages".
+		ai_training?: string
+
+		// Configure robots.txt policy for AI assistant and agent bots.
+		// Available values: "disabled", "block", "only_on_ad_pages".
+		ai_user?: string
+
+		// Configure robots.txt policy for AI search bots.
+		// Available values: "disabled", "block", "only_on_ad_pages".
+		aisearch?: string
 
 		// Automatically update to the newest bot detection models created by Cloudflare
 		// as they are released. [Learn
@@ -50,6 +65,9 @@ cloudflare_bot_management: {
 		// Enable cloudflare managed robots.txt. If an existing robots.txt is detected,
 		// then managed robots.txt will be prepended to the existing robots.txt.
 		is_robots_txt_managed?: bool
+
+		// Whether to use JavaScript Detection results submitted through the API for this zone.
+		jsd_api_results_enabled?: bool
 
 		// Whether to optimize Super Bot Fight Mode protections for Wordpress.
 		optimize_wordpress?: bool

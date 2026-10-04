@@ -10,6 +10,10 @@ cloudflare_d1_database: {
 		// Specifies the timestamp the resource was created as an ISO8601 string.
 		created_at?: string
 
+		// Comma-separated list of fields to include in the response. When omitted,
+		// all fields are returned.
+		fields?: [...string]
+
 		// The D1 database's size, in bytes.
 		file_size?: number
 
@@ -22,8 +26,7 @@ cloudflare_d1_database: {
 		jurisdiction?: string
 
 		// D1 database name.
-		name!:       string
-		num_tables?: number
+		name!: string
 
 		// Specify the region to create the D1 primary, if available. If this option is
 		// omitted, the D1 will be created as close as possible to the current user.

@@ -16,6 +16,9 @@ cloudflare_schema_validation_schemas: {
 		// A human-readable name for the schema
 		name!: string
 
+		// Omit the source-files of schemas and only retrieve their meta-data.
+		omit_source?: bool
+
 		// A unique identifier of this schema
 		schema_id?: string
 

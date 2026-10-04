@@ -7,6 +7,12 @@ cloudflare_workers_kv: {
 		// Identifier.
 		account_id!: string
 
+		// Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+		expiration?: number
+
+		// Expires the key after a number of seconds. Must be at least 60.
+		expiration_ttl?: number
+
 		// A key's name. The name may be at most 512 bytes. All printable,
 		// non-whitespace characters are valid. Use percent-encoding to define key
 		// names as part of a URL.
