@@ -6,12 +6,14 @@ azurerm_storage_blob: {
 	close({
 		timeouts?:         #timeouts
 		access_tier?:      string
+		cache_control?:    string
 		content_md5?:      string
 		content_type?:     string
 		encryption_scope?: string
 		id?:               string
 		metadata?: [string]: string
 		name!:                 string
+		source_uri?:           string
 		storage_container_id!: string
 		type?:                 string
 		url?:                  string

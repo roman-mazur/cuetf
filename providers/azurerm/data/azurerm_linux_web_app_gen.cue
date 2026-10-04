@@ -342,6 +342,7 @@ azurerm_linux_web_app: {
 		tags?: [string]: string
 		usage?:                                          string
 		virtual_network_backup_restore_enabled?:         bool
+		virtual_network_image_pull_enabled?:             bool
 		virtual_network_subnet_id?:                      string
 		webdeploy_publish_basic_authentication_enabled?: bool
 	})

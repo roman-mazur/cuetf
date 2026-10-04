@@ -9,8 +9,9 @@ azurerm_traffic_manager_profile: {
 			relative_name?: string
 			ttl?:           number
 		})]
-		fqdn?: string
-		id?:   string
+		fqdn?:           string
+		id?:             string
+		maximum_return?: number
 		monitor_config?: [...close({
 			custom_header?: [...close({
 				name?:  string
