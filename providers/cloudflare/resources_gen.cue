@@ -76,6 +76,7 @@ import (
 	_#res: "\(#cloudflarePrefix)_email_security_impersonation_registry": close({res.cloudflare_email_security_impersonation_registry & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_email_security_trusted_domains": close({res.cloudflare_email_security_trusted_domains & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_email_sending_subdomain": close({res.cloudflare_email_sending_subdomain & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_field_extractor": close({res.cloudflare_field_extractor & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_filter": close({res.cloudflare_filter & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_firewall_rule": close({res.cloudflare_firewall_rule & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_flagship_app": close({res.cloudflare_flagship_app & cuetf.MetaArgs})
@@ -106,6 +107,7 @@ import (
 	_#res: "\(#cloudflarePrefix)_magic_transit_site": close({res.cloudflare_magic_transit_site & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_magic_transit_site_lan": close({res.cloudflare_magic_transit_site_lan & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_magic_transit_site_wan": close({res.cloudflare_magic_transit_site_wan & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_magic_wan_bgp_filter_profile": close({res.cloudflare_magic_wan_bgp_filter_profile & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_magic_wan_gre_tunnel": close({res.cloudflare_magic_wan_gre_tunnel & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_magic_wan_ipsec_tunnel": close({res.cloudflare_magic_wan_ipsec_tunnel & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_magic_wan_static_route": close({res.cloudflare_magic_wan_static_route & cuetf.MetaArgs})
@@ -214,6 +216,9 @@ import (
 	_#res: "\(#cloudflarePrefix)_zero_trust_access_service_token": close({res.cloudflare_zero_trust_access_service_token & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_zero_trust_access_short_lived_certificate": close({res.cloudflare_zero_trust_access_short_lived_certificate & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_zero_trust_access_tag": close({res.cloudflare_zero_trust_access_tag & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_casb_policy": close({res.cloudflare_zero_trust_casb_policy & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_casb_webhook": close({res.cloudflare_zero_trust_casb_webhook & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_connectivity_settings": close({res.cloudflare_zero_trust_connectivity_settings & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_zero_trust_device_custom_profile": close({res.cloudflare_zero_trust_device_custom_profile & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_zero_trust_device_custom_profile_local_domain_fallback": close({res.cloudflare_zero_trust_device_custom_profile_local_domain_fallback & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_zero_trust_device_default_profile_certificates": close({res.cloudflare_zero_trust_device_default_profile_certificates & cuetf.MetaArgs})
@@ -271,5 +276,7 @@ import (
 	_#res: "\(#cloudflarePrefix)_zone_lockdown": close({res.cloudflare_zone_lockdown & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_zone_setting": close({res.cloudflare_zone_setting & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_zone_subscription": close({res.cloudflare_zone_subscription & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zone_tracing": close({res.cloudflare_zone_tracing & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zone_tracing_rules": close({res.cloudflare_zone_tracing_rules & cuetf.MetaArgs})
 
 }

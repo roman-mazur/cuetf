@@ -9,11 +9,15 @@ cloudflare_email_routing_catch_all: {
 			// Type of action for catch-all rule.
 			// Available values: "drop", "forward", "worker".
 			type?: string
+
+			// List of values for the action. Currently limited to a single value.
 			value?: [...string]
 		}), [...close({
 			// Type of action for catch-all rule.
 			// Available values: "drop", "forward", "worker".
 			type?: string
+
+			// List of values for the action. Currently limited to a single value.
 			value?: [...string]
 		})]])
 

@@ -17,11 +17,15 @@ cloudflare_email_routing_rules: {
 				// Type of supported action.
 				// Available values: "drop", "forward", "worker".
 				type?: string
+
+				// List of values for the action. Currently limited to a single value.
 				value?: [...string]
 			}), [...close({
 				// Type of supported action.
 				// Available values: "drop", "forward", "worker".
 				type?: string
+
+				// List of values for the action. Currently limited to a single value.
 				value?: [...string]
 			})]])
 
@@ -67,11 +71,15 @@ cloudflare_email_routing_rules: {
 				// Type of supported action.
 				// Available values: "drop", "forward", "worker".
 				type?: string
+
+				// List of values for the action. Currently limited to a single value.
 				value?: [...string]
 			}), [...close({
 				// Type of supported action.
 				// Available values: "drop", "forward", "worker".
 				type?: string
+
+				// List of values for the action. Currently limited to a single value.
 				value?: [...string]
 			})]])
 

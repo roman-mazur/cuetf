@@ -23,6 +23,9 @@ cloudflare_api_shield: {
 		// Identifier.
 		id?: string
 
+		// Ensures that the configuration is written or retrieved in normalized fashion
+		normalize?: bool
+
 		// Identifier.
 		zone_id!: string
 	})

@@ -4,8 +4,11 @@ cloudflare_ai_gateway: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_ai_gateway")
 	close({
-		account_id!:                 string
-		authentication?:             bool
+		account_id!:     string
+		authentication?: bool
+
+		// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+		byok_only?:                  bool
 		cache_invalidate_on_update!: bool
 		cache_ttl!:                  number
 		collect_logs!:               bool
@@ -31,6 +34,9 @@ cloudflare_ai_gateway: {
 			enabled!: bool
 			profiles?: [...string]
 		})
+
+		// gateway id
+		id!: string
 		guardrails?: close({
 			prompt!: close({
 				// Available values: "FLAG", "BLOCK".
@@ -119,9 +125,6 @@ cloudflare_ai_gateway: {
 				s9?: string
 			})
 		})
-
-		// gateway id
-		id!:                 string
 		is_default?:         bool
 		log_classification?: bool
 		log_management?:     number
@@ -151,6 +154,13 @@ cloudflare_ai_gateway: {
 
 		// Available values: "fixed", "sliding".
 		rate_limiting_technique?: string
+
+		// Backoff strategy for retry delays
+		// Available values: "constant", "linear", "exponential".
+		retry_backoff?: string
+
+		// Delay between retry attempts in milliseconds (0-60000)
+		retry_delay?: number
 
 		// Maximum number of retry attempts for failed requests (1-5)
 		retry_max_attempts?: number
@@ -210,11 +220,7 @@ cloudflare_ai_gateway: {
 				window!: number
 			})]])
 		})
-
-		// Backoff strategy for retry delays
-		// Available values: "constant", "linear", "exponential".
-		retry_backoff?: string
-		store_id?:      string
+		store_id?: string
 		stripe?: close({
 			authorization!: string
 			usage_events!: matchN(1, [close({
@@ -223,9 +229,6 @@ cloudflare_ai_gateway: {
 				payload!: string
 			})]])
 		})
-
-		// Delay between retry attempts in milliseconds (0-5000)
-		retry_delay?: number
 
 		// Controls how Workers AI inference calls routed through this gateway are
 		// billed. 'postpaid' bills the account directly through Workers AI; 'unified'

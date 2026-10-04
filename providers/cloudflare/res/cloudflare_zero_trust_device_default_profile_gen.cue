@@ -152,6 +152,10 @@ cloudflare_zero_trust_device_default_profile: {
 		lan_allow_subnet_size?: number
 		policy_id?:             string
 
+		// The client type to which the device settings profile applies.
+		// Available values: "warp", "browser_extension".
+		profile_type?: string
+
 		// Determines if the operating system will register WARP's local interface IP
 		// with your on-premises DNS server.
 		register_interface_ip_with_dns?: bool
@@ -175,6 +179,9 @@ cloudflare_zero_trust_device_default_profile: {
 
 		// Determines which tunnel protocol to use.
 		tunnel_protocol?: string
+
+		// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+		uninstall_protection?: bool
 
 		// Virtual network access settings for the device.
 		virtual_networks?: close({

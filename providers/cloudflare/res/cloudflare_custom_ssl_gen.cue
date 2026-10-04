@@ -112,8 +112,9 @@ cloudflare_custom_ssl: {
 		// 'sni_custom' certificates.
 		priority?: number
 
-		// The zone's private key.
-		private_key!: string
+		// The zone's private key. Not required if custom_csr_id is provided, in which
+		// case the private key is retrieved from the CSR record held by Cloudflare.
+		private_key?: string
 
 		// The type of hash used for the certificate.
 		signature?: string

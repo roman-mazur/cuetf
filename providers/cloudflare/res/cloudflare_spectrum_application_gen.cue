@@ -5,7 +5,7 @@ cloudflare_spectrum_application: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_spectrum_application")
 	close({
 		// Enables Argo Smart Routing for this application.
-		// Notes: Only available for TCP applications with traffic_type set to "direct".
+		// Notes: Only available for TCP or UDP applications with traffic_type set to "direct".
 		argo_smart_routing?: bool
 
 		// When the Application was created.
@@ -72,6 +72,12 @@ cloudflare_spectrum_application: {
 		// match the number of ports specified in the "protocol" field.
 		origin_port?: _
 
+		// Optional Worker script tag (worker ID) to use as the application's origin.
+		// Only supported for TCP applications with traffic_type "worker"; mutually
+		// exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and
+		// argo_smart_routing. tls may only be "off" or "flexible".
+		origin_worker_id?: string
+
 		// The port configuration at Cloudflare's edge. May specify a single port, for
 		// example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
 		protocol!: string
@@ -92,8 +98,9 @@ cloudflare_spectrum_application: {
 		// application's type is derived from the `protocol`. When set to "http" or
 		// "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends
 		// traffic to your origin, and the application type matches this property
-		// exactly.
-		// Available values: "direct", "http", "https".
+		// exactly. When set to "worker", traffic is sent to the Worker specified by
+		// `origin_worker_id`.
+		// Available values: "direct", "http", "https", "worker".
 		traffic_type?: string
 
 		// Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.

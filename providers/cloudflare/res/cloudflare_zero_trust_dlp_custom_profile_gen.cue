@@ -24,9 +24,10 @@ cloudflare_zero_trust_dlp_custom_profile: {
 		description?: string
 
 		// The id of the profile (uuid).
-		id?:          string
-		name!:        string
-		ocr_enabled?: bool
+		id?:             string
+		integration_id?: string
+		name!:           string
+		ocr_enabled?:    bool
 
 		// Whether this profile can be accessed by anyone.
 		open_access?: bool

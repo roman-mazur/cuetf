@@ -19,10 +19,8 @@ cloudflare_worker_version: {
 			workers_triggered_by?: string
 		})
 
-		// Date indicating targeted support in the Workers runtime. Backwards
-		// incompatible fixes to the runtime following this date will not affect this
-		// Worker.
-		compatibility_date?: string
+		// Email of the user who created the version.
+		author_email?: string
 
 		// Configuration for assets within a Worker.
 		//
@@ -33,6 +31,12 @@ cloudflare_worker_version: {
 		assets?: close({
 			// Configuration for assets within a Worker.
 			config?: close({
+				// The public URL path prefix under which assets are served. A null request
+				// value resets it to `/`; responses represent the root as `/`. All versions in
+				// a gradual deployment must use the same canonical value. To change it, first
+				// deploy the version containing the change at 100%.
+				base_path?: string
+
 				// Determines the redirects and rewrites of requests for HTML content.
 				// Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
 				html_handling?: string
@@ -53,10 +57,8 @@ cloudflare_worker_version: {
 			jwt?: string
 		})
 
-		// Flags that enable or disable certain features in the Workers runtime. Used to
-		// enable upcoming features or opt in or out of specific changes not included
-		// in a `compatibility_date`.
-		compatibility_flags?: [...string]
+		// Identifier of the user who created the version.
+		author_id?: string
 
 		// List of bindings attached to a Worker. You can find more about bindings on
 		// our docs:
@@ -221,6 +223,9 @@ cloudflare_worker_version: {
 			// ID of the store containing the secret.
 			store_id?: string
 
+			// ID of a K2 stream owned by the account deploying the Worker.
+			stream?: string
+
 			// The text value to use.
 			text?: string
 
@@ -232,8 +237,8 @@ cloudflare_worker_version: {
 			// "analytics_engine", "assets", "browser", "d1", "data_blob",
 			// "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit",
 			// "images", "json", "kv_namespace", "media", "mtls_certificate", "plain_text",
-			// "pipelines", "queue", "ratelimit", "r2_bucket", "secret_text", "send_email",
-			// "service", "text_blob", "vectorize", "version_metadata",
+			// "pipelines", "k2", "queue", "ratelimit", "r2_bucket", "secret_text",
+			// "send_email", "service", "text_blob", "vectorize", "version_metadata",
 			// "secrets_store_secret", "flagship", "secret_key", "workflow", "wasm_module",
 			// "vpc_service", "vpc_network".
 			type?: string
@@ -409,6 +414,9 @@ cloudflare_worker_version: {
 			// ID of the store containing the secret.
 			store_id?: string
 
+			// ID of a K2 stream owned by the account deploying the Worker.
+			stream?: string
+
 			// The text value to use.
 			text?: string
 
@@ -420,8 +428,8 @@ cloudflare_worker_version: {
 			// "analytics_engine", "assets", "browser", "d1", "data_blob",
 			// "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit",
 			// "images", "json", "kv_namespace", "media", "mtls_certificate", "plain_text",
-			// "pipelines", "queue", "ratelimit", "r2_bucket", "secret_text", "send_email",
-			// "service", "text_blob", "vectorize", "version_metadata",
+			// "pipelines", "k2", "queue", "ratelimit", "r2_bucket", "secret_text",
+			// "send_email", "service", "text_blob", "vectorize", "version_metadata",
 			// "secrets_store_secret", "flagship", "secret_key", "workflow", "wasm_module",
 			// "vpc_service", "vpc_network".
 			type?: string
@@ -439,8 +447,10 @@ cloudflare_worker_version: {
 			workflow_name?: string
 		})]])
 
-		// When the version was created.
-		created_on?: string
+		// Date indicating targeted support in the Workers runtime. Backwards
+		// incompatible fixes to the runtime following this date will not affect this
+		// Worker.
+		compatibility_date?: string
 
 		// Global CacheW configuration for the Worker. When caching is on,
 		// the platform provisions a `cloudflare.app` zone for the Worker.
@@ -457,10 +467,10 @@ cloudflare_worker_version: {
 			enabled?: bool
 		})
 
-		// Identifier for the version, which can be a UUID, a UUID prefix (minimum
-		// length 8), or the literal "latest" to operate on the most recently created
-		// version.
-		id?: string
+		// Flags that enable or disable certain features in the Workers runtime. Used to
+		// enable upcoming features or opt in or out of specific changes not included
+		// in a `compatibility_date`.
+		compatibility_flags?: [...string]
 
 		// List of containers attached to a Worker. Containers can only be attached to
 		// Durable Object classes of this Worker script.
@@ -472,11 +482,8 @@ cloudflare_worker_version: {
 			class_name?: string
 		})]])
 
-		// Whether to include the `modules` property of the version in the response,
-		// which contains code and sourcemap content and may add several megabytes to
-		// the response size.
-		// Available values: "modules".
-		include?: string
+		// When the version was created.
+		created_on?: string
 
 		// Declarative exports for the version, including Durable Object
 		// classes (with their `storage` backend) and named Worker
@@ -537,9 +544,16 @@ cloudflare_worker_version: {
 			type?: string
 		})
 
-		// The name of the main module in the `modules` array (e.g. the name of the
-		// module that exports a `fetch` handler).
-		main_module?: string
+		// Identifier for the version, which can be a UUID, a UUID prefix (minimum
+		// length 8), or the literal "latest" to operate on the most recently created
+		// version.
+		id?: string
+
+		// Whether to include the `modules` property of the version in the response,
+		// which contains code and sourcemap content and may add several megabytes to
+		// the response size.
+		// Available values: "modules".
+		include?: string
 
 		// Resource limits enforced at runtime.
 		limits?: close({
@@ -549,6 +563,10 @@ cloudflare_worker_version: {
 			// Subrequest limit per request.
 			subrequests?: number
 		})
+
+		// The name of the main module in the `modules` array (e.g. the name of the
+		// module that exports a `fetch` handler).
+		main_module?: string
 
 		// The base64-encoded main script content. This is only returned for service
 		// worker syntax workers (not ES modules).
@@ -718,9 +736,6 @@ cloudflare_worker_version: {
 			package_json_version?: string
 		})]])
 
-		// The client used to create the version.
-		source?: string
-
 		// Configuration for [Smart
 		// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
 		// Specify mode='smart' for Smart Placement, or one of region/hostname/host.
@@ -760,6 +775,9 @@ cloudflare_worker_version: {
 			// Cloud region for targeted placement in format 'provider:region'.
 			region?: string
 		})
+
+		// The client used to create the version.
+		source?: string
 
 		// Time in milliseconds spent on [Worker
 		// startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).

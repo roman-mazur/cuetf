@@ -35,28 +35,6 @@ cloudflare_rate_limit: {
 			timeout?: number
 		})
 
-		// Criteria specifying when the current rate limit should be bypassed. You can
-		// specify that the rate limit should not apply to one or more URLs.
-		bypass?: matchN(1, [close({
-			// Available values: "url".
-			name?: string
-
-			// The URL to bypass.
-			value?: string
-		}), [...close({
-			// Available values: "url".
-			name?: string
-
-			// The URL to bypass.
-			value?: string
-		})]])
-
-		// An informative summary of the rule. This value is sanitized and any tags will be removed.
-		description?: string
-
-		// When true, indicates that the rate limit is currently disabled.
-		disabled?: bool
-
 		// Determines which traffic the rate limit counts towards the threshold.
 		match!: close({
 			headers?: matchN(1, [close({
@@ -108,13 +86,13 @@ cloudflare_rate_limit: {
 			})
 		})
 
-		// The unique identifier of the rate limit.
-		id?: string
-
 		// The time in seconds (an integer value) to count matching traffic. If the
 		// count exceeds the configured threshold within this period, Cloudflare will
 		// perform the configured action.
 		period!: number
+
+		// Defines the unique identifier of the rate limit.
+		rate_limit_id?: string
 
 		// The threshold that will trigger the configured mitigation action. Configure
 		// this value along with the `period` property to establish a threshold per

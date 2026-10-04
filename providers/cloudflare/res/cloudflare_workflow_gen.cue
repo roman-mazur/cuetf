@@ -35,6 +35,9 @@ cloudflare_workflow: {
 		}), [...close({
 			cron!: string
 		})]])
+
+		// Whether the bound Worker was deleted, leaving this Workflow inactive.
+		script_deleted?:     bool
 		script_name!:        string
 		terminator_running?: number
 		triggered_on?:       string

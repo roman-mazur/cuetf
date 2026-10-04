@@ -21,6 +21,10 @@ cloudflare_stream: {
 		// A user-defined identifier for the media creator.
 		creator?: string
 
+		// Provisions a URL to let your end users upload videos directly to Cloudflare
+		// Stream without exposing your API token to clients.
+		direct_user?: bool
+
 		// The duration of the video in seconds. A value of `-1` means the duration is
 		// unknown. The duration becomes available after the upload and before the
 		// video is ready.

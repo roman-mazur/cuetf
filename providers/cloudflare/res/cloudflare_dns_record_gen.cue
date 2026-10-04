@@ -86,10 +86,7 @@ cloudflare_dns_record: {
 			// Preference.
 			preference?: number
 
-			// Required for MX and URI records; ignored for other record types (but may
-			// still be returned by the API). Records with lower priorities are preferred.
-			// This field is to be deprecated in favor of the priority field within the
-			// data map.
+			// Priority.
 			priority?: number
 
 			// Protocol.
@@ -116,7 +113,7 @@ cloudflare_dns_record: {
 			// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
 			tag?: string
 
-			// A valid mail server hostname, or "." for a NULL MX record.
+			// Target.
 			target?: string
 
 			// Type.
@@ -134,6 +131,11 @@ cloudflare_dns_record: {
 
 		// Identifier.
 		id?: string
+
+		// Whether to include shadow metadata in the `meta` field of each record in the
+		// response. See [Shadowed
+		// records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+		include_shadow_metadata?: bool
 
 		// Extra Cloudflare-specific information about the record.
 		meta?: string

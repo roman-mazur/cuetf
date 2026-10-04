@@ -12,6 +12,9 @@ cloudflare_ai_gateways: {
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			authentication?: bool
+
+			// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+			byok_only?: bool
 			dlp?: close({
 				// Available values: "BLOCK", "FLAG".
 				action?: string
@@ -35,8 +38,7 @@ cloudflare_ai_gateways: {
 			})
 
 			// gateway id
-			id?:                         string
-			cache_invalidate_on_update?: bool
+			id?: string
 			guardrails?: close({
 				prompt?: close({
 					// Available values: "FLAG", "BLOCK".
@@ -125,10 +127,10 @@ cloudflare_ai_gateways: {
 					s9?: string
 				})
 			})
+			cache_invalidate_on_update?: bool
 
 			// Available values: "STOP_INSERTING", "DELETE_OLDEST".
 			log_management_strategy?: string
-			cache_ttl?:               number
 			otel?: matchN(1, [close({
 				authorization?: string
 
@@ -144,10 +146,10 @@ cloudflare_ai_gateways: {
 				headers?: [string]: string
 				url?: string
 			})]])
+			cache_ttl?: number
 
 			// Available values: "fixed", "sliding".
 			rate_limiting_technique?: string
-			collect_logs?:            bool
 			spend_limits?: close({
 				enabled?: bool
 				rules?: matchN(1, [close({
@@ -204,11 +206,11 @@ cloudflare_ai_gateways: {
 					window?: number
 				})]])
 			})
+			collect_logs?: bool
 
 			// Backoff strategy for retry delays
 			// Available values: "constant", "linear", "exponential".
 			retry_backoff?: string
-			created_at?:    string
 			stripe?: close({
 				authorization?: string
 				usage_events?: matchN(1, [close({
@@ -217,8 +219,9 @@ cloudflare_ai_gateways: {
 					payload?: string
 				})]])
 			})
+			created_at?: string
 
-			// Delay between retry attempts in milliseconds (0-5000)
+			// Delay between retry attempts in milliseconds (0-60000)
 			retry_delay?: number
 
 			// Maximum number of retry attempts for failed requests (1-5)
@@ -242,6 +245,9 @@ cloudflare_ai_gateways: {
 			zdr?:                     bool
 		}), [...close({
 			authentication?: bool
+
+			// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+			byok_only?: bool
 			dlp?: close({
 				// Available values: "BLOCK", "FLAG".
 				action?: string
@@ -265,8 +271,7 @@ cloudflare_ai_gateways: {
 			})
 
 			// gateway id
-			id?:                         string
-			cache_invalidate_on_update?: bool
+			id?: string
 			guardrails?: close({
 				prompt?: close({
 					// Available values: "FLAG", "BLOCK".
@@ -355,10 +360,10 @@ cloudflare_ai_gateways: {
 					s9?: string
 				})
 			})
+			cache_invalidate_on_update?: bool
 
 			// Available values: "STOP_INSERTING", "DELETE_OLDEST".
 			log_management_strategy?: string
-			cache_ttl?:               number
 			otel?: matchN(1, [close({
 				authorization?: string
 
@@ -374,10 +379,10 @@ cloudflare_ai_gateways: {
 				headers?: [string]: string
 				url?: string
 			})]])
+			cache_ttl?: number
 
 			// Available values: "fixed", "sliding".
 			rate_limiting_technique?: string
-			collect_logs?:            bool
 			spend_limits?: close({
 				enabled?: bool
 				rules?: matchN(1, [close({
@@ -434,11 +439,11 @@ cloudflare_ai_gateways: {
 					window?: number
 				})]])
 			})
+			collect_logs?: bool
 
 			// Backoff strategy for retry delays
 			// Available values: "constant", "linear", "exponential".
 			retry_backoff?: string
-			created_at?:    string
 			stripe?: close({
 				authorization?: string
 				usage_events?: matchN(1, [close({
@@ -447,8 +452,9 @@ cloudflare_ai_gateways: {
 					payload?: string
 				})]])
 			})
+			created_at?: string
 
-			// Delay between retry attempts in milliseconds (0-5000)
+			// Delay between retry attempts in milliseconds (0-60000)
 			retry_delay?: number
 
 			// Maximum number of retry attempts for failed requests (1-5)

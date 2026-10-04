@@ -76,6 +76,7 @@ cloudflare_ai_search_instances: {
 				// Defaults to porter.
 				// Available values: "porter", "trigram".
 				keyword_tokenizer?: string
+				use_ocr?:           bool
 			})
 
 			// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3",
@@ -354,6 +355,7 @@ cloudflare_ai_search_instances: {
 				// Defaults to porter.
 				// Available values: "porter", "trigram".
 				keyword_tokenizer?: string
+				use_ocr?:           bool
 			})
 
 			// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3",

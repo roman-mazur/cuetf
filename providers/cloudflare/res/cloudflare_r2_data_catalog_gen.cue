@@ -33,6 +33,9 @@ cloudflare_r2_data_catalog: {
 				target_size_mb?: string
 			})
 
+			// Scheduling interval between normal table maintenance runs.
+			interval?: string
+
 			// Configures snapshot expiration settings.
 			snapshot_expiration?: close({
 				// Specifies the maximum age for snapshots. The system deletes snapshots older than this age.

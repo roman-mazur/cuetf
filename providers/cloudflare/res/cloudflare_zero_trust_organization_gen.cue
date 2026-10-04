@@ -119,10 +119,31 @@ cloudflare_zero_trust_organization: {
 		// The name of your Zero Trust organization.
 		name?: string
 
+		// Configures automatic enforcement for inactive service tokens. A service token
+		// is inactive if no policy references it, and it has not successfully
+		// authenticated with an Access application during the selected inactivity
+		// period. This setting applies to every service token in your Zero Trust
+		// account.
+		service_token_inactivity?: close({
+			// The action applied to an inactive service token.
+			// Available values: "disable", "delete".
+			action!: string
+
+			// Whether automatic enforcement for inactive service tokens is enabled.
+			enabled!: bool
+
+			// The number of days a service token must be inactive before the configured action is applied.
+			inactivity_threshold_days!: number
+		})
+
 		// The amount of time that tokens issued for applications will be valid. Must be
 		// in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms,
 		// s, m, h.
 		session_duration?: string
+
+		// The account tags of organizations trusted by this organization for policy and
+		// device posture sharing.
+		trusted_accounts?: [...string]
 
 		// A description of the reason why the UI read only field is being toggled.
 		ui_read_only_toggle_reason?: string

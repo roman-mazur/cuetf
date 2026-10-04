@@ -72,6 +72,10 @@ cloudflare_ai_search_instance: {
 			// Defaults to porter.
 			// Available values: "porter", "trigram".
 			keyword_tokenizer?: string
+
+			// Enables OCR ingestion for PDFs and images. Changing this triggers a full
+			// re-index. Defaults to false.
+			use_ocr?: bool
 		})
 		last_activity?:   string
 		max_num_results?: number

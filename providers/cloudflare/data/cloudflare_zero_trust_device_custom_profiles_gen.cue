@@ -9,11 +9,29 @@ cloudflare_zero_trust_device_custom_profiles: {
 		// Max items to fetch, default: 1000
 		max_items?: number
 
+		// Filter profiles by client type. When omitted, only WARP profiles are returned.
+		// Available values: "warp", "browser_extension".
+		profile_type?: string
+
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			// Whether to allow the user to switch WARP between modes.
 			allow_mode_switch?: bool
 
+			// Browser extension proxy settings. Required when profile_type is
+			// browser_extension and invalid for WARP profiles.
+			browser_extension_config?: close({
+				// Whether the user may disable the browser extension proxy.
+				// Available values: "unlocked", "locked".
+				proxy_control?: string
+
+				// Whether the browser extension proxy is active.
+				proxy_enabled?: bool
+			})
+
+			// Whether to receive update notifications when a new version of the client is available.
+			allow_updates?: bool
+
 			// List of DNS search suffixes to apply to clients. Suffixes are evaluated in
 			// order. Use an empty array to clear.
 			dns_search_suffixes?: matchN(1, [close({
@@ -30,8 +48,8 @@ cloudflare_zero_trust_device_custom_profiles: {
 				suffix?: string
 			})]])
 
-			// Whether to receive update notifications when a new version of the client is available.
-			allow_updates?: bool
+			// Whether to allow devices to leave the organization.
+			allowed_to_leave?: bool
 
 			// List of routes excluded in the WARP client's tunnel.
 			exclude?: matchN(1, [close({
@@ -56,8 +74,8 @@ cloudflare_zero_trust_device_custom_profiles: {
 				host?: string
 			})]])
 
-			// Whether to allow devices to leave the organization.
-			allowed_to_leave?: bool
+			// The amount of time in seconds to reconnect after having been disabled.
+			auto_connect?: number
 			fallback_domains?: matchN(1, [close({
 				// A description of the fallback domain, displayed in the client UI.
 				description?: string
@@ -78,8 +96,8 @@ cloudflare_zero_trust_device_custom_profiles: {
 				suffix?: string
 			})]])
 
-			// The amount of time in seconds to reconnect after having been disabled.
-			auto_connect?: number
+			// Turn on the captive portal after the specified amount of time.
+			captive_portal?: number
 
 			// List of routes included in the WARP client's tunnel.
 			include?: matchN(1, [close({
@@ -104,8 +122,8 @@ cloudflare_zero_trust_device_custom_profiles: {
 				host?: string
 			})]])
 
-			// Turn on the captive portal after the specified amount of time.
-			captive_portal?: number
+			// Whether the policy is the account default. WARP group profiles cannot set this field.
+			default?: bool
 			service_mode_v2?: close({
 				// The mode to run the WARP client under.
 				mode?: string
@@ -114,8 +132,8 @@ cloudflare_zero_trust_device_custom_profiles: {
 				port?: number
 			})
 
-			// Whether the policy is the default policy for an account.
-			default?: bool
+			// A description of the policy.
+			description?: string
 			target_tests?: matchN(1, [close({
 				// The id of the DEX test targeting this policy.
 				id?: string
@@ -130,8 +148,10 @@ cloudflare_zero_trust_device_custom_profiles: {
 				name?: string
 			})]])
 
-			// A description of the policy.
-			description?: string
+			// If the `dns_server` field of a fallback domain is not present, the client
+			// will fall back to a best guess of the default/system DNS resolvers unless
+			// this policy option is set to `true`.
+			disable_auto_fallback?: bool
 
 			// Virtual network access settings for the device.
 			virtual_networks?: close({
@@ -142,11 +162,6 @@ cloudflare_zero_trust_device_custom_profiles: {
 				// The default virtual network ID. Must be included in the `allowed` list.
 				default?: string
 			})
-
-			// If the `dns_server` field of a fallback domain is not present, the client
-			// will fall back to a best guess of the default/system DNS resolvers unless
-			// this policy option is set to `true`.
-			disable_auto_fallback?: bool
 
 			// Whether the policy will be applied to matching devices.
 			enabled?: bool
@@ -180,6 +195,10 @@ cloudflare_zero_trust_device_custom_profiles: {
 			// Policies will be evaluated in ascending order of this field.
 			precedence?: number
 
+			// The client type to which the device settings profile applies.
+			// Available values: "warp", "browser_extension".
+			profile_type?: string
+
 			// Determines if the operating system will register WARP's local interface IP
 			// with your on-premises DNS server.
 			register_interface_ip_with_dns?: bool
@@ -196,10 +215,27 @@ cloudflare_zero_trust_device_custom_profiles: {
 
 			// Determines which tunnel protocol to use.
 			tunnel_protocol?: string
+
+			// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+			uninstall_protection?: bool
 		}), [...close({
 			// Whether to allow the user to switch WARP between modes.
 			allow_mode_switch?: bool
 
+			// Browser extension proxy settings. Required when profile_type is
+			// browser_extension and invalid for WARP profiles.
+			browser_extension_config?: close({
+				// Whether the user may disable the browser extension proxy.
+				// Available values: "unlocked", "locked".
+				proxy_control?: string
+
+				// Whether the browser extension proxy is active.
+				proxy_enabled?: bool
+			})
+
+			// Whether to receive update notifications when a new version of the client is available.
+			allow_updates?: bool
+
 			// List of DNS search suffixes to apply to clients. Suffixes are evaluated in
 			// order. Use an empty array to clear.
 			dns_search_suffixes?: matchN(1, [close({
@@ -216,8 +252,8 @@ cloudflare_zero_trust_device_custom_profiles: {
 				suffix?: string
 			})]])
 
-			// Whether to receive update notifications when a new version of the client is available.
-			allow_updates?: bool
+			// Whether to allow devices to leave the organization.
+			allowed_to_leave?: bool
 
 			// List of routes excluded in the WARP client's tunnel.
 			exclude?: matchN(1, [close({
@@ -242,8 +278,8 @@ cloudflare_zero_trust_device_custom_profiles: {
 				host?: string
 			})]])
 
-			// Whether to allow devices to leave the organization.
-			allowed_to_leave?: bool
+			// The amount of time in seconds to reconnect after having been disabled.
+			auto_connect?: number
 			fallback_domains?: matchN(1, [close({
 				// A description of the fallback domain, displayed in the client UI.
 				description?: string
@@ -264,8 +300,8 @@ cloudflare_zero_trust_device_custom_profiles: {
 				suffix?: string
 			})]])
 
-			// The amount of time in seconds to reconnect after having been disabled.
-			auto_connect?: number
+			// Turn on the captive portal after the specified amount of time.
+			captive_portal?: number
 
 			// List of routes included in the WARP client's tunnel.
 			include?: matchN(1, [close({
@@ -290,8 +326,8 @@ cloudflare_zero_trust_device_custom_profiles: {
 				host?: string
 			})]])
 
-			// Turn on the captive portal after the specified amount of time.
-			captive_portal?: number
+			// Whether the policy is the account default. WARP group profiles cannot set this field.
+			default?: bool
 			service_mode_v2?: close({
 				// The mode to run the WARP client under.
 				mode?: string
@@ -300,8 +336,8 @@ cloudflare_zero_trust_device_custom_profiles: {
 				port?: number
 			})
 
-			// Whether the policy is the default policy for an account.
-			default?: bool
+			// A description of the policy.
+			description?: string
 			target_tests?: matchN(1, [close({
 				// The id of the DEX test targeting this policy.
 				id?: string
@@ -316,8 +352,10 @@ cloudflare_zero_trust_device_custom_profiles: {
 				name?: string
 			})]])
 
-			// A description of the policy.
-			description?: string
+			// If the `dns_server` field of a fallback domain is not present, the client
+			// will fall back to a best guess of the default/system DNS resolvers unless
+			// this policy option is set to `true`.
+			disable_auto_fallback?: bool
 
 			// Virtual network access settings for the device.
 			virtual_networks?: close({
@@ -328,11 +366,6 @@ cloudflare_zero_trust_device_custom_profiles: {
 				// The default virtual network ID. Must be included in the `allowed` list.
 				default?: string
 			})
-
-			// If the `dns_server` field of a fallback domain is not present, the client
-			// will fall back to a best guess of the default/system DNS resolvers unless
-			// this policy option is set to `true`.
-			disable_auto_fallback?: bool
 
 			// Whether the policy will be applied to matching devices.
 			enabled?: bool
@@ -366,6 +399,10 @@ cloudflare_zero_trust_device_custom_profiles: {
 			// Policies will be evaluated in ascending order of this field.
 			precedence?: number
 
+			// The client type to which the device settings profile applies.
+			// Available values: "warp", "browser_extension".
+			profile_type?: string
+
 			// Determines if the operating system will register WARP's local interface IP
 			// with your on-premises DNS server.
 			register_interface_ip_with_dns?: bool
@@ -382,6 +419,9 @@ cloudflare_zero_trust_device_custom_profiles: {
 
 			// Determines which tunnel protocol to use.
 			tunnel_protocol?: string
+
+			// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+			uninstall_protection?: bool
 		})]])
 	})
 }

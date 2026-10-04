@@ -9,6 +9,11 @@ cloudflare_secrets_store: {
 		// When the secret was created.
 		created?: string
 
+		// When true, cascade-deletes all secrets in the store before deleting the store itself.
+		// Required when deleting a non-empty store. Without this parameter, attempting to
+		// delete a non-empty store returns 409.
+		force?: bool
+
 		// Store Identifier.
 		id?: string
 

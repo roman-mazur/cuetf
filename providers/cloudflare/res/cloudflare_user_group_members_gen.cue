@@ -7,6 +7,13 @@ cloudflare_user_group_members: {
 		// Account identifier tag.
 		account_id!: string
 
+		// The sort order of returned user group members by email.
+		// Available values: "asc", "desc".
+		direction?: string
+
+		// A string used for filtering members by partial email match.
+		fuzzy_email?: string
+
 		// User Group identifier tag.
 		id?: string
 		members!: matchN(1, [close({
@@ -16,6 +23,12 @@ cloudflare_user_group_members: {
 			// The identifier of an existing account Member.
 			id!: string
 		})]])
+
+		// Page number of paginated results.
+		page?: number
+
+		// Maximum number of results per page.
+		per_page?: number
 
 		// User Group identifier tag.
 		user_group_id!: string

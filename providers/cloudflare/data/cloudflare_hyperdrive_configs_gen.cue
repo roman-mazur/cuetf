@@ -13,20 +13,47 @@ cloudflare_hyperdrive_configs: {
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			caching?: close({
-				// Set to true to disable caching of SQL responses. Default is false.
+				// Defines whether caching is disabled.
 				disabled?: bool
 
-				// Specify the maximum duration (in seconds) items should persist in the cache.
-				// Defaults to 60 seconds if not specified.
+				// Defines the maximum duration (in seconds) items persist in the cache.
 				max_age?: number
 
-				// Specify the number of seconds the cache may serve a stale response. Defaults
-				// to 15 seconds if not specified.
+				// Defines the number of seconds the cache may serve a stale response.
 				stale_while_revalidate?: number
 			})
 
 			// Defines the creation time of the Hyperdrive configuration.
 			created_on?: string
+
+			// Connects to a PlanetScale database using credentials managed by Cloudflare.
+			// The Cloudflare account must already be linked to PlanetScale in the
+			// Hyperdrive dashboard.
+			integration?: close({
+				// The database name to use when connecting. Defaults to `postgres` for
+				// PostgreSQL and `mysql` for MySQL.
+				custom_database_name?: string
+
+				// The name of the PlanetScale database branch.
+				database_branch_name?: string
+
+				// The name of the PlanetScale database.
+				database_name?: string
+
+				// The database integration used by this operation.
+				// Available values: "planetscale".
+				integration?: string
+
+				// The name of the PlanetScale organization.
+				organization_name?: string
+
+				// Specifies the URL scheme used to connect to your origin database.
+				// Available values: "postgres", "postgresql", "mysql".
+				scheme?: string
+			})
+
+			// Define configurations using a unique string identifier.
+			id?: string
 
 			// mTLS configuration for the origin connection. Cannot be used with VPC Service
 			// origins; TLS must be managed on the VPC Service.
@@ -37,16 +64,16 @@ cloudflare_hyperdrive_configs: {
 				// Define mTLS certificate ID obtained after uploading client cert.
 				mtls_certificate_id?: string
 
-				// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
+				// PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts
+				// `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a
+				// CA certificate; the require modes cannot be used with a CA certificate.
 				sslmode?: string
 			})
 
-			// Define configurations using a unique string identifier.
-			id?: string
+			// Defines the last modified time of the Hyperdrive configuration.
+			modified_on?: string
 
-			// The name of the Hyperdrive configuration. Used to identify the configuration
-			// in the Cloudflare dashboard and API.
-			name?: string
+			// Combines database connection fields with exactly one supported network location.
 			origin?: close({
 				// Defines the Client ID of the Access token to use when connecting to the origin database.
 				access_client_id?: string
@@ -58,7 +85,8 @@ cloudflare_hyperdrive_configs: {
 				// Set the name of your origin database.
 				database?: string
 
-				// Defines the host (hostname or IP) of your origin database.
+				// Defines the publicly reachable hostname or IP of your origin database.
+				// Private, loopback, and link-local IP addresses are not allowed.
 				host?: string
 
 				// Set the password needed to access your origin database. The API never returns
@@ -81,8 +109,9 @@ cloudflare_hyperdrive_configs: {
 				user?: string
 			})
 
-			// Defines the last modified time of the Hyperdrive configuration.
-			modified_on?: string
+			// The name of the Hyperdrive configuration. Used to identify the configuration
+			// in the Cloudflare dashboard and API.
+			name?: string
 
 			// The (soft) maximum number of connections the Hyperdrive is allowed to make to
 			// the origin database.
@@ -99,20 +128,47 @@ cloudflare_hyperdrive_configs: {
 			restarted_on?: string
 		}), [...close({
 			caching?: close({
-				// Set to true to disable caching of SQL responses. Default is false.
+				// Defines whether caching is disabled.
 				disabled?: bool
 
-				// Specify the maximum duration (in seconds) items should persist in the cache.
-				// Defaults to 60 seconds if not specified.
+				// Defines the maximum duration (in seconds) items persist in the cache.
 				max_age?: number
 
-				// Specify the number of seconds the cache may serve a stale response. Defaults
-				// to 15 seconds if not specified.
+				// Defines the number of seconds the cache may serve a stale response.
 				stale_while_revalidate?: number
 			})
 
 			// Defines the creation time of the Hyperdrive configuration.
 			created_on?: string
+
+			// Connects to a PlanetScale database using credentials managed by Cloudflare.
+			// The Cloudflare account must already be linked to PlanetScale in the
+			// Hyperdrive dashboard.
+			integration?: close({
+				// The database name to use when connecting. Defaults to `postgres` for
+				// PostgreSQL and `mysql` for MySQL.
+				custom_database_name?: string
+
+				// The name of the PlanetScale database branch.
+				database_branch_name?: string
+
+				// The name of the PlanetScale database.
+				database_name?: string
+
+				// The database integration used by this operation.
+				// Available values: "planetscale".
+				integration?: string
+
+				// The name of the PlanetScale organization.
+				organization_name?: string
+
+				// Specifies the URL scheme used to connect to your origin database.
+				// Available values: "postgres", "postgresql", "mysql".
+				scheme?: string
+			})
+
+			// Define configurations using a unique string identifier.
+			id?: string
 
 			// mTLS configuration for the origin connection. Cannot be used with VPC Service
 			// origins; TLS must be managed on the VPC Service.
@@ -123,16 +179,16 @@ cloudflare_hyperdrive_configs: {
 				// Define mTLS certificate ID obtained after uploading client cert.
 				mtls_certificate_id?: string
 
-				// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
+				// PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts
+				// `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a
+				// CA certificate; the require modes cannot be used with a CA certificate.
 				sslmode?: string
 			})
 
-			// Define configurations using a unique string identifier.
-			id?: string
+			// Defines the last modified time of the Hyperdrive configuration.
+			modified_on?: string
 
-			// The name of the Hyperdrive configuration. Used to identify the configuration
-			// in the Cloudflare dashboard and API.
-			name?: string
+			// Combines database connection fields with exactly one supported network location.
 			origin?: close({
 				// Defines the Client ID of the Access token to use when connecting to the origin database.
 				access_client_id?: string
@@ -144,7 +200,8 @@ cloudflare_hyperdrive_configs: {
 				// Set the name of your origin database.
 				database?: string
 
-				// Defines the host (hostname or IP) of your origin database.
+				// Defines the publicly reachable hostname or IP of your origin database.
+				// Private, loopback, and link-local IP addresses are not allowed.
 				host?: string
 
 				// Set the password needed to access your origin database. The API never returns
@@ -167,8 +224,9 @@ cloudflare_hyperdrive_configs: {
 				user?: string
 			})
 
-			// Defines the last modified time of the Hyperdrive configuration.
-			modified_on?: string
+			// The name of the Hyperdrive configuration. Used to identify the configuration
+			// in the Cloudflare dashboard and API.
+			name?: string
 
 			// The (soft) maximum number of connections the Hyperdrive is allowed to make to
 			// the origin database.
