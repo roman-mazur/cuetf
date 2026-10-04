@@ -31,6 +31,7 @@ google_compute_service_attachments: {
 			enable_proxy_protocol?: bool
 			fingerprint?:           string
 			name?:                  string
+			nat_ips_per_endpoint?:  number
 			nat_subnets?: [...string]
 			project?:                     string
 			propagated_connection_limit?: number

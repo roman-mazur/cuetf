@@ -231,6 +231,9 @@ google_cloud_run_v2_service: {
 			scaling_mode?:          string
 		})]
 
+		// Enables SSH access to the Service.
+		ssh_enabled?: bool
+
 		// A map of resource manager tags.
 		// Resource manager tag keys and values have the same definition as resource manager tags.
 		// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format
@@ -363,8 +366,10 @@ google_cloud_run_v2_service: {
 				})]
 			})]
 			scaling?: [...close({
-				max_instance_count?: number
-				min_instance_count?: number
+				concurrency_utilization?: number
+				cpu_utilization?:         number
+				max_instance_count?:      number
+				min_instance_count?:      number
 			})]
 			service_account?:  string
 			session_affinity?: bool

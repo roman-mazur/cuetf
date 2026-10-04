@@ -56,7 +56,11 @@ google_sql_database_instance: {
 			dns_scope?:       string
 			name?:            string
 		})]
-		encryption_key_name?: string
+
+		// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only
+		// supported on Zonal C4A PG and MySQL instances.
+		encryption_confidential_mode?: bool
+		encryption_key_name?:          string
 
 		// Whether to enforce the new SQL network architecture.
 		enforce_new_sql_network_architecture?: bool
@@ -362,9 +366,10 @@ google_sql_database_instance: {
 		// increased. The default value is 0, which specifies that there is no limit.
 		disk_autoresize_limit?: number
 
-		// The size of data disk, in GB. Size of a running instance cannot be reduced
-		// but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB
-		// for HYPERDISK_BALANCED.
+		// The size of data disk, in GB. The size of a running instance can be
+		// increased, or reduced when disk_autoresize is disabled (this triggers an
+		// in-place storage shrink, which restarts the instance). The minimum value is
+		// 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 		disk_size?: number
 
 		// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD

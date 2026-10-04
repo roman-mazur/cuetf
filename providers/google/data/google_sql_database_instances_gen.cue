@@ -29,6 +29,7 @@ google_sql_database_instances: {
 				dns_scope?:       string
 				name?:            string
 			})]
+			encryption_confidential_mode?:               bool
 			encryption_key_name?:                        string
 			enforce_new_sql_network_architecture?:       bool
 			final_backup_description?:                   string

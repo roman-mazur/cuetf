@@ -121,8 +121,11 @@ google_data_loss_prevention_content_policy: {
 	})
 
 	_#defs: "/$defs/inspect_config/$defs/custom_info_types": close({
+		detection_rules?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/detection_rules", [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/detection_rules"]])
 		dictionary?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/dictionary", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/dictionary"]])
+		file_label_info_type?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/file_label_info_type", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/file_label_info_type"]])
 		info_type!: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/info_type", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/info_type"]])
+		metadata_key_value_expression?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/metadata_key_value_expression", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/metadata_key_value_expression"]])
 		regex?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/regex", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/regex"]])
 		sensitivity_score?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/sensitivity_score", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/sensitivity_score"]])
 		stored_type?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/stored_type", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/stored_type"]])
@@ -140,6 +143,45 @@ google_data_loss_prevention_content_policy: {
 		likelihood?: string
 	})
 
+	_#defs: "/$defs/inspect_config/$defs/custom_info_types/$defs/detection_rules": close({
+		hotword_rule?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/detection_rules/$defs/hotword_rule", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/detection_rules/$defs/hotword_rule"]])
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/custom_info_types/$defs/detection_rules/$defs/hotword_rule": close({
+		hotword_regex!: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/detection_rules/$defs/hotword_rule/$defs/hotword_regex", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/detection_rules/$defs/hotword_rule/$defs/hotword_regex"]])
+		likelihood_adjustment!: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/detection_rules/$defs/hotword_rule/$defs/likelihood_adjustment", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/detection_rules/$defs/hotword_rule/$defs/likelihood_adjustment"]])
+		proximity!: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/detection_rules/$defs/hotword_rule/$defs/proximity", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/detection_rules/$defs/hotword_rule/$defs/proximity"]])
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/custom_info_types/$defs/detection_rules/$defs/hotword_rule/$defs/hotword_regex": close({
+		// The index of the submatch to extract as findings. When not specified,
+		// the entire match is returned. No more than 3 may be included.
+		group_indexes?: [...number]
+
+		// Pattern defining the regular expression. Its syntax
+		// (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2
+		// repository on GitHub.
+		pattern!: string
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/custom_info_types/$defs/detection_rules/$defs/hotword_rule/$defs/likelihood_adjustment": close({
+		// Set the likelihood of a finding to a fixed value. Either this or
+		// relative_likelihood can be set. Possible values: ["VERY_UNLIKELY",
+		// "UNLIKELY", "POSSIBLE", "LIKELY", "VERY_LIKELY"]
+		fixed_likelihood?: string
+
+		// Increase or decrease the likelihood by the specified number of levels.
+		relative_likelihood?: number
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/custom_info_types/$defs/detection_rules/$defs/hotword_rule/$defs/proximity": close({
+		// Number of characters after the finding to consider.
+		window_after?: number
+
+		// Number of characters before the finding to consider.
+		window_before?: number
+	})
+
 	_#defs: "/$defs/inspect_config/$defs/custom_info_types/$defs/dictionary": close({
 		cloud_storage_path?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/dictionary/$defs/cloud_storage_path", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/dictionary/$defs/cloud_storage_path"]])
 		word_list?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/dictionary/$defs/word_list", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/dictionary/$defs/word_list"]])
@@ -155,6 +197,31 @@ google_data_loss_prevention_content_policy: {
 		// Words or phrases defining the dictionary. The dictionary must contain at least one
 		// phrase and every phrase must contain at least 2 characters that are letters or digits.
 		words!: [...string]
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/custom_info_types/$defs/file_label_info_type": close({
+		google_drive_label?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/file_label_info_type/$defs/google_drive_label", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/file_label_info_type/$defs/google_drive_label"]])
+		sensitivity_label?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/file_label_info_type/$defs/sensitivity_label", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/file_label_info_type/$defs/sensitivity_label"]])
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/custom_info_types/$defs/file_label_info_type/$defs/google_drive_label": close({
+		label_fields_to_match?: matchN(1, [_#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/file_label_info_type/$defs/google_drive_label/$defs/label_fields_to_match", [..._#defs."/$defs/inspect_config/$defs/custom_info_types/$defs/file_label_info_type/$defs/google_drive_label/$defs/label_fields_to_match"]])
+
+		// The label ID of the Google Drive label.
+		label_id!: string
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/custom_info_types/$defs/file_label_info_type/$defs/google_drive_label/$defs/label_fields_to_match": close({
+		// The identifier of the Label Field.
+		id!: string
+
+		// The value of the Label Field to match.
+		value!: string
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/custom_info_types/$defs/file_label_info_type/$defs/sensitivity_label": close({
+		// The GUID of the sensitivity label.
+		guid!: string
 	})
 
 	_#defs: "/$defs/inspect_config/$defs/custom_info_types/$defs/info_type": close({
@@ -175,6 +242,14 @@ google_data_loss_prevention_content_policy: {
 		score!: string
 	})
 
+	_#defs: "/$defs/inspect_config/$defs/custom_info_types/$defs/metadata_key_value_expression": close({
+		// The regular expression for the key.
+		key_regex!: string
+
+		// The regular expression for the value.
+		value_regex!: string
+	})
+
 	_#defs: "/$defs/inspect_config/$defs/custom_info_types/$defs/regex": close({
 		// The index of the submatch to extract as findings. When not specified, the
 		// entire match is returned. No more than 3 may be included.
@@ -193,6 +268,10 @@ google_data_loss_prevention_content_policy: {
 	})
 
 	_#defs: "/$defs/inspect_config/$defs/custom_info_types/$defs/stored_type": close({
+		// Output only. Timestamp indicating when the version of the StoredInfoType used
+		// for inspection was created.
+		create_time?: string
+
 		// Resource name of the requested StoredInfoType, for example
 		// 'organizations/433245324/storedInfoTypes/432452342'
 		// or 'projects/project-id/storedInfoTypes/432452342'.
@@ -264,6 +343,8 @@ google_data_loss_prevention_content_policy: {
 	})
 
 	_#defs: "/$defs/inspect_config/$defs/min_likelihood_per_info_type/$defs/info_type": close({
+		sensitivity_score?: matchN(1, [_#defs."/$defs/inspect_config/$defs/min_likelihood_per_info_type/$defs/info_type/$defs/sensitivity_score", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/min_likelihood_per_info_type/$defs/info_type/$defs/sensitivity_score"]])
+
 		// Name of the information type. Either a name of your choosing when creating a
 		// CustomInfoType, or one of the names listed
 		// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
@@ -271,6 +352,12 @@ google_data_loss_prevention_content_policy: {
 
 		// Version name for this InfoType.
 		version?: string
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/min_likelihood_per_info_type/$defs/info_type/$defs/sensitivity_score": close({
+		// The sensitivity score applied to the resource. Possible values:
+		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE", "SENSITIVITY_HIGH"]
+		score!: string
 	})
 
 	_#defs: "/$defs/inspect_config/$defs/rule_set": close({
@@ -297,20 +384,101 @@ google_data_loss_prevention_content_policy: {
 	})
 
 	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules": close({
+		adjustment_rule?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule"]])
 		exclusion_rule?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule"]])
 		hotword_rule?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/hotword_rule", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/hotword_rule"]])
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule": close({
+		adjust_by_image_findings?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings"]])
+		adjust_by_matching_info_types?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_matching_info_types", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_matching_info_types"]])
+		likelihood_adjustment!: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/likelihood_adjustment", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/likelihood_adjustment"]])
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings": close({
+		image_containment_type?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings/$defs/image_containment_type", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings/$defs/image_containment_type"]])
+		info_types!: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings/$defs/info_types", [_, ...] & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings/$defs/info_types"]])
+
+		// Minimum likelihood of the adjustByImageFindings infoTypes finding. Possible
+		// values: ["VERY_UNLIKELY", "UNLIKELY", "POSSIBLE", "LIKELY", "VERY_LIKELY"]
+		min_likelihood!: string
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings/$defs/image_containment_type": close({
+		encloses?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings/$defs/image_containment_type/$defs/encloses", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings/$defs/image_containment_type/$defs/encloses"]])
+		fully_inside?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings/$defs/image_containment_type/$defs/fully_inside", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings/$defs/image_containment_type/$defs/fully_inside"]])
+		overlaps?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings/$defs/image_containment_type/$defs/overlaps", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings/$defs/image_containment_type/$defs/overlaps"]])
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings/$defs/image_containment_type/$defs/encloses": close({})
+
+	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings/$defs/image_containment_type/$defs/fully_inside": close({})
+
+	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings/$defs/image_containment_type/$defs/overlaps": close({})
+
+	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings/$defs/info_types": close({
+		sensitivity_score?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings/$defs/info_types/$defs/sensitivity_score", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings/$defs/info_types/$defs/sensitivity_score"]])
+
+		// Name of the information type.
+		name!: string
+
+		// Version name for this InfoType.
+		version?: string
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_image_findings/$defs/info_types/$defs/sensitivity_score": close({
+		// The sensitivity score applied to the resource. Possible values:
+		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE", "SENSITIVITY_HIGH"]
+		score!: string
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_matching_info_types": close({
+		info_types!: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_matching_info_types/$defs/info_types", [_, ...] & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_matching_info_types/$defs/info_types"]])
+
+		// How the adjustment rule is applied. Possible values:
+		// ["MATCHING_TYPE_FULL_MATCH", "MATCHING_TYPE_PARTIAL_MATCH",
+		// "MATCHING_TYPE_INVERSE_MATCH"]
+		matching_type!: string
+
+		// Minimum likelihood of the adjustByMatchingInfoTypes infoTypes finding.
+		// Possible values: ["VERY_UNLIKELY", "UNLIKELY", "POSSIBLE", "LIKELY",
+		// "VERY_LIKELY"]
+		min_likelihood!: string
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_matching_info_types/$defs/info_types": close({
+		sensitivity_score?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_matching_info_types/$defs/info_types/$defs/sensitivity_score", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_matching_info_types/$defs/info_types/$defs/sensitivity_score"]])
+
+		// Name of the information type.
+		name!: string
+
+		// Version name for this InfoType.
+		version?: string
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/adjust_by_matching_info_types/$defs/info_types/$defs/sensitivity_score": close({
+		// The sensitivity score applied to the resource. Possible values:
+		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE", "SENSITIVITY_HIGH"]
+		score!: string
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/adjustment_rule/$defs/likelihood_adjustment": close({
+		// Set the likelihood of a finding to a fixed value. Possible values:
+		// ["VERY_UNLIKELY", "UNLIKELY", "POSSIBLE", "LIKELY", "VERY_LIKELY"]
+		fixed_likelihood!: string
 	})
 
 	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule": close({
 		dictionary?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/dictionary", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/dictionary"]])
 		exclude_by_hotword?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_hotword", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_hotword"]])
+		exclude_by_image_findings?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings"]])
 		exclude_info_types?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_info_types", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_info_types"]])
 		regex?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/regex", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/regex"]])
 
 		// How the rule is applied. See the documentation for more information:
 		// https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
 		// Possible values: ["MATCHING_TYPE_FULL_MATCH", "MATCHING_TYPE_PARTIAL_MATCH",
-		// "MATCHING_TYPE_INVERSE_MATCH"]
+		// "MATCHING_TYPE_INVERSE_MATCH", "MATCHING_TYPE_RULE_SPECIFIC"]
 		matching_type!: string
 	})
 
@@ -353,6 +521,39 @@ google_data_loss_prevention_content_policy: {
 
 		// Number of characters before the finding to consider.
 		window_before?: number
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings": close({
+		image_containment_type?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings/$defs/image_containment_type", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings/$defs/image_containment_type"]])
+		info_types!: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings/$defs/info_types", [_, ...] & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings/$defs/info_types"]])
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings/$defs/image_containment_type": close({
+		encloses?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings/$defs/image_containment_type/$defs/encloses", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings/$defs/image_containment_type/$defs/encloses"]])
+		fully_inside?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings/$defs/image_containment_type/$defs/fully_inside", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings/$defs/image_containment_type/$defs/fully_inside"]])
+		overlaps?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings/$defs/image_containment_type/$defs/overlaps", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings/$defs/image_containment_type/$defs/overlaps"]])
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings/$defs/image_containment_type/$defs/encloses": close({})
+
+	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings/$defs/image_containment_type/$defs/fully_inside": close({})
+
+	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings/$defs/image_containment_type/$defs/overlaps": close({})
+
+	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings/$defs/info_types": close({
+		sensitivity_score?: matchN(1, [_#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings/$defs/info_types/$defs/sensitivity_score", list.MaxItems(1) & [..._#defs."/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings/$defs/info_types/$defs/sensitivity_score"]])
+
+		// Name of the information type.
+		name!: string
+
+		// Version name for this InfoType.
+		version?: string
+	})
+
+	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_by_image_findings/$defs/info_types/$defs/sensitivity_score": close({
+		// The sensitivity score applied to the resource. Possible values:
+		// ["SENSITIVITY_LOW", "SENSITIVITY_MODERATE", "SENSITIVITY_HIGH"]
+		score!: string
 	})
 
 	_#defs: "/$defs/inspect_config/$defs/rule_set/$defs/rules/$defs/exclusion_rule/$defs/exclude_info_types": close({

@@ -7531,6 +7531,17 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					math_rendering_mode: {
+						type: "string"
+						description: """
+									The math rendering mode selected for this persona.
+									Possible values:
+									MATH_RENDERING_MODE_LATEX
+									MATH_RENDERING_MODE_PLAIN_TEXT
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
 					model_description: {
 						type:             "string"
 						description:      "The description of the persona review, used by the model."
@@ -8968,6 +8979,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}
 							description_kind: "plain"
 						}
+					}
+					web_search_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: excluded_domains: {
+								type: ["list", "string"]
+								description: """
+												List of domains to be excluded from Google Search / Enterprise Web Search
+												grounding.
+												"""
+								description_kind: "plain"
+								optional:         true
+							}
+							description:      "Configuration for web search grounding for the analyst agent."
+							description_kind: "plain"
+						}
+						max_items: 1
 					}
 				}
 				description_kind: "plain"
@@ -29862,8 +29890,21 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											type:             "string"
 											description:      "Password for database."
 											description_kind: "plain"
-											required:         true
+											optional:         true
 											sensitive:        true
+										}
+										password_wo: {
+											type:             "string"
+											description:      "Password for database."
+											description_kind: "plain"
+											optional:         true
+											write_only:       true
+										}
+										password_wo_version: {
+											type:             "string"
+											description:      "Triggers update of 'password_wo' write-only. Increment this value when an update to 'password_wo' is needed. For more info see [updating write-only arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)"
+											description_kind: "plain"
+											optional:         true
 										}
 										username: {
 											type:             "string"
@@ -39840,6 +39881,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									optional:         true
 								}
+								proactive_execution_enabled: {
+									type: "bool"
+									description: """
+												If enabled, the callback will also be executed on intermediate model
+												outputs. This setting only affects after model callback.
+												**ENABLE WITH CAUTION**. Typically after model callback only needs to be
+												executed after receiving all model responses. Enabling proactive execution
+												may have negative implication on the execution cost and latency, and
+												should only be enabled in rare situations.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
 								python_code: {
 									type:             "string"
 									description:      "The python code to execute for the callback."
@@ -39871,6 +39925,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description: """
 												Whether the callback is disabled. Disabled callbacks are ignored by the
 												agent.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								proactive_execution_enabled: {
+									type: "bool"
+									description: """
+												If enabled, the callback will also be executed on intermediate model
+												outputs. This setting only affects after model callback.
+												**ENABLE WITH CAUTION**. Typically after model callback only needs to be
+												executed after receiving all model responses. Enabling proactive execution
+												may have negative implication on the execution cost and latency, and
+												should only be enabled in rare situations.
 												"""
 									description_kind: "plain"
 									optional:         true
@@ -39911,6 +39978,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									optional:         true
 								}
+								proactive_execution_enabled: {
+									type: "bool"
+									description: """
+												If enabled, the callback will also be executed on intermediate model
+												outputs. This setting only affects after model callback.
+												**ENABLE WITH CAUTION**. Typically after model callback only needs to be
+												executed after receiving all model responses. Enabling proactive execution
+												may have negative implication on the execution cost and latency, and
+												should only be enabled in rare situations.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
 								python_code: {
 									type:             "string"
 									description:      "The python code to execute for the callback."
@@ -39943,6 +40023,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description: """
 												Whether the callback is disabled. Disabled callbacks are ignored by the
 												agent.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								proactive_execution_enabled: {
+									type: "bool"
+									description: """
+												If enabled, the callback will also be executed on intermediate model
+												outputs. This setting only affects after model callback.
+												**ENABLE WITH CAUTION**. Typically after model callback only needs to be
+												executed after receiving all model responses. Enabling proactive execution
+												may have negative implication on the execution cost and latency, and
+												should only be enabled in rare situations.
 												"""
 									description_kind: "plain"
 									optional:         true
@@ -39982,6 +40075,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									optional:         true
 								}
+								proactive_execution_enabled: {
+									type: "bool"
+									description: """
+												If enabled, the callback will also be executed on intermediate model
+												outputs. This setting only affects after model callback.
+												**ENABLE WITH CAUTION**. Typically after model callback only needs to be
+												executed after receiving all model responses. Enabling proactive execution
+												may have negative implication on the execution cost and latency, and
+												should only be enabled in rare situations.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
 								python_code: {
 									type:             "string"
 									description:      "The python code to execute for the callback."
@@ -40014,6 +40120,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description: """
 												Whether the callback is disabled. Disabled callbacks are ignored by the
 												agent.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								proactive_execution_enabled: {
+									type: "bool"
+									description: """
+												If enabled, the callback will also be executed on intermediate model
+												outputs. This setting only affects after model callback.
+												**ENABLE WITH CAUTION**. Typically after model callback only needs to be
+												executed after receiving all model responses. Enabling proactive execution
+												may have negative implication on the execution cost and latency, and
+												should only be enabled in rare situations.
 												"""
 									description_kind: "plain"
 									optional:         true
@@ -40072,6 +40191,360 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								}
 							}
 							description:      "Model settings contains various configurations for the LLM model."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					remote_a2a_agent: {
+						nesting_mode: "list"
+						block: {
+							block_types: a2a_config: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										agent_registry: {
+											type: "string"
+											description: """
+															Reference to the agent in the Agent Registry.
+															Format: 'projects/{project}/locations/{location}/agents/{agent}'
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										context_id: {
+											type: "string"
+											description: """
+															If not empty, interactions with the remote A2A agent will use this context
+															ID. This context_id field can refer to a session variable like
+															'$context.variables.order_agent_session_id'.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										input_variable_mapping: {
+											type: ["map", "string"]
+											description:      "Mapping of input variable names of remote agent to GECX variable names."
+											description_kind: "plain"
+											optional:         true
+										}
+										output_variable_mapping: {
+											type: ["map", "string"]
+											description:      "Mapping of output variable names of remote agent to GECX variable names."
+											description_kind: "plain"
+											optional:         true
+										}
+										streaming_enabled: {
+											type:             "bool"
+											description:      "Whether streaming is enabled for the remote agent."
+											description_kind: "plain"
+											optional:         true
+										}
+									}
+									block_types: {
+										agent_card: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													description: {
+														type:             "string"
+														description:      "A description of the agent's domain of action/solution space."
+														description_kind: "plain"
+														required:         true
+													}
+													name: {
+														type:             "string"
+														description:      "A human-readable name for the agent."
+														description_kind: "plain"
+														required:         true
+													}
+													version: {
+														type:             "string"
+														description:      "The version of the agent."
+														description_kind: "plain"
+														required:         true
+													}
+												}
+												block_types: {
+													skills: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																description: {
+																	type:             "string"
+																	description:      "A detailed description of the skill."
+																	description_kind: "plain"
+																	required:         true
+																}
+																examples: {
+																	type: ["list", "string"]
+																	description:      "Example prompts or scenarios that this skill can handle."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																id: {
+																	type:             "string"
+																	description:      "A unique identifier for the agent's skill."
+																	description_kind: "plain"
+																	required:         true
+																}
+																input_modes: {
+																	type: ["list", "string"]
+																	description: """
+																					The set of supported input media types for this skill, overriding the
+																					agent's defaults.
+																					"""
+																	description_kind: "plain"
+																	optional:         true
+																}
+																name: {
+																	type:             "string"
+																	description:      "A human-readable name for the skill."
+																	description_kind: "plain"
+																	required:         true
+																}
+																output_modes: {
+																	type: ["list", "string"]
+																	description: """
+																					The set of supported output media types for this skill, overriding the
+																					agent's defaults.
+																					"""
+																	description_kind: "plain"
+																	optional:         true
+																}
+																tags: {
+																	type: ["list", "string"]
+																	description:      "A set of keywords describing the skill's capabilities."
+																	description_kind: "plain"
+																	required:         true
+																}
+															}
+															description: """
+																			Skills represent a unit of ability an agent can perform. This may
+																			somewhat abstract but represents a more focused set of actions that the
+																			agent is highly likely to succeed at.
+																			"""
+															description_kind: "plain"
+														}
+														min_items: 1
+													}
+													supported_interfaces: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																protocol_binding: {
+																	type: "string"
+																	description: """
+																					The protocol binding supported at this URL. The core ones officially
+																					supported are JSONRPC, GRPC and HTTP+JSON.
+																					"""
+																	description_kind: "plain"
+																	required:         true
+																}
+																protocol_version: {
+																	type: "string"
+																	description: """
+																					The version of the A2A protocol this interface exposes.
+																					Examples: "0.3", "1.0"
+																					"""
+																	description_kind: "plain"
+																	required:         true
+																}
+																tenant: {
+																	type:             "string"
+																	description:      "Tenant ID to be used in the request when calling the agent."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																url: {
+																	type: "string"
+																	description: """
+																					The URL where this interface is available. Must be a valid absolute HTTPS
+																					URL in production.
+																					"""
+																	description_kind: "plain"
+																	required:         true
+																}
+															}
+															description:      "Ordered list of supported interfaces. The first entry is preferred."
+															description_kind: "plain"
+														}
+														min_items: 1
+													}
+												}
+												description:      "The full agent card defined inline."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										api_authentication: {
+											nesting_mode: "list"
+											block: {
+												block_types: {
+													api_key_config: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																api_key_secret_version: {
+																	type: "string"
+																	description: """
+																					The name of the SecretManager secret version resource storing the API key.
+																					Format: 'projects/{project}/secrets/{secret}/versions/{version}'
+																					Note: You should grant 'roles/secretmanager.secretAccessor' role to the CES
+																					service agent
+																					'service-@gcp-sa-ces.iam.gserviceaccount.com'.
+																					"""
+																	description_kind: "plain"
+																	required:         true
+																}
+																key_name: {
+																	type: "string"
+																	description: """
+																					The parameter name or the header name of the API key.
+																					E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+																					"""
+																	description_kind: "plain"
+																	required:         true
+																}
+																request_location: {
+																	type: "string"
+																	description: """
+																					Key location in the request.
+																					Possible values:
+																					HEADER
+																					QUERY_STRING
+																					"""
+																	description_kind: "plain"
+																	required:         true
+																}
+															}
+															description:      "Configurations for authentication with API key."
+															description_kind: "plain"
+														}
+														max_items: 1
+													}
+													bearer_token_config: {
+														nesting_mode: "list"
+														block: {
+															attributes: token: {
+																type: "string"
+																description: """
+																					The bearer token.
+																					Must be in the format '$context.variables.<name_of_variable>'.
+																					"""
+																description_kind: "plain"
+																required:         true
+															}
+															description:      "Configurations for authentication with a bearer token."
+															description_kind: "plain"
+														}
+														max_items: 1
+													}
+													oauth_config: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																client_id: {
+																	type:             "string"
+																	description:      "The client ID from the OAuth provider."
+																	description_kind: "plain"
+																	required:         true
+																}
+																client_secret_version: {
+																	type: "string"
+																	description: """
+																					The name of the SecretManager secret version resource storing the
+																					client secret.
+																					Format: 'projects/{project}/secrets/{secret}/versions/{version}'
+
+																					Note: You should grant 'roles/secretmanager.secretAccessor' role to the CES
+																					service agent
+																					'service-@gcp-sa-ces.iam.gserviceaccount.com'.
+																					"""
+																	description_kind: "plain"
+																	required:         true
+																}
+																oauth_grant_type: {
+																	type: "string"
+																	description: """
+																					OAuth grant types.
+																					Possible values:
+																					CLIENT_CREDENTIAL
+																					"""
+																	description_kind: "plain"
+																	required:         true
+																}
+																scopes: {
+																	type: ["list", "string"]
+																	description:      "The OAuth scopes to grant."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																token_endpoint: {
+																	type:             "string"
+																	description:      "The token endpoint in the OAuth provider to exchange for an access token."
+																	description_kind: "plain"
+																	required:         true
+																}
+															}
+															description:      "Configurations for authentication with OAuth."
+															description_kind: "plain"
+														}
+														max_items: 1
+													}
+													service_account_auth_config: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																scopes: {
+																	type: ["list", "string"]
+																	description: """
+																					The OAuth scopes to grant. If not specified, the default scope
+																					'https://www.googleapis.com/auth/cloud-platform' is used.
+																					"""
+																	description_kind: "plain"
+																	optional:         true
+																}
+																service_account: {
+																	type: "string"
+																	description: """
+																					The email address of the service account used for authenticatation. CES
+																					uses this service account to exchange an access token and the access token
+																					is then sent in the 'Authorization' header of the request.
+
+																					The service account must have the
+																					'roles/iam.serviceAccountTokenCreator' role granted to the
+																					CES service agent
+																					'service-@gcp-sa-ces.iam.gserviceaccount.com'.
+																					"""
+																	description_kind: "plain"
+																	required:         true
+																}
+															}
+															description:      "Configurations for authentication using a custom service account."
+															description_kind: "plain"
+														}
+														max_items: 1
+													}
+												}
+												description: """
+																Authentication configuration for calling the remote agent.
+																Optional if the registry reference already handles authentication.
+																"""
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+									}
+									description:      "The A2A connection configuration."
+									description_kind: "plain"
+								}
+								min_items: 1
+								max_items: 1
+							}
+							description: """
+										The agent which will transfer execution to a remote
+										[A2A](https://github.com/a2aproject/A2A) agent.
+										"""
 							description_kind: "plain"
 						}
 						max_items: 1
@@ -41726,34 +42199,40 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type: ["list", ["object", {
 							agents: ["list", ["object", {
 								after_agent_callbacks: ["list", ["object", {
-									description: "string"
-									disabled:    "bool"
-									python_code: "string"
+									description:                 "string"
+									disabled:                    "bool"
+									proactive_execution_enabled: "bool"
+									python_code:                 "string"
 								}]]
 								after_model_callbacks: ["list", ["object", {
-									description: "string"
-									disabled:    "bool"
-									python_code: "string"
+									description:                 "string"
+									disabled:                    "bool"
+									proactive_execution_enabled: "bool"
+									python_code:                 "string"
 								}]]
 								after_tool_callbacks: ["list", ["object", {
-									description: "string"
-									disabled:    "bool"
-									python_code: "string"
+									description:                 "string"
+									disabled:                    "bool"
+									proactive_execution_enabled: "bool"
+									python_code:                 "string"
 								}]]
 								before_agent_callbacks: ["list", ["object", {
-									description: "string"
-									disabled:    "bool"
-									python_code: "string"
+									description:                 "string"
+									disabled:                    "bool"
+									proactive_execution_enabled: "bool"
+									python_code:                 "string"
 								}]]
 								before_model_callbacks: ["list", ["object", {
-									description: "string"
-									disabled:    "bool"
-									python_code: "string"
+									description:                 "string"
+									disabled:                    "bool"
+									proactive_execution_enabled: "bool"
+									python_code:                 "string"
 								}]]
 								before_tool_callbacks: ["list", ["object", {
-									description: "string"
-									disabled:    "bool"
-									python_code: "string"
+									description:                 "string"
+									disabled:                    "bool"
+									proactive_execution_enabled: "bool"
+									python_code:                 "string"
 								}]]
 								child_agents: ["list", "string"]
 								create_time:       "string"
@@ -42012,24 +42491,28 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								}]]
 								code_callback: ["list", ["object", {
 									after_agent_callback: ["list", ["object", {
-										description: "string"
-										disabled:    "bool"
-										python_code: "string"
+										description:                 "string"
+										disabled:                    "bool"
+										proactive_execution_enabled: "bool"
+										python_code:                 "string"
 									}]]
 									after_model_callback: ["list", ["object", {
-										description: "string"
-										disabled:    "bool"
-										python_code: "string"
+										description:                 "string"
+										disabled:                    "bool"
+										proactive_execution_enabled: "bool"
+										python_code:                 "string"
 									}]]
 									before_agent_callback: ["list", ["object", {
-										description: "string"
-										disabled:    "bool"
-										python_code: "string"
+										description:                 "string"
+										disabled:                    "bool"
+										proactive_execution_enabled: "bool"
+										python_code:                 "string"
 									}]]
 									before_model_callback: ["list", ["object", {
-										description: "string"
-										disabled:    "bool"
-										python_code: "string"
+										description:                 "string"
+										disabled:                    "bool"
+										proactive_execution_enabled: "bool"
+										python_code:                 "string"
 									}]]
 								}]]
 								content_filter: ["list", ["object", {
@@ -49727,6 +50210,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									"""
 						description_kind: "plain"
 						computed:         true
+					}
+					parallel_instance: {
+						type: "string"
+						description: """
+									The optional parallel SIEM instance used as a data source. Used to route
+									API requests to the correct SIEM instance when making cross-SecOps requests
+									from SOAR. For most customers, this is not required, since the parent
+									instance is used as the data source by default.
+									Format:
+									projects/{project}/locations/{location}/instances/{instance}
+									"""
+						description_kind: "plain"
+						optional:         true
 					}
 					project: {
 						type:             "string"
@@ -61392,6 +61888,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						computed:         true
 					}
+					ssh_enabled: {
+						type:             "bool"
+						description:      "Enables SSH access to the Service."
+						description_kind: "plain"
+						optional:         true
+					}
 					tags: {
 						type: ["map", "string"]
 						description: """
@@ -62401,6 +62903,18 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									nesting_mode: "list"
 									block: {
 										attributes: {
+											concurrency_utilization: {
+												type:             "number"
+												description:      "Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled."
+												description_kind: "plain"
+												optional:         true
+											}
+											cpu_utilization: {
+												type:             "number"
+												description:      "Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled."
+												description_kind: "plain"
+												optional:         true
+											}
 											max_instance_count: {
 												type: "number"
 												description: """
@@ -82206,6 +82720,22 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									optional:         true
 									sensitive:        true
 								}
+								raw_key_wo: {
+									type: "string"
+									description: """
+												Specifies a 256-bit customer-supplied encryption key, encoded in
+												RFC 4648 base64 to either encrypt or decrypt this resource.
+												"""
+									description_kind: "plain"
+									optional:         true
+									write_only:       true
+								}
+								raw_key_wo_version: {
+									type:             "string"
+									description:      "Triggers update of 'raw_key_wo' write-only. Increment this value when an update to 'raw_key_wo' is needed. For more info see [updating write-only arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)"
+									description_kind: "plain"
+									optional:         true
+								}
 								rsa_encrypted_key: {
 									type: "string"
 									description: """
@@ -82216,6 +82746,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									optional:         true
 									sensitive:        true
+								}
+								rsa_encrypted_key_wo: {
+									type: "string"
+									description: """
+												Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+												customer-supplied encryption key to either encrypt or decrypt
+												this resource. You can provide either the rawKey or the rsaEncryptedKey.
+												"""
+									description_kind: "plain"
+									optional:         true
+									write_only:       true
+								}
+								rsa_encrypted_key_wo_version: {
+									type:             "string"
+									description:      "Triggers update of 'rsa_encrypted_key_wo' write-only. Increment this value when an update to 'rsa_encrypted_key_wo' is needed. For more info see [updating write-only arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)"
+									description_kind: "plain"
+									optional:         true
 								}
 								sha256: {
 									type: "string"
@@ -101871,6 +102418,22 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									optional:         true
 									sensitive:        true
 								}
+								raw_key_wo: {
+									type: "string"
+									description: """
+												Specifies a 256-bit customer-supplied encryption key, encoded in
+												RFC 4648 base64 to either encrypt or decrypt this resource.
+												"""
+									description_kind: "plain"
+									optional:         true
+									write_only:       true
+								}
+								raw_key_wo_version: {
+									type:             "string"
+									description:      "Triggers update of 'raw_key_wo' write-only. Increment this value when an update to 'raw_key_wo' is needed. For more info see [updating write-only arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)"
+									description_kind: "plain"
+									optional:         true
+								}
 								rsa_encrypted_key: {
 									type: "string"
 									description: """
@@ -101881,6 +102444,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									optional:         true
 									sensitive:        true
+								}
+								rsa_encrypted_key_wo: {
+									type: "string"
+									description: """
+												Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+												customer-supplied encryption key to either encrypt or decrypt
+												this resource. You can provide either the rawKey or the rsaEncryptedKey.
+												"""
+									description_kind: "plain"
+									optional:         true
+									write_only:       true
+								}
+								rsa_encrypted_key_wo_version: {
+									type:             "string"
+									description:      "Triggers update of 'rsa_encrypted_key_wo' write-only. Increment this value when an update to 'rsa_encrypted_key_wo' is needed. For more info see [updating write-only arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)"
+									description_kind: "plain"
+									optional:         true
 								}
 								sha256: {
 									type: "string"
@@ -117441,6 +118021,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									"""
 						description_kind: "plain"
 						required:         true
+					}
+					nat_ips_per_endpoint: {
+						type:             "number"
+						description:      "The number of NAT IPs allocated per connected endpoint."
+						description_kind: "plain"
+						optional:         true
 					}
 					nat_subnets: {
 						type: ["set", "string"]
@@ -141121,6 +141707,104 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											}
 										}
 										block_types: {
+											detection_rules: {
+												nesting_mode: "list"
+												block: {
+													block_types: hotword_rule: {
+														nesting_mode: "list"
+														block: {
+															block_types: {
+																hotword_regex: {
+																	nesting_mode: "list"
+																	block: {
+																		attributes: {
+																			group_indexes: {
+																				type: ["list", "number"]
+																				description: """
+																								The index of the submatch to extract as findings. When not specified,
+																								the entire match is returned. No more than 3 may be included.
+																								"""
+																				description_kind: "plain"
+																				optional:         true
+																			}
+																			pattern: {
+																				type: "string"
+																				description: """
+																								Pattern defining the regular expression. Its syntax
+																								(https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+																								"""
+																				description_kind: "plain"
+																				required:         true
+																			}
+																		}
+																		description:      "Regular expression pattern defining what qualifies as a hotword."
+																		description_kind: "plain"
+																	}
+																	min_items: 1
+																	max_items: 1
+																}
+																likelihood_adjustment: {
+																	nesting_mode: "list"
+																	block: {
+																		attributes: {
+																			fixed_likelihood: {
+																				type:             "string"
+																				description:      "Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set. Possible values: [\"VERY_UNLIKELY\", \"UNLIKELY\", \"POSSIBLE\", \"LIKELY\", \"VERY_LIKELY\"]"
+																				description_kind: "plain"
+																				optional:         true
+																			}
+																			relative_likelihood: {
+																				type:             "number"
+																				description:      "Increase or decrease the likelihood by the specified number of levels."
+																				description_kind: "plain"
+																				optional:         true
+																			}
+																		}
+																		description:      "Likelihood adjustment to apply to all matching findings."
+																		description_kind: "plain"
+																	}
+																	min_items: 1
+																	max_items: 1
+																}
+																proximity: {
+																	nesting_mode: "list"
+																	block: {
+																		attributes: {
+																			window_after: {
+																				type:             "number"
+																				description:      "Number of characters after the finding to consider."
+																				description_kind: "plain"
+																				optional:         true
+																			}
+																			window_before: {
+																				type:             "number"
+																				description:      "Number of characters before the finding to consider."
+																				description_kind: "plain"
+																				optional:         true
+																			}
+																		}
+																		description: """
+																						Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+																						exceed 1000 characters.
+																						"""
+																		description_kind: "plain"
+																	}
+																	min_items: 1
+																	max_items: 1
+																}
+															}
+															description:      "Hotword-based detection rule."
+															description_kind: "plain"
+														}
+														max_items: 1
+													}
+													description: """
+																Set of detection rules to apply to all findings of this CustomInfoType. Rules are applied in order
+																that they are specified. Only supported for the dictionary, regex, and storedType CustomInfoTypes.
+																"""
+													description_kind: "plain"
+												}
+											}
 											dictionary: {
 												nesting_mode: "list"
 												block: {
@@ -141158,6 +141842,65 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 														}
 													}
 													description:      "Dictionary which defines the rule."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											file_label_info_type: {
+												nesting_mode: "list"
+												block: {
+													block_types: {
+														google_drive_label: {
+															nesting_mode: "list"
+															block: {
+																attributes: label_id: {
+																	type:             "string"
+																	description:      "The label ID of the Google Drive label."
+																	description_kind: "plain"
+																	required:         true
+																}
+																block_types: label_fields_to_match: {
+																	nesting_mode: "list"
+																	block: {
+																		attributes: {
+																			id: {
+																				type:             "string"
+																				description:      "The identifier of the Label Field."
+																				description_kind: "plain"
+																				required:         true
+																			}
+																			value: {
+																				type:             "string"
+																				description:      "The value of the Label Field to match."
+																				description_kind: "plain"
+																				required:         true
+																			}
+																		}
+																		description:      "The field values of the Google Drive label to match."
+																		description_kind: "plain"
+																	}
+																}
+																description:      "Google Drive labels published by Google."
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
+														sensitivity_label: {
+															nesting_mode: "list"
+															block: {
+																attributes: guid: {
+																	type:             "string"
+																	description:      "The GUID of the sensitivity label."
+																	description_kind: "plain"
+																	required:         true
+																}
+																description:      "Sensitivity labels published by Microsoft."
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
+													}
+													description:      "Configuration for a custom infoType that detects file labels."
 													description_kind: "plain"
 												}
 												max_items: 1
@@ -141207,6 +141950,28 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												min_items: 1
 												max_items: 1
 											}
+											metadata_key_value_expression: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														key_regex: {
+															type:             "string"
+															description:      "The regular expression for the key."
+															description_kind: "plain"
+															required:         true
+														}
+														value_regex: {
+															type:             "string"
+															description:      "The regular expression for the value."
+															description_kind: "plain"
+															required:         true
+														}
+													}
+													description:      "Configuration for a custom infoType that detects key-value pairs in the metadata matching the specified regular expressions."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
 											regex: {
 												nesting_mode: "list"
 												block: {
@@ -141249,14 +142014,22 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											stored_type: {
 												nesting_mode: "list"
 												block: {
-													attributes: name: {
-														type: "string"
-														description: """
+													attributes: {
+														create_time: {
+															type:             "string"
+															description:      "Output only. Timestamp indicating when the version of the StoredInfoType used for inspection was created."
+															description_kind: "plain"
+															computed:         true
+														}
+														name: {
+															type: "string"
+															description: """
 																		Resource name of the requested StoredInfoType, for example 'organizations/433245324/storedInfoTypes/432452342'
 																		or 'projects/project-id/storedInfoTypes/432452342'.
 																		"""
-														description_kind: "plain"
-														required:         true
+															description_kind: "plain"
+															required:         true
+														}
 													}
 													description:      "A reference to a StoredInfoType to use with scanning."
 													description_kind: "plain"
@@ -141427,6 +142200,20 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 														optional:         true
 													}
 												}
+												block_types: sensitivity_score: {
+													nesting_mode: "list"
+													block: {
+														attributes: score: {
+															type:             "string"
+															description:      "The sensitivity score applied to the resource. Possible values: [\"SENSITIVITY_LOW\", \"SENSITIVITY_MODERATE\", \"SENSITIVITY_HIGH\"]"
+															description_kind: "plain"
+															required:         true
+														}
+														description:      "Optional custom sensitivity for this InfoType. This only applies to data profiling."
+														description_kind: "plain"
+													}
+													max_items: 1
+												}
 												description: """
 																Type of information the likeliness threshold applies to. Only one likelihood per info_type should be provided.
 																If InfoTypeLikelihood does not have an info_type, the configuration fails.
@@ -141490,12 +142277,181 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												nesting_mode: "list"
 												block: {
 													block_types: {
+														adjustment_rule: {
+															nesting_mode: "list"
+															block: {
+																block_types: {
+																	adjust_by_image_findings: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: min_likelihood: {
+																				type:             "string"
+																				description:      "Minimum likelihood of the adjustByImageFindings infoTypes finding. Possible values: [\"VERY_UNLIKELY\", \"UNLIKELY\", \"POSSIBLE\", \"LIKELY\", \"VERY_LIKELY\"]"
+																				description_kind: "plain"
+																				required:         true
+																			}
+																			block_types: {
+																				image_containment_type: {
+																					nesting_mode: "list"
+																					block: {
+																						block_types: {
+																							encloses: {
+																								nesting_mode: "list"
+																								block: {
+																									description:      "Defines a condition where one bounding box encloses another."
+																									description_kind: "plain"
+																								}
+																								max_items: 1
+																							}
+																							fully_inside: {
+																								nesting_mode: "list"
+																								block: {
+																									description:      "Defines a condition where one bounding box is fully inside another."
+																									description_kind: "plain"
+																								}
+																								max_items: 1
+																							}
+																							overlaps: {
+																								nesting_mode: "list"
+																								block: {
+																									description:      "Defines a condition for overlapping bounding boxes."
+																									description_kind: "plain"
+																								}
+																								max_items: 1
+																							}
+																						}
+																						description:      "Specifies the required spatial relationship between the bounding boxes of the target finding and the context infoType findings."
+																						description_kind: "plain"
+																					}
+																					max_items: 1
+																				}
+																				info_types: {
+																					nesting_mode: "list"
+																					block: {
+																						attributes: {
+																							name: {
+																								type:             "string"
+																								description:      "Name of the information type."
+																								description_kind: "plain"
+																								required:         true
+																							}
+																							version: {
+																								type:             "string"
+																								description:      "Version name for this InfoType."
+																								description_kind: "plain"
+																								optional:         true
+																							}
+																						}
+																						block_types: sensitivity_score: {
+																							nesting_mode: "list"
+																							block: {
+																								attributes: score: {
+																									type:             "string"
+																									description:      "The sensitivity score applied to the resource. Possible values: [\"SENSITIVITY_LOW\", \"SENSITIVITY_MODERATE\", \"SENSITIVITY_HIGH\"]"
+																									description_kind: "plain"
+																									required:         true
+																								}
+																								description:      "Optional custom sensitivity for this InfoType."
+																								description_kind: "plain"
+																							}
+																							max_items: 1
+																						}
+																						description:      "A list of image-supported infoTypes to be used as context for the adjustment rule."
+																						description_kind: "plain"
+																					}
+																					min_items: 1
+																				}
+																			}
+																			description:      "AdjustmentRule condition for image findings."
+																			description_kind: "plain"
+																		}
+																		max_items: 1
+																	}
+																	adjust_by_matching_info_types: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				matching_type: {
+																					type:             "string"
+																					description:      "How the adjustment rule is applied. Possible values: [\"MATCHING_TYPE_FULL_MATCH\", \"MATCHING_TYPE_PARTIAL_MATCH\", \"MATCHING_TYPE_INVERSE_MATCH\"]"
+																					description_kind: "plain"
+																					required:         true
+																				}
+																				min_likelihood: {
+																					type:             "string"
+																					description:      "Minimum likelihood of the adjustByMatchingInfoTypes infoTypes finding. Possible values: [\"VERY_UNLIKELY\", \"UNLIKELY\", \"POSSIBLE\", \"LIKELY\", \"VERY_LIKELY\"]"
+																					description_kind: "plain"
+																					required:         true
+																				}
+																			}
+																			block_types: info_types: {
+																				nesting_mode: "list"
+																				block: {
+																					attributes: {
+																						name: {
+																							type:             "string"
+																							description:      "Name of the information type."
+																							description_kind: "plain"
+																							required:         true
+																						}
+																						version: {
+																							type:             "string"
+																							description:      "Version name for this InfoType."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																					}
+																					block_types: sensitivity_score: {
+																						nesting_mode: "list"
+																						block: {
+																							attributes: score: {
+																								type:             "string"
+																								description:      "The sensitivity score applied to the resource. Possible values: [\"SENSITIVITY_LOW\", \"SENSITIVITY_MODERATE\", \"SENSITIVITY_HIGH\"]"
+																								description_kind: "plain"
+																								required:         true
+																							}
+																							description:      "Optional custom sensitivity for this InfoType."
+																							description_kind: "plain"
+																						}
+																						max_items: 1
+																					}
+																					description:      "Sensitive Data Protection adjusts the likelihood of a finding if that finding also matches one of these infoTypes."
+																					description_kind: "plain"
+																				}
+																				min_items: 1
+																			}
+																			description:      "AdjustmentRule condition for matching infoTypes."
+																			description_kind: "plain"
+																		}
+																		max_items: 1
+																	}
+																	likelihood_adjustment: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: fixed_likelihood: {
+																				type:             "string"
+																				description:      "Set the likelihood of a finding to a fixed value. Possible values: [\"VERY_UNLIKELY\", \"UNLIKELY\", \"POSSIBLE\", \"LIKELY\", \"VERY_LIKELY\"]"
+																				description_kind: "plain"
+																				required:         true
+																			}
+																			description:      "Likelihood adjustment to apply to all matching findings."
+																			description_kind: "plain"
+																		}
+																		min_items: 1
+																		max_items: 1
+																	}
+																}
+																description:      "Rule that specifies conditions when a certain infoType's finding details should be adjusted."
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
 														exclusion_rule: {
 															nesting_mode: "list"
 															block: {
 																attributes: matching_type: {
 																	type:             "string"
-																	description:      "How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType Possible values: [\"MATCHING_TYPE_FULL_MATCH\", \"MATCHING_TYPE_PARTIAL_MATCH\", \"MATCHING_TYPE_INVERSE_MATCH\"]"
+																	description:      "How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType Possible values: [\"MATCHING_TYPE_FULL_MATCH\", \"MATCHING_TYPE_PARTIAL_MATCH\", \"MATCHING_TYPE_INVERSE_MATCH\", \"MATCHING_TYPE_RULE_SPECIFIC\"]"
 																	description_kind: "plain"
 																	required:         true
 																}
@@ -141608,6 +142564,86 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																						Drop if the hotword rule is contained in the proximate context.
 																						For tabular data, the context includes the column name.
 																						"""
+																			description_kind: "plain"
+																		}
+																		max_items: 1
+																	}
+																	exclude_by_image_findings: {
+																		nesting_mode: "list"
+																		block: {
+																			block_types: {
+																				image_containment_type: {
+																					nesting_mode: "list"
+																					block: {
+																						block_types: {
+																							encloses: {
+																								nesting_mode: "list"
+																								block: {
+																									description:      "Defines a condition where one bounding box encloses another."
+																									description_kind: "plain"
+																								}
+																								max_items: 1
+																							}
+																							fully_inside: {
+																								nesting_mode: "list"
+																								block: {
+																									description:      "Defines a condition where one bounding box is fully inside another."
+																									description_kind: "plain"
+																								}
+																								max_items: 1
+																							}
+																							overlaps: {
+																								nesting_mode: "list"
+																								block: {
+																									description:      "Defines a condition for overlapping bounding boxes."
+																									description_kind: "plain"
+																								}
+																								max_items: 1
+																							}
+																						}
+																						description:      "Specifies the required spatial relationship between the bounding boxes of the target finding and the context infoType findings."
+																						description_kind: "plain"
+																					}
+																					max_items: 1
+																				}
+																				info_types: {
+																					nesting_mode: "list"
+																					block: {
+																						attributes: {
+																							name: {
+																								type:             "string"
+																								description:      "Name of the information type."
+																								description_kind: "plain"
+																								required:         true
+																							}
+																							version: {
+																								type:             "string"
+																								description:      "Version name for this InfoType."
+																								description_kind: "plain"
+																								optional:         true
+																							}
+																						}
+																						block_types: sensitivity_score: {
+																							nesting_mode: "list"
+																							block: {
+																								attributes: score: {
+																									type:             "string"
+																									description:      "The sensitivity score applied to the resource. Possible values: [\"SENSITIVITY_LOW\", \"SENSITIVITY_MODERATE\", \"SENSITIVITY_HIGH\"]"
+																									description_kind: "plain"
+																									required:         true
+																								}
+																								description:      "Optional custom sensitivity for this InfoType."
+																								description_kind: "plain"
+																							}
+																							max_items: 1
+																						}
+																						description:      "A list of image-supported infoTypes to be used as context for the exclusion rule."
+																						description_kind: "plain"
+																					}
+																					min_items: 1
+																				}
+																			}
+																			description:      "The rule to exclude image findings based on spatial relationships with other image findings."
 																			description_kind: "plain"
 																		}
 																		max_items: 1
@@ -251834,37 +252870,76 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									optional:         true
 								}
 							}
-							block_types: dns_peering_config: {
-								nesting_mode: "list"
-								block: {
-									attributes: {
-										domain: {
-											type: "string"
-											description: """
+							block_types: {
+								dns_peering_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											domain: {
+												type: "string"
+												description: """
 															The domain name to peer for DNS resolution. Must be a fully
 															qualified domain name ending with a dot (for example, 'example.com.').
 															"""
-											description_kind: "plain"
-											required:         true
-										}
-										target_network: {
-											type: "string"
-											description: """
+												description_kind: "plain"
+												deprecated:       true
+												optional:         true
+											}
+											domains: {
+												type: ["list", "string"]
+												description: """
+															The list of domain names to peer for DNS resolution. Each entry
+															must be a fully qualified domain name ending with a dot
+															(for example, 'example.com.'). At least one domain must be
+															specified between 'domain' and 'domains'.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											target_network: {
+												type: "string"
+												description: """
 															The URI of the target VPC network for DNS peering. Must be of the
 															form 'projects/{project}/global/networks/{network}'.
 															"""
-											description_kind: "plain"
-											required:         true
+												description_kind: "plain"
+												required:         true
+											}
 										}
-									}
-									description: """
+										description: """
 													DNS peering configuration for the AgentConnectivityTemplate.
 													When set, the gateway will resolve queries for the configured
-													'domain' via Cloud DNS in the specified 'targetNetwork'.
+													'domains' via Cloud DNS in the specified 'targetNetwork'.
 													"""
-									description_kind: "plain"
+										description_kind: "plain"
+									}
+									max_items: 1
 								}
-								max_items: 1
+								tls_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											additional_roots: {
+												type:             "string"
+												description:      "Defines whether additional roots should be trusted. Possible values: [\"NO_ADDITIONAL_ROOTS\", \"PUBLICLY_TRUSTED_ROOTS\"]"
+												description_kind: "plain"
+												required:         true
+											}
+											trust_config: {
+												type: "string"
+												description: """
+															The trust config resource name.
+															Format: projects/{project}/locations/{location}/trustConfigs/{trust_config}
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "The TLS configuration for the egress traffic."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
 							}
 							description:      "Configuration for egress network traffic."
 							description_kind: "plain"
@@ -276087,6 +277162,13 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						computed:         true
 					}
+					data_crc32c: {
+						type:             "string"
+						description:      "The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					deletion_policy: {
 						type: "string"
 						description: """
@@ -276355,6 +277437,13 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type:             "string"
 						description:      "The time at which the Regional Parameter Version was created."
 						description_kind: "plain"
+						computed:         true
+					}
+					data_crc32c: {
+						type:             "string"
+						description:      "The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum."
+						description_kind: "plain"
+						optional:         true
 						computed:         true
 					}
 					deletion_policy: {
@@ -285388,6 +286477,135 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_resource_manager_capability_config: {
+			version: 0
+			block: {
+				attributes: {
+					capability_config_id: {
+						type: "string"
+						description: """
+									User-specified identifier of the capability config. Must be 6 to 30 characters,
+									and contain only lowercase letters, numbers, and hyphens.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The time when the capability config was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "User-defined name for the capability config. Must be between 4 and 30 characters."
+						description_kind: "plain"
+						optional:         true
+					}
+					etag: {
+						type:             "string"
+						description:      "An opaque tag indicating the current version of the capability config, used for concurrency control."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					management_project: {
+						type: "string"
+						description: """
+									The management project for the capability config. If unspecified, a project will be created automatically.
+									Must be specified for project-scoped capability config.
+									Format: 'projects/{project_number}'.
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									The identifier for the capability config.
+									Format: '{parent}/capabilityConfigs/{capability_config_id}'.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					parent: {
+						type: "string"
+						description: """
+									The parent resource in which to create the capability config.
+									Format: 'folders/{folder_id}', 'organizations/{organization_id}', or 'projects/{project_number}'.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					state: {
+						type:             "string"
+						description:      "The state of the capability config."
+						description_kind: "plain"
+						computed:         true
+					}
+					types: {
+						type: ["set", "string"]
+						description: """
+									The capabilities enabled for the resource and its sub-tree.
+									Possible values: "AGENT_MANAGEMENT".
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "The time when the capability config was last updated."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_resource_manager_lien: {
 			version: 0
 			block: {
@@ -291080,8 +292298,21 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type:             "string"
 						description:      "The secret data. Must be no larger than 64KiB."
 						description_kind: "plain"
-						required:         true
+						optional:         true
 						sensitive:        true
+					}
+					secret_data_wo: {
+						type:             "string"
+						description:      "The secret data. Must be no larger than 64KiB."
+						description_kind: "plain"
+						optional:         true
+						write_only:       true
+					}
+					secret_data_wo_version: {
+						type:             "string"
+						description:      "Triggers update of 'secret_data_wo' write-only. Increment this value when an update to 'secret_data_wo' is needed. For more info see [updating write-only arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)"
+						description_kind: "plain"
+						optional:         true
 					}
 					version: {
 						type:             "string"
@@ -297007,6 +298238,13 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						computed:         true
 					}
+					encryption_confidential_mode: {
+						type:             "bool"
+						description:      "Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on Zonal C4A PG and MySQL instances."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					encryption_key_name: {
 						type:             "string"
 						description_kind: "plain"
@@ -297504,7 +298742,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								}
 								disk_size: {
 									type:             "number"
-									description:      "The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED."
+									description:      "The size of data disk, in GB. The size of a running instance can be increased, or reduced when disk_autoresize is disabled (this triggers an in-place storage shrink, which restarts the instance). The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED."
 									description_kind: "plain"
 									optional:         true
 									computed:         true
@@ -301247,6 +302485,18 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					service_agent: {
+						type:             "string"
+						description:      "The email address of the service agent associated with the SFTP server."
+						description_kind: "plain"
+						computed:         true
+					}
+					state: {
+						type:             "string"
+						description:      "The operational lifecycle state of the SFTP server."
+						description_kind: "plain"
+						computed:         true
+					}
 					terraform_labels: {
 						type: ["map", "string"]
 						description: """
@@ -301261,11 +302511,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					external_config: {
 						nesting_mode: "list"
 						block: {
-							attributes: allowed_cidr_blocks: {
-								type: ["set", "string"]
-								description:      "A list of allowed IPv4 or IPv6 CIDR block ranges that can connect to this server."
-								description_kind: "plain"
-								optional:         true
+							attributes: {
+								allowed_cidr_blocks: {
+									type: ["set", "string"]
+									description:      "A list of allowed IPv4 or IPv6 CIDR block ranges that can connect to this server."
+									description_kind: "plain"
+									optional:         true
+								}
+								ip_address: {
+									type:             "string"
+									description:      "The public IP address of the external load balancer for the SFTP server."
+									description_kind: "plain"
+									computed:         true
+								}
 							}
 							description:      "Configuration for external access type SFTP servers."
 							description_kind: "plain"
@@ -301275,6 +302533,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					internal_config: {
 						nesting_mode: "list"
 						block: {
+							attributes: service_attachment: {
+								type:             "string"
+								description:      "The Private Service Connect service attachment URI for the SFTP server."
+								description_kind: "plain"
+								computed:         true
+							}
 							block_types: {
 								consumer_accept_list: {
 									nesting_mode: "set"
@@ -301410,6 +302674,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					state: {
+						type:             "string"
+						description:      "The provisioning status of the user."
+						description_kind: "plain"
+						computed:         true
+					}
 					terraform_labels: {
 						type: ["map", "string"]
 						description: """
@@ -301424,6 +302694,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description:      "The unique ID for the user."
 						description_kind: "plain"
 						required:         true
+					}
+					username: {
+						type:             "string"
+						description:      "The SFTP login username for the user."
+						description_kind: "plain"
+						computed:         true
 					}
 				}
 				block_types: {
@@ -301509,7 +302785,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							description:      "The credentials associated with the user."
 							description_kind: "plain"
 						}
-						max_items: 1
+						max_items: 10
 					}
 				}
 				description_kind: "plain"
@@ -313606,6 +314882,187 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_vertex_ai_semantic_governance_policy: {
+			version: 0
+			block: {
+				attributes: {
+					agent: {
+						type:             "string"
+						description:      "The name of the agent in Agent Registry that is affected by this policy."
+						description_kind: "plain"
+						required:         true
+					}
+					agent_identity: {
+						type: "string"
+						description: """
+									Represents the principal of the agent, used by the Policy Decision Point (PDP) for governance checks.
+									For more information, see https://docs.cloud.google.com/agent-builder/agent-engine/agent-identity.
+									Format: 'principal://TRUST_DOMAIN/NAMESPACE/AGENT_NAME'
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The time the SemanticGovernancePolicy was created, in RFC3339 UTC \"Zulu\" format."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The description of the SemanticGovernancePolicy."
+						description_kind: "plain"
+						optional:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "The user-defined name of the SemanticGovernancePolicy."
+						description_kind: "plain"
+						optional:         true
+					}
+					etag: {
+						type:             "string"
+						description:      "Used to perform consistent read-modify-write transactions."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									The resource name of the SemanticGovernancePolicy, in the form
+									'projects/{project}/locations/{location}/semanticGovernancePolicies/{semantic_governance_policy}'.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					natural_language_constraint: {
+						type:             "string"
+						description:      "The natural language constraint of the SemanticGovernancePolicy."
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region of the SemanticGovernancePolicy, e.g. 'us-central1'."
+						description_kind: "plain"
+						optional:         true
+					}
+					semantic_governance_policy_id: {
+						type: "string"
+						description: """
+									The ID of the SemanticGovernancePolicy, which will become the final component of the resource name.
+									This value may be up to 63 characters, and valid characters are [a-z0-9-]. The first character cannot be a number or hyphen. The last character must be a letter or a number.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "The time the SemanticGovernancePolicy was last updated, in RFC3339 UTC \"Zulu\" format."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					agent_response_customization: {
+						nesting_mode: "list"
+						block: {
+							attributes: denial_message: {
+								type: "string"
+								description: """
+												Custom message shown to the end user when the policy check results in a denial. Use this
+												to explain the rationale to the user. Max 1000 characters.
+												"""
+								description_kind: "plain"
+								optional:         true
+							}
+							description:      "Settings for customizing the agent's response to end users when this policy is evaluated."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					mcp_tools: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								mcp_server: {
+									type: "string"
+									description: """
+												The resource name of the McpServer in Agent Registry that is affected by this policy.
+												Format: 'projects/{project}/locations/{location}/mcpServers/{mcpServer}'
+												"""
+									description_kind: "plain"
+									required:         true
+								}
+								tools: {
+									type: ["set", "string"]
+									description: """
+												The resource names of the McpTools used by the Agent that is affected by this policy.
+												At least one tool must be listed.
+												"""
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description:      "The McpTools that are affected by this policy."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
 					}
 				}
 				description_kind: "plain"
@@ -327065,6 +328522,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						computed:         true
 					}
+					ssh_enabled: {
+						type:             "bool"
+						description:      "Enables SSH access to the Service."
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["map", "string"]
 						description: """
@@ -327195,8 +328658,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								}]]
 							}]]
 							scaling: ["list", ["object", {
-								max_instance_count: "number"
-								min_instance_count: "number"
+								concurrency_utilization: "number"
+								cpu_utilization:         "number"
+								max_instance_count:      "number"
+								min_instance_count:      "number"
 							}]]
 							service_account:  "string"
 							session_affinity: "bool"
@@ -330576,11 +332041,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 					disk_encryption_key: {
 						type: ["list", ["object", {
-							kms_key_self_link:       "string"
-							kms_key_service_account: "string"
-							raw_key:                 "string"
-							rsa_encrypted_key:       "string"
-							sha256:                  "string"
+							kms_key_self_link:            "string"
+							kms_key_service_account:      "string"
+							raw_key:                      "string"
+							raw_key_wo:                   "string"
+							raw_key_wo_version:           "string"
+							rsa_encrypted_key:            "string"
+							rsa_encrypted_key_wo:         "string"
+							rsa_encrypted_key_wo_version: "string"
+							sha256:                       "string"
 						}]]
 						description: """
 									Encrypts the disk using a customer-supplied encryption key.
@@ -335428,10 +336897,14 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 					disk_encryption_key: {
 						type: ["list", ["object", {
-							kms_key_name:      "string"
-							raw_key:           "string"
-							rsa_encrypted_key: "string"
-							sha256:            "string"
+							kms_key_name:                 "string"
+							raw_key:                      "string"
+							raw_key_wo:                   "string"
+							raw_key_wo_version:           "string"
+							rsa_encrypted_key:            "string"
+							rsa_encrypted_key_wo:         "string"
+							rsa_encrypted_key_wo_version: "string"
+							sha256:                       "string"
 						}]]
 						description: """
 									Encrypts the disk using a customer-supplied encryption key.
@@ -339072,6 +340545,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					nat_ips_per_endpoint: {
+						type:             "number"
+						description:      "The number of NAT IPs allocated per connected endpoint."
+						description_kind: "plain"
+						computed:         true
+					}
 					nat_subnets: {
 						type: ["set", "string"]
 						description:      "An array of subnets that is provided for NAT in this service attachment."
@@ -339208,6 +340687,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							enable_proxy_protocol: "bool"
 							fingerprint:           "string"
 							name:                  "string"
+							nat_ips_per_endpoint:  "number"
 							nat_subnets: ["set", "string"]
 							project:                     "string"
 							propagated_connection_limit: "number"
@@ -350723,6 +352203,243 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_network_services_gateway: {
+			version: 0
+			block: {
+				attributes: {
+					addresses: {
+						type: ["list", "string"]
+						description: """
+									Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
+									When no address is provided, an IP from the subnetwork is allocated.
+
+									This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+									Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					all_ports: {
+						type: "bool"
+						description: """
+									Configures this gateway to \u200blisten on all ports.
+									By enabling the wildcard ports feature on\u200b \u200byour Secure Web Proxy Gateway,
+									it will accept traffic destined for any port (1-65535) on its\u200b assigned IP address.\u200b
+									This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					allow_global_access: {
+						type: "bool"
+						description: """
+									Optional. If true, the gateway will allow traffic from clients outside
+									of the region where the gateway is located.
+									This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					certificate_urls: {
+						type: ["list", "string"]
+						description: """
+									A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+									This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The timestamp when the resource was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					delete_swg_autogen_router_on_destroy: {
+						type: "bool"
+						description: """
+									When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+									If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "A free-text description of the resource. Max length 1024 characters."
+						description_kind: "plain"
+						computed:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					envoy_headers: {
+						type: "string"
+						description: """
+									Determines if envoy will insert internal debug headers into upstream requests.
+									Other Envoy headers may still be injected.
+									By default, envoy will not insert any debug headers. Possible values: ["NONE", "DEBUG_HEADERS"]
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					gateway_security_policy: {
+						type: "string"
+						description: """
+									A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+									For example: 'projects/*/locations/*/gatewaySecurityPolicies/swg-policy'.
+									This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					ip_version: {
+						type:             "string"
+						description:      "The IP Version that will be used by this gateway. Possible values: [\"IPV4\", \"IPV6\"]"
+						description_kind: "plain"
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									Set of label tags associated with the Gateway resource.
+
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					location: {
+						type: "string"
+						description: """
+									The location of the gateway.
+									The default value is 'global'.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the Gateway resource."
+						description_kind: "plain"
+						required:         true
+					}
+					network: {
+						type: "string"
+						description: """
+									The relative resource name identifying the VPC network that is using this configuration.
+									For example: 'projects/*/global/networks/network-1'.
+
+									Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					ports: {
+						type: ["list", "number"]
+						description: """
+									One or more port numbers (1-65535), on which the Gateway will receive traffic.
+									The proxy binds to the specified ports.
+									 Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					routing_mode: {
+						type:             "string"
+						description:      "The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY. Possible values: [\"NEXT_HOP_ROUTING_MODE\", \"EXPLICIT_ROUTING_MODE\"]"
+						description_kind: "plain"
+						computed:         true
+					}
+					scope: {
+						type: "string"
+						description: """
+									Immutable. Scope determines how configuration across multiple Gateway instances are merged.
+									The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
+
+									Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					self_link: {
+						type:             "string"
+						description:      "Server-defined URL of this resource."
+						description_kind: "plain"
+						computed:         true
+					}
+					server_tls_policy: {
+						type:             "string"
+						description:      "A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled."
+						description_kind: "plain"
+						computed:         true
+					}
+					subnetwork: {
+						type: "string"
+						description: """
+									The relative resource name identifying the subnetwork in which this SWG is allocated.
+									For example: projects/*/regions/us-central1/subnetworks/network-1.
+
+									Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					type: {
+						type:             "string"
+						description:      "Immutable. The type of the customer managed gateway. Possible values: [\"OPEN_MESH\", \"SECURE_WEB_GATEWAY\"]"
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "The timestamp when the resource was updated."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_observability_folder_settings: {
 			version: 0
 			block: {
@@ -358406,6 +360123,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						computed:         true
 					}
+					encryption_confidential_mode: {
+						type:             "bool"
+						description:      "Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on Zonal C4A PG and MySQL instances."
+						description_kind: "plain"
+						computed:         true
+					}
 					encryption_key_name: {
 						type:             "string"
 						description_kind: "plain"
@@ -358856,6 +360579,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								dns_scope:       "string"
 								name:            "string"
 							}]]
+							encryption_confidential_mode:               "bool"
 							encryption_key_name:                        "string"
 							enforce_new_sql_network_architecture:       "bool"
 							final_backup_description:                   "string"
@@ -359978,6 +361702,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							name:          "string"
 							self_link:     "string"
 							storage_class: "string"
+							updated:       "string"
 						}]]
 						description_kind: "plain"
 						computed:         true
@@ -365805,6 +367530,29 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_project_iam_binding: {
+			version: 0
+			block: {
+				attributes: {
+					member: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_project_iam_custom_role: {
 			version: 0
 			block: {
@@ -365959,6 +367707,24 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						optional:         true
 					}
 					secret_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_secret_manager_secret_version: {
+			version: 0
+			block: {
+				attributes: {
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					secret: {
 						type:             "string"
 						description_kind: "plain"
 						required:         true
@@ -380481,6 +382247,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_resource_manager_capability_config: {
+			version: 1
+			attributes: {
+				capability_config_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				parent: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		google_resource_manager_lien: {
 			version: 1
 			attributes: {
@@ -382146,6 +383925,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					optional_for_import: true
 				}
 				role: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_vertex_ai_semantic_governance_policy: {
+			version: 1
+			attributes: {
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+				semantic_governance_policy_id: {
 					type:                "string"
 					required_for_import: true
 				}

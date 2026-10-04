@@ -14,6 +14,7 @@ google_agentic_applications_analyst_agent_persona: {
 		skills?: matchN(1, [#skills, [...#skills]])
 		tables?: matchN(1, [#tables, [...#tables]])
 		timeouts?: #timeouts
+		web_search_config?: matchN(1, [#web_search_config, list.MaxItems(1) & [...#web_search_config]])
 
 		// Id of the requesting object
 		// If auto-generating Id server-side, remove this field and
@@ -51,6 +52,12 @@ google_agentic_applications_analyst_agent_persona: {
 		// Resource ID segment making up resource 'name'. It identifies the resource
 		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
+
+		// The math rendering mode selected for this persona.
+		// Possible values:
+		// MATH_RENDERING_MODE_LATEX
+		// MATH_RENDERING_MODE_PLAIN_TEXT
+		math_rendering_mode?: string
 
 		// The description of the persona review, used by the model.
 		model_description?: string
@@ -207,6 +214,12 @@ google_agentic_applications_analyst_agent_persona: {
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	#web_search_config: close({
+		// List of domains to be excluded from Google Search / Enterprise Web Search
+		// grounding.
+		excluded_domains?: [...string]
 	})
 
 	_#defs: "/$defs/artifact_examples/$defs/resource": close({

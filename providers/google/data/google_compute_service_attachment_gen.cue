@@ -67,6 +67,9 @@ google_compute_service_attachment: {
 		// except the last character, which cannot be a dash.
 		name!: string
 
+		// The number of NAT IPs allocated per connected endpoint.
+		nat_ips_per_endpoint?: number
+
 		// An array of subnets that is provided for NAT in this service attachment.
 		nat_subnets?: [...string]
 		project?: string

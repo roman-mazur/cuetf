@@ -201,10 +201,30 @@ google_compute_region_disk: {
 		// RFC 4648 base64 to either encrypt or decrypt this resource.
 		raw_key?: string
 
+		// Specifies a 256-bit customer-supplied encryption key, encoded in
+		// RFC 4648 base64 to either encrypt or decrypt this resource.
+		raw_key_wo?: string
+
+		// Triggers update of 'raw_key_wo' write-only. Increment this value when an
+		// update to 'raw_key_wo' is needed. For more info see [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		raw_key_wo_version?: string
+
 		// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
 		// customer-supplied encryption key to either encrypt or decrypt
 		// this resource. You can provide either the rawKey or the rsaEncryptedKey.
 		rsa_encrypted_key?: string
+
+		// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+		// customer-supplied encryption key to either encrypt or decrypt
+		// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+		rsa_encrypted_key_wo?: string
+
+		// Triggers update of 'rsa_encrypted_key_wo' write-only. Increment this value
+		// when an update to 'rsa_encrypted_key_wo' is needed. For more info see
+		// [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		rsa_encrypted_key_wo_version?: string
 
 		// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
 		// encryption key that protects this resource.

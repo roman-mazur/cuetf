@@ -11,6 +11,7 @@ google_storage_bucket_objects: {
 			name?:          string
 			self_link?:     string
 			storage_class?: string
+			updated?:       string
 		})]
 		id?:         string
 		match_glob?: string

@@ -41,7 +41,15 @@ google_secret_manager_regional_secret_version: {
 		secret!: string
 
 		// The secret data. Must be no larger than 64KiB.
-		secret_data!: string
+		secret_data?: string
+
+		// The secret data. Must be no larger than 64KiB.
+		secret_data_wo?: string
+
+		// Triggers update of 'secret_data_wo' write-only. Increment this value when an
+		// update to 'secret_data_wo' is needed. For more info see [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		secret_data_wo_version?: string
 
 		// The version of the Regional Secret.
 		version?: string
