@@ -20832,7 +20832,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 16384
             }
@@ -21594,7 +21594,7 @@ InstanceTypes: [{
             Count:            8
             LogicalGpuCount:  8
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21811,7 +21811,7 @@ InstanceTypes: [{
             Count:            1
             LogicalGpuCount:  1
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 22888
             }
@@ -21959,7 +21959,7 @@ InstanceTypes: [{
         DefaultVCpus:          48
         DefaultCores:          24
         DefaultThreadsPerCore: 2
-        ValidCores: [1, 2, 3, 6, 9, 12, 15, 18, 21, 24]
+        ValidCores: [3, 6, 9, 12, 15, 18, 21, 24]
         ValidThreadsPerCore: [1, 2]
     }
     MemoryInfo: {
@@ -22072,7 +22072,7 @@ InstanceTypes: [{
         DefaultVCpus:          64
         DefaultCores:          32
         DefaultThreadsPerCore: 2
-        ValidCores: [1, 2, 3, 4, 8, 12, 16, 20, 24, 28, 32]
+        ValidCores: [4, 8, 12, 16, 20, 24, 28, 32]
         ValidThreadsPerCore: [1, 2]
     }
     MemoryInfo: {
@@ -22185,7 +22185,7 @@ InstanceTypes: [{
         DefaultVCpus:          96
         DefaultCores:          48
         DefaultThreadsPerCore: 2
-        ValidCores: [1, 2, 3, 4, 5, 6, 12, 18, 24, 30, 36, 42, 48]
+        ValidCores: [6, 12, 18, 24, 30, 36, 42, 48]
         ValidThreadsPerCore: [1, 2]
     }
     MemoryInfo: {
@@ -22408,7 +22408,7 @@ InstanceTypes: [{
         DefaultVCpus:          192
         DefaultCores:          96
         DefaultThreadsPerCore: 2
-        ValidCores: [4, 6, 8, 10, 12, 24, 36, 48, 60, 72, 84, 96]
+        ValidCores: [12, 24, 36, 48, 60, 72, 84, 96]
         ValidThreadsPerCore: [1, 2]
     }
     MemoryInfo: {
@@ -22631,7 +22631,7 @@ InstanceTypes: [{
         DefaultVCpus:          32
         DefaultCores:          16
         DefaultThreadsPerCore: 2
-        ValidCores: [1, 2, 4, 6, 8, 10, 12, 14, 16]
+        ValidCores: [2, 4, 6, 8, 10, 12, 14, 16]
         ValidThreadsPerCore: [1, 2]
     }
     MemoryInfo: {
@@ -23253,7 +23253,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.125
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 2861
             }
@@ -23487,7 +23487,7 @@ InstanceTypes: [{
             Count:            4
             LogicalGpuCount:  4
             GpuPartitionSize: 1.0
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 98304
             }
@@ -24108,7 +24108,7 @@ InstanceTypes: [{
         DefaultVCpus:          32
         DefaultCores:          16
         DefaultThreadsPerCore: 2
-        ValidCores: [1, 2, 4, 6, 8, 10, 12, 14, 16]
+        ValidCores: [2, 4, 6, 8, 10, 12, 14, 16]
         ValidThreadsPerCore: [1, 2]
     }
     MemoryInfo: {
@@ -24290,7 +24290,7 @@ InstanceTypes: [{
             Count:            0
             LogicalGpuCount:  1
             GpuPartitionSize: 0.5
-            Workloads: ["ml-ai", "graphics"]
+            Workloads: ["graphics", "ml-ai"]
             MemoryInfo: {
                 SizeInMiB: 11444
             }
@@ -27692,7 +27692,7 @@ InstanceTypes: [{
         AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
-        NetworkPerformance:       "Up to 50 Gigabit"
+        NetworkPerformance:       "50 Gigabit"
         MaximumNetworkInterfaces: 8
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
@@ -27700,7 +27700,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 50 Gigabit"
             MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          25.0
+            BaselineBandwidthInGbps:          50.0
             PeakBandwidthInGbps:              50.0
             DefaultEnaQueueCountPerInterface: 16
             InterfaceTypes: ["interface"]
@@ -27789,7 +27789,7 @@ InstanceTypes: [{
         AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
-        NetworkPerformance:       "Up to 75 Gigabit"
+        NetworkPerformance:       "75 Gigabit"
         MaximumNetworkInterfaces: 15
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
@@ -27797,7 +27797,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 75 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          37.5
+            BaselineBandwidthInGbps:          75.0
             PeakBandwidthInGbps:              75.0
             DefaultEnaQueueCountPerInterface: 16
             InterfaceTypes: ["interface"]
@@ -27886,7 +27886,7 @@ InstanceTypes: [{
         AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
-        NetworkPerformance:       "Up to 100 Gigabit"
+        NetworkPerformance:       "100 Gigabit"
         MaximumNetworkInterfaces: 15
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
@@ -27894,7 +27894,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 100 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          50.0
+            BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
             InterfaceTypes: ["interface"]
@@ -28183,18 +28183,18 @@ InstanceTypes: [{
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
             NetworkCardIndex:                 0
-            NetworkPerformance:               "100 Gigabit"
+            NetworkPerformance:               "Up to 200 Gigabit"
             MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          100.0
-            PeakBandwidthInGbps:              100.0
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
             DefaultEnaQueueCountPerInterface: 32
             InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                 1
-            NetworkPerformance:               "100 Gigabit"
+            NetworkPerformance:               "Up to 200 Gigabit"
             MaximumNetworkInterfaces:         7
-            BaselineBandwidthInGbps:          100.0
-            PeakBandwidthInGbps:              100.0
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
             DefaultEnaQueueCountPerInterface: 32
             InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
@@ -28285,7 +28285,7 @@ InstanceTypes: [{
         AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
-        NetworkPerformance:       "Up to 25 Gigabit"
+        NetworkPerformance:       "25 Gigabit"
         MaximumNetworkInterfaces: 8
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
@@ -28293,7 +28293,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "25 Gigabit"
             MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          12.5
+            BaselineBandwidthInGbps:          25.0
             PeakBandwidthInGbps:              25.0
             DefaultEnaQueueCountPerInterface: 8
             InterfaceTypes: ["interface"]
@@ -28475,7 +28475,7 @@ InstanceTypes: [{
         AttachmentLimitType:   "shared"
     }
     NetworkInfo: {
-        NetworkPerformance:       "Up to 100 Gigabit"
+        NetworkPerformance:       "100 Gigabit"
         MaximumNetworkInterfaces: 15
         MaximumNetworkCards:      1
         DefaultNetworkCardIndex:  0
@@ -28483,7 +28483,7 @@ InstanceTypes: [{
             NetworkCardIndex:                 0
             NetworkPerformance:               "Up to 100 Gigabit"
             MaximumNetworkInterfaces:         15
-            BaselineBandwidthInGbps:          50.0
+            BaselineBandwidthInGbps:          100.0
             PeakBandwidthInGbps:              100.0
             DefaultEnaQueueCountPerInterface: 16
             InterfaceTypes: ["interface"]
@@ -28571,18 +28571,18 @@ InstanceTypes: [{
         DefaultNetworkCardIndex:  0
         NetworkCards: [{
             NetworkCardIndex:                 0
-            NetworkPerformance:               "100 Gigabit"
+            NetworkPerformance:               "Up to 200 Gigabit"
             MaximumNetworkInterfaces:         8
-            BaselineBandwidthInGbps:          100.0
-            PeakBandwidthInGbps:              100.0
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
             DefaultEnaQueueCountPerInterface: 32
             InterfaceTypes: ["interface", "efa", "efa-only"]
         }, {
             NetworkCardIndex:                 1
-            NetworkPerformance:               "100 Gigabit"
+            NetworkPerformance:               "Up to 200 Gigabit"
             MaximumNetworkInterfaces:         7
-            BaselineBandwidthInGbps:          100.0
-            PeakBandwidthInGbps:              100.0
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
             DefaultEnaQueueCountPerInterface: 32
             InterfaceTypes: ["interface", "efa", "efa-only"]
         }]
@@ -53237,6 +53237,247 @@ InstanceTypes: [{
     RebootMigrationSupport: "unsupported"
     SupportedInRegion:      true
 }, {
+    InstanceType:      "p6-b300.48xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["capacity-block", "on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 2.4
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          192
+        DefaultCores:          96
+        DefaultThreadsPerCore: 2
+        ValidCores: [4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 4194304
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 30400
+        Disks: [{
+            SizeInGB: 3800
+            Count:    8
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  100000
+            BaselineThroughputInMBps: 12500.0
+            BaselineIops:             400000
+            MaximumBandwidthInMbps:   100000
+            MaximumThroughputInMBps:  12500.0
+            MaximumIops:              400000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 64
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "6400 Gigabit"
+        MaximumNetworkInterfaces: 68
+        MaximumNetworkCards:      17
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          350.0
+            PeakBandwidthInGbps:              350.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface"]
+        }, {
+            NetworkCardIndex:                 1
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 2
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 3
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 4
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 5
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 6
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 7
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 8
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 9
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 10
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 11
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 12
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 13
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 14
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 15
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 16
+            NetworkPerformance:               "400 Gigabit"
+            MaximumNetworkInterfaces:         4
+            BaselineBandwidthInGbps:          400.0
+            PeakBandwidthInGbps:              400.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }]
+        Ipv4AddressesPerInterface: 50
+        Ipv6AddressesPerInterface: 50
+        Ipv6Supported:             true
+        EnaSupport:                "required"
+        EfaSupported:              true
+        EfaInfo: {
+            MaximumEfaInterfaces: 16
+        }
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              true
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 350
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported:          false
+        Ipv4AddressesPerSecondaryInterface: 0
+    }
+    GpuInfo: {
+        Gpus: [{
+            Name:             "B300"
+            Manufacturer:     "NVIDIA"
+            Count:            8
+            LogicalGpuCount:  8
+            GpuPartitionSize: 1.0
+            Workloads: ["ml-ai"]
+            MemoryInfo: {
+                SizeInMiB: 275040
+            }
+        }]
+        TotalGpuMemoryInMiB: 2200320
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       false
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    PhcSupport:             "unsupported"
+    RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
+}, {
     InstanceType:      "r4.16xlarge"
     CurrentGeneration: false
     FreeTierEligible:  false
@@ -72980,7 +73221,7 @@ InstanceTypes: [{
         SupportedStrategies: ["partition", "spread"]
     }
     HibernationSupported:          true
-    BurstablePerformanceSupported: false
+    BurstablePerformanceSupported: true
     DedicatedHostsSupported:       false
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
@@ -73068,7 +73309,7 @@ InstanceTypes: [{
         SupportedStrategies: ["partition", "spread"]
     }
     HibernationSupported:          true
-    BurstablePerformanceSupported: false
+    BurstablePerformanceSupported: true
     DedicatedHostsSupported:       false
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
@@ -73156,7 +73397,7 @@ InstanceTypes: [{
         SupportedStrategies: ["partition", "spread"]
     }
     HibernationSupported:          true
-    BurstablePerformanceSupported: false
+    BurstablePerformanceSupported: true
     DedicatedHostsSupported:       false
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
@@ -73244,7 +73485,7 @@ InstanceTypes: [{
         SupportedStrategies: ["partition", "spread"]
     }
     HibernationSupported:          true
-    BurstablePerformanceSupported: false
+    BurstablePerformanceSupported: true
     DedicatedHostsSupported:       false
     AutoRecoverySupported:         true
     SupportedBootModes: ["legacy-bios", "uefi"]
