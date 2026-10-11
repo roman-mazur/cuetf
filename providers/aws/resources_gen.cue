@@ -1087,6 +1087,8 @@ import (
 	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_pipeline": close({res.aws_observabilityadmin_telemetry_pipeline & cuetf.MetaArgs})
 	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_rule_for_organization": close({res.aws_observabilityadmin_telemetry_rule_for_organization & cuetf.MetaArgs})
 	_#res: "\(#awsPrefix)_observabilityadmin_telemetry_rule": close({res.aws_observabilityadmin_telemetry_rule & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_odb_autonomous_database": close({res.aws_odb_autonomous_database & cuetf.MetaArgs})
+	_#res: "\(#awsPrefix)_odb_autonomous_database_secrets_manager_integration": close({res.aws_odb_autonomous_database_secrets_manager_integration & cuetf.MetaArgs})
 	_#res: "\(#awsPrefix)_odb_cloud_autonomous_vm_cluster": close({res.aws_odb_cloud_autonomous_vm_cluster & cuetf.MetaArgs})
 	_#res: "\(#awsPrefix)_odb_cloud_exadata_infrastructure": close({res.aws_odb_cloud_exadata_infrastructure & cuetf.MetaArgs})
 	_#res: "\(#awsPrefix)_odb_cloud_vm_cluster": close({res.aws_odb_cloud_vm_cluster & cuetf.MetaArgs})

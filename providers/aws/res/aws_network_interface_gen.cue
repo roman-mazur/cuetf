@@ -7,6 +7,7 @@ aws_network_interface: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_network_interface")
 	close({
 		attachment?: matchN(1, [#attachment, [...#attachment]])
+		connection_tracking_specification?: matchN(1, [#connection_tracking_specification, list.MaxItems(1) & [...#connection_tracking_specification]])
 		ena_srd_specification?: matchN(1, [#ena_srd_specification, list.MaxItems(1) & [...#ena_srd_specification]])
 		arn?: string
 
@@ -48,6 +49,12 @@ aws_network_interface: {
 		device_index!:       number
 		instance!:           string
 		network_card_index?: number
+	})
+
+	#connection_tracking_specification: close({
+		tcp_established_timeout?: number
+		udp_stream_timeout?:      number
+		udp_timeout?:             number
 	})
 
 	#ena_srd_specification: close({

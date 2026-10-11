@@ -381,6 +381,9 @@ provider: {
 		cloudwatchobservabilityaccessmanager?: string
 
 		// Use this to override the default service endpoint URL
+		cloudwatchomni?: string
+
+		// Use this to override the default service endpoint URL
 		cloudwatchrum?: string
 
 		// Use this to override the default service endpoint URL
@@ -594,6 +597,9 @@ provider: {
 		eventbridge?: string
 
 		// Use this to override the default service endpoint URL
+		eventbridgev2?: string
+
+		// Use this to override the default service endpoint URL
 		events?: string
 
 		// Use this to override the default service endpoint URL
@@ -723,6 +729,9 @@ provider: {
 		lambdamicrovms?: string
 
 		// Use this to override the default service endpoint URL
+		lambdaweb?: string
+
+		// Use this to override the default service endpoint URL
 		launchwizard?: string
 
 		// Use this to override the default service endpoint URL
@@ -829,6 +838,9 @@ provider: {
 
 		// Use this to override the default service endpoint URL
 		networkmonitor?: string
+
+		// Use this to override the default service endpoint URL
+		networksecuritymanager?: string
 
 		// Use this to override the default service endpoint URL
 		notifications?: string
