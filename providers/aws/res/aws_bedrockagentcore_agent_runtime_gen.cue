@@ -27,7 +27,8 @@ aws_bedrockagentcore_agent_runtime: {
 			idle_runtime_session_timeout?: number
 			max_lifetime?:                 number
 		})]
-		role_arn!: string
+		platform_version?: string
+		role_arn!:         string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		workload_identity_details?: [...close({

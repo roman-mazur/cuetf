@@ -718,6 +718,12 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 								description_kind: "plain"
 								optional:         true
 							}
+							cloudwatchomni: {
+								type:             "string"
+								description:      "Use this to override the default service endpoint URL"
+								description_kind: "plain"
+								optional:         true
+							}
 							cloudwatchrum: {
 								type:             "string"
 								description:      "Use this to override the default service endpoint URL"
@@ -1144,6 +1150,12 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 								description_kind: "plain"
 								optional:         true
 							}
+							eventbridgev2: {
+								type:             "string"
+								description:      "Use this to override the default service endpoint URL"
+								description_kind: "plain"
+								optional:         true
+							}
 							events: {
 								type:             "string"
 								description:      "Use this to override the default service endpoint URL"
@@ -1402,6 +1414,12 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 								description_kind: "plain"
 								optional:         true
 							}
+							lambdaweb: {
+								type:             "string"
+								description:      "Use this to override the default service endpoint URL"
+								description_kind: "plain"
+								optional:         true
+							}
 							launchwizard: {
 								type:             "string"
 								description:      "Use this to override the default service endpoint URL"
@@ -1613,6 +1631,12 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 								optional:         true
 							}
 							networkmonitor: {
+								type:             "string"
+								description:      "Use this to override the default service endpoint URL"
+								description_kind: "plain"
+								optional:         true
+							}
+							networksecuritymanager: {
 								type:             "string"
 								description:      "Use this to override the default service endpoint URL"
 								description_kind: "plain"
@@ -34240,6 +34264,12 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 							idle_runtime_session_timeout: "number"
 							max_lifetime:                 "number"
 						}]]
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					platform_version: {
+						type:             "string"
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -167490,6 +167520,33 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 							description_kind: "plain"
 						}
 					}
+					connection_tracking_specification: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								tcp_established_timeout: {
+									type:             "number"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								udp_stream_timeout: {
+									type:             "number"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								udp_timeout: {
+									type:             "number"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
 					ena_srd_specification: {
 						nesting_mode: "list"
 						block: {
@@ -173063,6 +173120,918 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						}
 					}
 				}
+				description_kind: "plain"
+			}
+		}
+		aws_odb_autonomous_database: {
+			version: 0
+			block: {
+				attributes: {
+					actual_used_data_storage_size_in_tbs: {
+						type:             "number"
+						description:      "Actual amount of data storage currently in use, in TB."
+						description_kind: "plain"
+						computed:         true
+					}
+					admin_password: {
+						type:             "string"
+						description:      "Password for the ADMIN user. This value is stored in Terraform state. Use admin_password_wo with Terraform 1.11 or later to avoid storing the password in state."
+						description_kind: "plain"
+						optional:         true
+						sensitive:        true
+					}
+					admin_password_wo: {
+						type:             "string"
+						description:      "Password for the ADMIN user. This write-only value is never stored in Terraform state."
+						description_kind: "plain"
+						optional:         true
+						sensitive:        true
+						write_only:       true
+					}
+					admin_password_wo_version: {
+						type:             "number"
+						description:      "Arbitrary version used to trigger an ADMIN password update."
+						description_kind: "plain"
+						optional:         true
+					}
+					allocated_storage_size_in_tbs: {
+						type:             "number"
+						description:      "Amount of storage currently allocated, in TB."
+						description_kind: "plain"
+						computed:         true
+					}
+					allowlisted_ips: {
+						type: ["list", "string"]
+						description:      "IP addresses allowed to access the Autonomous Database."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					auto_refresh_frequency_in_seconds: {
+						type:             "number"
+						description:      "Frequency at which a refreshable clone is automatically refreshed, in seconds."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					auto_refresh_point_lag_in_seconds: {
+						type:             "number"
+						description:      "Time lag between a refreshable clone and its source, in seconds."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					autonomous_maintenance_schedule_type: {
+						type:             "string"
+						description:      "Maintenance schedule type for the Autonomous Database."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					availability_zone: {
+						type:             "string"
+						description:      "Availability Zone where the Autonomous Database is located."
+						description_kind: "plain"
+						computed:         true
+					}
+					availability_zone_id: {
+						type:             "string"
+						description:      "Availability Zone ID where the Autonomous Database is located."
+						description_kind: "plain"
+						computed:         true
+					}
+					available_upgrade_versions: {
+						type: ["list", "string"]
+						description:      "Oracle Database versions to which the Autonomous Database can be upgraded."
+						description_kind: "plain"
+						computed:         true
+					}
+					backup_retention_period_in_days: {
+						type:             "number"
+						description:      "Retention period for automatic backups, in days."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					byol_compute_count_limit: {
+						type:             "number"
+						description:      "Maximum compute capacity under the bring-your-own-license model."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					character_set: {
+						type:             "string"
+						description:      "Character set of the Autonomous Database."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					compute_count: {
+						type:             "number"
+						description:      "Compute capacity in ECPUs or OCPUs."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					compute_model: {
+						type:             "string"
+						description:      "Compute model of the Autonomous Database."
+						description_kind: "plain"
+						computed:         true
+					}
+					cpu_core_count: {
+						type:             "number"
+						description:      "Number of CPU cores allocated to the Autonomous Database."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "Date and time when the Autonomous Database was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					data_storage_size_in_gbs: {
+						type:             "number"
+						description:      "Data volume size in GB."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					data_storage_size_in_tbs: {
+						type:             "number"
+						description:      "Data volume size in TB. Configured values must be whole numbers; computed values may be fractional when storage is configured in GB."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					database_edition: {
+						type:             "string"
+						description:      "Oracle Database edition."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					database_type: {
+						type:             "string"
+						description:      "Type of Autonomous Database."
+						description_kind: "plain"
+						computed:         true
+					}
+					db_name: {
+						type:             "string"
+						description:      "Name of the Autonomous Database."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					db_version: {
+						type:             "string"
+						description:      "Oracle Database software version."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					db_workload: {
+						type:             "string"
+						description:      "Intended database workload."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "User-friendly name for the Autonomous Database."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					encryption_key_provider: {
+						type:             "string"
+						description:      "Encryption key provider. Configurable values are ORACLE_MANAGED and AWS_KMS."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					is_auto_scaling_enabled: {
+						type:             "bool"
+						description:      "Whether automatic compute scaling is enabled."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					is_auto_scaling_for_storage_enabled: {
+						type:             "bool"
+						description:      "Whether automatic storage scaling is enabled."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					is_backup_retention_locked: {
+						type:             "bool"
+						description:      "Whether the backup retention period is locked."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					is_local_data_guard_enabled: {
+						type:             "bool"
+						description:      "Whether local Oracle Data Guard is enabled."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					is_mtls_connection_required: {
+						type:             "bool"
+						description:      "Whether mutual TLS authentication is required."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					is_refreshable_clone: {
+						type:             "bool"
+						description:      "Whether the Autonomous Database is a refreshable clone."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					kms_key_id: {
+						type:             "string"
+						description:      "ARN of the AWS KMS key used to encrypt the Autonomous Database."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					license_model: {
+						type:             "string"
+						description:      "Oracle license model."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					local_adg_auto_failover_max_data_loss_limit: {
+						type:             "number"
+						description:      "Maximum data-loss limit for automatic local Data Guard failover, in seconds."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					ncharacter_set: {
+						type:             "string"
+						description:      "National character set of the Autonomous Database."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					oci_resource_anchor_name: {
+						type:             "string"
+						description:      "Name of the OCI resource anchor."
+						description_kind: "plain"
+						computed:         true
+					}
+					oci_url: {
+						type:             "string"
+						description:      "URL for the Autonomous Database in the OCI console."
+						description_kind: "plain"
+						computed:         true
+					}
+					ocid: {
+						type:             "string"
+						description:      "Oracle Cloud Identifier of the Autonomous Database."
+						description_kind: "plain"
+						computed:         true
+					}
+					odb_network_arn: {
+						type:             "string"
+						description:      "ARN of the associated ODB network."
+						description_kind: "plain"
+						computed:         true
+					}
+					odb_network_id: {
+						type:             "string"
+						description:      "ID of the associated ODB network."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					open_mode: {
+						type:             "string"
+						description:      "Open mode of the Autonomous Database."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					percent_progress: {
+						type:             "number"
+						description:      "Progress of the current operation, as a percentage."
+						description_kind: "plain"
+						computed:         true
+					}
+					permission_level: {
+						type:             "string"
+						description:      "Permission level of the Autonomous Database."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					private_endpoint: {
+						type:             "string"
+						description:      "Private endpoint of the Autonomous Database."
+						description_kind: "plain"
+						computed:         true
+					}
+					private_endpoint_ip: {
+						type:             "string"
+						description:      "Private endpoint IP address."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					private_endpoint_label: {
+						type:             "string"
+						description:      "Private endpoint label."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					refreshable_mode: {
+						type:             "string"
+						description:      "Refresh mode of a refreshable clone."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					resource_pool_leader_id: {
+						type:             "string"
+						description:      "ID of the resource-pool leader Autonomous Database."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					service_console_url: {
+						type:             "string"
+						description:      "URL for the Oracle service console."
+						description_kind: "plain"
+						computed:         true
+					}
+					source: {
+						type:             "string"
+						description:      "Source from which to create the Autonomous Database."
+						description_kind: "plain"
+						optional:         true
+					}
+					source_id: {
+						type:             "string"
+						description:      "ID of the source used to create the Autonomous Database."
+						description_kind: "plain"
+						computed:         true
+					}
+					sql_web_developer_url: {
+						type:             "string"
+						description:      "URL for Oracle SQL Developer Web."
+						description_kind: "plain"
+						computed:         true
+					}
+					standby_allowlisted_ips: {
+						type: ["list", "string"]
+						description:      "IP addresses allowed to access the standby Autonomous Database."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					standby_allowlisted_ips_source: {
+						type:             "string"
+						description:      "Source of the standby allowlisted IP addresses."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description:      "Current status of the Autonomous Database."
+						description_kind: "plain"
+						computed:         true
+					}
+					status_reason: {
+						type:             "string"
+						description:      "Additional information about the current status."
+						description_kind: "plain"
+						computed:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						optional:         true
+					}
+					tags_all: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					time_of_auto_refresh_start: {
+						type:             "string"
+						description:      "Date and time when automatic refresh begins."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: {
+					admin_password_source: {
+						nesting_mode: "list"
+						block: {
+							block_types: customer_managed_aws_secret: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										external_id_type: {
+											type:             "string"
+											description:      "Type of OCI identifier supplied as the external ID when OCI assumes the IAM role."
+											description_kind: "plain"
+											required:         true
+										}
+										iam_role_arn: {
+											type:             "string"
+											description:      "ARN of the customer-managed IAM role OCI assumes to retrieve the secret."
+											description_kind: "plain"
+											required:         true
+										}
+										secret_arn: {
+											type:             "string"
+											description:      "ARN of the AWS Secrets Manager secret that contains the ADMIN password."
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									description_kind: "plain"
+								}
+							}
+							description:      "Source of the ADMIN password. Conflicts with admin_password and admin_password_wo."
+							description_kind: "plain"
+						}
+					}
+					customer_contacts_to_send_to_oci: {
+						nesting_mode: "list"
+						block: {
+							attributes: email: {
+								type:             "string"
+								description:      "Email address of the customer contact."
+								description_kind: "plain"
+								required:         true
+							}
+							description:      "Customer contacts that receive operational notifications from OCI."
+							description_kind: "plain"
+						}
+					}
+					db_tools_details: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								compute_count: {
+									type:             "number"
+									description:      "Compute capacity allocated to the database tool."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								is_enabled: {
+									type:             "bool"
+									description:      "Whether the database tool is enabled."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								max_idle_time_in_minutes: {
+									type:             "number"
+									description:      "Maximum idle time before the database tool is shut down, in minutes."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Name of the database tool."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							description:      "Database management tools enabled for the Autonomous Database."
+							description_kind: "plain"
+						}
+					}
+					long_term_backup_schedule: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								is_disabled: {
+									type:             "bool"
+									description:      "Whether the long-term backup schedule is disabled."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								repeat_cadence: {
+									type:             "string"
+									description:      "Cadence at which long-term backups are taken."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								retention_period_in_days: {
+									type:             "number"
+									description:      "Retention period for long-term backups, in days."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								time_of_backup: {
+									type:             "string"
+									description:      "Date and time at which the long-term backup is taken."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							description:      "Long-term backup schedule for the Autonomous Database."
+							description_kind: "plain"
+						}
+					}
+					resource_pool_summary: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								available_compute_capacity: {
+									type:             "number"
+									description:      "Available compute capacity in the resource pool."
+									description_kind: "plain"
+									computed:         true
+								}
+								available_storage_capacity_in_tbs: {
+									type:             "number"
+									description:      "Available storage capacity in the resource pool, in TB."
+									description_kind: "plain"
+									computed:         true
+								}
+								is_disabled: {
+									type:             "bool"
+									description:      "Whether the resource pool is disabled."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								pool_size: {
+									type:             "number"
+									description:      "Number of Autonomous Databases the resource pool can contain."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								pool_storage_size_in_tbs: {
+									type:             "number"
+									description:      "Total storage size of the resource pool, in TB."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								total_compute_capacity: {
+									type:             "number"
+									description:      "Total compute capacity of the resource pool."
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							description:      "Resource pool configuration for the Autonomous Database."
+							description_kind: "plain"
+						}
+					}
+					scheduled_operations: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								day_of_week: {
+									type:             "string"
+									description:      "Day of the week."
+									description_kind: "plain"
+									required:         true
+								}
+								scheduled_start_time: {
+									type:             "string"
+									description:      "Scheduled start time in UTC."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								scheduled_stop_time: {
+									type:             "string"
+									description:      "Scheduled stop time in UTC."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							description:      "Scheduled start and stop times for the Autonomous Database."
+							description_kind: "plain"
+						}
+					}
+					source_configuration: {
+						nesting_mode: "list"
+						block: {
+							block_types: {
+								clone_to_refreshable: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											auto_refresh_frequency_in_seconds: {
+												type:             "number"
+												description:      "Frequency at which the refreshable clone is automatically refreshed, in seconds."
+												description_kind: "plain"
+												optional:         true
+											}
+											auto_refresh_point_lag_in_seconds: {
+												type:             "number"
+												description:      "Time lag between the refreshable clone and its source, in seconds."
+												description_kind: "plain"
+												optional:         true
+											}
+											clone_type: {
+												type:             "string"
+												description:      "Type of clone to create."
+												description_kind: "plain"
+												optional:         true
+											}
+											open_mode: {
+												type:             "string"
+												description:      "Open mode of the refreshable clone."
+												description_kind: "plain"
+												optional:         true
+											}
+											refreshable_mode: {
+												type:             "string"
+												description:      "Refresh mode of the clone."
+												description_kind: "plain"
+												optional:         true
+											}
+											source_autonomous_database_id: {
+												type:             "string"
+												description:      "ID of the source Autonomous Database."
+												description_kind: "plain"
+												required:         true
+											}
+											time_of_auto_refresh_start: {
+												type:             "string"
+												description:      "Date and time when automatic refresh starts."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								cross_region_data_guard: {
+									nesting_mode: "list"
+									block: {
+										attributes: source_autonomous_database_arn: {
+											type:             "string"
+											description:      "ARN of the source Autonomous Database."
+											description_kind: "plain"
+											required:         true
+										}
+										description_kind: "plain"
+									}
+								}
+								cross_region_disaster_recovery: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											is_replicate_automatic_backups: {
+												type:             "bool"
+												description:      "Whether automatic backups are replicated to the disaster recovery database."
+												description_kind: "plain"
+												optional:         true
+											}
+											remote_disaster_recovery_type: {
+												type:             "string"
+												description:      "Type of remote disaster recovery."
+												description_kind: "plain"
+												required:         true
+											}
+											source_autonomous_database_arn: {
+												type:             "string"
+												description:      "ARN of the source Autonomous Database."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								database_clone: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											clone_type: {
+												type:             "string"
+												description:      "Type of clone to create."
+												description_kind: "plain"
+												required:         true
+											}
+											source_autonomous_database_id: {
+												type:             "string"
+												description:      "ID of the source Autonomous Database."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								point_in_time_restore: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											clone_table_space_list: {
+												type: ["list", "number"]
+												description:      "Tablespace IDs to clone."
+												description_kind: "plain"
+												optional:         true
+											}
+											clone_type: {
+												type:             "string"
+												description:      "Type of clone to create."
+												description_kind: "plain"
+												required:         true
+											}
+											source_autonomous_database_id: {
+												type:             "string"
+												description:      "ID of the source Autonomous Database."
+												description_kind: "plain"
+												required:         true
+											}
+											timestamp: {
+												type:             "string"
+												description:      "Date and time to which the database is restored."
+												description_kind: "plain"
+												optional:         true
+											}
+											use_latest_available_backup_timestamp: {
+												type:             "bool"
+												description:      "Whether to use the latest available backup timestamp."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								restore_from_backup: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											autonomous_database_backup_id: {
+												type:             "string"
+												description:      "ID of the Autonomous Database backup."
+												description_kind: "plain"
+												required:         true
+											}
+											clone_table_space_list: {
+												type: ["list", "number"]
+												description:      "Tablespace IDs to clone."
+												description_kind: "plain"
+												optional:         true
+											}
+											clone_type: {
+												type:             "string"
+												description:      "Type of clone to create from the backup."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+							}
+							description:      "Source-specific configuration used during creation. Exactly one nested source block must be configured."
+							description_kind: "plain"
+						}
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					transportable_tablespace: {
+						nesting_mode: "list"
+						block: {
+							attributes: tts_bundle_url: {
+								type:             "string"
+								description:      "URL of the transportable tablespace bundle."
+								description_kind: "plain"
+								optional:         true
+							}
+							description:      "Transportable tablespace configuration used during creation."
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_odb_autonomous_database_secrets_manager_integration: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					role_arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description:      "Current lifecycle status of the Oracle Database@AWS Secrets Manager service role."
+						description_kind: "plain"
+						computed:         true
+					}
+					status_reason: {
+						type:             "string"
+						description:      "Additional information about the service role lifecycle status."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description:      "Enables the Oracle Database@AWS Autonomous Database Serverless integration with AWS Secrets Manager."
 				description_kind: "plain"
 			}
 		}
@@ -1155039,6 +1156008,156 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				description_kind: "plain"
 			}
 		}
+		aws_lambdamicrovms_image_version: {
+			version: 0
+			block: {
+				attributes: {
+					additional_os_capabilities: {
+						type: ["list", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					base_image_arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					base_image_version: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					build_role_arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					code_artifact: {
+						type: ["list", ["object", {
+							uri: "string"
+						}]]
+						description_kind: "plain"
+						computed:         true
+					}
+					cpu_configuration: {
+						type: ["list", ["object", {
+							architecture: "string"
+						}]]
+						description_kind: "plain"
+						computed:         true
+					}
+					created_at: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					egress_network_connectors: {
+						type: ["list", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					environment_variables: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					hooks: {
+						type: ["list", ["object", {
+							microvm_hooks: ["list", ["object", {
+								resume:                       "string"
+								resume_timeout_in_seconds:    "number"
+								run:                          "string"
+								run_timeout_in_seconds:       "number"
+								suspend:                      "string"
+								suspend_timeout_in_seconds:   "number"
+								terminate:                    "string"
+								terminate_timeout_in_seconds: "number"
+							}]]
+							microvm_image_hooks: ["list", ["object", {
+								ready:                       "string"
+								ready_timeout_in_seconds:    "number"
+								validate:                    "string"
+								validate_timeout_in_seconds: "number"
+							}]]
+							port: "number"
+						}]]
+						description_kind: "plain"
+						computed:         true
+					}
+					image_arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					image_identifier: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					image_version: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					logging: {
+						type: ["list", ["object", {
+							cloudwatch: ["list", ["object", {
+								log_group:  "string"
+								log_stream: "string"
+							}]]
+							disabled: ["list", ["object", {}]]
+						}]]
+						description_kind: "plain"
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					resources: {
+						type: ["list", ["object", {
+							minimum_memory_in_mib: "number"
+						}]]
+						description_kind: "plain"
+						computed:         true
+					}
+					state: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					state_reason: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		aws_launch_configuration: {
 			version: 0
 			block: {
@@ -1161320,6 +1162439,436 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_odb_autonomous_database: {
+			version: 0
+			block: {
+				attributes: {
+					actual_used_data_storage_size_in_tbs: {
+						type:             "number"
+						description:      "Actual amount of data storage currently in use, in TB."
+						description_kind: "plain"
+						computed:         true
+					}
+					admin_password_source: {
+						type: ["list", ["object", {
+							customer_managed_aws_secret: ["list", ["object", {
+								external_id_type: "string", iam_role_arn: "string", secret_arn: "string"
+							}]]
+						}]]
+						description:      "Source of the ADMIN password."
+						description_kind: "plain"
+						computed:         true
+					}
+					allocated_storage_size_in_tbs: {
+						type:             "number"
+						description:      "Amount of storage currently allocated, in TB."
+						description_kind: "plain"
+						computed:         true
+					}
+					allowlisted_ips: {
+						type: ["list", "string"]
+						description:      "IP addresses allowed to access the Autonomous Database."
+						description_kind: "plain"
+						computed:         true
+					}
+					arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					auto_refresh_frequency_in_seconds: {
+						type:             "number"
+						description:      "Automatic refresh frequency, in seconds."
+						description_kind: "plain"
+						computed:         true
+					}
+					auto_refresh_point_lag_in_seconds: {
+						type:             "number"
+						description:      "Refresh lag from the source, in seconds."
+						description_kind: "plain"
+						computed:         true
+					}
+					autonomous_maintenance_schedule_type: {
+						type:             "string"
+						description:      "Maintenance schedule type."
+						description_kind: "plain"
+						computed:         true
+					}
+					availability_zone: {
+						type:             "string"
+						description:      "Availability Zone of the Autonomous Database."
+						description_kind: "plain"
+						computed:         true
+					}
+					availability_zone_id: {
+						type:             "string"
+						description:      "Availability Zone ID of the Autonomous Database."
+						description_kind: "plain"
+						computed:         true
+					}
+					available_upgrade_versions: {
+						type: ["list", "string"]
+						description:      "Oracle Database versions available for upgrade."
+						description_kind: "plain"
+						computed:         true
+					}
+					backup_retention_period_in_days: {
+						type:             "number"
+						description:      "Automatic backup retention period, in days."
+						description_kind: "plain"
+						computed:         true
+					}
+					byol_compute_count_limit: {
+						type:             "number"
+						description:      "Maximum BYOL compute capacity."
+						description_kind: "plain"
+						computed:         true
+					}
+					character_set: {
+						type:             "string"
+						description:      "Database character set."
+						description_kind: "plain"
+						computed:         true
+					}
+					compute_count: {
+						type:             "number"
+						description:      "Compute capacity in ECPUs or OCPUs."
+						description_kind: "plain"
+						computed:         true
+					}
+					compute_model: {
+						type:             "string"
+						description:      "Compute model."
+						description_kind: "plain"
+						computed:         true
+					}
+					cpu_core_count: {
+						type:             "number"
+						description:      "Allocated CPU core count."
+						description_kind: "plain"
+						computed:         true
+					}
+					created_at: {
+						type:             "string"
+						description:      "Creation date and time."
+						description_kind: "plain"
+						computed:         true
+					}
+					customer_contacts_to_send_to_oci: {
+						type: ["list", ["object", {
+							email: "string"
+						}]]
+						description:      "Customer contacts that receive operational notifications from OCI."
+						description_kind: "plain"
+						computed:         true
+					}
+					data_storage_size_in_gbs: {
+						type:             "number"
+						description:      "Data volume size in GB."
+						description_kind: "plain"
+						computed:         true
+					}
+					data_storage_size_in_tbs: {
+						type:             "number"
+						description:      "Data volume size in TB."
+						description_kind: "plain"
+						computed:         true
+					}
+					database_edition: {
+						type:             "string"
+						description:      "Oracle Database edition."
+						description_kind: "plain"
+						computed:         true
+					}
+					database_type: {
+						type:             "string"
+						description:      "Autonomous Database type."
+						description_kind: "plain"
+						computed:         true
+					}
+					db_name: {
+						type:             "string"
+						description:      "Database name."
+						description_kind: "plain"
+						computed:         true
+					}
+					db_tools_details: {
+						type: ["list", ["object", {
+							compute_count:            "number"
+							is_enabled:               "bool"
+							max_idle_time_in_minutes: "number"
+							name:                     "string"
+						}]]
+						description:      "Database management tools enabled for the Autonomous Database."
+						description_kind: "plain"
+						computed:         true
+					}
+					db_version: {
+						type:             "string"
+						description:      "Oracle Database software version."
+						description_kind: "plain"
+						computed:         true
+					}
+					db_workload: {
+						type:             "string"
+						description:      "Database workload."
+						description_kind: "plain"
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "User-friendly database name."
+						description_kind: "plain"
+						computed:         true
+					}
+					encryption_key_provider: {
+						type:             "string"
+						description:      "Encryption key provider."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Unique identifier of the Autonomous Database."
+						description_kind: "plain"
+						required:         true
+					}
+					is_auto_scaling_enabled: {
+						type:             "bool"
+						description:      "Whether automatic compute scaling is enabled."
+						description_kind: "plain"
+						computed:         true
+					}
+					is_auto_scaling_for_storage_enabled: {
+						type:             "bool"
+						description:      "Whether automatic storage scaling is enabled."
+						description_kind: "plain"
+						computed:         true
+					}
+					is_backup_retention_locked: {
+						type:             "bool"
+						description:      "Whether backup retention is locked."
+						description_kind: "plain"
+						computed:         true
+					}
+					is_local_data_guard_enabled: {
+						type:             "bool"
+						description:      "Whether local Data Guard is enabled."
+						description_kind: "plain"
+						computed:         true
+					}
+					is_mtls_connection_required: {
+						type:             "bool"
+						description:      "Whether mTLS is required."
+						description_kind: "plain"
+						computed:         true
+					}
+					is_refreshable_clone: {
+						type:             "bool"
+						description:      "Whether the database is a refreshable clone."
+						description_kind: "plain"
+						computed:         true
+					}
+					kms_key_id: {
+						type:             "string"
+						description:      "ARN of the AWS KMS encryption key."
+						description_kind: "plain"
+						computed:         true
+					}
+					license_model: {
+						type:             "string"
+						description:      "Oracle license model."
+						description_kind: "plain"
+						computed:         true
+					}
+					local_adg_auto_failover_max_data_loss_limit: {
+						type:             "number"
+						description:      "Maximum automatic-failover data-loss limit, in seconds."
+						description_kind: "plain"
+						computed:         true
+					}
+					long_term_backup_schedule: {
+						type: ["list", ["object", {
+							is_disabled:              "bool"
+							repeat_cadence:           "string"
+							retention_period_in_days: "number"
+							time_of_backup:           "string"
+						}]]
+						description:      "Long-term backup schedule."
+						description_kind: "plain"
+						computed:         true
+					}
+					ncharacter_set: {
+						type:             "string"
+						description:      "National character set."
+						description_kind: "plain"
+						computed:         true
+					}
+					oci_resource_anchor_name: {
+						type:             "string"
+						description:      "OCI resource anchor name."
+						description_kind: "plain"
+						computed:         true
+					}
+					oci_url: {
+						type:             "string"
+						description:      "OCI console URL."
+						description_kind: "plain"
+						computed:         true
+					}
+					ocid: {
+						type:             "string"
+						description:      "Oracle Cloud Identifier."
+						description_kind: "plain"
+						computed:         true
+					}
+					odb_network_arn: {
+						type:             "string"
+						description:      "ARN of the associated ODB network."
+						description_kind: "plain"
+						computed:         true
+					}
+					odb_network_id: {
+						type:             "string"
+						description:      "ID of the associated ODB network."
+						description_kind: "plain"
+						computed:         true
+					}
+					open_mode: {
+						type:             "string"
+						description:      "Database open mode."
+						description_kind: "plain"
+						computed:         true
+					}
+					percent_progress: {
+						type:             "number"
+						description:      "Progress of the current operation."
+						description_kind: "plain"
+						computed:         true
+					}
+					permission_level: {
+						type:             "string"
+						description:      "Database permission level."
+						description_kind: "plain"
+						computed:         true
+					}
+					private_endpoint: {
+						type:             "string"
+						description:      "Private endpoint."
+						description_kind: "plain"
+						computed:         true
+					}
+					private_endpoint_ip: {
+						type:             "string"
+						description:      "Private endpoint IP address."
+						description_kind: "plain"
+						computed:         true
+					}
+					private_endpoint_label: {
+						type:             "string"
+						description:      "Private endpoint label."
+						description_kind: "plain"
+						computed:         true
+					}
+					refreshable_mode: {
+						type:             "string"
+						description:      "Refreshable clone mode."
+						description_kind: "plain"
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					resource_pool_leader_id: {
+						type:             "string"
+						description:      "Resource-pool leader database ID."
+						description_kind: "plain"
+						computed:         true
+					}
+					resource_pool_summary: {
+						type: ["list", ["object", {
+							available_compute_capacity:        "number"
+							available_storage_capacity_in_tbs: "number"
+							is_disabled:                       "bool"
+							pool_size:                         "number"
+							pool_storage_size_in_tbs:          "number"
+							total_compute_capacity:            "number"
+						}]]
+						description:      "Resource pool configuration."
+						description_kind: "plain"
+						computed:         true
+					}
+					scheduled_operations: {
+						type: ["list", ["object", {
+							day_of_week:          "string"
+							scheduled_start_time: "string"
+							scheduled_stop_time:  "string"
+						}]]
+						description:      "Scheduled database start and stop times."
+						description_kind: "plain"
+						computed:         true
+					}
+					service_console_url: {
+						type:             "string"
+						description:      "Oracle service console URL."
+						description_kind: "plain"
+						computed:         true
+					}
+					source_id: {
+						type:             "string"
+						description:      "Source database or backup ID."
+						description_kind: "plain"
+						computed:         true
+					}
+					sql_web_developer_url: {
+						type:             "string"
+						description:      "Oracle SQL Developer Web URL."
+						description_kind: "plain"
+						computed:         true
+					}
+					standby_allowlisted_ips: {
+						type: ["list", "string"]
+						description:      "IP addresses allowed to access the standby database."
+						description_kind: "plain"
+						computed:         true
+					}
+					standby_allowlisted_ips_source: {
+						type:             "string"
+						description:      "Source of standby allowlisted IPs."
+						description_kind: "plain"
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description:      "Current database status."
+						description_kind: "plain"
+						computed:         true
+					}
+					status_reason: {
+						type:             "string"
+						description:      "Additional status information."
+						description_kind: "plain"
+						computed:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					time_of_auto_refresh_start: {
+						type:             "string"
+						description:      "Automatic refresh start time."
+						description_kind: "plain"
 						computed:         true
 					}
 				}
@@ -1207688,6 +1209237,26 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				description_kind: "plain"
 			}
 		}
+		aws_ec2_transit_gateway_route: {
+			version: 0
+			block: {
+				attributes: {
+					region: {
+						type:             "string"
+						description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+					}
+					transit_gateway_route_table_id: {
+						type:             "string"
+						description:      "ID of the transit gateway route table."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		aws_ec2_transit_gateway_route_table_propagation: {
 			version: 0
 			block: {
@@ -1209140,6 +1210709,18 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 			}
 		}
 		aws_prometheus_scraper_logging_configuration: {
+			version: 0
+			block: {
+				attributes: region: {
+					type:             "string"
+					description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_ram_resource_association: {
 			version: 0
 			block: {
 				attributes: region: {
@@ -1213724,6 +1215305,27 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				}
 			}
 		}
+		aws_ec2_transit_gateway_route: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				destination_cidr_block: {
+					type:                "string"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+				transit_gateway_route_table_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		aws_ec2_transit_gateway_route_table_propagation: {
 			version: 0
 			attributes: {
@@ -1215624,6 +1217226,36 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				}
 			}
 		}
+		aws_odb_autonomous_database: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				id: {
+					type:                "string"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		aws_odb_autonomous_database_secrets_manager_integration: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
 		aws_opensearchserverless_access_policy: {
 			version: 0
 			attributes: {
@@ -1216094,6 +1217726,27 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 			attributes: arn: {
 				type:                "string"
 				required_for_import: true
+			}
+		}
+		aws_ram_resource_association: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+				resource_arn: {
+					type:                "string"
+					required_for_import: true
+				}
+				resource_share_arn: {
+					type:                "string"
+					required_for_import: true
+				}
 			}
 		}
 		aws_ram_resource_share_associations_exclusive: {
