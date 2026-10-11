@@ -60,10 +60,13 @@ scaleway_s2s_vpn_connection: {
 		// Defines whether route propagation is enabled or not
 		route_propagation_enabled?: bool
 
-		// The BGP peer IP on customer side
+		// The ID of a Secret Manager secret containing the PSK. Prefer creating a
+		// scaleway_secret (and scaleway_secret_version) yourself so Terraform manages
+		// its lifecycle
 		secret_id?: string
 
-		// The BGP peer IP on customer side
+		// The version of the secret containing the PSK. Requires secret_id. If omitted,
+		// the latest version is used
 		secret_version?: number
 
 		// The Scaleway Resource Name (SRN) of the connection

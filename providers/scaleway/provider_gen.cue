@@ -4,6 +4,8 @@ provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/scaleway/provider")
 	close({
+		endpoints?: matchN(1, [#endpoints, [...#endpoints]])
+
 		// The Scaleway access key.
 		access_key?: string
 
@@ -22,10 +24,18 @@ provider: {
 		// The region you want to attach the resource to
 		region?: string
 
+		// Whether to enable the request to use path-style addressing.
+		s3_use_path_style?: bool
+
 		// The Scaleway secret Key.
 		secret_key?: string
 
 		// The zone you want to attach the resource to
 		zone?: string
+	})
+
+	#endpoints: close({
+		// Use this to override the default service endpoint URL.
+		s3?: string
 	})
 }

@@ -7,7 +7,7 @@ scaleway_billing_budget: {
 		// The ID of the budget to retrieve.
 		budget_id!: string
 
-		// Cost limit for the budget in cents.
+		// Cost limit for the budget in euros.
 		consumption_limit?: number
 
 		// The date and time of budget creation

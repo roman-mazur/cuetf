@@ -111,6 +111,9 @@ scaleway_k8s_pool: {
 			max_unavailable?: number
 		})]
 
+		// User data applied and reconciled with the pool, as a map of key to content
+		user_data?: [string]: string
+
 		// The Kubernetes version of the pool
 		version?: string
 

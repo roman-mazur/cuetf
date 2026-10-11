@@ -102,7 +102,8 @@ scaleway_object_bucket: {
 
 		// Specifies whether Scaleway Object will remove a delete marker with no
 		// noncurrent versions. If set to `true`, the delete marker will be expired; if
-		// set to `false` the policy takes no action
+		// set to `false` the policy takes no action, and is counted as empty by
+		// Terraform.
 		expired_object_delete_marker?: bool
 	})
 

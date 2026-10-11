@@ -13,7 +13,7 @@ scaleway_opensearch_deployment: {
 		// Date and time of deployment creation (RFC 3339 format)
 		created_at?: string
 
-		// List of endpoints
+		// List of all endpoints returned by the API
 		endpoints?: [...close({
 			id?:                 string
 			private_network_id?: string
@@ -29,7 +29,7 @@ scaleway_opensearch_deployment: {
 		// Name of the OpenSearch deployment
 		name?: string
 
-		// Number of nodes
+		// Number of nodes. Changing this value upgrades the deployment in place.
 		node_count?: number
 
 		// Type of node

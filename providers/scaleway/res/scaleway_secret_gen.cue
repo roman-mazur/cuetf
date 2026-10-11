@@ -14,6 +14,11 @@ scaleway_secret: {
 		description?: string
 		id?:          string
 
+		// ID of the Scaleway Key Manager key used to encrypt and decrypt secret
+		// versions. Can be a UUID or a localized ID (region/UUID). If not set, Secret
+		// Manager will use a Key Manager internal key.
+		key_id?: string
+
 		// The secret name
 		name!: string
 

@@ -24,6 +24,16 @@ scaleway_sdb_sql_database: {
 
 		// The region you want to attach the resource to
 		region?: string
+
+		// The Scaleway Resource Name (SRN) of the database.
+		srn?: string
+
+		// The major version of the PostgreSQL engine (e.g. `16`). If not specified, the
+		// default version is used.
+		version?: string
+
+		// The end of life date of the database version (RFC3339).
+		version_end_of_life_at?: string
 	})
 
 	#timeouts: close({

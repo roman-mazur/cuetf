@@ -37,6 +37,12 @@ scaleway_key_manager_key: {
 		// Returns true if key protection is applied to the key.
 		protected?: bool
 
+		// Protection level of the key. Possible values: software (cryptographic
+		// operations are performed in software), hsm (cryptographic operations are
+		// performed within a dedicated Hardware Security Module). Defaults to
+		// software.
+		protection_level?: string
+
 		// The region you want to attach the resource to
 		region?: string
 

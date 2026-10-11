@@ -52,7 +52,7 @@ scaleway_rdb_instance: {
 			port?:        number
 		})]
 
-		// Logs policy configuration
+		// Logs policy configuration for remote logs retention on the Database Instance
 		logs_policy?: [...close({
 			max_age_retention?:    number
 			total_disk_retention?: number
