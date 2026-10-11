@@ -754,6 +754,7 @@ import (
 	_#res: "\(#azurermPrefix)_oracle_autonomous_database_backup": close({res.azurerm_oracle_autonomous_database_backup & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_oracle_autonomous_database_clone_from_backup": close({res.azurerm_oracle_autonomous_database_clone_from_backup & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_oracle_autonomous_database_clone_from_database": close({res.azurerm_oracle_autonomous_database_clone_from_database & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_oracle_autonomous_database_cross_region_disaster_recovery": close({res.azurerm_oracle_autonomous_database_cross_region_disaster_recovery & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_oracle_autonomous_database": close({res.azurerm_oracle_autonomous_database & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_oracle_cloud_vm_cluster": close({res.azurerm_oracle_cloud_vm_cluster & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_oracle_exadata_infrastructure": close({res.azurerm_oracle_exadata_infrastructure & cuetf.MetaArgs})

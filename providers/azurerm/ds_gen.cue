@@ -283,6 +283,7 @@ import (
 	_#ds: "\(#azurermPrefix)_oracle_autonomous_database_backups": close({data.azurerm_oracle_autonomous_database_backups & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_oracle_autonomous_database_clone_from_backup": close({data.azurerm_oracle_autonomous_database_clone_from_backup & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_oracle_autonomous_database_clone_from_database": close({data.azurerm_oracle_autonomous_database_clone_from_database & cuetf.MetaArgs})
+	_#ds: "\(#azurermPrefix)_oracle_autonomous_database_cross_region_disaster_recovery": close({data.azurerm_oracle_autonomous_database_cross_region_disaster_recovery & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_oracle_autonomous_database": close({data.azurerm_oracle_autonomous_database & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_oracle_cloud_vm_cluster": close({data.azurerm_oracle_cloud_vm_cluster & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_oracle_database_system_versions": close({data.azurerm_oracle_database_system_versions & cuetf.MetaArgs})

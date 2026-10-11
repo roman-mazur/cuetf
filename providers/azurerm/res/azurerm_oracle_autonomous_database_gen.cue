@@ -27,6 +27,7 @@ azurerm_oracle_autonomous_database: {
 		mtls_connection_required!: bool
 		name!:                     string
 		national_character_set!:   string
+		ocid?:                     string
 		resource_group_name!:      string
 		subnet_id?:                string
 		tags?: [string]: string
