@@ -12,16 +12,17 @@ cloudflare_pages_domain: {
 		created_on?:            string
 		domain_id?:             string
 
-		// The domain name.
+		// Fully qualified domain name for the Pages project, such as `example.com`.
 		domain_name!: string
 
-		// The domain name.
+		// Fully qualified domain name for the Pages project, such as `example.com`.
 		id?: string
 
-		// The domain name.
+		// Fully qualified domain name for the Pages project, such as `example.com`.
 		name?: string
 
-		// Name of the project.
+		// Name of the Pages project. Must begin with a lowercase letter or digit and
+		// contain only lowercase letters, digits, and hyphens.
 		project_name!: string
 
 		// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".

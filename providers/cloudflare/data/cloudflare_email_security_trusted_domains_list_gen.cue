@@ -39,13 +39,17 @@ cloudflare_email_security_trusted_domains_list: {
 			// Malicious disposition.
 			is_recent?: bool
 
+			// Whether `pattern` is a regular expression instead of a literal domain.
+			is_regex?: bool
+
 			// Select for partner or other approved domains that have similar spelling to
 			// your connected domains. Prevents listed domains from triggering a Spoof
 			// disposition.
 			is_similarity?: bool
-			is_regex?:      bool
-			modified_at?:   string
-			pattern?:       string
+
+			// The domain pattern to trust, e.g. `example.com`.
+			pattern?:     string
+			modified_at?: string
 		}), [...close({
 			comments?: string
 
@@ -57,13 +61,17 @@ cloudflare_email_security_trusted_domains_list: {
 			// Malicious disposition.
 			is_recent?: bool
 
+			// Whether `pattern` is a regular expression instead of a literal domain.
+			is_regex?: bool
+
 			// Select for partner or other approved domains that have similar spelling to
 			// your connected domains. Prevents listed domains from triggering a Spoof
 			// disposition.
 			is_similarity?: bool
-			is_regex?:      bool
-			modified_at?:   string
-			pattern?:       string
+
+			// The domain pattern to trust, e.g. `example.com`.
+			pattern?:     string
+			modified_at?: string
 		})]])
 
 		// Search term for filtering records. Behavior may change.

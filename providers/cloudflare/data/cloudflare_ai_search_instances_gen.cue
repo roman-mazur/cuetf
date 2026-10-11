@@ -6,6 +6,9 @@ cloudflare_ai_search_instances: {
 	close({
 		account_id?: string
 
+		// Filter by exact Search for Agents hostname (case-insensitive).
+		hostname?: string
+
 		// Max items to fetch, default: 1000
 		max_items?: number
 

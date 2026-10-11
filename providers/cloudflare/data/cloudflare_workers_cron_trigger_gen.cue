@@ -7,7 +7,7 @@ cloudflare_workers_cron_trigger: {
 		// Identifier.
 		account_id?: string
 
-		// Name of the script, used in URLs and route configuration.
+		// Name of the script.
 		id?: string
 		schedules?: matchN(1, [close({
 			created_on?:  string
@@ -19,7 +19,7 @@ cloudflare_workers_cron_trigger: {
 			modified_on?: string
 		})]])
 
-		// Name of the script, used in URLs and route configuration.
+		// Name of the script.
 		script_name!: string
 	})
 }

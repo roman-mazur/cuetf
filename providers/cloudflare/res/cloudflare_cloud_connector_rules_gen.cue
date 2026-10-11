@@ -6,7 +6,7 @@ cloudflare_cloud_connector_rules: {
 	close({
 		// Identifier.
 		id?: string
-		rules?: matchN(1, [close({
+		rules!: matchN(1, [close({
 			// Cloud Provider type
 			// Available values: "aws_s3", "cloudflare_r2", "gcp_storage", "azure_storage", "oci_storage".
 			cloud_connector_rules_provider?: string

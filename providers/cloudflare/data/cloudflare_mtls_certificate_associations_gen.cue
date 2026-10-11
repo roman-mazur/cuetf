@@ -7,7 +7,7 @@ cloudflare_mtls_certificate_associations: {
 		// Identifier.
 		account_id!: string
 
-		// Identifier.
+		// Certificate identifier tag.
 		mtls_certificate_id!: string
 
 		// The service using the certificate.

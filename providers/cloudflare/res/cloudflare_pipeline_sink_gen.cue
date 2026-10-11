@@ -126,7 +126,7 @@ cloudflare_pipeline_sink: {
 		})
 
 		// Specifies the type of sink.
-		// Available values: "r2", "r2_data_catalog".
+		// Available values: "r2", "r2_data_catalog", "basin_catalog".
 		type!: string
 	})
 }

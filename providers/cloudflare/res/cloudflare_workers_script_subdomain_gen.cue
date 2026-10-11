@@ -16,7 +16,7 @@ cloudflare_workers_script_subdomain: {
 		// Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
 		previews_enabled?: bool
 
-		// Name of the script, used in URLs and route configuration.
+		// Name of the script.
 		script_name!: string
 	})
 }

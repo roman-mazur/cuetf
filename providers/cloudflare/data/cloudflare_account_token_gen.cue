@@ -17,6 +17,11 @@ cloudflare_account_token: {
 			})
 		})
 
+		// The email address of the user who created the token at the time of
+		// creation. Only present for Account Owned API Tokens when a creator email
+		// was available.
+		creator_email_at_creation?: string
+
 		// The expiration time on or after which the JWT MUST NOT be accepted for processing.
 		expires_on?: string
 		filter?: close({
@@ -59,8 +64,29 @@ cloudflare_account_token: {
 
 				// Attributes associated to the permission group.
 				meta?: close({
-					key?:   string
-					value?: string
+					// A category used to group permission groups.
+					category?: string
+
+					// Indicates whether the permission group is deprecated.
+					deprecated?: string
+
+					// Additional information about the permission group.
+					description?: string
+
+					// Indicates whether the permission group can be edited.
+					editable?: string
+
+					// The planned end-of-life date and time, when provided.
+					eol_at?: string
+
+					// A label identifying the permission group.
+					label?: string
+
+					// The scope associated with the permission group.
+					scopes?: string
+
+					// Indicates the permission group's availability or visibility.
+					visibility?: string
 				})
 
 				// Name of the permission group.
@@ -71,8 +97,29 @@ cloudflare_account_token: {
 
 				// Attributes associated to the permission group.
 				meta?: close({
-					key?:   string
-					value?: string
+					// A category used to group permission groups.
+					category?: string
+
+					// Indicates whether the permission group is deprecated.
+					deprecated?: string
+
+					// Additional information about the permission group.
+					description?: string
+
+					// Indicates whether the permission group can be edited.
+					editable?: string
+
+					// The planned end-of-life date and time, when provided.
+					eol_at?: string
+
+					// A label identifying the permission group.
+					label?: string
+
+					// The scope associated with the permission group.
+					scopes?: string
+
+					// Indicates the permission group's availability or visibility.
+					visibility?: string
 				})
 
 				// Name of the permission group.
@@ -96,8 +143,29 @@ cloudflare_account_token: {
 
 				// Attributes associated to the permission group.
 				meta?: close({
-					key?:   string
-					value?: string
+					// A category used to group permission groups.
+					category?: string
+
+					// Indicates whether the permission group is deprecated.
+					deprecated?: string
+
+					// Additional information about the permission group.
+					description?: string
+
+					// Indicates whether the permission group can be edited.
+					editable?: string
+
+					// The planned end-of-life date and time, when provided.
+					eol_at?: string
+
+					// A label identifying the permission group.
+					label?: string
+
+					// The scope associated with the permission group.
+					scopes?: string
+
+					// Indicates the permission group's availability or visibility.
+					visibility?: string
 				})
 
 				// Name of the permission group.
@@ -108,8 +176,29 @@ cloudflare_account_token: {
 
 				// Attributes associated to the permission group.
 				meta?: close({
-					key?:   string
-					value?: string
+					// A category used to group permission groups.
+					category?: string
+
+					// Indicates whether the permission group is deprecated.
+					deprecated?: string
+
+					// Additional information about the permission group.
+					description?: string
+
+					// Indicates whether the permission group can be edited.
+					editable?: string
+
+					// The planned end-of-life date and time, when provided.
+					eol_at?: string
+
+					// A label identifying the permission group.
+					label?: string
+
+					// The scope associated with the permission group.
+					scopes?: string
+
+					// Indicates the permission group's availability or visibility.
+					visibility?: string
 				})
 
 				// Name of the permission group.
@@ -122,6 +211,16 @@ cloudflare_account_token: {
 			// A list of resource names that the policy applies to.
 			resources?: [string]: string
 		})]])
+
+		// The identifier of the service that provisioned the token. For an
+		// OAuth-provisioned token, this is the OAuth client identifier. Present
+		// when `provisioner_type` is present and null when the identifier is
+		// unavailable.
+		provisioner_id?: string
+
+		// The type of service that provisioned the token. Only present for
+		// provisioned Account Owned API Tokens.
+		provisioner_type?: string
 
 		// Status of the token.
 		// Available values: "active", "disabled", "expired".

@@ -37,7 +37,7 @@ cloudflare_custom_ssl: {
 		})
 		hosts?: [...string]
 
-		// Identifier.
+		// Custom certificate identifier tag.
 		id?: string
 
 		// The certificate authority that issued the certificate.

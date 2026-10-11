@@ -176,7 +176,7 @@ cloudflare_certificate_packs: {
 				message?: string
 			})]])
 
-			// Identifier.
+			// The unique identifier for a certificate_pack.
 			id?: string
 
 			// Certificates' validation records.
@@ -425,7 +425,7 @@ cloudflare_certificate_packs: {
 				message?: string
 			})]])
 
-			// Identifier.
+			// The unique identifier for a certificate_pack.
 			id?: string
 
 			// Certificates' validation records.

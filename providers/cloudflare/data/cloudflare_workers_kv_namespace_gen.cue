@@ -4,19 +4,19 @@ cloudflare_workers_kv_namespace: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_workers_kv_namespace")
 	close({
-		// Identifier.
+		// ID of the Cloudflare account that owns the Workers KV namespaces.
 		account_id?: string
 		filter?: close({
-			// Direction to order namespaces.
+			// Sort namespaces in ascending (`asc`) or descending (`desc`) order.
 			// Available values: "asc", "desc".
 			direction?: string
 
-			// Field to order results by.
+			// Namespace field to sort by (`id` or `title`).
 			// Available values: "id", "title".
 			order?: string
 		})
 
-		// Namespace identifier tag.
+		// ID of the Workers KV namespace.
 		id?: string
 
 		// Specify the jurisdiction to restrict the KV namespace to durably store data
@@ -24,7 +24,7 @@ cloudflare_workers_kv_namespace: {
 		// Available values: "eu", "fedramp", "us".
 		jurisdiction?: string
 
-		// Namespace identifier tag.
+		// ID of the Workers KV namespace.
 		namespace_id?: string
 
 		// True if keys written on the URL will be URL-decoded before storing. For
@@ -32,7 +32,7 @@ cloudflare_workers_kv_namespace: {
 		// as "?".
 		supports_url_encoding?: bool
 
-		// A human-readable string name for a Namespace.
+		// Human-readable string name for a Workers KV namespace.
 		title?: string
 	})
 }

@@ -12,9 +12,10 @@ cloudflare_magic_transit_site_wan: {
 		health_check_rate?: string
 
 		// Identifier
-		id?:       string
-		name?:     string
-		physport?: number
+		id?:                       string
+		load_balance_inner_flows?: bool
+		name?:                     string
+		physport?:                 number
 
 		// Priority of WAN for traffic loadbalancing.
 		priority?: number

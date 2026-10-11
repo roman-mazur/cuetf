@@ -4,7 +4,7 @@ cloudflare_flagship_apps: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_flagship_apps")
 	close({
-		// Cloudflare account ID.
+		// Cloudflare account ID that owns the Flagship app.
 		account_id!: string
 
 		// Max items to fetch, default: 1000

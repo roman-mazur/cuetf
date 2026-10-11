@@ -8,7 +8,7 @@ cloudflare_custom_origin_trust_store: {
 		// accepted; intermediate and leaf certificates are not supported.
 		certificate?: string
 
-		// Identifier.
+		// Certificate identifier tag.
 		custom_origin_trust_store_id?: string
 
 		// When the certificate expires.
@@ -21,7 +21,7 @@ cloudflare_custom_origin_trust_store: {
 			offset?: number
 		})
 
-		// Identifier.
+		// Certificate identifier tag.
 		id?: string
 
 		// The certificate authority that issued the certificate.

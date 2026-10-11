@@ -17,6 +17,11 @@ cloudflare_account_token: {
 			})
 		})
 
+		// The email address of the user who created the token at the time of
+		// creation. Only present for Account Owned API Tokens when a creator email
+		// was available.
+		creator_email_at_creation?: string
+
 		// The expiration time on or after which the JWT MUST NOT be accepted for processing.
 		expires_on?: string
 
@@ -38,7 +43,7 @@ cloudflare_account_token: {
 		// The time before which the token MUST NOT be accepted for processing.
 		not_before?: string
 
-		// Set of access policies assigned to the token.
+		// List of access policies assigned to the token.
 		policies!: matchN(1, [close({
 			// Allow or deny operations against the resources.
 			// Available values: "allow", "deny".
@@ -72,6 +77,16 @@ cloudflare_account_token: {
 			// A json object representing the resources that are specified to the policy.
 			resources!: string
 		})]])
+
+		// The identifier of the service that provisioned the token. For an
+		// OAuth-provisioned token, this is the OAuth client identifier. Present
+		// when `provisioner_type` is present and null when the identifier is
+		// unavailable.
+		provisioner_id?: string
+
+		// The type of service that provisioned the token. Only present for
+		// provisioned Account Owned API Tokens.
+		provisioner_type?: string
 
 		// Status of the token.
 		// Available values: "active", "disabled", "expired".

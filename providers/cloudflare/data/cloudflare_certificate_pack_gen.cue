@@ -11,7 +11,7 @@ cloudflare_certificate_pack: {
 		// Available values: "google", "lets_encrypt", "ssl_com".
 		certificate_authority?: string
 
-		// Identifier.
+		// The unique identifier for a certificate_pack.
 		certificate_pack_id?: string
 
 		// Array of certificates in this pack.
@@ -170,7 +170,7 @@ cloudflare_certificate_pack: {
 		// empty.
 		hosts?: [...string]
 
-		// Identifier.
+		// The unique identifier for a certificate_pack.
 		id?: string
 
 		// Identifier of the primary certificate in a pack.

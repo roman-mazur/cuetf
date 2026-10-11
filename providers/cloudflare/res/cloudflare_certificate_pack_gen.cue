@@ -158,7 +158,7 @@ cloudflare_certificate_pack: {
 		// empty.
 		hosts?: [...string]
 
-		// Identifier.
+		// The unique identifier for a certificate_pack.
 		id?: string
 
 		// Identifier of the primary certificate in a pack.

@@ -233,13 +233,13 @@ cloudflare_workers_script: {
 			tunnel_id?: string
 
 			// The kind of resource that the binding provides.
-			// Available values: "ai", "ai_search", "ai_search_namespace",
-			// "analytics_engine", "assets", "browser", "d1", "data_blob",
+			// Available values: "ai", "ai_search", "ai_search_namespace", "messaging",
+			// "analytics_engine", "artifacts", "assets", "browser", "d1", "data_blob",
 			// "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit",
 			// "images", "json", "kv_namespace", "media", "mtls_certificate", "plain_text",
-			// "pipelines", "queue", "ratelimit", "r2_bucket", "secret_text", "send_email",
-			// "service", "text_blob", "vectorize", "version_metadata",
-			// "secrets_store_secret", "secret_key", "workflow", "wasm_module",
+			// "pipelines", "k2", "queue", "ratelimit", "r2_bucket", "secret_text",
+			// "send_email", "service", "text_blob", "vectorize", "version_metadata",
+			// "secrets_store_secret", "flagship", "secret_key", "workflow", "wasm_module",
 			// "vpc_service", "vpc_network".
 			type!: string
 
@@ -410,13 +410,13 @@ cloudflare_workers_script: {
 			tunnel_id?: string
 
 			// The kind of resource that the binding provides.
-			// Available values: "ai", "ai_search", "ai_search_namespace",
-			// "analytics_engine", "assets", "browser", "d1", "data_blob",
+			// Available values: "ai", "ai_search", "ai_search_namespace", "messaging",
+			// "analytics_engine", "artifacts", "assets", "browser", "d1", "data_blob",
 			// "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit",
 			// "images", "json", "kv_namespace", "media", "mtls_certificate", "plain_text",
-			// "pipelines", "queue", "ratelimit", "r2_bucket", "secret_text", "send_email",
-			// "service", "text_blob", "vectorize", "version_metadata",
-			// "secrets_store_secret", "secret_key", "workflow", "wasm_module",
+			// "pipelines", "k2", "queue", "ratelimit", "r2_bucket", "secret_text",
+			// "send_email", "service", "text_blob", "vectorize", "version_metadata",
+			// "secrets_store_secret", "flagship", "secret_key", "workflow", "wasm_module",
 			// "vpc_service", "vpc_network".
 			type!: string
 

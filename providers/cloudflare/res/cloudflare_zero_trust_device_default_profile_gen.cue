@@ -152,7 +152,8 @@ cloudflare_zero_trust_device_default_profile: {
 		lan_allow_subnet_size?: number
 		policy_id?:             string
 
-		// The client type to which the device settings profile applies.
+		// The client type to which the device settings profile applies. This field is
+		// set when the profile is created and cannot be changed.
 		// Available values: "warp", "browser_extension".
 		profile_type?: string
 

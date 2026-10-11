@@ -7,7 +7,7 @@ cloudflare_custom_hostname: {
 		// This is the time the hostname was created.
 		created_at?: string
 
-		// Identifier.
+		// Custom hostname identifier tag.
 		custom_hostname_id?: string
 
 		// Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
@@ -88,7 +88,7 @@ cloudflare_custom_hostname: {
 		// The custom hostname that will point to your hostname via CNAME.
 		hostname?: string
 
-		// Identifier.
+		// Custom hostname identifier tag.
 		id?: string
 
 		// This is a record which can be placed to activate a hostname.

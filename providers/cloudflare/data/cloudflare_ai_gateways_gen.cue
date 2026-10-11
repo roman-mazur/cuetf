@@ -37,7 +37,7 @@ cloudflare_ai_gateways: {
 				profiles?: [...string]
 			})
 
-			// gateway id
+			// Unique identifier of the AI Gateway within the account.
 			id?: string
 			guardrails?: close({
 				prompt?: close({
@@ -270,7 +270,7 @@ cloudflare_ai_gateways: {
 				profiles?: [...string]
 			})
 
-			// gateway id
+			// Unique identifier of the AI Gateway within the account.
 			id?: string
 			guardrails?: close({
 				prompt?: close({

@@ -157,7 +157,7 @@ cloudflare_workers_deployments: {
 			})]])
 		})]])
 
-		// Name of the script, used in URLs and route configuration.
+		// Name of the script.
 		script_name!: string
 
 		// Start of the deployment creation time range, inclusive.

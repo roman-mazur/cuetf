@@ -4,6 +4,7 @@ cloudflare_zero_trust_gateway_certificate: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_gateway_certificate")
 	close({
+		// Specify the Cloudflare account identifier.
 		account_id!: string
 
 		// Whether to activate the certificate on Cloudflare's edge. When true, the

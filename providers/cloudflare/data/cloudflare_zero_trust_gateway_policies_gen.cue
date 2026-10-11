@@ -4,6 +4,7 @@ cloudflare_zero_trust_gateway_policies: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_gateway_policies")
 	close({
+		// Specify the Cloudflare account identifier.
 		account_id?: string
 
 		// Sort direction. When `order_by` is omitted, this controls the direction

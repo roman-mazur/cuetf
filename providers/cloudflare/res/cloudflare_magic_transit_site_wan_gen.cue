@@ -12,10 +12,11 @@ cloudflare_magic_transit_site_wan: {
 		health_check_rate?: string
 
 		// Identifier
-		id?:       string
-		name?:     string
-		physport!: number
-		priority?: number
+		id?:                       string
+		load_balance_inner_flows?: bool
+		name?:                     string
+		physport!:                 number
+		priority?:                 number
 
 		// Identifier
 		site_id!: string

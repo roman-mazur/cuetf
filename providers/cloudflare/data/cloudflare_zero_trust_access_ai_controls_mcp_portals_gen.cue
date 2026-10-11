@@ -46,9 +46,11 @@ cloudflare_zero_trust_access_ai_controls_mcp_portals: {
 
 				// Authentication method used to connect to the upstream MCP server.
 				// Available values: "oauth", "bearer", "unauthenticated".
-				auth_type?:        string
-				default_disabled?: bool
-				error?:            string
+				auth_type?: string
+
+				// Optional description of the MCP server.
+				description?: string
+				error?:       string
 				error_details?: close({
 					// Underlying error message
 					cause?: string
@@ -141,9 +143,11 @@ cloudflare_zero_trust_access_ai_controls_mcp_portals: {
 					server_description?: string
 				})]])
 
-				// Optional description of the MCP server.
-				description?: string
-				created_by?:  string
+				// Hide this server's tools and prompts by default. To expose specific
+				// capabilities, set enabled: true for them in updated_tools or
+				// updated_prompts.
+				default_disabled?: bool
+				created_by?:       string
 			}), [...close({
 				// Safe subset of auth_credentials surfaced to the dashboard. Includes auth_mode
 				// (dcr|manual), has_client_secret, client_secret_version, and the OAuth
@@ -170,9 +174,11 @@ cloudflare_zero_trust_access_ai_controls_mcp_portals: {
 
 				// Authentication method used to connect to the upstream MCP server.
 				// Available values: "oauth", "bearer", "unauthenticated".
-				auth_type?:        string
-				default_disabled?: bool
-				error?:            string
+				auth_type?: string
+
+				// Optional description of the MCP server.
+				description?: string
+				error?:       string
 				error_details?: close({
 					// Underlying error message
 					cause?: string
@@ -265,9 +271,11 @@ cloudflare_zero_trust_access_ai_controls_mcp_portals: {
 					server_description?: string
 				})]])
 
-				// Optional description of the MCP server.
-				description?: string
-				created_by?:  string
+				// Hide this server's tools and prompts by default. To expose specific
+				// capabilities, set enabled: true for them in updated_tools or
+				// updated_prompts.
+				default_disabled?: bool
+				created_by?:       string
 			})]])
 			created_at?: string
 
@@ -324,9 +332,11 @@ cloudflare_zero_trust_access_ai_controls_mcp_portals: {
 
 				// Authentication method used to connect to the upstream MCP server.
 				// Available values: "oauth", "bearer", "unauthenticated".
-				auth_type?:        string
-				default_disabled?: bool
-				error?:            string
+				auth_type?: string
+
+				// Optional description of the MCP server.
+				description?: string
+				error?:       string
 				error_details?: close({
 					// Underlying error message
 					cause?: string
@@ -419,9 +429,11 @@ cloudflare_zero_trust_access_ai_controls_mcp_portals: {
 					server_description?: string
 				})]])
 
-				// Optional description of the MCP server.
-				description?: string
-				created_by?:  string
+				// Hide this server's tools and prompts by default. To expose specific
+				// capabilities, set enabled: true for them in updated_tools or
+				// updated_prompts.
+				default_disabled?: bool
+				created_by?:       string
 			}), [...close({
 				// Safe subset of auth_credentials surfaced to the dashboard. Includes auth_mode
 				// (dcr|manual), has_client_secret, client_secret_version, and the OAuth
@@ -448,9 +460,11 @@ cloudflare_zero_trust_access_ai_controls_mcp_portals: {
 
 				// Authentication method used to connect to the upstream MCP server.
 				// Available values: "oauth", "bearer", "unauthenticated".
-				auth_type?:        string
-				default_disabled?: bool
-				error?:            string
+				auth_type?: string
+
+				// Optional description of the MCP server.
+				description?: string
+				error?:       string
 				error_details?: close({
 					// Underlying error message
 					cause?: string
@@ -543,9 +557,11 @@ cloudflare_zero_trust_access_ai_controls_mcp_portals: {
 					server_description?: string
 				})]])
 
-				// Optional description of the MCP server.
-				description?: string
-				created_by?:  string
+				// Hide this server's tools and prompts by default. To expose specific
+				// capabilities, set enabled: true for them in updated_tools or
+				// updated_prompts.
+				default_disabled?: bool
+				created_by?:       string
 			})]])
 			created_at?: string
 

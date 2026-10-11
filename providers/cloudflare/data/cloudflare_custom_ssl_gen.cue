@@ -11,7 +11,7 @@ cloudflare_custom_ssl: {
 		// Available values: "ubiquitous", "optimal", "force".
 		bundle_method?: string
 
-		// Identifier.
+		// Custom certificate identifier tag.
 		custom_certificate_id?: string
 
 		// The identifier for the Custom CSR that was used.
@@ -42,7 +42,7 @@ cloudflare_custom_ssl: {
 		})
 		hosts?: [...string]
 
-		// Identifier.
+		// Custom certificate identifier tag.
 		id?: string
 
 		// The certificate authority that issued the certificate.

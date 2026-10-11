@@ -11,7 +11,7 @@ cloudflare_custom_origin_trust_store: {
 		// When the certificate expires.
 		expires_on?: string
 
-		// Identifier.
+		// Certificate identifier tag.
 		id?: string
 
 		// The certificate authority that issued the certificate.

@@ -4,8 +4,11 @@ cloudflare_zero_trust_gateway_logging: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_gateway_logging")
 	close({
+		// Specify the Cloudflare account identifier.
 		account_id?: string
-		id?:         string
+
+		// Specify the Cloudflare account identifier.
+		id?: string
 
 		// Indicate whether to redact personally identifiable information from activity
 		// logging (PII fields include source IP, user email, user ID, device ID, URL,

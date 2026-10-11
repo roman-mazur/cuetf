@@ -22,7 +22,7 @@ cloudflare_custom_origin_trust_stores: {
 			// When the certificate expires.
 			expires_on?: string
 
-			// Identifier.
+			// Certificate identifier tag.
 			id?: string
 
 			// The certificate authority that issued the certificate.
@@ -49,7 +49,7 @@ cloudflare_custom_origin_trust_stores: {
 			// When the certificate expires.
 			expires_on?: string
 
-			// Identifier.
+			// Certificate identifier tag.
 			id?: string
 
 			// The certificate authority that issued the certificate.

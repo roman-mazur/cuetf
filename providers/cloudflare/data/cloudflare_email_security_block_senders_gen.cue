@@ -33,6 +33,9 @@ cloudflare_email_security_block_senders: {
 			id?:         string
 			created_at?: string
 
+			// Whether `pattern` is a regular expression instead of a literal value.
+			is_regex?: bool
+
 			// The pattern value to match. The format depends on `pattern_type`: a valid
 			// email address for EMAIL (e.g. `user@example.com`), a valid domain name for
 			// DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block
@@ -54,7 +57,6 @@ cloudflare_email_security_block_senders: {
 			// policies, but it may appear on existing entries.
 			// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 			pattern_type?: string
-			is_regex?:     bool
 			modified_at?:  string
 		}), [...close({
 			comments?: string
@@ -63,6 +65,9 @@ cloudflare_email_security_block_senders: {
 			id?:         string
 			created_at?: string
 
+			// Whether `pattern` is a regular expression instead of a literal value.
+			is_regex?: bool
+
 			// The pattern value to match. The format depends on `pattern_type`: a valid
 			// email address for EMAIL (e.g. `user@example.com`), a valid domain name for
 			// DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block
@@ -84,7 +89,6 @@ cloudflare_email_security_block_senders: {
 			// policies, but it may appear on existing entries.
 			// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 			pattern_type?: string
-			is_regex?:     bool
 			modified_at?:  string
 		})]])
 

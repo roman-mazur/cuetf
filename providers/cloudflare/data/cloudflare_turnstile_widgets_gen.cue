@@ -11,7 +11,8 @@ cloudflare_turnstile_widgets: {
 		// Available values: "asc", "desc".
 		direction?: string
 
-		// Filter widgets by field using case-insensitive substring matching.
+		// Filter widgets by field. The `name` field uses case-insensitive
+		// substring matching; `sitekey` uses exact matching.
 		// Format: `field:value`
 		//
 		// Supported fields:
@@ -54,7 +55,7 @@ cloudflare_turnstile_widgets: {
 			// Return the Ephemeral ID in /siteverify (ENT only).
 			ephemeral_id?: bool
 
-			// Widget item identifier tag.
+			// Unique identifier for a Turnstile widget.
 			id?: string
 
 			// Origin of the most recent mutation (create, update, delete, or
@@ -82,7 +83,7 @@ cloudflare_turnstile_widgets: {
 			// Available values: "world", "china".
 			region?: string
 
-			// Widget item identifier tag.
+			// Unique identifier for a Turnstile widget.
 			sitekey?: string
 		}), [...close({
 			// If bot_fight_mode is set to `true`, Cloudflare issues computationally
@@ -108,7 +109,7 @@ cloudflare_turnstile_widgets: {
 			// Return the Ephemeral ID in /siteverify (ENT only).
 			ephemeral_id?: bool
 
-			// Widget item identifier tag.
+			// Unique identifier for a Turnstile widget.
 			id?: string
 
 			// Origin of the most recent mutation (create, update, delete, or
@@ -136,7 +137,7 @@ cloudflare_turnstile_widgets: {
 			// Available values: "world", "china".
 			region?: string
 
-			// Widget item identifier tag.
+			// Unique identifier for a Turnstile widget.
 			sitekey?: string
 		})]])
 	})
