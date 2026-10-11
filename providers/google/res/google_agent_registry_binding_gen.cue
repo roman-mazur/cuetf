@@ -7,7 +7,7 @@ google_agent_registry_binding: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_agent_registry_binding")
 	close({
 		auth_provider_binding!: matchN(1, [#auth_provider_binding, list.MaxItems(1) & [_, ...] & [...#auth_provider_binding]])
-		source!: matchN(1, [#source, list.MaxItems(1) & [_, ...] & [...#source]])
+		source?: matchN(1, [#source, list.MaxItems(1) & [...#source]])
 		target!: matchN(1, [#target, list.MaxItems(1) & [_, ...] & [...#target]])
 		timeouts?: #timeouts
 

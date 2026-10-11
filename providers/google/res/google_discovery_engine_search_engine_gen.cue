@@ -72,6 +72,9 @@ google_discovery_engine_search_engine: {
 		// characters.
 		name?: string
 
+		// The emails of the procurement contacts.
+		procurement_contact_emails?: [...string]
+
 		// Timestamp the Engine was last updated.
 		update_time?: string
 		project?:     string

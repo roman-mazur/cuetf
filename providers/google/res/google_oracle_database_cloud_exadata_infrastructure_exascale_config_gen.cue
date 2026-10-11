@@ -21,7 +21,10 @@ google_oracle_database_cloud_exadata_infrastructure_exascale_config: {
 		// The total storage to be allocated to Exascale in GBs.
 		total_storage_size_gb!: number
 		location!:              string
-		project?:               string
+
+		// Storage size needed for VM storage on Exascale in GBs.
+		total_vm_storage_size_gb?: number
+		project?:                  string
 	})
 
 	#timeouts: close({

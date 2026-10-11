@@ -1397,6 +1397,8 @@ google_compute_region_url_map: {
 	})
 
 	_#defs: "/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/url_rewrite": close({
+		regex_rewrite?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/url_rewrite/$defs/regex_rewrite", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/url_rewrite/$defs/regex_rewrite"]])
+
 		// Prior to forwarding the request to the selected service, the request's host
 		// header is replaced with contents of hostRewrite. The value must be between 1 and
 		// 255 characters.
@@ -1405,6 +1407,9 @@ google_compute_region_url_map: {
 		// Prior to forwarding the request to the selected backend service, the matching
 		// portion of the request's path is replaced by pathPrefixRewrite. The value must
 		// be between 1 and 1024 characters.
+		//
+		// Only one of pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+		// specified.
 		path_prefix_rewrite?: string
 
 		// Prior to forwarding the request to the selected origin, if the
@@ -1419,9 +1424,29 @@ google_compute_region_url_map: {
 		// pathTemplateRewrite may only be used when all of a route's
 		// MatchRules specify pathTemplate.
 		//
-		// Only one of pathPrefixRewrite and pathTemplateRewrite may be
+		// Only one of pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
 		// specified.
 		path_template_rewrite?: string
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/url_rewrite/$defs/regex_rewrite": close({
+		// The regular expression used to match against the URL path.
+		// It uses RE2 syntax with the following constraints:
+		//
+		// * Any single character operators are allowed.
+		// * Groups may only contain a submatch operator, and may not
+		// contain character repetition (for example, '.*').
+		// * Character repetition (for example, '.*') may only be used in
+		// a regex together with empty string operators, other
+		// repetitions, ranges, and repetitions of ranges.
+		// * Ranges may only contain character ranges, digit ranges, and
+		// symbols allowed for ranges.
+		path_pattern!: string
+
+		// The substitution used to rewrite the parts of the URL path
+		// matched by pathPattern. May reference capture groups from
+		// pathPattern.
+		path_substitution!: string
 	})
 
 	_#defs: "/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/weighted_backend_services": close({

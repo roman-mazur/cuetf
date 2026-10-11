@@ -97,12 +97,18 @@ google_iam_folders_policy_binding: {
 	})
 
 	#target: close({
-		// Required. Immutable. Full Resource Name of the principal set used for
-		// principal access boundary policy bindings.
+		// Immutable. Full Resource Name of the principal set used for principal access
+		// boundary policy bindings.
 		// Examples for each one of the following supported principal set types:
 		// * Folder: '//cloudresourcemanager.googleapis.com/folders/FOLDER_ID'
 		// It must be parent by the policy binding's parent (the folder).
 		principal_set?: string
+
+		// Immutable. Full Resource Name of the resource used for access policy bindings.
+		// Use this together with 'policy_kind = "ACCESS"'. Examples:
+		// * Folder: '//cloudresourcemanager.googleapis.com/folders/FOLDER_ID'
+		// It must be the policy binding's parent (the folder).
+		resource?: string
 	})
 
 	#timeouts: close({

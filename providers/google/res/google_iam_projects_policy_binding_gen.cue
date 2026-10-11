@@ -95,8 +95,8 @@ google_iam_projects_policy_binding: {
 	})
 
 	#target: close({
-		// Required. Immutable. Full Resource Name of the principal set used for
-		// principal access boundary policy bindings.
+		// Immutable. Full Resource Name of the principal set used for principal access
+		// boundary policy bindings.
 		// Examples for each one of the following supported principal set types:
 		// * Project:
 		// * '//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER'
@@ -105,6 +105,14 @@ google_iam_projects_policy_binding: {
 		// '//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID'
 		// It must be parent by the policy binding's parent (the project).
 		principal_set?: string
+
+		// Immutable. Full Resource Name of the resource used for access policy bindings.
+		// Use this together with 'policy_kind = "ACCESS"'. Examples:
+		// * Project:
+		// * '//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER'
+		// * '//cloudresourcemanager.googleapis.com/projects/PROJECT_ID'
+		// It must be the policy binding's parent (the project).
+		resource?: string
 	})
 
 	#timeouts: close({

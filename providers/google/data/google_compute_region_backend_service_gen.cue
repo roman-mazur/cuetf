@@ -353,6 +353,11 @@ google_compute_region_backend_service: {
 		security_policy?: string
 		self_link?:       string
 
+		// URL to networkservices.ServiceLbPolicy resource.
+		// Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+		// The service lb policy must be regional and in the same region as the backend service.
+		service_lb_policy?: string
+
 		// Type of session affinity to use. The default is NONE. Session affinity is
 		// not applicable if the protocol is UDP. Possible values: ["NONE", "CLIENT_IP",
 		// "CLIENT_IP_PORT_PROTO", "CLIENT_IP_PROTO", "GENERATED_COOKIE",
@@ -383,6 +388,7 @@ google_compute_region_backend_service: {
 		// when the backend protocol is SSL, HTTPS or HTTP2.
 		tls_settings?: [...close({
 			authentication_config?: string
+			identity?:              string
 			sni?:                   string
 			subject_alt_names?: [...close({
 				dns_name?:                    string

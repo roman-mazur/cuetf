@@ -39,6 +39,10 @@ google_managed_kafka_cluster: {
 		effective_labels?: [string]: string
 		id?: string
 
+		// The Apache Kafka version of the cluster (for example, '3.7.x', '4.3.x'). If
+		// not specified during cluster creation, defaults to '3.7.x'.
+		kafka_version?: string
+
 		// List of label KEY=VALUE pairs to add. Keys must start with a lowercase
 		// character and contain only hyphens (-), underscores ( ), lowercase
 		// characters, and numbers. Values must contain only hyphens (-), underscores (

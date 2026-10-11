@@ -99,6 +99,14 @@ google_oracle_database_cloud_exadata_infrastructure: {
 		// Infrastructure.
 		db_server_version?: string
 
+		// The Exascale configuration for the Exadata Infrastructure.
+		exascale_config?: [...close({
+			available_storage_size_gb?:    number
+			available_vm_storage_size_gb?: number
+			total_storage_size_gb?:        number
+			total_vm_storage_size_gb?:     number
+		})]
+
 		// The total number of CPU cores available.
 		max_cpu_count?: number
 

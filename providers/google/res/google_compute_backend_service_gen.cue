@@ -220,8 +220,12 @@ google_compute_backend_service: {
 		security_policy?: string
 
 		// URL to networkservices.ServiceLbPolicy resource.
-		// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED,
-		// INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+		// Can only be set if load balancing scheme is EXTERNAL_MANAGED,
+		// INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and
+		// EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a
+		// global backend service, the service lb policy must be global. For a regional
+		// backend service, the service lb policy must be regional and in the same
+		// region.
 		service_lb_policy?: string
 
 		// Type of session affinity to use. The default is NONE. Session affinity is
@@ -630,6 +634,16 @@ google_compute_backend_service: {
 		// the authenticationMode field.
 		// Can only be specified if authenticationMode is not NONE.
 		authentication_config?: string
+
+		// The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the
+		// format //<trust_domain>/ns/<namespace>/sa/<subject>.
+		// The load balancer uses certificates and roots of trust provisioned by the
+		// Managed Workload Identity system for this identity.
+		// The Trust Domain within the identity must refer to a valid Workload Identity
+		// Pool, from which the TrustConfig and CertificateIssuanceConfig are
+		// inherited.
+		// If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+		identity?: string
 
 		// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer
 		// sends this string as the SNI hostname in the

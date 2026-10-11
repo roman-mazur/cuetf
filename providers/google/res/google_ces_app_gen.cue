@@ -290,7 +290,12 @@ google_ces_app: {
 	})
 
 	_#defs: "/$defs/audio_processing_config/$defs/synthesize_speech_configs": close({
+		// The instruction used to synthesize speech when using a generative model.
+		instruction?:   string
 		language_code!: string
+
+		// The model used to synthesize audio.
+		model?: string
 
 		// The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native
 		// speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is

@@ -68,10 +68,20 @@ google_app_engine_application: {
 
 		// OAuth2 client secret to use for the authentication flow. The SHA-256 hash of
 		// the value is returned in the oauth2ClientSecretSha256 field.
-		oauth2_client_secret!: string
+		oauth2_client_secret?: string
 
 		// Hex-encoded SHA-256 hash of the client secret.
 		oauth2_client_secret_sha256?: string
+
+		// OAuth2 client secret to use for the authentication flow. The SHA-256 hash of
+		// the value is returned in the oauth2ClientSecretSha256 field.
+		oauth2_client_secret_wo?: string
+
+		// Triggers update of `oauth2_client_secret_wo` write-only. Increment this value
+		// when an update to `oauth2_client_secret_wo` is needed. For more info see
+		// [updating write-only
+		// arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+		oauth2_client_secret_wo_version?: string
 	})
 
 	#timeouts: close({

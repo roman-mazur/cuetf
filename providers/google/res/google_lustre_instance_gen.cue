@@ -11,6 +11,10 @@ google_lustre_instance: {
 		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
 		timeouts?: #timeouts
 
+		// The version this instance can be upgraded to, if one is available. Empty
+		// when the instance is already running the newest release.
+		available_version?: string
+
 		// The storage capacity of the instance in gibibytes (GiB). Allowed values
 		// are from '9000' to '7632000', depending on the 'perUnitStorageThroughput'.
 		// See [Performance tiers and maximum storage
@@ -35,6 +39,10 @@ google_lustre_instance: {
 		// All of labels (key/value pairs) present on the resource in GCP, including the
 		// labels configured through Terraform, other clients and services.
 		effective_labels?: [string]: string
+
+		// The version of Managed Lustre software that this instance is currently
+		// running.
+		effective_version?: string
 
 		// The filesystem name for this instance. This name is used by client-side
 		// tools, including when mounting the instance. Must be eight characters or
@@ -113,6 +121,18 @@ google_lustre_instance: {
 
 		// The reason why the instance is in a certain state (e.g. SUSPENDED).
 		state_reason?: string
+
+		// The version to upgrade this instance to. Set this to the value reported in
+		// 'availableVersion', or to 'latest' to move to the newest version available
+		// at the time of the upgrade.
+		// This field cannot be set when the instance is created; new instances are
+		// always provisioned from the current release. It also cannot be changed in
+		// the same operation as 'capacityGib' or 'maintenancePolicy', and the
+		// instance must be ACTIVE and outside of the hour preceding a scheduled
+		// maintenance window.
+		// The API clears this field once the upgrade finishes, so it always reads
+		// back as empty on an idle instance.
+		target_version?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

@@ -192,12 +192,18 @@ google_compute_region_backend_service: {
 		// The security policy associated with this backend service.
 		security_policy?: string
 
+		// URL to networkservices.ServiceLbPolicy resource.
+		// Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+		// The service lb policy must be regional and in the same region as the backend service.
+		service_lb_policy?: string
+
 		// Type of session affinity to use. The default is NONE. Session affinity is
 		// not applicable if the protocol is UDP. Possible values: ["NONE", "CLIENT_IP",
 		// "CLIENT_IP_PORT_PROTO", "CLIENT_IP_PROTO", "GENERATED_COOKIE",
 		// "HEADER_FIELD", "HTTP_COOKIE", "CLIENT_IP_NO_DESTINATION",
 		// "STRONG_COOKIE_AFFINITY"]
 		session_affinity?: string
+		self_link?:        string
 
 		// The backend service timeout has a different meaning depending on the type of load balancer.
 		// For more information see, [Backend service
@@ -205,7 +211,6 @@ google_compute_region_backend_service: {
 		// The default is 30 seconds.
 		// The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
 		timeout_sec?: number
-		self_link?:   string
 	})
 
 	#backend: close({
@@ -216,7 +221,8 @@ google_compute_region_backend_service: {
 		// See the [Backend Services
 		// Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
 		// for an explanation of load balancing modes. Default value: "UTILIZATION"
-		// Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS"]
+		// Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS",
+		// "IN_FLIGHT"]
 		balancing_mode?: string
 
 		// A multiplier applied to the group's maximum servicing capacity
@@ -636,6 +642,16 @@ google_compute_region_backend_service: {
 		// the authenticationMode field.
 		// Can only be specified if authenticationMode is not NONE.
 		authentication_config?: string
+
+		// The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the
+		// format //<trust_domain>/ns/<namespace>/sa/<subject>.
+		// The load balancer uses certificates and roots of trust provisioned by the
+		// Managed Workload Identity system for this identity.
+		// The Trust Domain within the identity must refer to a valid Workload Identity
+		// Pool, from which the TrustConfig and CertificateIssuanceConfig are
+		// inherited.
+		// If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+		identity?: string
 
 		// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer
 		// sends this string as the SNI hostname in the

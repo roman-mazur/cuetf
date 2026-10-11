@@ -70,6 +70,12 @@ google_oracle_database_cloud_exadata_infrastructure: {
 			data_storage_size_tb?:    number
 			db_node_storage_size_gb?: number
 			db_server_version?:       string
+			exascale_config?: [...close({
+				available_storage_size_gb?:    number
+				available_vm_storage_size_gb?: number
+				total_storage_size_gb?:        number
+				total_vm_storage_size_gb?:     number
+			})]
 			maintenance_window?: [...close({
 				custom_action_timeout_mins?: number
 				days_of_week?: [...string]
