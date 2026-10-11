@@ -62,8 +62,9 @@ google_network_security_security_profile: {
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
 
-		// The type of security profile. Possible values: ["THREAT_PREVENTION",
-		// "URL_FILTERING", "CUSTOM_MIRRORING", "CUSTOM_INTERCEPT"]
+		// The type of security profile. 'WILDFIRE_ANALYSIS' is beta-only. Possible
+		// values: ["THREAT_PREVENTION", "URL_FILTERING", "CUSTOM_MIRRORING",
+		// "CUSTOM_INTERCEPT", "WILDFIRE_ANALYSIS"]
 		type!: string
 
 		// Time the security profile was updated in UTC.

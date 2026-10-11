@@ -268,6 +268,9 @@ google_compute_instance_template: {
 		alias_ip_range?: matchN(1, [_#defs."/$defs/network_interface/$defs/alias_ip_range", [..._#defs."/$defs/network_interface/$defs/alias_ip_range"]])
 		ipv6_access_config?: matchN(1, [_#defs."/$defs/network_interface/$defs/ipv6_access_config", [..._#defs."/$defs/network_interface/$defs/ipv6_access_config"]])
 
+		// If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+		enable_vpc_scoped_dns?: bool
+
 		// Indicates whether igmp query is enabled on the network interface or not. If
 		// enabled, also indicates the version of IGMP supported.
 		igmp_query?: string

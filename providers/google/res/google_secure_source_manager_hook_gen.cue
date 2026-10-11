@@ -46,6 +46,10 @@ google_secure_source_manager_hook: {
 		// The sensitive query string to be appended to the target URI.
 		sensitive_query_string?: string
 
+		// Determines if the hook uses the Repository Service Account to
+		// generate an OIDC ID Token for webhook authentication.
+		service_account_auth?: bool
+
 		// The target URI to which the payloads will be delivered.
 		target_uri!: string
 

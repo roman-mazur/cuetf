@@ -7,7 +7,7 @@ google_compute_target_tcp_proxy: {
 		timeouts?: #timeouts
 
 		// A reference to the BackendService resource. This field is optional when
-		// the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+		// the loadBalancingScheme is set to INTERNAL_MANAGED.
 		backend_service?: string
 
 		// Creation timestamp in RFC3339 text format.
@@ -24,6 +24,13 @@ google_compute_target_tcp_proxy: {
 		// An optional description of this resource.
 		description?: string
 		id?:          string
+
+		// Specifies the load balancer type. A target TCP proxy created for one type
+		// of load balancer cannot be used with another. For more information, refer
+		// to [Summary of types of Google Cloud load
+		// balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
+		// Possible values: ["EXTERNAL", "EXTERNAL_MANAGED", "INTERNAL_MANAGED"]
+		load_balancing_scheme?: string
 
 		// Name of the resource. Provided by the client when the resource is
 		// created. The name must be 1-63 characters long, and comply with

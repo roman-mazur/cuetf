@@ -7217,7 +7217,6 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							description:      "The source of the Binding."
 							description_kind: "plain"
 						}
-						min_items: 1
 						max_items: 1
 					}
 					target: {
@@ -8280,6 +8279,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								visualization_options: {
 									nesting_mode: "list"
 									block: {
+										attributes: visualization_mode: {
+											type: "string"
+											description: """
+															Mode for generating visualizations.
+															Possible values:
+															VISUALIZATION_MODE_EXPLICIT_ONLY
+															VISUALIZATION_MODE_WHEN_NECESSARY
+															VISUALIZATION_MODE_WHEN_HELPFUL
+															VISUALIZATION_MODE_ALWAYS
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
 										block_types: visualization_examples: {
 											nesting_mode: "list"
 											block: {
@@ -8595,6 +8607,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									optional:         true
 									sensitive:        true
+								}
+								api_key_header: {
+									type: "string"
+									description: """
+												The HTTP header when the API key is passed in a request header
+												(e.g. 'x-api-key', 'api-key', 'X-Auth-Token').
+												"""
+									description_kind: "plain"
+									optional:         true
 								}
 								api_key_name: {
 									type:             "string"
@@ -8983,14 +9004,25 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					web_search_config: {
 						nesting_mode: "list"
 						block: {
-							attributes: excluded_domains: {
-								type: ["list", "string"]
-								description: """
+							attributes: {
+								disabled: {
+									type: "bool"
+									description: """
+												Whether web search grounding is disabled for the analyst agent.
+												Defaults to false if not specified (i.e. web search grounding is enabled).
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								excluded_domains: {
+									type: ["list", "string"]
+									description: """
 												List of domains to be excluded from Google Search / Enterprise Web Search
 												grounding.
 												"""
-								description_kind: "plain"
-								optional:         true
+									description_kind: "plain"
+									optional:         true
+								}
 							}
 							description:      "Configuration for web search grounding for the analyst agent."
 							description_kind: "plain"
@@ -9992,11 +10024,11 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					availability_type: {
 						type: "string"
 						description: """
-									'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
-									Note that primary and read instances can have different availability types.
-									Primary instances can be either ZONAL or REGIONAL. Read Pool instances can also be either ZONAL or REGIONAL.
-									Read pools of size 1 can only have zonal availability. Read pools with a node count of 2 or more
-									can have regional availability (nodes are present in 2 or more zones in a region).
+									'Availability type of a primary Instance. Defaults to REGIONAL.
+									Primary instances can be either ZONAL or REGIONAL. Read Pool instances
+									derive their availability from 'read_pool_config.node_count': a pool
+									with one node is ZONAL, while a pool with two or more nodes is REGIONAL.
+									Read Pool instances do not support setting this field directly.
 									Possible values are: 'AVAILABILITY_TYPE_UNSPECIFIED', 'ZONAL', 'REGIONAL'.' Possible values: ["AVAILABILITY_TYPE_UNSPECIFIED", "ZONAL", "REGIONAL"]
 									"""
 						description_kind: "plain"
@@ -10240,8 +10272,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						block: {
 							attributes: {
 								cpu_count: {
-									type:             "number"
-									description:      "The number of CPU's in the VM instance."
+									type: "number"
+									description: """
+												The number of CPUs in the VM instance. For read pool instances, this
+												value is applied to the instances in the pool and is not replaced by
+												a fixed default.
+												"""
 									description_kind: "plain"
 									optional:         true
 									computed:         true
@@ -17486,7 +17522,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									type:             "string"
 									description:      "OAuth2 client secret to use for the authentication flow. The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field."
 									description_kind: "plain"
-									required:         true
+									optional:         true
 									sensitive:        true
 								}
 								oauth2_client_secret_sha256: {
@@ -17495,6 +17531,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									computed:         true
 									sensitive:        true
+								}
+								oauth2_client_secret_wo: {
+									type:             "string"
+									description:      "OAuth2 client secret to use for the authentication flow. The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field."
+									description_kind: "plain"
+									optional:         true
+									write_only:       true
+								}
+								oauth2_client_secret_wo_version: {
+									type:             "string"
+									description:      "Triggers update of `oauth2_client_secret_wo` write-only. Increment this value when an update to `oauth2_client_secret_wo` is needed. For more info see [updating write-only arguments](/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)"
+									description_kind: "plain"
+									optional:         true
 								}
 							}
 							description:      "Settings for enabling Cloud Identity Aware Proxy"
@@ -41032,10 +41081,22 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									nesting_mode: "set"
 									block: {
 										attributes: {
+											instruction: {
+												type:             "string"
+												description:      "The instruction used to synthesize speech when using a generative model."
+												description_kind: "plain"
+												optional:         true
+											}
 											language_code: {
 												type:             "string"
 												description_kind: "plain"
 												required:         true
+											}
+											model: {
+												type:             "string"
+												description:      "The model used to synthesize audio."
+												description_kind: "plain"
+												optional:         true
 											}
 											speaking_rate: {
 												type: "number"
@@ -80711,7 +80772,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type: "string"
 						description: """
 									URL to networkservices.ServiceLbPolicy resource.
-									Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+									Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
 									"""
 						description_kind: "plain"
 						optional:         true
@@ -82003,6 +82064,17 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									optional:         true
 								}
+								identity: {
+									type: "string"
+									description: """
+												The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+												The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+												The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+												If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
 								sni: {
 									type: "string"
 									description: """
@@ -82787,6 +82859,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 										If you do not provide an encryption key when creating the disk, then
 										the disk will be encrypted using an automatically generated key and
 										you do not need to provide a key to use the disk later.
+
+										~>**NOTE** Only changing 'kms_key_self_link' between Cloud KMS keys is
+										done in place; other changes to this block recreate the disk.
 										"""
 							description_kind: "plain"
 						}
@@ -89309,6 +89384,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						nesting_mode: "list"
 						block: {
 							attributes: {
+								enable_vpc_scoped_dns: {
+									type:             "bool"
+									description:      "If true, DNS resolution will be enabled over this interface. Only valid with network_attachment."
+									description_kind: "plain"
+									optional:         true
+								}
 								igmp_query: {
 									type:             "string"
 									description:      "Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported."
@@ -90601,6 +90682,13 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						nesting_mode: "list"
 						block: {
 							attributes: {
+								enable_vpc_scoped_dns: {
+									type:             "bool"
+									description:      "If true, DNS resolution will be enabled over this interface. Only valid with network_attachment."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
 								igmp_query: {
 									type:             "string"
 									description:      "Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported."
@@ -92783,6 +92871,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						nesting_mode: "list"
 						block: {
 							attributes: {
+								enable_vpc_scoped_dns: {
+									type:             "bool"
+									description:      "If true, DNS resolution will be enabled over this interface. Only valid with network_attachment."
+									description_kind: "plain"
+									optional:         true
+								}
 								igmp_query: {
 									type:             "string"
 									description:      "Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported."
@@ -100399,6 +100493,16 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						computed:         true
 					}
+					service_lb_policy: {
+						type: "string"
+						description: """
+									URL to networkservices.ServiceLbPolicy resource.
+									Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+									The service lb policy must be regional and in the same region as the backend service.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
 					session_affinity: {
 						type: "string"
 						description: """
@@ -100433,7 +100537,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												Specifies the balancing mode for this backend.
 
 												See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-												for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS"]
+												for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS", "IN_FLIGHT"]
 												"""
 									description_kind: "plain"
 									optional:         true
@@ -101624,6 +101728,17 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
 												Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
 												Can only be specified if authenticationMode is not NONE.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								identity: {
+									type: "string"
+									description: """
+												The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+												The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+												The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+												If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
 												"""
 									description_kind: "plain"
 									optional:         true
@@ -104995,6 +105110,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						nesting_mode: "list"
 						block: {
 							attributes: {
+								enable_vpc_scoped_dns: {
+									type:             "bool"
+									description:      "If true, DNS resolution will be enabled over this interface. Only valid with network_attachment."
+									description_kind: "plain"
+									optional:         true
+								}
 								igmp_query: {
 									type:             "string"
 									description:      "Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported."
@@ -109937,7 +110058,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type: "string"
 						description: """
 									A reference to the BackendService resource. This field is optional when
-									the loadBalancingScheme (available in beta) is specified.
+									the loadBalancingScheme is specified.
 									"""
 						description_kind: "plain"
 						optional:         true
@@ -109974,6 +110095,16 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+					load_balancing_scheme: {
+						type: "string"
+						description: """
+									Specifies the load balancer type. A target TCP proxy created for one type
+									of load balancer cannot be used with another. For more information, refer
+									to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb). Possible values: ["EXTERNAL_MANAGED", "INTERNAL_MANAGED"]
+									"""
+						description_kind: "plain"
+						optional:         true
 					}
 					name: {
 						type: "string"
@@ -112966,6 +113097,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																					Prior to forwarding the request to the selected backend service, the matching
 																					portion of the request's path is replaced by pathPrefixRewrite. The value must
 																					be between 1 and 1024 characters.
+
+																					Only one of pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+																					specified.
 																					"""
 																		description_kind: "plain"
 																		optional:         true
@@ -112985,12 +113119,54 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																					pathTemplateRewrite may only be used when all of a route's
 																					MatchRules specify pathTemplate.
 
-																					Only one of pathPrefixRewrite and pathTemplateRewrite may be
+																					Only one of pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
 																					specified.
 																					"""
 																		description_kind: "plain"
 																		optional:         true
 																	}
+																}
+																block_types: regex_rewrite: {
+																	nesting_mode: "list"
+																	block: {
+																		attributes: {
+																			path_pattern: {
+																				type: "string"
+																				description: """
+																								The regular expression used to match against the URL path.
+																								It uses RE2 syntax with the following constraints:
+
+																								* Any single character operators are allowed.
+																								* Groups may only contain a submatch operator, and may not
+																								  contain character repetition (for example, '.*').
+																								* Character repetition (for example, '.*') may only be used in
+																								  a regex together with empty string operators, other
+																								  repetitions, ranges, and repetitions of ranges.
+																								* Ranges may only contain character ranges, digit ranges, and
+																								  symbols allowed for ranges.
+																								"""
+																				description_kind: "plain"
+																				required:         true
+																			}
+																			path_substitution: {
+																				type: "string"
+																				description: """
+																								The substitution used to rewrite the parts of the URL path
+																								matched by pathPattern. May reference capture groups from
+																								pathPattern.
+																								"""
+																				description_kind: "plain"
+																				required:         true
+																			}
+																		}
+																		description: """
+																						The regex rewrite to be applied to the URL. Only one of
+																						pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+																						specified.
+																						"""
+																		description_kind: "plain"
+																	}
+																	max_items: 1
 																}
 																description: """
 																			The spec to modify the URL of the request, prior to forwarding the request to
@@ -121141,7 +121317,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type: "string"
 						description: """
 									A reference to the BackendService resource. This field is optional when
-									the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+									the loadBalancingScheme is set to INTERNAL_MANAGED.
 									"""
 						description_kind: "plain"
 						optional:         true
@@ -121178,6 +121354,16 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+					load_balancing_scheme: {
+						type: "string"
+						description: """
+									Specifies the load balancer type. A target TCP proxy created for one type
+									of load balancer cannot be used with another. For more information, refer
+									to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb). Possible values: ["EXTERNAL", "EXTERNAL_MANAGED", "INTERNAL_MANAGED"]
+									"""
+						description_kind: "plain"
+						optional:         true
 					}
 					name: {
 						type: "string"
@@ -126014,6 +126200,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																					Prior to forwarding the request to the selected backend service, the matching
 																					portion of the request's path is replaced by pathPrefixRewrite. The value must
 																					be between 1 and 1024 characters.
+
+																					Only one of pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+																					specified.
 																					"""
 																		description_kind: "plain"
 																		optional:         true
@@ -126033,12 +126222,54 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																					pathTemplateRewrite may only be used when all of a route's
 																					MatchRules specify pathTemplate.
 
-																					Only one of pathPrefixRewrite and pathTemplateRewrite may be
+																					Only one of pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
 																					specified.
 																					"""
 																		description_kind: "plain"
 																		optional:         true
 																	}
+																}
+																block_types: regex_rewrite: {
+																	nesting_mode: "list"
+																	block: {
+																		attributes: {
+																			path_pattern: {
+																				type: "string"
+																				description: """
+																								The regular expression used to match against the URL path.
+																								It uses RE2 syntax with the following constraints:
+
+																								* Any single character operators are allowed.
+																								* Groups may only contain a submatch operator, and may not
+																								  contain character repetition (for example, '.*').
+																								* Character repetition (for example, '.*') may only be used in
+																								  a regex together with empty string operators, other
+																								  repetitions, ranges, and repetitions of ranges.
+																								* Ranges may only contain character ranges, digit ranges, and
+																								  symbols allowed for ranges.
+																								"""
+																				description_kind: "plain"
+																				required:         true
+																			}
+																			path_substitution: {
+																				type: "string"
+																				description: """
+																								The substitution used to rewrite the parts of the URL path
+																								matched by pathPattern. May reference capture groups from
+																								pathPattern.
+																								"""
+																				description_kind: "plain"
+																				required:         true
+																			}
+																		}
+																		description: """
+																						The regex rewrite to be applied to the URL. Only one of
+																						pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+																						specified.
+																						"""
+																		description_kind: "plain"
+																	}
+																	max_items: 1
 																}
 																description: """
 																			The spec to modify the URL of the request, prior to forwarding the request to
@@ -153550,6 +153781,28 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 										The PSC Interface configuration is used to create PSC Interface
 										between DMS's internal VPC and the consumer's PSC.
 										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					reserved_public_ip_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								egress_public_ips: {
+									type: ["list", "string"]
+									description:      "Output only. The reserved public IPs."
+									description_kind: "plain"
+									computed:         true
+								}
+								nat_ips_count: {
+									type:             "number"
+									description:      "Optional. Number of static public IP addresses to reserve."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description:      "The Reserved Public IP configuration."
 							description_kind: "plain"
 						}
 						max_items: 1
@@ -183687,6 +183940,489 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_dialogflow_tool: {
+			version: 0
+			block: {
+				attributes: {
+					action_confirmation_requirement: {
+						type: ["map", "string"]
+						description: """
+									Optional. Confirmation requirement for the actions. Each key is an action name in the 'action_schemas'.
+									If an action's confirmation requirement is not specified (either the key is not present, or its value is 'CONFIRMATION_REQUIREMENT_UNSPECIFIED'), a default value will be populated depending on the action's method type: GET actions default to 'NOT_REQUIRED', and other actions default to 'REQUIRED'.
+									Valid values are 'REQUIRED' and 'NOT_REQUIRED'.
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "Output only. Creation time of this tool."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Optional. Human readable description of the tool."
+						description_kind: "plain"
+						optional:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "Optional. The human-readable name of the tool, unique within the project and location."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the tool."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The resource name of the tool. Format: 'projects/<Project ID>/locations/<Location ID>/tools/<Tool ID>'."
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					satisfies_pzi: {
+						type:             "bool"
+						description:      "Output only. A read only boolean field reflecting Zone Isolation status of the tool."
+						description_kind: "plain"
+						computed:         true
+					}
+					satisfies_pzs: {
+						type:             "bool"
+						description:      "Output only. A read only boolean field reflecting Zone Separation status of the tool."
+						description_kind: "plain"
+						computed:         true
+					}
+					tool_id: {
+						type: "string"
+						description: """
+									Optional. The ID to use for the tool, which will become the final component of the tool's resource name.
+									The tool ID must be compliant with the regression formula '[a-zA-Z][a-zA-Z0-9_-]*' with the characters length in range of [3,64].
+									If the field is not provided, an Id will be auto-generated.
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					tool_key: {
+						type:             "string"
+						description:      "Required. A human readable short name of the tool, which should be unique within the project. It should only contain letters, numbers, and underscores, and it will be used by LLM to identify the tool."
+						description_kind: "plain"
+						required:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Output only. Update time of this tool."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					connector_spec: {
+						nesting_mode: "list"
+						block: {
+							attributes: name: {
+								type: "string"
+								description: """
+												The full resource name of the referenced Integration Connectors Connection.
+												Format: 'projects/*/locations/*/connections/*'
+												"""
+								description_kind: "plain"
+								required:         true
+							}
+							block_types: actions: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										connection_action_id: {
+											type:             "string"
+											description:      "ID of a Connection action for the tool to use. This field is part of a required union field 'action_spec'."
+											description_kind: "plain"
+											optional:         true
+										}
+										input_fields: {
+											type: ["list", "string"]
+											description: """
+															Entity fields to use as inputs for the operation.
+															If no fields are specified, all fields of the Entity will be used.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										output_fields: {
+											type: ["list", "string"]
+											description: """
+															Entity fields to return from the operation.
+															If no fields are specified, all fields of the Entity will be returned.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+									}
+									block_types: entity_operation: {
+										nesting_mode: "list"
+										block: {
+											attributes: {
+												entity_id: {
+													type:             "string"
+													description:      "ID of the entity."
+													description_kind: "plain"
+													required:         true
+												}
+												operation: {
+													type:             "string"
+													description:      "The operation to perform on the entity. Possible values: [\"LIST\", \"GET\", \"CREATE\", \"UPDATE\", \"DELETE\"]"
+													description_kind: "plain"
+													required:         true
+												}
+											}
+											description:      "Entity operation configuration for the tool to use. This field is part of a required union field 'action_spec'."
+											description_kind: "plain"
+										}
+										max_items: 1
+									}
+									description:      "Actions for the tool to use."
+									description_kind: "plain"
+								}
+								min_items: 1
+							}
+							description: """
+										Integration connectors tool specification.
+										This field is part of a union field 'specification': Only one of 'openApiSpec', 'functionSpec', or 'connectorSpec' may be set.
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					function_spec: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								input_schema: {
+									type: "string"
+									description: """
+												Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
+												This input is a JSON object that contains the function's parameters as properties of the object.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								method_type: {
+									type:             "string"
+									description:      "Optional. The method type of the function. If not specified, the default value is GET. Possible values: [\"GET\", \"POST\", \"PUT\", \"DELETE\", \"PATCH\"]"
+									description_kind: "plain"
+									optional:         true
+								}
+								output_schema: {
+									type: "string"
+									description: """
+												Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
+												This output is a JSON object that contains the function's parameters as properties of the object.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description: """
+										Client side executed function specification.
+										This field is part of a union field 'specification': Only one of 'openApiSpec', 'functionSpec', or 'connectorSpec' may be set.
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					open_api_spec: {
+						nesting_mode: "list"
+						block: {
+							attributes: text_schema: {
+								type: "string"
+								description: """
+												Required. The OpenAPI schema specified as a text.
+												Note: Plays a role in linking the OpenAPI spec with the tool. The 'info.title' field in the OpenAPI schema must match the 'toolKey' of the tool, otherwise the API will overwrite 'info.title' with 'toolKey'.
+												"""
+								description_kind: "plain"
+								required:         true
+							}
+							block_types: {
+								authentication: {
+									nesting_mode: "list"
+									block: {
+										block_types: {
+											api_key_config: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														api_key: {
+															type:             "string"
+															description:      "Optional. The API key. If the 'secretVersionForApiKey' field is set, this field will be ignored."
+															description_kind: "plain"
+															optional:         true
+															sensitive:        true
+														}
+														key_name: {
+															type: "string"
+															description: """
+																		The parameter name or the header name of the API key.
+																		E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+																		"""
+															description_kind: "plain"
+															required:         true
+														}
+														request_location: {
+															type:             "string"
+															description:      "Key location in the request. Possible values: [\"HEADER\", \"QUERY_STRING\"]"
+															description_kind: "plain"
+															required:         true
+														}
+														secret_version_for_api_key: {
+															type: "string"
+															description: """
+																		Optional. The name of the SecretManager secret version resource storing the API key.
+																		If this field is set, the 'apiKey' field will be ignored.
+																		Format: 'projects/{project}/secrets/{secret}/versions/{version}'
+																		"""
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													description: """
+																Config for API key auth.
+																This field is part of a union field 'auth_config': Only one of 'apiKeyConfig', 'oauthConfig', 'serviceAgentAuthConfig', or 'bearerTokenConfig' may be set.
+																"""
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											bearer_token_config: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														secret_version_for_token: {
+															type: "string"
+															description: """
+																		Optional. The name of the SecretManager secret version resource storing the Bearer token.
+																		If this field is set, the 'token' field will be ignored.
+																		Format: 'projects/{project}/secrets/{secret}/versions/{version}'
+																		"""
+															description_kind: "plain"
+															optional:         true
+														}
+														token: {
+															type:             "string"
+															description:      "Optional. The text token appended to the text 'Bearer' to the request Authorization header."
+															description_kind: "plain"
+															optional:         true
+															sensitive:        true
+														}
+													}
+													description: """
+																Config for bearer token auth.
+																This field is part of a union field 'auth_config': Only one of 'apiKeyConfig', 'oauthConfig', 'serviceAgentAuthConfig', or 'bearerTokenConfig' may be set.
+																"""
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											oauth_config: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														client_id: {
+															type:             "string"
+															description:      "The client ID from the OAuth provider."
+															description_kind: "plain"
+															required:         true
+														}
+														client_secret: {
+															type:             "string"
+															description:      "Optional. The client secret from the OAuth provider. If the 'secretVersionForClientSecret' field is set, this field will be ignored."
+															description_kind: "plain"
+															optional:         true
+															sensitive:        true
+														}
+														oauth_grant_type: {
+															type:             "string"
+															description:      "OAuth grant types. Possible values: [\"CLIENT_CREDENTIAL\"]"
+															description_kind: "plain"
+															required:         true
+														}
+														scopes: {
+															type: ["list", "string"]
+															description:      "Optional. The OAuth scopes to grant."
+															description_kind: "plain"
+															optional:         true
+														}
+														secret_version_for_client_secret: {
+															type: "string"
+															description: """
+																		Optional. The name of the SecretManager secret version resource storing the client secret.
+																		If this field is set, the 'clientSecret' field will be ignored.
+																		Format: 'projects/{project}/secrets/{secret}/versions/{version}'
+																		"""
+															description_kind: "plain"
+															optional:         true
+														}
+														token_endpoint: {
+															type:             "string"
+															description:      "The token endpoint in the OAuth provider to exchange for an access token."
+															description_kind: "plain"
+															required:         true
+														}
+													}
+													description: """
+																Config for OAuth.
+																This field is part of a union field 'auth_config': Only one of 'apiKeyConfig', 'oauthConfig', 'serviceAgentAuthConfig', or 'bearerTokenConfig' may be set.
+																"""
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											service_agent_auth_config: {
+												nesting_mode: "list"
+												block: {
+													attributes: service_agent_auth: {
+														type: "string"
+														description: """
+																		Optional. Indicate the auth token type generated from the Dialogflow service agent.
+																		The generated token is sent in the Authorization header. Possible values: ["ID_TOKEN", "ACCESS_TOKEN"]
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													description: """
+																Config for [Dialogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
+																This field is part of a union field 'auth_config': Only one of 'apiKeyConfig', 'oauthConfig', 'serviceAgentAuthConfig', or 'bearerTokenConfig' may be set.
+																"""
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+										}
+										description:      "Optional. Authentication information required by the API."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								service_directory_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: service: {
+											type: "string"
+											description: """
+															The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
+															Format: 'projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>'.
+															'LocationID' of the service directory must be the same as the location of the tool.
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "Optional. Service Directory configuration."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								tls_config: {
+									nesting_mode: "list"
+									block: {
+										block_types: ca_certs: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													cert: {
+														type: "string"
+														description: """
+																		The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
+																		If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates.
+																		N.B. Make sure the HTTPS server certificates are signed with "subject alt name".
+																		A base64-encoded string.
+																		"""
+														description_kind: "plain"
+														required:         true
+													}
+													display_name: {
+														type:             "string"
+														description:      "The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates."
+														description_kind: "plain"
+														required:         true
+													}
+												}
+												description:      "Specifies a list of allowed custom CA certificates for HTTPS verification."
+												description_kind: "plain"
+											}
+											min_items: 1
+										}
+										description:      "Optional. TLS configuration for the HTTPS verification."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+							}
+							description: """
+										OpenAPI specification of the Tool.
+										This field is part of a union field 'specification': Only one of 'openApiSpec', 'functionSpec', or 'connectorSpec' may be set.
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_dialogflow_version: {
 			version: 0
 			block: {
@@ -186512,6 +187248,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									"""
 						description_kind: "plain"
 						computed:         true
+					}
+					procurement_contact_emails: {
+						type: ["list", "string"]
+						description:      "The emails of the procurement contacts."
+						description_kind: "plain"
+						optional:         true
 					}
 					project: {
 						type:             "string"
@@ -215339,6 +216081,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 										The exact variables and functions that may be referenced within an expression are
 										determined by the service that evaluates it. See the service documentation for
 										additional information.
+										Conditions are currently only supported when the bound policy is a principal access boundary policy.
 										"""
 							description_kind: "plain"
 						}
@@ -215347,18 +216090,35 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					target: {
 						nesting_mode: "list"
 						block: {
-							attributes: principal_set: {
-								type: "string"
-								description: """
-												Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+							attributes: {
+								principal_set: {
+									type: "string"
+									description: """
+												Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
 												Examples for each one of the following supported principal set types:
 												* Folder: '//cloudresourcemanager.googleapis.com/folders/FOLDER_ID'
 												It must be parent by the policy binding's parent (the folder).
 												"""
-								description_kind: "plain"
-								optional:         true
+									description_kind: "plain"
+									optional:         true
+								}
+								resource: {
+									type: "string"
+									description: """
+												Immutable. Full Resource Name of the resource used for access policy bindings.
+												Use this together with 'policy_kind = "ACCESS"'. Examples:
+												* Folder: '//cloudresourcemanager.googleapis.com/folders/FOLDER_ID'
+												It must be the policy binding's parent (the folder).
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
 							}
-							description:      "Target is the full resource name of the resource to which the policy will be bound. Immutable once set."
+							description: """
+										Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+										Exactly one of 'principal_set' (for principal access boundary policy bindings) or
+										'resource' (for access policy bindings) must be set.
+										"""
 							description_kind: "plain"
 						}
 						min_items: 1
@@ -216204,6 +216964,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 										The exact variables and functions that may be referenced within an expression are
 										determined by the service that evaluates it. See the service documentation for
 										additional information.
+										Conditions are currently only supported when the bound policy is a principal access boundary policy.
 										"""
 							description_kind: "plain"
 						}
@@ -216212,20 +216973,37 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					target: {
 						nesting_mode: "list"
 						block: {
-							attributes: principal_set: {
-								type: "string"
-								description: """
-												Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+							attributes: {
+								principal_set: {
+									type: "string"
+									description: """
+												Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
 												Examples for each one of the following supported principal set types:
 												* Organization '//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID'
 												* Workforce Identity: '//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID'
 												* Workspace Identity: '//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID'
 												It must be parent by the policy binding's parent (the organization).
 												"""
-								description_kind: "plain"
-								optional:         true
+									description_kind: "plain"
+									optional:         true
+								}
+								resource: {
+									type: "string"
+									description: """
+												Immutable. Full Resource Name of the resource used for access policy bindings.
+												Use this together with 'policy_kind = "ACCESS"'. Examples:
+												* Organization: '//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID'
+												It must be the policy binding's parent (the organization).
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
 							}
-							description:      "Target is the full resource name of the resource to which the policy will be bound. Immutable once set."
+							description: """
+										Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+										Exactly one of 'principal_set' (for principal access boundary policy bindings) or
+										'resource' (for access policy bindings) must be set.
+										"""
 							description_kind: "plain"
 						}
 						min_items: 1
@@ -216949,6 +217727,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 										The exact variables and functions that may be referenced within an expression are
 										determined by the service that evaluates it. See the service documentation for
 										additional information.
+										Conditions are currently only supported when the bound policy is a principal access boundary policy.
 										"""
 							description_kind: "plain"
 						}
@@ -216957,10 +217736,11 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					target: {
 						nesting_mode: "list"
 						block: {
-							attributes: principal_set: {
-								type: "string"
-								description: """
-												Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+							attributes: {
+								principal_set: {
+									type: "string"
+									description: """
+												Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
 												Examples for each one of the following supported principal set types:
 												* Project:
 												  * '//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER'
@@ -216968,10 +217748,28 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												* Workload Identity Pool: '//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID'
 												It must be parent by the policy binding's parent (the project).
 												"""
-								description_kind: "plain"
-								optional:         true
+									description_kind: "plain"
+									optional:         true
+								}
+								resource: {
+									type: "string"
+									description: """
+												Immutable. Full Resource Name of the resource used for access policy bindings.
+												Use this together with 'policy_kind = "ACCESS"'. Examples:
+												* Project:
+												  * '//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER'
+												  * '//cloudresourcemanager.googleapis.com/projects/PROJECT_ID'
+												It must be the policy binding's parent (the project).
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
 							}
-							description:      "Target is the full resource name of the resource to which the policy will be bound. Immutable once set."
+							description: """
+										Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+										Exactly one of 'principal_set' (for principal access boundary policy bindings) or
+										'resource' (for access policy bindings) must be set.
+										"""
 							description_kind: "plain"
 						}
 						min_items: 1
@@ -231236,6 +232034,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 			version: 0
 			block: {
 				attributes: {
+					available_version: {
+						type: "string"
+						description: """
+									The version this instance can be upgraded to, if one is available. Empty
+									when the instance is already running the newest release.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
 					capacity_gib: {
 						type: "string"
 						description: """
@@ -231278,6 +232085,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					effective_labels: {
 						type: ["map", "string"]
 						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					effective_version: {
+						type: "string"
+						description: """
+									The version of Managed Lustre software that this instance is currently
+									running.
+									"""
 						description_kind: "plain"
 						computed:         true
 					}
@@ -231423,6 +232239,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description:      "The reason why the instance is in a certain state (e.g. SUSPENDED)."
 						description_kind: "plain"
 						computed:         true
+					}
+					target_version: {
+						type: "string"
+						description: """
+									The version to upgrade this instance to. Set this to the value reported in
+									'availableVersion', or to 'latest' to move to the newest version available
+									at the time of the upgrade.
+									This field cannot be set when the instance is created; new instances are
+									always provisioned from the current release. It also cannot be changed in
+									the same operation as 'capacityGib' or 'maintenancePolicy', and the
+									instance must be ACTIVE and outside of the hour preceding a scheduled
+									maintenance window.
+									The API clears this field once the upgrade finishes, so it always reads
+									back as empty on an idle instance.
+									"""
+						description_kind: "plain"
+						optional:         true
 					}
 					terraform_labels: {
 						type: ["map", "string"]
@@ -232077,6 +232910,13 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 					id: {
 						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					kafka_version: {
+						type:             "string"
+						description:      "The Apache Kafka version of the cluster (for example, '3.7.x', '4.3.x'). If not specified during cluster creation, defaults to '3.7.x'."
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -251378,7 +252218,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 					type: {
 						type:             "string"
-						description:      "The type of security profile. Possible values: [\"THREAT_PREVENTION\", \"URL_FILTERING\", \"CUSTOM_MIRRORING\", \"CUSTOM_INTERCEPT\"]"
+						description:      "The type of security profile. 'WILDFIRE_ANALYSIS' is beta-only. Possible values: [\"THREAT_PREVENTION\", \"URL_FILTERING\", \"CUSTOM_MIRRORING\", \"CUSTOM_INTERCEPT\", \"WILDFIRE_ANALYSIS\"]"
 						description_kind: "plain"
 						required:         true
 					}
@@ -252438,6 +253278,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description: """
 												IP protocols to match. When unset, matches any IP protocol.
 												Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								primary_ip_ranges: {
+									type: ["list", "string"]
+									description: """
+												Primary IP ranges to match (for the capture point).
+												When unset, matches any primary IP.
 												"""
 									description_kind: "plain"
 									optional:         true
@@ -261756,6 +262605,17 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									computed:         true
 								}
+								exascale_config: {
+									type: ["list", ["object", {
+										available_storage_size_gb:    "number"
+										available_vm_storage_size_gb: "number"
+										total_storage_size_gb:        "number"
+										total_vm_storage_size_gb:     "number"
+									}]]
+									description:      "The Exascale configuration for the Exadata Infrastructure."
+									description_kind: "plain"
+									computed:         true
+								}
 								max_cpu_count: {
 									type:             "number"
 									description:      "The total number of CPU cores available."
@@ -262098,6 +262958,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description:      "The total storage to be allocated to Exascale in GBs."
 						description_kind: "plain"
 						required:         true
+					}
+					total_vm_storage_size_gb: {
+						type:             "number"
+						description:      "Storage size needed for VM storage on Exascale in GBs."
+						description_kind: "plain"
+						optional:         true
 					}
 				}
 				block_types: timeouts: {
@@ -293212,6 +294078,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						optional:         true
 						sensitive:        true
 					}
+					service_account_auth: {
+						type: "bool"
+						description: """
+									Determines if the hook uses the Repository Service Account to
+									generate an OIDC ID Token for webhook authentication.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
 					target_uri: {
 						type:             "string"
 						description:      "The target URI to which the payloads will be delivered."
@@ -295329,6 +296204,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description:      "The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					port: {
 						type: "number"
@@ -321684,11 +322560,11 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					availability_type: {
 						type: "string"
 						description: """
-									'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
-									Note that primary and read instances can have different availability types.
-									Primary instances can be either ZONAL or REGIONAL. Read Pool instances can also be either ZONAL or REGIONAL.
-									Read pools of size 1 can only have zonal availability. Read pools with a node count of 2 or more
-									can have regional availability (nodes are present in 2 or more zones in a region).
+									'Availability type of a primary Instance. Defaults to REGIONAL.
+									Primary instances can be either ZONAL or REGIONAL. Read Pool instances
+									derive their availability from 'read_pool_config.node_count': a pool
+									with one node is ZONAL, while a pool with two or more nodes is REGIONAL.
+									Read Pool instances do not support setting this field directly.
 									Possible values are: 'AVAILABILITY_TYPE_UNSPECIFIED', 'ZONAL', 'REGIONAL'.' Possible values: ["AVAILABILITY_TYPE_UNSPECIFIED", "ZONAL", "REGIONAL"]
 									"""
 						description_kind: "plain"
@@ -331863,7 +332739,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type: "string"
 						description: """
 									URL to networkservices.ServiceLbPolicy resource.
-									Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+									Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
 									"""
 						description_kind: "plain"
 						computed:         true
@@ -331904,6 +332780,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					tls_settings: {
 						type: ["list", ["object", {
 							authentication_config: "string"
+							identity:              "string"
 							sni:                   "string"
 							subject_alt_names: ["list", ["object", {
 								dns_name:                    "string"
@@ -332064,6 +332941,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									If you do not provide an encryption key when creating the disk, then
 									the disk will be encrypted using an automatically generated key and
 									you do not need to provide a key to use the disk later.
+
+									~>**NOTE** Only changing 'kms_key_self_link' between Cloud KMS keys is
+									done in place; other changes to this block recreate the disk.
 									"""
 						description_kind: "plain"
 						computed:         true
@@ -334382,6 +335262,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								ip_cidr_range:         "string"
 								subnetwork_range_name: "string"
 							}]]
+							enable_vpc_scoped_dns:       "bool"
 							igmp_query:                  "string"
 							internal_ipv6_prefix_length: "number"
 							ipv6_access_config: ["list", ["object", {
@@ -335283,6 +336164,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								ip_cidr_range:         "string"
 								subnetwork_range_name: "string"
 							}]]
+							enable_vpc_scoped_dns:       "bool"
 							igmp_query:                  "string"
 							internal_ipv6_prefix_length: "number"
 							ipv6_access_config: ["list", ["object", {
@@ -336775,6 +337657,16 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						computed:         true
 					}
+					service_lb_policy: {
+						type: "string"
+						description: """
+									URL to networkservices.ServiceLbPolicy resource.
+									Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+									The service lb policy must be regional and in the same region as the backend service.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
 					session_affinity: {
 						type: "string"
 						description: """
@@ -336811,6 +337703,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					tls_settings: {
 						type: ["list", ["object", {
 							authentication_config: "string"
+							identity:              "string"
 							sni:                   "string"
 							subject_alt_names: ["list", ["object", {
 								dns_name:                    "string"
@@ -337813,6 +338706,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								ip_cidr_range:         "string"
 								subnetwork_range_name: "string"
 							}]]
+							enable_vpc_scoped_dns:       "bool"
 							igmp_query:                  "string"
 							internal_ipv6_prefix_length: "number"
 							ipv6_access_config: ["list", ["object", {
@@ -348007,6 +348901,56 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_iam_workload_identity_pool_jwks: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					jwks_json: {
+						type:             "string"
+						description:      "The raw JSON string representation of the JWKS response."
+						description_kind: "plain"
+						computed:         true
+					}
+					keys: {
+						type: ["list", ["object", {
+							alg: "string"
+							e:   "string"
+							kid: "string"
+							kty: "string"
+							n:   "string"
+							use: "string"
+						}]]
+						description:      "The list of public keys in the JSON Web Key Set."
+						description_kind: "plain"
+						computed:         true
+					}
+					resource_name: {
+						type:             "string"
+						description:      "The JWKS URI to retrieve the public keys from (e.g. from google_iam_workload_identity_pool_openid_config.jwks_uri)."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: read: {
+							type:             "string"
+							description_kind: "plain"
+							optional:         true
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_iam_workload_identity_pool_openid_config: {
 			version: 0
 			block: {
@@ -350308,6 +351252,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						computed:         true
 					}
+					available_version: {
+						type: "string"
+						description: """
+									The version this instance can be upgraded to, if one is available. Empty
+									when the instance is already running the newest release.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
 					capacity_gib: {
 						type: "string"
 						description: """
@@ -350357,6 +351310,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					effective_labels: {
 						type: ["map", "string"]
 						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					effective_version: {
+						type: "string"
+						description: """
+									The version of Managed Lustre software that this instance is currently
+									running.
+									"""
 						description_kind: "plain"
 						computed:         true
 					}
@@ -350533,6 +351495,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					state_reason: {
 						type:             "string"
 						description:      "The reason why the instance is in a certain state (e.g. SUSPENDED)."
+						description_kind: "plain"
+						computed:         true
+					}
+					target_version: {
+						type: "string"
+						description: """
+									The version to upgrade this instance to. Set this to the value reported in
+									'availableVersion', or to 'latest' to move to the newest version available
+									at the time of the upgrade.
+									This field cannot be set when the instance is created; new instances are
+									always provisioned from the current release. It also cannot be changed in
+									the same operation as 'capacityGib' or 'maintenancePolicy', and the
+									instance must be ACTIVE and outside of the hour preceding a scheduled
+									maintenance window.
+									The API clears this field once the upgrade finishes, so it always reads
+									back as empty on an idle instance.
+									"""
 						description_kind: "plain"
 						computed:         true
 					}
@@ -353185,6 +354164,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							data_storage_size_tb:    "number"
 							db_node_storage_size_gb: "number"
 							db_server_version:       "string"
+							exascale_config: ["list", ["object", {
+								available_storage_size_gb:    "number"
+								available_vm_storage_size_gb: "number"
+								total_storage_size_gb:        "number"
+								total_vm_storage_size_gb:     "number"
+							}]]
 							maintenance_window: ["list", ["object", {
 								custom_action_timeout_mins: "number"
 								days_of_week: ["list", "string"]
@@ -353261,6 +354246,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								data_storage_size_tb:    "number"
 								db_node_storage_size_gb: "number"
 								db_server_version:       "string"
+								exascale_config: ["list", ["object", {
+									available_storage_size_gb:    "number"
+									available_vm_storage_size_gb: "number"
+									total_storage_size_gb:        "number"
+									total_vm_storage_size_gb:     "number"
+								}]]
 								maintenance_window: ["list", ["object", {
 									custom_action_timeout_mins: "number"
 									days_of_week: ["list", "string"]
@@ -366978,6 +367969,78 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_gke_backup_backup_channel: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_gke_backup_backup_plan: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_gke_backup_restore_channel: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_gke_backup_restore_plan: {
+			version: 0
+			block: {
+				attributes: {
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_identity_platform_inbound_saml_config: {
 			version: 0
 			block: {
@@ -367803,6 +368866,29 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					type:             "string"
 					description_kind: "plain"
 					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		google_storage_bucket_iam_member: {
+			version: 0
+			block: {
+				attributes: {
+					bucket: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					member: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				description_kind: "plain"
 			}
@@ -375951,6 +377037,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				required_for_import: true
 			}
 		}
+		google_dialogflow_tool: {
+			version: 1
+			attributes: {
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
 		google_dialogflow_version: {
 			version: 1
 			attributes: {
@@ -383264,6 +384367,27 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					required_for_import: true
 				}
 				entity: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_storage_bucket_iam_member: {
+			version: 1
+			attributes: {
+				bucket: {
+					type:                "string"
+					required_for_import: true
+				}
+				condition_title: {
+					type:                "string"
+					optional_for_import: true
+				}
+				member: {
+					type:                "string"
+					required_for_import: true
+				}
+				role: {
 					type:                "string"
 					required_for_import: true
 				}

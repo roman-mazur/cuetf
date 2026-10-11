@@ -136,6 +136,10 @@ google_agentic_applications_analyst_agent_persona: {
 		// Input only. The API key of the MCP server.
 		api_key?: string
 
+		// The HTTP header when the API key is passed in a request header
+		// (e.g. 'x-api-key', 'api-key', 'X-Auth-Token').
+		api_key_header?: string
+
 		// The API key parameter name.
 		api_key_name?: string
 
@@ -217,6 +221,10 @@ google_agentic_applications_analyst_agent_persona: {
 	})
 
 	#web_search_config: close({
+		// Whether web search grounding is disabled for the analyst agent.
+		// Defaults to false if not specified (i.e. web search grounding is enabled).
+		disabled?: bool
+
 		// List of domains to be excluded from Google Search / Enterprise Web Search
 		// grounding.
 		excluded_domains?: [...string]
@@ -525,6 +533,14 @@ google_agentic_applications_analyst_agent_persona: {
 
 	_#defs: "/$defs/artifacts_config/$defs/visualization_options": close({
 		visualization_examples?: matchN(1, [_#defs."/$defs/artifacts_config/$defs/visualization_options/$defs/visualization_examples", [..._#defs."/$defs/artifacts_config/$defs/visualization_options/$defs/visualization_examples"]])
+
+		// Mode for generating visualizations.
+		// Possible values:
+		// VISUALIZATION_MODE_EXPLICIT_ONLY
+		// VISUALIZATION_MODE_WHEN_NECESSARY
+		// VISUALIZATION_MODE_WHEN_HELPFUL
+		// VISUALIZATION_MODE_ALWAYS
+		visualization_mode?: string
 	})
 
 	_#defs: "/$defs/artifacts_config/$defs/visualization_options/$defs/visualization_examples": close({

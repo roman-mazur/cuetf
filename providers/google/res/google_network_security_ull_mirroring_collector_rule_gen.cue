@@ -74,6 +74,10 @@ google_network_security_ull_mirroring_collector_rule: {
 		// Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
 		ip_protocols?: [...string]
 
+		// Primary IP ranges to match (for the capture point).
+		// When unset, matches any primary IP.
+		primary_ip_ranges?: [...string]
+
 		// Source IP ranges to match. When unset, matches any source IP range.
 		src_ip_ranges?: [...string]
 	})

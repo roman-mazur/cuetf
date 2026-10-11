@@ -7,6 +7,7 @@ google_database_migration_service_private_connection: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_database_migration_service_private_connection")
 	close({
 		psc_interface_config?: matchN(1, [#psc_interface_config, list.MaxItems(1) & [...#psc_interface_config]])
+		reserved_public_ip_config?: matchN(1, [#reserved_public_ip_config, list.MaxItems(1) & [...#reserved_public_ip_config]])
 		timeouts?: #timeouts
 		vpc_peering_config?: matchN(1, [#vpc_peering_config, list.MaxItems(1) & [...#vpc_peering_config]])
 
@@ -64,6 +65,14 @@ google_database_migration_service_private_connection: {
 		// Fully qualified name of the Network Attachment that DMS will connect to.
 		// Format: projects/{project}/regions/{region}/networkAttachments/{name}
 		network_attachment!: string
+	})
+
+	#reserved_public_ip_config: close({
+		// Output only. The reserved public IPs.
+		egress_public_ips?: [...string]
+
+		// Optional. Number of static public IP addresses to reserve.
+		nat_ips_count?: number
 	})
 
 	#timeouts: close({

@@ -141,6 +141,7 @@ google_compute_instance_template: {
 				ip_cidr_range?:         string
 				subnetwork_range_name?: string
 			})]
+			enable_vpc_scoped_dns?:       bool
 			igmp_query?:                  string
 			internal_ipv6_prefix_length?: number
 			ipv6_access_config?: [...close({

@@ -680,6 +680,7 @@ import (
 	_#res: "\(#googlePrefix)_dialogflow_generator": close({res.google_dialogflow_generator & cuetf.MetaArgs})
 	_#res: "\(#googlePrefix)_dialogflow_intent": close({res.google_dialogflow_intent & cuetf.MetaArgs})
 	_#res: "\(#googlePrefix)_dialogflow_sip_trunk": close({res.google_dialogflow_sip_trunk & cuetf.MetaArgs})
+	_#res: "\(#googlePrefix)_dialogflow_tool": close({res.google_dialogflow_tool & cuetf.MetaArgs})
 	_#res: "\(#googlePrefix)_dialogflow_version": close({res.google_dialogflow_version & cuetf.MetaArgs})
 	_#res: "\(#googlePrefix)_discovery_engine_acl_config": close({res.google_discovery_engine_acl_config & cuetf.MetaArgs})
 	_#res: "\(#googlePrefix)_discovery_engine_assistant": close({res.google_discovery_engine_assistant & cuetf.MetaArgs})
