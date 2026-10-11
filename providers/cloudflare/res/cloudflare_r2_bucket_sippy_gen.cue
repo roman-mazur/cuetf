@@ -4,7 +4,7 @@ cloudflare_r2_bucket_sippy: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_r2_bucket_sippy")
 	close({
-		// Account ID.
+		// Cloudflare account ID that owns the R2 resource.
 		account_id!: string
 
 		// Name of the bucket.
@@ -67,7 +67,7 @@ cloudflare_r2_bucket_sippy: {
 			// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
 			private_key?: string
 
-			// Name of the AWS availability zone.
+			// AWS region containing the source S3 bucket.
 			region?: string
 
 			// Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.

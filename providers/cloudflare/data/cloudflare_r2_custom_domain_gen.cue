@@ -4,7 +4,7 @@ cloudflare_r2_custom_domain: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_r2_custom_domain")
 	close({
-		// Account ID.
+		// Cloudflare account ID that owns the R2 resource.
 		account_id!: string
 
 		// Name of the bucket.

@@ -28,7 +28,7 @@ cloudflare_client_certificate: {
 		// Unique identifier of the Client Certificate.
 		fingerprint_sha256?: string
 
-		// Identifier.
+		// Client Certificate Tag
 		id?: string
 
 		// Date that the Client Certificate was issued by the Certificate Authority.

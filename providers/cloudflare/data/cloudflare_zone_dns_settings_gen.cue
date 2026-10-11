@@ -8,9 +8,6 @@ cloudflare_zone_dns_settings: {
 		// limitations, a CNAME record at the zone apex will always be flattened.
 		flatten_all_cnames?: bool
 
-		// Whether to enable Foundation DNS Advanced Nameservers on the zone.
-		foundation_dns?: bool
-
 		// Settings for this internal zone.
 		internal_dns?: close({
 			// The ID of the zone to fallback to.
@@ -22,13 +19,17 @@ cloudflare_zone_dns_settings: {
 		// the zone apex during outbound zone transfers.
 		multi_provider?: bool
 
-		// Settings determining the nameservers through which the zone should be available.
+		// Controls the nameservers through which the zone is available.
 		nameservers?: close({
-			// Configured nameserver set to be used for this zone
+			// Identifier of the account-owned Custom Nameserver Set to use for this zone.
+			nameserver_set_id?: string
+
+			// Configured nameserver set number to use for this zone.
 			ns_set?: number
 
-			// Nameserver type
-			// Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
+			// Nameserver type.
+			// Available values: "cloudflare.standard", "custom.account", "custom.tenant",
+			// "custom.zone", "custom".
 			type?: string
 		})
 

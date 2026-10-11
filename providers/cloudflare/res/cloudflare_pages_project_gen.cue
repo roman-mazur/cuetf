@@ -111,11 +111,11 @@ cloudflare_pages_project: {
 				started_on?: string
 
 				// State of the current stage.
-				// Available values: "success", "idle", "active", "failure", "canceled".
+				// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 				status?: string
 			})
 
-			// If the deployment has been skipped.
+			// Whether the deployment was skipped.
 			is_skipped?: bool
 
 			// Configs for the project source control.
@@ -186,7 +186,7 @@ cloudflare_pages_project: {
 				started_on?: string
 
 				// State of the current stage.
-				// Available values: "success", "idle", "active", "failure", "canceled".
+				// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 				status?: string
 			}), [...close({
 				// When the stage ended.
@@ -200,14 +200,15 @@ cloudflare_pages_project: {
 				started_on?: string
 
 				// State of the current stage.
-				// Available values: "success", "idle", "active", "failure", "canceled".
+				// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 				status?: string
 			})]])
 
 			// Id of the project.
 			project_id?: string
 
-			// Name of the project.
+			// Name of the Pages project. Must begin with a lowercase letter or digit and
+			// contain only lowercase letters, digits, and hyphens.
 			project_name?: string
 
 			// Short Id (8 character) of the deployment.
@@ -464,7 +465,8 @@ cloudflare_pages_project: {
 		// Version of the framework the project is using.
 		framework_version?: string
 
-		// Name of the project.
+		// Name for the Pages project. Must begin with a lowercase letter or digit and
+		// contain only lowercase letters, digits, and hyphens.
 		id?: string
 
 		// Most recent deployment of the project.
@@ -547,11 +549,11 @@ cloudflare_pages_project: {
 				started_on?: string
 
 				// State of the current stage.
-				// Available values: "success", "idle", "active", "failure", "canceled".
+				// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 				status?: string
 			})
 
-			// If the deployment has been skipped.
+			// Whether the deployment was skipped.
 			is_skipped?: bool
 
 			// Configs for the project source control.
@@ -622,7 +624,7 @@ cloudflare_pages_project: {
 				started_on?: string
 
 				// State of the current stage.
-				// Available values: "success", "idle", "active", "failure", "canceled".
+				// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 				status?: string
 			}), [...close({
 				// When the stage ended.
@@ -636,14 +638,15 @@ cloudflare_pages_project: {
 				started_on?: string
 
 				// State of the current stage.
-				// Available values: "success", "idle", "active", "failure", "canceled".
+				// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 				status?: string
 			})]])
 
 			// Id of the project.
 			project_id?: string
 
-			// Name of the project.
+			// Name of the Pages project. Must begin with a lowercase letter or digit and
+			// contain only lowercase letters, digits, and hyphens.
 			project_name?: string
 
 			// Short Id (8 character) of the deployment.
@@ -656,7 +659,8 @@ cloudflare_pages_project: {
 			uses_functions?: bool
 		})
 
-		// Name of the project.
+		// Name for the Pages project. Must begin with a lowercase letter or digit and
+		// contain only lowercase letters, digits, and hyphens.
 		name!: string
 
 		// Name of the preview script.

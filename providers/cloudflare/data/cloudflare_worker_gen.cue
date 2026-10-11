@@ -66,6 +66,9 @@ cloudflare_worker: {
 				persist?: bool
 			})
 
+			// Whether query strings are removed from request URLs in logs and traces.
+			redact_query_string?: bool
+
 			// Trace settings for the Worker.
 			traces?: close({
 				// A list of destinations where traces will be exported to.

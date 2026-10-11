@@ -29,15 +29,16 @@ cloudflare_magic_transit_site_wans: {
 			})
 
 			// Identifier
-			id?:   string
-			name?: string
+			id?:                       string
+			load_balance_inner_flows?: bool
 
 			// Priority of WAN for traffic loadbalancing.
 			priority?: number
-			physport?: number
+			name?:     string
 
 			// Identifier
-			site_id?: string
+			site_id?:  string
+			physport?: number
 
 			// VLAN ID. Use zero for untagged.
 			vlan_tag?: number
@@ -59,15 +60,16 @@ cloudflare_magic_transit_site_wans: {
 			})
 
 			// Identifier
-			id?:   string
-			name?: string
+			id?:                       string
+			load_balance_inner_flows?: bool
 
 			// Priority of WAN for traffic loadbalancing.
 			priority?: number
-			physport?: number
+			name?:     string
 
 			// Identifier
-			site_id?: string
+			site_id?:  string
+			physport?: number
 
 			// VLAN ID. Use zero for untagged.
 			vlan_tag?: number

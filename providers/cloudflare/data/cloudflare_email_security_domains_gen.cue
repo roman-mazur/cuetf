@@ -50,6 +50,7 @@ cloudflare_email_security_domains: {
 				total_emails_processed_previous?: number
 			})
 
+			// The mailbox folder to scan, for API-scanning domains.
 			// Available values: "AllItems", "Inbox".
 			folder?: string
 
@@ -92,6 +93,7 @@ cloudflare_email_security_domains: {
 				total_emails_processed_previous?: number
 			})
 
+			// The mailbox folder to scan, for API-scanning domains.
 			// Available values: "AllItems", "Inbox".
 			folder?: string
 

@@ -4,7 +4,7 @@ cloudflare_workers_kv: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_workers_kv")
 	close({
-		// Identifier.
+		// ID of the Cloudflare account that owns the Workers KV namespaces.
 		account_id!: string
 
 		// A key's name. The name may be at most 512 bytes. All printable,
@@ -17,7 +17,7 @@ cloudflare_workers_kv: {
 		// names as part of a URL.
 		key_name!: string
 
-		// Namespace identifier tag.
+		// ID of the Workers KV namespace.
 		namespace_id!: string
 		value?:        string
 	})

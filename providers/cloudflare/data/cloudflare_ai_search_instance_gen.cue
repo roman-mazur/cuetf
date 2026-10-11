@@ -37,6 +37,9 @@ cloudflare_ai_search_instance: {
 		enable?:          bool
 		engine_version?:  number
 		filter?: close({
+			// Filter by exact Search for Agents hostname (case-insensitive).
+			hostname?: string
+
 			// Filter by namespace.
 			namespace?: string
 
@@ -56,7 +59,8 @@ cloudflare_ai_search_instance: {
 		fusion_method?: string
 		id?:            string
 
-		// Controls which storage backends are used during indexing. Defaults to vector-only.
+		// Controls which storage backends are used during indexing. Defaults to vector
+		// and keyword indexing for new instances.
 		index_method?: close({
 			// Enable keyword (BM25) storage backend.
 			keyword?: bool
@@ -185,6 +189,9 @@ cloudflare_ai_search_instance: {
 		})
 		token_id?: string
 
+		// Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer
+		// web-crawler and existing R2 bucket names infer r2. A missing or blank source
+		// without a type uses managed upload-only storage.
 		// Available values: "r2", "web-crawler".
 		type?: string
 		source_params?: close({

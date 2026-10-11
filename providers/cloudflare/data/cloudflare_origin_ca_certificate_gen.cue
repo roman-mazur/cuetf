@@ -7,7 +7,7 @@ cloudflare_origin_ca_certificate: {
 		// The Origin CA certificate. Will be newline-encoded.
 		certificate?: string
 
-		// Identifier.
+		// The x509 serial number of the Origin CA certificate.
 		certificate_id?: string
 
 		// The Certificate Signing Request (CSR). Must be newline-encoded.
@@ -36,7 +36,7 @@ cloudflare_origin_ca_certificate: {
 		// Unicode/IDN hostnames are accepted and automatically converted to punycode.
 		hostnames?: [...string]
 
-		// Identifier.
+		// The x509 serial number of the Origin CA certificate.
 		id?: string
 
 		// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc"

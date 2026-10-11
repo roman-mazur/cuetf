@@ -44,7 +44,8 @@ cloudflare_ai_search_instance: {
 		// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
 		id!: string
 
-		// Controls which storage backends are used during indexing. Defaults to vector-only.
+		// Controls which storage backends are used during indexing. Defaults to vector
+		// and keyword indexing for new instances.
 		index_method?: close({
 			// Enable keyword (BM25) storage backend.
 			keyword!: bool
@@ -264,6 +265,9 @@ cloudflare_ai_search_instance: {
 		system_prompt_rewrite_query?:       string
 		token_id?:                          string
 
+		// Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer
+		// web-crawler and existing R2 bucket names infer r2. A missing or blank source
+		// without a type uses managed upload-only storage.
 		// Available values: "r2", "web-crawler".
 		type?: string
 	})

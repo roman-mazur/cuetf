@@ -4,6 +4,7 @@ cloudflare_zero_trust_dns_location: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_zero_trust_dns_location")
 	close({
+		// Specify the Cloudflare account identifier.
 		account_id!: string
 
 		// Indicate whether this location is the default location.

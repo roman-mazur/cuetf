@@ -4,13 +4,13 @@ cloudflare_r2_bucket_event_notification: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_r2_bucket_event_notification")
 	close({
-		// Account ID.
+		// Cloudflare account ID that owns the R2 resource.
 		account_id!: string
 
 		// Name of the bucket.
 		bucket_name!: string
 
-		// Queue ID.
+		// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
 		queue_id!: string
 
 		// Name of the queue.

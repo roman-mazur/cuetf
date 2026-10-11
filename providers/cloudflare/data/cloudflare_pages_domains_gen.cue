@@ -10,7 +10,8 @@ cloudflare_pages_domains: {
 		// Max items to fetch, default: 1000
 		max_items?: number
 
-		// Name of the project.
+		// Name of the Pages project. Must begin with a lowercase letter or digit and
+		// contain only lowercase letters, digits, and hyphens.
 		project_name!: string
 
 		// The items returned by the data source
@@ -30,7 +31,7 @@ cloudflare_pages_domains: {
 			})
 			created_on?: string
 
-			// The domain name.
+			// Fully qualified domain name for the Pages project, such as `example.com`.
 			name?: string
 			verification_data?: close({
 				error_message?: string
@@ -60,7 +61,7 @@ cloudflare_pages_domains: {
 			})
 			created_on?: string
 
-			// The domain name.
+			// Fully qualified domain name for the Pages project, such as `example.com`.
 			name?: string
 			verification_data?: close({
 				error_message?: string

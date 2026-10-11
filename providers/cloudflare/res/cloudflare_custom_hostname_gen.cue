@@ -23,7 +23,7 @@ cloudflare_custom_hostname: {
 		// The custom hostname that will point to your hostname via CNAME.
 		hostname!: string
 
-		// Identifier.
+		// Custom hostname identifier tag.
 		id?: string
 
 		// This is a record which can be placed to activate a hostname.

@@ -13,10 +13,10 @@ cloudflare_keyless_certificate: {
 		// The keyless SSL name.
 		host?: string
 
-		// Identifier.
+		// Keyless certificate identifier tag.
 		id?: string
 
-		// Identifier.
+		// Keyless certificate identifier tag.
 		keyless_certificate_id!: string
 
 		// When the Keyless SSL was last modified.

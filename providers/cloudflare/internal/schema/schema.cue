@@ -831,6 +831,16 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						optional:         true
 					}
+					creator_email_at_creation: {
+						type: "string"
+						description: """
+									The email address of the user who created the token at the time of
+									creation. Only present for Account Owned API Tokens when a creator email
+									was available.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
 					expires_on: {
 						type:             "string"
 						description:      "The expiration time on or after which the JWT MUST NOT be accepted for processing."
@@ -908,9 +918,29 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							}
 							nesting_mode: "list"
 						}
-						description:      "Set of access policies assigned to the token."
+						description:      "List of access policies assigned to the token."
 						description_kind: "plain"
 						required:         true
+					}
+					provisioner_id: {
+						type: "string"
+						description: """
+									The identifier of the service that provisioned the token. For an
+									OAuth-provisioned token, this is the OAuth client identifier. Present
+									when `provisioner_type` is present and null when the identifier is
+									unavailable.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					provisioner_type: {
+						type: "string"
+						description: """
+									The type of service that provisioned the token. Only present for
+									provisioned Account Owned API Tokens.
+									"""
+						description_kind: "plain"
+						computed:         true
 					}
 					status: {
 						type: "string"
@@ -1337,7 +1367,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "gateway id"
+						description:      "Unique identifier of the AI Gateway within the account."
 						description_kind: "plain"
 						required:         true
 					}
@@ -2253,7 +2283,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					hybrid_search_enabled: {
 						type:             "bool"
-						description:      "Deprecated — use index_method instead."
+						description:      "Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance."
 						description_kind: "plain"
 						deprecated:       true
 						optional:         true
@@ -2283,7 +2313,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							}
 							nesting_mode: "single"
 						}
-						description:      "Controls which storage backends are used during indexing. Defaults to vector-only."
+						description:      "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances."
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -2772,8 +2802,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						optional:         true
 					}
 					type: {
-						type:             "string"
-						description:      "Available values: \"r2\", \"web-crawler\"."
+						type: "string"
+						description: """
+									Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
+									Available values: "r2", "web-crawler".
+									"""
 						description_kind: "plain"
 						optional:         true
 					}
@@ -3104,7 +3137,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 			}
 		}
 		cloudflare_api_shield_operation: {
-			version: 500
+			version: 501
 			block: {
 				attributes: {
 					endpoint: {
@@ -3112,12 +3145,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/."
 						description_kind: "plain"
 						required:         true
-					}
-					feature: {
-						type: ["list", "string"]
-						description:      "Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning."
-						description_kind: "plain"
-						optional:         true
 					}
 					features: {
 						nested_type: {
@@ -3482,13 +3509,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						computed:         true
 					}
-					with_schemas: {
-						type:             "bool"
-						description:      "When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval."
-						description_kind: "plain"
-						optional:         true
-						computed:         true
-					}
 					zone_id: {
 						type:             "string"
 						description:      "Identifier."
@@ -3809,6 +3829,16 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						optional:         true
 					}
+					creator_email_at_creation: {
+						type: "string"
+						description: """
+									The email address of the user who created the token at the time of
+									creation. Only present for Account Owned API Tokens when a creator email
+									was available.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
 					expires_on: {
 						type:             "string"
 						description:      "The expiration time on or after which the JWT MUST NOT be accepted for processing."
@@ -3886,9 +3916,29 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							}
 							nesting_mode: "list"
 						}
-						description:      "Set of access policies assigned to the token."
+						description:      "List of access policies assigned to the token."
 						description_kind: "plain"
 						required:         true
+					}
+					provisioner_id: {
+						type: "string"
+						description: """
+									The identifier of the service that provisioned the token. For an
+									OAuth-provisioned token, this is the OAuth client identifier. Present
+									when `provisioner_type` is present and null when the identifier is
+									unavailable.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					provisioner_type: {
+						type: "string"
+						description: """
+									The type of service that provisioned the token. Only present for
+									provisioned Account Owned API Tokens.
+									"""
+						description_kind: "plain"
+						computed:         true
 					}
 					status: {
 						type: "string"
@@ -4822,6 +4872,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "A Cloudflare-generated unique identifier for a item."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					modified: {
 						type:             "string"
@@ -5067,7 +5118,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "The unique identifier for a certificate_pack."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -5264,7 +5315,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "Client Certificate Tag"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -5413,7 +5464,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							nesting_mode: "list"
 						}
 						description_kind: "plain"
-						optional:         true
+						required:         true
 					}
 					zone_id: {
 						type:             "string"
@@ -6210,7 +6261,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "Custom hostname identifier tag."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -6531,7 +6582,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "Certificate identifier tag."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -6791,7 +6842,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "Custom certificate identifier tag."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -8578,6 +8629,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					is_regex: {
 						type:             "bool"
+						description:      "Whether `pattern` is a regular expression instead of a literal value."
 						description_kind: "plain"
 						required:         true
 					}
@@ -8635,6 +8687,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					allowed_delivery_modes: {
 						type: ["set", "string"]
+						description:      "Delivery modes to onboard the domain through."
 						description_kind: "plain"
 						required:         true
 					}
@@ -8675,11 +8728,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					domain: {
 						type:             "string"
+						description:      "The email domain to protect."
 						description_kind: "plain"
 						required:         true
 					}
 					drop_dispositions: {
 						type: ["set", "string"]
+						description:      "Dispositions to drop instead of delivering, e.g. `[\"MALICIOUS\", \"SPAM\"]`."
 						description_kind: "plain"
 						required:         true
 					}
@@ -8708,8 +8763,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						computed:         true
 					}
 					folder: {
-						type:             "string"
-						description:      "Available values: \"AllItems\", \"Inbox\"."
+						type: "string"
+						description: """
+									The mailbox folder to scan, for API-scanning domains.
+									Available values: "AllItems", "Inbox".
+									"""
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -8728,11 +8786,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					integration_id: {
 						type:             "string"
+						description:      "Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync."
 						description_kind: "plain"
 						optional:         true
 					}
 					ip_restrictions: {
 						type: ["set", "string"]
+						description:      "Source IP ranges mail is accepted from. Any other source is rejected."
 						description_kind: "plain"
 						required:         true
 					}
@@ -8745,6 +8805,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					lookback_hops: {
 						type:             "number"
+						description:      "Number of hops to trace back through received headers when reconstructing the original message (1-20)."
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -8761,17 +8822,20 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					regions: {
 						type: ["set", "string"]
+						description:      "Regions that process messages for this domain, e.g. `[\"GLOBAL\"]` or `[\"US\"]`."
 						description_kind: "plain"
 						required:         true
 					}
 					require_tls_inbound: {
 						type:             "bool"
+						description:      "Require TLS on inbound connections."
 						description_kind: "plain"
 						optional:         true
 						computed:         true
 					}
 					require_tls_outbound: {
 						type:             "bool"
+						description:      "Require TLS on outbound connections."
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -8790,6 +8854,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					transport: {
 						type:             "string"
+						description:      "The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`)."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -8816,6 +8881,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					comments: {
 						type:             "string"
+						description:      "Optional note describing the entry."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -8826,21 +8892,25 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					directory_id: {
 						type:             "number"
+						description:      "Identifier of the directory the entry was synced from, when directory-synced."
 						description_kind: "plain"
 						optional:         true
 					}
 					directory_node_id: {
 						type:             "number"
+						description:      "Identifier of the directory node the entry was synced from, when directory-synced."
 						description_kind: "plain"
 						optional:         true
 					}
 					email: {
 						type:             "string"
+						description:      "Email address (or pattern) of the protected identity."
 						description_kind: "plain"
 						required:         true
 					}
 					external_directory_node_id: {
 						type:             "string"
+						description:      "Deprecated. External identifier of the directory node."
 						description_kind: "plain"
 						deprecated:       true
 						optional:         true
@@ -8853,6 +8923,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					is_email_regex: {
 						type:             "bool"
+						description:      "Whether `email` is a regular expression instead of a literal address."
 						description_kind: "plain"
 						required:         true
 					}
@@ -8870,12 +8941,16 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					name: {
 						type:             "string"
+						description:      "Display name of the protected identity."
 						description_kind: "plain"
 						required:         true
 					}
 					provenance: {
-						type:             "string"
-						description:      "Available values: \"A1S_INTERNAL\", \"SNOOPY-CASB_OFFICE_365\", \"SNOOPY-OFFICE_365\", \"SNOOPY-GOOGLE_DIRECTORY\"."
+						type: "string"
+						description: """
+									Source the entry was created from.
+									Available values: "A1S_INTERNAL", "SNOOPY-CASB_OFFICE_365", "SNOOPY-OFFICE_365", "SNOOPY-GOOGLE_DIRECTORY".
+									"""
 						description_kind: "plain"
 						optional:         true
 					}
@@ -8912,7 +8987,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Trusted domain identifier"
+						description:      "Trusted domain identifier."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -8924,6 +8999,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					is_regex: {
 						type:             "bool"
+						description:      "Whether `pattern` is a regular expression instead of a literal domain."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -8947,6 +9023,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					pattern: {
 						type:             "string"
+						description:      "The domain pattern to trust, e.g. `example.com`."
 						description_kind: "plain"
 						required:         true
 					}
@@ -9351,7 +9428,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Cloudflare account ID."
+						description:      "Cloudflare account ID that owns the Flagship app."
 						description_kind: "plain"
 						required:         true
 					}
@@ -9367,6 +9444,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					name: {
 						type:             "string"
+						description:      "Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores)."
 						description_kind: "plain"
 						required:         true
 					}
@@ -9398,13 +9476,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Cloudflare account ID."
+						description:      "Cloudflare account ID that owns the Flagship app."
 						description_kind: "plain"
 						required:         true
 					}
 					app_id: {
 						type:             "string"
-						description:      "App identifier."
+						description:      "Flagship app ID returned when the app was created."
 						description_kind: "plain"
 						required:         true
 					}
@@ -9416,6 +9494,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					description: {
 						type:             "string"
+						description:      "Optional operator-facing description. It does not affect flag evaluation."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -9501,7 +9580,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 																										}
 																										operator: {
 																											type:             "string"
-																											description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\"."
+																											description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\", \"has\", \"not_has\"."
 																											description_kind: "plain"
 																											optional:         true
 																										}
@@ -9525,7 +9604,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 																							}
 																							operator: {
 																								type:             "string"
-																								description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\"."
+																								description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\", \"has\", \"not_has\"."
 																								description_kind: "plain"
 																								optional:         true
 																							}
@@ -9549,7 +9628,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 																				}
 																				operator: {
 																					type:             "string"
-																					description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\"."
+																					description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\", \"has\", \"not_has\"."
 																					description_kind: "plain"
 																					optional:         true
 																				}
@@ -9573,7 +9652,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 																	}
 																	operator: {
 																		type:             "string"
-																		description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\"."
+																		description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\", \"has\", \"not_has\"."
 																		description_kind: "plain"
 																		optional:         true
 																	}
@@ -9597,7 +9676,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 														}
 														operator: {
 															type:             "string"
-															description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\"."
+															description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\", \"has\", \"not_has\"."
 															description_kind: "plain"
 															optional:         true
 														}
@@ -9621,7 +9700,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											operator: {
 												type:             "string"
-												description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\"."
+												description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\", \"has\", \"not_has\"."
 												description_kind: "plain"
 												optional:         true
 											}
@@ -9655,7 +9734,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											percentage: {
 												type:             "number"
-												description:      "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100)."
+												description:      "Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100)."
 												description_kind: "plain"
 												required:         true
 											}
@@ -12304,7 +12383,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								merge_subrequests: {
 									type:             "bool"
-									description:      "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset."
+									description:      "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs."
 									description_kind: "plain"
 									optional:         true
 								}
@@ -13298,12 +13377,19 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									Available values: "low", "mid", "high".
 									"""
 						description_kind: "plain"
+						optional:         true
 						computed:         true
 					}
 					id: {
 						type:             "string"
 						description:      "Identifier"
 						description_kind: "plain"
+						computed:         true
+					}
+					load_balance_inner_flows: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
 						computed:         true
 					}
 					name: {
@@ -15734,7 +15820,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "The x509 serial number of the Origin CA certificate."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -16347,19 +16433,19 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "The domain name."
+						description:      "Fully qualified domain name for the Pages project, such as `example.com`."
 						description_kind: "plain"
 						computed:         true
 					}
 					name: {
 						type:             "string"
-						description:      "The domain name."
+						description:      "Fully qualified domain name for the Pages project, such as `example.com`."
 						description_kind: "plain"
 						required:         true
 					}
 					project_name: {
 						type:             "string"
-						description:      "Name of the project."
+						description:      "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens."
 						description_kind: "plain"
 						required:         true
 					}
@@ -16660,7 +16746,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								is_skipped: {
 									type:             "bool"
-									description:      "If the deployment has been skipped."
+									description:      "Whether the deployment was skipped."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -16692,7 +16778,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												type: "string"
 												description: """
 															State of the current stage.
-															Available values: "success", "idle", "active", "failure", "canceled".
+															Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 															"""
 												description_kind: "plain"
 												computed:         true
@@ -16718,7 +16804,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								project_name: {
 									type:             "string"
-									description:      "Name of the project."
+									description:      "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -16869,7 +16955,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												type: "string"
 												description: """
 															State of the current stage.
-															Available values: "success", "idle", "active", "failure", "canceled".
+															Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 															"""
 												description_kind: "plain"
 												computed:         true
@@ -17521,7 +17607,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Name of the project."
+						description:      "Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -17680,7 +17766,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								is_skipped: {
 									type:             "bool"
-									description:      "If the deployment has been skipped."
+									description:      "Whether the deployment was skipped."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -17712,7 +17798,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												type: "string"
 												description: """
 															State of the current stage.
-															Available values: "success", "idle", "active", "failure", "canceled".
+															Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 															"""
 												description_kind: "plain"
 												computed:         true
@@ -17738,7 +17824,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								project_name: {
 									type:             "string"
-									description:      "Name of the project."
+									description:      "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -17889,7 +17975,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												type: "string"
 												description: """
 															State of the current stage.
-															Available values: "success", "idle", "active", "failure", "canceled".
+															Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 															"""
 												description_kind: "plain"
 												computed:         true
@@ -17922,7 +18008,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					name: {
 						type:             "string"
-						description:      "Name of the project."
+						description:      "Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens."
 						description_kind: "plain"
 						required:         true
 					}
@@ -18484,7 +18570,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type: "string"
 						description: """
 									Specifies the type of sink.
-									Available values: "r2", "r2_data_catalog".
+									Available values: "r2", "r2_data_catalog", "basin_catalog".
 									"""
 						description_kind: "plain"
 						required:         true
@@ -18834,19 +18920,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												description_kind: "plain"
 												computed:         true
 											}
-											email: {
-												nested_type: {
-													attributes: id: {
-														type:             "string"
-														description:      "The email address."
-														description_kind: "plain"
-														computed:         true
-													}
-													nesting_mode: "list"
-												}
-												description_kind: "plain"
-												computed:         true
-											}
 											max_concurrency: {
 												type:             "number"
 												description:      "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended)."
@@ -18865,20 +18938,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												description_kind: "plain"
 												computed:         true
 											}
-											pagerduty: {
-												nested_type: {
-													attributes: id: {
-														type:             "string"
-														description:      "UUID."
-														description_kind: "plain"
-														computed:         true
-													}
-													nesting_mode: "list"
-												}
-												description:      "PagerDuty notification destinations."
-												description_kind: "plain"
-												computed:         true
-											}
 											retry_delay: {
 												type:             "number"
 												description:      "The number of seconds to delay before making the message available for another attempt."
@@ -18891,20 +18950,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												description_kind: "plain"
 												computed:         true
 											}
-											webhooks: {
-												nested_type: {
-													attributes: id: {
-														type:             "string"
-														description:      "UUID."
-														description_kind: "plain"
-														computed:         true
-													}
-													nesting_mode: "list"
-												}
-												description:      "Webhook notification destinations."
-												description_kind: "plain"
-												computed:         true
-											}
 										}
 										nesting_mode: "single"
 									}
@@ -18913,7 +18958,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								type: {
 									type:             "string"
-									description:      "Available values: \"worker\", \"http_pull\", \"notification\"."
+									description:      "Available values: \"worker\", \"http_pull\"."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -19195,7 +19240,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Account ID."
+						description:      "Cloudflare account ID that owns the R2 resource."
 						description_kind: "plain"
 						required:         true
 					}
@@ -19263,7 +19308,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Account ID."
+						description:      "Cloudflare account ID that owns the R2 resource."
 						description_kind: "plain"
 						required:         true
 					}
@@ -19345,7 +19390,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Account ID."
+						description:      "Cloudflare account ID that owns the R2 resource."
 						description_kind: "plain"
 						required:         true
 					}
@@ -19364,7 +19409,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					queue_id: {
 						type:             "string"
-						description:      "Queue ID."
+						description:      "ID of the Cloudflare Queue that receives notifications for matching R2 object events."
 						description_kind: "plain"
 						required:         true
 					}
@@ -19425,7 +19470,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Account ID."
+						description:      "Cloudflare account ID that owns the R2 resource."
 						description_kind: "plain"
 						required:         true
 					}
@@ -19592,7 +19637,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Account ID."
+						description:      "Cloudflare account ID that owns the R2 resource."
 						description_kind: "plain"
 						required:         true
 					}
@@ -19672,7 +19717,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Account ID."
+						description:      "Cloudflare account ID that owns the R2 resource."
 						description_kind: "plain"
 						required:         true
 					}
@@ -19799,7 +19844,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								region: {
 									type:             "string"
-									description:      "Name of the AWS availability zone."
+									description:      "AWS region containing the source S3 bucket."
 									description_kind: "plain"
 									optional:         true
 								}
@@ -19840,7 +19885,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Account ID."
+						description:      "Cloudflare account ID that owns the R2 resource."
 						description_kind: "plain"
 						required:         true
 					}
@@ -20083,7 +20128,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Account ID."
+						description:      "Cloudflare account ID that owns the R2 resource."
 						description_kind: "plain"
 						required:         true
 					}
@@ -27780,7 +27825,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									type: "string"
 									description: """
 												The kind of resource that the binding provides.
-												Available values: "ai", "ai_search", "ai_search_namespace", "messaging", "analytics_engine", "assets", "browser", "d1", "data_blob", "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit", "images", "json", "kv_namespace", "media", "mtls_certificate", "plain_text", "pipelines", "k2", "queue", "ratelimit", "r2_bucket", "secret_text", "send_email", "service", "text_blob", "vectorize", "version_metadata", "secrets_store_secret", "flagship", "secret_key", "workflow", "wasm_module", "vpc_service", "vpc_network".
+												Available values: "ai", "ai_search", "ai_search_namespace", "messaging", "analytics_engine", "artifacts", "assets", "browser", "d1", "data_blob", "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit", "images", "json", "kv_namespace", "media", "mtls_certificate", "plain_text", "pipelines", "k2", "queue", "ratelimit", "r2_bucket", "secret_text", "send_email", "service", "text_blob", "vectorize", "version_metadata", "secrets_store_secret", "flagship", "secret_key", "workflow", "wasm_module", "vpc_service", "vpc_network".
 												"""
 									description_kind: "plain"
 									required:         true
@@ -28594,7 +28639,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Name of the script, used in URLs and route configuration."
+						description:      "Name of the script."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -28624,7 +28669,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					script_name: {
 						type:             "string"
-						description:      "Name of the script, used in URLs and route configuration."
+						description:      "Name of the script."
 						description_kind: "plain"
 						required:         true
 					}
@@ -28761,7 +28806,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					script_name: {
 						type:             "string"
-						description:      "Name of the script, used in URLs and route configuration."
+						description:      "Name of the script."
 						description_kind: "plain"
 						required:         true
 					}
@@ -28898,7 +28943,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "ID of the Cloudflare account that owns the Workers KV namespaces."
 						description_kind: "plain"
 						required:         true
 					}
@@ -28934,7 +28979,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					namespace_id: {
 						type:             "string"
-						description:      "Namespace identifier tag."
+						description:      "ID of the Workers KV namespace."
 						description_kind: "plain"
 						required:         true
 					}
@@ -28961,13 +29006,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "ID of the Cloudflare account that owns the Workers KV namespaces."
 						description_kind: "plain"
 						required:         true
 					}
 					id: {
 						type:             "string"
-						description:      "Namespace identifier tag."
+						description:      "ID of the Workers KV namespace."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -28988,7 +29033,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					title: {
 						type:             "string"
-						description:      "A human-readable string name for a Namespace."
+						description:      "Human-readable string name for a Workers KV namespace."
 						description_kind: "plain"
 						required:         true
 					}
@@ -29476,7 +29521,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									type: "string"
 									description: """
 												The kind of resource that the binding provides.
-												Available values: "ai", "ai_search", "ai_search_namespace", "analytics_engine", "assets", "browser", "d1", "data_blob", "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit", "images", "json", "kv_namespace", "media", "mtls_certificate", "plain_text", "pipelines", "queue", "ratelimit", "r2_bucket", "secret_text", "send_email", "service", "text_blob", "vectorize", "version_metadata", "secrets_store_secret", "secret_key", "workflow", "wasm_module", "vpc_service", "vpc_network".
+												Available values: "ai", "ai_search", "ai_search_namespace", "messaging", "analytics_engine", "artifacts", "assets", "browser", "d1", "data_blob", "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit", "images", "json", "kv_namespace", "media", "mtls_certificate", "plain_text", "pipelines", "k2", "queue", "ratelimit", "r2_bucket", "secret_text", "send_email", "service", "text_blob", "vectorize", "version_metadata", "secrets_store_secret", "flagship", "secret_key", "workflow", "wasm_module", "vpc_service", "vpc_network".
 												"""
 									description_kind: "plain"
 									required:         true
@@ -30275,7 +30320,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					script_name: {
 						type:             "string"
-						description:      "Name of the script, used in URLs and route configuration."
+						description:      "Name of the script."
 						description_kind: "plain"
 						required:         true
 					}
@@ -36993,6 +37038,355 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				description_kind: "plain"
 			}
 		}
+		cloudflare_zero_trust_casb_integration: {
+			version: 500
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description:      "Cloudflare account identifier."
+						description_kind: "plain"
+						required:         true
+					}
+					anthropic: {
+						nested_type: {
+							attributes: {
+								anthropic_admin_api_key: {
+									nested_type: {
+										attributes: {
+											api_key: {
+												type:             "string"
+												description:      "Anthropic Admin API key. This value is write-only and is never persisted to Terraform state."
+												description_kind: "plain"
+												required:         true
+												sensitive:        true
+												write_only:       true
+											}
+											tenant_id: {
+												type:             "string"
+												description:      "Organization ID. Auto-extracted from the key if not provided."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Authenticate with an Anthropic Admin API key."
+									description_kind: "plain"
+									optional:         true
+								}
+								anthropic_compliance_api_key: {
+									nested_type: {
+										attributes: {
+											compliance_api_key: {
+												type:             "string"
+												description:      "Anthropic Compliance API key. This value is write-only and is never persisted to Terraform state."
+												description_kind: "plain"
+												required:         true
+												sensitive:        true
+												write_only:       true
+											}
+											tenant_id: {
+												type:             "string"
+												description:      "Organization ID. Auto-extracted from the key if not provided."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Authenticate with an Anthropic Compliance API key."
+									description_kind: "plain"
+									optional:         true
+								}
+								anthropic_workspace_api_key: {
+									nested_type: {
+										attributes: {
+											api_key: {
+												type:             "string"
+												description:      "Anthropic Workspace API key. This value is write-only and is never persisted to Terraform state."
+												description_kind: "plain"
+												required:         true
+												sensitive:        true
+												write_only:       true
+											}
+											tenant_id: {
+												type:             "string"
+												description:      "Workspace ID, found in the Anthropic Console URL after /workspaces/."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Authenticate with an Anthropic Workspace API key."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Anthropic integration configuration."
+						description_kind: "plain"
+						optional:         true
+					}
+					aws: {
+						nested_type: {
+							attributes: aws_iam_role: {
+								nested_type: {
+									attributes: {
+										external_id: {
+											type:             "string"
+											description:      "External ID required when assuming the IAM role."
+											description_kind: "plain"
+											required:         true
+										}
+										role_arn: {
+											type:             "string"
+											description:      "ARN of the cross-account IAM role Cloudflare will assume."
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									nesting_mode: "single"
+								}
+								description:      "Authenticate by delegating to a cross-account IAM role."
+								description_kind: "plain"
+								optional:         true
+							}
+							nesting_mode: "single"
+						}
+						description:      "AWS integration configuration."
+						description_kind: "plain"
+						optional:         true
+					}
+					box: {
+						nested_type: {
+							attributes: box_server_authentication: {
+								nested_type: {
+									attributes: enterprise_id: {
+										type:             "string"
+										description:      "Box Enterprise ID from Admin Console > Accounts & Billing."
+										description_kind: "plain"
+										required:         true
+									}
+									nesting_mode: "single"
+								}
+								description:      "Authenticate with Box server authentication. Before creating the integration, add the Cloudflare CASB application in Box Admin Console > Integrations > Platform Apps Manager > Server Authentication Apps using client ID `puaghckpy0578r8p6f3g0rf860unup4r`."
+								description_kind: "plain"
+								optional:         true
+							}
+							nesting_mode: "single"
+						}
+						description:      "Box integration configuration."
+						description_kind: "plain"
+						optional:         true
+					}
+					dlp_profiles: {
+						type: ["set", "string"]
+						description:      "DLP profile IDs to associate with the integration."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					google_cloud_platform: {
+						nested_type: {
+							attributes: google_cloud_platform_service_account: {
+								nested_type: {
+									attributes: service_account_key_json: {
+										type:             "string"
+										description:      "Contents of a Google service account JSON key file. This value is write-only and is never persisted to Terraform state."
+										description_kind: "plain"
+										required:         true
+										sensitive:        true
+										write_only:       true
+									}
+									nesting_mode: "single"
+								}
+								description:      "Authenticate with a service account key."
+								description_kind: "plain"
+								optional:         true
+							}
+							nesting_mode: "single"
+						}
+						description:      "Google Cloud Platform integration configuration."
+						description_kind: "plain"
+						optional:         true
+					}
+					google_workspace: {
+						nested_type: {
+							attributes: google_domain_wide_delegation_service_account: {
+								nested_type: {
+									attributes: {
+										administrator_email: {
+											type:             "string"
+											description:      "A Google Workspace super administrator email address."
+											description_kind: "plain"
+											required:         true
+										}
+										service_account_key_json: {
+											type:             "string"
+											description:      "Contents of a Google service account JSON key file. This value is write-only and is never persisted to Terraform state."
+											description_kind: "plain"
+											required:         true
+											sensitive:        true
+											write_only:       true
+										}
+									}
+									nesting_mode: "single"
+								}
+								description:      "Authenticate with a service account granted domain-wide delegation."
+								description_kind: "plain"
+								optional:         true
+							}
+							nesting_mode: "single"
+						}
+						description:      "Google Workspace integration configuration."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Integration ID."
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the integration."
+						description_kind: "plain"
+						required:         true
+					}
+					openai: {
+						nested_type: {
+							attributes: {
+								chatgpt_compliance_api_key: {
+									nested_type: {
+										attributes: {
+											admin_api_key: {
+												type:             "string"
+												description:      "OpenAI Admin API key with api.management.read access. This value is write-only and is never persisted to Terraform state."
+												description_kind: "plain"
+												required:         true
+												sensitive:        true
+												write_only:       true
+											}
+											compliance_api_key: {
+												type:             "string"
+												description:      "OpenAI Compliance API key for audit logs. This value is write-only and is never persisted to Terraform state."
+												description_kind: "plain"
+												required:         true
+												sensitive:        true
+												write_only:       true
+											}
+											organization_id: {
+												type:             "string"
+												description:      "OpenAI Organization ID."
+												description_kind: "plain"
+												required:         true
+											}
+											project_api_key: {
+												type:             "string"
+												description:      "OpenAI Project API key, used for DLP. This value is write-only and is never persisted to Terraform state."
+												description_kind: "plain"
+												optional:         true
+												sensitive:        true
+												write_only:       true
+											}
+											project_id: {
+												type:             "string"
+												description:      "OpenAI Project ID, used for DLP."
+												description_kind: "plain"
+												optional:         true
+											}
+											workspace_id: {
+												type:             "string"
+												description:      "OpenAI Workspace ID for compliance data."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Authenticate with an OpenAI Compliance API key. Requires an Enterprise plan."
+									description_kind: "plain"
+									optional:         true
+								}
+								chatgpt_standard_api_key: {
+									nested_type: {
+										attributes: {
+											admin_api_key: {
+												type:             "string"
+												description:      "OpenAI Admin API key with api.management.read access. This value is write-only and is never persisted to Terraform state."
+												description_kind: "plain"
+												required:         true
+												sensitive:        true
+												write_only:       true
+											}
+											organization_id: {
+												type:             "string"
+												description:      "OpenAI Organization ID."
+												description_kind: "plain"
+												required:         true
+											}
+											project_api_key: {
+												type:             "string"
+												description:      "OpenAI Project API key, used for DLP. This value is write-only and is never persisted to Terraform state."
+												description_kind: "plain"
+												optional:         true
+												sensitive:        true
+												write_only:       true
+											}
+											project_id: {
+												type:             "string"
+												description:      "OpenAI Project ID, used for DLP."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Authenticate with an OpenAI Admin API key."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "OpenAI integration configuration."
+						description_kind: "plain"
+						optional:         true
+					}
+					paused: {
+						type:             "bool"
+						description:      "Whether the integration is paused."
+						description_kind: "plain"
+						required:         true
+					}
+					permissions: {
+						type: ["set", "string"]
+						description:      "Permission scopes granted to the integration."
+						description_kind: "plain"
+						optional:         true
+					}
+					secrets_digest: {
+						type:             "string"
+						description:      "Secure digest of the confidential arguments. Managed by the provider."
+						description_kind: "plain"
+						computed:         true
+					}
+					use_cases: {
+						type: ["set", "string"]
+						description:      "Use cases to enroll the integration in."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				description:      "Creates and manages a CASB integration. Exactly one vendor and exactly one authentication method must be configured."
+				description_kind: "plain"
+			}
+		}
 		cloudflare_zero_trust_casb_policy: {
 			version: 500
 			block: {
@@ -37577,7 +37971,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					profile_type: {
 						type: "string"
 						description: """
-									The client type to which the device settings profile applies.
+									The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
 									Available values: "warp", "browser_extension".
 									"""
 						description_kind: "plain"
@@ -38002,7 +38396,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					profile_type: {
 						type: "string"
 						description: """
-									The client type to which the device settings profile applies.
+									The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
 									Available values: "warp", "browser_extension".
 									"""
 						description_kind: "plain"
@@ -41135,6 +41529,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						required:         true
 					}
@@ -41393,6 +41788,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						required:         true
 					}
@@ -41492,11 +41888,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						required:         true
 					}
 					id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -41603,6 +42001,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						required:         true
 					}
@@ -41668,6 +42067,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						required:         true
 					}
@@ -42420,6 +42820,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						required:         true
 					}
@@ -42476,6 +42877,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						required:         true
 					}
@@ -42486,6 +42888,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -42927,6 +43330,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						required:         true
 					}
@@ -43319,6 +43723,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description:      "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h."
 						description_kind: "plain"
 						optional:         true
+					}
+					strict_service_token_auth: {
+						type:             "bool"
+						description:      "Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
 					}
 					trusted_accounts: {
 						type: ["list", "string"]
@@ -45099,8 +45510,9 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					foundation_dns: {
 						type:             "bool"
-						description:      "Whether to enable Foundation DNS Advanced Nameservers on the zone."
+						description:      "Deprecated. Use nameservers.type to configure Advanced Nameservers."
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 					}
 					internal_dns: {
@@ -45127,25 +45539,32 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					nameservers: {
 						nested_type: {
 							attributes: {
-								ns_set: {
-									type:             "number"
-									description:      "Configured nameserver set to be used for this zone"
+								nameserver_set_id: {
+									type:             "string"
+									description:      "Identifier of the account-owned Custom Nameserver Set to use for this zone."
 									description_kind: "plain"
 									optional:         true
+								}
+								ns_set: {
+									type:             "number"
+									description:      "Configured nameserver set number to use for this zone."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
 								}
 								type: {
 									type: "string"
 									description: """
-												Nameserver type
-												Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
+												Nameserver type.
+												Available values: "cloudflare.standard", "cloudflare.advanced", "custom.account", "custom.tenant", "custom.zone", "custom".
 												"""
 									description_kind: "plain"
-									optional:         true
+									required:         true
 								}
 							}
 							nesting_mode: "single"
 						}
-						description:      "Settings determining the nameservers through which the zone should be available."
+						description:      "Controls the nameservers through which the zone is available."
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -46466,9 +46885,24 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					permission_groups: {
 						nested_type: {
 							attributes: {
+								category: {
+									type: "string"
+									description: """
+												Product category that this permission group belongs to.
+												Available values: "developer_platform", "ai_and_machine_learning", "dns_and_zones", "app_security", "rules_and_configuration", "cloudflare_one_and_zero_trust", "analytics_and_logs", "network_services", "media", "email_and_messaging", "cache_and_performance", "account_and_billing", "other".
+												"""
+									description_kind: "plain"
+									computed:         true
+								}
 								id: {
 									type:             "string"
 									description:      "Public ID."
+									description_kind: "plain"
+									computed:         true
+								}
+								is_selectable: {
+									type:             "bool"
+									description:      "Whether the caller can select this permission group when creating a token."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -46538,9 +46972,24 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					result: {
 						nested_type: {
 							attributes: {
+								category: {
+									type: "string"
+									description: """
+												Product category that this permission group belongs to.
+												Available values: "developer_platform", "ai_and_machine_learning", "dns_and_zones", "app_security", "rules_and_configuration", "cloudflare_one_and_zero_trust", "analytics_and_logs", "network_services", "media", "email_and_messaging", "cache_and_performance", "account_and_billing", "other".
+												"""
+									description_kind: "plain"
+									computed:         true
+								}
 								id: {
 									type:             "string"
 									description:      "Public ID."
+									description_kind: "plain"
+									computed:         true
+								}
+								is_selectable: {
+									type:             "bool"
+									description:      "Whether the caller can select this permission group when creating a token."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -47117,13 +47566,51 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											meta: {
 												nested_type: {
 													attributes: {
-														key: {
+														category: {
 															type:             "string"
+															description:      "A category used to group permission groups."
 															description_kind: "plain"
 															computed:         true
 														}
-														value: {
+														deprecated: {
 															type:             "string"
+															description:      "Indicates whether the permission group is deprecated."
+															description_kind: "plain"
+															computed:         true
+														}
+														description: {
+															type:             "string"
+															description:      "Additional information about the permission group."
+															description_kind: "plain"
+															computed:         true
+														}
+														editable: {
+															type:             "string"
+															description:      "Indicates whether the permission group can be edited."
+															description_kind: "plain"
+															computed:         true
+														}
+														eol_at: {
+															type:             "string"
+															description:      "The planned end-of-life date and time, when provided."
+															description_kind: "plain"
+															computed:         true
+														}
+														label: {
+															type:             "string"
+															description:      "A label identifying the permission group."
+															description_kind: "plain"
+															computed:         true
+														}
+														scopes: {
+															type:             "string"
+															description:      "The scope associated with the permission group."
+															description_kind: "plain"
+															computed:         true
+														}
+														visibility: {
+															type:             "string"
+															description:      "Indicates the permission group's availability or visibility."
 															description_kind: "plain"
 															computed:         true
 														}
@@ -47631,13 +48118,51 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 														meta: {
 															nested_type: {
 																attributes: {
-																	key: {
+																	category: {
 																		type:             "string"
+																		description:      "A category used to group permission groups."
 																		description_kind: "plain"
 																		computed:         true
 																	}
-																	value: {
+																	deprecated: {
 																		type:             "string"
+																		description:      "Indicates whether the permission group is deprecated."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	description: {
+																		type:             "string"
+																		description:      "Additional information about the permission group."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	editable: {
+																		type:             "string"
+																		description:      "Indicates whether the permission group can be edited."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	eol_at: {
+																		type:             "string"
+																		description:      "The planned end-of-life date and time, when provided."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	label: {
+																		type:             "string"
+																		description:      "A label identifying the permission group."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	scopes: {
+																		type:             "string"
+																		description:      "The scope associated with the permission group."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	visibility: {
+																		type:             "string"
+																		description:      "Indicates the permission group's availability or visibility."
 																		description_kind: "plain"
 																		computed:         true
 																	}
@@ -48101,13 +48626,51 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					meta: {
 						nested_type: {
 							attributes: {
-								key: {
+								category: {
 									type:             "string"
+									description:      "A category used to group permission groups."
 									description_kind: "plain"
 									computed:         true
 								}
-								value: {
+								deprecated: {
 									type:             "string"
+									description:      "Indicates whether the permission group is deprecated."
+									description_kind: "plain"
+									computed:         true
+								}
+								description: {
+									type:             "string"
+									description:      "Additional information about the permission group."
+									description_kind: "plain"
+									computed:         true
+								}
+								editable: {
+									type:             "string"
+									description:      "Indicates whether the permission group can be edited."
+									description_kind: "plain"
+									computed:         true
+								}
+								eol_at: {
+									type:             "string"
+									description:      "The planned end-of-life date and time, when provided."
+									description_kind: "plain"
+									computed:         true
+								}
+								label: {
+									type:             "string"
+									description:      "A label identifying the permission group."
+									description_kind: "plain"
+									computed:         true
+								}
+								scopes: {
+									type:             "string"
+									description:      "The scope associated with the permission group."
+									description_kind: "plain"
+									computed:         true
+								}
+								visibility: {
+									type:             "string"
+									description:      "Indicates the permission group's availability or visibility."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -48214,13 +48777,51 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								meta: {
 									nested_type: {
 										attributes: {
-											key: {
+											category: {
 												type:             "string"
+												description:      "A category used to group permission groups."
 												description_kind: "plain"
 												computed:         true
 											}
-											value: {
+											deprecated: {
 												type:             "string"
+												description:      "Indicates whether the permission group is deprecated."
+												description_kind: "plain"
+												computed:         true
+											}
+											description: {
+												type:             "string"
+												description:      "Additional information about the permission group."
+												description_kind: "plain"
+												computed:         true
+											}
+											editable: {
+												type:             "string"
+												description:      "Indicates whether the permission group can be edited."
+												description_kind: "plain"
+												computed:         true
+											}
+											eol_at: {
+												type:             "string"
+												description:      "The planned end-of-life date and time, when provided."
+												description_kind: "plain"
+												computed:         true
+											}
+											label: {
+												type:             "string"
+												description:      "A label identifying the permission group."
+												description_kind: "plain"
+												computed:         true
+											}
+											scopes: {
+												type:             "string"
+												description:      "The scope associated with the permission group."
+												description_kind: "plain"
+												computed:         true
+											}
+											visibility: {
+												type:             "string"
+												description:      "Indicates the permission group's availability or visibility."
 												description_kind: "plain"
 												computed:         true
 											}
@@ -49029,6 +49630,16 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						computed:         true
 					}
+					creator_email_at_creation: {
+						type: "string"
+						description: """
+									The email address of the user who created the token at the time of
+									creation. Only present for Account Owned API Tokens when a creator email
+									was available.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
 					expires_on: {
 						type:             "string"
 						description:      "The expiration time on or after which the JWT MUST NOT be accepted for processing."
@@ -49126,13 +49737,51 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											meta: {
 												nested_type: {
 													attributes: {
-														key: {
+														category: {
 															type:             "string"
+															description:      "A category used to group permission groups."
 															description_kind: "plain"
 															computed:         true
 														}
-														value: {
+														deprecated: {
 															type:             "string"
+															description:      "Indicates whether the permission group is deprecated."
+															description_kind: "plain"
+															computed:         true
+														}
+														description: {
+															type:             "string"
+															description:      "Additional information about the permission group."
+															description_kind: "plain"
+															computed:         true
+														}
+														editable: {
+															type:             "string"
+															description:      "Indicates whether the permission group can be edited."
+															description_kind: "plain"
+															computed:         true
+														}
+														eol_at: {
+															type:             "string"
+															description:      "The planned end-of-life date and time, when provided."
+															description_kind: "plain"
+															computed:         true
+														}
+														label: {
+															type:             "string"
+															description:      "A label identifying the permission group."
+															description_kind: "plain"
+															computed:         true
+														}
+														scopes: {
+															type:             "string"
+															description:      "The scope associated with the permission group."
+															description_kind: "plain"
+															computed:         true
+														}
+														visibility: {
+															type:             "string"
+															description:      "Indicates the permission group's availability or visibility."
 															description_kind: "plain"
 															computed:         true
 														}
@@ -49166,6 +49815,26 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							nesting_mode: "list"
 						}
 						description:      "List of access policies assigned to the token."
+						description_kind: "plain"
+						computed:         true
+					}
+					provisioner_id: {
+						type: "string"
+						description: """
+									The identifier of the service that provisioned the token. For an
+									OAuth-provisioned token, this is the OAuth client identifier. Present
+									when `provisioner_type` is present and null when the identifier is
+									unavailable.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					provisioner_type: {
+						type: "string"
+						description: """
+									The type of service that provisioned the token. Only present for
+									provisioned Account Owned API Tokens.
+									"""
 						description_kind: "plain"
 						computed:         true
 					}
@@ -49259,6 +49928,16 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "plain"
 									computed:         true
 								}
+								creator_email_at_creation: {
+									type: "string"
+									description: """
+												The email address of the user who created the token at the time of
+												creation. Only present for Account Owned API Tokens when a creator email
+												was available.
+												"""
+									description_kind: "plain"
+									computed:         true
+								}
 								expires_on: {
 									type:             "string"
 									description:      "The expiration time on or after which the JWT MUST NOT be accepted for processing."
@@ -49331,13 +50010,51 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 														meta: {
 															nested_type: {
 																attributes: {
-																	key: {
+																	category: {
 																		type:             "string"
+																		description:      "A category used to group permission groups."
 																		description_kind: "plain"
 																		computed:         true
 																	}
-																	value: {
+																	deprecated: {
 																		type:             "string"
+																		description:      "Indicates whether the permission group is deprecated."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	description: {
+																		type:             "string"
+																		description:      "Additional information about the permission group."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	editable: {
+																		type:             "string"
+																		description:      "Indicates whether the permission group can be edited."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	eol_at: {
+																		type:             "string"
+																		description:      "The planned end-of-life date and time, when provided."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	label: {
+																		type:             "string"
+																		description:      "A label identifying the permission group."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	scopes: {
+																		type:             "string"
+																		description:      "The scope associated with the permission group."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	visibility: {
+																		type:             "string"
+																		description:      "Indicates the permission group's availability or visibility."
 																		description_kind: "plain"
 																		computed:         true
 																	}
@@ -49371,6 +50088,26 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										nesting_mode: "list"
 									}
 									description:      "List of access policies assigned to the token."
+									description_kind: "plain"
+									computed:         true
+								}
+								provisioner_id: {
+									type: "string"
+									description: """
+												The identifier of the service that provisioned the token. For an
+												OAuth-provisioned token, this is the OAuth client identifier. Present
+												when `provisioner_type` is present and null when the identifier is
+												unavailable.
+												"""
+									description_kind: "plain"
+									computed:         true
+								}
+								provisioner_type: {
+									type: "string"
+									description: """
+												The type of service that provisioned the token. Only present for
+												provisioned Account Owned API Tokens.
+												"""
 									description_kind: "plain"
 									computed:         true
 								}
@@ -50034,7 +50771,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "gateway id"
+						description:      "Unique identifier of the AI Gateway within the account."
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -50872,7 +51609,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								id: {
 									type:             "string"
-									description:      "gateway id"
+									description:      "Unique identifier of the AI Gateway within the account."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -51261,6 +51998,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					filter: {
 						nested_type: {
 							attributes: {
+								hostname: {
+									type:             "string"
+									description:      "Filter by exact Search for Agents hostname (case-insensitive)."
+									description_kind: "plain"
+									optional:         true
+								}
 								namespace: {
 									type:             "string"
 									description:      "Filter by namespace."
@@ -51307,7 +52050,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					hybrid_search_enabled: {
 						type:             "bool"
-						description:      "Deprecated — use index_method instead."
+						description:      "Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance."
 						description_kind: "plain"
 						deprecated:       true
 						computed:         true
@@ -51336,7 +52079,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							}
 							nesting_mode: "single"
 						}
-						description:      "Controls which storage backends are used during indexing. Defaults to vector-only."
+						description:      "Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -51790,8 +52533,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						computed:         true
 					}
 					type: {
-						type:             "string"
-						description:      "Available values: \"r2\", \"web-crawler\"."
+						type: "string"
+						description: """
+									Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
+									Available values: "r2", "web-crawler".
+									"""
 						description_kind: "plain"
 						computed:         true
 					}
@@ -51805,6 +52551,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					hostname: {
+						type:             "string"
+						description:      "Filter by exact Search for Agents hostname (case-insensitive)."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -54283,6 +55035,16 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						computed:         true
 					}
+					creator_email_at_creation: {
+						type: "string"
+						description: """
+									The email address of the user who created the token at the time of
+									creation. Only present for Account Owned API Tokens when a creator email
+									was available.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
 					expires_on: {
 						type:             "string"
 						description:      "The expiration time on or after which the JWT MUST NOT be accepted for processing."
@@ -54380,13 +55142,51 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											meta: {
 												nested_type: {
 													attributes: {
-														key: {
+														category: {
 															type:             "string"
+															description:      "A category used to group permission groups."
 															description_kind: "plain"
 															computed:         true
 														}
-														value: {
+														deprecated: {
 															type:             "string"
+															description:      "Indicates whether the permission group is deprecated."
+															description_kind: "plain"
+															computed:         true
+														}
+														description: {
+															type:             "string"
+															description:      "Additional information about the permission group."
+															description_kind: "plain"
+															computed:         true
+														}
+														editable: {
+															type:             "string"
+															description:      "Indicates whether the permission group can be edited."
+															description_kind: "plain"
+															computed:         true
+														}
+														eol_at: {
+															type:             "string"
+															description:      "The planned end-of-life date and time, when provided."
+															description_kind: "plain"
+															computed:         true
+														}
+														label: {
+															type:             "string"
+															description:      "A label identifying the permission group."
+															description_kind: "plain"
+															computed:         true
+														}
+														scopes: {
+															type:             "string"
+															description:      "The scope associated with the permission group."
+															description_kind: "plain"
+															computed:         true
+														}
+														visibility: {
+															type:             "string"
+															description:      "Indicates the permission group's availability or visibility."
 															description_kind: "plain"
 															computed:         true
 														}
@@ -54420,6 +55220,26 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							nesting_mode: "list"
 						}
 						description:      "List of access policies assigned to the token."
+						description_kind: "plain"
+						computed:         true
+					}
+					provisioner_id: {
+						type: "string"
+						description: """
+									The identifier of the service that provisioned the token. For an
+									OAuth-provisioned token, this is the OAuth client identifier. Present
+									when `provisioner_type` is present and null when the identifier is
+									unavailable.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					provisioner_type: {
+						type: "string"
+						description: """
+									The type of service that provisioned the token. Only present for
+									provisioned Account Owned API Tokens.
+									"""
 						description_kind: "plain"
 						computed:         true
 					}
@@ -54471,9 +55291,24 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					result: {
 						nested_type: {
 							attributes: {
+								category: {
+									type: "string"
+									description: """
+												Product category that this permission group belongs to.
+												Available values: "developer_platform", "ai_and_machine_learning", "dns_and_zones", "app_security", "rules_and_configuration", "cloudflare_one_and_zero_trust", "analytics_and_logs", "network_services", "media", "email_and_messaging", "cache_and_performance", "account_and_billing", "other".
+												"""
+									description_kind: "plain"
+									computed:         true
+								}
 								id: {
 									type:             "string"
 									description:      "Public ID."
+									description_kind: "plain"
+									computed:         true
+								}
+								is_selectable: {
+									type:             "bool"
+									description:      "Whether the caller can select this permission group when creating a token."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -54574,6 +55409,16 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "plain"
 									computed:         true
 								}
+								creator_email_at_creation: {
+									type: "string"
+									description: """
+												The email address of the user who created the token at the time of
+												creation. Only present for Account Owned API Tokens when a creator email
+												was available.
+												"""
+									description_kind: "plain"
+									computed:         true
+								}
 								expires_on: {
 									type:             "string"
 									description:      "The expiration time on or after which the JWT MUST NOT be accepted for processing."
@@ -54646,13 +55491,51 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 														meta: {
 															nested_type: {
 																attributes: {
-																	key: {
+																	category: {
 																		type:             "string"
+																		description:      "A category used to group permission groups."
 																		description_kind: "plain"
 																		computed:         true
 																	}
-																	value: {
+																	deprecated: {
 																		type:             "string"
+																		description:      "Indicates whether the permission group is deprecated."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	description: {
+																		type:             "string"
+																		description:      "Additional information about the permission group."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	editable: {
+																		type:             "string"
+																		description:      "Indicates whether the permission group can be edited."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	eol_at: {
+																		type:             "string"
+																		description:      "The planned end-of-life date and time, when provided."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	label: {
+																		type:             "string"
+																		description:      "A label identifying the permission group."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	scopes: {
+																		type:             "string"
+																		description:      "The scope associated with the permission group."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	visibility: {
+																		type:             "string"
+																		description:      "Indicates the permission group's availability or visibility."
 																		description_kind: "plain"
 																		computed:         true
 																	}
@@ -54686,6 +55569,26 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 										nesting_mode: "list"
 									}
 									description:      "List of access policies assigned to the token."
+									description_kind: "plain"
+									computed:         true
+								}
+								provisioner_id: {
+									type: "string"
+									description: """
+												The identifier of the service that provisioned the token. For an
+												OAuth-provisioned token, this is the OAuth client identifier. Present
+												when `provisioner_type` is present and null when the identifier is
+												unavailable.
+												"""
+									description_kind: "plain"
+									computed:         true
+								}
+								provisioner_type: {
+									type: "string"
+									description: """
+												The type of service that provisioned the token. Only present for
+												provisioned Account Owned API Tokens.
+												"""
 									description_kind: "plain"
 									computed:         true
 								}
@@ -56080,7 +56983,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					certificate_pack_id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "The unique identifier for a certificate_pack."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -56273,7 +57176,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "The unique identifier for a certificate_pack."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -56601,7 +57504,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								id: {
 									type:             "string"
-									description:      "Identifier."
+									description:      "The unique identifier for a certificate_pack."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -56784,7 +57687,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					client_certificate_id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "Client Certificate Tag"
 						description_kind: "plain"
 						optional:         true
 					}
@@ -56850,7 +57753,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "Client Certificate Tag"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -57017,7 +57920,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								id: {
 									type:             "string"
-									description:      "Identifier."
+									description:      "Client Certificate Tag"
 									description_kind: "plain"
 									computed:         true
 								}
@@ -58527,7 +59430,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					custom_hostname_id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "Custom hostname identifier tag."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -58667,7 +59570,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "Custom hostname identifier tag."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -59238,7 +60141,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								id: {
 									type:             "string"
-									description:      "Identifier."
+									description:      "Custom hostname identifier tag."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -59672,7 +60575,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					custom_origin_trust_store_id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "Certificate identifier tag."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -59705,7 +60608,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "Certificate identifier tag."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -59798,7 +60701,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								id: {
 									type:             "string"
-									description:      "Identifier."
+									description:      "Certificate identifier tag."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -60185,7 +61088,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					custom_certificate_id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "Custom certificate identifier tag."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -60250,7 +61153,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "Custom certificate identifier tag."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -60479,7 +61382,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								id: {
 									type:             "string"
-									description:      "Identifier."
+									description:      "Custom certificate identifier tag."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -61721,7 +62624,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								shadowed_by_name: {
 									type:             "string"
-									description:      "Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records)."
+									description:      "Filters the response to records at or below the specified NS delegation name. NS, DS, and NSEC records at the delegation name are excluded because they are not shadowed by that delegation. Those record types are included only when they exist below the delegation. The value must be a non-apex subdomain of the zone. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records)."
 									description_kind: "plain"
 									optional:         true
 								}
@@ -62498,7 +63401,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					shadowed_by_name: {
 						type:             "string"
-						description:      "Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records)."
+						description:      "Filters the response to records at or below the specified NS delegation name. NS, DS, and NSEC records at the delegation name are excluded because they are not shadowed by that delegation. Those record types are included only when they exist below the delegation. The value must be a non-apex subdomain of the zone. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records)."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -63817,17 +64720,14 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					pattern: {
 						type:             "string"
+						description:      "Filter by exact pattern value."
 						description_kind: "plain"
 						optional:         true
 					}
 					pattern_type: {
 						type: "string"
 						description: """
-									Type of pattern matching.
-									- EMAIL: matches a full email address (e.g. `user@example.com`)
-									- DOMAIN: matches a domain name (e.g. `example.com`)
-									- IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
-									- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
+									Filter by pattern type.
 									Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 									"""
 						description_kind: "plain"
@@ -64024,17 +64924,14 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								pattern: {
 									type:             "string"
+									description:      "Filter by exact pattern value."
 									description_kind: "plain"
 									optional:         true
 								}
 								pattern_type: {
 									type: "string"
 									description: """
-												Type of pattern matching.
-												- EMAIL: matches a full email address (e.g. `user@example.com`)
-												- DOMAIN: matches a domain name (e.g. `example.com`)
-												- IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
-												- UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
+												Filter by pattern type.
 												Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 												"""
 									description_kind: "plain"
@@ -64238,6 +65135,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					is_regex: {
 						type:             "bool"
+						description:      "Whether `pattern` is a regular expression instead of a literal value."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -64359,6 +65257,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								is_regex: {
 									type:             "bool"
+									description:      "Whether `pattern` is a regular expression instead of a literal value."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -64580,8 +65479,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						optional:         true
 					}
 					folder: {
-						type:             "string"
-						description:      "Available values: \"AllItems\", \"Inbox\"."
+						type: "string"
+						description: """
+									The mailbox folder to scan, for API-scanning domains.
+									Available values: "AllItems", "Inbox".
+									"""
 						description_kind: "plain"
 						computed:         true
 					}
@@ -64814,8 +65716,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									computed:         true
 								}
 								folder: {
-									type:             "string"
-									description:      "Available values: \"AllItems\", \"Inbox\"."
+									type: "string"
+									description: """
+												The mailbox folder to scan, for API-scanning domains.
+												Available values: "AllItems", "Inbox".
+												"""
 									description_kind: "plain"
 									computed:         true
 								}
@@ -64973,6 +65878,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							attributes: {
 								comments: {
 									type:             "string"
+									description:      "Optional note describing the entry."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -64983,21 +65889,25 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								directory_id: {
 									type:             "number"
+									description:      "Identifier of the directory the entry was synced from, when directory-synced."
 									description_kind: "plain"
 									computed:         true
 								}
 								directory_node_id: {
 									type:             "number"
+									description:      "Identifier of the directory node the entry was synced from, when directory-synced."
 									description_kind: "plain"
 									computed:         true
 								}
 								email: {
 									type:             "string"
+									description:      "Email address (or pattern) of the protected identity."
 									description_kind: "plain"
 									computed:         true
 								}
 								external_directory_node_id: {
 									type:             "string"
+									description:      "Deprecated. External identifier of the directory node."
 									description_kind: "plain"
 									deprecated:       true
 									computed:         true
@@ -65010,6 +65920,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								is_email_regex: {
 									type:             "bool"
+									description:      "Whether `email` is a regular expression instead of a literal address."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -65027,12 +65938,16 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								name: {
 									type:             "string"
+									description:      "Display name of the protected identity."
 									description_kind: "plain"
 									computed:         true
 								}
 								provenance: {
-									type:             "string"
-									description:      "Available values: \"A1S_INTERNAL\", \"SNOOPY-CASB_OFFICE_365\", \"SNOOPY-OFFICE_365\", \"SNOOPY-GOOGLE_DIRECTORY\"."
+									type: "string"
+									description: """
+												Source the entry was created from.
+												Available values: "A1S_INTERNAL", "SNOOPY-CASB_OFFICE_365", "SNOOPY-OFFICE_365", "SNOOPY-GOOGLE_DIRECTORY".
+												"""
 									description_kind: "plain"
 									computed:         true
 								}
@@ -65072,6 +65987,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					comments: {
 						type:             "string"
+						description:      "Optional note describing the entry."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -65082,21 +65998,25 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					directory_id: {
 						type:             "number"
+						description:      "Identifier of the directory the entry was synced from, when directory-synced."
 						description_kind: "plain"
 						computed:         true
 					}
 					directory_node_id: {
 						type:             "number"
+						description:      "Identifier of the directory node the entry was synced from, when directory-synced."
 						description_kind: "plain"
 						computed:         true
 					}
 					email: {
 						type:             "string"
+						description:      "Email address (or pattern) of the protected identity."
 						description_kind: "plain"
 						computed:         true
 					}
 					external_directory_node_id: {
 						type:             "string"
+						description:      "Deprecated. External identifier of the directory node."
 						description_kind: "plain"
 						deprecated:       true
 						computed:         true
@@ -65154,6 +66074,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					is_email_regex: {
 						type:             "bool"
+						description:      "Whether `email` is a regular expression instead of a literal address."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -65171,12 +66092,16 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					name: {
 						type:             "string"
+						description:      "Display name of the protected identity."
 						description_kind: "plain"
 						computed:         true
 					}
 					provenance: {
-						type:             "string"
-						description:      "Available values: \"A1S_INTERNAL\", \"SNOOPY-CASB_OFFICE_365\", \"SNOOPY-OFFICE_365\", \"SNOOPY-GOOGLE_DIRECTORY\"."
+						type: "string"
+						description: """
+									Source the entry was created from.
+									Available values: "A1S_INTERNAL", "SNOOPY-CASB_OFFICE_365", "SNOOPY-OFFICE_365", "SNOOPY-GOOGLE_DIRECTORY".
+									"""
 						description_kind: "plain"
 						computed:         true
 					}
@@ -65275,6 +66200,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					is_regex: {
 						type:             "bool"
+						description:      "Whether `pattern` is a regular expression instead of a literal domain."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -65298,6 +66224,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					pattern: {
 						type:             "string"
+						description:      "The domain pattern to trust, e.g. `example.com`."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -65396,6 +66323,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								is_regex: {
 									type:             "bool"
+									description:      "Whether `pattern` is a regular expression instead of a literal domain."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -65419,6 +66347,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								pattern: {
 									type:             "string"
+									description:      "The domain pattern to trust, e.g. `example.com`."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -66110,13 +67039,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Cloudflare account ID."
+						description:      "Cloudflare account ID that owns the Flagship app."
 						description_kind: "plain"
 						required:         true
 					}
 					app_id: {
 						type:             "string"
-						description:      "App identifier."
+						description:      "Flagship app ID returned when the app was created."
 						description_kind: "plain"
 						required:         true
 					}
@@ -66127,7 +67056,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "App identifier."
+						description:      "Flagship app ID returned when the app was created."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -66163,7 +67092,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Cloudflare account ID."
+						description:      "Cloudflare account ID that owns the Flagship app."
 						description_kind: "plain"
 						required:         true
 					}
@@ -66225,13 +67154,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Cloudflare account ID."
+						description:      "Cloudflare account ID that owns the Flagship app."
 						description_kind: "plain"
 						required:         true
 					}
 					app_id: {
 						type:             "string"
-						description:      "App identifier."
+						description:      "Flagship app ID returned when the app was created."
 						description_kind: "plain"
 						required:         true
 					}
@@ -66243,6 +67172,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					description: {
 						type:             "string"
+						description:      "Optional operator-facing description. It does not affect flag evaluation."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -66255,7 +67185,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					filter: {
 						nested_type: {
 							attributes: limit: {
-								type:             "string"
+								type:             "number"
 								description:      "Max items to return (1–200)."
 								description_kind: "plain"
 								optional:         true
@@ -66267,13 +67197,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					flag_key: {
 						type:             "string"
-						description:      "Flag key (slug)."
+						description:      "Case-sensitive key identifying the flag within the app."
 						description_kind: "plain"
 						optional:         true
 					}
 					id: {
 						type:             "string"
-						description:      "Flag key (slug)."
+						description:      "Case-sensitive key identifying the flag within the app."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -66347,7 +67277,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 																										}
 																										operator: {
 																											type:             "string"
-																											description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\"."
+																											description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\", \"has\", \"not_has\"."
 																											description_kind: "plain"
 																											computed:         true
 																										}
@@ -66371,7 +67301,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 																							}
 																							operator: {
 																								type:             "string"
-																								description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\"."
+																								description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\", \"has\", \"not_has\"."
 																								description_kind: "plain"
 																								computed:         true
 																							}
@@ -66395,7 +67325,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 																				}
 																				operator: {
 																					type:             "string"
-																					description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\"."
+																					description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\", \"has\", \"not_has\"."
 																					description_kind: "plain"
 																					computed:         true
 																				}
@@ -66419,7 +67349,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 																	}
 																	operator: {
 																		type:             "string"
-																		description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\"."
+																		description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\", \"has\", \"not_has\"."
 																		description_kind: "plain"
 																		computed:         true
 																	}
@@ -66443,7 +67373,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 														}
 														operator: {
 															type:             "string"
-															description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\"."
+															description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\", \"has\", \"not_has\"."
 															description_kind: "plain"
 															computed:         true
 														}
@@ -66467,7 +67397,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											operator: {
 												type:             "string"
-												description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\"."
+												description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\", \"has\", \"not_has\"."
 												description_kind: "plain"
 												computed:         true
 											}
@@ -66501,7 +67431,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											percentage: {
 												type:             "number"
-												description:      "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100)."
+												description:      "Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100)."
 												description_kind: "plain"
 												computed:         true
 											}
@@ -66565,18 +67495,18 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Cloudflare account ID."
+						description:      "Cloudflare account ID that owns the Flagship app."
 						description_kind: "plain"
 						required:         true
 					}
 					app_id: {
 						type:             "string"
-						description:      "App identifier."
+						description:      "Flagship app ID returned when the app was created."
 						description_kind: "plain"
 						required:         true
 					}
 					limit: {
-						type:             "string"
+						type:             "number"
 						description:      "Max items to return (1–200)."
 						description_kind: "plain"
 						optional:         true
@@ -66598,6 +67528,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								description: {
 									type:             "string"
+									description:      "Optional operator-facing description. It does not affect flag evaluation."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -66683,7 +67614,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 																													}
 																													operator: {
 																														type:             "string"
-																														description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\"."
+																														description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\", \"has\", \"not_has\"."
 																														description_kind: "plain"
 																														computed:         true
 																													}
@@ -66707,7 +67638,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 																										}
 																										operator: {
 																											type:             "string"
-																											description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\"."
+																											description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\", \"has\", \"not_has\"."
 																											description_kind: "plain"
 																											computed:         true
 																										}
@@ -66731,7 +67662,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 																							}
 																							operator: {
 																								type:             "string"
-																								description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\"."
+																								description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\", \"has\", \"not_has\"."
 																								description_kind: "plain"
 																								computed:         true
 																							}
@@ -66755,7 +67686,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 																				}
 																				operator: {
 																					type:             "string"
-																					description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\"."
+																					description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\", \"has\", \"not_has\"."
 																					description_kind: "plain"
 																					computed:         true
 																				}
@@ -66779,7 +67710,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 																	}
 																	operator: {
 																		type:             "string"
-																		description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\"."
+																		description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\", \"has\", \"not_has\"."
 																		description_kind: "plain"
 																		computed:         true
 																	}
@@ -66803,7 +67734,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 														}
 														operator: {
 															type:             "string"
-															description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\"."
+															description:      "Available values: \"equals\", \"not_equals\", \"greater_than\", \"less_than\", \"greater_than_or_equals\", \"less_than_or_equals\", \"contains\", \"starts_with\", \"ends_with\", \"in\", \"not_in\", \"has\", \"not_has\"."
 															description_kind: "plain"
 															computed:         true
 														}
@@ -66837,7 +67768,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 														}
 														percentage: {
 															type:             "number"
-															description:      "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100)."
+															description:      "Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100)."
 															description_kind: "plain"
 															computed:         true
 														}
@@ -67617,10 +68548,10 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "plain"
 									computed:         true
 								}
-								integration: {
+								hyperdrive_config_provider: {
 									type: "string"
 									description: """
-												The database integration used by this operation.
+												The database integration provider used by this operation.
 												Available values: "planetscale".
 												"""
 									description_kind: "plain"
@@ -67866,10 +68797,10 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												description_kind: "plain"
 												computed:         true
 											}
-											integration: {
+											hyperdrive_config_provider: {
 												type: "string"
 												description: """
-															The database integration used by this operation.
+															The database integration provider used by this operation.
 															Available values: "planetscale".
 															"""
 												description_kind: "plain"
@@ -68357,13 +69288,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "Keyless certificate identifier tag."
 						description_kind: "plain"
 						computed:         true
 					}
 					keyless_certificate_id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "Keyless certificate identifier tag."
 						description_kind: "plain"
 						required:         true
 					}
@@ -71771,7 +72702,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								merge_subrequests: {
 									type:             "bool"
-									description:      "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset."
+									description:      "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -71999,7 +72930,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								merge_subrequests: {
 									type:             "bool"
-									description:      "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset."
+									description:      "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -72230,7 +73161,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											merge_subrequests: {
 												type:             "bool"
-												description:      "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset."
+												description:      "If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs."
 												description_kind: "plain"
 												computed:         true
 											}
@@ -73961,6 +74892,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						description_kind: "plain"
 						computed:         true
 					}
+					load_balance_inner_flows: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
 					name: {
 						type:             "string"
 						description_kind: "plain"
@@ -74067,6 +75003,11 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								id: {
 									type:             "string"
 									description:      "Identifier"
+									description_kind: "plain"
+									computed:         true
+								}
+								load_balance_inner_flows: {
+									type:             "bool"
 									description_kind: "plain"
 									computed:         true
 								}
@@ -75574,7 +76515,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					mtls_certificate_id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "Certificate identifier tag."
 						description_kind: "plain"
 						required:         true
 					}
@@ -77817,7 +78758,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					certificate_id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "The x509 serial number of the Origin CA certificate."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -77871,7 +78812,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "The x509 serial number of the Origin CA certificate."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -77951,7 +78892,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								id: {
 									type:             "string"
-									description:      "Identifier."
+									description:      "The x509 serial number of the Origin CA certificate."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -79524,25 +80465,25 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					domain_name: {
 						type:             "string"
-						description:      "The domain name."
+						description:      "Fully qualified domain name for the Pages project, such as `example.com`."
 						description_kind: "plain"
 						required:         true
 					}
 					id: {
 						type:             "string"
-						description:      "The domain name."
+						description:      "Fully qualified domain name for the Pages project, such as `example.com`."
 						description_kind: "plain"
 						computed:         true
 					}
 					name: {
 						type:             "string"
-						description:      "The domain name."
+						description:      "Fully qualified domain name for the Pages project, such as `example.com`."
 						description_kind: "plain"
 						computed:         true
 					}
 					project_name: {
 						type:             "string"
-						description:      "Name of the project."
+						description:      "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens."
 						description_kind: "plain"
 						required:         true
 					}
@@ -79642,7 +80583,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					project_name: {
 						type:             "string"
-						description:      "Name of the project."
+						description:      "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens."
 						description_kind: "plain"
 						required:         true
 					}
@@ -79672,7 +80613,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								name: {
 									type:             "string"
-									description:      "The domain name."
+									description:      "Fully qualified domain name for the Pages project, such as `example.com`."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -79973,7 +80914,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								is_skipped: {
 									type:             "bool"
-									description:      "If the deployment has been skipped."
+									description:      "Whether the deployment was skipped."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -80005,7 +80946,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												type: "string"
 												description: """
 															State of the current stage.
-															Available values: "success", "idle", "active", "failure", "canceled".
+															Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 															"""
 												description_kind: "plain"
 												computed:         true
@@ -80031,7 +80972,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								project_name: {
 									type:             "string"
-									description:      "Name of the project."
+									description:      "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -80045,7 +80986,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									type: "string"
 									description: """
 												Why the deployment was skipped.
-												Available values: "commit_message", "preview_deployments_disabled", "production_deployments_disabled", "path_config", "branch_config", "pages_to_workers_conversion".
+												Available values: "commit_message", "preview_deployments_disabled", "production_deployments_disabled", "path_config", "branch_config", "pages_to_workers_conversion", "superseded_queued_build".
 												"""
 									description_kind: "plain"
 									computed:         true
@@ -80191,7 +81132,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												type: "string"
 												description: """
 															State of the current stage.
-															Available values: "success", "idle", "active", "failure", "canceled".
+															Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 															"""
 												description_kind: "plain"
 												computed:         true
@@ -80828,7 +81769,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Name of the project."
+						description:      "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -80987,7 +81928,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								is_skipped: {
 									type:             "bool"
-									description:      "If the deployment has been skipped."
+									description:      "Whether the deployment was skipped."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -81019,7 +81960,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												type: "string"
 												description: """
 															State of the current stage.
-															Available values: "success", "idle", "active", "failure", "canceled".
+															Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 															"""
 												description_kind: "plain"
 												computed:         true
@@ -81045,7 +81986,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								project_name: {
 									type:             "string"
-									description:      "Name of the project."
+									description:      "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -81059,7 +82000,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									type: "string"
 									description: """
 												Why the deployment was skipped.
-												Available values: "commit_message", "preview_deployments_disabled", "production_deployments_disabled", "path_config", "branch_config", "pages_to_workers_conversion".
+												Available values: "commit_message", "preview_deployments_disabled", "production_deployments_disabled", "path_config", "branch_config", "pages_to_workers_conversion", "superseded_queued_build".
 												"""
 									description_kind: "plain"
 									computed:         true
@@ -81205,7 +82146,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												type: "string"
 												description: """
 															State of the current stage.
-															Available values: "success", "idle", "active", "failure", "canceled".
+															Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 															"""
 												description_kind: "plain"
 												computed:         true
@@ -81238,7 +82179,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					name: {
 						type:             "string"
-						description:      "Name of the project."
+						description:      "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -81262,7 +82203,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					project_name: {
 						type:             "string"
-						description:      "Name of the project."
+						description:      "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens."
 						description_kind: "plain"
 						required:         true
 					}
@@ -81623,7 +82564,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											is_skipped: {
 												type:             "bool"
-												description:      "If the deployment has been skipped."
+												description:      "Whether the deployment was skipped."
 												description_kind: "plain"
 												computed:         true
 											}
@@ -81655,7 +82596,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 															type: "string"
 															description: """
 																		State of the current stage.
-																		Available values: "success", "idle", "active", "failure", "canceled".
+																		Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 																		"""
 															description_kind: "plain"
 															computed:         true
@@ -81681,7 +82622,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											project_name: {
 												type:             "string"
-												description:      "Name of the project."
+												description:      "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens."
 												description_kind: "plain"
 												computed:         true
 											}
@@ -81695,7 +82636,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												type: "string"
 												description: """
 															Why the deployment was skipped.
-															Available values: "commit_message", "preview_deployments_disabled", "production_deployments_disabled", "path_config", "branch_config", "pages_to_workers_conversion".
+															Available values: "commit_message", "preview_deployments_disabled", "production_deployments_disabled", "path_config", "branch_config", "pages_to_workers_conversion", "superseded_queued_build".
 															"""
 												description_kind: "plain"
 												computed:         true
@@ -81841,7 +82782,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 															type: "string"
 															description: """
 																		State of the current stage.
-																		Available values: "success", "idle", "active", "failure", "canceled".
+																		Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 																		"""
 															description_kind: "plain"
 															computed:         true
@@ -82637,7 +83578,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											is_skipped: {
 												type:             "bool"
-												description:      "If the deployment has been skipped."
+												description:      "Whether the deployment was skipped."
 												description_kind: "plain"
 												computed:         true
 											}
@@ -82669,7 +83610,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 															type: "string"
 															description: """
 																		State of the current stage.
-																		Available values: "success", "idle", "active", "failure", "canceled".
+																		Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 																		"""
 															description_kind: "plain"
 															computed:         true
@@ -82695,7 +83636,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											project_name: {
 												type:             "string"
-												description:      "Name of the project."
+												description:      "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens."
 												description_kind: "plain"
 												computed:         true
 											}
@@ -82709,7 +83650,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												type: "string"
 												description: """
 															Why the deployment was skipped.
-															Available values: "commit_message", "preview_deployments_disabled", "production_deployments_disabled", "path_config", "branch_config", "pages_to_workers_conversion".
+															Available values: "commit_message", "preview_deployments_disabled", "production_deployments_disabled", "path_config", "branch_config", "pages_to_workers_conversion", "superseded_queued_build".
 															"""
 												description_kind: "plain"
 												computed:         true
@@ -82855,7 +83796,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 															type: "string"
 															description: """
 																		State of the current stage.
-																		Available values: "success", "idle", "active", "failure", "canceled".
+																		Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 																		"""
 															description_kind: "plain"
 															computed:         true
@@ -82888,7 +83829,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								name: {
 									type:             "string"
-									description:      "Name of the project."
+									description:      "Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -83447,7 +84388,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 						type: "string"
 						description: """
 									Specifies the type of sink.
-									Available values: "r2", "r2_data_catalog".
+									Available values: "r2", "r2_data_catalog", "basin_catalog".
 									"""
 						description_kind: "plain"
 						computed:         true
@@ -83741,7 +84682,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									type: "string"
 									description: """
 												Specifies the type of sink.
-												Available values: "r2", "r2_data_catalog".
+												Available values: "r2", "r2_data_catalog", "basin_catalog".
 												"""
 									description_kind: "plain"
 									computed:         true
@@ -84349,19 +85290,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												description_kind: "plain"
 												computed:         true
 											}
-											email: {
-												nested_type: {
-													attributes: id: {
-														type:             "string"
-														description:      "The email address."
-														description_kind: "plain"
-														computed:         true
-													}
-													nesting_mode: "list"
-												}
-												description_kind: "plain"
-												computed:         true
-											}
 											max_concurrency: {
 												type:             "number"
 												description:      "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended)."
@@ -84380,20 +85308,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												description_kind: "plain"
 												computed:         true
 											}
-											pagerduty: {
-												nested_type: {
-													attributes: id: {
-														type:             "string"
-														description:      "UUID."
-														description_kind: "plain"
-														computed:         true
-													}
-													nesting_mode: "list"
-												}
-												description:      "PagerDuty notification destinations."
-												description_kind: "plain"
-												computed:         true
-											}
 											retry_delay: {
 												type:             "number"
 												description:      "The number of seconds to delay before making the message available for another attempt."
@@ -84406,20 +85320,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												description_kind: "plain"
 												computed:         true
 											}
-											webhooks: {
-												nested_type: {
-													attributes: id: {
-														type:             "string"
-														description:      "UUID."
-														description_kind: "plain"
-														computed:         true
-													}
-													nesting_mode: "list"
-												}
-												description:      "Webhook notification destinations."
-												description_kind: "plain"
-												computed:         true
-											}
 										}
 										nesting_mode: "single"
 									}
@@ -84428,7 +85328,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								type: {
 									type:             "string"
-									description:      "Available values: \"worker\", \"http_pull\", \"notification\"."
+									description:      "Available values: \"worker\", \"http_pull\"."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -84599,19 +85499,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "plain"
 									computed:         true
 								}
-								email: {
-									nested_type: {
-										attributes: id: {
-											type:             "string"
-											description:      "The email address."
-											description_kind: "plain"
-											computed:         true
-										}
-										nesting_mode: "list"
-									}
-									description_kind: "plain"
-									computed:         true
-								}
 								max_concurrency: {
 									type:             "number"
 									description:      "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended)."
@@ -84630,20 +85517,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "plain"
 									computed:         true
 								}
-								pagerduty: {
-									nested_type: {
-										attributes: id: {
-											type:             "string"
-											description:      "UUID."
-											description_kind: "plain"
-											computed:         true
-										}
-										nesting_mode: "list"
-									}
-									description:      "PagerDuty notification destinations."
-									description_kind: "plain"
-									computed:         true
-								}
 								retry_delay: {
 									type:             "number"
 									description:      "The number of seconds to delay before making the message available for another attempt."
@@ -84656,20 +85529,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "plain"
 									computed:         true
 								}
-								webhooks: {
-									nested_type: {
-										attributes: id: {
-											type:             "string"
-											description:      "UUID."
-											description_kind: "plain"
-											computed:         true
-										}
-										nesting_mode: "list"
-									}
-									description:      "Webhook notification destinations."
-									description_kind: "plain"
-									computed:         true
-								}
 							}
 							nesting_mode: "single"
 						}
@@ -84678,7 +85537,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					type: {
 						type:             "string"
-						description:      "Available values: \"worker\", \"http_pull\", \"notification\"."
+						description:      "Available values: \"worker\", \"http_pull\"."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -84757,19 +85616,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												description_kind: "plain"
 												computed:         true
 											}
-											email: {
-												nested_type: {
-													attributes: id: {
-														type:             "string"
-														description:      "The email address."
-														description_kind: "plain"
-														computed:         true
-													}
-													nesting_mode: "list"
-												}
-												description_kind: "plain"
-												computed:         true
-											}
 											max_concurrency: {
 												type:             "number"
 												description:      "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended)."
@@ -84788,20 +85634,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												description_kind: "plain"
 												computed:         true
 											}
-											pagerduty: {
-												nested_type: {
-													attributes: id: {
-														type:             "string"
-														description:      "UUID."
-														description_kind: "plain"
-														computed:         true
-													}
-													nesting_mode: "list"
-												}
-												description:      "PagerDuty notification destinations."
-												description_kind: "plain"
-												computed:         true
-											}
 											retry_delay: {
 												type:             "number"
 												description:      "The number of seconds to delay before making the message available for another attempt."
@@ -84814,20 +85646,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												description_kind: "plain"
 												computed:         true
 											}
-											webhooks: {
-												nested_type: {
-													attributes: id: {
-														type:             "string"
-														description:      "UUID."
-														description_kind: "plain"
-														computed:         true
-													}
-													nesting_mode: "list"
-												}
-												description:      "Webhook notification destinations."
-												description_kind: "plain"
-												computed:         true
-											}
 										}
 										nesting_mode: "single"
 									}
@@ -84836,7 +85654,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								type: {
 									type:             "string"
-									description:      "Available values: \"worker\", \"http_pull\", \"notification\"."
+									description:      "Available values: \"worker\", \"http_pull\"."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -84919,19 +85737,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 															description_kind: "plain"
 															computed:         true
 														}
-														email: {
-															nested_type: {
-																attributes: id: {
-																	type:             "string"
-																	description:      "The email address."
-																	description_kind: "plain"
-																	computed:         true
-																}
-																nesting_mode: "list"
-															}
-															description_kind: "plain"
-															computed:         true
-														}
 														max_concurrency: {
 															type:             "number"
 															description:      "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended)."
@@ -84950,20 +85755,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 															description_kind: "plain"
 															computed:         true
 														}
-														pagerduty: {
-															nested_type: {
-																attributes: id: {
-																	type:             "string"
-																	description:      "UUID."
-																	description_kind: "plain"
-																	computed:         true
-																}
-																nesting_mode: "list"
-															}
-															description:      "PagerDuty notification destinations."
-															description_kind: "plain"
-															computed:         true
-														}
 														retry_delay: {
 															type:             "number"
 															description:      "The number of seconds to delay before making the message available for another attempt."
@@ -84976,20 +85767,6 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 															description_kind: "plain"
 															computed:         true
 														}
-														webhooks: {
-															nested_type: {
-																attributes: id: {
-																	type:             "string"
-																	description:      "UUID."
-																	description_kind: "plain"
-																	computed:         true
-																}
-																nesting_mode: "list"
-															}
-															description:      "Webhook notification destinations."
-															description_kind: "plain"
-															computed:         true
-														}
 													}
 													nesting_mode: "single"
 												}
@@ -84998,7 +85775,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											type: {
 												type:             "string"
-												description:      "Available values: \"worker\", \"http_pull\", \"notification\"."
+												description:      "Available values: \"worker\", \"http_pull\"."
 												description_kind: "plain"
 												computed:         true
 											}
@@ -85127,7 +85904,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Account ID."
+						description:      "Cloudflare account ID that owns the R2 resource."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -85192,7 +85969,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Account ID."
+						description:      "Cloudflare account ID that owns the R2 resource."
 						description_kind: "plain"
 						required:         true
 					}
@@ -85267,7 +86044,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Account ID."
+						description:      "Cloudflare account ID that owns the R2 resource."
 						description_kind: "plain"
 						required:         true
 					}
@@ -85279,7 +86056,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					queue_id: {
 						type:             "string"
-						description:      "Queue ID."
+						description:      "ID of the Cloudflare Queue that receives notifications for matching R2 object events."
 						description_kind: "plain"
 						required:         true
 					}
@@ -85351,7 +86128,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Account ID."
+						description:      "Cloudflare account ID that owns the R2 resource."
 						description_kind: "plain"
 						required:         true
 					}
@@ -85511,7 +86288,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Account ID."
+						description:      "Cloudflare account ID that owns the R2 resource."
 						description_kind: "plain"
 						required:         true
 					}
@@ -85584,7 +86361,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Account ID."
+						description:      "Cloudflare account ID that owns the R2 resource."
 						description_kind: "plain"
 						required:         true
 					}
@@ -85686,7 +86463,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Account ID."
+						description:      "Cloudflare account ID that owns the R2 resource."
 						description_kind: "plain"
 						required:         true
 					}
@@ -93677,7 +94454,8 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								filter: {
 									type: "string"
 									description: """
-												Filter widgets by field using case-insensitive substring matching.
+												Filter widgets by field. The `name` field uses case-insensitive
+												substring matching; `sitekey` uses exact matching.
 												Format: `field:value`
 
 												Supported fields:
@@ -93707,7 +94485,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Widget item identifier tag."
+						description:      "Unique identifier for a Turnstile widget."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -93771,7 +94549,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					sitekey: {
 						type:             "string"
-						description:      "Widget item identifier tag."
+						description:      "Unique identifier for a Turnstile widget."
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -93811,7 +94589,8 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					filter: {
 						type: "string"
 						description: """
-									Filter widgets by field using case-insensitive substring matching.
+									Filter widgets by field. The `name` field uses case-insensitive
+									substring matching; `sitekey` uses exact matching.
 									Format: `field:value`
 
 									Supported fields:
@@ -93892,7 +94671,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								id: {
 									type:             "string"
-									description:      "Widget item identifier tag."
+									description:      "Unique identifier for a Turnstile widget."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -93949,7 +94728,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								sitekey: {
 									type:             "string"
-									description:      "Widget item identifier tag."
+									description:      "Unique identifier for a Turnstile widget."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -94552,13 +95331,51 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											meta: {
 												nested_type: {
 													attributes: {
-														key: {
+														category: {
 															type:             "string"
+															description:      "A category used to group permission groups."
 															description_kind: "plain"
 															computed:         true
 														}
-														value: {
+														deprecated: {
 															type:             "string"
+															description:      "Indicates whether the permission group is deprecated."
+															description_kind: "plain"
+															computed:         true
+														}
+														description: {
+															type:             "string"
+															description:      "Additional information about the permission group."
+															description_kind: "plain"
+															computed:         true
+														}
+														editable: {
+															type:             "string"
+															description:      "Indicates whether the permission group can be edited."
+															description_kind: "plain"
+															computed:         true
+														}
+														eol_at: {
+															type:             "string"
+															description:      "The planned end-of-life date and time, when provided."
+															description_kind: "plain"
+															computed:         true
+														}
+														label: {
+															type:             "string"
+															description:      "A label identifying the permission group."
+															description_kind: "plain"
+															computed:         true
+														}
+														scopes: {
+															type:             "string"
+															description:      "The scope associated with the permission group."
+															description_kind: "plain"
+															computed:         true
+														}
+														visibility: {
+															type:             "string"
+															description:      "Indicates the permission group's availability or visibility."
 															description_kind: "plain"
 															computed:         true
 														}
@@ -94861,13 +95678,51 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 														meta: {
 															nested_type: {
 																attributes: {
-																	key: {
+																	category: {
 																		type:             "string"
+																		description:      "A category used to group permission groups."
 																		description_kind: "plain"
 																		computed:         true
 																	}
-																	value: {
+																	deprecated: {
 																		type:             "string"
+																		description:      "Indicates whether the permission group is deprecated."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	description: {
+																		type:             "string"
+																		description:      "Additional information about the permission group."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	editable: {
+																		type:             "string"
+																		description:      "Indicates whether the permission group can be edited."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	eol_at: {
+																		type:             "string"
+																		description:      "The planned end-of-life date and time, when provided."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	label: {
+																		type:             "string"
+																		description:      "A label identifying the permission group."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	scopes: {
+																		type:             "string"
+																		description:      "The scope associated with the permission group."
+																		description_kind: "plain"
+																		computed:         true
+																	}
+																	visibility: {
+																		type:             "string"
+																		description:      "Indicates the permission group's availability or visibility."
 																		description_kind: "plain"
 																		computed:         true
 																	}
@@ -97049,6 +97904,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									description_kind: "plain"
 									computed:         true
 								}
+								redact_query_string: {
+									type:             "bool"
+									description:      "Whether query strings are removed from request URLs in logs and traces."
+									description_kind: "plain"
+									computed:         true
+								}
 								traces: {
 									nested_type: {
 										attributes: {
@@ -98068,7 +98929,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 									type: "string"
 									description: """
 												The kind of resource that the binding provides.
-												Available values: "ai", "ai_search", "ai_search_namespace", "messaging", "analytics_engine", "assets", "browser", "d1", "data_blob", "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit", "images", "json", "kv_namespace", "media", "mtls_certificate", "plain_text", "pipelines", "k2", "queue", "ratelimit", "r2_bucket", "secret_text", "send_email", "service", "text_blob", "vectorize", "version_metadata", "secrets_store_secret", "flagship", "secret_key", "workflow", "wasm_module", "vpc_service", "vpc_network".
+												Available values: "ai", "ai_search", "ai_search_namespace", "messaging", "analytics_engine", "artifacts", "assets", "browser", "d1", "data_blob", "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit", "images", "json", "kv_namespace", "media", "mtls_certificate", "plain_text", "pipelines", "k2", "queue", "ratelimit", "r2_bucket", "secret_text", "send_email", "service", "text_blob", "vectorize", "version_metadata", "secrets_store_secret", "flagship", "secret_key", "workflow", "wasm_module", "vpc_service", "vpc_network".
 												"""
 									description_kind: "plain"
 									computed:         true
@@ -99121,7 +99982,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 												type: "string"
 												description: """
 															The kind of resource that the binding provides.
-															Available values: "ai", "ai_search", "ai_search_namespace", "messaging", "analytics_engine", "assets", "browser", "d1", "data_blob", "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit", "images", "json", "kv_namespace", "media", "mtls_certificate", "plain_text", "pipelines", "k2", "queue", "ratelimit", "r2_bucket", "secret_text", "send_email", "service", "text_blob", "vectorize", "version_metadata", "secrets_store_secret", "flagship", "secret_key", "workflow", "wasm_module", "vpc_service", "vpc_network".
+															Available values: "ai", "ai_search", "ai_search_namespace", "messaging", "analytics_engine", "artifacts", "assets", "browser", "d1", "data_blob", "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit", "images", "json", "kv_namespace", "media", "mtls_certificate", "plain_text", "pipelines", "k2", "queue", "ratelimit", "r2_bucket", "secret_text", "send_email", "service", "text_blob", "vectorize", "version_metadata", "secrets_store_secret", "flagship", "secret_key", "workflow", "wasm_module", "vpc_service", "vpc_network".
 															"""
 												description_kind: "plain"
 												computed:         true
@@ -100453,7 +101314,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Name of the script, used in URLs and route configuration."
+						description:      "Name of the script."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -100483,7 +101344,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					script_name: {
 						type:             "string"
-						description:      "Name of the script, used in URLs and route configuration."
+						description:      "Name of the script."
 						description_kind: "plain"
 						required:         true
 					}
@@ -100770,7 +101631,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					script_name: {
 						type:             "string"
-						description:      "Name of the script, used in URLs and route configuration."
+						description:      "Name of the script."
 						description_kind: "plain"
 						required:         true
 					}
@@ -100923,7 +101784,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					script_name: {
 						type:             "string"
-						description:      "Name of the script, used in URLs and route configuration."
+						description:      "Name of the script."
 						description_kind: "plain"
 						required:         true
 					}
@@ -101131,7 +101992,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "ID of the Cloudflare account that owns the Workers KV namespaces."
 						description_kind: "plain"
 						required:         true
 					}
@@ -101149,7 +102010,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					namespace_id: {
 						type:             "string"
-						description:      "Namespace identifier tag."
+						description:      "ID of the Workers KV namespace."
 						description_kind: "plain"
 						required:         true
 					}
@@ -101175,7 +102036,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "ID of the Cloudflare account that owns the Workers KV namespaces."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -101185,7 +102046,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								direction: {
 									type: "string"
 									description: """
-												Direction to order namespaces.
+												Sort namespaces in ascending (`asc`) or descending (`desc`) order.
 												Available values: "asc", "desc".
 												"""
 									description_kind: "plain"
@@ -101194,7 +102055,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								order: {
 									type: "string"
 									description: """
-												Field to order results by.
+												Namespace field to sort by (`id` or `title`).
 												Available values: "id", "title".
 												"""
 									description_kind: "plain"
@@ -101208,7 +102069,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Namespace identifier tag."
+						description:      "ID of the Workers KV namespace."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -101223,7 +102084,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					namespace_id: {
 						type:             "string"
-						description:      "Namespace identifier tag."
+						description:      "ID of the Workers KV namespace."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -101235,7 +102096,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					title: {
 						type:             "string"
-						description:      "A human-readable string name for a Namespace."
+						description:      "Human-readable string name for a Workers KV namespace."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -101256,14 +102117,14 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
-						description:      "Identifier."
+						description:      "ID of the Cloudflare account that owns the Workers KV namespaces."
 						description_kind: "plain"
 						optional:         true
 					}
 					direction: {
 						type: "string"
 						description: """
-									Direction to order namespaces.
+									Sort namespaces in ascending (`asc`) or descending (`desc`) order.
 									Available values: "asc", "desc".
 									"""
 						description_kind: "plain"
@@ -101278,7 +102139,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					order: {
 						type: "string"
 						description: """
-									Field to order results by.
+									Namespace field to sort by (`id` or `title`).
 									Available values: "id", "title".
 									"""
 						description_kind: "plain"
@@ -101289,7 +102150,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							attributes: {
 								id: {
 									type:             "string"
-									description:      "Namespace identifier tag."
+									description:      "ID of the Workers KV namespace."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -101310,7 +102171,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								title: {
 									type:             "string"
-									description:      "A human-readable string name for a Namespace."
+									description:      "Human-readable string name for a Workers KV namespace."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -101457,7 +102318,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
-						description:      "Name of the script, used in URLs and route configuration."
+						description:      "Name of the script."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -101468,7 +102329,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					script_name: {
 						type:             "string"
-						description:      "Name of the script, used in URLs and route configuration."
+						description:      "Name of the script."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -101508,7 +102369,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					script_name: {
 						type:             "string"
-						description:      "Name of the script, used in URLs and route configuration."
+						description:      "Name of the script."
 						description_kind: "plain"
 						required:         true
 					}
@@ -102520,6 +103381,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								}
 								default_disabled: {
 									type:             "bool"
+									description:      "Hide this server's tools and prompts by default. To expose specific capabilities, set enabled: true for them in updated_tools or updated_prompts."
 									description_kind: "plain"
 									computed:         true
 								}
@@ -102954,6 +103816,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 											}
 											default_disabled: {
 												type:             "bool"
+												description:      "Hide this server's tools and prompts by default. To expose specific capabilities, set enabled: true for them in updated_tools or updated_prompts."
 												description_kind: "plain"
 												computed:         true
 											}
@@ -117070,6 +117933,322 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				description_kind: "plain"
 			}
 		}
+		cloudflare_zero_trust_casb_integration: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					application: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					auth_method: {
+						type: ["map", "string"]
+						description:      "The integration's authentication method."
+						description_kind: "plain"
+						computed:         true
+					}
+					authorization_link: {
+						nested_type: {
+							attributes: {
+								components: {
+									type: ["map", "string"]
+									description_kind: "plain"
+									computed:         true
+								}
+								link: {
+									type:             "string"
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Authorization link for the integration."
+						description_kind: "plain"
+						computed:         true
+					}
+					created: {
+						type:             "string"
+						description:      "When the integration was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					credentials_expiry: {
+						type:             "string"
+						description:      "Credentials expiry time."
+						description_kind: "plain"
+						computed:         true
+					}
+					dlp_profiles: {
+						type: ["list", "string"]
+						description:      "DLP Profiles enabled for the integration."
+						description_kind: "plain"
+						computed:         true
+					}
+					filter: {
+						nested_type: {
+							attributes: {
+								application: {
+									type:             "string"
+									description:      "Filter by application/vendor (e.g., GOOGLE_WORKSPACE, MICROSOFT_INTERNAL)."
+									description_kind: "plain"
+									optional:         true
+								}
+								direction: {
+									type: "string"
+									description: """
+												Direction to order results.
+												Available values: "asc", "desc".
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								dlp_enabled: {
+									type:             "bool"
+									description:      "Filter by DLP enabled status (true/false)."
+									description_kind: "plain"
+									optional:         true
+								}
+								order: {
+									type: "string"
+									description: """
+												Field to order results by.
+												Available values: "application", "created", "name", "status".
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								page: {
+									type:             "number"
+									description:      "Page number within the paginated result set."
+									description_kind: "plain"
+									optional:         true
+								}
+								page_size: {
+									type:             "number"
+									description:      "Number of results per page."
+									description_kind: "plain"
+									optional:         true
+								}
+								search: {
+									type:             "string"
+									description:      "Search integrations by name or application."
+									description_kind: "plain"
+									optional:         true
+								}
+								status: {
+									type: "string"
+									description: """
+												Filter by integration status.
+												Available values: "Healthy", "Initializing", "Offline", "Unhealthy".
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								use_cases: {
+									type:             "string"
+									description:      "Filter by one enabled use case (for example, casb or ces)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+					health_details: {
+						type: ["list", ["map", "string"]]
+						description:      "Health details with remediation hints."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Integration ID to look up. Exactly one of `id` or `filter` must be configured."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					is_paused: {
+						type:             "bool"
+						description:      "Whether the user paused the integration."
+						description_kind: "plain"
+						computed:         true
+					}
+					last_hydrated: {
+						type:             "string"
+						description:      "Last time the integration was hydrated."
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the integration."
+						description_kind: "plain"
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description:      "Integration status."
+						description_kind: "plain"
+						computed:         true
+					}
+					updated: {
+						type:             "string"
+						description:      "When the integration was last updated."
+						description_kind: "plain"
+						computed:         true
+					}
+					use_cases: {
+						type: ["list", ["map", "string"]]
+						description:      "Use cases enabled for the integration."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		cloudflare_zero_trust_casb_integrations: {
+			version: 0
+			block: {
+				attributes: {
+					account_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					application: {
+						type:             "string"
+						description:      "Filter by application/vendor (e.g., GOOGLE_WORKSPACE, MICROSOFT_INTERNAL)."
+						description_kind: "plain"
+						optional:         true
+					}
+					direction: {
+						type: "string"
+						description: """
+									Direction to order results.
+									Available values: "asc", "desc".
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					dlp_enabled: {
+						type:             "bool"
+						description:      "Filter by DLP enabled status (true/false)."
+						description_kind: "plain"
+						optional:         true
+					}
+					max_items: {
+						type:             "number"
+						description:      "Max items to fetch, default: 1000"
+						description_kind: "plain"
+						optional:         true
+					}
+					order: {
+						type: "string"
+						description: """
+									Field to order results by.
+									Available values: "application", "created", "name", "status".
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					page: {
+						type:             "number"
+						description:      "Page number within the paginated result set."
+						description_kind: "plain"
+						optional:         true
+					}
+					page_size: {
+						type:             "number"
+						description:      "Number of results per page."
+						description_kind: "plain"
+						optional:         true
+					}
+					result: {
+						nested_type: {
+							attributes: {
+								application: {
+									type: ["map", "string"]
+									description_kind: "plain"
+									computed:         true
+								}
+								created: {
+									type:             "string"
+									description:      "When the integration was created."
+									description_kind: "plain"
+									computed:         true
+								}
+								id: {
+									type:             "string"
+									description:      "Integration ID."
+									description_kind: "plain"
+									computed:         true
+								}
+								is_paused: {
+									type:             "bool"
+									description:      "Whether the user paused the integration."
+									description_kind: "plain"
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Name of the integration."
+									description_kind: "plain"
+									computed:         true
+								}
+								status: {
+									type:             "string"
+									description:      "Integration status."
+									description_kind: "plain"
+									computed:         true
+								}
+								updated: {
+									type:             "string"
+									description:      "When the integration was last updated."
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "The items returned by the data source"
+						description_kind: "plain"
+						computed:         true
+					}
+					search: {
+						type:             "string"
+						description:      "Search integrations by name or application."
+						description_kind: "plain"
+						optional:         true
+					}
+					status: {
+						type: "string"
+						description: """
+									Filter by integration status.
+									Available values: "Healthy", "Initializing", "Offline", "Unhealthy".
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					use_cases: {
+						type:             "string"
+						description:      "Filter by one enabled use case (for example, casb or ces)."
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		cloudflare_zero_trust_casb_policies: {
 			version: 0
 			block: {
@@ -117917,7 +119096,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					profile_type: {
 						type: "string"
 						description: """
-									The client type to which the device settings profile applies.
+									The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
 									Available values: "warp", "browser_extension".
 									"""
 						description_kind: "plain"
@@ -118334,7 +119513,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 								profile_type: {
 									type: "string"
 									description: """
-												The client type to which the device settings profile applies.
+												The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
 												Available values: "warp", "browser_extension".
 												"""
 									description_kind: "plain"
@@ -118637,7 +119816,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					profile_type: {
 						type: "string"
 						description: """
-									The client type to which the device settings profile applies.
+									The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
 									Available values: "warp", "browser_extension".
 									"""
 						description_kind: "plain"
@@ -124495,6 +125674,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -124810,6 +125990,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -125306,6 +126487,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -125399,6 +126581,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -125502,11 +126685,13 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						optional:         true
 					}
 					id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -125602,6 +126787,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -125672,6 +126858,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -125747,6 +126934,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -126547,6 +127735,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -127346,6 +128535,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -127470,6 +128660,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -127596,6 +128787,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -127606,6 +128798,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -128038,6 +129231,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -128208,6 +129402,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 				attributes: {
 					account_id: {
 						type:             "string"
+						description:      "Specify the Cloudflare account identifier."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -128858,6 +130053,12 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					session_duration: {
 						type:             "string"
 						description:      "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h."
+						description_kind: "plain"
+						computed:         true
+					}
+					strict_service_token_auth: {
+						type:             "bool"
+						description:      "Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -132245,8 +133446,9 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					}
 					foundation_dns: {
 						type:             "bool"
-						description:      "Whether to enable Foundation DNS Advanced Nameservers on the zone."
+						description:      "Deprecated. Use nameservers.type to configure Advanced Nameservers."
 						description_kind: "plain"
+						deprecated:       true
 						computed:         true
 					}
 					internal_dns: {
@@ -132272,17 +133474,23 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 					nameservers: {
 						nested_type: {
 							attributes: {
+								nameserver_set_id: {
+									type:             "string"
+									description:      "Identifier of the account-owned Custom Nameserver Set to use for this zone."
+									description_kind: "plain"
+									computed:         true
+								}
 								ns_set: {
 									type:             "number"
-									description:      "Configured nameserver set to be used for this zone"
+									description:      "Configured nameserver set number to use for this zone."
 									description_kind: "plain"
 									computed:         true
 								}
 								type: {
 									type: "string"
 									description: """
-												Nameserver type
-												Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
+												Nameserver type.
+												Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone", "custom".
 												"""
 									description_kind: "plain"
 									computed:         true
@@ -132290,7 +133498,7 @@ provider_schemas: "registry.terraform.io/cloudflare/cloudflare": {
 							}
 							nesting_mode: "single"
 						}
-						description:      "Settings determining the nameservers through which the zone should be available."
+						description:      "Controls the nameservers through which the zone is available."
 						description_kind: "plain"
 						computed:         true
 					}

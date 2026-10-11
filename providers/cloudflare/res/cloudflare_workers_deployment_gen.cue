@@ -21,7 +21,7 @@ cloudflare_workers_deployment: {
 		force?: bool
 		id?:    string
 
-		// Name of the script, used in URLs and route configuration.
+		// Name of the script.
 		script_name!: string
 		source?:      string
 

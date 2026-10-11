@@ -34,7 +34,8 @@ cloudflare_turnstile_widget: {
 			// Available values: "asc", "desc".
 			direction?: string
 
-			// Filter widgets by field using case-insensitive substring matching.
+			// Filter widgets by field. The `name` field uses case-insensitive
+			// substring matching; `sitekey` uses exact matching.
 			// Format: `field:value`
 			//
 			// Supported fields:
@@ -50,7 +51,7 @@ cloudflare_turnstile_widget: {
 			order?: string
 		})
 
-		// Widget item identifier tag.
+		// Unique identifier for a Turnstile widget.
 		id?: string
 
 		// Origin of the most recent mutation (create, update, delete, or
@@ -81,7 +82,7 @@ cloudflare_turnstile_widget: {
 		// Secret key for this widget.
 		secret?: string
 
-		// Widget item identifier tag.
+		// Unique identifier for a Turnstile widget.
 		sitekey?: string
 	})
 }

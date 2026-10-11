@@ -12,11 +12,11 @@ cloudflare_workers_script: {
 			tags?: string
 		})
 
-		// Name of the script, used in URLs and route configuration.
+		// Name of the script.
 		id?:     string
 		script?: string
 
-		// Name of the script, used in URLs and route configuration.
+		// Name of the script.
 		script_name?: string
 	})
 }

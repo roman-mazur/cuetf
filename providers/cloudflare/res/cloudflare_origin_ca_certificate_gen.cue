@@ -23,7 +23,7 @@ cloudflare_origin_ca_certificate: {
 		// Unicode/IDN hostnames are accepted and automatically converted to punycode.
 		hostnames!: [...string]
 
-		// Identifier.
+		// The x509 serial number of the Origin CA certificate.
 		id?: string
 
 		// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc"

@@ -4,6 +4,7 @@ cloudflare_zero_trust_lists: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_zero_trust_lists")
 	close({
+		// Specify the Cloudflare account identifier.
 		account_id?: string
 
 		// Sort direction. Applies to the field named in `order_by`; when `order_by`

@@ -40,9 +40,9 @@ cloudflare_hyperdrive_configs: {
 				// The name of the PlanetScale database.
 				database_name?: string
 
-				// The database integration used by this operation.
+				// The database integration provider used by this operation.
 				// Available values: "planetscale".
-				integration?: string
+				hyperdrive_config_provider?: string
 
 				// The name of the PlanetScale organization.
 				organization_name?: string
@@ -155,9 +155,9 @@ cloudflare_hyperdrive_configs: {
 				// The name of the PlanetScale database.
 				database_name?: string
 
-				// The database integration used by this operation.
+				// The database integration provider used by this operation.
 				// Available values: "planetscale".
-				integration?: string
+				hyperdrive_config_provider?: string
 
 				// The name of the PlanetScale organization.
 				organization_name?: string

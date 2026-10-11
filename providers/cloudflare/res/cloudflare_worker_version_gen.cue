@@ -243,7 +243,7 @@ cloudflare_worker_version: {
 
 			// The kind of resource that the binding provides.
 			// Available values: "ai", "ai_search", "ai_search_namespace", "messaging",
-			// "analytics_engine", "assets", "browser", "d1", "data_blob",
+			// "analytics_engine", "artifacts", "assets", "browser", "d1", "data_blob",
 			// "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit",
 			// "images", "json", "kv_namespace", "media", "mtls_certificate", "plain_text",
 			// "pipelines", "k2", "queue", "ratelimit", "r2_bucket", "secret_text",
@@ -434,7 +434,7 @@ cloudflare_worker_version: {
 
 			// The kind of resource that the binding provides.
 			// Available values: "ai", "ai_search", "ai_search_namespace", "messaging",
-			// "analytics_engine", "assets", "browser", "d1", "data_blob",
+			// "analytics_engine", "artifacts", "assets", "browser", "d1", "data_blob",
 			// "dispatch_namespace", "durable_object_namespace", "hyperdrive", "inherit",
 			// "images", "json", "kv_namespace", "media", "mtls_certificate", "plain_text",
 			// "pipelines", "k2", "queue", "ratelimit", "r2_bucket", "secret_text",

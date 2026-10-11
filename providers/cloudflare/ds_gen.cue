@@ -370,6 +370,8 @@ import (
 	_#ds: "\(#cloudflarePrefix)_zero_trust_access_short_lived_certificates": close({data.cloudflare_zero_trust_access_short_lived_certificates & cuetf.MetaArgs})
 	_#ds: "\(#cloudflarePrefix)_zero_trust_access_tag": close({data.cloudflare_zero_trust_access_tag & cuetf.MetaArgs})
 	_#ds: "\(#cloudflarePrefix)_zero_trust_access_tags": close({data.cloudflare_zero_trust_access_tags & cuetf.MetaArgs})
+	_#ds: "\(#cloudflarePrefix)_zero_trust_casb_integration": close({data.cloudflare_zero_trust_casb_integration & cuetf.MetaArgs})
+	_#ds: "\(#cloudflarePrefix)_zero_trust_casb_integrations": close({data.cloudflare_zero_trust_casb_integrations & cuetf.MetaArgs})
 	_#ds: "\(#cloudflarePrefix)_zero_trust_casb_policies": close({data.cloudflare_zero_trust_casb_policies & cuetf.MetaArgs})
 	_#ds: "\(#cloudflarePrefix)_zero_trust_casb_policy": close({data.cloudflare_zero_trust_casb_policy & cuetf.MetaArgs})
 	_#ds: "\(#cloudflarePrefix)_zero_trust_casb_webhook": close({data.cloudflare_zero_trust_casb_webhook & cuetf.MetaArgs})

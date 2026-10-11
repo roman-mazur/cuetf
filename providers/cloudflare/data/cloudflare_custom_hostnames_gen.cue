@@ -299,7 +299,7 @@ cloudflare_custom_hostnames: {
 			// The custom hostname that will point to your hostname via CNAME.
 			hostname?: string
 
-			// Identifier.
+			// Custom hostname identifier tag.
 			id?: string
 
 			// Status of the hostname's activation.
@@ -558,7 +558,7 @@ cloudflare_custom_hostnames: {
 			// The custom hostname that will point to your hostname via CNAME.
 			hostname?: string
 
-			// Identifier.
+			// Custom hostname identifier tag.
 			id?: string
 
 			// Status of the hostname's activation.

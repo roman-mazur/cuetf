@@ -116,11 +116,11 @@ cloudflare_pages_projects: {
 					started_on?: string
 
 					// State of the current stage.
-					// Available values: "success", "idle", "active", "failure", "canceled".
+					// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 					status?: string
 				})
 
-				// If the deployment has been skipped.
+				// Whether the deployment was skipped.
 				is_skipped?: bool
 
 				// Configs for the project source control.
@@ -191,7 +191,7 @@ cloudflare_pages_projects: {
 					started_on?: string
 
 					// State of the current stage.
-					// Available values: "success", "idle", "active", "failure", "canceled".
+					// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 					status?: string
 				}), [...close({
 					// When the stage ended.
@@ -205,14 +205,15 @@ cloudflare_pages_projects: {
 					started_on?: string
 
 					// State of the current stage.
-					// Available values: "success", "idle", "active", "failure", "canceled".
+					// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 					status?: string
 				})]])
 
 				// Id of the project.
 				project_id?: string
 
-				// Name of the project.
+				// Name of the Pages project. Must begin with a lowercase letter or digit and
+				// contain only lowercase letters, digits, and hyphens.
 				project_name?: string
 
 				// Short Id (8 character) of the deployment.
@@ -221,7 +222,7 @@ cloudflare_pages_projects: {
 				// Why the deployment was skipped.
 				// Available values: "commit_message", "preview_deployments_disabled",
 				// "production_deployments_disabled", "path_config", "branch_config",
-				// "pages_to_workers_conversion".
+				// "pages_to_workers_conversion", "superseded_queued_build".
 				skip_reason?: string
 
 				// The live URL to view this deployment.
@@ -552,11 +553,11 @@ cloudflare_pages_projects: {
 					started_on?: string
 
 					// State of the current stage.
-					// Available values: "success", "idle", "active", "failure", "canceled".
+					// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 					status?: string
 				})
 
-				// If the deployment has been skipped.
+				// Whether the deployment was skipped.
 				is_skipped?: bool
 
 				// Configs for the project source control.
@@ -627,7 +628,7 @@ cloudflare_pages_projects: {
 					started_on?: string
 
 					// State of the current stage.
-					// Available values: "success", "idle", "active", "failure", "canceled".
+					// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 					status?: string
 				}), [...close({
 					// When the stage ended.
@@ -641,14 +642,15 @@ cloudflare_pages_projects: {
 					started_on?: string
 
 					// State of the current stage.
-					// Available values: "success", "idle", "active", "failure", "canceled".
+					// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 					status?: string
 				})]])
 
 				// Id of the project.
 				project_id?: string
 
-				// Name of the project.
+				// Name of the Pages project. Must begin with a lowercase letter or digit and
+				// contain only lowercase letters, digits, and hyphens.
 				project_name?: string
 
 				// Short Id (8 character) of the deployment.
@@ -657,7 +659,7 @@ cloudflare_pages_projects: {
 				// Why the deployment was skipped.
 				// Available values: "commit_message", "preview_deployments_disabled",
 				// "production_deployments_disabled", "path_config", "branch_config",
-				// "pages_to_workers_conversion".
+				// "pages_to_workers_conversion", "superseded_queued_build".
 				skip_reason?: string
 
 				// The live URL to view this deployment.
@@ -670,7 +672,8 @@ cloudflare_pages_projects: {
 			// Version of the framework the project is using.
 			framework_version?: string
 
-			// Name of the project.
+			// Name of the Pages project. Must begin with a lowercase letter or digit and
+			// contain only lowercase letters, digits, and hyphens.
 			name?: string
 
 			// Name of the preview script.
@@ -847,11 +850,11 @@ cloudflare_pages_projects: {
 					started_on?: string
 
 					// State of the current stage.
-					// Available values: "success", "idle", "active", "failure", "canceled".
+					// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 					status?: string
 				})
 
-				// If the deployment has been skipped.
+				// Whether the deployment was skipped.
 				is_skipped?: bool
 
 				// Configs for the project source control.
@@ -922,7 +925,7 @@ cloudflare_pages_projects: {
 					started_on?: string
 
 					// State of the current stage.
-					// Available values: "success", "idle", "active", "failure", "canceled".
+					// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 					status?: string
 				}), [...close({
 					// When the stage ended.
@@ -936,14 +939,15 @@ cloudflare_pages_projects: {
 					started_on?: string
 
 					// State of the current stage.
-					// Available values: "success", "idle", "active", "failure", "canceled".
+					// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 					status?: string
 				})]])
 
 				// Id of the project.
 				project_id?: string
 
-				// Name of the project.
+				// Name of the Pages project. Must begin with a lowercase letter or digit and
+				// contain only lowercase letters, digits, and hyphens.
 				project_name?: string
 
 				// Short Id (8 character) of the deployment.
@@ -952,7 +956,7 @@ cloudflare_pages_projects: {
 				// Why the deployment was skipped.
 				// Available values: "commit_message", "preview_deployments_disabled",
 				// "production_deployments_disabled", "path_config", "branch_config",
-				// "pages_to_workers_conversion".
+				// "pages_to_workers_conversion", "superseded_queued_build".
 				skip_reason?: string
 
 				// The live URL to view this deployment.
@@ -1283,11 +1287,11 @@ cloudflare_pages_projects: {
 					started_on?: string
 
 					// State of the current stage.
-					// Available values: "success", "idle", "active", "failure", "canceled".
+					// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 					status?: string
 				})
 
-				// If the deployment has been skipped.
+				// Whether the deployment was skipped.
 				is_skipped?: bool
 
 				// Configs for the project source control.
@@ -1358,7 +1362,7 @@ cloudflare_pages_projects: {
 					started_on?: string
 
 					// State of the current stage.
-					// Available values: "success", "idle", "active", "failure", "canceled".
+					// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 					status?: string
 				}), [...close({
 					// When the stage ended.
@@ -1372,14 +1376,15 @@ cloudflare_pages_projects: {
 					started_on?: string
 
 					// State of the current stage.
-					// Available values: "success", "idle", "active", "failure", "canceled".
+					// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
 					status?: string
 				})]])
 
 				// Id of the project.
 				project_id?: string
 
-				// Name of the project.
+				// Name of the Pages project. Must begin with a lowercase letter or digit and
+				// contain only lowercase letters, digits, and hyphens.
 				project_name?: string
 
 				// Short Id (8 character) of the deployment.
@@ -1388,7 +1393,7 @@ cloudflare_pages_projects: {
 				// Why the deployment was skipped.
 				// Available values: "commit_message", "preview_deployments_disabled",
 				// "production_deployments_disabled", "path_config", "branch_config",
-				// "pages_to_workers_conversion".
+				// "pages_to_workers_conversion", "superseded_queued_build".
 				skip_reason?: string
 
 				// The live URL to view this deployment.
@@ -1401,7 +1406,8 @@ cloudflare_pages_projects: {
 			// Version of the framework the project is using.
 			framework_version?: string
 
-			// Name of the project.
+			// Name of the Pages project. Must begin with a lowercase letter or digit and
+			// contain only lowercase letters, digits, and hyphens.
 			name?: string
 
 			// Name of the preview script.

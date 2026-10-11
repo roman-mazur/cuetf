@@ -216,6 +216,7 @@ import (
 	_#res: "\(#cloudflarePrefix)_zero_trust_access_service_token": close({res.cloudflare_zero_trust_access_service_token & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_zero_trust_access_short_lived_certificate": close({res.cloudflare_zero_trust_access_short_lived_certificate & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_zero_trust_access_tag": close({res.cloudflare_zero_trust_access_tag & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_zero_trust_casb_integration": close({res.cloudflare_zero_trust_casb_integration & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_zero_trust_casb_policy": close({res.cloudflare_zero_trust_casb_policy & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_zero_trust_casb_webhook": close({res.cloudflare_zero_trust_casb_webhook & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_zero_trust_connectivity_settings": close({res.cloudflare_zero_trust_connectivity_settings & cuetf.MetaArgs})

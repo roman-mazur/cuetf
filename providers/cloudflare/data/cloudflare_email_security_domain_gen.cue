@@ -57,6 +57,7 @@ cloudflare_email_security_domain: {
 			status?: string
 		})
 
+		// The mailbox folder to scan, for API-scanning domains.
 		// Available values: "AllItems", "Inbox".
 		folder?: string
 

@@ -12,8 +12,29 @@ cloudflare_account_permission_group: {
 
 		// Attributes associated to the permission group.
 		meta?: close({
-			key?:   string
-			value?: string
+			// A category used to group permission groups.
+			category?: string
+
+			// Indicates whether the permission group is deprecated.
+			deprecated?: string
+
+			// Additional information about the permission group.
+			description?: string
+
+			// Indicates whether the permission group can be edited.
+			editable?: string
+
+			// The planned end-of-life date and time, when provided.
+			eol_at?: string
+
+			// A label identifying the permission group.
+			label?: string
+
+			// The scope associated with the permission group.
+			scopes?: string
+
+			// Indicates the permission group's availability or visibility.
+			visibility?: string
 		})
 
 		// Name of the permission group.

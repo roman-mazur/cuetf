@@ -10,7 +10,9 @@ cloudflare_email_security_block_sender: {
 		created_at?: string
 
 		// Blocked sender pattern identifier.
-		id?:          string
+		id?: string
+
+		// Whether `pattern` is a regular expression instead of a literal value.
 		is_regex!:    bool
 		modified_at?: string
 

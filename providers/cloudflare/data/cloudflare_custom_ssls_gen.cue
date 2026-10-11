@@ -77,7 +77,7 @@ cloudflare_custom_ssls: {
 			expires_on?: string
 			hosts?: [...string]
 
-			// Identifier.
+			// Custom certificate identifier tag.
 			id?: string
 
 			// The certificate authority that issued the certificate.
@@ -178,7 +178,7 @@ cloudflare_custom_ssls: {
 			expires_on?: string
 			hosts?: [...string]
 
-			// Identifier.
+			// Custom certificate identifier tag.
 			id?: string
 
 			// The certificate authority that issued the certificate.

@@ -161,7 +161,8 @@ cloudflare_zero_trust_device_custom_profile: {
 		// Policies will be evaluated in ascending order of this field.
 		precedence?: number
 
-		// The client type to which the device settings profile applies.
+		// The client type to which the device settings profile applies. This field is
+		// set when the profile is created and cannot be changed.
 		// Available values: "warp", "browser_extension".
 		profile_type?: string
 

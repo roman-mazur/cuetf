@@ -4,15 +4,17 @@ cloudflare_flagship_flag: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_flagship_flag")
 	close({
-		// Cloudflare account ID.
+		// Cloudflare account ID that owns the Flagship app.
 		account_id!: string
 
-		// App identifier.
+		// Flagship app ID returned when the app was created.
 		app_id!: string
 
 		// Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
 		default_variation!: string
-		description?:       string
+
+		// Optional operator-facing description. It does not affect flag evaluation.
+		description?: string
 
 		// When false, the flag bypasses all rules and always serves `default_variation`.
 		enabled!: bool
@@ -46,7 +48,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -62,7 +64,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -76,7 +78,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -94,7 +96,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -110,7 +112,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -124,7 +126,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -138,7 +140,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -158,7 +160,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -174,7 +176,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -188,7 +190,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -206,7 +208,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -222,7 +224,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -236,7 +238,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -250,7 +252,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -264,7 +266,7 @@ cloudflare_flagship_flag: {
 
 						// Available values: "equals", "not_equals", "greater_than", "less_than",
 						// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-						// "ends_with", "in", "not_in".
+						// "ends_with", "in", "not_in", "has", "not_has".
 						operator?: string
 
 						// Value to compare against the context attribute. Must be an array for `in` and
@@ -286,7 +288,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -302,7 +304,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -316,7 +318,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -334,7 +336,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -350,7 +352,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -364,7 +366,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -378,7 +380,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -398,7 +400,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -414,7 +416,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -428,7 +430,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -446,7 +448,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -462,7 +464,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -476,7 +478,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -490,7 +492,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -504,7 +506,7 @@ cloudflare_flagship_flag: {
 
 						// Available values: "equals", "not_equals", "greater_than", "less_than",
 						// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-						// "ends_with", "in", "not_in".
+						// "ends_with", "in", "not_in", "has", "not_has".
 						operator?: string
 
 						// Value to compare against the context attribute. Must be an array for `in` and
@@ -518,7 +520,7 @@ cloudflare_flagship_flag: {
 
 					// Available values: "equals", "not_equals", "greater_than", "less_than",
 					// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-					// "ends_with", "in", "not_in".
+					// "ends_with", "in", "not_in", "has", "not_has".
 					operator?: string
 
 					// Value to compare against the context attribute. Must be an array for `in` and
@@ -542,7 +544,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -558,7 +560,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -572,7 +574,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -590,7 +592,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -606,7 +608,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -620,7 +622,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -634,7 +636,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -654,7 +656,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -670,7 +672,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -684,7 +686,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -702,7 +704,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -718,7 +720,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -732,7 +734,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -746,7 +748,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -760,7 +762,7 @@ cloudflare_flagship_flag: {
 
 						// Available values: "equals", "not_equals", "greater_than", "less_than",
 						// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-						// "ends_with", "in", "not_in".
+						// "ends_with", "in", "not_in", "has", "not_has".
 						operator?: string
 
 						// Value to compare against the context attribute. Must be an array for `in` and
@@ -782,7 +784,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -798,7 +800,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -812,7 +814,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -830,7 +832,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -846,7 +848,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -860,7 +862,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -874,7 +876,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -894,7 +896,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -910,7 +912,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -924,7 +926,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -942,7 +944,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -958,7 +960,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -972,7 +974,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -986,7 +988,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -1000,7 +1002,7 @@ cloudflare_flagship_flag: {
 
 						// Available values: "equals", "not_equals", "greater_than", "less_than",
 						// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-						// "ends_with", "in", "not_in".
+						// "ends_with", "in", "not_in", "has", "not_has".
 						operator?: string
 
 						// Value to compare against the context attribute. Must be an array for `in` and
@@ -1014,7 +1016,7 @@ cloudflare_flagship_flag: {
 
 					// Available values: "equals", "not_equals", "greater_than", "less_than",
 					// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-					// "ends_with", "in", "not_in".
+					// "ends_with", "in", "not_in", "has", "not_has".
 					operator?: string
 
 					// Value to compare against the context attribute. Must be an array for `in` and
@@ -1028,7 +1030,7 @@ cloudflare_flagship_flag: {
 
 				// Available values: "equals", "not_equals", "greater_than", "less_than",
 				// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-				// "ends_with", "in", "not_in".
+				// "ends_with", "in", "not_in", "has", "not_has".
 				operator?: string
 
 				// Value to compare against the context attribute. Must be an array for `in` and
@@ -1054,7 +1056,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1070,7 +1072,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1084,7 +1086,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -1102,7 +1104,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1118,7 +1120,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1132,7 +1134,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -1146,7 +1148,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -1166,7 +1168,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1182,7 +1184,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1196,7 +1198,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -1214,7 +1216,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1230,7 +1232,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1244,7 +1246,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -1258,7 +1260,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -1272,7 +1274,7 @@ cloudflare_flagship_flag: {
 
 						// Available values: "equals", "not_equals", "greater_than", "less_than",
 						// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-						// "ends_with", "in", "not_in".
+						// "ends_with", "in", "not_in", "has", "not_has".
 						operator?: string
 
 						// Value to compare against the context attribute. Must be an array for `in` and
@@ -1294,7 +1296,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1310,7 +1312,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1324,7 +1326,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -1342,7 +1344,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1358,7 +1360,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1372,7 +1374,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -1386,7 +1388,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -1406,7 +1408,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1422,7 +1424,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1436,7 +1438,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -1454,7 +1456,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1470,7 +1472,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1484,7 +1486,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -1498,7 +1500,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -1512,7 +1514,7 @@ cloudflare_flagship_flag: {
 
 						// Available values: "equals", "not_equals", "greater_than", "less_than",
 						// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-						// "ends_with", "in", "not_in".
+						// "ends_with", "in", "not_in", "has", "not_has".
 						operator?: string
 
 						// Value to compare against the context attribute. Must be an array for `in` and
@@ -1526,7 +1528,7 @@ cloudflare_flagship_flag: {
 
 					// Available values: "equals", "not_equals", "greater_than", "less_than",
 					// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-					// "ends_with", "in", "not_in".
+					// "ends_with", "in", "not_in", "has", "not_has".
 					operator?: string
 
 					// Value to compare against the context attribute. Must be an array for `in` and
@@ -1550,7 +1552,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1566,7 +1568,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1580,7 +1582,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -1598,7 +1600,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1614,7 +1616,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1628,7 +1630,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -1642,7 +1644,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -1662,7 +1664,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1678,7 +1680,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1692,7 +1694,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -1710,7 +1712,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1726,7 +1728,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1740,7 +1742,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -1754,7 +1756,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -1768,7 +1770,7 @@ cloudflare_flagship_flag: {
 
 						// Available values: "equals", "not_equals", "greater_than", "less_than",
 						// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-						// "ends_with", "in", "not_in".
+						// "ends_with", "in", "not_in", "has", "not_has".
 						operator?: string
 
 						// Value to compare against the context attribute. Must be an array for `in` and
@@ -1790,7 +1792,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1806,7 +1808,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1820,7 +1822,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -1838,7 +1840,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1854,7 +1856,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1868,7 +1870,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -1882,7 +1884,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -1902,7 +1904,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1918,7 +1920,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1932,7 +1934,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -1950,7 +1952,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1966,7 +1968,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -1980,7 +1982,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -1994,7 +1996,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -2008,7 +2010,7 @@ cloudflare_flagship_flag: {
 
 						// Available values: "equals", "not_equals", "greater_than", "less_than",
 						// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-						// "ends_with", "in", "not_in".
+						// "ends_with", "in", "not_in", "has", "not_has".
 						operator?: string
 
 						// Value to compare against the context attribute. Must be an array for `in` and
@@ -2022,7 +2024,7 @@ cloudflare_flagship_flag: {
 
 					// Available values: "equals", "not_equals", "greater_than", "less_than",
 					// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-					// "ends_with", "in", "not_in".
+					// "ends_with", "in", "not_in", "has", "not_has".
 					operator?: string
 
 					// Value to compare against the context attribute. Must be an array for `in` and
@@ -2036,7 +2038,7 @@ cloudflare_flagship_flag: {
 
 				// Available values: "equals", "not_equals", "greater_than", "less_than",
 				// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-				// "ends_with", "in", "not_in".
+				// "ends_with", "in", "not_in", "has", "not_has".
 				operator?: string
 
 				// Value to compare against the context attribute. Must be an array for `in` and
@@ -2052,8 +2054,9 @@ cloudflare_flagship_flag: {
 				// absent at evaluation time, bucketing is random per request.
 				attribute?: string
 
-				// Percentage of matching traffic (0–100) served this variation. For multi-way
-				// splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+				// Percentage of matching traffic (0–100, up to 2 decimal places) served this
+				// variation. For multi-way splits, use cumulative upper bounds across rules
+				// (e.g. 30, 70, 100).
 				percentage!: number
 			})
 
@@ -2080,7 +2083,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2096,7 +2099,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2110,7 +2113,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -2128,7 +2131,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2144,7 +2147,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2158,7 +2161,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -2172,7 +2175,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -2192,7 +2195,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2208,7 +2211,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2222,7 +2225,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -2240,7 +2243,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2256,7 +2259,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2270,7 +2273,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -2284,7 +2287,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -2298,7 +2301,7 @@ cloudflare_flagship_flag: {
 
 						// Available values: "equals", "not_equals", "greater_than", "less_than",
 						// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-						// "ends_with", "in", "not_in".
+						// "ends_with", "in", "not_in", "has", "not_has".
 						operator?: string
 
 						// Value to compare against the context attribute. Must be an array for `in` and
@@ -2320,7 +2323,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2336,7 +2339,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2350,7 +2353,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -2368,7 +2371,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2384,7 +2387,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2398,7 +2401,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -2412,7 +2415,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -2432,7 +2435,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2448,7 +2451,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2462,7 +2465,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -2480,7 +2483,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2496,7 +2499,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2510,7 +2513,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -2524,7 +2527,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -2538,7 +2541,7 @@ cloudflare_flagship_flag: {
 
 						// Available values: "equals", "not_equals", "greater_than", "less_than",
 						// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-						// "ends_with", "in", "not_in".
+						// "ends_with", "in", "not_in", "has", "not_has".
 						operator?: string
 
 						// Value to compare against the context attribute. Must be an array for `in` and
@@ -2552,7 +2555,7 @@ cloudflare_flagship_flag: {
 
 					// Available values: "equals", "not_equals", "greater_than", "less_than",
 					// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-					// "ends_with", "in", "not_in".
+					// "ends_with", "in", "not_in", "has", "not_has".
 					operator?: string
 
 					// Value to compare against the context attribute. Must be an array for `in` and
@@ -2576,7 +2579,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2592,7 +2595,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2606,7 +2609,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -2624,7 +2627,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2640,7 +2643,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2654,7 +2657,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -2668,7 +2671,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -2688,7 +2691,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2704,7 +2707,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2718,7 +2721,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -2736,7 +2739,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2752,7 +2755,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2766,7 +2769,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -2780,7 +2783,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -2794,7 +2797,7 @@ cloudflare_flagship_flag: {
 
 						// Available values: "equals", "not_equals", "greater_than", "less_than",
 						// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-						// "ends_with", "in", "not_in".
+						// "ends_with", "in", "not_in", "has", "not_has".
 						operator?: string
 
 						// Value to compare against the context attribute. Must be an array for `in` and
@@ -2816,7 +2819,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2832,7 +2835,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2846,7 +2849,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -2864,7 +2867,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2880,7 +2883,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2894,7 +2897,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -2908,7 +2911,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -2928,7 +2931,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2944,7 +2947,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2958,7 +2961,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -2976,7 +2979,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -2992,7 +2995,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3006,7 +3009,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -3020,7 +3023,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -3034,7 +3037,7 @@ cloudflare_flagship_flag: {
 
 						// Available values: "equals", "not_equals", "greater_than", "less_than",
 						// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-						// "ends_with", "in", "not_in".
+						// "ends_with", "in", "not_in", "has", "not_has".
 						operator?: string
 
 						// Value to compare against the context attribute. Must be an array for `in` and
@@ -3048,7 +3051,7 @@ cloudflare_flagship_flag: {
 
 					// Available values: "equals", "not_equals", "greater_than", "less_than",
 					// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-					// "ends_with", "in", "not_in".
+					// "ends_with", "in", "not_in", "has", "not_has".
 					operator?: string
 
 					// Value to compare against the context attribute. Must be an array for `in` and
@@ -3062,7 +3065,7 @@ cloudflare_flagship_flag: {
 
 				// Available values: "equals", "not_equals", "greater_than", "less_than",
 				// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-				// "ends_with", "in", "not_in".
+				// "ends_with", "in", "not_in", "has", "not_has".
 				operator?: string
 
 				// Value to compare against the context attribute. Must be an array for `in` and
@@ -3088,7 +3091,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3104,7 +3107,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3118,7 +3121,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -3136,7 +3139,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3152,7 +3155,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3166,7 +3169,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -3180,7 +3183,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -3200,7 +3203,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3216,7 +3219,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3230,7 +3233,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -3248,7 +3251,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3264,7 +3267,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3278,7 +3281,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -3292,7 +3295,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -3306,7 +3309,7 @@ cloudflare_flagship_flag: {
 
 						// Available values: "equals", "not_equals", "greater_than", "less_than",
 						// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-						// "ends_with", "in", "not_in".
+						// "ends_with", "in", "not_in", "has", "not_has".
 						operator?: string
 
 						// Value to compare against the context attribute. Must be an array for `in` and
@@ -3328,7 +3331,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3344,7 +3347,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3358,7 +3361,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -3376,7 +3379,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3392,7 +3395,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3406,7 +3409,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -3420,7 +3423,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -3440,7 +3443,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3456,7 +3459,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3470,7 +3473,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -3488,7 +3491,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3504,7 +3507,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3518,7 +3521,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -3532,7 +3535,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -3546,7 +3549,7 @@ cloudflare_flagship_flag: {
 
 						// Available values: "equals", "not_equals", "greater_than", "less_than",
 						// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-						// "ends_with", "in", "not_in".
+						// "ends_with", "in", "not_in", "has", "not_has".
 						operator?: string
 
 						// Value to compare against the context attribute. Must be an array for `in` and
@@ -3560,7 +3563,7 @@ cloudflare_flagship_flag: {
 
 					// Available values: "equals", "not_equals", "greater_than", "less_than",
 					// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-					// "ends_with", "in", "not_in".
+					// "ends_with", "in", "not_in", "has", "not_has".
 					operator?: string
 
 					// Value to compare against the context attribute. Must be an array for `in` and
@@ -3584,7 +3587,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3600,7 +3603,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3614,7 +3617,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -3632,7 +3635,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3648,7 +3651,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3662,7 +3665,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -3676,7 +3679,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -3696,7 +3699,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3712,7 +3715,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3726,7 +3729,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -3744,7 +3747,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3760,7 +3763,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3774,7 +3777,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -3788,7 +3791,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -3802,7 +3805,7 @@ cloudflare_flagship_flag: {
 
 						// Available values: "equals", "not_equals", "greater_than", "less_than",
 						// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-						// "ends_with", "in", "not_in".
+						// "ends_with", "in", "not_in", "has", "not_has".
 						operator?: string
 
 						// Value to compare against the context attribute. Must be an array for `in` and
@@ -3824,7 +3827,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3840,7 +3843,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3854,7 +3857,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -3872,7 +3875,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3888,7 +3891,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3902,7 +3905,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -3916,7 +3919,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -3936,7 +3939,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3952,7 +3955,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -3966,7 +3969,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -3984,7 +3987,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -4000,7 +4003,7 @@ cloudflare_flagship_flag: {
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-									// "ends_with", "in", "not_in".
+									// "ends_with", "in", "not_in", "has", "not_has".
 									operator?: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
@@ -4014,7 +4017,7 @@ cloudflare_flagship_flag: {
 
 								// Available values: "equals", "not_equals", "greater_than", "less_than",
 								// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-								// "ends_with", "in", "not_in".
+								// "ends_with", "in", "not_in", "has", "not_has".
 								operator?: string
 
 								// Value to compare against the context attribute. Must be an array for `in` and
@@ -4028,7 +4031,7 @@ cloudflare_flagship_flag: {
 
 							// Available values: "equals", "not_equals", "greater_than", "less_than",
 							// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-							// "ends_with", "in", "not_in".
+							// "ends_with", "in", "not_in", "has", "not_has".
 							operator?: string
 
 							// Value to compare against the context attribute. Must be an array for `in` and
@@ -4042,7 +4045,7 @@ cloudflare_flagship_flag: {
 
 						// Available values: "equals", "not_equals", "greater_than", "less_than",
 						// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-						// "ends_with", "in", "not_in".
+						// "ends_with", "in", "not_in", "has", "not_has".
 						operator?: string
 
 						// Value to compare against the context attribute. Must be an array for `in` and
@@ -4056,7 +4059,7 @@ cloudflare_flagship_flag: {
 
 					// Available values: "equals", "not_equals", "greater_than", "less_than",
 					// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-					// "ends_with", "in", "not_in".
+					// "ends_with", "in", "not_in", "has", "not_has".
 					operator?: string
 
 					// Value to compare against the context attribute. Must be an array for `in` and
@@ -4070,7 +4073,7 @@ cloudflare_flagship_flag: {
 
 				// Available values: "equals", "not_equals", "greater_than", "less_than",
 				// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
-				// "ends_with", "in", "not_in".
+				// "ends_with", "in", "not_in", "has", "not_has".
 				operator?: string
 
 				// Value to compare against the context attribute. Must be an array for `in` and
@@ -4086,8 +4089,9 @@ cloudflare_flagship_flag: {
 				// absent at evaluation time, bucketing is random per request.
 				attribute?: string
 
-				// Percentage of matching traffic (0–100) served this variation. For multi-way
-				// splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+				// Percentage of matching traffic (0–100, up to 2 decimal places) served this
+				// variation. For multi-way splits, use cumulative upper bounds across rules
+				// (e.g. 30, 70, 100).
 				percentage!: number
 			})
 
