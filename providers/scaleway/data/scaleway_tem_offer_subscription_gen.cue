@@ -26,6 +26,9 @@ scaleway_tem_offer_subscription: {
 		// Name of the offer
 		offer_name?: string
 
+		// The organization_id the offer subscription is associated to
+		organization_id?: string
+
 		// The project_id you want to attach the resource to
 		project_id?: string
 

@@ -4,6 +4,8 @@ scaleway_edge_services_waf_stage: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_edge_services_waf_stage")
 	close({
+		exclusion_rules?: matchN(1, [#exclusion_rules, [...#exclusion_rules]])
+
 		// The ID of the backend stage to forward requests to after the WAF stage
 		backend_stage_id?: string
 
@@ -28,5 +30,10 @@ scaleway_edge_services_waf_stage: {
 
 		// The date and time of the last update of the WAF stage
 		updated_at?: string
+	})
+
+	#exclusion_rules: close({
+		// OWASP CRS rule ID excluded from the WAF
+		rule_id!: number
 	})
 }

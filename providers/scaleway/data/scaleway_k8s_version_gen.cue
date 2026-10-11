@@ -7,9 +7,6 @@ scaleway_k8s_version: {
 		// The list of supported Container Network Interface (CNI) plugins for this version
 		available_cnis?: [...string]
 
-		// The list of supported container runtimes for this version
-		available_container_runtimes?: [...string]
-
 		// The list of supported feature gates for this version
 		available_feature_gates?: [...string]
 		id?: string

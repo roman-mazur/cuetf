@@ -9,7 +9,12 @@ scaleway_edge_services_waf_stage: {
 
 		// The date and time of the creation of the WAF stage
 		created_at?: string
-		id?:         string
+
+		// List of OWASP CRS rule IDs excluded from the WAF
+		exclusion_rules?: [...close({
+			rule_id?: number
+		})]
+		id?: string
 
 		// Mode defining WAF behavior (`disable`/`log_only`/`enable`)
 		mode?: string

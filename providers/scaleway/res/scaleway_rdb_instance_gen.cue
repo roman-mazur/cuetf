@@ -142,7 +142,7 @@ scaleway_rdb_instance: {
 		// The max age (in days) of remote logs to keep on the Database Instance
 		max_age_retention?: number
 
-		// The max disk size of remote logs to keep on the Database Instance.
+		// The max disk size (in bytes) of remote logs to keep on the Database Instance
 		total_disk_retention?: number
 	})
 

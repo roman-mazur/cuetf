@@ -34,8 +34,12 @@ scaleway_tem_domain: {
 		// The Scaleway's blackhole MX server to use
 		mx_blackhole?: string
 
-		// MX record configuration for the domain blackhole
+		// MX exchange hostname for the domain blackhole (without priority), suitable
+		// for scaleway_domain_record.data
 		mx_config?: string
+
+		// MX priority for the domain blackhole, suitable for scaleway_domain_record.priority
+		mx_priority?: number
 
 		// The domain name used when sending emails
 		name!: string

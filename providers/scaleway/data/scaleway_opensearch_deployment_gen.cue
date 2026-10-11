@@ -10,7 +10,7 @@ scaleway_opensearch_deployment: {
 		// The ID of the OpenSearch deployment
 		deployment_id?: string
 
-		// List of endpoints
+		// List of all endpoints returned by the API
 		endpoints?: [...close({
 			id?:                 string
 			private_network_id?: string
@@ -29,7 +29,7 @@ scaleway_opensearch_deployment: {
 		// Number of nodes
 		node_amount?: number
 
-		// Number of nodes
+		// Number of nodes. Changing this value upgrades the deployment in place.
 		node_count?: number
 
 		// Type of node

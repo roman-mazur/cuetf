@@ -4,7 +4,7 @@ scaleway_billing_budget: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/scaleway_billing_budget")
 	close({
-		// Cost limit for the budget in cents.
+		// Cost limit for the budget in euros.
 		consumption_limit!: number
 
 		// The date and time of budget creation

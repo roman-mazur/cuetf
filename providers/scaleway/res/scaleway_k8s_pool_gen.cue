@@ -95,6 +95,9 @@ scaleway_k8s_pool: {
 		// The date and time of the last update of the pool
 		updated_at?: string
 
+		// User data applied and reconciled with the pool, as a map of key to content
+		user_data?: [string]: string
+
 		// The Kubernetes version of the pool
 		version?: string
 

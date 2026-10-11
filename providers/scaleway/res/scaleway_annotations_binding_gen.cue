@@ -10,8 +10,11 @@ scaleway_annotations_binding: {
 		// ID of the key associated to the binding.
 		key_id?: string
 
+		// The Scaleway Resource Number (SRN) of the binding.
+		srn?: string
+
 		// Scaleway Resource Number to associate.
-		srn!: string
+		target_srn!: string
 
 		// ID of the value to associate.
 		value_id!: string
