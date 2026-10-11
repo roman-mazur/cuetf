@@ -107219,6 +107219,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						description_kind: "plain"
 						required:         true
 					}
+					ocid: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
 					resource_group_name: {
 						type:             "string"
 						description_kind: "plain"
@@ -107660,6 +107665,153 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 					}
 					virtual_network_id: {
 						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							read: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_oracle_autonomous_database_cross_region_disaster_recovery: {
+			version: 0
+			block: {
+				attributes: {
+					auto_scaling_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					auto_scaling_for_storage_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					backup_retention_period_in_days: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					character_set: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					compute_count: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					compute_model: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					customer_contacts: {
+						type: ["list", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					data_storage_size_in_tb: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					database_version: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					database_workload: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					license_model: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					mtls_connection_required: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					national_character_set: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					remote_disaster_recovery_type: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					replicate_automatic_backups_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+					}
+					resource_group_name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					source_autonomous_database_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					subnet_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					tags: {
+						type: ["map", "string"]
 						description_kind: "plain"
 						optional:         true
 					}
@@ -185471,6 +185623,346 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				description_kind: "plain"
 			}
 		}
+		azurerm_oracle_autonomous_database_cross_region_disaster_recovery: {
+			version: 0
+			block: {
+				attributes: {
+					actual_used_data_storage_size_in_tb: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					allocated_storage_size_in_tb: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					auto_scaling_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					auto_scaling_for_storage_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					available_upgrade_versions: {
+						type: ["list", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					backup_retention_period_in_days: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					character_set: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					compute_count: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					cpu_core_count: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					customer_contacts: {
+						type: ["list", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					data_storage_size_in_gb: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					data_storage_size_in_tb: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					database_type: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					database_version: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					database_workload: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					failed_data_recovery_in_seconds: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					in_memory_area_in_gb: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					license_model: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					lifecycle_details: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					local_adg_auto_failover_maximum_data_loss_limit_in_seconds: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					local_data_guard_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					memory_per_oracle_compute_unit_in_gb: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					mtls_connection_required: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					national_character_set: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					next_long_term_backup_timestamp_in_utc: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					oci_url: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					ocid: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					peer_database_ids: {
+						type: ["list", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					preview: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					preview_version_with_service_terms_accepted: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					private_endpoint_ip: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					private_endpoint_label: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					private_endpoint_url: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					provisionable_cpus: {
+						type: ["list", "number"]
+						description_kind: "plain"
+						computed:         true
+					}
+					remote_data_guard_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					remote_disaster_recovery_type: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					replicate_automatic_backups_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
+					resource_group_name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					service_console_url: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					source_autonomous_database_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					source_location: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					source_ocid: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					source_type: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					sql_web_developer_url: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					subnet_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					time_created_in_utc: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					time_data_guard_role_changed_in_utc: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					time_deletion_of_free_autonomous_database_in_utc: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					time_local_data_guard_enabled_in_utc: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					time_maintenance_begin_in_utc: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					time_maintenance_end_in_utc: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					time_of_last_failover_in_utc: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					time_of_last_refresh_in_utc: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					time_of_last_refresh_point_in_utc: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					time_of_last_switchover_in_utc: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					time_reclamation_of_free_autonomous_database_in_utc: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					used_data_storage_size_in_gb: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					used_data_storage_size_in_tb: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					virtual_network_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: read: {
+							type:             "string"
+							description_kind: "plain"
+							optional:         true
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		azurerm_oracle_cloud_vm_cluster: {
 			version: 0
 			block: {
@@ -197583,6 +198075,39 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				description_kind: "plain"
 			}
 		}
+		azurerm_dns_a_record: {
+			version: 0
+			block: {
+				attributes: dns_zone_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_dns_cname_record: {
+			version: 0
+			block: {
+				attributes: dns_zone_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_dns_txt_record: {
+			version: 0
+			block: {
+				attributes: dns_zone_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
 		azurerm_eventhub_consumer_group: {
 			version: 0
 			block: {
@@ -197706,6 +198231,17 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				description_kind: "plain"
 			}
 		}
+		azurerm_lb_probe: {
+			version: 0
+			block: {
+				attributes: loadbalancer_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
 		azurerm_linux_virtual_machine: {
 			version: 0
 			block: {
@@ -197815,6 +198351,24 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_monitor_scheduled_query_rules_alert_v2: {
+			version: 0
+			block: {
+				attributes: {
+					resource_group_name: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					subscription_id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_monitor_workspace: {
 			version: 0
 			block: {
 				attributes: {
@@ -198085,6 +198639,17 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						description_kind: "plain"
 						optional:         true
 					}
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_postgresql_flexible_server_firewall_rule: {
+			version: 0
+			block: {
+				attributes: postgresql_flexible_server_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
 				}
 				description_kind: "plain"
 			}
@@ -198409,6 +198974,35 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						description_kind: "plain"
 						optional:         true
 					}
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_storage_account_network_rules: {
+			version: 0
+			block: {
+				attributes: {
+					resource_group_name: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					subscription_id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_storage_container: {
+			version: 0
+			block: {
+				attributes: storage_account_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
 				}
 				description_kind: "plain"
 			}
@@ -200095,6 +200689,81 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				}
 			}
 		}
+		azurerm_dns_a_record: {
+			version: 0
+			attributes: {
+				dns_zone_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				record_type: {
+					type:                "string"
+					required_for_import: true
+				}
+				resource_group_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				subscription_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		azurerm_dns_cname_record: {
+			version: 0
+			attributes: {
+				dns_zone_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				record_type: {
+					type:                "string"
+					required_for_import: true
+				}
+				resource_group_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				subscription_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		azurerm_dns_txt_record: {
+			version: 0
+			attributes: {
+				dns_zone_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				record_type: {
+					type:                "string"
+					required_for_import: true
+				}
+				resource_group_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				subscription_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		azurerm_email_communication_service: {
 			version: 0
 			attributes: {
@@ -200377,6 +201046,27 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				}
 			}
 		}
+		azurerm_lb_probe: {
+			version: 0
+			attributes: {
+				load_balancer_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				resource_group_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				subscription_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		azurerm_linux_function_app: {
 			version: 0
 			attributes: {
@@ -200531,6 +201221,23 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_monitor_scheduled_query_rules_alert_v2: {
+			version: 0
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				resource_group_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				subscription_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		azurerm_monitor_workspace: {
 			version: 0
 			attributes: {
 				name: {
@@ -201653,6 +202360,27 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				}
 			}
 		}
+		azurerm_storage_container: {
+			version: 0
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				resource_group_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				storage_account_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				subscription_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		azurerm_storage_discovery_workspace: {
 			version: 0
 			attributes: {
@@ -202442,6 +203170,15 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 					description_kind: "markdown"
 					required:         true
 				}
+			}
+			description_kind: "plain"
+		}
+		azurerm_data_protection_resource_guard_unlock_delete: block: {
+			attributes: protected_item_id: {
+				type:             "string"
+				description:      "The ID of the Recovery Services protected item to unlock for deletion."
+				description_kind: "markdown"
+				required:         true
 			}
 			description_kind: "plain"
 		}
