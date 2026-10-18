@@ -7,6 +7,7 @@ google_container_node_pool: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_container_node_pool")
 	close({
 		autoscaling?: matchN(1, [#autoscaling, list.MaxItems(1) & [...#autoscaling]])
+		best_effort_provisioning?: matchN(1, [#best_effort_provisioning, list.MaxItems(1) & [...#best_effort_provisioning]])
 		maintenance_policy?: matchN(1, [#maintenance_policy, [...#maintenance_policy]])
 		management?: matchN(1, [#management, list.MaxItems(1) & [...#management]])
 		network_config?: matchN(1, [#network_config, list.MaxItems(1) & [...#network_config]])
@@ -114,6 +115,17 @@ google_container_node_pool: {
 		// Minimum number of all nodes in the node pool. Must be >=0 and <=
 		// total_max_node_count. Cannot be used with per zone limits.
 		total_min_node_count?: number
+	})
+
+	#best_effort_provisioning: close({
+		// Whether node pool creation ignores non-fatal errors like stockout to
+		// provision as many nodes as possible, eventually bringing up the target
+		// number of nodes.
+		enabled!: bool
+
+		// Minimum number of nodes that must be provisioned for the creation to be
+		// considered successful. Can only be set when enabled is true.
+		min_provision_nodes?: number
 	})
 
 	#maintenance_policy: close({

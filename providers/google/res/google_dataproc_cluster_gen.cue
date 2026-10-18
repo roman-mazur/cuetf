@@ -409,9 +409,6 @@ google_dataproc_cluster: {
 		// Size of the attached disk, specified in GB.
 		disk_size_gb?: number
 
-		// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
-		disk_type?: string
-
 		// Indicates how many IOPS to provision for the disk. This sets the number of
 		// I/O operations per second that the disk can handle.
 		provisioned_iops?: number
@@ -419,6 +416,11 @@ google_dataproc_cluster: {
 		// Indicates how much throughput to provision for the disk. This sets the number
 		// of throughput mb per second that the disk can handle.
 		provisioned_throughput?: number
+
+		// The disk type of the attached disk. Currently only supports Hyperdisks:
+		// "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml",
+		// "hyperdisk-throughput".
+		type?: string
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/master_config/$defs/instance_flexibility_policy": close({
@@ -474,9 +476,6 @@ google_dataproc_cluster: {
 		// Size of the attached disk, specified in GB.
 		disk_size_gb?: number
 
-		// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
-		disk_type?: string
-
 		// Indicates how many IOPS to provision for the disk. This sets the number of
 		// I/O operations per second that the disk can handle.
 		provisioned_iops?: number
@@ -484,6 +483,11 @@ google_dataproc_cluster: {
 		// Indicates how much throughput to provision for the disk. This sets the number
 		// of throughput mb per second that the disk can handle.
 		provisioned_throughput?: number
+
+		// The disk type of the attached disk. Currently only supports Hyperdisks:
+		// "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml",
+		// "hyperdisk-throughput".
+		type?: string
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/metastore_config": close({
@@ -540,9 +544,6 @@ google_dataproc_cluster: {
 		// Size of the attached disk, specified in GB.
 		disk_size_gb?: number
 
-		// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
-		disk_type?: string
-
 		// Indicates how many IOPS to provision for the disk. This sets the number of
 		// I/O operations per second that the disk can handle.
 		provisioned_iops?: number
@@ -550,6 +551,11 @@ google_dataproc_cluster: {
 		// Indicates how much throughput to provision for the disk. This sets the number
 		// of throughput mb per second that the disk can handle.
 		provisioned_throughput?: number
+
+		// The disk type of the attached disk. Currently only supports Hyperdisks:
+		// "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml",
+		// "hyperdisk-throughput".
+		type?: string
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy": close({
@@ -606,9 +612,6 @@ google_dataproc_cluster: {
 		// Size of the attached disk, specified in GB.
 		disk_size_gb?: number
 
-		// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
-		disk_type?: string
-
 		// Indicates how many IOPS to provision for the disk. This sets the number of
 		// I/O operations per second that the disk can handle.
 		provisioned_iops?: number
@@ -616,6 +619,11 @@ google_dataproc_cluster: {
 		// Indicates how much throughput to provision for the disk. This sets the number
 		// of throughput mb per second that the disk can handle.
 		provisioned_throughput?: number
+
+		// The disk type of the attached disk. Currently only supports Hyperdisks:
+		// "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml",
+		// "hyperdisk-throughput".
+		type?: string
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/preemptible_worker_config/$defs/instance_flexibility_policy/$defs/provisioning_model_mix": close({
@@ -788,9 +796,6 @@ google_dataproc_cluster: {
 		// Size of the attached disk, specified in GB.
 		disk_size_gb?: number
 
-		// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
-		disk_type?: string
-
 		// Indicates how many IOPS to provision for the disk. This sets the number of
 		// I/O operations per second that the disk can handle.
 		provisioned_iops?: number
@@ -798,6 +803,11 @@ google_dataproc_cluster: {
 		// Indicates how much throughput to provision for the disk. This sets the number
 		// of throughput mb per second that the disk can handle.
 		provisioned_throughput?: number
+
+		// The disk type of the attached disk. Currently only supports Hyperdisks:
+		// "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml",
+		// "hyperdisk-throughput".
+		type?: string
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/worker_config/$defs/instance_flexibility_policy": close({
@@ -853,9 +863,6 @@ google_dataproc_cluster: {
 		// Size of the attached disk, specified in GB.
 		disk_size_gb?: number
 
-		// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
-		disk_type?: string
-
 		// Indicates how many IOPS to provision for the disk. This sets the number of
 		// I/O operations per second that the disk can handle.
 		provisioned_iops?: number
@@ -863,6 +870,11 @@ google_dataproc_cluster: {
 		// Indicates how much throughput to provision for the disk. This sets the number
 		// of throughput mb per second that the disk can handle.
 		provisioned_throughput?: number
+
+		// The disk type of the attached disk. Currently only supports Hyperdisks:
+		// "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml",
+		// "hyperdisk-throughput".
+		type?: string
 	})
 
 	_#defs: "/$defs/virtual_cluster_config/$defs/auxiliary_services_config": close({

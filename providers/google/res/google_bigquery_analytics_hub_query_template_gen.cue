@@ -6,6 +6,7 @@ google_bigquery_analytics_hub_query_template: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_analytics_hub_query_template")
 	close({
+		encryption_configuration?: matchN(1, [#encryption_configuration, list.MaxItems(1) & [...#encryption_configuration]])
 		routine?: matchN(1, [#routine, list.MaxItems(1) & [...#routine]])
 		timeouts?: #timeouts
 
@@ -61,6 +62,12 @@ google_bigquery_analytics_hub_query_template: {
 
 		// Timestamp when the QueryTemplate was last modified.
 		update_time?: string
+	})
+
+	#encryption_configuration: close({
+		// The KMS key used to encrypt the query template.
+		// Format: 'projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}'
+		kms_key_name!: string
 	})
 
 	#routine: close({

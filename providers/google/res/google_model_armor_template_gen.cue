@@ -94,6 +94,15 @@ google_model_armor_template: {
 
 		// If true, log template crud operations.
 		log_template_operations?: bool
+
+		// Specifies the modalities to scan. If empty, only text modality will be
+		// scanned. Image screening is in Preview and is only supported in the 'us'
+		// and 'eu' multi-regions; regional endpoints such as 'us-central1' do not
+		// support it.
+		// Possible values:
+		// MODALITY_TEXT
+		// MODALITY_IMAGE
+		modalities?: [...string]
 	})
 
 	#timeouts: close({

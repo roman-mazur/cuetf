@@ -876,11 +876,6 @@ google_dataproc_workflow_template: {
 		// Optional. Size of the attached disk, specified in GB.
 		disk_size_gb?: number
 
-		// Optional. The disk type of the attached disk. Currently only supports
-		// Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`,
-		// `hyperdisk-throughput`.
-		disk_type?: string
-
 		// Optional. Indicates how many IOPS to provision for the disk. This sets the
 		// number of I/O operations per second that the disk can handle.
 		provisioned_iops?: number
@@ -888,6 +883,11 @@ google_dataproc_workflow_template: {
 		// Optional. Indicates how much throughput to provision for the disk. This sets
 		// the number of throughput mb per second that the disk can handle.
 		provisioned_throughput?: number
+
+		// Optional. Attached disk type. Currently only supports Hyperdisks:
+		// `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`,
+		// `hyperdisk-throughput`.
+		type?: string
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config/$defs/instance_flexibility_policy": close({
@@ -958,11 +958,6 @@ google_dataproc_workflow_template: {
 		// Optional. Size of the attached disk, specified in GB.
 		disk_size_gb?: number
 
-		// Optional. The disk type of the attached disk. Currently only supports
-		// Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`,
-		// `hyperdisk-throughput`.
-		disk_type?: string
-
 		// Optional. Indicates how many IOPS to provision for the disk. This sets the
 		// number of I/O operations per second that the disk can handle.
 		provisioned_iops?: number
@@ -970,6 +965,11 @@ google_dataproc_workflow_template: {
 		// Optional. Indicates how much throughput to provision for the disk. This sets
 		// the number of throughput mb per second that the disk can handle.
 		provisioned_throughput?: number
+
+		// Optional. Attached disk type. Currently only supports Hyperdisks:
+		// `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`,
+		// `hyperdisk-throughput`.
+		type?: string
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config": close({
@@ -1091,11 +1091,6 @@ google_dataproc_workflow_template: {
 		// Optional. Size of the attached disk, specified in GB.
 		disk_size_gb?: number
 
-		// Optional. The disk type of the attached disk. Currently only supports
-		// Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`,
-		// `hyperdisk-throughput`.
-		disk_type?: string
-
 		// Optional. Indicates how many IOPS to provision for the disk. This sets the
 		// number of I/O operations per second that the disk can handle.
 		provisioned_iops?: number
@@ -1103,6 +1098,11 @@ google_dataproc_workflow_template: {
 		// Optional. Indicates how much throughput to provision for the disk. This sets
 		// the number of throughput mb per second that the disk can handle.
 		provisioned_throughput?: number
+
+		// Optional. Attached disk type. Currently only supports Hyperdisks:
+		// `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`,
+		// `hyperdisk-throughput`.
+		type?: string
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/instance_flexibility_policy": close({
@@ -1174,11 +1174,6 @@ google_dataproc_workflow_template: {
 		// Optional. Size of the attached disk, specified in GB.
 		disk_size_gb?: number
 
-		// Optional. The disk type of the attached disk. Currently only supports
-		// Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`,
-		// `hyperdisk-throughput`.
-		disk_type?: string
-
 		// Optional. Indicates how many IOPS to provision for the disk. This sets the
 		// number of I/O operations per second that the disk can handle.
 		provisioned_iops?: number
@@ -1186,6 +1181,11 @@ google_dataproc_workflow_template: {
 		// Optional. Indicates how much throughput to provision for the disk. This sets
 		// the number of throughput mb per second that the disk can handle.
 		provisioned_throughput?: number
+
+		// Optional. Attached disk type. Currently only supports Hyperdisks:
+		// `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`,
+		// `hyperdisk-throughput`.
+		type?: string
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/instance_flexibility_policy/$defs/provisioning_model_mix": close({
@@ -1411,11 +1411,6 @@ google_dataproc_workflow_template: {
 		// Optional. Size of the attached disk, specified in GB.
 		disk_size_gb?: number
 
-		// Optional. The disk type of the attached disk. Currently only supports
-		// Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`,
-		// `hyperdisk-throughput`.
-		disk_type?: string
-
 		// Optional. Indicates how many IOPS to provision for the disk. This sets the
 		// number of I/O operations per second that the disk can handle.
 		provisioned_iops?: number
@@ -1423,6 +1418,11 @@ google_dataproc_workflow_template: {
 		// Optional. Indicates how much throughput to provision for the disk. This sets
 		// the number of throughput mb per second that the disk can handle.
 		provisioned_throughput?: number
+
+		// Optional. Attached disk type. Currently only supports Hyperdisks:
+		// `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`,
+		// `hyperdisk-throughput`.
+		type?: string
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config/$defs/instance_flexibility_policy": close({
@@ -1493,11 +1493,6 @@ google_dataproc_workflow_template: {
 		// Optional. Size of the attached disk, specified in GB.
 		disk_size_gb?: number
 
-		// Optional. The disk type of the attached disk. Currently only supports
-		// Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`,
-		// `hyperdisk-throughput`.
-		disk_type?: string
-
 		// Optional. Indicates how many IOPS to provision for the disk. This sets the
 		// number of I/O operations per second that the disk can handle.
 		provisioned_iops?: number
@@ -1505,5 +1500,10 @@ google_dataproc_workflow_template: {
 		// Optional. Indicates how much throughput to provision for the disk. This sets
 		// the number of throughput mb per second that the disk can handle.
 		provisioned_throughput?: number
+
+		// Optional. Attached disk type. Currently only supports Hyperdisks:
+		// `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`,
+		// `hyperdisk-throughput`.
+		type?: string
 	})
 }

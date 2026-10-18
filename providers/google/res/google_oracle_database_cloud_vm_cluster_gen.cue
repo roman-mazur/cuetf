@@ -229,6 +229,21 @@ google_oracle_database_cloud_vm_cluster: {
 
 		// Operating system version of the image.
 		system_version?: string
+
+		// Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+		// Possible values:
+		// VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+		// VM_BACKUP_STORAGE_TYPE_LOCAL
+		// VM_BACKUP_STORAGE_TYPE_EXASCALE
+		vm_backup_storage_type?: string
+
+		// Specifies whether VM file system storage / VM images are stored on local DB
+		// server storage or Exascale storage.
+		// Possible values:
+		// VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+		// VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+		// VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+		vm_file_system_storage_type?: string
 	})
 
 	#timeouts: close({

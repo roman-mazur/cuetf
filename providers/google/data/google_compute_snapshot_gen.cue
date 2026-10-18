@@ -82,6 +82,9 @@ google_compute_snapshot: {
 		// If you do not provide an encryption key when creating the snapshot,
 		// then the snapshot will be encrypted using an automatically generated
 		// key and you do not need to provide a key to use the snapshot later.
+		//
+		// ~>**NOTE** Only changing 'kms_key_self_link' between Cloud KMS keys is
+		// done in place; other changes to this block recreate the snapshot.
 		snapshot_encryption_key?: [...close({
 			kms_key_self_link?:       string
 			kms_key_service_account?: string

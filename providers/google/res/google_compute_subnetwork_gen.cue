@@ -33,7 +33,11 @@ google_compute_subnetwork: {
 		// creation time.
 		description?: string
 
-		// The range of external IPv6 addresses that are owned by this subnetwork.
+		// The range of external IPv6 addresses that are owned by this subnetwork. It's
+		// immutable and can only be
+		// specified during creation or the first time the subnet is updated into
+		// IPV4_IPV6 dual stack. Changing this
+		// field at any other time forces recreation of the subnetwork.
 		external_ipv6_prefix?: string
 
 		// The gateway address for default routes to reach destination addresses
@@ -53,7 +57,10 @@ google_compute_subnetwork: {
 
 		// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
 		// in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-		// mode. Use one of the following formats to specify a sub-PDP when creating
+		// mode. It's immutable and can only be specified during creation or the first
+		// time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+		// any other time forces recreation of the subnetwork.
+		// Use one of the following formats to specify a sub-PDP when creating
 		// a dual stack or IPv6-only subnetwork using BYOIP:
 		// Full resource URL, as in:
 		// *
@@ -67,7 +74,8 @@ google_compute_subnetwork: {
 		// only be specified during creation
 		// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the
 		// ipv6_type is EXTERNAL then this subnet
-		// cannot enable direct path. Possible values: ["EXTERNAL", "INTERNAL"]
+		// cannot enable direct path. Changing this field at any other time forces
+		// recreation of the subnetwork. Possible values: ["EXTERNAL", "INTERNAL"]
 		ipv6_access_type?: string
 
 		// The range of internal IPv6 addresses that are owned by this subnetwork.

@@ -217,6 +217,9 @@ google_ces_agent: {
 		// produce responses that are more predictable. Higher temperatures produce
 		// responses that are more creative.
 		temperature?: number
+
+		// The thinking level of the model. Possible values: ["DEFAULT", "LOW", "MEDIUM", "HIGH"]
+		thinking_level?: string
 	})
 
 	#remote_a2a_agent: close({

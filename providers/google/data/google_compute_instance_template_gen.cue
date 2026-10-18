@@ -160,6 +160,7 @@ google_compute_instance_template: {
 			nic_type?:           string
 			parent_nic_name?:    string
 			queue_count?:        number
+			service_class_id?:   string
 			stack_type?:         string
 			subnetwork?:         string
 			subnetwork_project?: string
@@ -231,7 +232,11 @@ google_compute_instance_template: {
 			on_instance_stop_action?: [...close({
 				discard_local_ssd?: bool
 			})]
-			preemptible?:        bool
+			preemptible?: bool
+			preemption_notice_duration?: [...close({
+				nanos?:   number
+				seconds?: number
+			})]
 			provisioning_model?: string
 			termination_time?:   string
 		})]
