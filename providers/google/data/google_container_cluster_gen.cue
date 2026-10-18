@@ -814,6 +814,10 @@ google_container_cluster: {
 				total_max_node_count?: number
 				total_min_node_count?: number
 			})]
+			best_effort_provisioning?: [...close({
+				enabled?:             bool
+				min_provision_nodes?: number
+			})]
 			ignore_node_count_changes?: bool
 			initial_node_count?:        number
 			instance_group_urls?: [...string]

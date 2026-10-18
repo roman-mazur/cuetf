@@ -181,6 +181,9 @@ google_cloud_security_compliance_cloud_control: {
 		// Represents a double value.
 		number_value?: number
 
+		// Sub-parameter values, in JSON format.
+		oneof_value?: string
+
 		// Represents a string value.
 		string_value?: string
 	})
@@ -279,6 +282,9 @@ google_cloud_security_compliance_cloud_control: {
 		// Represents a double value.
 		number_value?: number
 
+		// Sub-parameter values, in JSON format.
+		oneof_value?: string
+
 		// Represents a string value.
 		string_value?: string
 	})
@@ -314,6 +320,9 @@ google_cloud_security_compliance_cloud_control: {
 
 		// The name of the parameter.
 		name!: string
+
+		// The parameter spec of the cloud control, in JSON format.
+		sub_parameters?: string
 
 		// Parameter value type.
 		// Possible values:
@@ -354,6 +363,9 @@ google_cloud_security_compliance_cloud_control: {
 
 		// Represents a double value.
 		number_value?: number
+
+		// Sub-parameter values, in JSON format.
+		oneof_value?: string
 
 		// Represents a string value.
 		string_value?: string
@@ -424,6 +436,9 @@ google_cloud_security_compliance_cloud_control: {
 
 		// Represents a double value.
 		number_value?: number
+
+		// Sub-parameter values, in JSON format.
+		oneof_value?: string
 
 		// Represents a string value.
 		string_value?: string
@@ -528,6 +543,9 @@ google_cloud_security_compliance_cloud_control: {
 
 		// Represents a double value.
 		number_value?: number
+
+		// Sub-parameter values, in JSON format.
+		oneof_value?: string
 
 		// Represents a string value.
 		string_value?: string
@@ -637,6 +655,9 @@ google_cloud_security_compliance_cloud_control: {
 
 		// Represents a double value.
 		number_value?: number
+
+		// Sub-parameter values, in JSON format.
+		oneof_value?: string
 
 		// Represents a string value.
 		string_value?: string

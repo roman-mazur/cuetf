@@ -260,6 +260,7 @@ import (
 	_#ds: "\(#googlePrefix)_folder_iam_policy": close({data.google_folder_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_folder_organization_policy": close({data.google_folder_organization_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_folders": close({data.google_folders & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_gemini_data_analytics_data_agent_iam_policy": close({data.google_gemini_data_analytics_data_agent_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_gemini_repository_group_iam_policy": close({data.google_gemini_repository_group_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_gke_backup_backup_plan_iam_policy": close({data.google_gke_backup_backup_plan_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_gke_backup_restore_plan_iam_policy": close({data.google_gke_backup_restore_plan_iam_policy & cuetf.MetaArgs})

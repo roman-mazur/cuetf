@@ -69,6 +69,8 @@ google_oracle_database_cloud_vm_clusters: {
 					id?:      string
 					version?: string
 				})]
+				vm_backup_storage_type?:      string
+				vm_file_system_storage_type?: string
 			})]
 			terraform_labels?: [string]: string
 		})]

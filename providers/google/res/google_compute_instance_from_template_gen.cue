@@ -343,6 +343,11 @@ google_compute_instance_from_template: {
 		// empty if not specified.
 		queue_count?: number
 
+		// Producer Service's Service class Id for the region of this network interface.
+		// Can only be used with network_attachment. It is not possible to use on its
+		// own; however, network_attachment can be used without service_class_id.
+		service_class_id?: string
+
 		// The stack type for this network interface to identify whether the IPv6
 		// feature is enabled or not. If not specified, IPV4_ONLY will be used.
 		stack_type?: string
@@ -383,6 +388,7 @@ google_compute_instance_from_template: {
 		max_run_duration?: matchN(1, [_#defs."/$defs/scheduling/$defs/max_run_duration", list.MaxItems(1) & [..._#defs."/$defs/scheduling/$defs/max_run_duration"]])
 		node_affinities?: matchN(1, [_#defs."/$defs/scheduling/$defs/node_affinities", [..._#defs."/$defs/scheduling/$defs/node_affinities"]])
 		on_instance_stop_action?: matchN(1, [_#defs."/$defs/scheduling/$defs/on_instance_stop_action", list.MaxItems(1) & [..._#defs."/$defs/scheduling/$defs/on_instance_stop_action"]])
+		preemption_notice_duration?: matchN(1, [_#defs."/$defs/scheduling/$defs/preemption_notice_duration", list.MaxItems(1) & [..._#defs."/$defs/scheduling/$defs/preemption_notice_duration"]])
 
 		// Specifies if the instance should be restarted if it was terminated by Compute
 		// Engine (not a user).
@@ -650,5 +656,15 @@ google_compute_instance_from_template: {
 	_#defs: "/$defs/scheduling/$defs/on_instance_stop_action": close({
 		// If true, the contents of any attached Local SSD disks will be discarded.
 		discard_local_ssd?: bool
+	})
+
+	_#defs: "/$defs/scheduling/$defs/preemption_notice_duration": close({
+		// Span of time that's a fraction of a second at nanosecond resolution.
+		// Durations less than one second are represented with a 0 seconds field and a
+		// positive nanos field. Must be from 0 to 999,999,999 inclusive.
+		nanos?: number
+
+		// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+		seconds!: number
 	})
 }

@@ -102,6 +102,11 @@ google_network_security_authz_policy: {
 	#network_rules: close({
 		from?: matchN(1, [_#defs."/$defs/network_rules/$defs/from", list.MaxItems(1) & [..._#defs."/$defs/network_rules/$defs/from"]])
 		to?: matchN(1, [_#defs."/$defs/network_rules/$defs/to", list.MaxItems(1) & [..._#defs."/$defs/network_rules/$defs/to"]])
+
+		// CEL expression that describes the conditions to be satisfied for the action.
+		// The result of the CEL expression is ANDed with the from and to. Refer to the
+		// CEL language reference for a list of available attributes.
+		when?: string
 	})
 
 	#target: close({
@@ -616,6 +621,7 @@ google_network_security_authz_policy: {
 	_#defs: "/$defs/network_rules/$defs/from/$defs/not_sources": close({
 		ip_blocks?: matchN(1, [_#defs."/$defs/network_rules/$defs/from/$defs/not_sources/$defs/ip_blocks", [..._#defs."/$defs/network_rules/$defs/from/$defs/not_sources/$defs/ip_blocks"]])
 		principals?: matchN(1, [_#defs."/$defs/network_rules/$defs/from/$defs/not_sources/$defs/principals", [..._#defs."/$defs/network_rules/$defs/from/$defs/not_sources/$defs/principals"]])
+		resources?: matchN(1, [_#defs."/$defs/network_rules/$defs/from/$defs/not_sources/$defs/resources", [..._#defs."/$defs/network_rules/$defs/from/$defs/not_sources/$defs/resources"]])
 	})
 
 	_#defs: "/$defs/network_rules/$defs/from/$defs/not_sources/$defs/ip_blocks": close({
@@ -642,11 +648,60 @@ google_network_security_authz_policy: {
 		// Examples:
 		// * abc only matches the value abc.
 		exact?: string
+
+		// If true, indicates the exact/prefix/suffix/contains matching should be case
+		// insensitive. For example, the matcher data will match both input string Data
+		// and data if set to true.
+		ignore_case?: bool
+	})
+
+	_#defs: "/$defs/network_rules/$defs/from/$defs/not_sources/$defs/resources": close({
+		iam_service_account?: matchN(1, [_#defs."/$defs/network_rules/$defs/from/$defs/not_sources/$defs/resources/$defs/iam_service_account", list.MaxItems(1) & [..._#defs."/$defs/network_rules/$defs/from/$defs/not_sources/$defs/resources/$defs/iam_service_account"]])
+		tag_value_id_set?: matchN(1, [_#defs."/$defs/network_rules/$defs/from/$defs/not_sources/$defs/resources/$defs/tag_value_id_set", list.MaxItems(1) & [..._#defs."/$defs/network_rules/$defs/from/$defs/not_sources/$defs/resources/$defs/tag_value_id_set"]])
+	})
+
+	_#defs: "/$defs/network_rules/$defs/from/$defs/not_sources/$defs/resources/$defs/iam_service_account": close({
+		// The input string must have the substring specified here. Note: empty contains
+		// match is not allowed, please use regex instead.
+		// Examples:
+		// * abc matches the value xyz.abc.def
+		contains?: string
+
+		// The input string must match exactly the string specified here.
+		// Examples:
+		// * abc only matches the value abc.
+		exact?: string
+
+		// If true, indicates the exact/prefix/suffix/contains matching should be case
+		// insensitive. For example, the matcher data will match both input string Data
+		// and data if set to true.
+		ignore_case?: bool
+
+		// The input string must have the prefix specified here. Note: empty prefix is
+		// not allowed, please use regex instead.
+		// Examples:
+		// * abc matches the value abc.xyz
+		prefix?: string
+
+		// The input string must have the suffix specified here. Note: empty prefix is
+		// not allowed, please use regex instead.
+		// Examples:
+		// * abc matches the value xyz.abc
+		suffix?: string
+	})
+
+	_#defs: "/$defs/network_rules/$defs/from/$defs/not_sources/$defs/resources/$defs/tag_value_id_set": close({
+		// A list of resource tag value permanent IDs to match against the resource
+		// manager tags value associated with the source VM of a request. The match
+		// follows AND semantics which means all the ids must match.
+		// Limited to 5 matches.
+		ids?: [...string]
 	})
 
 	_#defs: "/$defs/network_rules/$defs/from/$defs/sources": close({
 		ip_blocks?: matchN(1, [_#defs."/$defs/network_rules/$defs/from/$defs/sources/$defs/ip_blocks", [..._#defs."/$defs/network_rules/$defs/from/$defs/sources/$defs/ip_blocks"]])
 		principals?: matchN(1, [_#defs."/$defs/network_rules/$defs/from/$defs/sources/$defs/principals", [..._#defs."/$defs/network_rules/$defs/from/$defs/sources/$defs/principals"]])
+		resources?: matchN(1, [_#defs."/$defs/network_rules/$defs/from/$defs/sources/$defs/resources", [..._#defs."/$defs/network_rules/$defs/from/$defs/sources/$defs/resources"]])
 	})
 
 	_#defs: "/$defs/network_rules/$defs/from/$defs/sources/$defs/ip_blocks": close({
@@ -673,10 +728,93 @@ google_network_security_authz_policy: {
 		// Examples:
 		// * abc only matches the value abc.
 		exact?: string
+
+		// If true, indicates the exact/prefix/suffix/contains matching should be case
+		// insensitive. For example, the matcher data will match both input string Data
+		// and data if set to true.
+		ignore_case?: bool
+	})
+
+	_#defs: "/$defs/network_rules/$defs/from/$defs/sources/$defs/resources": close({
+		iam_service_account?: matchN(1, [_#defs."/$defs/network_rules/$defs/from/$defs/sources/$defs/resources/$defs/iam_service_account", list.MaxItems(1) & [..._#defs."/$defs/network_rules/$defs/from/$defs/sources/$defs/resources/$defs/iam_service_account"]])
+		tag_value_id_set?: matchN(1, [_#defs."/$defs/network_rules/$defs/from/$defs/sources/$defs/resources/$defs/tag_value_id_set", list.MaxItems(1) & [..._#defs."/$defs/network_rules/$defs/from/$defs/sources/$defs/resources/$defs/tag_value_id_set"]])
+	})
+
+	_#defs: "/$defs/network_rules/$defs/from/$defs/sources/$defs/resources/$defs/iam_service_account": close({
+		// The input string must have the substring specified here. Note: empty contains
+		// match is not allowed, please use regex instead.
+		// Examples:
+		// * abc matches the value xyz.abc.def
+		contains?: string
+
+		// The input string must match exactly the string specified here.
+		// Examples:
+		// * abc only matches the value abc.
+		exact?: string
+
+		// If true, indicates the exact/prefix/suffix/contains matching should be case
+		// insensitive. For example, the matcher data will match both input string Data
+		// and data if set to true.
+		ignore_case?: bool
+
+		// The input string must have the prefix specified here. Note: empty prefix is
+		// not allowed, please use regex instead.
+		// Examples:
+		// * abc matches the value abc.xyz
+		prefix?: string
+
+		// The input string must have the suffix specified here. Note: empty prefix is
+		// not allowed, please use regex instead.
+		// Examples:
+		// * abc matches the value xyz.abc
+		suffix?: string
+	})
+
+	_#defs: "/$defs/network_rules/$defs/from/$defs/sources/$defs/resources/$defs/tag_value_id_set": close({
+		// A list of resource tag value permanent IDs to match against the resource
+		// manager tags value associated with the source VM of a request. The match
+		// follows AND semantics which means all the ids must match.
+		// Limited to 5 matches.
+		ids?: [...string]
 	})
 
 	_#defs: "/$defs/network_rules/$defs/to": close({
+		not_operations?: matchN(1, [_#defs."/$defs/network_rules/$defs/to/$defs/not_operations", [..._#defs."/$defs/network_rules/$defs/to/$defs/not_operations"]])
 		operations?: matchN(1, [_#defs."/$defs/network_rules/$defs/to/$defs/operations", [..._#defs."/$defs/network_rules/$defs/to/$defs/operations"]])
+	})
+
+	_#defs: "/$defs/network_rules/$defs/to/$defs/not_operations": close({
+		snis?: matchN(1, [_#defs."/$defs/network_rules/$defs/to/$defs/not_operations/$defs/snis", [..._#defs."/$defs/network_rules/$defs/to/$defs/not_operations/$defs/snis"]])
+	})
+
+	_#defs: "/$defs/network_rules/$defs/to/$defs/not_operations/$defs/snis": close({
+		// The input string must have the substring specified here. Note: empty contains
+		// match is not allowed, please use regex instead.
+		// Examples:
+		// * abc matches the value xyz.abc.def
+		contains?: string
+
+		// The input string must match exactly the string specified here.
+		// Examples:
+		// * abc only matches the value abc.
+		exact?: string
+
+		// If true, indicates the exact/prefix/suffix/contains matching should be case
+		// insensitive. For example, the matcher data will match both input string Data
+		// and data if set to true.
+		ignore_case?: bool
+
+		// The input string must have the prefix specified here. Note: empty prefix is
+		// not allowed, please use regex instead.
+		// Examples:
+		// * abc matches the value abc.xyz
+		prefix?: string
+
+		// The input string must have the suffix specified here. Note: empty suffix is
+		// not allowed, please use regex instead.
+		// Examples:
+		// * abc matches the value xyz.abc
+		suffix?: string
 	})
 
 	_#defs: "/$defs/network_rules/$defs/to/$defs/operations": close({
@@ -684,6 +822,32 @@ google_network_security_authz_policy: {
 	})
 
 	_#defs: "/$defs/network_rules/$defs/to/$defs/operations/$defs/snis": close({
+		// The input string must have the substring specified here. Note: empty contains
+		// match is not allowed, please use regex instead.
+		// Examples:
+		// * abc matches the value xyz.abc.def
+		contains?: string
+
+		// The input string must match exactly the string specified here.
+		// Examples:
+		// * abc only matches the value abc.
 		exact?: string
+
+		// If true, indicates the exact/prefix/suffix/contains matching should be case
+		// insensitive. For example, the matcher data will match both input string Data
+		// and data if set to true.
+		ignore_case?: bool
+
+		// The input string must have the prefix specified here. Note: empty prefix is
+		// not allowed, please use regex instead.
+		// Examples:
+		// * abc matches the value abc.xyz
+		prefix?: string
+
+		// The input string must have the suffix specified here. Note: empty suffix is
+		// not allowed, please use regex instead.
+		// Examples:
+		// * abc matches the value xyz.abc
+		suffix?: string
 	})
 }

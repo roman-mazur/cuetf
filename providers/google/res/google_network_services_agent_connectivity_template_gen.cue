@@ -18,6 +18,11 @@ google_network_services_agent_connectivity_template: {
 		// Both PUBLIC and PRIVATE can be configured. Possible values: ["PUBLIC", "PRIVATE"]
 		access_types?: [...string]
 
+		// The compute environment where the agent is hosted.
+		// Exactly one type of compute must be chosen.
+		// Possible values are: 'GKE', 'CLOUD_RUN'.
+		agent_compute?: string
+
 		// Short name of the AgentConnectivityTemplate resource.
 		agent_connectivity_template_id!: string
 
@@ -31,6 +36,10 @@ google_network_services_agent_connectivity_template: {
 		// management without updating or deleting the resource in the API.
 		// When set to "DELETE", deleting the resource is allowed.
 		deletion_policy?: string
+
+		// The deployment model for the gateway.
+		// Possible values are: 'CENTRALIZED', 'AMBIENT'.
+		deployment_model?: string
 
 		// A free-text description of the resource. Max length 1024 characters.
 		description?: string

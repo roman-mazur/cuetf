@@ -108,6 +108,7 @@ provider: {
 		firebaserules_custom_endpoint?:          string
 		firestore_custom_endpoint?:              string
 		gemini_custom_endpoint?:                 string
+		gemini_data_analytics_custom_endpoint?:  string
 		gke_backup_custom_endpoint?:             string
 		gke_hub2_custom_endpoint?:               string
 		gke_hub_custom_endpoint?:                string

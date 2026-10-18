@@ -6,8 +6,10 @@ google_dialogflow_generator: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_dialogflow_generator")
 	close({
+		agent_coaching_context?: matchN(1, [#agent_coaching_context, list.MaxItems(1) & [...#agent_coaching_context]])
+		free_form_context?: matchN(1, [#free_form_context, list.MaxItems(1) & [...#free_form_context]])
 		inference_parameter?: matchN(1, [#inference_parameter, list.MaxItems(1) & [...#inference_parameter]])
-		summarization_context!: matchN(1, [#summarization_context, list.MaxItems(1) & [_, ...] & [...#summarization_context]])
+		summarization_context?: matchN(1, [#summarization_context, list.MaxItems(1) & [...#summarization_context]])
 		timeouts?: #timeouts
 
 		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
@@ -39,10 +41,34 @@ google_dialogflow_generator: {
 		published_model?: string
 		project?:         string
 
+		// Optional. Resource names of the tools that the generator can choose from.
+		// Format: 'projects/<Project ID>/locations/<Location ID>/tools/<tool ID>'.
+		tools?: [...string]
+
 		// Optional. The trigger event of the generator. It defines when the generator
 		// is triggered in a conversation. Possible values: ["END_OF_UTTERANCE",
 		// "MANUAL_CALL", "CUSTOMER_MESSAGE", "AGENT_MESSAGE"]
 		trigger_event?: string
+	})
+
+	#agent_coaching_context: close({
+		instructions?: matchN(1, [_#defs."/$defs/agent_coaching_context/$defs/instructions", [..._#defs."/$defs/agent_coaching_context/$defs/instructions"]])
+
+		// Optional. Output language code.
+		output_language_code?: string
+
+		// Optional. The overarching guidance for the agent coaching. This should be set
+		// only for v1.5 and later versions.
+		overarching_guidance?: string
+
+		// Optional. Version of the feature. If not set, default to latest version.
+		// Current candidates are ["2.5"].
+		version?: string
+	})
+
+	#free_form_context: close({
+		// Optional. Free form text input to LLM.
+		text?: string
 	})
 
 	#inference_parameter: close({
@@ -86,7 +112,7 @@ google_dialogflow_generator: {
 		output_language_code?: string
 
 		// Optional. Version of the feature. If not set, default to latest version.
-		// Current candidates are ["1.0"].
+		// Current candidates are ["5.0", "6.0"].
 		version?: string
 	})
 
@@ -94,6 +120,28 @@ google_dialogflow_generator: {
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/agent_coaching_context/$defs/instructions": close({
+		// Optional. The action that human agent should take.
+		agent_action?: string
+
+		// Optional. The condition of the instruction.
+		condition?: string
+
+		// Optional. The detailed description of this instruction.
+		display_details?: string
+
+		// Optional. Display name for the instruction.
+		display_name?: string
+
+		// Optional. The action that system should take.
+		system_action?: string
+
+		// Optional. The trigger event of the instruction. Possible values:
+		// ["END_OF_UTTERANCE", "MANUAL_CALL", "CUSTOMER_MESSAGE", "AGENT_MESSAGE",
+		// "TOOL_CALL_COMPLETION"]
+		triggering_event?: string
 	})
 
 	_#defs: "/$defs/summarization_context/$defs/few_shot_examples": close({

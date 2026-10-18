@@ -931,10 +931,14 @@ google_cloud_run_v2_service: {
 		// The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
 		identity?: string
 
-		// Controls whether an instance receives a MWLID certificate.
+		// Controls whether an instance receives a managed workload identity (MWLID) certificate.
+		// Defaults to true when 'identity_type' is 'IDENTITY_TYPE_AGENT_IDENTITY'.
 		identity_certificate_enabled?: bool
 
-		// The type of identity to use. Possible values:
+		// The type of identity to use. 'IDENTITY_TYPE_AGENT_IDENTITY' assigns a
+		// system-managed agent identity and
+		// is required when the Service's 'functional_type' is 'FUNCTIONAL_TYPE_AGENT'. Once set, this field
+		// cannot be changed or unset. Possible values:
 		// ["IDENTITY_TYPE_SERVICE_ACCOUNT", "IDENTITY_TYPE_WORKLOAD_IDENTITY",
 		// "IDENTITY_TYPE_AGENT_IDENTITY"]
 		identity_type?: string

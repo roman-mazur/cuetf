@@ -149,8 +149,10 @@ google_network_services_edge_cache_origin: {
 		// Whenever possible, content will be fetched from origin and cached in or
 		// near the specified origin. Best effort.
 		//
-		// You must specify exactly one FlexShieldingRegion. Possible values:
-		// ["AFRICA_SOUTH1", "ME_CENTRAL1"]
+		// You must specify exactly one FlexShieldingRegion. Possible values include
+		// 'AFRICA_SOUTH1', 'ME_CENTRAL1', 'EUROPE_WEST3', and 'US_EAST5'. See
+		// [FlexShieldingRegion](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#FlexShieldingRegion)
+		// for the full list of supported regions.
 		flex_shielding_regions?: [...string]
 	})
 

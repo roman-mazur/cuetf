@@ -140,6 +140,8 @@ google_oracle_database_cloud_vm_cluster: {
 				id?:      string
 				version?: string
 			})]
+			vm_backup_storage_type?:      string
+			vm_file_system_storage_type?: string
 		})]
 
 		// The combination of labels configured directly on the resource
