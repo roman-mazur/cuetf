@@ -118,12 +118,6 @@ elasticstack_kibana_alerting_rule: {
 		// checked. The interval must be specified in seconds, minutes, hours or days.
 		interval!: string
 
-		// Date of the last execution of this rule.
-		last_execution_date?: string
-
-		// Status of the last execution of this rule.
-		last_execution_status?: string
-
 		// The name of the rule. While this name does not have to be unique, a
 		// distinctive name can help you identify a rule.
 		name!: string

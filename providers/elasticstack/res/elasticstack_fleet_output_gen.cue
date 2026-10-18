@@ -170,6 +170,16 @@ elasticstack_fleet_output: {
 		// "constructor", "prototype"). Invalid explicit values fail at plan time.
 		output_id?: string
 
+		// Performance tuning preset for elasticsearch and remote_elasticsearch outputs.
+		// One of `balanced`, `custom`, `latency`, `scale`, `throughput`. When omitted,
+		// the current preset is kept unless `type` or `config_yaml` changes. Otherwise
+		// Fleet may select it: `custom` when `config_yaml` contains performance tuning
+		// keys (such as `bulk_max_size` or `worker`) and `balanced` otherwise.
+		// Removing `preset` from the configuration does not reset it; set it
+		// explicitly to change it. `balanced` cannot be used when `config_yaml`
+		// contains performance tuning keys.
+		preset?: string
+
 		// Service token for remote Elasticsearch outputs.
 		service_token?: string
 

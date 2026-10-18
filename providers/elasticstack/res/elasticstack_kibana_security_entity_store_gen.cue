@@ -72,7 +72,9 @@ elasticstack_kibana_security_entity_store: {
 		// Whether any managed entity engine should be running after reconciliation.
 		started?: bool
 
-		// Normalized JSON representation of the most recent entity store status response.
+		// Raw JSON of the most recent entity store status response. The order of the
+		// engines array is ignored when comparing this attribute for semantic
+		// equality.
 		status_json?: string
 	})
 

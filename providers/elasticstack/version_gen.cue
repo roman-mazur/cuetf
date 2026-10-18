@@ -1,3 +1,3 @@
 package elasticstack
 
-#Version: "0.16.5"
+#Version: "0.16.6"

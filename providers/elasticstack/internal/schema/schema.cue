@@ -3377,6 +3377,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					read_indices: {
 						nested_type: {
 							attributes: {
+								concrete_indices: {
+									type: ["set", "string"]
+									description:      "Concrete indices or data streams currently attached to the alias for this expression."
+									description_kind: "plain"
+									computed:         true
+								}
 								filter: {
 									type:             "string"
 									description:      "Query used to limit documents the alias can access."
@@ -3398,7 +3404,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								}
 								name: {
 									type:             "string"
-									description:      "Name of the read index."
+									description:      "Name or Elasticsearch multi-target expression for the read index or data stream targets."
 									description_kind: "plain"
 									required:         true
 								}
@@ -3478,7 +3484,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								}
 								name: {
 									type:             "string"
-									description:      "Name of the write index."
+									description:      "Name of the write index. Multi-target expressions are not supported."
 									description_kind: "plain"
 									required:         true
 								}
@@ -4641,6 +4647,442 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				}
 				description:      "Manage a user-declared subset of index mappings on an existing Elasticsearch index. Destroy is a no-op — field mappings are not removed."
 				description_kind: "plain"
+			}
+		}
+		elasticstack_elasticsearch_index_settings: {
+			version: 0
+			block: {
+				attributes: {
+					analyze_max_token_count: {
+						type:             "number"
+						description:      "The maximum number of tokens that can be produced using _analyze API."
+						description_kind: "plain"
+						optional:         true
+					}
+					auto_expand_replicas: {
+						type:             "string"
+						description:      "Set the number of replicas to the node count in the cluster. Set to a dash delimited lower and upper bound (e.g. 0-5) or use all for the upper bound (e.g. 0-all)"
+						description_kind: "plain"
+						optional:         true
+					}
+					blocks_metadata: {
+						type:             "bool"
+						description:      "Set to `true` to disable index metadata reads and writes."
+						description_kind: "plain"
+						optional:         true
+					}
+					blocks_read: {
+						type:             "bool"
+						description:      "Set to `true` to disable read operations against the index."
+						description_kind: "plain"
+						optional:         true
+					}
+					blocks_read_only: {
+						type:             "bool"
+						description:      "Set to `true` to make the index and index metadata read only, `false` to allow writes and metadata changes."
+						description_kind: "plain"
+						optional:         true
+					}
+					blocks_read_only_allow_delete: {
+						type:             "bool"
+						description:      "Identical to `index.blocks.read_only` but allows deleting the index to free up resources."
+						description_kind: "plain"
+						optional:         true
+					}
+					blocks_write: {
+						type:             "bool"
+						description:      "Set to `true` to disable data write operations against the index. This setting does not affect metadata."
+						description_kind: "plain"
+						optional:         true
+					}
+					default_pipeline: {
+						type:             "string"
+						description:      "The default ingest node pipeline for this index. Index requests will fail if the default pipeline is set and the pipeline does not exist."
+						description_kind: "plain"
+						optional:         true
+					}
+					final_pipeline: {
+						type: "string"
+						description: """
+									Final ingest pipeline for the index. Indexing requests will fail if the final pipeline is set and the pipeline does not exist. The final pipeline always runs after the request pipeline (if specified) and the default pipeline (if it exists). The special pipeline name `_none` indicates no ingest pipeline will run.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					gc_deletes: {
+						type:             "string"
+						description:      "The length of time that a deleted document's version number remains available for further versioned operations."
+						description_kind: "plain"
+						optional:         true
+					}
+					highlight_max_analyzed_offset: {
+						type:             "number"
+						description:      "The maximum number of characters that will be analyzed for a highlight request."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Computed `<cluster_uuid>/<index_name>` identifier of the target index."
+						description_kind: "markdown"
+						computed:         true
+					}
+					index: {
+						type:             "string"
+						description:      "Name of the target Elasticsearch index; changing it forces replacement. The name is treated as an already-resolved concrete index (no date-math resolution)."
+						description_kind: "markdown"
+						required:         true
+					}
+					indexing_slowlog_level: {
+						type:             "string"
+						description:      "Set which logging level to use for the search slow log, can be: `warn`, `info`, `debug`, `trace`"
+						description_kind: "plain"
+						optional:         true
+					}
+					indexing_slowlog_source: {
+						type: "string"
+						description: """
+									Set the number of characters of the `_source` to include in the slowlog lines. `false` or `0` skips logging the source entirely; `true` logs the entire source regardless of size. The original `_source` is reformatted by default to make sure that it fits on a single log line.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					indexing_slowlog_threshold_index_debug: {
+						type:             "string"
+						description:      "Set the cutoff for shard level slow search logging of slow searches for indexing queries, in time units, e.g. `2s`"
+						description_kind: "plain"
+						optional:         true
+					}
+					indexing_slowlog_threshold_index_info: {
+						type:             "string"
+						description:      "Set the cutoff for shard level slow search logging of slow searches for indexing queries, in time units, e.g. `5s`"
+						description_kind: "plain"
+						optional:         true
+					}
+					indexing_slowlog_threshold_index_trace: {
+						type:             "string"
+						description:      "Set the cutoff for shard level slow search logging of slow searches for indexing queries, in time units, e.g. `500ms`"
+						description_kind: "plain"
+						optional:         true
+					}
+					indexing_slowlog_threshold_index_warn: {
+						type:             "string"
+						description:      "Set the cutoff for shard level slow search logging of slow searches for indexing queries, in time units, e.g. `10s`"
+						description_kind: "plain"
+						optional:         true
+					}
+					mapping_total_fields_limit: {
+						type:             "number"
+						description:      "The maximum number of fields in an index. Field type parameters count towards this limit. The default value is 1000."
+						description_kind: "plain"
+						optional:         true
+					}
+					max_docvalue_fields_search: {
+						type:             "number"
+						description:      "The maximum number of `docvalue_fields` that are allowed in a query."
+						description_kind: "plain"
+						optional:         true
+					}
+					max_inner_result_window: {
+						type:             "number"
+						description:      "The maximum value of `from + size` for inner hits definition and top hits aggregations to this index."
+						description_kind: "plain"
+						optional:         true
+					}
+					max_ngram_diff: {
+						type:             "number"
+						description:      "The maximum allowed difference between min_gram and max_gram for NGramTokenizer and NGramTokenFilter."
+						description_kind: "plain"
+						optional:         true
+					}
+					max_refresh_listeners: {
+						type:             "number"
+						description:      "Maximum number of refresh listeners available on each shard of the index."
+						description_kind: "plain"
+						optional:         true
+					}
+					max_regex_length: {
+						type:             "number"
+						description:      "The maximum length of regex that can be used in Regexp Query."
+						description_kind: "plain"
+						optional:         true
+					}
+					max_rescore_window: {
+						type:             "number"
+						description:      "The maximum value of `window_size` for `rescore` requests in searches of this index."
+						description_kind: "plain"
+						optional:         true
+					}
+					max_result_window: {
+						type:             "number"
+						description:      "The maximum value of `from + size` for searches to this index."
+						description_kind: "plain"
+						optional:         true
+					}
+					max_script_fields: {
+						type:             "number"
+						description:      "The maximum number of `script_fields` that are allowed in a query."
+						description_kind: "plain"
+						optional:         true
+					}
+					max_shingle_diff: {
+						type:             "number"
+						description:      "The maximum allowed difference between max_shingle_size and min_shingle_size for ShingleTokenFilter."
+						description_kind: "plain"
+						optional:         true
+					}
+					max_terms_count: {
+						type:             "number"
+						description:      "The maximum number of terms that can be used in Terms Query."
+						description_kind: "plain"
+						optional:         true
+					}
+					number_of_replicas: {
+						type:             "number"
+						description:      "Number of shard replicas."
+						description_kind: "plain"
+						optional:         true
+					}
+					query_default_field: {
+						type: ["set", "string"]
+						description:      "Wildcard (*) patterns matching one or more fields. Defaults to '*', which matches all fields eligible for term-level queries, excluding metadata fields."
+						description_kind: "plain"
+						optional:         true
+					}
+					refresh_interval: {
+						type:             "string"
+						description:      "How often to perform a refresh operation, which makes recent changes to the index visible to search. Can be set to `-1` to disable refresh."
+						description_kind: "plain"
+						optional:         true
+					}
+					routing_allocation_enable: {
+						type:             "string"
+						description:      "Controls shard allocation for this index. It can be set to: `all` , `primaries` , `new_primaries` , `none`."
+						description_kind: "plain"
+						optional:         true
+					}
+					routing_rebalance_enable: {
+						type:             "string"
+						description:      "Enables shard rebalancing for this index. It can be set to: `all`, `primaries` , `replicas` , `none`."
+						description_kind: "plain"
+						optional:         true
+					}
+					search_idle_after: {
+						type:             "string"
+						description:      "How long a shard can not receive a search or get request until it’s considered search idle."
+						description_kind: "plain"
+						optional:         true
+					}
+					search_slowlog_level: {
+						type:             "string"
+						description:      "Set which logging level to use for the search slow log, can be: `warn`, `info`, `debug`, `trace`"
+						description_kind: "plain"
+						optional:         true
+					}
+					search_slowlog_threshold_fetch_debug: {
+						type:             "string"
+						description:      "Set the cutoff for shard level slow search logging of slow searches in the fetch phase, in time units, e.g. `2s`"
+						description_kind: "plain"
+						optional:         true
+					}
+					search_slowlog_threshold_fetch_info: {
+						type:             "string"
+						description:      "Set the cutoff for shard level slow search logging of slow searches in the fetch phase, in time units, e.g. `5s`"
+						description_kind: "plain"
+						optional:         true
+					}
+					search_slowlog_threshold_fetch_trace: {
+						type:             "string"
+						description:      "Set the cutoff for shard level slow search logging of slow searches in the fetch phase, in time units, e.g. `500ms`"
+						description_kind: "plain"
+						optional:         true
+					}
+					search_slowlog_threshold_fetch_warn: {
+						type:             "string"
+						description:      "Set the cutoff for shard level slow search logging of slow searches in the fetch phase, in time units, e.g. `10s`"
+						description_kind: "plain"
+						optional:         true
+					}
+					search_slowlog_threshold_query_debug: {
+						type:             "string"
+						description:      "Set the cutoff for shard level slow search logging of slow searches in the query phase, in time units, e.g. `2s`"
+						description_kind: "plain"
+						optional:         true
+					}
+					search_slowlog_threshold_query_info: {
+						type:             "string"
+						description:      "Set the cutoff for shard level slow search logging of slow searches in the query phase, in time units, e.g. `5s`"
+						description_kind: "plain"
+						optional:         true
+					}
+					search_slowlog_threshold_query_trace: {
+						type:             "string"
+						description:      "Set the cutoff for shard level slow search logging of slow searches in the query phase, in time units, e.g. `500ms`"
+						description_kind: "plain"
+						optional:         true
+					}
+					search_slowlog_threshold_query_warn: {
+						type:             "string"
+						description:      "Set the cutoff for shard level slow search logging of slow searches in the query phase, in time units, e.g. `10s`"
+						description_kind: "plain"
+						optional:         true
+					}
+					settings_json: {
+						type:             "string"
+						description:      "Flat JSON object of dynamic index settings not covered by the typed attributes (e.g. `{\"max_result_window\": 20000}`). Use flat dotted setting keys; values are scalars or arrays of scalars (including empty arrays). Creation-time-only (static) settings, nested objects, explicit `null` values and object or null array elements are rejected. To reset a setting, omit it. Keys set here must not also be set via a typed attribute."
+						description_kind: "markdown"
+						optional:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+					unassigned_node_left_delayed_timeout: {
+						type:             "string"
+						description:      "Time to delay the allocation of replica shards which become unassigned because a node has left, in time units, e.g. `10s`"
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Manages the dynamic settings of an existing Elasticsearch index without managing the index itself. Changing or omitting a setting updates or resets it on the index; destroy does not revert settings and the index is left in place."
+				description_kind: "markdown"
 			}
 		}
 		elasticstack_elasticsearch_index_template: {
@@ -10728,6 +11170,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						nesting_mode: "single"
 						block: {
 							attributes: {
+								always_sign_requests: {
+									type:             "bool"
+									description:      "If true, request payload signatures are sent even over HTTPS. Useful for some S3-compatible stores that require this additional integrity mechanism."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
 								base_path: {
 									type:             "string"
 									description:      "Specifies the path to the repository data within its bucket."
@@ -10773,6 +11222,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								compress: {
 									type:             "bool"
 									description:      "If true, metadata files, such as index mappings and settings, are compressed in snapshots."
+									description_kind: "markdown"
+									optional:         true
+									computed:         true
+								}
+								disable_chunked_encoding: {
+									type:             "bool"
+									description:      "If true, chunked encoding is disabled and will not be used for S3 uploads. Only set this if the storage service does not support chunked encoding."
 									description_kind: "markdown"
 									optional:         true
 									computed:         true
@@ -12541,6 +12997,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											events: {
 												nested_type: {
 													attributes: {
+														dns: {
+															type:             "bool"
+															description:      "Collect DNS events."
+															description_kind: "plain"
+															optional:         true
+														}
 														file: {
 															type:             "bool"
 															description:      "Collect file events."
@@ -12607,6 +13069,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 															description_kind: "plain"
 															optional:         true
 														}
+														on_write_scan: {
+															type:             "bool"
+															description:      "Whether on-write scan is enabled."
+															description_kind: "plain"
+															optional:         true
+														}
 													}
 													nesting_mode: "single"
 												}
@@ -12617,6 +13085,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											memory_protection: {
 												nested_type: {
 													attributes: {
+														custom_yara_signatures: {
+															type:             "bool"
+															description:      "Whether custom YARA signatures are enabled for memory protection."
+															description_kind: "plain"
+															optional:         true
+														}
 														mode: {
 															type:             "string"
 															description:      "Protection mode. Valid values: `\"off\"`, `\"detect\"`, `\"prevent\"`."
@@ -12763,9 +13237,37 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 												optional:         true
 												computed:         true
 											}
+											device_control: {
+												nested_type: {
+													attributes: {
+														enabled: {
+															type:             "bool"
+															description:      "Whether device control is enabled."
+															description_kind: "plain"
+															optional:         true
+														}
+														usb_storage: {
+															type:             "string"
+															description:      "Access level for USB storage devices. Valid values: `\"audit\"`, `\"read_only\"`, `\"no_execute\"`, `\"deny_all\"`."
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "macOS device control settings."
+												description_kind: "plain"
+												optional:         true
+											}
 											events: {
 												nested_type: {
 													attributes: {
+														dns: {
+															type:             "bool"
+															description:      "Collect DNS events."
+															description_kind: "plain"
+															optional:         true
+														}
 														file: {
 															type:             "bool"
 															description:      "Collect file events."
@@ -12781,6 +13283,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 														process: {
 															type:             "bool"
 															description:      "Collect process events."
+															description_kind: "plain"
+															optional:         true
+														}
+														security: {
+															type:             "bool"
+															description:      "Collect security events."
 															description_kind: "plain"
 															optional:         true
 														}
@@ -12842,6 +13350,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											memory_protection: {
 												nested_type: {
 													attributes: {
+														custom_yara_signatures: {
+															type:             "bool"
+															description:      "Whether custom YARA signatures are enabled for memory protection."
+															description_kind: "plain"
+															optional:         true
+														}
 														mode: {
 															type:             "string"
 															description:      "Protection mode. Valid values: `\"off\"`, `\"detect\"`, `\"prevent\"`."
@@ -12868,6 +13382,30 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 												nested_type: {
 													attributes: {
 														behavior_protection: {
+															nested_type: {
+																attributes: {
+																	enabled: {
+																		type:             "bool"
+																		description:      "Whether the popup notification is enabled."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																	message: {
+																		type:             "string"
+																		description:      "The popup message text."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														device_control: {
 															nested_type: {
 																attributes: {
 																	enabled: {
@@ -12939,12 +13477,61 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 															optional:         true
 															computed:         true
 														}
+														ransomware: {
+															nested_type: {
+																attributes: {
+																	enabled: {
+																		type:             "bool"
+																		description:      "Whether the popup notification is enabled."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																	message: {
+																		type:             "string"
+																		description:      "The popup message text."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
 													}
 													nesting_mode: "single"
 												}
 												description:      "macOS popup notification settings."
 												description_kind: "plain"
 												optional:         true
+											}
+											ransomware: {
+												nested_type: {
+													attributes: {
+														mode: {
+															type:             "string"
+															description:      "Protection mode. Valid values: `\"off\"`, `\"detect\"`, `\"prevent\"`."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														supported: {
+															type:             "bool"
+															description:      "Whether this protection is supported on the platform."
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "macOS ransomware protection settings."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
 											}
 										}
 										nesting_mode: "single"
@@ -13038,12 +13625,40 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 												optional:         true
 												computed:         true
 											}
+											device_control: {
+												nested_type: {
+													attributes: {
+														enabled: {
+															type:             "bool"
+															description:      "Whether device control is enabled."
+															description_kind: "plain"
+															optional:         true
+														}
+														usb_storage: {
+															type:             "string"
+															description:      "Access level for USB storage devices. Valid values: `\"audit\"`, `\"read_only\"`, `\"no_execute\"`, `\"deny_all\"`."
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Windows device control settings."
+												description_kind: "plain"
+												optional:         true
+											}
 											events: {
 												nested_type: {
 													attributes: {
 														authentication: {
 															type:             "bool"
 															description:      "Collect authentication events."
+															description_kind: "plain"
+															optional:         true
+														}
+														credential_access: {
+															type:             "bool"
+															description:      "Collect credential access events."
 															description_kind: "plain"
 															optional:         true
 														}
@@ -13147,6 +13762,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											memory_protection: {
 												nested_type: {
 													attributes: {
+														custom_yara_signatures: {
+															type:             "bool"
+															description:      "Whether custom YARA signatures are enabled for memory protection."
+															description_kind: "plain"
+															optional:         true
+														}
 														mode: {
 															type:             "string"
 															description:      "Protection mode. Valid values: `\"off\"`, `\"detect\"`, `\"prevent\"`."
@@ -13173,6 +13794,30 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 												nested_type: {
 													attributes: {
 														behavior_protection: {
+															nested_type: {
+																attributes: {
+																	enabled: {
+																		type:             "bool"
+																		description:      "Whether the popup notification is enabled."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																	message: {
+																		type:             "string"
+																		description:      "The popup message text."
+																		description_kind: "plain"
+																		optional:         true
+																		computed:         true
+																	}
+																}
+																nesting_mode: "single"
+															}
+															description_kind: "plain"
+															optional:         true
+															computed:         true
+														}
+														device_control: {
 															nested_type: {
 																attributes: {
 																	enabled: {
@@ -13317,7 +13962,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					policy_id: {
 						type:             "string"
-						description:      "Unique identifier of the Elastic Defend integration policy. Used as the import key."
+						description:      "Unique identifier of the Elastic Defend integration policy. Used as the import key. When set, the policy is created with this ID; otherwise Kibana assigns one. Changing it forces replacement."
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -13609,7 +14254,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								condition: {
 									type:             "string"
 									description:      "Agent condition expression to evaluate whether to apply this input."
-									description_kind: "plain"
+									description_kind: "markdown"
 									optional:         true
 								}
 								defaults: {
@@ -13621,39 +14266,39 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 														enabled: {
 															type:             "bool"
 															description:      "Default enabled state for the stream."
-															description_kind: "plain"
+															description_kind: "markdown"
 															computed:         true
 														}
 														vars: {
 															type:             "string"
 															description:      "Stream-level variable defaults as JSON."
-															description_kind: "plain"
+															description_kind: "markdown"
 															computed:         true
 														}
 													}
 													nesting_mode: "map"
 												}
 												description:      "Stream-level defaults mapped by stream ID."
-												description_kind: "plain"
+												description_kind: "markdown"
 												computed:         true
 											}
 											vars: {
 												type:             "string"
 												description:      "Input-level variable defaults as JSON."
-												description_kind: "plain"
+												description_kind: "markdown"
 												computed:         true
 											}
 										}
 										nesting_mode: "single"
 									}
 									description:      "Input defaults."
-									description_kind: "plain"
+									description_kind: "markdown"
 									computed:         true
 								}
 								enabled: {
 									type:             "bool"
 									description:      "Enable the input."
-									description_kind: "plain"
+									description_kind: "markdown"
 									optional:         true
 									computed:         true
 								}
@@ -13663,20 +14308,20 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 											condition: {
 												type:             "string"
 												description:      "Agent condition expression to evaluate whether to apply this stream."
-												description_kind: "plain"
+												description_kind: "markdown"
 												optional:         true
 											}
 											enabled: {
 												type:             "bool"
 												description:      "Enable the stream."
-												description_kind: "plain"
+												description_kind: "markdown"
 												optional:         true
 												computed:         true
 											}
 											vars: {
 												type:             "string"
 												description:      "Stream-level variables as JSON."
-												description_kind: "plain"
+												description_kind: "markdown"
 												optional:         true
 												sensitive:        true
 											}
@@ -13684,13 +14329,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 										nesting_mode: "map"
 									}
 									description:      "Input streams mapped by stream ID."
-									description_kind: "plain"
+									description_kind: "markdown"
 									optional:         true
 								}
 								vars: {
 									type:             "string"
 									description:      "Input-level variables as JSON."
-									description_kind: "plain"
+									description_kind: "markdown"
 									optional:         true
 									sensitive:        true
 								}
@@ -14434,6 +15079,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					preset: {
+						type:             "string"
+						description:      "Performance tuning preset for elasticsearch and remote_elasticsearch outputs. One of `balanced`, `custom`, `latency`, `scale`, `throughput`. When omitted, the current preset is kept unless `type` or `config_yaml` changes. Otherwise Fleet may select it: `custom` when `config_yaml` contains performance tuning keys (such as `bulk_max_size` or `worker`) and `balanced` otherwise. Removing `preset` from the configuration does not reset it; set it explicitly to change it. `balanced` cannot be used when `config_yaml` contains performance tuning keys."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					service_token: {
 						type:             "string"
 						description:      "Service token for remote Elasticsearch outputs."
@@ -14799,6 +15451,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						required:         true
 					}
+					proxy_id: {
+						type:             "string"
+						description:      "The ID of the Fleet proxy to use for this Fleet server host. Must not be empty; omit the attribute to use no proxy."
+						description_kind: "plain"
+						optional:         true
+					}
 					space_ids: {
 						type: ["set", "string"]
 						description: """
@@ -14900,6 +15558,131 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				}
 				description:      "Creates a new Fleet Server Host."
 				description_kind: "plain"
+			}
+		}
+		elasticstack_fleet_space_settings: {
+			version: 0
+			block: {
+				attributes: {
+					allowed_namespace_prefixes: {
+						type: ["set", "string"]
+						description:      "Namespace prefixes that integration policies in the space are restricted to. At most 10 unique prefixes; an empty set lifts the restriction."
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of this resource. Equal to `space_id`."
+						description_kind: "plain"
+						computed:         true
+					}
+					managed_by: {
+						type:             "string"
+						description:      "The system that manages the space's Fleet settings, as reported by Fleet."
+						description_kind: "plain"
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "The ID of the space whose Fleet settings are managed. Changing it forces a new resource."
+						description_kind: "plain"
+						required:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description: """
+					Manages the Fleet settings of a Kibana space, currently the namespace prefixes that integration policies in the space may use. Requires Elastic Stack 9.1.0 or newer.
+
+					Fleet keeps exactly one settings object per space, so declare exactly one `elasticstack_fleet_space_settings` resource per space. Multiple resources targeting the same space overwrite each other. The resource neither creates the space nor checks that it exists, and Kibana accepts settings for a space that does not exist, so double-check `space_id`. Destroying the resource resets `allowed_namespace_prefixes` to an empty set, which lifts the namespace restriction for the space.
+					"""
+				description_kind: "markdown"
 			}
 		}
 		elasticstack_kibana_action_connector: {
@@ -15834,18 +16617,6 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "plain"
 						required:         true
 					}
-					last_execution_date: {
-						type:             "string"
-						description:      "Date of the last execution of this rule."
-						description_kind: "plain"
-						computed:         true
-					}
-					last_execution_status: {
-						type:             "string"
-						description:      "Status of the last execution of this rule."
-						description_kind: "plain"
-						computed:         true
-					}
 					name: {
 						type:             "string"
 						description:      "The name of the rule. While this name does not have to be unique, a distinctive name can help you identify a rule."
@@ -16132,6 +16903,8 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				description: """
 					Creates a Kibana rule. See the [create rule API documentation](https://www.elastic.co/guide/en/kibana/master/create-rule-api.html) for more details.
 
+					Execution status and date are available from the [`elasticstack_kibana_alerting_rules`](../data-sources/kibana_alerting_rules) data source.
+
 					**NOTE:** `api_key` authentication is only supported for alerting rule resources from version 8.8.0 of the Elastic stack. Using an `api_key` will result in an error message like:
 
 					```
@@ -16143,7 +16916,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			}
 		}
 		elasticstack_kibana_dashboard: {
-			version: 1
+			version: 2
 			block: {
 				attributes: {
 					access_control: {
@@ -24511,7 +25284,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																									attributes: {
 																										axis: {
 																											type:             "string"
-																											description:      "Which axis the reference line applies to. Valid values: 'left', 'right'."
+																											description:      "Which axis the reference line applies to. Not settable against Kibana 9.6: the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects, while the values it accepts (`y`, `y2`) are not in the schema. Omit this attribute; it defaults to the Y axis. Tracked in https://github.com/elastic/terraform-provider-elasticstack/issues/4958."
 																											description_kind: "markdown"
 																											optional:         true
 																										}
@@ -25314,11 +26087,11 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					query: {
 						nested_type: {
 							attributes: {
-								json: {
+								expression: {
 									type:             "string"
-									description:      "Query as normalized JSON for the object branch of the API union. Exactly one of `text` or `json` must be set."
+									description:      "Query expression in KQL or Lucene syntax. The value is compared as an exact string, so Kibana-side normalization of the expression shows up as a diff."
 									description_kind: "markdown"
-									optional:         true
+									required:         true
 								}
 								language: {
 									type:             "string"
@@ -25326,18 +26099,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description_kind: "markdown"
 									required:         true
 								}
-								text: {
-									type:             "string"
-									description:      "Query string for KQL or Lucene. Exactly one of `text` or `json` must be set."
-									description_kind: "markdown"
-									optional:         true
-								}
 							}
 							nesting_mode: "single"
 						}
-						description:      "Dashboard-level query. Aligns with the Kibana Dashboard API `query` object: `language` plus exactly one of `text` (string branch) or `json` (object branch)."
+						description:      "Dashboard-level query. Aligns with the Kibana Dashboard API `query` object: `language` plus `expression`. Optional; removing the block clears it in Kibana rather than resetting it to a default."
 						description_kind: "markdown"
-						required:         true
+						optional:         true
 					}
 					refresh_interval: {
 						nested_type: {
@@ -25357,9 +26124,9 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							nesting_mode: "single"
 						}
-						description:      "Auto-refresh settings for the dashboard. Aligns with the Kibana Dashboard API `refresh_interval` object."
+						description:      "Auto-refresh settings for the dashboard. Aligns with the Kibana Dashboard API `refresh_interval` object. Optional; removing the block clears it in Kibana rather than resetting it to a default."
 						description_kind: "markdown"
-						required:         true
+						optional:         true
 					}
 					sections: {
 						nested_type: {
@@ -33651,7 +34418,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																												attributes: {
 																													axis: {
 																														type:             "string"
-																														description:      "Which axis the reference line applies to. Valid values: 'left', 'right'."
+																														description:      "Which axis the reference line applies to. Not settable against Kibana 9.6: the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects, while the values it accepts (`y`, `y2`) are not in the schema. Omit this attribute; it defaults to the Y axis. Tracked in https://github.com/elastic/terraform-provider-elasticstack/issues/4958."
 																														description_kind: "markdown"
 																														optional:         true
 																													}
@@ -33939,9 +34706,9 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							nesting_mode: "single"
 						}
-						description:      "Dashboard time selection (`from`, `to`, optional `mode`). Aligns with the Kibana Dashboard API `time_range` object."
+						description:      "Dashboard time selection (`from`, `to`, optional `mode`). Aligns with the Kibana Dashboard API `time_range` object. Optional; removing the block clears it in Kibana rather than resetting it to a default."
 						description_kind: "markdown"
-						required:         true
+						optional:         true
 					}
 					timeouts: {
 						nested_type: {
@@ -34046,6 +34813,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					- **Image `file_id`**: `image_config.src.file.file_id` is an opaque Kibana file asset id. Uploading or lifecycle-managing that file is outside this resource for now; prepare the id outside Terraform (for example via Kibana UI or HTTP upload). A future `elasticstack_kibana_file` resource may cover uploads.
 					- **`discover_session` `data_source_json`**: Must be JSON matching the Kibana Dashboard API tab payload — the polymorphic data source for DSL tabs (`data_view_reference`, `data_view_spec`, etc.) and the ES|QL branch for `tab.esql`. Follow the OpenAPI shapes published with the [Kibana REST API](https://www.elastic.co/docs/api/doc/kibana) (`kbn-dashboard-panel-type-discover_session`). For `data_view_reference`, use **`ref_id`** (not `id`) for the linked data view.
 					- **Single Discover tab**: `discover_session_config.by_value.tab` is one object because the API currently allows a single tab entry; a future `tabs` list could be added without breaking existing configs if Kibana lifts the limit.
+					- **Optional root blocks**: Only `title` is required. `time_range`, `refresh_interval`, and `query` are optional and Kibana applies no defaults for them. Removing one of these blocks from configuration clears it in Kibana (the dashboard update is a full replace) rather than resetting it to a default.
 					"""
 				description_kind: "markdown"
 			}
@@ -36890,7 +37658,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					status_json: {
 						type:             "string"
-						description:      "Normalized JSON representation of the most recent entity store status response."
+						description:      "Raw JSON of the most recent entity store status response. The order of the engines array is ignored when comparing this attribute for semantic equality."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -48211,6 +48979,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					s3: {
 						nested_type: {
 							attributes: {
+								always_sign_requests: {
+									type:             "bool"
+									description:      "If true, request payload signatures are sent even over HTTPS. Useful for some S3-compatible stores that require this additional integrity mechanism."
+									description_kind: "markdown"
+									computed:         true
+								}
 								base_path: {
 									type:             "string"
 									description:      "Specifies the path to the repository data within its bucket."
@@ -48250,6 +49024,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								compress: {
 									type:             "bool"
 									description:      "If true, metadata files, such as index mappings and settings, are compressed in snapshots."
+									description_kind: "markdown"
+									computed:         true
+								}
+								disable_chunked_encoding: {
+									type:             "bool"
+									description:      "If true, chunked encoding is disabled and will not be used for S3 uploads. Only set this if the storage service does not support chunked encoding."
 									description_kind: "markdown"
 									computed:         true
 								}
@@ -49694,6 +50474,159 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				description_kind: "plain"
 			}
 		}
+		elasticstack_kibana_alerting_rules: {
+			version: 0
+			block: {
+				attributes: {
+					filter: {
+						type:             "string"
+						description:      "KQL filter passed to Kibana unmodified. Mutually exclusive with `rule_id`. When both `rule_id` and `filter` are omitted, every rule in the space is returned. Set `filter` in spaces with many rules."
+						description_kind: "markdown"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Space and, for a single-rule lookup, rule ID. `<space_id>/<rule_id>` when `rule_id` is set, otherwise `<space_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					rule_id: {
+						type:             "string"
+						description:      "Plain Kibana rule ID to look up in `space_id`. Mutually exclusive with `filter`."
+						description_kind: "markdown"
+						optional:         true
+					}
+					rules: {
+						nested_type: {
+							attributes: {
+								consumer: {
+									type:             "string"
+									description:      "Kibana application that owns the rule."
+									description_kind: "markdown"
+									computed:         true
+								}
+								enabled: {
+									type:             "bool"
+									description:      "Whether the rule is enabled."
+									description_kind: "markdown"
+									computed:         true
+								}
+								id: {
+									type:             "string"
+									description:      "Rule ID."
+									description_kind: "markdown"
+									computed:         true
+								}
+								last_execution_date: {
+									type:             "string"
+									description:      "UTC RFC3339 timestamp of the rule's last execution, with exactly three fractional-second digits. Null when Kibana reports no last execution time or the time cannot be parsed."
+									description_kind: "markdown"
+									computed:         true
+								}
+								last_execution_status: {
+									type:             "string"
+									description:      "Status of the rule's last execution, such as `ok` or `active`. Null when Kibana reports no execution status."
+									description_kind: "markdown"
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Rule name."
+									description_kind: "markdown"
+									computed:         true
+								}
+								rule_type_id: {
+									type:             "string"
+									description:      "Rule type identifier."
+									description_kind: "markdown"
+									computed:         true
+								}
+								scheduled_task_id: {
+									type:             "string"
+									description:      "Identifier of the rule's scheduled task. Null when Kibana omits it."
+									description_kind: "markdown"
+									computed:         true
+								}
+								tags: {
+									type: ["set", "string"]
+									description:      "Tags on the rule. An empty set when the rule has no tags."
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "Rules returned by the lookup or search. `last_execution_status`, `last_execution_date`, and `scheduled_task_id` are null when Kibana does not report them."
+						description_kind: "markdown"
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "Kibana space identifier. When omitted, the default space is used and stored in state."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Reads Kibana alerting rules in a space, either one rule by ID or the rules selected by a KQL filter."
+				description_kind: "markdown"
+			}
+		}
 		elasticstack_kibana_export_saved_objects: {
 			version: 0
 			block: {
@@ -50706,7 +51639,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					}
 					status_json: {
 						type:             "string"
-						description:      "Normalized JSON of the full status response."
+						description:      "Raw JSON of the full status response. The order of the engines array is ignored when comparing this attribute for semantic equality."
 						description_kind: "plain"
 						computed:         true
 					}

@@ -53,6 +53,10 @@ elasticstack_fleet_server_host: {
 		// The name of the Fleet server host.
 		name!: string
 
+		// The ID of the Fleet proxy to use for this Fleet server host. Must not be
+		// empty; omit the attribute to use no proxy.
+		proxy_id?: string
+
 		// The Kibana space IDs where this server host is available. When set, the
 		// server host will be created and managed within the specified space. Note:
 		// The order of space IDs does not matter as this is a set.
