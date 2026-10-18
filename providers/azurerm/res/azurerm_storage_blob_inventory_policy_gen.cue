@@ -31,6 +31,7 @@ azurerm_storage_blob_inventory_policy: {
 
 	_#defs: "/$defs/rules/$defs/filter": close({
 		blob_types!: [...string]
+		created_within_days?: number
 		exclude_prefixes?: [...string]
 		include_blob_versions?: bool
 		include_deleted?:       bool

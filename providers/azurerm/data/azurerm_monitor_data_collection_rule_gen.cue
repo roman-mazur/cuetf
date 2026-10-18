@@ -122,11 +122,13 @@ azurerm_monitor_data_collection_rule: {
 			tenant_id?:    string
 			type?:         string
 		})]
-		immutable_id?:        string
-		kind?:                string
-		location?:            string
-		name!:                string
-		resource_group_name!: string
+		immutable_id?:               string
+		kind?:                       string
+		location?:                   string
+		logs_ingestion_endpoint?:    string
+		metrics_ingestion_endpoint?: string
+		name!:                       string
+		resource_group_name!:        string
 		stream_declaration?: [...close({
 			column?: [...close({
 				name?: string

@@ -265,8 +265,9 @@ azurerm_application_gateway: {
 
 	#ssl_profile: close({
 		ssl_policy?: matchN(1, [_#defs."/$defs/ssl_profile/$defs/ssl_policy", list.MaxItems(1) & [..._#defs."/$defs/ssl_profile/$defs/ssl_policy"]])
-		id?:   string
-		name!: string
+		client_authentication_mode?: string
+		id?:                         string
+		name!:                       string
 		trusted_client_certificate_names?: [...string]
 		verify_client_certificate_issuer_dn?:  bool
 		verify_client_certificate_revocation?: string
