@@ -90,6 +90,10 @@ cloudflare_zero_trust_access_identity_provider: {
 			// IdP Entity ID or Issuer URL
 			issuer_url?: string
 
+			// When enabled, the Access login page automatically prompts the user to
+			// authenticate with a passkey.
+			login_page_auto_prompt?: bool
+
 			// The maximum URL length the IdP accepts for the SSO redirect URL.
 			// When the constructed SSO URL would exceed this length, the RelayState
 			// is stored server-side and a short nonce is passed to the IdP instead.
@@ -235,7 +239,7 @@ cloudflare_zero_trust_access_identity_provider: {
 		// documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
 		// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook",
 		// "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin",
-		// "pingone", "yandex", "cloudflare".
+		// "pingone", "yandex", "cloudflare", "passkeys".
 		type!: string
 
 		// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

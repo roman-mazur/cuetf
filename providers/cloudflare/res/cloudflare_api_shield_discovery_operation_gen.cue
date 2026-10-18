@@ -5,10 +5,7 @@ cloudflare_api_shield_discovery_operation: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/cloudflare_api_shield_discovery_operation")
 	close({
 		// UUID.
-		id?: string
-
-		// UUID.
-		operation_id!: string
+		discovery_id!: string
 
 		// Mark state of operation in API Discovery
 		// * `review` - Mark operation as for review
@@ -17,6 +14,6 @@ cloudflare_api_shield_discovery_operation: {
 		state?: string
 
 		// Identifier.
-		zone_id?: string
+		zone_id!: string
 	})
 }

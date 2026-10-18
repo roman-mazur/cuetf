@@ -112,6 +112,7 @@ import (
 	_#res: "\(#cloudflarePrefix)_magic_wan_ipsec_tunnel": close({res.cloudflare_magic_wan_ipsec_tunnel & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_magic_wan_static_route": close({res.cloudflare_magic_wan_static_route & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_managed_transforms": close({res.cloudflare_managed_transforms & cuetf.MetaArgs})
+	_#res: "\(#cloudflarePrefix)_monetization_rules": close({res.cloudflare_monetization_rules & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_moq_relay": close({res.cloudflare_moq_relay & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_mtls_certificate": close({res.cloudflare_mtls_certificate & cuetf.MetaArgs})
 	_#res: "\(#cloudflarePrefix)_nel_setting": close({res.cloudflare_nel_setting & cuetf.MetaArgs})

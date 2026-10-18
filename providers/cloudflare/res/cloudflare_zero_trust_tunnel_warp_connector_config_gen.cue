@@ -39,10 +39,10 @@ cloudflare_zero_trust_tunnel_warp_connector_config: {
 		// Timestamp of when the resource was created.
 		created_at?: string
 
-		// High-availability mode for the WARP Connector tunnel. `none` means HA is
-		// enabled but no provider is configured yet (newly created tunnels default to
-		// this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move
-		// for failover. `local` uses virtual IPs (VIPs) on the local interface.
+		// High-availability mode for the Mesh node. `none` means HA is enabled but no
+		// provider is configured yet (newly created nodes default to this). `disabled`
+		// means HA is explicitly turned off. `aws` uses AWS ENI move for failover.
+		// `local` uses virtual IPs (VIPs) on the local interface.
 		// Available values: "none", "disabled", "aws", "local".
 		ha_mode!: string
 

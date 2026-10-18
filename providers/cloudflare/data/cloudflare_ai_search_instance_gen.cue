@@ -85,7 +85,12 @@ cloudflare_ai_search_instance: {
 		max_num_results?: number
 		metadata?: close({
 			created_from_aisearch_wizard?: bool
-			worker_domain?:                string
+			created_from_emdash_plugin?: close({
+				// Available values: "native", "rest".
+				type?:    string
+				version?: string
+			})
+			worker_domain?: string
 		})
 		modified_at?:        string
 		modified_by?:        string

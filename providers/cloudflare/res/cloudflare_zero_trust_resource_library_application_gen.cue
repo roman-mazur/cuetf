@@ -21,7 +21,7 @@ cloudflare_zero_trust_resource_library_application: {
 		// Returns the application type description.
 		application_type_description?: string
 
-		// Returns the category ID.
+		// Numeric identifier for an application category.
 		category_id?: number
 
 		// Returns the application creation time.
@@ -33,10 +33,10 @@ cloudflare_zero_trust_resource_library_application: {
 		// Hostnames matched by the application.
 		hostnames?: [...string]
 
-		// Returns the human readable ID.
+		// Human-readable identifier for the application.
 		human_id?: string
 
-		// Returns the application ID.
+		// Numeric identifier for the application.
 		id?: number
 
 		// IP subnets for this application. Custom application create and update
@@ -44,10 +44,12 @@ cloudflare_zero_trust_resource_library_application: {
 		// /32 through /128.
 		ip_subnets?: [...string]
 
-		// Returns the application name.
+		// Application name.
 		name?: string
 
-		// Port and protocol pairs matched by the application.
+		// Ports matched by the application, in `protocol/port` or inclusive
+		// `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`).
+		// TCP and UDP ports must be between 0 and 65535.
 		port_protocols?: [...string]
 
 		// Support domains matched by the application.

@@ -19,9 +19,11 @@ cloudflare_workers_script: {
 			workers_triggered_by?: string
 		})
 
-		// Name of the uploaded file that contains the script (e.g. the file adding a
-		// listener to the `fetch` event). Indicates a `service worker syntax` Worker.
-		body_part?: string
+		// When set to "strict", the upload will fail if any `inherit` type bindings
+		// cannot be resolved against the previous version of the Worker. Without this,
+		// unresolvable inherit bindings are silently dropped.
+		// Available values: "strict".
+		bindings_inherit?: string
 
 		// Configuration for assets within a Worker.
 		assets?: close({
@@ -69,10 +71,9 @@ cloudflare_workers_script: {
 			jwt?: string
 		})
 
-		// Date indicating targeted support in the Workers runtime. Backwards
-		// incompatible fixes to the runtime following this date will not affect this
-		// Worker.
-		compatibility_date?: string
+		// Name of the uploaded file that contains the script (e.g. the file adding a
+		// listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+		body_part?: string
 
 		// List of bindings attached to a Worker. You can find more about bindings on
 		// our docs:
@@ -100,6 +101,25 @@ cloudflare_workers_script: {
 			// List of allowed destination addresses.
 			allowed_destination_addresses?: [...string]
 
+			// Retry policy for calls made to the Durable Object through this binding.
+			// Omitted or null properties use the runtime defaults. These limits are upper
+			// bounds and do not enable retries for otherwise ineligible calls.
+			retry?: close({
+				// Maximum number of retries after the initial request, not the total number of
+				// attempts. Defaults to 4. Zero disables retries.
+				max_attempts?: number
+
+				// Retry timeout in milliseconds, measured from the start of the call. No retry
+				// starts after it expires, and a retry still running when it expires is
+				// cancelled. This is not a request timeout; it does not limit the initial
+				// request, which is still subject to any timeouts set by your Worker. Defaults
+				// to 10000.
+				timeout_ms?: number
+			})
+
+			// List of allowed sender addresses.
+			allowed_sender_addresses?: [...string]
+
 			// A simple rate limit.
 			simple?: close({
 				// The rate limit value.
@@ -113,9 +133,6 @@ cloudflare_workers_script: {
 				// The rate limit period in seconds.
 				period!: number
 			})
-
-			// List of allowed sender addresses.
-			allowed_sender_addresses?: [...string]
 
 			// ID of the Flagship app to bind to for feature flag evaluation.
 			app_id?: string
@@ -277,6 +294,25 @@ cloudflare_workers_script: {
 			// List of allowed destination addresses.
 			allowed_destination_addresses?: [...string]
 
+			// Retry policy for calls made to the Durable Object through this binding.
+			// Omitted or null properties use the runtime defaults. These limits are upper
+			// bounds and do not enable retries for otherwise ineligible calls.
+			retry?: close({
+				// Maximum number of retries after the initial request, not the total number of
+				// attempts. Defaults to 4. Zero disables retries.
+				max_attempts?: number
+
+				// Retry timeout in milliseconds, measured from the start of the call. No retry
+				// starts after it expires, and a retry still running when it expires is
+				// cancelled. This is not a request timeout; it does not limit the initial
+				// request, which is still subject to any timeouts set by your Worker. Defaults
+				// to 10000.
+				timeout_ms?: number
+			})
+
+			// List of allowed sender addresses.
+			allowed_sender_addresses?: [...string]
+
 			// A simple rate limit.
 			simple?: close({
 				// The rate limit value.
@@ -290,9 +326,6 @@ cloudflare_workers_script: {
 				// The rate limit period in seconds.
 				period!: number
 			})
-
-			// List of allowed sender addresses.
-			allowed_sender_addresses?: [...string]
 
 			// ID of the Flagship app to bind to for feature flag evaluation.
 			app_id?: string
@@ -433,10 +466,10 @@ cloudflare_workers_script: {
 			workflow_name?: string
 		})]])
 
-		// Flags that enable or disable certain features in the Workers runtime. Used to
-		// enable upcoming features or opt in or out of specific changes not included
-		// in a `compatibility_date`.
-		compatibility_flags?: [...string]
+		// Date indicating targeted support in the Workers runtime. Backwards
+		// incompatible fixes to the runtime following this date will not affect this
+		// Worker.
+		compatibility_date?: string
 
 		// Global CacheW configuration for the Worker. When caching is on,
 		// the platform provisions a `cloudflare.app` zone for the Worker.
@@ -452,6 +485,11 @@ cloudflare_workers_script: {
 			// Whether caching is enabled for this Worker.
 			enabled?: bool
 		})
+
+		// Flags that enable or disable certain features in the Workers runtime. Used to
+		// enable upcoming features or opt in or out of specific changes not included
+		// in a `compatibility_date`.
+		compatibility_flags?: [...string]
 
 		// Module or Service Worker contents of the Worker. Conflicts with `content_file`.
 		content?: string

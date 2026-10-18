@@ -58,6 +58,6 @@ cloudflare_zero_trust_dlp_custom_entry: {
 			// Available values: "PromptTopic", "General".
 			type?: string
 		})
-		word_list?: string
+		word_list?: [...string]
 	})
 }

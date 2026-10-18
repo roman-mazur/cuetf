@@ -38,6 +38,10 @@ cloudflare_zero_trust_gateway_certificate: {
 		// Provide the entire issuer field of the certificate (read-only).
 		issuer_raw?: string
 
+		// Indicate the read-only region the certificate authority's key material is
+		// pinned to. Omitted for certificates that were created without a region.
+		region?: string
+
 		// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
 		// Available values: "custom", "gateway_managed".
 		type?:        string

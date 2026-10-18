@@ -34,7 +34,8 @@ cloudflare_turnstile_widget: {
 		// Return the Ephemeral ID in /siteverify (ENT only).
 		ephemeral_id?: bool
 
-		// Filter widgets by field using case-insensitive substring matching.
+		// Filter widgets by field. The `name` field uses case-insensitive
+		// substring matching; `sitekey` uses exact matching.
 		// Format: `field:value`
 		//
 		// Supported fields:

@@ -11,7 +11,9 @@ cloudflare_zero_trust_organization: {
 		// organization. Application settings will take precedence over this value.
 		allow_authenticate_via_warp?: bool
 
-		// The unique subdomain assigned to your Zero Trust organization.
+		// The unique subdomain assigned to your Zero Trust organization. If omitted on
+		// creation, a unique subdomain is auto-generated in the format
+		// `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
 		auth_domain?: string
 
 		// When set to `true`, users skip the identity provider selection step during login.
@@ -83,23 +85,15 @@ cloudflare_zero_trust_organization: {
 		// requirements at the application and policy level.
 		mfa_configuration_allowed?: bool
 
-		// Determines whether global MFA settings apply to applications by default. The
-		// organization must have MFA enabled with at least one authentication method
-		// and a session duration configured. Note: 'allowed_authenticators' cannot
-		// contain only the infrastructure SSH authenticators ('piv_key' and
-		// 'ssh_fido2_key') if the organization has any non-infrastructure
-		// applications.
-		mfa_required_for_all_apps?: bool
-
-		// Configures SSH PIV key requirements for MFA using hardware security keys.
-		mfa_ssh_piv_key_requirements?: close({
+		// Configures PIV key requirements for MFA using hardware security keys.
+		mfa_piv_key_requirements?: close({
 			// Defines when a PIN is required to use the SSH key. Valid values: `never` (no
 			// PIN required), `once` (PIN required once per session), `always` (PIN
 			// required for each use).
 			// Available values: "never", "once", "always".
 			pin_policy?: string
 
-			// Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+			// Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
 			require_fips_device?: bool
 
 			// Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type.
@@ -116,7 +110,17 @@ cloudflare_zero_trust_organization: {
 			touch_policy?: string
 		})
 
-		// The name of your Zero Trust organization.
+		// Determines whether global MFA settings apply to applications by default. The
+		// organization must have MFA enabled with at least one authentication method
+		// and a session duration configured. Note: 'allowed_authenticators' cannot
+		// contain only the infrastructure SSH authenticators ('piv_key' and
+		// 'ssh_fido2_key') if the organization has any non-infrastructure
+		// applications.
+		mfa_required_for_all_apps?: bool
+
+		// The name of your Zero Trust organization. When omitted on creation, defaults
+		// to the provided auth_domain; when both are omitted, defaults to the
+		// auto-generated subdomain slug (e.g. frosty-moon-7a3b).
 		name?: string
 
 		// Configures automatic enforcement for inactive service tokens. A service token

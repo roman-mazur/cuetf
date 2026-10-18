@@ -150,7 +150,8 @@ cloudflare_zero_trust_device_custom_profile: {
 		// The wirefilter expression to match devices. Available values:
 		// "identity.email", "identity.groups.id", "identity.groups.name",
 		// "identity.groups.email", "identity.service_token_uuid",
-		// "identity.saml_attributes", "network", "os.name", "os.version".
+		// "identity.saml_attributes", "network", "os.name", "os.version",
+		// "device.tags".
 		match?: string
 
 		// The name of the device settings profile.
@@ -186,19 +187,6 @@ cloudflare_zero_trust_device_custom_profile: {
 
 		// Whether to allow the user to turn off the WARP switch and disconnect the client.
 		switch_locked?: bool
-		target_tests?: matchN(1, [close({
-			// The id of the DEX test targeting this policy.
-			id?: string
-
-			// The name of the DEX test targeting this policy.
-			name?: string
-		}), [...close({
-			// The id of the DEX test targeting this policy.
-			id?: string
-
-			// The name of the DEX test targeting this policy.
-			name?: string
-		})]])
 
 		// Determines which tunnel protocol to use.
 		tunnel_protocol?: string

@@ -191,6 +191,7 @@ import (
 	_#ds: "\(#cloudflarePrefix)_magic_wan_ipsec_tunnel": close({data.cloudflare_magic_wan_ipsec_tunnel & cuetf.MetaArgs})
 	_#ds: "\(#cloudflarePrefix)_magic_wan_static_route": close({data.cloudflare_magic_wan_static_route & cuetf.MetaArgs})
 	_#ds: "\(#cloudflarePrefix)_managed_transforms": close({data.cloudflare_managed_transforms & cuetf.MetaArgs})
+	_#ds: "\(#cloudflarePrefix)_monetization_rules": close({data.cloudflare_monetization_rules & cuetf.MetaArgs})
 	_#ds: "\(#cloudflarePrefix)_moq_relay": close({data.cloudflare_moq_relay & cuetf.MetaArgs})
 	_#ds: "\(#cloudflarePrefix)_moq_relays": close({data.cloudflare_moq_relays & cuetf.MetaArgs})
 	_#ds: "\(#cloudflarePrefix)_mtls_certificate_associations": close({data.cloudflare_mtls_certificate_associations & cuetf.MetaArgs})
