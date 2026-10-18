@@ -82,6 +82,7 @@ aws_rds_cluster: {
 		port?:                                  number
 		preferred_backup_window?:               string
 		preferred_maintenance_window?:          string
+		publicly_accessible?:                   bool
 		reader_endpoint?:                       string
 		replication_source_identifier?:         string
 		skip_final_snapshot?:                   bool

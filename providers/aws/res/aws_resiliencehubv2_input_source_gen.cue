@@ -24,8 +24,20 @@ aws_resiliencehubv2_input_source: {
 	})
 
 	_#defs: "/$defs/resource_configuration/$defs/eks": close({
+		label_selector?: matchN(1, [_#defs."/$defs/resource_configuration/$defs/eks/$defs/label_selector", [..._#defs."/$defs/resource_configuration/$defs/eks/$defs/label_selector"]])
 		cluster_arn!: string
 		namespaces!: [...string]
+	})
+
+	_#defs: "/$defs/resource_configuration/$defs/eks/$defs/label_selector": close({
+		match_expressions?: matchN(1, [_#defs."/$defs/resource_configuration/$defs/eks/$defs/label_selector/$defs/match_expressions", [..._#defs."/$defs/resource_configuration/$defs/eks/$defs/label_selector/$defs/match_expressions"]])
+		match_labels?: [string]: string
+	})
+
+	_#defs: "/$defs/resource_configuration/$defs/eks/$defs/label_selector/$defs/match_expressions": close({
+		key!:      string
+		operator!: string
+		values?: [...string]
 	})
 
 	_#defs: "/$defs/resource_configuration/$defs/resource_tag": close({

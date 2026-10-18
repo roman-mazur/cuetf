@@ -19,28 +19,42 @@ aws_quicksight_custom_permissions: {
 	})
 
 	#capabilities: close({
+		action?:                                     string
 		add_or_run_anomaly_detection_for_analyses?:  string
+		analysis?:                                   string
+		automate?:                                   string
+		chat_agent?:                                 string
 		create_and_update_dashboard_email_reports?:  string
 		create_and_update_data_sources?:             string
 		create_and_update_datasets?:                 string
 		create_and_update_themes?:                   string
 		create_and_update_threshold_alerts?:         string
+		create_chat_agents?:                         string
 		create_shared_folders?:                      string
 		create_spice_dataset?:                       string
+		dashboard?:                                  string
 		export_to_csv?:                              string
 		export_to_csv_in_scheduled_reports?:         string
 		export_to_excel?:                            string
 		export_to_excel_in_scheduled_reports?:       string
 		export_to_pdf?:                              string
 		export_to_pdf_in_scheduled_reports?:         string
+		flow?:                                       string
 		include_content_in_scheduled_reports_email?: string
+		knowledge_base?:                             string
+		perform_flow_ui_task?:                       string
 		print_reports?:                              string
+		publish_without_approval?:                   string
 		rename_shared_folders?:                      string
+		research?:                                   string
 		share_analyses?:                             string
 		share_dashboards?:                           string
 		share_data_sources?:                         string
 		share_datasets?:                             string
+		space?:                                      string
 		subscribe_dashboard_email_reports?:          string
+		use_agent_web_search?:                       string
+		use_bedrock_models?:                         string
 		view_account_spice_capacity?:                string
 	})
 }

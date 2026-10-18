@@ -4,6 +4,8 @@ aws_cloudwatch_otel_enrichment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudwatch_otel_enrichment")
 	close({
+		exclude_filter?: matchN(1, [#exclude_filter, [...#exclude_filter]])
+		include_filter?: matchN(1, [#include_filter, [...#include_filter]])
 		timeouts?: #timeouts
 
 		// Region where this resource will be
@@ -11,6 +13,16 @@ aws_cloudwatch_otel_enrichment: {
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?: string
+	})
+
+	#exclude_filter: close({
+		metric_names?: [...string]
+		namespace!: string
+	})
+
+	#include_filter: close({
+		metric_names?: [...string]
+		namespace!: string
 	})
 
 	#timeouts: close({
