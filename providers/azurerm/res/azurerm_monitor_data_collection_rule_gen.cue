@@ -18,6 +18,8 @@ azurerm_monitor_data_collection_rule: {
 		immutable_id?:                string
 		kind?:                        string
 		location!:                    string
+		logs_ingestion_endpoint?:     string
+		metrics_ingestion_endpoint?:  string
 		name!:                        string
 		resource_group_name!:         string
 		tags?: [string]: string

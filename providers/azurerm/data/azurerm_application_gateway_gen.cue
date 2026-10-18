@@ -248,8 +248,9 @@ azurerm_application_gateway: {
 			policy_type?:          string
 		})]
 		ssl_profile?: [...close({
-			id?:   string
-			name?: string
+			client_authentication_mode?: string
+			id?:                         string
+			name?:                       string
 			ssl_policy?: [...close({
 				cipher_suites?: [...string]
 				disabled_protocols?: [...string]
