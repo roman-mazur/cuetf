@@ -14,15 +14,15 @@ cloudflare_email_security_trusted_domains: {
 
 		// Select to prevent recently registered domains from triggering a Suspicious or
 		// Malicious disposition.
-		is_recent?: bool
+		is_recent!: bool
 
 		// Whether `pattern` is a regular expression instead of a literal domain.
-		is_regex?: bool
+		is_regex!: bool
 
 		// Select for partner or other approved domains that have similar spelling to
 		// your connected domains. Prevents listed domains from triggering a Spoof
 		// disposition.
-		is_similarity?: bool
+		is_similarity!: bool
 		modified_at?:   string
 
 		// The domain pattern to trust, e.g. `example.com`.

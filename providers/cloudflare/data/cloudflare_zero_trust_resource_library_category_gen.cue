@@ -12,7 +12,7 @@ cloudflare_zero_trust_resource_library_category: {
 		// Returns the category description.
 		description?: string
 
-		// Returns the category ID.
+		// Numeric identifier for an application category.
 		id!: number
 
 		// Returns the category name.

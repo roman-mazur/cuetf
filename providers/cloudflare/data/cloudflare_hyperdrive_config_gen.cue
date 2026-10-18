@@ -26,9 +26,11 @@ cloudflare_hyperdrive_config: {
 		// Define configurations using a unique string identifier.
 		id?: string
 
-		// Connects to a PlanetScale database using credentials managed by Cloudflare.
-		// The Cloudflare account must already be linked to PlanetScale in the
-		// Hyperdrive dashboard.
+		// Selects a PlanetScale database and provisions credentials managed by
+		// Cloudflare when creating a Hyperdrive configuration. The Cloudflare account
+		// must already be linked to PlanetScale in the Hyperdrive dashboard. The
+		// selection is returned as read-only metadata and cannot be changed with
+		// replace or update operations.
 		integration?: close({
 			// The database name to use when connecting. Defaults to `postgres` for
 			// PostgreSQL and `mysql` for MySQL.

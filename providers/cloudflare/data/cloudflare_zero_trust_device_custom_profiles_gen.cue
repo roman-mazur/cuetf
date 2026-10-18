@@ -134,24 +134,6 @@ cloudflare_zero_trust_device_custom_profiles: {
 
 			// A description of the policy.
 			description?: string
-			target_tests?: matchN(1, [close({
-				// The id of the DEX test targeting this policy.
-				id?: string
-
-				// The name of the DEX test targeting this policy.
-				name?: string
-			}), [...close({
-				// The id of the DEX test targeting this policy.
-				id?: string
-
-				// The name of the DEX test targeting this policy.
-				name?: string
-			})]])
-
-			// If the `dns_server` field of a fallback domain is not present, the client
-			// will fall back to a best guess of the default/system DNS resolvers unless
-			// this policy option is set to `true`.
-			disable_auto_fallback?: bool
 
 			// Virtual network access settings for the device.
 			virtual_networks?: close({
@@ -162,6 +144,11 @@ cloudflare_zero_trust_device_custom_profiles: {
 				// The default virtual network ID. Must be included in the `allowed` list.
 				default?: string
 			})
+
+			// If the `dns_server` field of a fallback domain is not present, the client
+			// will fall back to a best guess of the default/system DNS resolvers unless
+			// this policy option is set to `true`.
+			disable_auto_fallback?: bool
 
 			// Whether the policy will be applied to matching devices.
 			enabled?: bool
@@ -184,7 +171,8 @@ cloudflare_zero_trust_device_custom_profiles: {
 			// The wirefilter expression to match devices. Available values:
 			// "identity.email", "identity.groups.id", "identity.groups.name",
 			// "identity.groups.email", "identity.service_token_uuid",
-			// "identity.saml_attributes", "network", "os.name", "os.version".
+			// "identity.saml_attributes", "network", "os.name", "os.version",
+			// "device.tags".
 			match?: string
 
 			// The name of the device settings profile.
@@ -339,24 +327,6 @@ cloudflare_zero_trust_device_custom_profiles: {
 
 			// A description of the policy.
 			description?: string
-			target_tests?: matchN(1, [close({
-				// The id of the DEX test targeting this policy.
-				id?: string
-
-				// The name of the DEX test targeting this policy.
-				name?: string
-			}), [...close({
-				// The id of the DEX test targeting this policy.
-				id?: string
-
-				// The name of the DEX test targeting this policy.
-				name?: string
-			})]])
-
-			// If the `dns_server` field of a fallback domain is not present, the client
-			// will fall back to a best guess of the default/system DNS resolvers unless
-			// this policy option is set to `true`.
-			disable_auto_fallback?: bool
 
 			// Virtual network access settings for the device.
 			virtual_networks?: close({
@@ -367,6 +337,11 @@ cloudflare_zero_trust_device_custom_profiles: {
 				// The default virtual network ID. Must be included in the `allowed` list.
 				default?: string
 			})
+
+			// If the `dns_server` field of a fallback domain is not present, the client
+			// will fall back to a best guess of the default/system DNS resolvers unless
+			// this policy option is set to `true`.
+			disable_auto_fallback?: bool
 
 			// Whether the policy will be applied to matching devices.
 			enabled?: bool
@@ -389,7 +364,8 @@ cloudflare_zero_trust_device_custom_profiles: {
 			// The wirefilter expression to match devices. Available values:
 			// "identity.email", "identity.groups.id", "identity.groups.name",
 			// "identity.groups.email", "identity.service_token_uuid",
-			// "identity.saml_attributes", "network", "os.name", "os.version".
+			// "identity.saml_attributes", "network", "os.name", "os.version",
+			// "device.tags".
 			match?: string
 
 			// The name of the device settings profile.

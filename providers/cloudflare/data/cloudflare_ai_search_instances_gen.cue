@@ -91,7 +91,12 @@ cloudflare_ai_search_instances: {
 			embedding_model?: string
 			metadata?: close({
 				created_from_aisearch_wizard?: bool
-				worker_domain?:                string
+				created_from_emdash_plugin?: close({
+					// Available values: "native", "rest".
+					type?:    string
+					version?: string
+				})
+				worker_domain?: string
 			})
 
 			// Available values: "max", "rrf".
@@ -370,7 +375,12 @@ cloudflare_ai_search_instances: {
 			embedding_model?: string
 			metadata?: close({
 				created_from_aisearch_wizard?: bool
-				worker_domain?:                string
+				created_from_emdash_plugin?: close({
+					// Available values: "native", "rest".
+					type?:    string
+					version?: string
+				})
+				worker_domain?: string
 			})
 
 			// Available values: "max", "rrf".

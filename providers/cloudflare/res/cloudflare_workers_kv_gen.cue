@@ -10,7 +10,8 @@ cloudflare_workers_kv: {
 		// Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
 		expiration?: number
 
-		// Expires the key after a number of seconds. Must be at least 60.
+		// Number of seconds until the key expires. Must be at least 60. Takes
+		// precedence over `expiration` when both are specified.
 		expiration_ttl?: number
 
 		// A key's name. The name may be at most 512 bytes. All printable,

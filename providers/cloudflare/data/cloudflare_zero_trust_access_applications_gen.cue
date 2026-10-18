@@ -2236,26 +2236,98 @@ cloudflare_zero_trust_access_applications: {
 			// The custom error message shown to a user when they are denied access to the application.
 			custom_deny_message?: string
 			target_criteria?: matchN(1, [close({
+				// Target is excluded when any selector in this rule matches.
+				exclude?: close({
+					// Map of target tag keys to values. Values within a key are OR'd.
+					tags?: [string]: [...string]
+
+					// Hostname selector map. Only the hostname key is supported.
+					target_attributes?: close({
+						hostname?: [...string]
+					})
+				})
+
 				// The port that the targets use for the chosen communication protocol. A port
 				// cannot be assigned to multiple protocols.
 				port?: number
+
+				// Target matches when any selector in this rule matches.
+				include?: close({
+					// Map of target tag keys to values. Values within a key are OR'd.
+					tags?: [string]: [...string]
+
+					// Hostname selector map. Only the hostname key is supported.
+					target_attributes?: close({
+						hostname?: [...string]
+					})
+				})
 
 				// The communication protocol your application secures.
 				// Available values: "SSH", "RDP".
 				protocol?: string
 
-				// Contains a map of target attribute keys to target attribute values.
+				// Target matches only when every selector in this rule matches.
+				require?: close({
+					// Map of target tag keys to values. Values within a key are OR'd.
+					tags?: [string]: [...string]
+
+					// Hostname selector map. Only the hostname key is supported.
+					target_attributes?: close({
+						hostname?: [...string]
+					})
+				})
+
+				// Deprecated: use include.target_attributes for hostname selectors and rule
+				// tags for tag-based matching. New or changed maps may contain only hostname.
+				// The API accepts unchanged legacy maps on update, including non-hostname
+				// keys.
 				target_attributes?: [string]: [...string]
 			}), [...close({
+				// Target is excluded when any selector in this rule matches.
+				exclude?: close({
+					// Map of target tag keys to values. Values within a key are OR'd.
+					tags?: [string]: [...string]
+
+					// Hostname selector map. Only the hostname key is supported.
+					target_attributes?: close({
+						hostname?: [...string]
+					})
+				})
+
 				// The port that the targets use for the chosen communication protocol. A port
 				// cannot be assigned to multiple protocols.
 				port?: number
+
+				// Target matches when any selector in this rule matches.
+				include?: close({
+					// Map of target tag keys to values. Values within a key are OR'd.
+					tags?: [string]: [...string]
+
+					// Hostname selector map. Only the hostname key is supported.
+					target_attributes?: close({
+						hostname?: [...string]
+					})
+				})
 
 				// The communication protocol your application secures.
 				// Available values: "SSH", "RDP".
 				protocol?: string
 
-				// Contains a map of target attribute keys to target attribute values.
+				// Target matches only when every selector in this rule matches.
+				require?: close({
+					// Map of target tag keys to values. Values within a key are OR'd.
+					tags?: [string]: [...string]
+
+					// Hostname selector map. Only the hostname key is supported.
+					target_attributes?: close({
+						hostname?: [...string]
+					})
+				})
+
+				// Deprecated: use include.target_attributes for hostname selectors and rule
+				// tags for tag-based matching. New or changed maps may contain only hostname.
+				// The API accepts unchanged legacy maps on update, including non-hostname
+				// keys.
 				target_attributes?: [string]: [...string]
 			})]])
 
@@ -2319,7 +2391,10 @@ cloudflare_zero_trust_access_applications: {
 
 			// The amount of time that tokens issued for this application will be valid.
 			// Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or
-			// µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+			// µs), ms, s, m, h. For infrastructure applications, this is the maximum
+			// connection duration; connections are terminated once it elapses.
+			// Infrastructure durations must use s, m, or h and resolve to whole seconds.
+			// Defaults to `24h` for supported application types.
 			session_duration?: string
 
 			// Determines when to skip the App Launcher landing page.
@@ -4550,26 +4625,98 @@ cloudflare_zero_trust_access_applications: {
 			// The custom error message shown to a user when they are denied access to the application.
 			custom_deny_message?: string
 			target_criteria?: matchN(1, [close({
+				// Target is excluded when any selector in this rule matches.
+				exclude?: close({
+					// Map of target tag keys to values. Values within a key are OR'd.
+					tags?: [string]: [...string]
+
+					// Hostname selector map. Only the hostname key is supported.
+					target_attributes?: close({
+						hostname?: [...string]
+					})
+				})
+
 				// The port that the targets use for the chosen communication protocol. A port
 				// cannot be assigned to multiple protocols.
 				port?: number
+
+				// Target matches when any selector in this rule matches.
+				include?: close({
+					// Map of target tag keys to values. Values within a key are OR'd.
+					tags?: [string]: [...string]
+
+					// Hostname selector map. Only the hostname key is supported.
+					target_attributes?: close({
+						hostname?: [...string]
+					})
+				})
 
 				// The communication protocol your application secures.
 				// Available values: "SSH", "RDP".
 				protocol?: string
 
-				// Contains a map of target attribute keys to target attribute values.
+				// Target matches only when every selector in this rule matches.
+				require?: close({
+					// Map of target tag keys to values. Values within a key are OR'd.
+					tags?: [string]: [...string]
+
+					// Hostname selector map. Only the hostname key is supported.
+					target_attributes?: close({
+						hostname?: [...string]
+					})
+				})
+
+				// Deprecated: use include.target_attributes for hostname selectors and rule
+				// tags for tag-based matching. New or changed maps may contain only hostname.
+				// The API accepts unchanged legacy maps on update, including non-hostname
+				// keys.
 				target_attributes?: [string]: [...string]
 			}), [...close({
+				// Target is excluded when any selector in this rule matches.
+				exclude?: close({
+					// Map of target tag keys to values. Values within a key are OR'd.
+					tags?: [string]: [...string]
+
+					// Hostname selector map. Only the hostname key is supported.
+					target_attributes?: close({
+						hostname?: [...string]
+					})
+				})
+
 				// The port that the targets use for the chosen communication protocol. A port
 				// cannot be assigned to multiple protocols.
 				port?: number
+
+				// Target matches when any selector in this rule matches.
+				include?: close({
+					// Map of target tag keys to values. Values within a key are OR'd.
+					tags?: [string]: [...string]
+
+					// Hostname selector map. Only the hostname key is supported.
+					target_attributes?: close({
+						hostname?: [...string]
+					})
+				})
 
 				// The communication protocol your application secures.
 				// Available values: "SSH", "RDP".
 				protocol?: string
 
-				// Contains a map of target attribute keys to target attribute values.
+				// Target matches only when every selector in this rule matches.
+				require?: close({
+					// Map of target tag keys to values. Values within a key are OR'd.
+					tags?: [string]: [...string]
+
+					// Hostname selector map. Only the hostname key is supported.
+					target_attributes?: close({
+						hostname?: [...string]
+					})
+				})
+
+				// Deprecated: use include.target_attributes for hostname selectors and rule
+				// tags for tag-based matching. New or changed maps may contain only hostname.
+				// The API accepts unchanged legacy maps on update, including non-hostname
+				// keys.
 				target_attributes?: [string]: [...string]
 			})]])
 
@@ -4633,7 +4780,10 @@ cloudflare_zero_trust_access_applications: {
 
 			// The amount of time that tokens issued for this application will be valid.
 			// Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or
-			// µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+			// µs), ms, s, m, h. For infrastructure applications, this is the maximum
+			// connection duration; connections are terminated once it elapses.
+			// Infrastructure durations must use s, m, or h and resolve to whole seconds.
+			// Defaults to `24h` for supported application types.
 			session_duration?: string
 
 			// Determines when to skip the App Launcher landing page.

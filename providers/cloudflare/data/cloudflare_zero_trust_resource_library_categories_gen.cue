@@ -6,13 +6,13 @@ cloudflare_zero_trust_resource_library_categories: {
 	close({
 		account_id!: string
 
-		// Limit of number of results to return.
+		// Number of results to return. Defaults to 25; values are clamped to 1–250.
 		limit?: number
 
 		// Max items to fetch, default: 1000
 		max_items?: number
 
-		// Offset of results to return.
+		// Number of results to skip. Defaults to 0; negative values are clamped to 0.
 		offset?: number
 
 		// The items returned by the data source
@@ -23,7 +23,7 @@ cloudflare_zero_trust_resource_library_categories: {
 			// Returns the category description.
 			description?: string
 
-			// Returns the category ID.
+			// Numeric identifier for an application category.
 			id?: number
 
 			// Returns the category name.
@@ -35,7 +35,7 @@ cloudflare_zero_trust_resource_library_categories: {
 			// Returns the category description.
 			description?: string
 
-			// Returns the category ID.
+			// Numeric identifier for an application category.
 			id?: number
 
 			// Returns the category name.

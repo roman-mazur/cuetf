@@ -31,6 +31,20 @@ cloudflare_pages_project: {
 		// When the project was created.
 		created_on?: string
 
+		// Present when the project is set to a retired build image major version and
+		// its builds have been moved to a newer one. `build_image_major_version` in
+		// `deployment_configs` then reports the version the builds run on.
+		build_image_auto_upgrade?: close({
+			// The retired build image major version the project is set to.
+			from_version?: number
+
+			// The build image major version the project's builds run on.
+			to_version?: number
+		})
+
+		// A list of associated custom domains for the project.
+		domains?: [...string]
+
 		// Most recent production deployment of the project.
 		canonical_deployment?: close({
 			// A list of alias URLs pointing to this deployment.
@@ -227,8 +241,8 @@ cloudflare_pages_project: {
 			uses_functions?: bool
 		})
 
-		// A list of associated custom domains for the project.
-		domains?: [...string]
+		// Framework the project is using.
+		framework?: string
 
 		// Configs for deployments in a project.
 		deployment_configs?: close({
@@ -248,7 +262,10 @@ cloudflare_pages_project: {
 					dataset?: string
 				})
 
-				// The major version of the build image to use for Pages Functions.
+				// The major version of the build image to use for Pages Functions. Version 1 is
+				// retired and its projects are moved to version 3. Once a project's builds
+				// have been moved, this is the version the builds run on and
+				// `build_image_auto_upgrade` is set on the project.
 				build_image_major_version?: number
 
 				// Browser bindings used for Pages Functions.
@@ -364,7 +381,10 @@ cloudflare_pages_project: {
 					dataset?: string
 				})
 
-				// The major version of the build image to use for Pages Functions.
+				// The major version of the build image to use for Pages Functions. Version 1 is
+				// retired and its projects are moved to version 3. Once a project's builds
+				// have been moved, this is the version the builds run on and
+				// `build_image_auto_upgrade` is set on the project.
 				build_image_major_version?: number
 
 				// Browser bindings used for Pages Functions.
@@ -464,9 +484,6 @@ cloudflare_pages_project: {
 				})
 			})
 		})
-
-		// Framework the project is using.
-		framework?: string
 
 		// Version of the framework the project is using.
 		framework_version?: string

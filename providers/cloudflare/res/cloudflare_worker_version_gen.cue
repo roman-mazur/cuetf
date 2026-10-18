@@ -104,6 +104,25 @@ cloudflare_worker_version: {
 			// List of allowed destination addresses.
 			allowed_destination_addresses?: [...string]
 
+			// Retry policy for calls made to the Durable Object through this binding.
+			// Omitted or null properties use the runtime defaults. These limits are upper
+			// bounds and do not enable retries for otherwise ineligible calls.
+			retry?: close({
+				// Maximum number of retries after the initial request, not the total number of
+				// attempts. Defaults to 4. Zero disables retries.
+				max_attempts?: number
+
+				// Retry timeout in milliseconds, measured from the start of the call. No retry
+				// starts after it expires, and a retry still running when it expires is
+				// cancelled. This is not a request timeout; it does not limit the initial
+				// request, which is still subject to any timeouts set by your Worker. Defaults
+				// to 10000.
+				timeout_ms?: number
+			})
+
+			// List of allowed sender addresses.
+			allowed_sender_addresses?: [...string]
+
 			// The rate limit configuration.
 			simple?: close({
 				// The limit (requests per period).
@@ -117,9 +136,6 @@ cloudflare_worker_version: {
 				// The period in seconds.
 				period!: number
 			})
-
-			// List of allowed sender addresses.
-			allowed_sender_addresses?: [...string]
 
 			// ID of the Flagship app to bind to for feature flag evaluation.
 			app_id?: string
@@ -295,6 +311,25 @@ cloudflare_worker_version: {
 			// List of allowed destination addresses.
 			allowed_destination_addresses?: [...string]
 
+			// Retry policy for calls made to the Durable Object through this binding.
+			// Omitted or null properties use the runtime defaults. These limits are upper
+			// bounds and do not enable retries for otherwise ineligible calls.
+			retry?: close({
+				// Maximum number of retries after the initial request, not the total number of
+				// attempts. Defaults to 4. Zero disables retries.
+				max_attempts?: number
+
+				// Retry timeout in milliseconds, measured from the start of the call. No retry
+				// starts after it expires, and a retry still running when it expires is
+				// cancelled. This is not a request timeout; it does not limit the initial
+				// request, which is still subject to any timeouts set by your Worker. Defaults
+				// to 10000.
+				timeout_ms?: number
+			})
+
+			// List of allowed sender addresses.
+			allowed_sender_addresses?: [...string]
+
 			// The rate limit configuration.
 			simple?: close({
 				// The limit (requests per period).
@@ -308,9 +343,6 @@ cloudflare_worker_version: {
 				// The period in seconds.
 				period!: number
 			})
-
-			// List of allowed sender addresses.
-			allowed_sender_addresses?: [...string]
 
 			// ID of the Flagship app to bind to for feature flag evaluation.
 			app_id?: string

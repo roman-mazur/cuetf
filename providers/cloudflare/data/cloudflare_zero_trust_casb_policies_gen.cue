@@ -71,7 +71,7 @@ cloudflare_zero_trust_casb_policies: {
 			enabled?: bool
 
 			// The finding type this policy is associated with. Immutable after creation;
-			// changing it replaces the policy.
+			// attempts to change it via update are rejected.
 			finding_type_id?: string
 
 			// Unique identifier for the policy configuration.
@@ -149,7 +149,7 @@ cloudflare_zero_trust_casb_policies: {
 			enabled?: bool
 
 			// The finding type this policy is associated with. Immutable after creation;
-			// changing it replaces the policy.
+			// attempts to change it via update are rejected.
 			finding_type_id?: string
 
 			// Unique identifier for the policy configuration.

@@ -86,7 +86,7 @@ cloudflare_zero_trust_dlp_custom_profile: {
 			profile_id?:  string
 			secret?:      bool
 			updated_at?:  string
-			word_list?:   string
+			word_list?: [...string]
 		}), [...close({
 			// Only applies to custom word lists.
 			// Determines if the words should be matched in a case-sensitive manner
@@ -130,7 +130,7 @@ cloudflare_zero_trust_dlp_custom_profile: {
 			profile_id?:  string
 			secret?:      bool
 			updated_at?:  string
-			word_list?:   string
+			word_list?: [...string]
 		})]])
 
 		// Available values: "custom", "predefined", "integration".

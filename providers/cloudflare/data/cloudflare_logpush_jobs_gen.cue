@@ -51,8 +51,7 @@ cloudflare_logpush_jobs: {
 				field_names?: [...string]
 
 				// If set to true, subrequests will be merged into the parent request. Only
-				// supported for the `http_requests` dataset. Not supported for account-scoped
-				// jobs.
+				// supported for the `http_requests` dataset.
 				merge_subrequests?: bool
 
 				// Specifies the output type, such as `ndjson` or `csv`. This sets default
@@ -190,8 +189,7 @@ cloudflare_logpush_jobs: {
 				field_names?: [...string]
 
 				// If set to true, subrequests will be merged into the parent request. Only
-				// supported for the `http_requests` dataset. Not supported for account-scoped
-				// jobs.
+				// supported for the `http_requests` dataset.
 				merge_subrequests?: bool
 
 				// Specifies the output type, such as `ndjson` or `csv`. This sets default
