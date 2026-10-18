@@ -146,7 +146,8 @@ elasticstack_kibana_security_entity_store_status: {
 		// An identifier for the space. If space_id is not provided, the default space is used.
 		space_id?: string
 
-		// Normalized JSON of the full status response.
+		// Raw JSON of the full status response. The order of the engines array is
+		// ignored when comparing this attribute for semantic equality.
 		status_json?: string
 	})
 

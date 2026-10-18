@@ -31,6 +31,9 @@ elasticstack_fleet_elastic_defend_integration_policy: {
 
 				// Linux event collection settings.
 				events?: close({
+					// Collect DNS events.
+					dns?: bool
+
 					// Collect file events.
 					file?: bool
 
@@ -61,10 +64,16 @@ elasticstack_fleet_elastic_defend_integration_policy: {
 
 					// Malware protection mode. Valid values: `"off"`, `"detect"`, `"prevent"`.
 					mode?: string
+
+					// Whether on-write scan is enabled.
+					on_write_scan?: bool
 				})
 
 				// Linux memory protection settings.
 				memory_protection?: close({
+					// Whether custom YARA signatures are enabled for memory protection.
+					custom_yara_signatures?: bool
+
 					// Protection mode. Valid values: `"off"`, `"detect"`, `"prevent"`.
 					mode?: string
 
@@ -112,8 +121,21 @@ elasticstack_fleet_elastic_defend_integration_policy: {
 					supported?: bool
 				})
 
+				// macOS device control settings.
+				device_control?: close({
+					// Whether device control is enabled.
+					enabled?: bool
+
+					// Access level for USB storage devices. Valid values: `"audit"`, `"read_only"`,
+					// `"no_execute"`, `"deny_all"`.
+					usb_storage?: string
+				})
+
 				// macOS event collection settings.
 				events?: close({
+					// Collect DNS events.
+					dns?: bool
+
 					// Collect file events.
 					file?: bool
 
@@ -122,6 +144,9 @@ elasticstack_fleet_elastic_defend_integration_policy: {
 
 					// Collect process events.
 					process?: bool
+
+					// Collect security events.
+					security?: bool
 				})
 
 				// macOS logging settings.
@@ -148,6 +173,9 @@ elasticstack_fleet_elastic_defend_integration_policy: {
 
 				// macOS memory protection settings.
 				memory_protection?: close({
+					// Whether custom YARA signatures are enabled for memory protection.
+					custom_yara_signatures?: bool
+
 					// Protection mode. Valid values: `"off"`, `"detect"`, `"prevent"`.
 					mode?: string
 
@@ -158,6 +186,13 @@ elasticstack_fleet_elastic_defend_integration_policy: {
 				// macOS popup notification settings.
 				popup?: close({
 					behavior_protection?: close({
+						// Whether the popup notification is enabled.
+						enabled?: bool
+
+						// The popup message text.
+						message?: string
+					})
+					device_control?: close({
 						// Whether the popup notification is enabled.
 						enabled?: bool
 
@@ -178,6 +213,22 @@ elasticstack_fleet_elastic_defend_integration_policy: {
 						// The popup message text.
 						message?: string
 					})
+					ransomware?: close({
+						// Whether the popup notification is enabled.
+						enabled?: bool
+
+						// The popup message text.
+						message?: string
+					})
+				})
+
+				// macOS ransomware protection settings.
+				ransomware?: close({
+					// Protection mode. Valid values: `"off"`, `"detect"`, `"prevent"`.
+					mode?: string
+
+					// Whether this protection is supported on the platform.
+					supported?: bool
 				})
 			})
 
@@ -214,10 +265,23 @@ elasticstack_fleet_elastic_defend_integration_policy: {
 					supported?: bool
 				})
 
+				// Windows device control settings.
+				device_control?: close({
+					// Whether device control is enabled.
+					enabled?: bool
+
+					// Access level for USB storage devices. Valid values: `"audit"`, `"read_only"`,
+					// `"no_execute"`, `"deny_all"`.
+					usb_storage?: string
+				})
+
 				// Windows event collection settings.
 				events?: close({
 					// Collect authentication events.
 					authentication?: bool
+
+					// Collect credential access events.
+					credential_access?: bool
 
 					// Collect DLL and driver load events.
 					dll_and_driver_load?: bool
@@ -265,6 +329,9 @@ elasticstack_fleet_elastic_defend_integration_policy: {
 
 				// Windows memory protection settings.
 				memory_protection?: close({
+					// Whether custom YARA signatures are enabled for memory protection.
+					custom_yara_signatures?: bool
+
 					// Protection mode. Valid values: `"off"`, `"detect"`, `"prevent"`.
 					mode?: string
 
@@ -275,6 +342,13 @@ elasticstack_fleet_elastic_defend_integration_policy: {
 				// Windows popup notification settings.
 				popup?: close({
 					behavior_protection?: close({
+						// Whether the popup notification is enabled.
+						enabled?: bool
+
+						// The popup message text.
+						message?: string
+					})
+					device_control?: close({
 						// Whether the popup notification is enabled.
 						enabled?: bool
 
@@ -342,7 +416,9 @@ elasticstack_fleet_elastic_defend_integration_policy: {
 		// The namespace of the integration policy.
 		namespace!: string
 
-		// Unique identifier of the Elastic Defend integration policy. Used as the import key.
+		// Unique identifier of the Elastic Defend integration policy. Used as the
+		// import key. When set, the policy is created with this ID; otherwise Kibana
+		// assigns one. Changing it forces replacement.
 		policy_id?: string
 
 		// Elastic Defend preset configuration. Maps to `endpointConfig.preset` in the

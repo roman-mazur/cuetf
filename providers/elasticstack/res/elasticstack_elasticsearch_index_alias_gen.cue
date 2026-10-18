@@ -11,6 +11,9 @@ elasticstack_elasticsearch_index_alias: {
 
 		// Set of read indices for the alias.
 		read_indices?: matchN(1, [close({
+			// Concrete indices or data streams currently attached to the alias for this expression.
+			concrete_indices?: [...string]
+
 			// Query used to limit documents the alias can access.
 			filter?: string
 
@@ -20,7 +23,7 @@ elasticstack_elasticsearch_index_alias: {
 			// If true, the alias is hidden.
 			is_hidden?: bool
 
-			// Name of the read index.
+			// Name or Elasticsearch multi-target expression for the read index or data stream targets.
 			name!: string
 
 			// Value used to route indexing and search operations to a specific shard.
@@ -29,6 +32,9 @@ elasticstack_elasticsearch_index_alias: {
 			// Value used to route search operations to a specific shard.
 			search_routing?: string
 		}), [...close({
+			// Concrete indices or data streams currently attached to the alias for this expression.
+			concrete_indices?: [...string]
+
 			// Query used to limit documents the alias can access.
 			filter?: string
 
@@ -38,7 +44,7 @@ elasticstack_elasticsearch_index_alias: {
 			// If true, the alias is hidden.
 			is_hidden?: bool
 
-			// Name of the read index.
+			// Name or Elasticsearch multi-target expression for the read index or data stream targets.
 			name!: string
 
 			// Value used to route indexing and search operations to a specific shard.
@@ -90,7 +96,7 @@ elasticstack_elasticsearch_index_alias: {
 			// If true, the alias is hidden.
 			is_hidden?: bool
 
-			// Name of the write index.
+			// Name of the write index. Multi-target expressions are not supported.
 			name!: string
 
 			// Value used to route indexing and search operations to a specific shard.

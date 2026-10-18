@@ -227,6 +227,10 @@ elasticstack_elasticsearch_snapshot_repository: {
 
 		// AWS S3 as a repository. Set only if the type of the fetched repo is `s3`.
 		s3?: matchN(1, [close({
+			// If true, request payload signatures are sent even over HTTPS. Useful for some
+			// S3-compatible stores that require this additional integrity mechanism.
+			always_sign_requests?: bool
+
 			// Specifies the path to the repository data within its bucket.
 			base_path?: string
 
@@ -247,6 +251,10 @@ elasticstack_elasticsearch_snapshot_repository: {
 
 			// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
 			compress?: bool
+
+			// If true, chunked encoding is disabled and will not be used for S3 uploads.
+			// Only set this if the storage service does not support chunked encoding.
+			disable_chunked_encoding?: bool
 
 			// Maximum snapshot restore rate per node.
 			max_restore_bytes_per_sec?: string
@@ -266,6 +274,10 @@ elasticstack_elasticsearch_snapshot_repository: {
 			// Sets the S3 storage class for objects stored in the snapshot repository.
 			storage_class?: string
 		}), [...close({
+			// If true, request payload signatures are sent even over HTTPS. Useful for some
+			// S3-compatible stores that require this additional integrity mechanism.
+			always_sign_requests?: bool
+
 			// Specifies the path to the repository data within its bucket.
 			base_path?: string
 
@@ -286,6 +298,10 @@ elasticstack_elasticsearch_snapshot_repository: {
 
 			// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
 			compress?: bool
+
+			// If true, chunked encoding is disabled and will not be used for S3 uploads.
+			// Only set this if the storage service does not support chunked encoding.
+			disable_chunked_encoding?: bool
 
 			// Maximum snapshot restore rate per node.
 			max_restore_bytes_per_sec?: string

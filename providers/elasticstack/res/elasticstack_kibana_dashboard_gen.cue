@@ -5504,7 +5504,11 @@ elasticstack_kibana_dashboard: {
 
 								// Array of reference line thresholds.
 								thresholds!: matchN(1, [close({
-									// Which axis the reference line applies to. Valid values: 'left', 'right'.
+									// Which axis the reference line applies to. Not settable against Kibana 9.6:
+									// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+									// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+									// attribute; it defaults to the Y axis. Tracked in
+									// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 									axis?: string
 
 									// Color for the reference line. Can be a static color string or dynamic color
@@ -5539,7 +5543,11 @@ elasticstack_kibana_dashboard: {
 									// for the threshold value.
 									value_json?: string
 								}), [...close({
-									// Which axis the reference line applies to. Valid values: 'left', 'right'.
+									// Which axis the reference line applies to. Not settable against Kibana 9.6:
+									// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+									// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+									// attribute; it defaults to the Y axis. Tracked in
+									// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 									axis?: string
 
 									// Color for the reference line. Can be a static color string or dynamic color
@@ -5629,7 +5637,11 @@ elasticstack_kibana_dashboard: {
 
 								// Array of reference line thresholds.
 								thresholds!: matchN(1, [close({
-									// Which axis the reference line applies to. Valid values: 'left', 'right'.
+									// Which axis the reference line applies to. Not settable against Kibana 9.6:
+									// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+									// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+									// attribute; it defaults to the Y axis. Tracked in
+									// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 									axis?: string
 
 									// Color for the reference line. Can be a static color string or dynamic color
@@ -5664,7 +5676,11 @@ elasticstack_kibana_dashboard: {
 									// for the threshold value.
 									value_json?: string
 								}), [...close({
-									// Which axis the reference line applies to. Valid values: 'left', 'right'.
+									// Which axis the reference line applies to. Not settable against Kibana 9.6:
+									// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+									// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+									// attribute; it defaults to the Y axis. Tracked in
+									// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 									axis?: string
 
 									// Color for the reference line. Can be a static color string or dynamic color
@@ -11204,7 +11220,11 @@ elasticstack_kibana_dashboard: {
 
 								// Array of reference line thresholds.
 								thresholds!: matchN(1, [close({
-									// Which axis the reference line applies to. Valid values: 'left', 'right'.
+									// Which axis the reference line applies to. Not settable against Kibana 9.6:
+									// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+									// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+									// attribute; it defaults to the Y axis. Tracked in
+									// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 									axis?: string
 
 									// Color for the reference line. Can be a static color string or dynamic color
@@ -11239,7 +11259,11 @@ elasticstack_kibana_dashboard: {
 									// for the threshold value.
 									value_json?: string
 								}), [...close({
-									// Which axis the reference line applies to. Valid values: 'left', 'right'.
+									// Which axis the reference line applies to. Not settable against Kibana 9.6:
+									// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+									// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+									// attribute; it defaults to the Y axis. Tracked in
+									// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 									axis?: string
 
 									// Color for the reference line. Can be a static color string or dynamic color
@@ -11329,7 +11353,11 @@ elasticstack_kibana_dashboard: {
 
 								// Array of reference line thresholds.
 								thresholds!: matchN(1, [close({
-									// Which axis the reference line applies to. Valid values: 'left', 'right'.
+									// Which axis the reference line applies to. Not settable against Kibana 9.6:
+									// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+									// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+									// attribute; it defaults to the Y axis. Tracked in
+									// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 									axis?: string
 
 									// Color for the reference line. Can be a static color string or dynamic color
@@ -11364,7 +11392,11 @@ elasticstack_kibana_dashboard: {
 									// for the threshold value.
 									value_json?: string
 								}), [...close({
-									// Which axis the reference line applies to. Valid values: 'left', 'right'.
+									// Which axis the reference line applies to. Not settable against Kibana 9.6:
+									// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+									// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+									// attribute; it defaults to the Y axis. Tracked in
+									// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 									axis?: string
 
 									// Color for the reference line. Can be a static color string or dynamic color
@@ -12045,26 +12077,24 @@ elasticstack_kibana_dashboard: {
 		tags?: [...string]
 
 		// Dashboard-level query. Aligns with the Kibana Dashboard API `query` object:
-		// `language` plus exactly one of `text` (string branch) or `json` (object
-		// branch).
-		query!: close({
-			// Query as normalized JSON for the object branch of the API union. Exactly one
-			// of `text` or `json` must be set.
-			json?: string
+		// `language` plus `expression`. Optional; removing the block clears it in
+		// Kibana rather than resetting it to a default.
+		query?: close({
+			// Query expression in KQL or Lucene syntax. The value is compared as an exact
+			// string, so Kibana-side normalization of the expression shows up as a diff.
+			expression!: string
 
 			// Query language (`kql` or `lucene`).
 			language!: string
-
-			// Query string for KQL or Lucene. Exactly one of `text` or `json` must be set.
-			text?: string
 		})
 
 		// A human-readable title for the dashboard.
 		title!: string
 
 		// Auto-refresh settings for the dashboard. Aligns with the Kibana Dashboard API
-		// `refresh_interval` object.
-		refresh_interval!: close({
+		// `refresh_interval` object. Optional; removing the block clears it in Kibana
+		// rather than resetting it to a default.
+		refresh_interval?: close({
 			// When true, auto-refresh is paused.
 			pause!: bool
 
@@ -17525,7 +17555,11 @@ elasticstack_kibana_dashboard: {
 
 									// Array of reference line thresholds.
 									thresholds!: matchN(1, [close({
-										// Which axis the reference line applies to. Valid values: 'left', 'right'.
+										// Which axis the reference line applies to. Not settable against Kibana 9.6:
+										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+										// attribute; it defaults to the Y axis. Tracked in
+										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -17560,7 +17594,11 @@ elasticstack_kibana_dashboard: {
 										// for the threshold value.
 										value_json?: string
 									}), [...close({
-										// Which axis the reference line applies to. Valid values: 'left', 'right'.
+										// Which axis the reference line applies to. Not settable against Kibana 9.6:
+										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+										// attribute; it defaults to the Y axis. Tracked in
+										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -17650,7 +17688,11 @@ elasticstack_kibana_dashboard: {
 
 									// Array of reference line thresholds.
 									thresholds!: matchN(1, [close({
-										// Which axis the reference line applies to. Valid values: 'left', 'right'.
+										// Which axis the reference line applies to. Not settable against Kibana 9.6:
+										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+										// attribute; it defaults to the Y axis. Tracked in
+										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -17685,7 +17727,11 @@ elasticstack_kibana_dashboard: {
 										// for the threshold value.
 										value_json?: string
 									}), [...close({
-										// Which axis the reference line applies to. Valid values: 'left', 'right'.
+										// Which axis the reference line applies to. Not settable against Kibana 9.6:
+										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+										// attribute; it defaults to the Y axis. Tracked in
+										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -23225,7 +23271,11 @@ elasticstack_kibana_dashboard: {
 
 									// Array of reference line thresholds.
 									thresholds!: matchN(1, [close({
-										// Which axis the reference line applies to. Valid values: 'left', 'right'.
+										// Which axis the reference line applies to. Not settable against Kibana 9.6:
+										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+										// attribute; it defaults to the Y axis. Tracked in
+										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -23260,7 +23310,11 @@ elasticstack_kibana_dashboard: {
 										// for the threshold value.
 										value_json?: string
 									}), [...close({
-										// Which axis the reference line applies to. Valid values: 'left', 'right'.
+										// Which axis the reference line applies to. Not settable against Kibana 9.6:
+										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+										// attribute; it defaults to the Y axis. Tracked in
+										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -23350,7 +23404,11 @@ elasticstack_kibana_dashboard: {
 
 									// Array of reference line thresholds.
 									thresholds!: matchN(1, [close({
-										// Which axis the reference line applies to. Valid values: 'left', 'right'.
+										// Which axis the reference line applies to. Not settable against Kibana 9.6:
+										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+										// attribute; it defaults to the Y axis. Tracked in
+										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -23385,7 +23443,11 @@ elasticstack_kibana_dashboard: {
 										// for the threshold value.
 										value_json?: string
 									}), [...close({
-										// Which axis the reference line applies to. Valid values: 'left', 'right'.
+										// Which axis the reference line applies to. Not settable against Kibana 9.6:
+										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+										// attribute; it defaults to the Y axis. Tracked in
+										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -28943,7 +29005,11 @@ elasticstack_kibana_dashboard: {
 
 									// Array of reference line thresholds.
 									thresholds!: matchN(1, [close({
-										// Which axis the reference line applies to. Valid values: 'left', 'right'.
+										// Which axis the reference line applies to. Not settable against Kibana 9.6:
+										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+										// attribute; it defaults to the Y axis. Tracked in
+										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -28978,7 +29044,11 @@ elasticstack_kibana_dashboard: {
 										// for the threshold value.
 										value_json?: string
 									}), [...close({
-										// Which axis the reference line applies to. Valid values: 'left', 'right'.
+										// Which axis the reference line applies to. Not settable against Kibana 9.6:
+										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+										// attribute; it defaults to the Y axis. Tracked in
+										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -29068,7 +29138,11 @@ elasticstack_kibana_dashboard: {
 
 									// Array of reference line thresholds.
 									thresholds!: matchN(1, [close({
-										// Which axis the reference line applies to. Valid values: 'left', 'right'.
+										// Which axis the reference line applies to. Not settable against Kibana 9.6:
+										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+										// attribute; it defaults to the Y axis. Tracked in
+										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -29103,7 +29177,11 @@ elasticstack_kibana_dashboard: {
 										// for the threshold value.
 										value_json?: string
 									}), [...close({
-										// Which axis the reference line applies to. Valid values: 'left', 'right'.
+										// Which axis the reference line applies to. Not settable against Kibana 9.6:
+										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+										// attribute; it defaults to the Y axis. Tracked in
+										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -34643,7 +34721,11 @@ elasticstack_kibana_dashboard: {
 
 									// Array of reference line thresholds.
 									thresholds!: matchN(1, [close({
-										// Which axis the reference line applies to. Valid values: 'left', 'right'.
+										// Which axis the reference line applies to. Not settable against Kibana 9.6:
+										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+										// attribute; it defaults to the Y axis. Tracked in
+										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -34678,7 +34760,11 @@ elasticstack_kibana_dashboard: {
 										// for the threshold value.
 										value_json?: string
 									}), [...close({
-										// Which axis the reference line applies to. Valid values: 'left', 'right'.
+										// Which axis the reference line applies to. Not settable against Kibana 9.6:
+										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+										// attribute; it defaults to the Y axis. Tracked in
+										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -34768,7 +34854,11 @@ elasticstack_kibana_dashboard: {
 
 									// Array of reference line thresholds.
 									thresholds!: matchN(1, [close({
-										// Which axis the reference line applies to. Valid values: 'left', 'right'.
+										// Which axis the reference line applies to. Not settable against Kibana 9.6:
+										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+										// attribute; it defaults to the Y axis. Tracked in
+										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -34803,7 +34893,11 @@ elasticstack_kibana_dashboard: {
 										// for the threshold value.
 										value_json?: string
 									}), [...close({
-										// Which axis the reference line applies to. Valid values: 'left', 'right'.
+										// Which axis the reference line applies to. Not settable against Kibana 9.6:
+										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
+										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
+										// attribute; it defaults to the Y axis. Tracked in
+										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -34912,8 +35006,9 @@ elasticstack_kibana_dashboard: {
 		})]])
 
 		// Dashboard time selection (`from`, `to`, optional `mode`). Aligns with the
-		// Kibana Dashboard API `time_range` object.
-		time_range!: close({
+		// Kibana Dashboard API `time_range` object. Optional; removing the block
+		// clears it in Kibana rather than resetting it to a default.
+		time_range?: close({
 			// Start of the time range (e.g., 'now-15m', '2023-01-01T00:00:00Z').
 			from!: string
 

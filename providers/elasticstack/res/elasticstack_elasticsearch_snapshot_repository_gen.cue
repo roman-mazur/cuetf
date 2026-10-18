@@ -209,6 +209,10 @@ elasticstack_elasticsearch_snapshot_repository: {
 	})
 
 	#s3: close({
+		// If true, request payload signatures are sent even over HTTPS. Useful for some
+		// S3-compatible stores that require this additional integrity mechanism.
+		always_sign_requests?: bool
+
 		// Specifies the path to the repository data within its bucket.
 		base_path?: string
 
@@ -229,6 +233,10 @@ elasticstack_elasticsearch_snapshot_repository: {
 
 		// If true, metadata files, such as index mappings and settings, are compressed in snapshots.
 		compress?: bool
+
+		// If true, chunked encoding is disabled and will not be used for S3 uploads.
+		// Only set this if the storage service does not support chunked encoding.
+		disable_chunked_encoding?: bool
 
 		// Custom S3 service endpoint, useful when using VPC endpoints or non-default S3 URLs.
 		endpoint?: string
