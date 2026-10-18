@@ -7,6 +7,7 @@ aws_cloudwatch_metric_alarm: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_cloudwatch_metric_alarm")
 	close({
 		evaluation_criteria?: matchN(1, [#evaluation_criteria, list.MaxItems(1) & [...#evaluation_criteria]])
+		evaluation_window?: matchN(1, [#evaluation_window, list.MaxItems(1) & [...#evaluation_window]])
 		metric_query?: matchN(1, [#metric_query, [...#metric_query]])
 		warm_up_configuration?: matchN(1, [#warm_up_configuration, list.MaxItems(1) & [...#warm_up_configuration]])
 		actions_enabled?: bool
@@ -46,6 +47,10 @@ aws_cloudwatch_metric_alarm: {
 		promql_criteria!: matchN(1, [_#defs."/$defs/evaluation_criteria/$defs/promql_criteria", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/evaluation_criteria/$defs/promql_criteria"]])
 	})
 
+	#evaluation_window: close({
+		wall_clock_window!: matchN(1, [_#defs."/$defs/evaluation_window/$defs/wall_clock_window", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/evaluation_window/$defs/wall_clock_window"]])
+	})
+
 	#metric_query: close({
 		metric?: matchN(1, [_#defs."/$defs/metric_query/$defs/metric", list.MaxItems(1) & [..._#defs."/$defs/metric_query/$defs/metric"]])
 		account_id?:  string
@@ -65,6 +70,10 @@ aws_cloudwatch_metric_alarm: {
 		pending_period?:  number
 		query!:           string
 		recovery_period?: number
+	})
+
+	_#defs: "/$defs/evaluation_window/$defs/wall_clock_window": close({
+		timezone?: string
 	})
 
 	_#defs: "/$defs/metric_query/$defs/metric": close({

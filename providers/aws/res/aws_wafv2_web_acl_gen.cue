@@ -12,6 +12,7 @@ aws_wafv2_web_acl: {
 		custom_response_body?: matchN(1, [#custom_response_body, [...#custom_response_body]])
 		data_protection_config?: matchN(1, [#data_protection_config, list.MaxItems(1) & [...#data_protection_config]])
 		default_action!: matchN(1, [#default_action, list.MaxItems(1) & [_, ...] & [...#default_action]])
+		monetization_config?: matchN(1, [#monetization_config, list.MaxItems(1) & [...#monetization_config]])
 		rule?: matchN(1, [#rule, [...#rule]])
 		visibility_config!: matchN(1, [#visibility_config, list.MaxItems(1) & [_, ...] & [...#visibility_config]])
 		application_integration_url?: string
@@ -60,6 +61,11 @@ aws_wafv2_web_acl: {
 	#default_action: close({
 		allow?: matchN(1, [_#defs."/$defs/default_action/$defs/allow", list.MaxItems(1) & [..._#defs."/$defs/default_action/$defs/allow"]])
 		block?: matchN(1, [_#defs."/$defs/default_action/$defs/block", list.MaxItems(1) & [..._#defs."/$defs/default_action/$defs/block"]])
+	})
+
+	#monetization_config: close({
+		crypto_config?: matchN(1, [_#defs."/$defs/monetization_config/$defs/crypto_config", list.MaxItems(1) & [..._#defs."/$defs/monetization_config/$defs/crypto_config"]])
+		currency_mode?: string
 	})
 
 	#rule: close({
@@ -156,12 +162,28 @@ aws_wafv2_web_acl: {
 		value!: string
 	})
 
+	_#defs: "/$defs/monetization_config/$defs/crypto_config": close({
+		payment_network!: matchN(1, [_#defs."/$defs/monetization_config/$defs/crypto_config/$defs/payment_network", list.MaxItems(2) & [_, ...] & [..._#defs."/$defs/monetization_config/$defs/crypto_config/$defs/payment_network"]])
+	})
+
+	_#defs: "/$defs/monetization_config/$defs/crypto_config/$defs/payment_network": close({
+		prices!: matchN(1, [_#defs."/$defs/monetization_config/$defs/crypto_config/$defs/payment_network/$defs/prices", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/monetization_config/$defs/crypto_config/$defs/payment_network/$defs/prices"]])
+		chain!:          string
+		wallet_address!: string
+	})
+
+	_#defs: "/$defs/monetization_config/$defs/crypto_config/$defs/payment_network/$defs/prices": close({
+		amount!:   string
+		currency!: string
+	})
+
 	_#defs: "/$defs/rule/$defs/action": close({
 		allow?: matchN(1, [_#defs."/$defs/rule/$defs/action/$defs/allow", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/action/$defs/allow"]])
 		block?: matchN(1, [_#defs."/$defs/rule/$defs/action/$defs/block", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/action/$defs/block"]])
 		captcha?: matchN(1, [_#defs."/$defs/rule/$defs/action/$defs/captcha", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/action/$defs/captcha"]])
 		challenge?: matchN(1, [_#defs."/$defs/rule/$defs/action/$defs/challenge", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/action/$defs/challenge"]])
 		count?: matchN(1, [_#defs."/$defs/rule/$defs/action/$defs/count", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/action/$defs/count"]])
+		monetize?: matchN(1, [_#defs."/$defs/rule/$defs/action/$defs/monetize", list.MaxItems(1) & [..._#defs."/$defs/rule/$defs/action/$defs/monetize"]])
 	})
 
 	_#defs: "/$defs/rule/$defs/action/$defs/allow": close({
@@ -229,6 +251,10 @@ aws_wafv2_web_acl: {
 	_#defs: "/$defs/rule/$defs/action/$defs/count/$defs/custom_request_handling/$defs/insert_header": close({
 		name!:  string
 		value!: string
+	})
+
+	_#defs: "/$defs/rule/$defs/action/$defs/monetize": close({
+		price_multiplier?: string
 	})
 
 	_#defs: "/$defs/rule/$defs/captcha_config": close({

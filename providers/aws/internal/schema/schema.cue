@@ -1762,6 +1762,12 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 								description_kind: "plain"
 								optional:         true
 							}
+							pricingplanmanager: {
+								type:             "string"
+								description:      "Use this to override the default service endpoint URL"
+								description_kind: "plain"
+								optional:         true
+							}
 							prometheus: {
 								type:             "string"
 								description:      "Use this to override the default service endpoint URL"
@@ -31684,6 +31690,50 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 													description_kind: "plain"
 												}
 											}
+											sync_schedule: {
+												nesting_mode: "list"
+												block: {
+													block_types: {
+														daily: {
+															nesting_mode: "list"
+															block: description_kind: "plain"
+														}
+														monthly: {
+															nesting_mode: "list"
+															block: {
+																block_types: day_of_month: {
+																	nesting_mode: "list"
+																	block: {
+																		attributes: day_number: {
+																			type:             "number"
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		block_types: last_day_of_month: {
+																			nesting_mode: "list"
+																			block: description_kind: "plain"
+																		}
+																		description_kind: "plain"
+																	}
+																}
+																description_kind: "plain"
+															}
+														}
+														weekly: {
+															nesting_mode: "list"
+															block: {
+																attributes: day_of_week: {
+																	type:             "string"
+																	description_kind: "plain"
+																	required:         true
+																}
+																description_kind: "plain"
+															}
+														}
+													}
+													description_kind: "plain"
+												}
+											}
 										}
 										description_kind: "plain"
 									}
@@ -32073,6 +32123,39 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 													}
 													description_kind: "plain"
 												}
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								context_enrichment_configuration: {
+									nesting_mode: "list"
+									block: {
+										attributes: type: {
+											type:             "string"
+											description_kind: "plain"
+											required:         true
+										}
+										block_types: bedrock_foundation_model_configuration: {
+											nesting_mode: "list"
+											block: {
+												attributes: model_arn: {
+													type:             "string"
+													description_kind: "plain"
+													required:         true
+												}
+												block_types: enrichment_strategy_configuration: {
+													nesting_mode: "list"
+													block: {
+														attributes: method: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+														description_kind: "plain"
+													}
+												}
+												description_kind: "plain"
 											}
 										}
 										description_kind: "plain"
@@ -54865,6 +54948,26 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						}
 						max_items: 1
 					}
+					evaluation_window: {
+						nesting_mode: "list"
+						block: {
+							block_types: wall_clock_window: {
+								nesting_mode: "list"
+								block: {
+									attributes: timezone: {
+										type:             "string"
+										description_kind: "plain"
+										optional:         true
+									}
+									description_kind: "plain"
+								}
+								min_items: 1
+								max_items: 1
+							}
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
 					metric_query: {
 						nesting_mode: "set"
 						block: {
@@ -55158,24 +55261,62 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						computed:         true
 					}
 				}
-				block_types: timeouts: {
-					nesting_mode: "single"
-					block: {
-						attributes: {
-							create: {
-								type:             "string"
-								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
-								description_kind: "plain"
-								optional:         true
+				block_types: {
+					exclude_filter: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								metric_names: {
+									type: ["set", "string"]
+									description_kind: "plain"
+									optional:         true
+								}
+								namespace: {
+									type:             "string"
+									description_kind: "plain"
+									required:         true
+								}
 							}
-							delete: {
-								type:             "string"
-								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
-								description_kind: "plain"
-								optional:         true
-							}
+							description_kind: "plain"
 						}
-						description_kind: "plain"
+					}
+					include_filter: {
+						nesting_mode: "set"
+						block: {
+							attributes: {
+								metric_names: {
+									type: ["set", "string"]
+									description_kind: "plain"
+									optional:         true
+								}
+								namespace: {
+									type:             "string"
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
 					}
 				}
 				description_kind: "plain"
@@ -55222,6 +55363,177 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_cloudwatch_resource_metrics_configuration: {
+			version: 0
+			block: {
+				attributes: {
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					resource_arn: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: metric_selection: {
+					nesting_mode: "list"
+					block: {
+						attributes: include_metrics: {
+							type: ["set", "string"]
+							description_kind: "plain"
+							required:         true
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_cloudwatchomni_domain: {
+			version: 0
+			block: {
+				attributes: {
+					arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					custom_endpoint_urls: {
+						type: ["list", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					domain_endpoint_url: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					domain_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					identity_center_application_arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					identity_providers: {
+						type: ["set", "string"]
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: identity_provider_configuration: {
+					nesting_mode: "list"
+					block: {
+						block_types: identity_center_configuration: {
+							nesting_mode: "list"
+							block: {
+								attributes: identity_center_instance_arn: {
+									type:             "string"
+									description_kind: "plain"
+									required:         true
+								}
+								description_kind: "plain"
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_cloudwatchomni_space: {
+			version: 0
+			block: {
+				attributes: {
+					agent_core_evaluation_role_arn: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					data_access_role_arn: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					domain_arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					domain_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					space_arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: encryption_configuration: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							encryption_strategy: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+							kms_key_arn: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
 					}
 				}
 				description_kind: "plain"
@@ -73024,6 +73336,77 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				description_kind: "plain"
 			}
 		}
+		aws_devopsagent_agent_space: {
+			version: 0
+			block: {
+				attributes: {
+					agent_space_id: {
+						type:             "string"
+						description:      "Unique identifier of the Agent Space."
+						description_kind: "plain"
+						computed:         true
+					}
+					arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					created_at: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Description of the Agent Space."
+						description_kind: "plain"
+						optional:         true
+					}
+					kms_key_arn: {
+						type:             "string"
+						description:      "ARN of the KMS key used to encrypt resources."
+						description_kind: "plain"
+						optional:         true
+					}
+					locale: {
+						type:             "string"
+						description:      "Locale for the Agent Space, which determines the language used in agent responses."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the Agent Space."
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						optional:         true
+					}
+					tags_all: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		aws_devopsguru_event_sources_config: {
 			version: 0
 			block: {
@@ -87384,6 +87767,7 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 							type:             "string"
 							description_kind: "plain"
 							optional:         true
+							computed:         true
 						}
 						description_kind: "plain"
 					}
@@ -172202,6 +172586,11 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 			version: 0
 			block: {
 				attributes: {
+					all_regions: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+					}
 					failure_reason: {
 						type:             "string"
 						description_kind: "plain"
@@ -172219,6 +172608,11 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+					regions: {
+						type: ["set", "string"]
+						description_kind: "plain"
+						optional:         true
 					}
 					status: {
 						type:             "string"
@@ -181504,6 +181898,96 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_pricingplanmanager_subscription: {
+			version: 0
+			block: {
+				attributes: {
+					approval_mode: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					plan_family: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					plan_tier: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					resource_arns: {
+						type: ["set", "string"]
+						description_kind: "plain"
+						required:         true
+					}
+					scheduled_change: {
+						type: ["list", ["object", {
+							change_type:    "string"
+							effective_date: "string"
+							plan_tier:      "string"
+							usage_level:    "string"
+						}]]
+						description_kind: "plain"
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					status_reason: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					usage_level: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
 					}
 				}
 				description_kind: "plain"
@@ -317152,7 +317636,27 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 					nesting_mode: "list"
 					block: {
 						attributes: {
+							action: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
 							add_or_run_anomaly_detection_for_analyses: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							analysis: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							automate: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							chat_agent: {
 								type:             "string"
 								description_kind: "plain"
 								optional:         true
@@ -317182,12 +317686,22 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 								description_kind: "plain"
 								optional:         true
 							}
+							create_chat_agents: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
 							create_shared_folders: {
 								type:             "string"
 								description_kind: "plain"
 								optional:         true
 							}
 							create_spice_dataset: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							dashboard: {
 								type:             "string"
 								description_kind: "plain"
 								optional:         true
@@ -317222,7 +317736,22 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 								description_kind: "plain"
 								optional:         true
 							}
+							flow: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
 							include_content_in_scheduled_reports_email: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							knowledge_base: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							perform_flow_ui_task: {
 								type:             "string"
 								description_kind: "plain"
 								optional:         true
@@ -317232,7 +317761,17 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 								description_kind: "plain"
 								optional:         true
 							}
+							publish_without_approval: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
 							rename_shared_folders: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							research: {
 								type:             "string"
 								description_kind: "plain"
 								optional:         true
@@ -317257,7 +317796,22 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 								description_kind: "plain"
 								optional:         true
 							}
+							space: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
 							subscribe_dashboard_email_reports: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							use_agent_web_search: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							use_bedrock_models: {
 								type:             "string"
 								description_kind: "plain"
 								optional:         true
@@ -589496,6 +590050,12 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						optional:         true
 						computed:         true
 					}
+					publicly_accessible: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					reader_endpoint: {
 						type:             "string"
 						description_kind: "plain"
@@ -594273,6 +594833,40 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 											required:         true
 										}
 									}
+									block_types: label_selector: {
+										nesting_mode: "list"
+										block: {
+											attributes: match_labels: {
+												type: ["map", "string"]
+												description_kind: "plain"
+												optional:         true
+											}
+											block_types: match_expressions: {
+												nesting_mode: "set"
+												block: {
+													attributes: {
+														key: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+														operator: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+														values: {
+															type: ["set", "string"]
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													description_kind: "plain"
+												}
+											}
+											description_kind: "plain"
+										}
+									}
 									description_kind: "plain"
 								}
 							}
@@ -594328,6 +594922,12 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 					region: {
 						type:             "string"
 						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					sharing_enabled: {
+						type:             "bool"
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -646917,6 +647517,65 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 							description_kind: "plain"
 						}
 					}
+					monetization_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: currency_mode: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							block_types: crypto_config: {
+								nesting_mode: "list"
+								block: {
+									block_types: payment_network: {
+										nesting_mode: "list"
+										block: {
+											attributes: {
+												chain: {
+													type:             "string"
+													description_kind: "plain"
+													required:         true
+												}
+												wallet_address: {
+													type:             "string"
+													description_kind: "plain"
+													required:         true
+												}
+											}
+											block_types: prices: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														amount: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+														currency: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+													}
+													description_kind: "plain"
+												}
+												min_items: 1
+												max_items: 1
+											}
+											description_kind: "plain"
+										}
+										min_items: 1
+										max_items: 2
+									}
+									description_kind: "plain"
+								}
+								max_items: 1
+							}
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
 					rule: {
 						nesting_mode: "set"
 						block: {
@@ -647108,6 +647767,18 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 															description_kind: "plain"
 														}
 														max_items: 1
+													}
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											monetize: {
+												nesting_mode: "list"
+												block: {
+													attributes: price_multiplier: {
+														type:             "string"
+														description_kind: "plain"
+														optional:         true
 													}
 													description_kind: "plain"
 												}
@@ -748505,6 +749176,65 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						min_items: 1
 						max_items: 1
 					}
+					monetization_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: currency_mode: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							block_types: crypto_config: {
+								nesting_mode: "list"
+								block: {
+									block_types: payment_network: {
+										nesting_mode: "list"
+										block: {
+											attributes: {
+												chain: {
+													type:             "string"
+													description_kind: "plain"
+													required:         true
+												}
+												wallet_address: {
+													type:             "string"
+													description_kind: "plain"
+													required:         true
+												}
+											}
+											block_types: prices: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														amount: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+														currency: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+													}
+													description_kind: "plain"
+												}
+												min_items: 1
+												max_items: 1
+											}
+											description_kind: "plain"
+										}
+										min_items: 1
+										max_items: 2
+									}
+									description_kind: "plain"
+								}
+								max_items: 1
+							}
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
 					rule: {
 						nesting_mode: "set"
 						block: {
@@ -748696,6 +749426,18 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 															description_kind: "plain"
 														}
 														max_items: 1
+													}
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											monetize: {
+												nesting_mode: "list"
+												block: {
+													attributes: price_multiplier: {
+														type:             "string"
+														description_kind: "plain"
+														optional:         true
 													}
 													description_kind: "plain"
 												}
@@ -1196185,6 +1196927,11 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						optional:         true
 						computed:         true
 					}
+					sharing_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["map", "string"]
 						description_kind: "plain"
@@ -1208840,6 +1209587,30 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				description_kind: "plain"
 			}
 		}
+		aws_cloudwatchomni_domain: {
+			version: 0
+			block: {
+				attributes: region: {
+					type:             "string"
+					description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_cloudwatchomni_space: {
+			version: 0
+			block: {
+				attributes: region: {
+					type:             "string"
+					description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
 		aws_codebuild_project: {
 			version: 0
 			block: {
@@ -1208958,6 +1209729,18 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						}
 						description_kind: "plain"
 					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_devopsagent_agent_space: {
+			version: 0
+			block: {
+				attributes: region: {
+					type:             "string"
+					description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+					description_kind: "plain"
+					optional:         true
 				}
 				description_kind: "plain"
 			}
@@ -1210662,6 +1211445,10 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				description_kind: "plain"
 			}
 		}
+		aws_pricingplanmanager_subscription: {
+			version: 0
+			block: description_kind: "plain"
+		}
 		aws_prometheus_anomaly_detector: {
 			version: 0
 			block: {
@@ -1210709,6 +1211496,18 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 			}
 		}
 		aws_prometheus_scraper_logging_configuration: {
+			version: 0
+			block: {
+				attributes: region: {
+					type:             "string"
+					description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_ram_principal_association: {
 			version: 0
 			block: {
 				attributes: region: {
@@ -1211669,6 +1212468,26 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 					description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
 					description_kind: "plain"
 					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_ssm_service_setting: {
+			version: 0
+			block: {
+				attributes: {
+					arn: {
+						type:             "string"
+						description:      "ARN of the SSM Service Setting."
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				description_kind: "plain"
 			}
@@ -1214050,6 +1214869,47 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				}
 			}
 		}
+		aws_cloudwatch_resource_metrics_configuration: {
+			version: 0
+			attributes: resource_arn: {
+				type:                "string"
+				required_for_import: true
+			}
+		}
+		aws_cloudwatchomni_domain: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				domain_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		aws_cloudwatchomni_space: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+				space_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		aws_codeartifact_domain: {
 			version: 0
 			attributes: arn: {
@@ -1214893,6 +1215753,23 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 			attributes: arn: {
 				type:                "string"
 				required_for_import: true
+			}
+		}
+		aws_devopsagent_agent_space: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				agent_space_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
 			}
 		}
 		aws_devopsguru_event_sources_config: {
@@ -1217659,6 +1218536,13 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				}
 			}
 		}
+		aws_pricingplanmanager_subscription: {
+			version: 0
+			attributes: arn: {
+				type:                "string"
+				required_for_import: true
+			}
+		}
 		aws_prometheus_anomaly_detector: {
 			version: 0
 			attributes: {
@@ -1217726,6 +1218610,27 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 			attributes: arn: {
 				type:                "string"
 				required_for_import: true
+			}
+		}
+		aws_ram_principal_association: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				principal: {
+					type:                "string"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+				resource_share_arn: {
+					type:                "string"
+					required_for_import: true
+				}
 			}
 		}
 		aws_ram_resource_association: {
@@ -1219322,6 +1220227,13 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 					type:                "string"
 					optional_for_import: true
 				}
+			}
+		}
+		aws_ssm_service_setting: {
+			version: 0
+			attributes: arn: {
+				type:                "string"
+				required_for_import: true
 			}
 		}
 		aws_ssmcontacts_contact: {

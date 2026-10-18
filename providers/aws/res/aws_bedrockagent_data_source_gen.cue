@@ -60,6 +60,7 @@ aws_bedrockagent_data_source: {
 
 	#vector_ingestion_configuration: close({
 		chunking_configuration?: matchN(1, [_#defs."/$defs/vector_ingestion_configuration/$defs/chunking_configuration", [..._#defs."/$defs/vector_ingestion_configuration/$defs/chunking_configuration"]])
+		context_enrichment_configuration?: matchN(1, [_#defs."/$defs/vector_ingestion_configuration/$defs/context_enrichment_configuration", [..._#defs."/$defs/vector_ingestion_configuration/$defs/context_enrichment_configuration"]])
 		custom_transformation_configuration?: matchN(1, [_#defs."/$defs/vector_ingestion_configuration/$defs/custom_transformation_configuration", [..._#defs."/$defs/vector_ingestion_configuration/$defs/custom_transformation_configuration"]])
 		parsing_configuration?: matchN(1, [_#defs."/$defs/vector_ingestion_configuration/$defs/parsing_configuration", [..._#defs."/$defs/vector_ingestion_configuration/$defs/parsing_configuration"]])
 	})
@@ -98,6 +99,7 @@ aws_bedrockagent_data_source: {
 	_#defs: "/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration": close({
 		deletion_protection_configuration?: matchN(1, [_#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/deletion_protection_configuration", [..._#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/deletion_protection_configuration"]])
 		media_extraction_configuration?: matchN(1, [_#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/media_extraction_configuration", [..._#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/media_extraction_configuration"]])
+		sync_schedule?: matchN(1, [_#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/sync_schedule", [..._#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/sync_schedule"]])
 		connector_parameters?: string
 	})
 
@@ -122,6 +124,29 @@ aws_bedrockagent_data_source: {
 
 	_#defs: "/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/media_extraction_configuration/$defs/video_extraction_configuration": close({
 		video_extraction_status!: string
+	})
+
+	_#defs: "/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/sync_schedule": close({
+		daily?: matchN(1, [_#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/sync_schedule/$defs/daily", [..._#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/sync_schedule/$defs/daily"]])
+		monthly?: matchN(1, [_#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/sync_schedule/$defs/monthly", [..._#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/sync_schedule/$defs/monthly"]])
+		weekly?: matchN(1, [_#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/sync_schedule/$defs/weekly", [..._#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/sync_schedule/$defs/weekly"]])
+	})
+
+	_#defs: "/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/sync_schedule/$defs/daily": close({})
+
+	_#defs: "/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/sync_schedule/$defs/monthly": close({
+		day_of_month?: matchN(1, [_#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/sync_schedule/$defs/monthly/$defs/day_of_month", [..._#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/sync_schedule/$defs/monthly/$defs/day_of_month"]])
+	})
+
+	_#defs: "/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/sync_schedule/$defs/monthly/$defs/day_of_month": close({
+		last_day_of_month?: matchN(1, [_#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/sync_schedule/$defs/monthly/$defs/day_of_month/$defs/last_day_of_month", [..._#defs."/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/sync_schedule/$defs/monthly/$defs/day_of_month/$defs/last_day_of_month"]])
+		day_number?: number
+	})
+
+	_#defs: "/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/sync_schedule/$defs/monthly/$defs/day_of_month/$defs/last_day_of_month": close({})
+
+	_#defs: "/$defs/data_source_configuration/$defs/managed_knowledge_base_connector_configuration/$defs/sync_schedule/$defs/weekly": close({
+		day_of_week!: string
 	})
 
 	_#defs: "/$defs/data_source_configuration/$defs/s3_configuration": close({
@@ -248,6 +273,20 @@ aws_bedrockagent_data_source: {
 		breakpoint_percentile_threshold!: number
 		buffer_size!:                     number
 		max_token!:                       number
+	})
+
+	_#defs: "/$defs/vector_ingestion_configuration/$defs/context_enrichment_configuration": close({
+		bedrock_foundation_model_configuration?: matchN(1, [_#defs."/$defs/vector_ingestion_configuration/$defs/context_enrichment_configuration/$defs/bedrock_foundation_model_configuration", [..._#defs."/$defs/vector_ingestion_configuration/$defs/context_enrichment_configuration/$defs/bedrock_foundation_model_configuration"]])
+		type!: string
+	})
+
+	_#defs: "/$defs/vector_ingestion_configuration/$defs/context_enrichment_configuration/$defs/bedrock_foundation_model_configuration": close({
+		enrichment_strategy_configuration?: matchN(1, [_#defs."/$defs/vector_ingestion_configuration/$defs/context_enrichment_configuration/$defs/bedrock_foundation_model_configuration/$defs/enrichment_strategy_configuration", [..._#defs."/$defs/vector_ingestion_configuration/$defs/context_enrichment_configuration/$defs/bedrock_foundation_model_configuration/$defs/enrichment_strategy_configuration"]])
+		model_arn!: string
+	})
+
+	_#defs: "/$defs/vector_ingestion_configuration/$defs/context_enrichment_configuration/$defs/bedrock_foundation_model_configuration/$defs/enrichment_strategy_configuration": close({
+		method!: string
 	})
 
 	_#defs: "/$defs/vector_ingestion_configuration/$defs/custom_transformation_configuration": close({

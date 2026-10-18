@@ -903,6 +903,9 @@ provider: {
 		pricing?: string
 
 		// Use this to override the default service endpoint URL
+		pricingplanmanager?: string
+
+		// Use this to override the default service endpoint URL
 		prometheus?: string
 
 		// Use this to override the default service endpoint URL
