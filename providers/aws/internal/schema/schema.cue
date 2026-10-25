@@ -23058,6 +23058,45 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 																	description_kind: "plain"
 																}
 															}
+															rds_switchover_read_replica_config: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		cross_account_role: {
+																			type:             "string"
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		db_instance_arn_map: {
+																			type: ["map", "string"]
+																			description_kind: "plain"
+																			required:         true
+																		}
+																		external_id: {
+																			type:             "string"
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		timeout_minutes: {
+																			type:             "number"
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																	}
+																	block_types: ungraceful: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: ungraceful: {
+																				type:             "string"
+																				description_kind: "plain"
+																				required:         true
+																			}
+																			description_kind: "plain"
+																		}
+																	}
+																	description_kind: "plain"
+																}
+															}
 															region_switch_plan_config: {
 																nesting_mode: "list"
 																block: {
@@ -23190,6 +23229,45 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 														type:             "number"
 														description_kind: "plain"
 														optional:         true
+													}
+												}
+												description_kind: "plain"
+											}
+										}
+										rds_switchover_read_replica_config: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													cross_account_role: {
+														type:             "string"
+														description_kind: "plain"
+														optional:         true
+													}
+													db_instance_arn_map: {
+														type: ["map", "string"]
+														description_kind: "plain"
+														required:         true
+													}
+													external_id: {
+														type:             "string"
+														description_kind: "plain"
+														optional:         true
+													}
+													timeout_minutes: {
+														type:             "number"
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												block_types: ungraceful: {
+													nesting_mode: "list"
+													block: {
+														attributes: ungraceful: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+														description_kind: "plain"
 													}
 												}
 												description_kind: "plain"
@@ -29309,6 +29387,84 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 									type: ["set", "string"]
 									description_kind: "plain"
 									required:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_bedrock_enforced_guardrail_configuration: {
+			version: 0
+			block: {
+				attributes: {
+					config_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					guardrail_arn: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					guardrail_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					guardrail_version: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					owner: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: {
+					model_enforcement: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								excluded_models: {
+									type: ["list", "string"]
+									description_kind: "plain"
+									required:         true
+								}
+								included_models: {
+									type: ["list", "string"]
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					selective_content_guarding: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								messages: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								system: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
 								}
 							}
 							description_kind: "plain"
@@ -55399,6 +55555,234 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				description_kind: "plain"
 			}
 		}
+		aws_cloudwatchomni_access_grant: {
+			version: 0
+			block: {
+				attributes: {
+					arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					domain_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					grant_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					grant_type: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					permission: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						optional:         true
+					}
+					tags_all: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					principal: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								principal_id: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								principal_type: {
+									type:             "string"
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							block_types: principal_attribute: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										key: {
+											type:             "string"
+											description_kind: "plain"
+											required:         true
+										}
+										value: {
+											type:             "string"
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									description_kind: "plain"
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					scoped_action: {
+						nesting_mode: "list"
+						block: {
+							attributes: actions: {
+								type: ["list", "string"]
+								description_kind: "plain"
+								required:         true
+							}
+							block_types: resource: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										resource_arns: {
+											type: ["list", "string"]
+											description_kind: "plain"
+											optional:         true
+										}
+										resource_type: {
+											type:             "string"
+											description_kind: "plain"
+											required:         true
+										}
+										signal_types: {
+											type: ["list", "string"]
+											description_kind: "plain"
+											optional:         true
+										}
+										tags: {
+											type: ["map", "string"]
+											description_kind: "plain"
+											optional:         true
+										}
+									}
+									block_types: row_scope_group: {
+										nesting_mode: "list"
+										block: {
+											block_types: row_scope: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														field: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+														operator: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+														values: {
+															type: ["set", "string"]
+															description_kind: "plain"
+															required:         true
+														}
+													}
+													description_kind: "plain"
+												}
+											}
+											description_kind: "plain"
+										}
+									}
+									description_kind: "plain"
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_cloudwatchomni_access_profile: {
+			version: 0
+			block: {
+				attributes: {
+					arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					assume_status: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					profile_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					profile_type: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: create: {
+							type:             "string"
+							description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+							description_kind: "plain"
+							optional:         true
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		aws_cloudwatchomni_domain: {
 			version: 0
 			block: {
@@ -55534,6 +55918,56 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 							}
 						}
 						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_cloudwatchomni_view: {
+			version: 0
+			block: {
+				attributes: {
+					arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					definition: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					description: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						optional:         true
+					}
+					tags_all: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					type: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -73857,6 +74291,61 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				description_kind: "plain"
 			}
 		}
+		aws_directory_service_directory_setting: {
+			version: 0
+			block: {
+				attributes: {
+					directory_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					type: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					value: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		aws_directory_service_ip_route: {
 			version: 0
 			block: {
@@ -74419,6 +74908,53 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						type:             "string"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_directoryservicedata_group: {
+			version: 0
+			block: {
+				attributes: {
+					directory_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					distinguished_name: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					group_scope: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					group_type: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					sam_account_name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					sid: {
+						type:             "string"
+						description_kind: "plain"
 						computed:         true
 					}
 				}
@@ -80477,11 +81013,35 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						description_kind: "plain"
 						optional:         true
 					}
+					cak_wo: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						sensitive:        true
+						write_only:       true
+					}
+					cak_wo_version: {
+						type:             "number"
+						description_kind: "plain"
+						optional:         true
+					}
 					ckn: {
 						type:             "string"
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+					ckn_wo: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						sensitive:        true
+						write_only:       true
+					}
+					ckn_wo_version: {
+						type:             "number"
+						description_kind: "plain"
+						optional:         true
 					}
 					connection_id: {
 						type:             "string"
@@ -166399,6 +166959,12 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						optional:         true
 					}
 					neptune_subnet_group_name: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					network_type: {
 						type:             "string"
 						description_kind: "plain"
 						optional:         true
@@ -612723,6 +613289,553 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						type:             "number"
 						description_kind: "plain"
 						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_sagemaker_inference_component: {
+			version: 0
+			block: {
+				attributes: {
+					arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					creation_time: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					endpoint_arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					endpoint_name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					failure_reason: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					last_modified_time: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						optional:         true
+					}
+					tags_all: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					variant_name: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: {
+					deployment_config: {
+						nesting_mode: "list"
+						block: {
+							block_types: {
+								auto_rollback_configuration: {
+									nesting_mode: "list"
+									block: {
+										block_types: alarms: {
+											nesting_mode: "list"
+											block: {
+												attributes: alarm_name: {
+													type:             "string"
+													description_kind: "plain"
+													required:         true
+												}
+												description_kind: "plain"
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								rolling_update_policy: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											maximum_execution_timeout_in_seconds: {
+												type:             "number"
+												description_kind: "plain"
+												optional:         true
+											}
+											wait_interval_in_seconds: {
+												type:             "number"
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										block_types: {
+											maximum_batch_size: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														type: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+														value: {
+															type:             "number"
+															description_kind: "plain"
+															required:         true
+														}
+													}
+													description_kind: "plain"
+												}
+											}
+											rollback_maximum_batch_size: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														type: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+														value: {
+															type:             "number"
+															description_kind: "plain"
+															required:         true
+														}
+													}
+													description_kind: "plain"
+												}
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					runtime_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								copy_count: {
+									type:             "number"
+									description_kind: "plain"
+									required:         true
+								}
+								current_copy_count: {
+									type:             "number"
+									description_kind: "plain"
+									computed:         true
+								}
+								desired_copy_count: {
+									type:             "number"
+									description_kind: "plain"
+									computed:         true
+								}
+								placement_status: {
+									type: ["list", ["object", {
+										current_copy_count: "number"
+										instance_type:      "string"
+									}]]
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					specification: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								base_inference_component_name: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								instance_type: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								model_name: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							block_types: {
+								compute_resource_requirements: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											max_memory_required_in_mb: {
+												type:             "number"
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											min_memory_required_in_mb: {
+												type:             "number"
+												description_kind: "plain"
+												required:         true
+											}
+											number_of_accelerator_devices_required: {
+												type:             "number"
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											number_of_cpu_cores_required: {
+												type:             "number"
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								container: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											artifact_url: {
+												type:             "string"
+												description_kind: "plain"
+												optional:         true
+											}
+											environment: {
+												type: ["map", "string"]
+												description_kind: "plain"
+												optional:         true
+											}
+											image: {
+												type:             "string"
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											resolved_image: {
+												type:             "string"
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										block_types: container_metrics_config: {
+											nesting_mode: "list"
+											block: {
+												block_types: metrics_endpoint: {
+													nesting_mode: "list"
+													block: {
+														attributes: {
+															metric_publish_frequency_in_seconds: {
+																type:             "number"
+																description_kind: "plain"
+																optional:         true
+																computed:         true
+															}
+															metrics_endpoint_path: {
+																type:             "string"
+																description_kind: "plain"
+																required:         true
+															}
+														}
+														description_kind: "plain"
+													}
+												}
+												description_kind: "plain"
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								data_cache_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: enable_caching: {
+											type:             "bool"
+											description_kind: "plain"
+											required:         true
+										}
+										description_kind: "plain"
+									}
+								}
+								scheduling_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: placement_strategy: {
+											type:             "string"
+											description_kind: "plain"
+											required:         true
+										}
+										block_types: availability_zone_balance: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													enforcement_mode: {
+														type:             "string"
+														description_kind: "plain"
+														required:         true
+													}
+													max_imbalance: {
+														type:             "number"
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												description_kind: "plain"
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								startup_parameters: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											container_startup_health_check_timeout_in_seconds: {
+												type:             "number"
+												description_kind: "plain"
+												optional:         true
+											}
+											model_data_download_timeout_in_seconds: {
+												type:             "number"
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					specifications: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								base_inference_component_name: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								instance_type: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								model_name: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							block_types: {
+								compute_resource_requirements: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											max_memory_required_in_mb: {
+												type:             "number"
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											min_memory_required_in_mb: {
+												type:             "number"
+												description_kind: "plain"
+												required:         true
+											}
+											number_of_accelerator_devices_required: {
+												type:             "number"
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											number_of_cpu_cores_required: {
+												type:             "number"
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								container: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											artifact_url: {
+												type:             "string"
+												description_kind: "plain"
+												optional:         true
+											}
+											environment: {
+												type: ["map", "string"]
+												description_kind: "plain"
+												optional:         true
+											}
+											image: {
+												type:             "string"
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											resolved_image: {
+												type:             "string"
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										block_types: container_metrics_config: {
+											nesting_mode: "list"
+											block: {
+												block_types: metrics_endpoint: {
+													nesting_mode: "list"
+													block: {
+														attributes: {
+															metric_publish_frequency_in_seconds: {
+																type:             "number"
+																description_kind: "plain"
+																optional:         true
+																computed:         true
+															}
+															metrics_endpoint_path: {
+																type:             "string"
+																description_kind: "plain"
+																required:         true
+															}
+														}
+														description_kind: "plain"
+													}
+												}
+												description_kind: "plain"
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								data_cache_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: enable_caching: {
+											type:             "bool"
+											description_kind: "plain"
+											required:         true
+										}
+										description_kind: "plain"
+									}
+								}
+								scheduling_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: placement_strategy: {
+											type:             "string"
+											description_kind: "plain"
+											required:         true
+										}
+										block_types: availability_zone_balance: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													enforcement_mode: {
+														type:             "string"
+														description_kind: "plain"
+														required:         true
+													}
+													max_imbalance: {
+														type:             "number"
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												description_kind: "plain"
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								startup_parameters: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											container_startup_health_check_timeout_in_seconds: {
+												type:             "number"
+												description_kind: "plain"
+												optional:         true
+											}
+											model_data_download_timeout_in_seconds: {
+												type:             "number"
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
 					}
 				}
 				description_kind: "plain"
@@ -1209587,6 +1210700,38 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				description_kind: "plain"
 			}
 		}
+		aws_cloudwatchomni_access_grant: {
+			version: 0
+			block: {
+				attributes: region: {
+					type:             "string"
+					description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_cloudwatchomni_access_profile: {
+			version: 0
+			block: {
+				attributes: {
+					region: {
+						type:             "string"
+						description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "ID of the Space to list Access Profiles from."
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		aws_cloudwatchomni_domain: {
 			version: 0
 			block: {
@@ -1209600,6 +1210745,18 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 			}
 		}
 		aws_cloudwatchomni_space: {
+			version: 0
+			block: {
+				attributes: region: {
+					type:             "string"
+					description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_cloudwatchomni_view: {
 			version: 0
 			block: {
 				attributes: region: {
@@ -1209745,6 +1210902,26 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				description_kind: "plain"
 			}
 		}
+		aws_directory_service_directory_setting: {
+			version: 0
+			block: {
+				attributes: {
+					directory_id: {
+						type:             "string"
+						description:      "ID of the directory to list Settings for."
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		aws_directory_service_ip_route: {
 			version: 0
 			block: {
@@ -1209752,6 +1210929,26 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 					directory_id: {
 						type:             "string"
 						description:      "Identifier of the directory whose IP routes to list."
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_directoryservicedata_group: {
+			version: 0
+			block: {
+				attributes: {
+					directory_id: {
+						type:             "string"
+						description:      "ID of the Directory to list Groups from."
 						description_kind: "plain"
 						required:         true
 					}
@@ -1212154,6 +1213351,18 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				description_kind: "plain"
 			}
 		}
+		aws_sagemaker_inference_component: {
+			version: 0
+			block: {
+				attributes: region: {
+					type:             "string"
+					description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
 		aws_sagemaker_training_job: {
 			version: 0
 			block: {
@@ -1213787,6 +1214996,23 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				required_for_import: true
 			}
 		}
+		aws_bedrock_enforced_guardrail_configuration: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				config_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
 		aws_bedrock_evaluation_job: {
 			version: 0
 			attributes: job_arn: {
@@ -1214876,6 +1216102,44 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				required_for_import: true
 			}
 		}
+		aws_cloudwatchomni_access_grant: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				grant_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		aws_cloudwatchomni_access_profile: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				profile_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+				space_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		aws_cloudwatchomni_domain: {
 			version: 0
 			attributes: {
@@ -1214907,6 +1216171,23 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				space_id: {
 					type:                "string"
 					required_for_import: true
+				}
+			}
+		}
+		aws_cloudwatchomni_view: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
 				}
 			}
 		}
@@ -1215798,6 +1217079,27 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				}
 			}
 		}
+		aws_directory_service_directory_setting: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				directory_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
 		aws_directory_service_ip_route: {
 			version: 0
 			attributes: {
@@ -1215837,6 +1217139,27 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				region: {
 					type:                "string"
 					optional_for_import: true
+				}
+			}
+		}
+		aws_directoryservicedata_group: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				directory_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+				sam_account_name: {
+					type:                "string"
+					required_for_import: true
 				}
 			}
 		}
@@ -1219616,6 +1220939,23 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 			}
 		}
 		aws_sagemaker_hyper_parameter_tuning_job: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		aws_sagemaker_inference_component: {
 			version: 0
 			attributes: {
 				account_id: {

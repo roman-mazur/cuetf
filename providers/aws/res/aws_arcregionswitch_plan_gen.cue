@@ -100,6 +100,7 @@ aws_arcregionswitch_plan: {
 		parallel_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config"]])
 		rds_create_cross_region_read_replica_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/rds_create_cross_region_read_replica_config", [..._#defs."/$defs/workflow/$defs/step/$defs/rds_create_cross_region_read_replica_config"]])
 		rds_promote_read_replica_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/rds_promote_read_replica_config", [..._#defs."/$defs/workflow/$defs/step/$defs/rds_promote_read_replica_config"]])
+		rds_switchover_read_replica_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/rds_switchover_read_replica_config", [..._#defs."/$defs/workflow/$defs/step/$defs/rds_switchover_read_replica_config"]])
 		region_switch_plan_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/region_switch_plan_config", [..._#defs."/$defs/workflow/$defs/step/$defs/region_switch_plan_config"]])
 		route53_health_check_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/route53_health_check_config", [..._#defs."/$defs/workflow/$defs/step/$defs/route53_health_check_config"]])
 		description?:          string
@@ -318,6 +319,7 @@ aws_arcregionswitch_plan: {
 		neptune_global_database_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/neptune_global_database_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/neptune_global_database_config"]])
 		rds_create_cross_region_read_replica_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/rds_create_cross_region_read_replica_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/rds_create_cross_region_read_replica_config"]])
 		rds_promote_read_replica_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/rds_promote_read_replica_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/rds_promote_read_replica_config"]])
+		rds_switchover_read_replica_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/rds_switchover_read_replica_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/rds_switchover_read_replica_config"]])
 		region_switch_plan_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/region_switch_plan_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/region_switch_plan_config"]])
 		route53_health_check_config?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/route53_health_check_config", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/route53_health_check_config"]])
 		description?:          string
@@ -531,6 +533,18 @@ aws_arcregionswitch_plan: {
 		timeout_minutes?: number
 	})
 
+	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/rds_switchover_read_replica_config": close({
+		ungraceful?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/rds_switchover_read_replica_config/$defs/ungraceful", [..._#defs."/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/rds_switchover_read_replica_config/$defs/ungraceful"]])
+		cross_account_role?: string
+		db_instance_arn_map!: [string]: string
+		external_id?:     string
+		timeout_minutes?: number
+	})
+
+	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/rds_switchover_read_replica_config/$defs/ungraceful": close({
+		ungraceful!: string
+	})
+
 	_#defs: "/$defs/workflow/$defs/step/$defs/parallel_config/$defs/step/$defs/region_switch_plan_config": close({
 		arn!:                string
 		cross_account_role?: string
@@ -563,6 +577,18 @@ aws_arcregionswitch_plan: {
 		db_instance_arn_map!: [string]: string
 		external_id?:     string
 		timeout_minutes?: number
+	})
+
+	_#defs: "/$defs/workflow/$defs/step/$defs/rds_switchover_read_replica_config": close({
+		ungraceful?: matchN(1, [_#defs."/$defs/workflow/$defs/step/$defs/rds_switchover_read_replica_config/$defs/ungraceful", [..._#defs."/$defs/workflow/$defs/step/$defs/rds_switchover_read_replica_config/$defs/ungraceful"]])
+		cross_account_role?: string
+		db_instance_arn_map!: [string]: string
+		external_id?:     string
+		timeout_minutes?: number
+	})
+
+	_#defs: "/$defs/workflow/$defs/step/$defs/rds_switchover_read_replica_config/$defs/ungraceful": close({
+		ungraceful!: string
 	})
 
 	_#defs: "/$defs/workflow/$defs/step/$defs/region_switch_plan_config": close({
