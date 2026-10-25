@@ -9,9 +9,10 @@ azurerm_eventgrid_topic: {
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
 		input_mapping_default_values?: matchN(1, [#input_mapping_default_values, list.MaxItems(1) & [...#input_mapping_default_values]])
 		input_mapping_fields?: matchN(1, [#input_mapping_fields, list.MaxItems(1) & [...#input_mapping_fields]])
-		timeouts?: #timeouts
-		endpoint?: string
-		id?:       string
+		timeouts?:                #timeouts
+		data_residency_boundary?: string
+		endpoint?:                string
+		id?:                      string
 		inbound_ip_rule?: [...close({
 			action?:  string
 			ip_mask?: string
@@ -19,6 +20,7 @@ azurerm_eventgrid_topic: {
 		input_schema?:                  string
 		local_auth_enabled?:            bool
 		location!:                      string
+		minimum_tls_version?:           string
 		name!:                          string
 		primary_access_key?:            string
 		public_network_access_enabled?: bool
