@@ -40,6 +40,9 @@ scaleway_instance_template: {
 		// The commercial type of the server defined by the Instance Template.
 		server_type!: string
 
+		// The Scaleway Resource Name (SRN) of the Instance Template.
+		srn?: string
+
 		// The tags associated with the Instance Template.
 		tags?: [...string]
 

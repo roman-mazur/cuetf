@@ -16,5 +16,8 @@ scaleway_annotations_key: {
 		// ID of the organization. If not set, the organization ID is derived from the
 		// provider configuration.
 		organization_id?: string
+
+		// The Scaleway Resource Name (SRN) of the annotation key.
+		srn?: string
 	})
 }

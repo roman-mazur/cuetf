@@ -38,6 +38,9 @@ scaleway_container_namespace: {
 		// The secret environment variables of the container namespace
 		secret_environment_variables?: [string]: string
 
+		// The Scaleway Resource Name (SRN) of the container namespace
+		srn?: string
+
 		// List of tags ["tag1", "tag2", ...] attached to the container namespace
 		tags?: [...string]
 	})

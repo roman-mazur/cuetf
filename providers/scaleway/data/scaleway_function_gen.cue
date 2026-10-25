@@ -73,6 +73,9 @@ scaleway_function: {
 		// The secret environment variables to be injected into your function at runtime.
 		secret_environment_variables?: [string]: string
 
+		// The Scaleway Resource Name (SRN) of the function
+		srn?: string
+
 		// List of tags ["tag1", "tag2", ...] attached to the function.
 		tags?: [...string]
 

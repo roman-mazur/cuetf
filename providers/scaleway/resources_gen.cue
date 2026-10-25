@@ -109,6 +109,7 @@ import (
 	_#res: "\(#scalewayPrefix)_lb_ip": close({res.scaleway_lb_ip & cuetf.MetaArgs})
 	_#res: "\(#scalewayPrefix)_lb_private_network": close({res.scaleway_lb_private_network & cuetf.MetaArgs})
 	_#res: "\(#scalewayPrefix)_lb_route": close({res.scaleway_lb_route & cuetf.MetaArgs})
+	_#res: "\(#scalewayPrefix)_mailbox_alias": close({res.scaleway_mailbox_alias & cuetf.MetaArgs})
 	_#res: "\(#scalewayPrefix)_mailbox_domain": close({res.scaleway_mailbox_domain & cuetf.MetaArgs})
 	_#res: "\(#scalewayPrefix)_mailbox": close({res.scaleway_mailbox & cuetf.MetaArgs})
 	_#res: "\(#scalewayPrefix)_messageq_deployment": close({res.scaleway_messageq_deployment & cuetf.MetaArgs})

@@ -16,6 +16,9 @@ scaleway_annotations_value: {
 		// Name of the annotation value.
 		name?: string
 
+		// The Scaleway Resource Name (SRN) of the annotation value.
+		srn?: string
+
 		// The ID of the annotation value to retrieve.
 		value_id!: string
 	})

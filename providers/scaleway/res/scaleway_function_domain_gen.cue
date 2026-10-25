@@ -16,6 +16,9 @@ scaleway_function_domain: {
 		// The region you want to attach the resource to
 		region?: string
 
+		// The Scaleway Resource Name (SRN) of the function domain
+		srn?: string
+
 		// URL to use to trigger the function
 		url?: string
 	})

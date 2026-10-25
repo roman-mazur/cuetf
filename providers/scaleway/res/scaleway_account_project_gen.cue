@@ -17,6 +17,9 @@ scaleway_account_project: {
 		// The organization_id you want to attach the resource to
 		organization_id?: string
 
+		// The Scaleway Resource Name (SRN) of the project
+		srn?: string
+
 		// The date and time of the last update of the Project (Format ISO 8601)
 		updated_at?: string
 	})

@@ -5,6 +5,9 @@ scaleway_key_manager_key: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_key_manager_key")
 	close({
 		// Algorithm to use for the key. The valid algorithms depend on the usage type.
+		// See the [Key Manager cryptographic
+		// details](https://www.scaleway.com/en/docs/key-manager/reference-content/cryptographic-details-key-manager/#encryption-algorithm)
+		// for the algorithms available for each usage.
 		algorithm?: string
 
 		// Key creation date.
@@ -72,7 +75,8 @@ scaleway_key_manager_key: {
 		// Key last modification date.
 		updated_at?: string
 
-		// Key usage type. Possible values: symmetric_encryption, asymmetric_encryption, asymmetric_signing.
+		// Key usage type. Possible values: symmetric_encryption, asymmetric_encryption,
+		// asymmetric_signing, key_encapsulation.
 		usage?: string
 	})
 }

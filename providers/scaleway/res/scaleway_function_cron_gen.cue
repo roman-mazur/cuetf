@@ -23,6 +23,9 @@ scaleway_function_cron: {
 		// to be created and executed.
 		schedule!: string
 
+		// The Scaleway Resource Name (SRN) of the function cron
+		srn?: string
+
 		// Cron job status.
 		status?: string
 	})

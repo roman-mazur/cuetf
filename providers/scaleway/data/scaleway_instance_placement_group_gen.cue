@@ -24,6 +24,9 @@ scaleway_instance_placement_group: {
 		// The project_id you want to attach the resource to
 		project_id?: string
 
+		// The Scaleway Resource Name (SRN) of the placement group
+		srn?: string
+
 		// The tags associated with the placement group
 		tags?: [...string]
 

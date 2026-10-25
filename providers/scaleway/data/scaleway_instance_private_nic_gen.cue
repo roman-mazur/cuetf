@@ -34,6 +34,9 @@ scaleway_instance_private_nic: {
 		// The server ID
 		server_id!: string
 
+		// The Scaleway Resource Name (SRN) of the private network interface
+		srn?: string
+
 		// The tags associated with the private-nic
 		tags?: [...string]
 

@@ -61,6 +61,10 @@ scaleway_k8s_pool: {
 		// The ID of the pool
 		pool_id?: string
 
+		// ID of the private network in which the nodes are attached. Should be a member
+		// of the same VPC as the cluster.
+		private_network_id?: string
+
 		// Defines if the public IP should be removed from the nodes.
 		public_ip_disabled?: bool
 
