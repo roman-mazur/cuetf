@@ -14,6 +14,7 @@ azurerm_cognitive_deployment: {
 		id?:                         string
 		name!:                       string
 		rai_policy_name?:            string
+		spillover_deployment_name?:  string
 		version_upgrade_option?:     string
 	})
 

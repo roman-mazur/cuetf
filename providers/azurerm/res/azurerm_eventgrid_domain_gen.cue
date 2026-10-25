@@ -12,6 +12,7 @@ azurerm_eventgrid_domain: {
 		timeouts?:                                  #timeouts
 		auto_create_topic_with_first_subscription?: bool
 		auto_delete_topic_with_last_subscription?:  bool
+		data_residency_boundary?:                   string
 		endpoint?:                                  string
 		id?:                                        string
 		inbound_ip_rule?: [...close({
@@ -21,6 +22,7 @@ azurerm_eventgrid_domain: {
 		input_schema?:                  string
 		local_auth_enabled?:            bool
 		location!:                      string
+		minimum_tls_version?:           string
 		name!:                          string
 		primary_access_key?:            string
 		public_network_access_enabled?: bool

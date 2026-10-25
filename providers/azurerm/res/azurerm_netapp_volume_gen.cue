@@ -74,6 +74,7 @@ azurerm_netapp_volume: {
 		subnet_id!:                  string
 		tags?: [string]: string
 		throughput_in_mibps?: number
+		unix_permissions?:    string
 		volume_path!:         string
 		zone?:                string
 	})
