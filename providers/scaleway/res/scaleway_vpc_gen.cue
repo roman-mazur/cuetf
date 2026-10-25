@@ -7,12 +7,6 @@ scaleway_vpc: {
 		// The date and time of the creation of the private network
 		created_at?: string
 
-		// Defines whether the VPC advertises custom routes between its Private Networks
-		enable_custom_routes_propagation?: bool
-
-		// Enable routing between Private Networks in the VPC
-		enable_routing?: bool
-
 		// Enable packets from peered VPCs to transit through this VPC
 		enable_transitivity?: bool
 		id?:                  string

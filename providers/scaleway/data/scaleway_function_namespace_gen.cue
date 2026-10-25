@@ -35,6 +35,9 @@ scaleway_function_namespace: {
 		// The environment variables of the function namespace
 		secret_environment_variables?: [string]: string
 
+		// The Scaleway Resource Name (SRN) of the function namespace
+		srn?: string
+
 		// List of tags ["tag1", "tag2", ...] attached to the function namespace
 		tags?: [...string]
 	})

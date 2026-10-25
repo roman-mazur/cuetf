@@ -82,6 +82,9 @@ scaleway_autoscaling_group: {
 			scale_out_step?: number
 		})
 
+		// The Scaleway Resource Name (SRN) of the AutoScaling Group.
+		srn?: string
+
 		// The current status of the AutoScaling Group.
 		status?: string
 

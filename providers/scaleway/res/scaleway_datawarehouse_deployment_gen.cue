@@ -20,6 +20,11 @@ scaleway_datawarehouse_deployment: {
 		created_at?: string
 		id?:         string
 
+		// For the tiered storage policy, fraction of free space on the hot volume below
+		// which data is moved to cold storage. Value between 0 and 1 (API default
+		// 0.1).
+		move_factor?: number
+
 		// Name of the Datawarehouse deployment
 		name!: string
 

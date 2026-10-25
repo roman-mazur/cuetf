@@ -22,6 +22,9 @@ scaleway_apple_silicon_runner: {
 		// The project_id you want to attach the resource to
 		project_id?: string
 
+		// The Scaleway Resource Name (SRN) of the runner
+		srn?: string
+
 		// The status of the runner
 		status?: string
 

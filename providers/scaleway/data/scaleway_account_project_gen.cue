@@ -20,6 +20,9 @@ scaleway_account_project: {
 		// The ID of the project
 		project_id?: string
 
+		// The Scaleway Resource Name (SRN) of the project
+		srn?: string
+
 		// The date and time of the last update of the Project (Format ISO 8601)
 		updated_at?: string
 	})

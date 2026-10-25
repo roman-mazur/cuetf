@@ -11,6 +11,13 @@ scaleway_kafka_cluster: {
 		created_at?: string
 		id?:         string
 
+		// Zone for a mono-AZ cluster (e.g. fr-par-1). Defaults to the provider default zone when unset.
+		mono_az_zone?: string
+
+		// Deploy the cluster across multiple availability zones. Defaults to mono-AZ on
+		// the provider default zone when unset.
+		multi_az?: bool
+
 		// Name of the Kafka cluster
 		name?: string
 

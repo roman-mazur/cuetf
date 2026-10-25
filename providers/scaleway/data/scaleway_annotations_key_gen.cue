@@ -15,5 +15,8 @@ scaleway_annotations_key: {
 
 		// Name of the annotation key.
 		name?: string
+
+		// The Scaleway Resource Name (SRN) of the annotation key.
+		srn?: string
 	})
 }

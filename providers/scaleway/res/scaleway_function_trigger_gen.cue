@@ -22,6 +22,9 @@ scaleway_function_trigger: {
 
 		// The region you want to attach the resource to
 		region?: string
+
+		// The Scaleway Resource Name (SRN) of the function trigger
+		srn?: string
 	})
 
 	#nats: close({

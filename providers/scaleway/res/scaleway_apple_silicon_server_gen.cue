@@ -45,6 +45,9 @@ scaleway_apple_silicon_server: {
 		// List of runner ids attach to the server
 		runner_ids?: [...string]
 
+		// The Scaleway Resource Name (SRN) of the server
+		srn?: string
+
 		// The state of the server
 		state?: string
 

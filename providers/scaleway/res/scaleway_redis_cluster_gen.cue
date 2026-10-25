@@ -57,6 +57,9 @@ scaleway_redis_cluster: {
 		// Map of settings to define for the cluster.
 		settings?: [string]: string
 
+		// The Scaleway Resource Name (SRN) of the Redis cluster
+		srn?: string
+
 		// List of tags ["tag1", "tag2", ...] attached to a redis cluster
 		tags?: [...string]
 

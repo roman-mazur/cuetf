@@ -29,6 +29,13 @@ scaleway_iam_api_key: {
 		expires_at?: string
 		id?:         string
 
+		// ID of a [Secret Manager](https://www.scaleway.com/en/secret-manager/) secret.
+		// If set, the secret_key of the API key is stored as a new version of this
+		// secret and is not stored in the Terraform state. The secret itself is not
+		// managed by this resource. Can be a UUID or a regional ID (region/UUID), in
+		// which case the region of the secret is derived from it.
+		secret_id?: string
+
 		// The Scaleway Resource Name (SRN) of the API key
 		srn?: string
 

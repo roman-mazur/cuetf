@@ -25,6 +25,9 @@ scaleway_container_trigger: {
 		// The region you want to attach the resource to
 		region?: string
 
+		// The Scaleway Resource Name (SRN) of the container trigger
+		srn?: string
+
 		// List of tags ["tag1", "tag2", ...] attached to the container trigger
 		tags?: [...string]
 	})

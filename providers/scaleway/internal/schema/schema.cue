@@ -114,6 +114,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the project"
+						description_kind: "plain"
+						computed:         true
+					}
 					updated_at: {
 						type:             "string"
 						description:      "The date and time of the last update of the Project (Format ISO 8601)"
@@ -271,6 +277,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the annotation key."
+						description_kind: "markdown"
+						computed:         true
+					}
 				}
 				description: """
 					Create an annotation key to define custom metadata labels that can be attached to Scaleway resources. Annotation keys allow you to organize and categorize resources using custom tags with meaningful names and descriptions.
@@ -306,6 +318,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "Name of the annotation value."
 						description_kind: "markdown"
 						required:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the annotation value."
+						description_kind: "markdown"
+						computed:         true
 					}
 					value_id: {
 						type:             "string"
@@ -361,6 +379,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The project_id you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the runner"
+						description_kind: "plain"
 						computed:         true
 					}
 					status: {
@@ -502,6 +526,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "List of runner ids attach to the server"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the server"
+						description_kind: "plain"
 						computed:         true
 					}
 					state: {
@@ -811,6 +841,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The scaling policy configuration."
 						description_kind: "markdown"
 						required:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the AutoScaling Group."
+						description_kind: "markdown"
+						computed:         true
 					}
 					status: {
 						type:             "string"
@@ -1789,46 +1825,79 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				attributes: {
 					id: {
 						type:             "string"
-						description_kind: "plain"
-						optional:         true
+						description:      "The ID of the snapshot"
+						description_kind: "markdown"
 						computed:         true
 					}
 					name: {
 						type:             "string"
 						description:      "The snapshot name"
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
 					project_id: {
 						type:             "string"
 						description:      "The project_id you want to attach the resource to"
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
 					srn: {
 						type:             "string"
 						description:      "The Scaleway Resource Name (SRN) of the snapshot"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags associated with the snapshot"
+						description_kind: "markdown"
+						optional:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
 						description_kind: "plain"
 						optional:         true
 					}
 					volume_id: {
 						type:             "string"
 						description:      "ID of the volume from which creates a snapshot"
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 					}
 					zone: {
 						type:             "string"
 						description:      "The zone you want to attach the resource to"
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
@@ -1841,20 +1910,19 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 								bucket: {
 									type:             "string"
 									description:      "Bucket containing qcow"
-									description_kind: "plain"
+									description_kind: "markdown"
 									required:         true
 								}
 								key: {
 									type:             "string"
 									description:      "Key of the qcow file in the specified bucket"
-									description_kind: "plain"
+									description_kind: "markdown"
 									required:         true
 								}
 							}
 							description:      "Export snapshot to a qcow"
-							description_kind: "plain"
+							description_kind: "markdown"
 						}
-						max_items: 1
 					}
 					import: {
 						nesting_mode: "list"
@@ -1863,51 +1931,23 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 								bucket: {
 									type:             "string"
 									description:      "Bucket containing qcow"
-									description_kind: "plain"
+									description_kind: "markdown"
 									required:         true
 								}
 								key: {
 									type:             "string"
 									description:      "Key of the qcow file in the specified bucket"
-									description_kind: "plain"
+									description_kind: "markdown"
 									required:         true
 								}
 							}
 							description:      "Import snapshot from a qcow"
-							description_kind: "plain"
-						}
-						max_items: 1
-					}
-					timeouts: {
-						nesting_mode: "single"
-						block: {
-							attributes: {
-								create: {
-									type:             "string"
-									description_kind: "plain"
-									optional:         true
-								}
-								default: {
-									type:             "string"
-									description_kind: "plain"
-									optional:         true
-								}
-								delete: {
-									type:             "string"
-									description_kind: "plain"
-									optional:         true
-								}
-								read: {
-									type:             "string"
-									description_kind: "plain"
-									optional:         true
-								}
-							}
-							description_kind: "plain"
+							description_kind: "markdown"
 						}
 					}
 				}
-				description_kind: "plain"
+				description:      "Manages a Scaleway Block Snapshot"
+				description_kind: "markdown"
 			}
 		}
 		scaleway_block_volume: {
@@ -2713,6 +2753,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						sensitive:        true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the container"
+						description_kind: "plain"
+						computed:         true
+					}
 					status: {
 						type:             "string"
 						description:      "The container status"
@@ -3056,6 +3102,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the container domain"
+						description_kind: "plain"
+						computed:         true
+					}
 					url: {
 						type:             "string"
 						description:      "URL used to query the container"
@@ -3171,6 +3223,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 						sensitive:        true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the container namespace"
+						description_kind: "plain"
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
@@ -3302,6 +3360,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the container trigger"
+						description_kind: "plain"
 						computed:         true
 					}
 					tags: {
@@ -3800,6 +3864,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					id: {
 						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					move_factor: {
+						type:             "number"
+						description:      "For the tiered storage policy, fraction of free space on the hot volume below which data is moved to cold storage. Value between 0 and 1 (API default 0.1)."
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -6076,6 +6147,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						sensitive:        true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the function"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "List of tags [\"tag1\", \"tag2\", ...] attached to the function."
@@ -6180,6 +6257,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						required:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the function cron"
+						description_kind: "plain"
+						computed:         true
+					}
 					status: {
 						type:             "string"
 						description:      "Cron job status."
@@ -6250,6 +6333,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the function domain"
+						description_kind: "plain"
 						computed:         true
 					}
 					url: {
@@ -6357,6 +6446,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 						sensitive:        true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the function namespace"
+						description_kind: "plain"
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
@@ -6488,6 +6583,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the function trigger"
+						description_kind: "plain"
 						computed:         true
 					}
 				}
@@ -6660,6 +6761,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+					secret_id: {
+						type:             "string"
+						description:      "ID of a [Secret Manager](https://www.scaleway.com/en/secret-manager/) secret. If set, the secret_key of the API key is stored as a new version of this secret and is not stored in the Terraform state. The secret itself is not managed by this resource. Can be a UUID or a regional ID (region/UUID), in which case the region of the secret is derived from it."
+						description_kind: "plain"
+						optional:         true
 					}
 					secret_key: {
 						type:             "string"
@@ -8144,6 +8251,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the placement group"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags associated with the placement group"
@@ -8219,6 +8332,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The server ID"
 						description_kind: "plain"
 						required:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the private network interface"
+						description_kind: "plain"
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
@@ -9185,6 +9304,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The commercial type of the server defined by the Instance Template."
 						description_kind: "markdown"
 						required:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the Instance Template."
+						description_kind: "markdown"
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
@@ -11305,6 +11430,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					private_network_id: {
+						type:             "string"
+						description:      "ID of the private network in which the nodes are attached. Should be a member of the same VPC as the cluster."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					public_ip_disabled: {
 						type:             "bool"
 						description:      "Defines if the public IP should be removed from the nodes."
@@ -11522,6 +11654,20 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					mono_az_zone: {
+						type:             "string"
+						description:      "Zone for a mono-AZ cluster (e.g. fr-par-1). Defaults to the provider default zone when unset."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					multi_az: {
+						type:             "bool"
+						description:      "Deploy the cluster across multiple availability zones. Defaults to mono-AZ on the provider default zone when unset."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					name: {
 						type:             "string"
 						description:      "Name of the Kafka cluster"
@@ -11687,7 +11833,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				attributes: {
 					algorithm: {
 						type:             "string"
-						description:      "Algorithm to use for the key. The valid algorithms depend on the usage type."
+						description:      "Algorithm to use for the key. The valid algorithms depend on the usage type. See the [Key Manager cryptographic details](https://www.scaleway.com/en/docs/key-manager/reference-content/cryptographic-details-key-manager/#encryption-algorithm) for the algorithms available for each usage."
 						description_kind: "plain"
 						required:         true
 					}
@@ -11798,7 +11944,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					usage: {
 						type:             "string"
-						description:      "Key usage type. Possible values: symmetric_encryption, asymmetric_encryption, asymmetric_signing."
+						description:      "Key usage type. Possible values: symmetric_encryption, asymmetric_encryption, asymmetric_signing, key_encapsulation."
 						description_kind: "plain"
 						required:         true
 					}
@@ -13348,6 +13494,69 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description_kind: "markdown"
 			}
 		}
+		scaleway_mailbox_alias: {
+			version: 0
+			block: {
+				attributes: {
+					created_at: {
+						type:             "string"
+						description:      "Date and time of alias creation (RFC 3339 format)"
+						description_kind: "markdown"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Description of the alias. Omit the attribute to leave it empty; an empty string is not allowed."
+						description_kind: "markdown"
+						optional:         true
+					}
+					email: {
+						type:             "string"
+						description:      "Full email address of the alias (local_part@domain)"
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "ID of the mailbox alias"
+						description_kind: "markdown"
+						computed:         true
+					}
+					local_part: {
+						type:             "string"
+						description:      "Local part of the alias email address (the part before the @). Changing this forces a new alias."
+						description_kind: "markdown"
+						required:         true
+					}
+					mailbox_id: {
+						type:             "string"
+						description:      "ID of the mailbox to which this alias belongs"
+						description_kind: "markdown"
+						required:         true
+					}
+					status: {
+						type:             "string"
+						description:      "Alias status (provisioning, ready, deleting, …)"
+						description_kind: "markdown"
+						computed:         true
+					}
+					updated_at: {
+						type:             "string"
+						description:      "Date and time of last update (RFC 3339 format)"
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				description: """
+					Creates and manages a Scaleway Mailbox alias.
+
+					An alias is an alternative address (`local_part@domain`) that delivers into an existing
+					`scaleway_mailbox`. It is not a separate mailbox account.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
 		scaleway_mailbox_domain: {
 			version: 0
 			block: {
@@ -14460,9 +14669,9 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					settings: {
 						type: ["map", "string"]
-						description:      "Map of settings to define for the instance."
+						description:      "Map of engine settings applied to the instance (read-only)."
 						description_kind: "plain"
-						optional:         true
+						computed:         true
 					}
 					snapshot_id: {
 						type:             "string"
@@ -17337,6 +17546,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the Redis cluster"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "List of tags [\"tag1\", \"tag2\", ...] attached to a redis cluster"
@@ -19022,6 +19237,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						type:             "bool"
 						description:      "Defines whether the VPC advertises custom routes between its Private Networks"
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 						computed:         true
 					}
@@ -19029,6 +19245,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						type:             "bool"
 						description:      "Enable routing between Private Networks in the VPC"
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 						computed:         true
 					}
@@ -20711,6 +20928,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the project"
+						description_kind: "plain"
+						computed:         true
+					}
 					updated_at: {
 						type:             "string"
 						description:      "The date and time of the last update of the Project (Format ISO 8601)"
@@ -20772,6 +20995,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							updated_at:      "string"
 						}]]
 						description:      "The list of projects"
+						description_kind: "plain"
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the project"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -20941,6 +21170,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "markdown"
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the annotation key."
+						description_kind: "markdown"
+						computed:         true
+					}
 				}
 				description: """
 					Retrieves information about an existing annotation key using its ID.
@@ -20974,6 +21209,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					name: {
 						type:             "string"
 						description:      "Name of the annotation value."
+						description_kind: "markdown"
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the annotation value."
 						description_kind: "markdown"
 						computed:         true
 					}
@@ -22138,74 +22379,61 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			version: 0
 			block: {
 				attributes: {
-					export: {
-						type: ["list", ["object", {
-							bucket: "string"
-							key:    "string"
-						}]]
-						description:      "Export snapshot to a qcow"
-						description_kind: "plain"
-						computed:         true
-					}
 					id: {
 						type:             "string"
-						description_kind: "plain"
-						optional:         true
-						computed:         true
-					}
-					import: {
-						type: ["list", ["object", {
-							bucket: "string"
-							key:    "string"
-						}]]
-						description:      "Import snapshot from a qcow"
-						description_kind: "plain"
+						description:      "The ID of the snapshot, in the `{zone}/{id}` format."
+						description_kind: "markdown"
 						computed:         true
 					}
 					name: {
 						type:             "string"
 						description:      "The snapshot name"
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					project_id: {
 						type:             "string"
-						description:      "The project_id you want to attach the resource to"
-						description_kind: "plain"
+						description:      "The project ID the snapshot belongs to"
+						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					snapshot_id: {
 						type:             "string"
 						description:      "The ID of the snapshot"
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 					}
 					srn: {
 						type:             "string"
 						description:      "The Scaleway Resource Name (SRN) of the snapshot"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags associated with the snapshot"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					volume_id: {
 						type:             "string"
 						description:      "ID of the volume from which creates a snapshot"
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					zone: {
 						type:             "string"
-						description:      "The zone you want to attach the resource to"
-						description_kind: "plain"
+						description:      "The zone of the snapshot"
+						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 				}
-				description_kind: "plain"
+				description:      "Manages a Scaleway Block Snapshot"
+				description_kind: "markdown"
 			}
 		}
 		scaleway_block_snapshots: {
@@ -23336,6 +23564,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 						sensitive:        true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the container"
+						description_kind: "plain"
+						computed:         true
+					}
 					startup_probe: {
 						type: ["list", ["object", {
 							failure_threshold: "number"
@@ -23448,6 +23682,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 						sensitive:        true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the container namespace"
+						description_kind: "plain"
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
@@ -25137,6 +25377,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 						sensitive:        true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the function"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "List of tags [\"tag1\", \"tag2\", ...] attached to the function."
@@ -25236,6 +25482,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 						sensitive:        true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the function namespace"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "List of tags [\"tag1\", \"tag2\", ...] attached to the function namespace"
@@ -25302,6 +25554,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						type:             "string"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					secret_id: {
+						type:             "string"
+						description:      "ID of a [Secret Manager](https://www.scaleway.com/en/secret-manager/) secret. If set, the secret_key of the API key is stored as a new version of this secret and is not stored in the Terraform state. The secret itself is not managed by this resource. Can be a UUID or a regional ID (region/UUID), in which case the region of the secret is derived from it."
+						description_kind: "plain"
 						computed:         true
 					}
 					srn: {
@@ -26350,6 +26608,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the placement group"
+						description_kind: "plain"
+						computed:         true
+					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags associated with the placement group"
@@ -26426,6 +26690,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The server ID"
 						description_kind: "plain"
 						required:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the private network interface"
+						description_kind: "plain"
+						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
@@ -28579,6 +28849,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					private_network_id: {
+						type:             "string"
+						description:      "ID of the private network in which the nodes are attached. Should be a member of the same VPC as the cluster."
+						description_kind: "plain"
+						computed:         true
+					}
 					public_ip_disabled: {
 						type:             "bool"
 						description:      "Defines if the public IP should be removed from the nodes."
@@ -28788,6 +29064,18 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						type:             "string"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					mono_az_zone: {
+						type:             "string"
+						description:      "Zone for a mono-AZ cluster (e.g. fr-par-1). Defaults to the provider default zone when unset."
+						description_kind: "plain"
+						computed:         true
+					}
+					multi_az: {
+						type:             "bool"
+						description:      "Deploy the cluster across multiple availability zones. Defaults to mono-AZ on the provider default zone when unset."
+						description_kind: "plain"
 						computed:         true
 					}
 					name: {
@@ -29070,7 +29358,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				attributes: {
 					algorithm: {
 						type:             "string"
-						description:      "Algorithm to use for the key. The valid algorithms depend on the usage type."
+						description:      "Algorithm to use for the key. The valid algorithms depend on the usage type. See the [Key Manager cryptographic details](https://www.scaleway.com/en/docs/key-manager/reference-content/cryptographic-details-key-manager/#encryption-algorithm) for the algorithms available for each usage."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -29193,7 +29481,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					usage: {
 						type:             "string"
-						description:      "Key usage type. Possible values: symmetric_encryption, asymmetric_encryption, asymmetric_signing."
+						description:      "Key usage type. Possible values: symmetric_encryption, asymmetric_encryption, asymmetric_signing, key_encapsulation."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -31135,7 +31423,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					settings: {
 						type: ["map", "string"]
-						description:      "Map of settings to define for the instance."
+						description:      "Map of engine settings applied to the instance (read-only)."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -32597,6 +32885,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					settings: {
 						type: ["map", "string"]
 						description:      "Map of settings to define for the cluster."
+						description_kind: "plain"
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the Redis cluster"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -35693,6 +35987,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					delete_on_close: {
+						type:             "bool"
+						description:      "Whether the API key should be deleted when the ephemeral resource is closed. Defaults to true. When set to false, the key is not deleted on close and must be managed manually (or let to expire via `expires_at`)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					description: {
 						type:             "string"
 						description:      "The description of the iam api key"
@@ -35704,6 +36005,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The date and time (UTC) of the expiration of the iam api key. Cannot be changed afterwards"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					secret_key: {
 						type:             "string"
@@ -35728,7 +36030,9 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				description: """
 					The [`scaleway_iam_api_key`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/ephemeral-resource/iam_api_key) Ephemeral Resource is used to create and manage Scaleway API Keys. An API key can be associated with either an application or a user.
 
-					~> **Important:** This ephemeral resource is currently experimental and may evolve as we refine its functionality. Unlike the regular [`scaleway_iam_api_key` Resource](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/iam_api_key), this ephemeral resource is not stored in Terraform state and is not managed by Terraform after creation. Each `terraform apply` will generate a new API key. For automatic cleanup, you can set the `expires_at` attribute to specify when the key should be deleted.
+					~> **Important:** This ephemeral resource is currently experimental and may evolve as we refine its functionality. Unlike the regular [`scaleway_iam_api_key` Resource](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/iam_api_key), this ephemeral resource is not stored in Terraform state and is not managed by Terraform after creation. Each `terraform apply` will generate a new API key.
+
+					By default, the API key is deleted when the ephemeral resource is closed (i.e. when Terraform is done with it). You can set `delete_on_close` to `false` if you want to rely on `expires_at` to deactivate the key at a later time. Please note that, since the resource is ephemeral, the key is **not managed by Terraform**: Terraform will not track or clean it up for you, so you remain responsible for any key that is left behind when `delete_on_close` is `false`. We recommend always setting `expires_at` as a safety net so that, even if the key is not deleted on close (e.g. due to a failure), it will be deactivated automatically at a bounded time.
 
 					For more information, see [our guide to using Ephemeral Resources](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-ephemeral-resources), the [IAM documentation](https://www.scaleway.com/en/docs/iam/), and the [API documentation](https://www.scaleway.com/en/developers/api/iam/).
 
@@ -35970,12 +36274,14 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region of the secret version. If not set, the region is derived from the secret_id when possible or from the provider configuration."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					revision: {
 						type:             "string"
 						description:      "The revision of the secret version. Defaults to `latest`"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					secret_id: {
 						type:             "string"
@@ -35989,6 +36295,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The name of the secret. Either secret_id or secret_name must be specified."
 						description_kind: "plain"
 						optional:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the secret version"
+						description_kind: "plain"
+						computed:         true
 					}
 					status: {
 						type:             "string"
@@ -36662,7 +36974,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					usage: {
 						type:             "string"
-						description:      "Usage of the key to filter for (symmetric_encryption, asymmetric_encryption, asymmetric_signing)"
+						description:      "Usage of the key to filter for (symmetric_encryption, asymmetric_encryption, asymmetric_signing, key_encapsulation)"
 						description_kind: "plain"
 						optional:         true
 					}
@@ -37681,12 +37993,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			attributes: {
 				id: {
 					type:                "string"
-					description:         "The id of the resource (UUID format)"
 					required_for_import: true
 				}
 				zone: {
 					type:                "string"
-					description:         "The zone of the resource"
 					required_for_import: true
 				}
 			}
@@ -38496,6 +38806,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			}
 		}
 		scaleway_mailbox: {
+			version: 0
+			attributes: id: {
+				type:                "string"
+				required_for_import: true
+			}
+		}
+		scaleway_mailbox_alias: {
 			version: 0
 			attributes: id: {
 				type:                "string"
@@ -39453,7 +39770,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			description: """
 				The [`scaleway_cockpit_grafana_sync_data_sources`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/cockpit_grafana_sync_data_sources) action triggers the synchronization of all Cockpit data sources and the alert manager across regions into Grafana.
 
-				Grafana must be provisioned for the project before running this action. With IAM authentication, access Grafana at least once for the project.
+				Before syncing, the action also performs an IAM first access (`GET {grafana_url}/api/org`) so Grafana is provisioned for the project.
 
 				Refer to the Cockpit [documentation](https://www.scaleway.com/en/docs/managed-services/cockpit/) and [API documentation](https://www.scaleway.com/en/docs/observability/cockpit/api-cli/) for more information.
 

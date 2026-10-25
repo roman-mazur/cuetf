@@ -67,7 +67,7 @@ scaleway_mongodb_instance: {
 		// The region you want to attach the resource to
 		region?: string
 
-		// Map of settings to define for the instance.
+		// Map of engine settings applied to the instance (read-only).
 		settings?: [string]: string
 
 		// Snapshot ID to restore the MongoDB instance from

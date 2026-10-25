@@ -15,6 +15,9 @@ scaleway_container_domain: {
 
 		// The region you want to attach the resource to
 		region?: string
+
+		// The Scaleway Resource Name (SRN) of the container domain
+		srn?: string
 	})
 
 	#timeouts: close({

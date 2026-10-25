@@ -144,6 +144,9 @@ scaleway_container: {
 		// The secret environment variables to be injected into your container at runtime.
 		secret_environment_variables?: [string]: string
 
+		// The Scaleway Resource Name (SRN) of the container
+		srn?: string
+
 		// Defines how to check if the container has started successfully.
 		startup_probe?: [...close({
 			failure_threshold?: number
