@@ -21,11 +21,10 @@ google_memorystore_instance: {
 		// Format: projects/{project}/locations/{location}/aclPolicies/{acl_policy}
 		acl_policy?: string
 
-		// Optional. Immutable. Authorization mode of the instance. Possible values:
+		// Optional. Authorization mode of the instance. Possible values:
 		// AUTH_DISABLED
-		// IAM_AUTH.
-		//
-		// TOKEN_AUTH is also supported, but only available in the google-beta provider.
+		// IAM_AUTH
+		// TOKEN_AUTH
 		authorization_mode?: string
 
 		// This field is used to determine the available maintenance versions for the self service update.

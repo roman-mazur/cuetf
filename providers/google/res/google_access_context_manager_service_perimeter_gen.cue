@@ -93,8 +93,10 @@ google_access_context_manager_service_perimeter: {
 		access_levels?: [...string]
 
 		// A list of GCP resources that are inside of the service perimeter.
-		// Currently only projects are allowed.
-		// Format: projects/{project_number}
+		// Projects, folders, and VPC networks are allowed.
+		// Project format: 'projects/{project_number}'
+		// Folder format: 'folders/{folder_number}'
+		// VPC network format: '//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}'
 		resources?: [...string]
 
 		// GCP services that are subject to the Service Perimeter
@@ -123,8 +125,10 @@ google_access_context_manager_service_perimeter: {
 		access_levels?: [...string]
 
 		// A list of GCP resources that are inside of the service perimeter.
-		// Currently only projects are allowed.
-		// Format: projects/{project_number}
+		// Projects, folders, and VPC networks are allowed.
+		// Project format: 'projects/{project_number}'
+		// Folder format: 'folders/{folder_number}'
+		// VPC network format: '//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}'
 		resources?: [...string]
 
 		// GCP services that are subject to the Service Perimeter
@@ -180,7 +184,10 @@ google_access_context_manager_service_perimeter: {
 
 		// A Google Cloud resource that is allowed to egress the perimeter.
 		// Requests from these resources are allowed to access data outside the perimeter.
-		// Currently only projects are allowed. Project format: 'projects/{project_number}'.
+		// Projects, folders, and organizations are allowed.
+		// Project format: 'projects/{project_number}'
+		// Folder format: 'folders/{folder_number}'
+		// Organization format: 'organizations/{organization_number}'
 		// The resource may be in any Google Cloud organization, not just the
 		// organization that the perimeter is defined in. '*' is not allowed, the
 		// case of allowing all Google Cloud resources only is not supported.
@@ -203,8 +210,9 @@ google_access_context_manager_service_perimeter: {
 		// s3://bucket/path). Currently '*' is not allowed.
 		external_resources?: [...string]
 
-		// A list of resources, currently only projects in the form
-		// 'projects/<projectnumber>', that match this to stanza. A request matches
+		// A list of resources, in the form 'projects/{project_number}',
+		// 'folders/{folder_number}', or 'organizations/{organization_number}',
+		// that match this to stanza. A request matches
 		// if it contains a resource in this list. If * is specified for resources,
 		// then this 'EgressTo' rule will authorize access to all resources outside
 		// the perimeter.
@@ -274,8 +282,12 @@ google_access_context_manager_service_perimeter: {
 
 		// A Google Cloud resource that is allowed to ingress the perimeter.
 		// Requests from these resources will be allowed to access perimeter data.
-		// Currently only projects are allowed. Format 'projects/{project_number}'
-		// The project may be in any Google Cloud organization, not just the
+		// Projects, folders, organizations, and VPC networks are allowed.
+		// Project format: 'projects/{project_number}'
+		// Folder format: 'folders/{folder_number}'
+		// Organization format: 'organizations/{organization_number}'
+		// VPC network format: '//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}'
+		// The resource may be in any Google Cloud organization, not just the
 		// organization that the perimeter is defined in. '*' is not allowed, the case
 		// of allowing all Google Cloud resources only is not supported.
 		resource?: string
@@ -292,8 +304,9 @@ google_access_context_manager_service_perimeter: {
 	_#defs: "/$defs/spec/$defs/ingress_policies/$defs/ingress_to": close({
 		operations?: matchN(1, [_#defs."/$defs/spec/$defs/ingress_policies/$defs/ingress_to/$defs/operations", [..._#defs."/$defs/spec/$defs/ingress_policies/$defs/ingress_to/$defs/operations"]])
 
-		// A list of resources, currently only projects in the form
-		// 'projects/<projectnumber>', protected by this 'ServicePerimeter'
+		// A list of resources protected by this 'ServicePerimeter', in the form
+		// 'projects/{project_number}', 'folders/{folder_number}', or
+		// 'organizations/{organization_number}',
 		// that are allowed to be accessed by sources defined in the
 		// corresponding 'IngressFrom'. A request matches if it contains
 		// a resource in this list. If '*' is specified for resources,
@@ -407,7 +420,10 @@ google_access_context_manager_service_perimeter: {
 
 		// A Google Cloud resource that is allowed to egress the perimeter.
 		// Requests from these resources are allowed to access data outside the perimeter.
-		// Currently only projects are allowed. Project format: 'projects/{project_number}'.
+		// Projects, folders, and organizations are allowed.
+		// Project format: 'projects/{project_number}'
+		// Folder format: 'folders/{folder_number}'
+		// Organization format: 'organizations/{organization_number}'
 		// The resource may be in any Google Cloud organization, not just the
 		// organization that the perimeter is defined in. '*' is not allowed, the
 		// case of allowing all Google Cloud resources only is not supported.
@@ -430,8 +446,9 @@ google_access_context_manager_service_perimeter: {
 		// s3://bucket/path). Currently '*' is not allowed.
 		external_resources?: [...string]
 
-		// A list of resources, currently only projects in the form
-		// 'projects/<projectnumber>', that match this to stanza. A request matches
+		// A list of resources, in the form 'projects/{project_number}',
+		// 'folders/{folder_number}', or 'organizations/{organization_number}',
+		// that match this to stanza. A request matches
 		// if it contains a resource in this list. If * is specified for resources,
 		// then this 'EgressTo' rule will authorize access to all resources outside
 		// the perimeter.
@@ -503,11 +520,13 @@ google_access_context_manager_service_perimeter: {
 
 		// A Google Cloud resource that is allowed to ingress the perimeter.
 		// Requests from these resources will be allowed to access perimeter data.
-		// Currently only projects and VPCs are allowed.
+		// Projects, folders, organizations, and VPC networks are allowed.
 		// Project format: 'projects/{projectNumber}'
+		// Folder format: 'folders/{folderNumber}'
+		// Organization format: 'organizations/{organizationNumber}'
 		// VPC network format:
 		// '//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}'.
-		// The project may be in any Google Cloud organization, not just the
+		// The resource may be in any Google Cloud organization, not just the
 		// organization that the perimeter is defined in. '*' is not allowed, the case
 		// of allowing all Google Cloud resources only is not supported.
 		resource?: string
@@ -524,8 +543,9 @@ google_access_context_manager_service_perimeter: {
 	_#defs: "/$defs/status/$defs/ingress_policies/$defs/ingress_to": close({
 		operations?: matchN(1, [_#defs."/$defs/status/$defs/ingress_policies/$defs/ingress_to/$defs/operations", [..._#defs."/$defs/status/$defs/ingress_policies/$defs/ingress_to/$defs/operations"]])
 
-		// A list of resources, currently only projects in the form
-		// 'projects/<projectnumber>', protected by this 'ServicePerimeter'
+		// A list of resources protected by this 'ServicePerimeter', in the form
+		// 'projects/{project_number}', 'folders/{folder_number}', or
+		// 'organizations/{organization_number}',
 		// that are allowed to be accessed by sources defined in the
 		// corresponding 'IngressFrom'. A request matches if it contains
 		// a resource in this list. If '*' is specified for resources,

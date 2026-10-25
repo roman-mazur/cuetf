@@ -39,6 +39,7 @@ google_dns_policy: {
 	})
 
 	#alternative_name_server_config: close({
+		outbound_endpoints?: matchN(1, [_#defs."/$defs/alternative_name_server_config/$defs/outbound_endpoints", [..._#defs."/$defs/alternative_name_server_config/$defs/outbound_endpoints"]])
 		target_name_servers!: matchN(1, [_#defs."/$defs/alternative_name_server_config/$defs/target_name_servers", [_, ...] & [..._#defs."/$defs/alternative_name_server_config/$defs/target_name_servers"]])
 	})
 
@@ -57,6 +58,13 @@ google_dns_policy: {
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/alternative_name_server_config/$defs/outbound_endpoints": close({
+		// Specified as a resource path including project and region.
+		// This should be formatted like
+		// 'projects/{project}/locations/{location}/outboundEndpoints/{endpoint}'
+		name!: string
 	})
 
 	_#defs: "/$defs/alternative_name_server_config/$defs/target_name_servers": close({

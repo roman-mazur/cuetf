@@ -106,6 +106,8 @@ google_dialogflow_conversation_profile: {
 	})
 
 	#stt_config: close({
+		gemini_asr_config?: matchN(1, [_#defs."/$defs/stt_config/$defs/gemini_asr_config", list.MaxItems(1) & [..._#defs."/$defs/stt_config/$defs/gemini_asr_config"]])
+
 		// Audio encoding of the audio content to process. Possible values:
 		// ["AUDIO_ENCODING_UNSPECIFIED", "AUDIO_ENCODING_LINEAR_16",
 		// "AUDIO_ENCODING_FLAC", "AUDIO_ENCODING_MULAW", "AUDIO_ENCODING_AMR",
@@ -131,6 +133,9 @@ google_dialogflow_conversation_profile: {
 		// ["SPEECH_MODEL_VARIANT_UNSPECIFIED", "USE_BEST_AVAILABLE", "USE_STANDARD",
 		// "USE_ENHANCED"]
 		speech_model_variant?: string
+
+		// If true, Gemini ASR will be used for transcription instead of Cloud Speech-to-Text.
+		use_gemini_asr?: bool
 
 		// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
 		use_timeout_based_endpointing?: bool
@@ -473,6 +478,24 @@ google_dialogflow_conversation_profile: {
 	_#defs: "/$defs/human_agent_handoff_config/$defs/live_person_config": close({
 		// Account number of the LivePerson account to connect.
 		account_number!: string
+	})
+
+	_#defs: "/$defs/stt_config/$defs/gemini_asr_config": close({
+		// End of speech sensitivity. Possible values: ["END_SENSITIVITY_HIGH", "END_SENSITIVITY_LOW"]
+		end_of_speech_sensitivity?: string
+
+		// The Gemini ASR model ID used for transcription. This value overrides the
+		// default model ID configured on the server.
+		model_id?: string
+
+		// The required duration of detected speech before start-of-speech is committed.
+		prefix_padding_ms?: number
+
+		// The required duration of detected silence (or non-speech) before end-of-speech is committed.
+		silence_duration_ms?: number
+
+		// Start of speech sensitivity. Possible values: ["START_SENSITIVITY_HIGH", "START_SENSITIVITY_LOW"]
+		start_of_speech_sensitivity?: string
 	})
 
 	_#defs: "/$defs/tts_config/$defs/voice": close({

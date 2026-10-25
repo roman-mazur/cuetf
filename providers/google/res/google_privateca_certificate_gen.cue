@@ -181,13 +181,18 @@ google_privateca_certificate: {
 		// The name of the CaPool this Certificate belongs to.
 		pool!: string
 
+		// The requested not_before_time of this Certificate. This field may only be set
+		// if the allow_requester_specified_not_before_time field is set to true for the
+		// issuing CaPool.
+		requested_not_before_time?: string
+		project?:                   string
+
 		// Output only. Details regarding the revocation of this Certificate. This Certificate is
 		// considered revoked if and only if this field is present.
 		revocation_details?: [...close({
 			revocation_state?: string
 			revocation_time?:  string
 		})]
-		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

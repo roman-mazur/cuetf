@@ -24,6 +24,11 @@ google_gemini_gemini_gcp_enablement_setting: {
 		// Whether customer data sharing should be enabled.
 		enable_customer_data_sharing?: bool
 
+		// The Gemini enterprise project for this setting.
+		// Format: projects/{project}
+		// The '{project}' segment can be the project ID or project number.
+		gemini_enterprise_project?: string
+
 		// Id of the Gemini Gcp Enablement setting.
 		gemini_gcp_enablement_setting_id!: string
 		id?:                               string
@@ -46,10 +51,15 @@ google_gemini_gemini_gcp_enablement_setting: {
 		// Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{geminiGcpEnablementSetting}
 		name?: string
 
+		// Specifies the release channel for Gemini features. The release channel
+		// determines which set of features are available to the user. Possible values:
+		// ["STABLE", "EXPERIMENTAL"]
+		release_channel?: string
+		project?:         string
+
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
-		project?: string
 
 		// Update time stamp.
 		update_time?: string

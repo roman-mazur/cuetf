@@ -449,6 +449,11 @@ google_container_cluster: {
 			})]
 		})]
 
+		// The configuration for the Managed OpenTelemetry pipeline inside the cluster.
+		managed_opentelemetry_config?: [...close({
+			scope?: string
+		})]
+
 		// The authentication information for accessing the Kubernetes master. Some
 		// values in this block are only returned by the API if your service account
 		// has permission to get credentials for your GKE cluster. If you see an

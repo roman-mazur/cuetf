@@ -21,6 +21,9 @@ google_scc_folder_scc_big_query_export: {
 		// (0-9), or underscores (_).
 		dataset!: string
 
+		// Indicates whether the notifications will be sent for deleted findings.
+		deletion_notifications_enabled?: bool
+
 		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
 		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
 		// the command will fail if this field is set to "PREVENT" in Terraform state.

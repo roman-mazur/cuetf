@@ -19,6 +19,13 @@ google_discovery_engine_schema: {
 		id?:              string
 
 		// The JSON representation of the schema.
+		// Changes are applied in place and must be backward compatible: existing fields
+		// can't be removed or have their type changed. Updating the schema triggers
+		// reindexing of all documents in the data store, which can take hours for large
+		// data stores and may incur costs. See
+		// [Update a schema for structured
+		// data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+		// for details.
 		json_schema?: string
 
 		// The geographic location where the data store should reside. The value can
@@ -39,5 +46,6 @@ google_discovery_engine_schema: {
 	#timeouts: close({
 		create?: string
 		delete?: string
+		update?: string
 	})
 }

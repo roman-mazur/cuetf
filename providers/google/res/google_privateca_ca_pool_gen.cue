@@ -63,6 +63,12 @@ google_privateca_ca_pool: {
 		baseline_values?: matchN(1, [_#defs."/$defs/issuance_policy/$defs/baseline_values", list.MaxItems(1) & [..._#defs."/$defs/issuance_policy/$defs/baseline_values"]])
 		identity_constraints?: matchN(1, [_#defs."/$defs/issuance_policy/$defs/identity_constraints", list.MaxItems(1) & [..._#defs."/$defs/issuance_policy/$defs/identity_constraints"]])
 
+		// If set to true, allows requesters to specify the requested_not_before_time
+		// field when creating a Certificate. Certificates requested with this
+		// option enabled will have a 'not_before_time' equal to the value
+		// specified in the request.
+		allow_requester_specified_not_before_time?: bool
+
 		// The duration to backdate all certificates issued from this CaPool. If not set, the
 		// certificates will be issued with a not_before_time of the issuance time (i.e. the current
 		// time). If set, the certificates will be issued with a not_before_time of the issuance

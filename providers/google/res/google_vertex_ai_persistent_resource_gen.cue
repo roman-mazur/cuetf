@@ -170,6 +170,7 @@ google_vertex_ai_persistent_resource: {
 	})
 
 	#resource_runtime_spec: close({
+		ray_spec?: matchN(1, [_#defs."/$defs/resource_runtime_spec/$defs/ray_spec", list.MaxItems(1) & [..._#defs."/$defs/resource_runtime_spec/$defs/ray_spec"]])
 		service_account_spec?: matchN(1, [_#defs."/$defs/resource_runtime_spec/$defs/service_account_spec", list.MaxItems(1) & [..._#defs."/$defs/resource_runtime_spec/$defs/service_account_spec"]])
 	})
 
@@ -256,6 +257,16 @@ google_vertex_ai_persistent_resource: {
 		// See the [list of machine types supported for custom
 		// training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
 		machine_type?: string
+	})
+
+	_#defs: "/$defs/resource_runtime_spec/$defs/ray_spec": close({
+		// Default image for user to choose a preferred ML framework
+		// (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt
+		// images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers).
+		// Either this or the resource_pool_images is required. Use this field if
+		// you need all the resource pools to have the same Ray image. Otherwise, use
+		// the 'resource_pool_images' field.
+		image_uri?: string
 	})
 
 	_#defs: "/$defs/resource_runtime_spec/$defs/service_account_spec": close({

@@ -205,7 +205,10 @@ google_ces_tool: {
 				service_agent_id_token_auth_config?: [...close({})]
 			})]
 			description?: string
-			name?:        string
+			input_variable_mapping?: [string]: string
+			name?: string
+			output_variable_mapping?: [string]: string
+			stateful_agent?: bool
 		})]
 		project?: string
 
@@ -793,11 +796,23 @@ google_ces_tool: {
 		// produce responses that are more predictable. Higher temperatures produce
 		// responses that are more creative.
 		temperature?: number
+
+		// The thinking level of the model.
+		// Possible values:
+		// DEFAULT
+		// LOW
+		// MEDIUM
+		// HIGH Possible values: ["DEFAULT", "LOW", "MEDIUM", "HIGH"]
+		thinking_level?: string
 	})
 
 	_#defs: "/$defs/data_store_tool/$defs/modality_configs/$defs/snippets_config": close({
 		// Whether snippets are enabled.
 		enable_snippets?: bool
+
+		// Number of snippets to return per query.
+		// If unset, returns all snippets from the service by default.
+		max_snippets?: number
 	})
 
 	_#defs: "/$defs/data_store_tool/$defs/modality_configs/$defs/summarization_config": close({
@@ -820,6 +835,14 @@ google_ces_tool: {
 		// produce responses that are more predictable. Higher temperatures produce
 		// responses that are more creative.
 		temperature?: number
+
+		// The thinking level of the model.
+		// Possible values:
+		// DEFAULT
+		// LOW
+		// MEDIUM
+		// HIGH Possible values: ["DEFAULT", "LOW", "MEDIUM", "HIGH"]
+		thinking_level?: string
 	})
 
 	_#defs: "/$defs/google_search_tool/$defs/prompt_config": close({

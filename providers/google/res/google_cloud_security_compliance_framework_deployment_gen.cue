@@ -124,6 +124,7 @@ google_cloud_security_compliance_framework_deployment: {
 	#timeouts: close({
 		create?: string
 		delete?: string
+		update?: string
 	})
 
 	_#defs: "/$defs/cloud_control_metadata/$defs/cloud_control_details": close({
