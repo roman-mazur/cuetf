@@ -26,7 +26,6 @@ google_compute_interconnect: {
 		// used with L2 forwarding attachments.
 		// - 'IF_CROSS_SITE_NETWORK': Indicates the Interconnect connection is
 		// provisioned for Cross-Site Networking.
-		// Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
 		available_features?: [...string]
 
 		// A list of CircuitInfo objects, that describe the individual circuits in this LAG.
@@ -180,8 +179,9 @@ google_compute_interconnect: {
 		// forwarding. If not specified, the connection defaults to Layer 3 (L3)
 		// traffic forwarding.
 		// - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
-		// Note: 'MACSEC' is a legacy value for compatibility reasons and has the same
-		// effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred. Possible values: ["MACSEC",
+		// Note: 'MACSEC' is a legacy value for compatibility reasons. 'IF_MACSEC'
+		// should be used. Choosing 'MACSEC' can result in allocation of non-MACsec
+		// capable ports, if available. Possible values: ["MACSEC",
 		// "CROSS_SITE_NETWORK", "IF_MACSEC", "IF_L2_FORWARDING"]
 		requested_features?: [...string]
 

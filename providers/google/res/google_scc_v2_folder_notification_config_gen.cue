@@ -12,6 +12,9 @@ google_scc_v2_folder_notification_config: {
 		// This must be unique within the organization.
 		config_id!: string
 
+		// Indicates whether the notifications will be sent for deleted findings.
+		deletion_notifications_enabled?: bool
+
 		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
 		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
 		// the command will fail if this field is set to "PREVENT" in Terraform state.

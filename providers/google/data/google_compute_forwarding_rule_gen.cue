@@ -197,10 +197,11 @@ google_compute_forwarding_rule: {
 		// lowercase letters and numbers and must start with a letter.
 		name!: string
 
-		// This field is not used for external load balancing.
+		// This field is not used for global external load balancing.
 		//
-		// For Internal TCP/UDP Load Balancing, this field identifies the network that
-		// the load balanced IP should belong to for this Forwarding Rule.
+		// For Internal TCP/UDP Load Balancing and Regional External Load Balancing ('EXTERNAL_MANAGED'),
+		// this field identifies the network that the load balanced IP should belong to
+		// for this Forwarding Rule.
 		// If the subnetwork is specified, the network of the subnetwork will be used.
 		// If neither subnetwork nor this field is specified, the default network will
 		// be used.
@@ -332,8 +333,9 @@ google_compute_forwarding_rule: {
 		source_ip_ranges?: [...string]
 
 		// This field identifies the subnetwork that the load balanced IP should
-		// belong to for this Forwarding Rule, used in internal load balancing and
-		// network load balancing with IPv6.
+		// belong to for this Forwarding Rule, used in internal load balancing,
+		// network load balancing with IPv6, and regional external ('EXTERNAL_MANAGED')
+		// load balancing with IPv6.
 		//
 		// If the network specified is in auto subnet mode, this field is optional.
 		// However, a subnetwork must be specified if the network is in custom subnet

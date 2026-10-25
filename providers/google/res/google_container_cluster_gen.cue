@@ -27,6 +27,7 @@ google_container_cluster: {
 		ip_allocation_policy?: matchN(1, [#ip_allocation_policy, list.MaxItems(1) & [...#ip_allocation_policy]])
 		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
 		maintenance_policy?: matchN(1, [#maintenance_policy, list.MaxItems(1) & [...#maintenance_policy]])
+		managed_opentelemetry_config?: matchN(1, [#managed_opentelemetry_config, list.MaxItems(1) & [...#managed_opentelemetry_config]])
 		master_auth?: matchN(1, [#master_auth, list.MaxItems(1) & [...#master_auth]])
 		master_authorized_networks_config?: matchN(1, [#master_authorized_networks_config, list.MaxItems(1) & [...#master_authorized_networks_config]])
 		mesh_certificates?: matchN(1, [#mesh_certificates, list.MaxItems(1) & [...#mesh_certificates]])
@@ -511,6 +512,14 @@ google_container_cluster: {
 		maintenance_exclusion?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/maintenance_exclusion", list.MaxItems(20) & [..._#defs."/$defs/maintenance_policy/$defs/maintenance_exclusion"]])
 		recurring_maintenance_window?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/recurring_maintenance_window", list.MaxItems(1) & [..._#defs."/$defs/maintenance_policy/$defs/recurring_maintenance_window"]])
 		recurring_window?: matchN(1, [_#defs."/$defs/maintenance_policy/$defs/recurring_window", list.MaxItems(1) & [..._#defs."/$defs/maintenance_policy/$defs/recurring_window"]])
+	})
+
+	#managed_opentelemetry_config: close({
+		// The scope of the Managed OpenTelemetry pipeline. Available options include
+		// NONE and COLLECTION_AND_INSTRUMENTATION_COMPONENTS. See
+		// https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig
+		// for more information. To disable the feature, explicitly set this to NONE.
+		scope?: string
 	})
 
 	#master_auth: close({

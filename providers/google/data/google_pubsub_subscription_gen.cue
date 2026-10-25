@@ -25,8 +25,8 @@ google_pubsub_subscription: {
 		ack_deadline_seconds?: number
 
 		// If delivery to BigQuery is used with this subscription, this field is used to configure it.
-		// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-		// If all three are empty, then the subscriber will pull and ack messages using API methods.
+		// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+		// If none of them are set, then the subscriber will pull and ack messages using API methods.
 		bigquery_config?: [...close({
 			drop_unknown_fields?:   bool
 			service_account_email?: string
@@ -36,9 +36,27 @@ google_pubsub_subscription: {
 			write_metadata?:        bool
 		})]
 
+		// If delivery to Bigtable is used with this subscription, this field is used to configure it.
+		// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+		// If none of them are set, then the subscriber will pull and ack messages using API methods.
+		bigtable_config?: [...close({
+			app_profile_id?: string
+			column_family_mapping?: [...close({
+				delimited_key?: [...close({
+					delimiter?: string
+					key_fields?: [...string]
+				})]
+				row_key_schema?: [...close({})]
+			})]
+			service_account_email?: string
+			state?:                 string
+			table?:                 string
+			write_metadata?:        bool
+		})]
+
 		// If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-		// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-		// If all three are empty, then the subscriber will pull and ack messages using API methods.
+		// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+		// If none of them are set, then the subscriber will pull and ack messages using API methods.
 		cloud_storage_config?: [...close({
 			avro_config?: [...close({
 				use_topic_schema?: bool

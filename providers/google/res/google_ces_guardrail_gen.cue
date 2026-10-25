@@ -267,6 +267,9 @@ google_ces_guardrail: {
 		// produce responses that are more predictable. Higher temperatures produce
 		// responses that are more creative.
 		temperature?: number
+
+		// The thinking level of the model. Possible values: ["DEFAULT", "LOW", "MEDIUM", "HIGH"]
+		thinking_level?: string
 	})
 
 	_#defs: "/$defs/llm_prompt_security/$defs/custom_policy": close({
@@ -310,6 +313,9 @@ google_ces_guardrail: {
 		// produce responses that are more predictable. Higher temperatures produce
 		// responses that are more creative.
 		temperature?: number
+
+		// The thinking level of the model. Possible values: ["DEFAULT", "LOW", "MEDIUM", "HIGH"]
+		thinking_level?: string
 	})
 
 	_#defs: "/$defs/llm_prompt_security/$defs/default_settings": close({

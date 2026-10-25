@@ -2511,6 +2511,26 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						nesting_mode: "list"
 						block: {
 							attributes: {
+								federated_principal: {
+									type: "string"
+									description: """
+												Immutable. The IAM principal identifier of the federated workforce or workload to
+												assign the policy to. Examples include the following:
+												* Single principal:
+												'principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}'
+												* All workloads in a workload identity pool:
+												'principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*'
+												* All Workforce Pools in a Google Cloud organization:
+												'principalSet://cloudresourcemanager.googleapis.com/organizations/{organization_id}/type/WorkforcePool'
+
+												Bindings created for all Workforce Pools in a Google Cloud organization
+												support only 'scoped_access_settings' with the 'restricted_project'
+												client scope and active 'session_settings'. No other configurations are
+												allowed.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
 								service_account: {
 									type: "string"
 									description: """
@@ -2619,27 +2639,47 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 										block_types: client_scope: {
 											nesting_mode: "list"
 											block: {
-												block_types: restricted_client_application: {
-													nesting_mode: "list"
-													block: {
-														attributes: {
-															client_id: {
-																type:             "string"
-																description:      "The OAuth client ID of the application."
-																description_kind: "plain"
-																optional:         true
+												block_types: {
+													restricted_client_application: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																client_id: {
+																	type:             "string"
+																	description:      "The OAuth client ID of the application."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																name: {
+																	type:             "string"
+																	description:      "The name of the application. Example: \"Cloud Console\""
+																	description_kind: "plain"
+																	optional:         true
+																}
 															}
-															name: {
-																type:             "string"
-																description:      "The name of the application. Example: \"Cloud Console\""
-																description_kind: "plain"
-																optional:         true
-															}
+															description:      "Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified."
+															description_kind: "plain"
 														}
-														description:      "Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified."
-														description_kind: "plain"
+														max_items: 1
 													}
-													max_items: 1
+													restricted_project: {
+														nesting_mode: "list"
+														block: {
+															attributes: name: {
+																type: "string"
+																description: """
+																					The Google Cloud project resource name.
+																					Format: 'projects/{project_number}'. Only the project number is supported.
+																					Example: 'projects/1234567890'
+																					"""
+																description_kind: "plain"
+																required:         true
+															}
+															description:      "Optional. The Google Cloud project that is subject to this binding's scope."
+															description_kind: "plain"
+														}
+														max_items: 1
+													}
 												}
 												description:      "Optional. Client scope for this access scope."
 												description_kind: "plain"
@@ -2937,8 +2977,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									type: ["set", "string"]
 									description: """
 												A list of GCP resources that are inside of the service perimeter.
-												Currently only projects are allowed.
-												Format: projects/{project_number}
+												Projects, folders, and VPC networks are allowed.
+												Project format: 'projects/{project_number}'
+												Folder format: 'folders/{folder_number}'
+												VPC network format: '//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}'
 												"""
 									description_kind: "plain"
 									optional:         true
@@ -3013,7 +3055,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																	description: """
 																					A Google Cloud resource that is allowed to egress the perimeter.
 																					Requests from these resources are allowed to access data outside the perimeter.
-																					Currently only projects are allowed. Project format: 'projects/{project_number}'.
+																					Projects, folders, and organizations are allowed.
+																					Project format: 'projects/{project_number}'
+																					Folder format: 'folders/{folder_number}'
+																					Organization format: 'organizations/{organization_number}'
 																					The resource may be in any Google Cloud organization, not just the
 																					organization that the perimeter is defined in. '*' is not allowed, the
 																					case of allowing all Google Cloud resources only is not supported.
@@ -3068,8 +3113,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 														resources: {
 															type: ["set", "string"]
 															description: """
-																		A list of resources, currently only projects in the form
-																		'projects/<projectnumber>', that match this to stanza. A request matches
+																		A list of resources, in the form 'projects/{project_number}',
+																		'folders/{folder_number}', or 'organizations/{organization_number}',
+																		that match this to stanza. A request matches
 																		if it contains a resource in this list. If * is specified for resources,
 																		then this 'EgressTo' rule will authorize access to all resources outside
 																		the perimeter.
@@ -3218,8 +3264,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																	description: """
 																					A Google Cloud resource that is allowed to ingress the perimeter.
 																					Requests from these resources will be allowed to access perimeter data.
-																					Currently only projects are allowed. Format 'projects/{project_number}'
-																					The project may be in any Google Cloud organization, not just the
+																					Projects, folders, organizations, and VPC networks are allowed.
+																					Project format: 'projects/{project_number}'
+																					Folder format: 'folders/{folder_number}'
+																					Organization format: 'organizations/{organization_number}'
+																					VPC network format: '//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}'
+																					The resource may be in any Google Cloud organization, not just the
 																					organization that the perimeter is defined in. '*' is not allowed, the case
 																					of allowing all Google Cloud resources only is not supported.
 																					"""
@@ -3266,8 +3316,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 														resources: {
 															type: ["set", "string"]
 															description: """
-																		A list of resources, currently only projects in the form
-																		'projects/<projectnumber>', protected by this 'ServicePerimeter'
+																		A list of resources protected by this 'ServicePerimeter', in the form
+																		'projects/{project_number}', 'folders/{folder_number}', or
+																		'organizations/{organization_number}',
 																		that are allowed to be accessed by sources defined in the
 																		corresponding 'IngressFrom'. A request matches if it contains
 																		a resource in this list. If '*' is specified for resources,
@@ -3486,8 +3537,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									type: ["set", "string"]
 									description: """
 												A list of GCP resources that are inside of the service perimeter.
-												Currently only projects are allowed.
-												Format: projects/{project_number}
+												Projects, folders, and VPC networks are allowed.
+												Project format: 'projects/{project_number}'
+												Folder format: 'folders/{folder_number}'
+												VPC network format: '//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}'
 												"""
 									description_kind: "plain"
 									optional:         true
@@ -3564,7 +3617,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																	description: """
 																					A Google Cloud resource that is allowed to egress the perimeter.
 																					Requests from these resources are allowed to access data outside the perimeter.
-																					Currently only projects are allowed. Project format: 'projects/{project_number}'.
+																					Projects, folders, and organizations are allowed.
+																					Project format: 'projects/{project_number}'
+																					Folder format: 'folders/{folder_number}'
+																					Organization format: 'organizations/{organization_number}'
 																					The resource may be in any Google Cloud organization, not just the
 																					organization that the perimeter is defined in. '*' is not allowed, the
 																					case of allowing all Google Cloud resources only is not supported.
@@ -3619,8 +3675,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 														resources: {
 															type: ["set", "string"]
 															description: """
-																		A list of resources, currently only projects in the form
-																		'projects/<projectnumber>', that match this to stanza. A request matches
+																		A list of resources, in the form 'projects/{project_number}',
+																		'folders/{folder_number}', or 'organizations/{organization_number}',
+																		that match this to stanza. A request matches
 																		if it contains a resource in this list. If * is specified for resources,
 																		then this 'EgressTo' rule will authorize access to all resources outside
 																		the perimeter.
@@ -3771,11 +3828,13 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																	description: """
 																					A Google Cloud resource that is allowed to ingress the perimeter.
 																					Requests from these resources will be allowed to access perimeter data.
-																					Currently only projects and VPCs are allowed.
+																					Projects, folders, organizations, and VPC networks are allowed.
 																					Project format: 'projects/{projectNumber}'
+																					Folder format: 'folders/{folderNumber}'
+																					Organization format: 'organizations/{organizationNumber}'
 																					VPC network format:
 																					'//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}'.
-																					The project may be in any Google Cloud organization, not just the
+																					The resource may be in any Google Cloud organization, not just the
 																					organization that the perimeter is defined in. '*' is not allowed, the case
 																					of allowing all Google Cloud resources only is not supported.
 																					"""
@@ -3822,8 +3881,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 														resources: {
 															type: ["set", "string"]
 															description: """
-																		A list of resources, currently only projects in the form
-																		'projects/<projectnumber>', protected by this 'ServicePerimeter'
+																		A list of resources protected by this 'ServicePerimeter', in the form
+																		'projects/{project_number}', 'folders/{folder_number}', or
+																		'organizations/{organization_number}',
 																		that are allowed to be accessed by sources defined in the
 																		corresponding 'IngressFrom'. A request matches if it contains
 																		a resource in this list. If '*' is specified for resources,
@@ -4142,7 +4202,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											description: """
 															A Google Cloud resource that is allowed to egress the perimeter.
 															Requests from these resources are allowed to access data outside the perimeter.
-															Currently only projects are allowed. Project format: 'projects/{project_number}'.
+															Projects, folders, and organizations are allowed.
+															Project format: 'projects/{project_number}'
+															Folder format: 'folders/{folder_number}'
+															Organization format: 'organizations/{organization_number}'
 															The resource may be in any Google Cloud organization, not just the
 															organization that the perimeter is defined in. '*' is not allowed, the
 															case of allowing all Google Cloud resources only is not supported.
@@ -4197,8 +4260,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								resources: {
 									type: ["list", "string"]
 									description: """
-												A list of resources, currently only projects in the form
-												'projects/<projectnumber>', that match this to stanza. A request matches
+												A list of resources, in the form 'projects/{project_number}',
+												'folders/{folder_number}', or 'organizations/{organization_number}',
+												that match this to stanza. A request matches
 												if it contains a resource in this list. If * is specified for resources,
 												then this 'EgressTo' rule will authorize access to all resources outside
 												the perimeter.
@@ -4407,8 +4471,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											description: """
 															A Google Cloud resource that is allowed to ingress the perimeter.
 															Requests from these resources will be allowed to access perimeter data.
-															Currently only projects are allowed. Format 'projects/{project_number}'
-															The project may be in any Google Cloud organization, not just the
+															Projects, folders, organizations, and VPC networks are allowed.
+															Project format: 'projects/{project_number}'
+															Folder format: 'folders/{folder_number}'
+															Organization format: 'organizations/{organization_number}'
+															VPC network format: '//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}'
+															The resource may be in any Google Cloud organization, not just the
 															organization that the perimeter is defined in. '*' is not allowed, the case
 															of allowing all Google Cloud resources only is not supported.
 															"""
@@ -4455,8 +4523,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								resources: {
 									type: ["list", "string"]
 									description: """
-												A list of resources, currently only projects in the form
-												'projects/<projectnumber>', protected by this 'ServicePerimeter'
+												A list of resources protected by this 'ServicePerimeter', in the form
+												'projects/{project_number}', 'folders/{folder_number}', or
+												'organizations/{organization_number}',
 												that are allowed to be accessed by sources defined in the
 												corresponding 'IngressFrom'. A request matches if it contains
 												a resource in this list. If '*' is specified for resources,
@@ -4613,8 +4682,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type: "string"
 						description: """
 									A GCP resource that is inside of the service perimeter.
-									Currently only projects are allowed.
-									Format: projects/{project_number}
+									Projects, folders, and VPC networks are allowed.
+									Project format: 'projects/{project_number}'
+									Folder format: 'folders/{folder_number}'
+									VPC network format: '//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}'
 									"""
 						description_kind: "plain"
 						required:         true
@@ -4740,7 +4811,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											description: """
 															A Google Cloud resource that is allowed to egress the perimeter.
 															Requests from these resources are allowed to access data outside the perimeter.
-															Currently only projects are allowed. Project format: 'projects/{project_number}'.
+															Projects, folders, and organizations are allowed.
+															Project format: 'projects/{project_number}'
+															Folder format: 'folders/{folder_number}'
+															Organization format: 'organizations/{organization_number}'
 															The resource may be in any Google Cloud organization, not just the
 															organization that the perimeter is defined in. '*' is not allowed, the
 															case of allowing all Google Cloud resources only is not supported.
@@ -4795,8 +4869,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								resources: {
 									type: ["list", "string"]
 									description: """
-												A list of resources, currently only projects in the form
-												'projects/<projectnumber>', that match this to stanza. A request matches
+												A list of resources, in the form 'projects/{project_number}',
+												'folders/{folder_number}', or 'organizations/{organization_number}',
+												that match this to stanza. A request matches
 												if it contains a resource in this list. If * is specified for resources,
 												then this 'EgressTo' rule will authorize access to all resources outside
 												the perimeter.
@@ -5005,11 +5080,13 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											description: """
 															A Google Cloud resource that is allowed to ingress the perimeter.
 															Requests from these resources will be allowed to access perimeter data.
-															Currently only projects and VPCs are allowed.
+															Projects, folders, organizations, and VPC networks are allowed.
 															Project format: 'projects/{projectNumber}'
+															Folder format: 'folders/{folderNumber}'
+															Organization format: 'organizations/{organizationNumber}'
 															VPC network format:
 															'//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}'.
-															The project may be in any Google Cloud organization, not just the
+															The resource may be in any Google Cloud organization, not just the
 															organization that the perimeter is defined in. '*' is not allowed, the case
 															of allowing all Google Cloud resources only is not supported.
 															"""
@@ -5056,8 +5133,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								resources: {
 									type: ["list", "string"]
 									description: """
-												A list of resources, currently only projects in the form
-												'projects/<projectnumber>', protected by this 'ServicePerimeter'
+												A list of resources protected by this 'ServicePerimeter', in the form
+												'projects/{project_number}', 'folders/{folder_number}', or
+												'organizations/{organization_number}',
 												that are allowed to be accessed by sources defined in the
 												corresponding 'IngressFrom'. A request matches if it contains
 												a resource in this list. If '*' is specified for resources,
@@ -5214,8 +5292,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type: "string"
 						description: """
 									A GCP resource that is inside of the service perimeter.
-									Currently only projects are allowed.
-									Format: projects/{project_number}
+									Projects, folders, and VPC networks are allowed.
+									Project format: 'projects/{project_number}'
+									Folder format: 'folders/{folder_number}'
+									VPC network format: '//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}'
 									"""
 						description_kind: "plain"
 						required:         true
@@ -5385,8 +5465,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												type: ["set", "string"]
 												description: """
 															A list of GCP resources that are inside of the service perimeter.
-															Currently only projects are allowed.
-															Format: projects/{project_number}
+															Projects, folders, and VPC networks are allowed.
+															Project format: 'projects/{project_number}'
+															Folder format: 'folders/{folder_number}'
+															VPC network format: '//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}'
 															"""
 												description_kind: "plain"
 												optional:         true
@@ -5463,7 +5545,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																				description: """
 																								A Google Cloud resource that is allowed to egress the perimeter.
 																								Requests from these resources are allowed to access data outside the perimeter.
-																								Currently only projects are allowed. Project format: 'projects/{project_number}'.
+																								Projects, folders, and organizations are allowed.
+																								Project format: 'projects/{project_number}'
+																								Folder format: 'folders/{folder_number}'
+																								Organization format: 'organizations/{organization_number}'
 																								The resource may be in any Google Cloud organization, not just the
 																								organization that the perimeter is defined in. '*' is not allowed, the
 																								case of allowing all Google Cloud resources only is not supported.
@@ -5518,8 +5603,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																	resources: {
 																		type: ["set", "string"]
 																		description: """
-																					A list of resources, currently only projects in the form
-																					'projects/<projectnumber>', that match this to stanza. A request matches
+																					A list of resources, in the form 'projects/{project_number}',
+																					'folders/{folder_number}', or 'organizations/{organization_number}',
+																					that match this to stanza. A request matches
 																					if it contains a resource in this list. If * is specified for resources,
 																					then this 'EgressTo' rule will authorize access to all resources outside
 																					the perimeter.
@@ -5668,8 +5754,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																				description: """
 																								A Google Cloud resource that is allowed to ingress the perimeter.
 																								Requests from these resources will be allowed to access perimeter data.
-																								Currently only projects are allowed. Format 'projects/{project_number}'
-																								The project may be in any Google Cloud organization, not just the
+																								Projects, folders, organizations, and VPC networks are allowed.
+																								Project format: 'projects/{project_number}'
+																								Folder format: 'folders/{folder_number}'
+																								Organization format: 'organizations/{organization_number}'
+																								VPC network format: '//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}'
+																								The resource may be in any Google Cloud organization, not just the
 																								organization that the perimeter is defined in. '*' is not allowed, the case
 																								of allowing all Google Cloud resources only is not supported.
 																								"""
@@ -5716,8 +5806,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																	resources: {
 																		type: ["set", "string"]
 																		description: """
-																					A list of resources, currently only projects in the form
-																					'projects/<projectnumber>', protected by this 'ServicePerimeter'
+																					A list of resources protected by this 'ServicePerimeter', in the form
+																					'projects/{project_number}', 'folders/{folder_number}', or
+																					'organizations/{organization_number}',
 																					that are allowed to be accessed by sources defined in the
 																					corresponding 'IngressFrom'. A request matches if it contains
 																					a resource in this list. If '*' is specified for resources,
@@ -5936,8 +6027,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												type: ["set", "string"]
 												description: """
 															A list of GCP resources that are inside of the service perimeter.
-															Currently only projects are allowed.
-															Format: projects/{project_number}
+															Projects, folders, and VPC networks are allowed.
+															Project format: 'projects/{project_number}'
+															Folder format: 'folders/{folder_number}'
+															VPC network format: '//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}'
 															"""
 												description_kind: "plain"
 												optional:         true
@@ -6012,7 +6105,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																				description: """
 																								A Google Cloud resource that is allowed to egress the perimeter.
 																								Requests from these resources are allowed to access data outside the perimeter.
-																								Currently only projects are allowed. Project format: 'projects/{project_number}'.
+																								Projects, folders, and organizations are allowed.
+																								Project format: 'projects/{project_number}'
+																								Folder format: 'folders/{folder_number}'
+																								Organization format: 'organizations/{organization_number}'
 																								The resource may be in any Google Cloud organization, not just the
 																								organization that the perimeter is defined in. '*' is not allowed, the
 																								case of allowing all Google Cloud resources only is not supported.
@@ -6067,8 +6163,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																	resources: {
 																		type: ["set", "string"]
 																		description: """
-																					A list of resources, currently only projects in the form
-																					'projects/<projectnumber>', that match this to stanza. A request matches
+																					A list of resources, in the form 'projects/{project_number}',
+																					'folders/{folder_number}', or 'organizations/{organization_number}',
+																					that match this to stanza. A request matches
 																					if it contains a resource in this list. If * is specified for resources,
 																					then this 'EgressTo' rule will authorize access to all resources outside
 																					the perimeter.
@@ -6217,8 +6314,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																				description: """
 																								A Google Cloud resource that is allowed to ingress the perimeter.
 																								Requests from these resources will be allowed to access perimeter data.
-																								Currently only projects are allowed. Format 'projects/{project_number}'
-																								The project may be in any Google Cloud organization, not just the
+																								Projects, folders, organizations, and VPC networks are allowed.
+																								Project format: 'projects/{project_number}'
+																								Folder format: 'folders/{folder_number}'
+																								Organization format: 'organizations/{organization_number}'
+																								VPC network format: '//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}'
+																								The resource may be in any Google Cloud organization, not just the
 																								organization that the perimeter is defined in. '*' is not allowed, the case
 																								of allowing all Google Cloud resources only is not supported.
 																								"""
@@ -6265,8 +6366,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																	resources: {
 																		type: ["set", "string"]
 																		description: """
-																					A list of resources, currently only projects in the form
-																					'projects/<projectnumber>', protected by this 'ServicePerimeter'
+																					A list of resources protected by this 'ServicePerimeter', in the form
+																					'projects/{project_number}', 'folders/{folder_number}', or
+																					'organizations/{organization_number}',
 																					that are allowed to be accessed by sources defined in the
 																					corresponding 'IngressFrom'. A request matches if it contains
 																					a resource in this list. If '*' is specified for resources,
@@ -41876,6 +41978,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									optional:         true
 								}
+								thinking_level: {
+									type:             "string"
+									description:      "The thinking level of the model. Possible values: [\"DEFAULT\", \"LOW\", \"MEDIUM\", \"HIGH\"]"
+									description_kind: "plain"
+									optional:         true
+								}
 							}
 							description:      "Model settings contains various configurations for the LLM model."
 							description_kind: "plain"
@@ -44220,6 +44328,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											description_kind: "plain"
 											optional:         true
 										}
+										thinking_level: {
+											type:             "string"
+											description:      "The thinking level of the model. Possible values: [\"DEFAULT\", \"LOW\", \"MEDIUM\", \"HIGH\"]"
+											description_kind: "plain"
+											optional:         true
+										}
 									}
 									description:      "Model settings contains various configurations for the LLM model."
 									description_kind: "plain"
@@ -44326,6 +44440,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																		produce responses that are more predictable. Higher temperatures produce
 																		responses that are more creative.
 																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													thinking_level: {
+														type:             "string"
+														description:      "The thinking level of the model. Possible values: [\"DEFAULT\", \"LOW\", \"MEDIUM\", \"HIGH\"]"
 														description_kind: "plain"
 														optional:         true
 													}
@@ -44696,7 +44816,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								service_agent_id_token_auth_config: ["list", ["object", {}]]
 							}]]
 							description: "string"
-							name:        "string"
+							input_variable_mapping: ["map", "string"]
+							name: "string"
+							output_variable_mapping: ["map", "string"]
+							stateful_agent: "bool"
 						}]]
 						description:      "Represents a tool that allows the agent to call another remote agent."
 						description_kind: "plain"
@@ -45613,6 +45736,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																	description_kind: "plain"
 																	optional:         true
 																}
+																thinking_level: {
+																	type: "string"
+																	description: """
+																					The thinking level of the model.
+																					Possible values:
+																					DEFAULT
+																					LOW
+																					MEDIUM
+																					HIGH Possible values: ["DEFAULT", "LOW", "MEDIUM", "HIGH"]
+																					"""
+																	description_kind: "plain"
+																	optional:         true
+																}
 															}
 															description:      "Model settings contains various configurations for the LLM model."
 															description_kind: "plain"
@@ -45628,11 +45764,22 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											snippets_config: {
 												nesting_mode: "list"
 												block: {
-													attributes: enable_snippets: {
-														type:             "bool"
-														description:      "Whether snippets are enabled."
-														description_kind: "plain"
-														optional:         true
+													attributes: {
+														enable_snippets: {
+															type:             "bool"
+															description:      "Whether snippets are enabled."
+															description_kind: "plain"
+															optional:         true
+														}
+														max_snippets: {
+															type: "number"
+															description: """
+																		Number of snippets to return per query.
+																		If unset, returns all snippets from the service by default.
+																		"""
+															description_kind: "plain"
+															optional:         true
+														}
 													}
 													description:      "Snippets configuration."
 													description_kind: "plain"
@@ -45676,6 +45823,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																					controls the randomness of the model's responses. Lower temperatures
 																					produce responses that are more predictable. Higher temperatures produce
 																					responses that are more creative.
+																					"""
+																	description_kind: "plain"
+																	optional:         true
+																}
+																thinking_level: {
+																	type: "string"
+																	description: """
+																					The thinking level of the model.
+																					Possible values:
+																					DEFAULT
+																					LOW
+																					MEDIUM
+																					HIGH Possible values: ["DEFAULT", "LOW", "MEDIUM", "HIGH"]
 																					"""
 																	description_kind: "plain"
 																	optional:         true
@@ -60545,6 +60705,1046 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_cloud_run_v2_instance: {
+			version: 0
+			block: {
+				attributes: {
+					annotations: {
+						type: ["map", "string"]
+						description: """
+									Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+									Cloud Run API v2 does not support annotations with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new resources.
+									This field follows Kubernetes annotations' namespacing, limits, and rules.
+
+									**Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+									Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					client: {
+						type:             "string"
+						description:      "Arbitrary identifier for the API client."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					client_version: {
+						type:             "string"
+						description:      "Arbitrary version identifier for the API client."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					conditions: {
+						type: ["list", ["object", {
+							instance_reason:      "string"
+							last_transition_time: "string"
+							message:              "string"
+							reason:               "string"
+							severity:             "string"
+							state:                "string"
+							type:                 "string"
+						}]]
+						description:      "The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Instance does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run."
+						description_kind: "plain"
+						computed:         true
+					}
+					container_statuses: {
+						type: ["list", ["object", {
+							image_digest: "string"
+							name:         "string"
+						}]]
+						description:      "Status information for each of the specified containers. The status includes the resolved digest for specified images."
+						description_kind: "plain"
+						computed:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The creation time."
+						description_kind: "plain"
+						computed:         true
+					}
+					creator: {
+						type:             "string"
+						description:      "Email address of the authenticated creator."
+						description_kind: "plain"
+						computed:         true
+					}
+					default_uri_disabled: {
+						type:             "bool"
+						description:      "Disables public resolution of the default URI of this Instance."
+						description_kind: "plain"
+						optional:         true
+					}
+					delete_time: {
+						type:             "string"
+						description:      "The deletion time."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					effective_annotations: {
+						type: ["map", "string"]
+						description:      "All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					encryption_key: {
+						type:             "string"
+						description:      "A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek"
+						description_kind: "plain"
+						optional:         true
+					}
+					encryption_key_revocation_action: {
+						type:             "string"
+						description:      "The action to take if the encryption key is revoked. Possible values: [\"PREVENT_NEW\", \"SHUTDOWN\"]"
+						description_kind: "plain"
+						optional:         true
+					}
+					encryption_key_shutdown_duration: {
+						type: "string"
+						description: """
+									If encryptionKeyRevocationAction is SHUTDOWN, the duration before shutting down all instances. The minimum increment is 1 hour.
+									A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					etag: {
+						type:             "string"
+						description:      "A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates."
+						description_kind: "plain"
+						computed:         true
+					}
+					expire_time: {
+						type:             "string"
+						description:      "For a deleted resource, the time after which it will be permanently deleted."
+						description_kind: "plain"
+						computed:         true
+					}
+					generation: {
+						type:             "string"
+						description:      "A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					ingress: {
+						type:             "string"
+						description:      "Provides the ingress settings for this Instance. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: [\"INGRESS_TRAFFIC_ALL\", \"INGRESS_TRAFFIC_INTERNAL_ONLY\", \"INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER\"]"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					invoker_iam_disabled: {
+						type:             "bool"
+						description:      "Disables IAM permission check for run.routes.invoke for callers of this Instance. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check."
+						description_kind: "plain"
+						optional:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+									environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+									Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					last_modifier: {
+						type:             "string"
+						description:      "Email address of the last authenticated modifier."
+						description_kind: "plain"
+						computed:         true
+					}
+					launch_stage: {
+						type: "string"
+						description: """
+									The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+									For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values: ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the cloud run instance"
+						description_kind: "plain"
+						required:         true
+					}
+					log_uri: {
+						type:             "string"
+						description:      "The Google Console URI to obtain logs for the Instance."
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the Instance."
+						description_kind: "plain"
+						required:         true
+					}
+					observed_generation: {
+						type:             "string"
+						description:      "The generation of this Instance currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer."
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					reconciling: {
+						type: "bool"
+						description: """
+									Returns true if the Instance is currently being acted upon by the system to bring it into the desired state.
+									When a new Instance is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Instance to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration will have a transient value that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Instance, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					restart_policy: {
+						type:             "string"
+						description:      "Restart policy for the Instance. If not provided, the default is ON_FAILURE. Possible values: [\"ALWAYS\", \"ON_FAILURE\", \"NEVER\"]"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					satisfies_pzs: {
+						type:             "bool"
+						description:      "Reserved for future use. True if this service satisfies zone separation."
+						description_kind: "plain"
+						computed:         true
+					}
+					service_account: {
+						type:             "string"
+						description:      "Email address of the IAM service account associated with the Instance. The service account represents the identity of the running Instance, and determines what permissions the instance has."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					terminal_condition: {
+						type: ["list", ["object", {
+							instance_reason:      "string"
+							last_transition_time: "string"
+							message:              "string"
+							reason:               "string"
+							severity:             "string"
+							state:                "string"
+							type:                 "string"
+						}]]
+						description:      "The Condition of this Instance, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run."
+						description_kind: "plain"
+						computed:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					uid: {
+						type:             "string"
+						description:      "Server assigned unique identifier for the instance. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted."
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "The last-modified time."
+						description_kind: "plain"
+						computed:         true
+					}
+					urls: {
+						type: ["list", "string"]
+						description:      "All URLs serving traffic for this Instance."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					containers: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								args: {
+									type: ["list", "string"]
+									description:      "Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								command: {
+									type: ["list", "string"]
+									description:      "Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								image: {
+									type:             "string"
+									description:      "URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images"
+									description_kind: "plain"
+									required:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Name of the container specified as a DNS_LABEL."
+									description_kind: "plain"
+									optional:         true
+								}
+								working_dir: {
+									type:             "string"
+									description:      "Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							block_types: {
+								env: {
+									nesting_mode: "set"
+									block: {
+										attributes: {
+											name: {
+												type:             "string"
+												description:      "Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters."
+												description_kind: "plain"
+												required:         true
+											}
+											value: {
+												type:             "string"
+												description:      "Literal value of the environment variable. Defaults to \"\" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										block_types: value_source: {
+											nesting_mode: "list"
+											block: {
+												block_types: secret_key_ref: {
+													nesting_mode: "list"
+													block: {
+														attributes: {
+															secret: {
+																type:             "string"
+																description:      "The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project."
+																description_kind: "plain"
+																required:         true
+															}
+															version: {
+																type:             "string"
+																description:      "The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version."
+																description_kind: "plain"
+																required:         true
+															}
+														}
+														description:      "Selects a secret and a specific version from Cloud Secret Manager."
+														description_kind: "plain"
+													}
+													max_items: 1
+												}
+												description:      "Source for the environment variable's value."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										description:      "List of environment variables to set in the container."
+										description_kind: "plain"
+									}
+								}
+								liveness_probe: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											failure_threshold: {
+												type:             "number"
+												description:      "Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1."
+												description_kind: "plain"
+												optional:         true
+											}
+											initial_delay_seconds: {
+												type:             "number"
+												description:      "Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240."
+												description_kind: "plain"
+												optional:         true
+											}
+											period_seconds: {
+												type:             "number"
+												description:      "Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds."
+												description_kind: "plain"
+												optional:         true
+											}
+											timeout_seconds: {
+												type:             "number"
+												description:      "Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										block_types: {
+											grpc: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														port: {
+															type:             "number"
+															description:      "Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort."
+															description_kind: "plain"
+															optional:         true
+														}
+														service: {
+															type:             "string"
+															description:      "Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC"
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													description:      "Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet or grpc must be specified."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											http_get: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														path: {
+															type:             "string"
+															description:      "Optional. Path to access on the HTTP server. Defaults to '/'."
+															description_kind: "plain"
+															optional:         true
+														}
+														port: {
+															type:             "number"
+															description:      "Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort."
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													block_types: http_headers: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																name: {
+																	type:             "string"
+																	description:      "Required. The header field name"
+																	description_kind: "plain"
+																	optional:         true
+																}
+																value: {
+																	type:             "string"
+																	description:      "Optional. The header field value"
+																	description_kind: "plain"
+																	optional:         true
+																}
+															}
+															description:      "Optional. Custom headers to set in the request. HTTP allows repeated headers."
+															description_kind: "plain"
+														}
+													}
+													description:      "Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet or grpc must be specified."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+										}
+										description:      "Periodic probe of container liveness. Container will be restarted if the probe fails."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								ports: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											container_port: {
+												type:             "number"
+												description:      "Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+											name: {
+												type:             "string"
+												description:      "If specified, used to specify which protocol to use. Allowed values are \"http1\" and \"h2c\"."
+												description_kind: "plain"
+												optional:         true
+												computed:         true
+											}
+										}
+										description: """
+													List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+													If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+													"""
+										description_kind: "plain"
+									}
+								}
+								resources: {
+									nesting_mode: "list"
+									block: {
+										attributes: limits: {
+											type: ["map", "string"]
+											description:      "Only memory and CPU are supported. Use key 'cpu' for CPU limit, 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', '6', and '8'. Setting 4 CPU requires at least 2Gi of memory, setting 6 or more CPU requires at least 4Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go"
+											description_kind: "plain"
+											optional:         true
+											computed:         true
+										}
+										description:      "Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources"
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								startup_probe: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											failure_threshold: {
+												type:             "number"
+												description:      "Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1."
+												description_kind: "plain"
+												optional:         true
+											}
+											initial_delay_seconds: {
+												type:             "number"
+												description:      "Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240."
+												description_kind: "plain"
+												optional:         true
+											}
+											period_seconds: {
+												type:             "number"
+												description:      "Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds."
+												description_kind: "plain"
+												optional:         true
+											}
+											timeout_seconds: {
+												type:             "number"
+												description:      "Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										block_types: {
+											grpc: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														port: {
+															type:             "number"
+															description:      "Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort."
+															description_kind: "plain"
+															optional:         true
+														}
+														service: {
+															type:             "string"
+															description:      "Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC"
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													description:      "Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											http_get: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														path: {
+															type:             "string"
+															description:      "Optional. Path to access on the HTTP server. Defaults to '/'."
+															description_kind: "plain"
+															optional:         true
+														}
+														port: {
+															type:             "number"
+															description:      "Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort."
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													block_types: http_headers: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																name: {
+																	type:             "string"
+																	description:      "Required. The header field name"
+																	description_kind: "plain"
+																	optional:         true
+																}
+																value: {
+																	type:             "string"
+																	description:      "Optional. The header field value"
+																	description_kind: "plain"
+																	optional:         true
+																}
+															}
+															description:      "Optional. Custom headers to set in the request. HTTP allows repeated headers."
+															description_kind: "plain"
+														}
+													}
+													description:      "Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											tcp_socket: {
+												nesting_mode: "list"
+												block: {
+													attributes: port: {
+														type:             "number"
+														description:      "Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort."
+														description_kind: "plain"
+														optional:         true
+													}
+													description:      "Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+										}
+										description:      "Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								volume_mounts: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											mount_path: {
+												type:             "string"
+												description:      "Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run"
+												description_kind: "plain"
+												required:         true
+											}
+											name: {
+												type:             "string"
+												description:      "This must match the Name of a Volume."
+												description_kind: "plain"
+												required:         true
+											}
+											sub_path: {
+												type:             "string"
+												description:      "Path within the volume from which the container's volume should be mounted."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Volume to mount into the container's filesystem."
+										description_kind: "plain"
+									}
+								}
+							}
+							description:      "Holds the single container that defines the unit of execution for this Instance."
+							description_kind: "plain"
+						}
+						min_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					volumes: {
+						nesting_mode: "list"
+						block: {
+							attributes: name: {
+								type:             "string"
+								description:      "Volume's name."
+								description_kind: "plain"
+								required:         true
+							}
+							block_types: {
+								cloud_sql_instance: {
+									nesting_mode: "list"
+									block: {
+										attributes: instances: {
+											type: ["set", "string"]
+											description:      "The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}"
+											description_kind: "plain"
+											optional:         true
+										}
+										description:      "For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								empty_dir: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											medium: {
+												type:             "string"
+												description:      "The different types of medium supported for EmptyDir. Default value: \"MEMORY\" Possible values: [\"MEMORY\", \"DISK\"]"
+												description_kind: "plain"
+												optional:         true
+											}
+											size_limit: {
+												type:             "string"
+												description:      "Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Ephemeral storage used as a shared volume."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								gcs: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											bucket: {
+												type:             "string"
+												description:      "GCS Bucket name"
+												description_kind: "plain"
+												required:         true
+											}
+											mount_options: {
+												type: ["list", "string"]
+												description: """
+															A list of flags to pass to the gcsfuse command for configuring this volume.
+															Flags should be passed without leading dashes.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											read_only: {
+												type:             "bool"
+												description:      "If true, mount the GCS bucket as read-only"
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								nfs: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											path: {
+												type:             "string"
+												description:      "Path that is exported by the NFS server."
+												description_kind: "plain"
+												required:         true
+											}
+											read_only: {
+												type:             "bool"
+												description:      "If true, mount the NFS volume as read only"
+												description_kind: "plain"
+												optional:         true
+											}
+											server: {
+												type:             "string"
+												description:      "Hostname or IP address of the NFS server"
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Represents an NFS mount."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								secret: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											default_mode: {
+												type:             "number"
+												description:      "Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting."
+												description_kind: "plain"
+												optional:         true
+											}
+											secret: {
+												type:             "string"
+												description:      "The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										block_types: items: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													mode: {
+														type:             "number"
+														description:      "Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used."
+														description_kind: "plain"
+														optional:         true
+													}
+													path: {
+														type:             "string"
+														description:      "The relative path of the secret in the container."
+														description_kind: "plain"
+														required:         true
+													}
+													version: {
+														type:             "string"
+														description:      "The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version"
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												description:      "If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version."
+												description_kind: "plain"
+											}
+										}
+										description:      "Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret"
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+							}
+							description:      "A list of Volumes to make available to containers."
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_cloud_run_v2_instance_iam_binding: {
+			version: 0
+			block: {
+				attributes: {
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					members: {
+						type: ["set", "string"]
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: condition: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							description: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							expression: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+							title: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						description_kind: "plain"
+					}
+					max_items: 1
+				}
+				description_kind: "plain"
+			}
+		}
+		google_cloud_run_v2_instance_iam_member: {
+			version: 0
+			block: {
+				attributes: {
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					member: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: condition: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							description: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							expression: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+							title: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						description_kind: "plain"
+					}
+					max_items: 1
+				}
+				description_kind: "plain"
+			}
+		}
+		google_cloud_run_v2_instance_iam_policy: {
+			version: 0
+			block: {
+				attributes: {
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					policy_data: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_cloud_run_v2_job: {
 			version: 0
 			block: {
@@ -67541,6 +68741,11 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									optional:         true
 								}
 								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
 									type:             "string"
 									description_kind: "plain"
 									optional:         true
@@ -79542,6 +80747,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									configure Private Service Connect. Only global internal addresses can use
 									this purpose.
 
+									* SYSTEM_MANAGED for regional internal IP address that is reserved and
+									managed internally. It can not be assigned to compute resources such as
+									VM and internal load balancer.
+
 									This should only be set when using an Internal address.
 									"""
 						description_kind: "plain"
@@ -79569,7 +80778,8 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									The URL of the subnetwork in which to reserve the address. If an IP
 									address is specified, it must be within the subnetwork's IP range.
 									This field can only be used with INTERNAL type with
-									GCE_ENDPOINT/DNS_RESOLVER purposes.
+									GCE_ENDPOINT/DNS_RESOLVER purposes, or with EXTERNAL type IPv6 addresses
+									when 'ipv6_endpoint_type' is 'VM' or 'NETLB'.
 									"""
 						description_kind: "plain"
 						optional:         true
@@ -85423,10 +86633,11 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					network: {
 						type: "string"
 						description: """
-									This field is not used for external load balancing.
+									This field is not used for global external load balancing.
 
-									For Internal TCP/UDP Load Balancing, this field identifies the network that
-									the load balanced IP should belong to for this Forwarding Rule.
+									For Internal TCP/UDP Load Balancing and Regional External Load Balancing ('EXTERNAL_MANAGED'),
+									this field identifies the network that the load balanced IP should belong to
+									for this Forwarding Rule.
 									If the subnetwork is specified, the network of the subnetwork will be used.
 									If neither subnetwork nor this field is specified, the default network will
 									be used.
@@ -85603,8 +86814,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type: "string"
 						description: """
 									This field identifies the subnetwork that the load balanced IP should
-									belong to for this Forwarding Rule, used in internal load balancing and
-									network load balancing with IPv6.
+									belong to for this Forwarding Rule, used in internal load balancing,
+									network load balancing with IPv6, and regional external ('EXTERNAL_MANAGED')
+									load balancing with IPv6.
 
 									If the network specified is in auto subnet mode, this field is optional.
 									However, a subnetwork must be specified if the network is in custom subnet
@@ -94095,7 +95307,6 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									- 'IF_MACSEC': Indicates the Interconnect connection is provisioned on MACsec capable hardware ports. If this feature is not present, the connection does not support MACsec, and any attempt to enable it will fail.
 									- 'IF_L2_FORWARDING': Indicates the Interconnect connection can be used for Layer 2 (L2) traffic forwarding. If not present, the connection cannot be used with L2 forwarding attachments.
 									- 'IF_CROSS_SITE_NETWORK': Indicates the Interconnect connection is provisioned for Cross-Site Networking.
-									Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
 									"""
 						description_kind: "plain"
 						computed:         true
@@ -94359,7 +95570,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									- 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
 									- 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
 									- 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
-									Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred. Possible values: ["MACSEC", "CROSS_SITE_NETWORK", "IF_MACSEC", "IF_L2_FORWARDING"]
+									      Note: 'MACSEC' is a legacy value for compatibility reasons. 'IF_MACSEC' should be used. Choosing 'MACSEC' can result in allocation of non-MACsec capable ports, if available. Possible values: ["MACSEC", "CROSS_SITE_NETWORK", "IF_MACSEC", "IF_L2_FORWARDING"]
 									"""
 						description_kind: "plain"
 						optional:         true
@@ -108668,6 +109879,38 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 													}
 												}
 												block_types: {
+													request_body: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																operator: {
+																	type: "string"
+																	description: """
+																					You can specify an exact match or a partial match by using a field operator and a field value.
+																					Available options:
+																					EQUALS: The operator matches if the field value equals the specified value.
+																					STARTS_WITH: The operator matches if the field value starts with the specified value.
+																					ENDS_WITH: The operator matches if the field value ends with the specified value.
+																					CONTAINS: The operator matches if the field value contains the specified value.
+																					EQUALS_ANY: The operator matches if the field value is any value.
+																					"""
+																	description_kind: "plain"
+																	required:         true
+																}
+																value: {
+																	type: "string"
+																	description: """
+																					A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+																					The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+																					"""
+																	description_kind: "plain"
+																	optional:         true
+																}
+															}
+															description:      "A list of request body fields to be excluded from inspection during preconfigured WAF evaluation."
+															description_kind: "plain"
+														}
+													}
 													request_cookie: {
 														nesting_mode: "list"
 														block: {
@@ -109301,6 +110544,38 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 										}
 									}
 									block_types: {
+										request_body: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													operator: {
+														type: "string"
+														description: """
+																		You can specify an exact match or a partial match by using a field operator and a field value.
+																		Available options:
+																		EQUALS: The operator matches if the field value equals the specified value.
+																		STARTS_WITH: The operator matches if the field value starts with the specified value.
+																		ENDS_WITH: The operator matches if the field value ends with the specified value.
+																		CONTAINS: The operator matches if the field value contains the specified value.
+																		EQUALS_ANY: The operator matches if the field value is any value.
+																		"""
+														description_kind: "plain"
+														required:         true
+													}
+													value: {
+														type: "string"
+														description: """
+																		A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+																		The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												description:      "A list of request body fields to be excluded from inspection during preconfigured WAF evaluation."
+												description_kind: "plain"
+											}
+										}
 										request_cookie: {
 											nesting_mode: "list"
 											block: {
@@ -117422,6 +118697,27 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 													}
 												}
 												block_types: {
+													request_body: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																operator: {
+																	type:             "string"
+																	description:      "You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value."
+																	description_kind: "plain"
+																	required:         true
+																}
+																value: {
+																	type:             "string"
+																	description:      "A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY."
+																	description_kind: "plain"
+																	optional:         true
+																}
+															}
+															description:      "A list of request body fields to be excluded from inspection during\\npreconfigured WAF evaluation."
+															description_kind: "plain"
+														}
+													}
 													request_cookie: {
 														nesting_mode: "list"
 														block: {
@@ -117916,6 +119212,38 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 										}
 									}
 									block_types: {
+										request_body: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													operator: {
+														type: "string"
+														description: """
+																		You can specify an exact match or a partial match by using a field operator and a field value.
+																		Available options:
+																		EQUALS: The operator matches if the field value equals the specified value.
+																		STARTS_WITH: The operator matches if the field value starts with the specified value.
+																		ENDS_WITH: The operator matches if the field value ends with the specified value.
+																		CONTAINS: The operator matches if the field value contains the specified value.
+																		EQUALS_ANY: The operator matches if the field value is any value.
+																		"""
+														description_kind: "plain"
+														required:         true
+													}
+													value: {
+														type: "string"
+														description: """
+																		A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+																		The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												description:      "A list of request body fields to be excluded from inspection during preconfigured WAF evaluation."
+												description_kind: "plain"
+											}
+										}
 										request_cookie: {
 											nesting_mode: "list"
 											block: {
@@ -120243,7 +121571,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type: "string"
 						description: """
 									The role of subnetwork.
-									Currently, this field is only used when 'purpose' is 'REGIONAL_MANAGED_PROXY'.
+									Currently, this field is only used when 'purpose' is 'REGIONAL_MANAGED_PROXY' or 'GLOBAL_MANAGED_PROXY'.
 									The value can be set to 'ACTIVE' or 'BACKUP'.
 									An 'ACTIVE' subnetwork is one that is currently being used for Envoy-based load balancers in a region.
 									A 'BACKUP' subnetwork is one that is ready to be promoted to 'ACTIVE' or is currently draining. Possible values: ["ACTIVE", "BACKUP"]
@@ -133587,6 +134915,21 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								}
 							}
 							description:      "The maintenance policy to use for the cluster."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					managed_opentelemetry_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: scope: {
+								type:             "string"
+								description:      "The scope of the Managed OpenTelemetry pipeline. Available options include NONE and COLLECTION_AND_INSTRUMENTATION_COMPONENTS. See https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#managedopentelemetryconfig for more information. To disable the feature, explicitly set this to NONE."
+								description_kind: "plain"
+								optional:         true
+								computed:         true
+							}
+							description:      "The configuration for the Managed OpenTelemetry pipeline inside the cluster."
 							description_kind: "plain"
 						}
 						max_items: 1
@@ -175837,12 +177180,58 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									optional:         true
 								}
+								use_gemini_asr: {
+									type:             "bool"
+									description:      "If true, Gemini ASR will be used for transcription instead of Cloud Speech-to-Text."
+									description_kind: "plain"
+									optional:         true
+								}
 								use_timeout_based_endpointing: {
 									type:             "bool"
 									description:      "Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value."
 									description_kind: "plain"
 									optional:         true
 								}
+							}
+							block_types: gemini_asr_config: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										end_of_speech_sensitivity: {
+											type:             "string"
+											description:      "End of speech sensitivity. Possible values: [\"END_SENSITIVITY_HIGH\", \"END_SENSITIVITY_LOW\"]"
+											description_kind: "plain"
+											optional:         true
+										}
+										model_id: {
+											type:             "string"
+											description:      "The Gemini ASR model ID used for transcription. This value overrides the default model ID configured on the server."
+											description_kind: "plain"
+											optional:         true
+										}
+										prefix_padding_ms: {
+											type:             "number"
+											description:      "The required duration of detected speech before start-of-speech is committed."
+											description_kind: "plain"
+											optional:         true
+										}
+										silence_duration_ms: {
+											type:             "number"
+											description:      "The required duration of detected silence (or non-speech) before end-of-speech is committed."
+											description_kind: "plain"
+											optional:         true
+										}
+										start_of_speech_sensitivity: {
+											type:             "string"
+											description:      "Start of speech sensitivity. Possible values: [\"START_SENSITIVITY_HIGH\", \"START_SENSITIVITY_LOW\"]"
+											description_kind: "plain"
+											optional:         true
+										}
+									}
+									description:      "Configuration for using Gemini ASR models served via Vertex AI, overriding the default Gemini ASR model or providing additional advanced parameters. This field is only used when 'use_gemini_asr' is true."
+									description_kind: "plain"
+								}
+								max_items: 1
 							}
 							description:      "Settings for speech transcription."
 							description_kind: "plain"
@@ -187514,8 +188903,16 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						computed:         true
 					}
 					json_schema: {
-						type:             "string"
-						description:      "The JSON representation of the schema."
+						type: "string"
+						description: """
+									The JSON representation of the schema.
+									Changes are applied in place and must be backward compatible: existing fields
+									can't be removed or have their type changed. Updating the schema triggers
+									reindexing of all documents in the data store, which can take hours for large
+									data stores and may incur costs. See
+									[Update a schema for structured data](https://cloud.google.com/generative-ai-app-builder/docs/update-schemas)
+									for details.
+									"""
 						description_kind: "plain"
 						optional:         true
 					}
@@ -187562,6 +188959,11 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								optional:         true
 							}
 							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
 								type:             "string"
 								description_kind: "plain"
 								optional:         true
@@ -189226,55 +190628,74 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					forwarding_config: {
 						nesting_mode: "list"
 						block: {
-							block_types: target_name_servers: {
-								nesting_mode: "set"
-								block: {
-									attributes: {
-										domain_name: {
-											type:             "string"
-											description:      "Fully qualified domain name for the forwarding target."
-											description_kind: "plain"
-											optional:         true
-										}
-										forwarding_path: {
+							block_types: {
+								outbound_endpoints: {
+									nesting_mode: "list"
+									block: {
+										attributes: name: {
 											type: "string"
 											description: """
+															Specified as a resource path including project and region.
+															This should be formatted like
+															'projects/{project}/locations/{location}/outboundEndpoints/{endpoint}'
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "The list of outbound endpoints to use for queries."
+										description_kind: "plain"
+									}
+								}
+								target_name_servers: {
+									nesting_mode: "set"
+									block: {
+										attributes: {
+											domain_name: {
+												type:             "string"
+												description:      "Fully qualified domain name for the forwarding target."
+												description_kind: "plain"
+												optional:         true
+											}
+											forwarding_path: {
+												type: "string"
+												description: """
 															Forwarding path for this TargetNameServer. If unset or 'default'
 															Cloud DNS will make forwarding decision based on address ranges,
 															i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
 															to the Internet. When set to 'private', Cloud DNS will always
 															send queries through VPC for this target. Possible values: ["default", "private"]
 															"""
-											description_kind: "plain"
-											optional:         true
-										}
-										ipv4_address: {
-											type: "string"
-											description: """
+												description_kind: "plain"
+												optional:         true
+											}
+											ipv4_address: {
+												type: "string"
+												description: """
 															IPv4 address of a target name server.
 															Does not accept both fields (ipv4 & ipv6) being populated.
 															"""
-											description_kind: "plain"
-											optional:         true
-										}
-										ipv6_address: {
-											type: "string"
-											description: """
+												description_kind: "plain"
+												optional:         true
+											}
+											ipv6_address: {
+												type: "string"
+												description: """
 															IPv6 address of a target name server.
 															Does not accept both fields (ipv4 & ipv6) being populated.
 															"""
-											description_kind: "plain"
-											optional:         true
+												description_kind: "plain"
+												optional:         true
+											}
 										}
-									}
-									description: """
+										description: """
 													List of target name servers to forward to. Cloud DNS will
 													select the best available name server if more than
 													one target is given.
 													"""
-									description_kind: "plain"
+										description_kind: "plain"
+									}
+									min_items: 1
 								}
-								min_items: 1
 							}
 							description: """
 										The presence for this field indicates that outbound forwarding is enabled
@@ -189558,6 +190979,162 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_dns_outbound_endpoint: {
+			version: 0
+			block: {
+				attributes: {
+					annotations: {
+						type: ["map", "string"]
+						description: """
+									Annotations as key value pairs
+
+
+									**Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+									Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The timestamp when the resource was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "User provided description."
+						description_kind: "plain"
+						optional:         true
+					}
+					effective_annotations: {
+						type: ["map", "string"]
+						description:      "All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					endpoint_ip: {
+						type: "string"
+						description: """
+									User provided IP address to use for outbound DNS forwarding. This address
+									must be a free address on the subnetwork. If omitted, a free IP address
+									from the subnetwork is automatically allocated.
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									Labels as key value pairs
+
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the OutboundEndpoint."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the OutboundEndpoint."
+						description_kind: "plain"
+						required:         true
+					}
+					network: {
+						type:             "string"
+						description:      "The VPC network containing the outbound endpoint, specified as full path."
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					subnetwork: {
+						type:             "string"
+						description:      "The subnetwork holding the endpoint_ip, specified as full path."
+						description_kind: "plain"
+						required:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "The timestamp when the resource was updated."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_dns_policy: {
 			version: 0
 			block: {
@@ -189626,35 +191203,54 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					alternative_name_server_config: {
 						nesting_mode: "list"
 						block: {
-							block_types: target_name_servers: {
-								nesting_mode: "set"
-								block: {
-									attributes: {
-										forwarding_path: {
+							block_types: {
+								outbound_endpoints: {
+									nesting_mode: "list"
+									block: {
+										attributes: name: {
 											type: "string"
 											description: """
+															Specified as a resource path including project and region.
+															This should be formatted like
+															'projects/{project}/locations/{location}/outboundEndpoints/{endpoint}'
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "The list of outbound endpoints to use for queries."
+										description_kind: "plain"
+									}
+								}
+								target_name_servers: {
+									nesting_mode: "set"
+									block: {
+										attributes: {
+											forwarding_path: {
+												type: "string"
+												description: """
 															Forwarding path for this TargetNameServer. If unset or 'default' Cloud DNS will make forwarding
 															decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
 															to the Internet. When set to 'private', Cloud DNS will always send queries through VPC for this target Possible values: ["default", "private"]
 															"""
-											description_kind: "plain"
-											optional:         true
+												description_kind: "plain"
+												optional:         true
+											}
+											ipv4_address: {
+												type:             "string"
+												description:      "IPv4 address to forward to."
+												description_kind: "plain"
+												required:         true
+											}
 										}
-										ipv4_address: {
-											type:             "string"
-											description:      "IPv4 address to forward to."
-											description_kind: "plain"
-											required:         true
-										}
-									}
-									description: """
+										description: """
 													Sets an alternative name server for the associated networks. When specified,
 													all DNS queries are forwarded to a name server that you choose. Names such as .internal
 													are not available when an alternative name server is specified.
 													"""
-									description_kind: "plain"
+										description_kind: "plain"
+									}
+									min_items: 1
 								}
-								min_items: 1
 							}
 							description: """
 										Sets an alternative name server for the associated networks.
@@ -190640,6 +192236,270 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}
 						}
 						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_document_ai_schema_version: {
+			version: 0
+			block: {
+				attributes: {
+					create_time: {
+						type:             "string"
+						description:      "The time when the SchemaVersion was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "The user-defined name of the SchemaVersion."
+						description_kind: "plain"
+						required:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									The Google Cloud labels for the SchemaVersion.
+
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the resource."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The resource name of the SchemaVersion."
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					schema_id: {
+						type:             "string"
+						description:      "The schema id that this schema version belongs to."
+						description_kind: "plain"
+						required:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					schema: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								description: {
+									type:             "string"
+									description:      "Description of the schema."
+									description_kind: "plain"
+									optional:         true
+								}
+								display_name: {
+									type:             "string"
+									description:      "Display name to show users."
+									description_kind: "plain"
+									optional:         true
+								}
+								document_prompt: {
+									type:             "string"
+									description:      "Document-level prompt provided by the user. This custom text is injected into the AI model's prompt to provide extra, document-wide guidance for processing."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							block_types: {
+								entity_types: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											base_types: {
+												type: ["list", "string"]
+												description:      "The entity type that this type is derived from. For now, one and only one should be set."
+												description_kind: "plain"
+												optional:         true
+											}
+											display_name: {
+												type:             "string"
+												description:      "User defined name for the type."
+												description_kind: "plain"
+												optional:         true
+											}
+											name: {
+												type:             "string"
+												description:      "Name of the type. It must be unique within the schema file and cannot be a \"Common Type\"."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										block_types: {
+											enum_values: {
+												nesting_mode: "list"
+												block: {
+													attributes: values: {
+														type: ["list", "string"]
+														description:      "The individual values that this enum values type can include."
+														description_kind: "plain"
+														optional:         true
+													}
+													description:      "Defines a list of enum values."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											properties: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														display_name: {
+															type:             "string"
+															description:      "User defined name for the property."
+															description_kind: "plain"
+															optional:         true
+														}
+														method: {
+															type:             "string"
+															description:      "Specifies how the entity's value is obtained. Possible values: [\"EXTRACT\", \"DERIVE\", \"RELAXED_EXTRACT\"]"
+															description_kind: "plain"
+															optional:         true
+														}
+														name: {
+															type:             "string"
+															description:      "The name of the property. Follows the same guidelines as the EntityType name."
+															description_kind: "plain"
+															required:         true
+														}
+														occurrence_type: {
+															type:             "string"
+															description:      "Occurrence type limits the number of instances an entity type appears in the document. Possible values: [\"OPTIONAL_ONCE\", \"OPTIONAL_MULTIPLE\", \"REQUIRED_ONCE\", \"REQUIRED_MULTIPLE\"]"
+															description_kind: "plain"
+															optional:         true
+														}
+														value_type: {
+															type:             "string"
+															description:      "A reference to the value type of the property. This type is subject to the same conventions as the 'Entity.base_types' field."
+															description_kind: "plain"
+															required:         true
+														}
+													}
+													description:      "Defines properties that can be part of the entity type."
+													description_kind: "plain"
+												}
+											}
+										}
+										description:      "Entity types of the schema."
+										description_kind: "plain"
+									}
+								}
+								metadata: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											document_allow_multiple_labels: {
+												type:             "bool"
+												description:      "If true, on a given page, there can be multiple 'document' annotations covering it."
+												description_kind: "plain"
+												optional:         true
+											}
+											document_splitter: {
+												type:             "bool"
+												description:      "If true, a 'document' entity type can be applied to subdocument (splitting). Otherwise, it can only be applied to the entire document (classification)."
+												description_kind: "plain"
+												optional:         true
+											}
+											prefixed_naming_on_properties: {
+												type:             "bool"
+												description:      "If set, all the nested entities must be prefixed with the parents."
+												description_kind: "plain"
+												optional:         true
+											}
+											skip_naming_validation: {
+												type:             "bool"
+												description:      "If set, this will skip the naming format validation in the schema. So the string values in 'DocumentSchema.EntityType.name' and 'DocumentSchema.EntityType.Property.name' will not be checked."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Metadata of the schema."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+							}
+							description:      "The schema of the SchemaVersion."
+							description_kind: "plain"
+						}
+						min_items: 1
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
 					}
 				}
 				description_kind: "plain"
@@ -202370,6 +204230,16 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						optional:         true
 					}
+					gemini_enterprise_project: {
+						type: "string"
+						description: """
+									The Gemini enterprise project for this setting.
+									Format: projects/{project}
+									The '{project}' segment can be the project ID or project number.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
 					gemini_gcp_enablement_setting_id: {
 						type:             "string"
 						description:      "Id of the Gemini Gcp Enablement setting."
@@ -202419,6 +204289,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+					release_channel: {
+						type:             "string"
+						description:      "Specifies the release channel for Gemini features. The release channel determines which set of features are available to the user. Possible values: [\"STABLE\", \"EXPERIMENTAL\"]"
+						description_kind: "plain"
+						optional:         true
 					}
 					terraform_labels: {
 						type: ["map", "string"]
@@ -234202,8 +236078,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						computed:         true
 					}
 					kafka_version: {
-						type:             "string"
-						description:      "The Apache Kafka version of the cluster (for example, '3.7.x', '4.3.x'). If not specified during cluster creation, defaults to '3.7.x'."
+						type: "string"
+						description: """
+									The Apache Kafka version of the cluster. Specifically, this value is the finalized metadata version.
+									If not specified during cluster creation, defaults to '3.7.x'.
+									If you manage Kafka versions outside of Terraform, leave this field unset to avoid a permanent diff.
+									"""
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -235380,11 +237260,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					authorization_mode: {
 						type: "string"
 						description: """
-									Optional. Immutable. Authorization mode of the instance. Possible values:
+									Optional. Authorization mode of the instance. Possible values:
 									 AUTH_DISABLED
-									IAM_AUTH.
-
-									TOKEN_AUTH is also supported, but only available in the google-beta provider.
+									IAM_AUTH
+									TOKEN_AUTH
 									"""
 						description_kind: "plain"
 						optional:         true
@@ -247794,6 +249673,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						optional:         true
 					}
+					auto_accept: {
+						type:             "bool"
+						description:      "Controls whether resources proposed by the Transport are automatically accepted on behalf of the user."
+						description_kind: "plain"
+						optional:         true
+					}
 					bandwidth: {
 						type:             "string"
 						description:      "Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile."
@@ -247833,6 +249718,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description:      "[Output only] Google-generated activation key. This is only output if the selected profile supports an OUTPUT key flow. Inputting this to the provider is only valid while the resource is in a PENDING_KEY state. Once the provider has accepted the key, the resource will move to the CONFIGURING state."
 						description_kind: "plain"
 						computed:         true
+					}
+					hub: {
+						type:             "string"
+						description:      "The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport."
+						description_kind: "plain"
+						optional:         true
 					}
 					id: {
 						type:             "string"
@@ -247884,6 +249775,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					provided_activation_key: {
 						type:             "string"
 						description:      "Key used for establishing a connection with the remote transport. This key can only be provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state."
+						description_kind: "plain"
+						optional:         true
+					}
+					psc_routing_enabled: {
+						type:             "bool"
+						description:      "Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -280171,6 +282068,17 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						nesting_mode: "list"
 						block: {
 							attributes: {
+								allow_requester_specified_not_before_time: {
+									type: "bool"
+									description: """
+												If set to true, allows requesters to specify the requested_not_before_time
+												field when creating a Certificate. Certificates requested with this
+												option enabled will have a 'not_before_time' equal to the value
+												specified in the request.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
 								backdate_duration: {
 									type: "string"
 									description: """
@@ -281193,6 +283101,16 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+					requested_not_before_time: {
+						type: "string"
+						description: """
+									The requested not_before_time of this Certificate. This field may only be set
+									if the allow_requester_specified_not_before_time field is set to true for the
+									issuing CaPool.
+									"""
+						description_kind: "plain"
+						optional:         true
 					}
 					revocation_details: {
 						type: ["list", ["object", {
@@ -285554,8 +287472,134 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}
 							description: """
 										If delivery to BigQuery is used with this subscription, this field is used to configure it.
-										Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-										If all three are empty, then the subscriber will pull and ack messages using API methods.
+										Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+										If none of them are set, then the subscriber will pull and ack messages using API methods.
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					bigtable_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								app_profile_id: {
+									type: "string"
+									description: """
+												The app profile to use for the Bigtable writes. If not specified, the "default" application
+												profile will be used. The app profile must use single-cluster routing.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								service_account_email: {
+									type: "string"
+									description: """
+												The service account to use to write to Bigtable. The subscription creator or updater that
+												specifies this field must have 'iam.serviceAccounts.actAs' permission on the service account.
+												If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+												service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								state: {
+									type:             "string"
+									description:      "An output-only field that indicates whether or not the subscription can receive messages."
+									description_kind: "plain"
+									computed:         true
+								}
+								table: {
+									type: "string"
+									description: """
+												The unique name of the table to write messages to, of the form
+												'projects/{project}/instances/{instance}/tables/{table}'.
+												"""
+									description_kind: "plain"
+									required:         true
+								}
+								write_metadata: {
+									type: "bool"
+									description: """
+												When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to
+												additional columns in the table under the 'pubsub_metadata' column family. The subscription name,
+												messageId, and publishTime fields are put in their own columns while all other message properties
+												(other than data) are written to a JSON object in the attributes column.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							block_types: column_family_mapping: {
+								nesting_mode: "list"
+								block: {
+									block_types: {
+										delimited_key: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													delimiter: {
+														type: "string"
+														description: """
+																		The byte sequence used to delimit concatenated key fields, as a base64-encoded string
+																		(for example, 'Iw==' for '#'). Must be specified if multiple key fields are used. The
+																		delimiter must contain at least 1 character and at most 50 characters.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													key_fields: {
+														type: ["list", "string"]
+														description: """
+																		The key fields to construct the row key from. The fields must be present in the message
+																		as top-level fields; JSON path expressions will not traverse into nested objects.
+																		"""
+														description_kind: "plain"
+														required:         true
+													}
+												}
+												description: """
+																If set, the row key is constructed from the given key fields and delimiter. All key fields
+																must be present in the message; otherwise, the message remains in the subscription backlog.
+																"""
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										row_key_schema: {
+											nesting_mode: "list"
+											block: {
+												description: """
+																If set, the row key is constructed from the field names of the table's
+																[structured row key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas).
+																If a field is nullable in the structured row key, it need not be present in the message;
+																null will be used instead.
+																"""
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+									}
+									description: """
+													Configuration that allows writing row keys and/or columns based on fields in the input message.
+													The input message format must be JSON if this field is set.
+
+													If this field is set, top-level message fields are written to the 'data' column family with
+													the field name as the column qualifier by default, or to an existing column family whose name
+													matches the field name. The cell timestamp is the message publish time.
+
+													If this field is not set, the row key is constructed from the subscription name, message ID hash,
+													and message ID delimited by '#', and the message bytes are written to the 'data' column family
+													with an empty-string column qualifier.
+													"""
+									description_kind: "plain"
+								}
+								max_items: 1
+							}
+							description: """
+										If delivery to Bigtable is used with this subscription, this field is used to configure it.
+										Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+										If none of them are set, then the subscriber will pull and ack messages using API methods.
 										"""
 							description_kind: "plain"
 						}
@@ -285671,8 +287715,8 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}
 							description: """
 										If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-										Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-										If all three are empty, then the subscriber will pull and ack messages using API methods.
+										Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+										If none of them are set, then the subscriber will pull and ack messages using API methods.
 										"""
 							description_kind: "plain"
 						}
@@ -287327,7 +289371,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 					authorization_mode: {
 						type:             "string"
-						description:      "Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster. Default value: \"AUTH_MODE_DISABLED\" Possible values: [\"AUTH_MODE_UNSPECIFIED\", \"AUTH_MODE_IAM_AUTH\", \"AUTH_MODE_DISABLED\"]"
+						description:      "Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster. Default value: \"AUTH_MODE_DISABLED\" Possible values: [\"AUTH_MODE_UNSPECIFIED\", \"AUTH_MODE_IAM_AUTH\", \"AUTH_MODE_DISABLED\", \"AUTH_MODE_TOKEN_AUTH\"]"
 						description_kind: "plain"
 						optional:         true
 					}
@@ -289626,6 +291670,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					deletion_notifications_enabled: {
+						type:             "bool"
+						description:      "Indicates whether the notifications will be sent for deleted findings."
+						description_kind: "plain"
+						optional:         true
+					}
 					deletion_policy: {
 						type: "string"
 						description: """
@@ -289785,6 +291835,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									"""
 						description_kind: "plain"
 						required:         true
+					}
+					deletion_notifications_enabled: {
+						type:             "bool"
+						description:      "Indicates whether the notifications will be sent for deleted findings."
+						description_kind: "plain"
+						optional:         true
 					}
 					deletion_policy: {
 						type: "string"
@@ -291052,6 +293108,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					deletion_notifications_enabled: {
+						type:             "bool"
+						description:      "Indicates whether the notifications will be sent for deleted findings."
+						description_kind: "plain"
+						optional:         true
+					}
 					deletion_policy: {
 						type: "string"
 						description: """
@@ -291560,6 +293622,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						optional:         true
 					}
+					deletion_notifications_enabled: {
+						type:             "bool"
+						description:      "Indicates whether the notifications will be sent for deleted findings."
+						description_kind: "plain"
+						optional:         true
+					}
 					deletion_policy: {
 						type: "string"
 						description: """
@@ -291985,6 +294053,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					deletion_notifications_enabled: {
+						type:             "bool"
+						description:      "Indicates whether the notifications will be sent for deleted findings."
+						description_kind: "plain"
+						optional:         true
+					}
 					deletion_policy: {
 						type: "string"
 						description: """
@@ -292142,6 +294216,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
 									BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
 									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					deletion_notifications_enabled: {
+						type:             "bool"
+						description:      "Indicates whether the notifications will be sent for deleted findings."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -292652,6 +294732,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					deletion_notifications_enabled: {
+						type:             "bool"
+						description:      "Indicates whether the notifications will be sent for deleted findings."
+						description_kind: "plain"
+						optional:         true
+					}
 					deletion_policy: {
 						type: "string"
 						description: """
@@ -292819,6 +294905,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
 									BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
 									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					deletion_notifications_enabled: {
+						type:             "bool"
+						description:      "Indicates whether the notifications will be sent for deleted findings."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -293105,6 +295197,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					deletion_notifications_enabled: {
+						type:             "bool"
+						description:      "Indicates whether the notifications will be sent for deleted findings."
+						description_kind: "plain"
+						optional:         true
+					}
 					deletion_policy: {
 						type: "string"
 						description: """
@@ -293274,6 +295372,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						optional:         true
 					}
+					deletion_notifications_enabled: {
+						type:             "bool"
+						description:      "Indicates whether the notifications will be sent for deleted findings."
+						description_kind: "plain"
+						optional:         true
+					}
 					deletion_policy: {
 						type: "string"
 						description: """
@@ -293437,6 +295541,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
 									BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
 									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					deletion_notifications_enabled: {
+						type:             "bool"
+						description:      "Indicates whether the notifications will be sent for deleted findings."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -293954,6 +296064,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					deletion_notifications_enabled: {
+						type:             "bool"
+						description:      "Indicates whether the notifications will be sent for deleted findings."
+						description_kind: "plain"
+						optional:         true
+					}
 					deletion_policy: {
 						type: "string"
 						description: """
@@ -294117,6 +296233,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
 									BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
 									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					deletion_notifications_enabled: {
+						type:             "bool"
+						description:      "Indicates whether the notifications will be sent for deleted findings."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -310160,6 +312282,22 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						optional:         true
 						computed:         true
 					}
+					skip_wait: {
+						type: "bool"
+						description: """
+									Whether to skip waiting for the index to be created. Building an ANN
+									index over a large collection can take several hours; setting 'skip_wait'
+									to 'true' causes Terraform to return as soon as the creation request is
+									accepted rather than blocking until the long-running build completes
+									(which can exceed CI/CD timeouts or short-lived Terraform runner
+									credentials). Leave this set to 'false' (the default) if downstream
+									resources or workloads depend on the index being ready to serve queries
+									immediately after 'terraform apply', or if you want Terraform to fail
+									synchronously when an asynchronous index build fails.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
 					store_fields: {
 						type: ["list", "string"]
 						description:      "The fields to push into the index to enable inline data retrieval."
@@ -315749,24 +317887,47 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					resource_runtime_spec: {
 						nesting_mode: "list"
 						block: {
-							block_types: service_account_spec: {
-								nesting_mode: "list"
-								block: {
-									attributes: enable_custom_service_account: {
-										type: "bool"
-										description: """
+							block_types: {
+								ray_spec: {
+									nesting_mode: "list"
+									block: {
+										attributes: image_uri: {
+											type: "string"
+											description: """
+															Default image for user to choose a preferred ML framework
+															(for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt
+															images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers).
+															Either this or the resource_pool_images is required. Use this field if
+															you need all the resource pools to have the same Ray image. Otherwise, use
+															the 'resource_pool_images' field.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										description:      "Configuration information for the Ray cluster."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								service_account_spec: {
+									nesting_mode: "list"
+									block: {
+										attributes: enable_custom_service_account: {
+											type: "bool"
+											description: """
 															If true, custom user-managed service account is enforced to run any
 															workloads (for example, Vertex Jobs) on the resource.
 															Otherwise, uses the [Vertex AI Custom Code Service
 															Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents).
 															"""
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "Configuration for the use of custom service account to run the workloads."
 										description_kind: "plain"
-										required:         true
 									}
-									description:      "Configuration for the use of custom service account to run the workloads."
-									description_kind: "plain"
+									max_items: 1
 								}
-								max_items: 1
 							}
 							description:      "Configuration for the runtime on a PersistentResource instance."
 							description_kind: "plain"
@@ -330887,6 +333048,47 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_cloud_run_v2_instance_iam_policy: {
+			version: 0
+			block: {
+				attributes: {
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					policy_data: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_cloud_run_v2_job: {
 			version: 0
 			block: {
@@ -335883,10 +338085,11 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					network: {
 						type: "string"
 						description: """
-									This field is not used for external load balancing.
+									This field is not used for global external load balancing.
 
-									For Internal TCP/UDP Load Balancing, this field identifies the network that
-									the load balanced IP should belong to for this Forwarding Rule.
+									For Internal TCP/UDP Load Balancing and Regional External Load Balancing ('EXTERNAL_MANAGED'),
+									this field identifies the network that the load balanced IP should belong to
+									for this Forwarding Rule.
 									If the subnetwork is specified, the network of the subnetwork will be used.
 									If neither subnetwork nor this field is specified, the default network will
 									be used.
@@ -336071,8 +338274,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type: "string"
 						description: """
 									This field identifies the subnetwork that the load balanced IP should
-									belong to for this Forwarding Rule, used in internal load balancing and
-									network load balancing with IPv6.
+									belong to for this Forwarding Rule, used in internal load balancing,
+									network load balancing with IPv6, and regional external ('EXTERNAL_MANAGED')
+									load balancing with IPv6.
 
 									If the network specified is in auto subnet mode, this field is optional.
 									However, a subnetwork must be specified if the network is in custom subnet
@@ -341473,6 +343677,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}]]
 							preconfigured_waf_config: ["list", ["object", {
 								exclusion: ["list", ["object", {
+									request_body: ["list", ["object", {
+										operator: "string", value: "string"
+									}]]
 									request_cookie: ["list", ["object", {
 										operator: "string", value: "string"
 									}]]
@@ -343491,6 +345698,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}]]
 							preconfigured_waf_config: ["list", ["object", {
 								exclusion: ["list", ["object", {
+									request_body: ["list", ["object", {
+										operator: "string", value: "string"
+									}]]
 									request_cookie: ["list", ["object", {
 										operator: "string", value: "string"
 									}]]
@@ -346048,6 +348258,14 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}]]
 						}]]
 						description:      "The maintenance policy to use for the cluster."
+						description_kind: "plain"
+						computed:         true
+					}
+					managed_opentelemetry_config: {
+						type: ["list", ["object", {
+							scope: "string"
+						}]]
+						description:      "The configuration for the Managed OpenTelemetry pipeline inside the cluster."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -354168,11 +356386,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					authorization_mode: {
 						type: "string"
 						description: """
-									Optional. Immutable. Authorization mode of the instance. Possible values:
+									Optional. Authorization mode of the instance. Possible values:
 									 AUTH_DISABLED
-									IAM_AUTH.
-
-									TOKEN_AUTH is also supported, but only available in the google-beta provider.
+									IAM_AUTH
+									TOKEN_AUTH
 									"""
 						description_kind: "plain"
 						computed:         true
@@ -359662,8 +361879,31 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						}]]
 						description: """
 									If delivery to BigQuery is used with this subscription, this field is used to configure it.
-									Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-									If all three are empty, then the subscriber will pull and ack messages using API methods.
+									Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+									If none of them are set, then the subscriber will pull and ack messages using API methods.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					bigtable_config: {
+						type: ["list", ["object", {
+							app_profile_id: "string"
+							column_family_mapping: ["list", ["object", {
+								delimited_key: ["list", ["object", {
+									delimiter: "string"
+									key_fields: ["list", "string"]
+								}]]
+								row_key_schema: ["list", ["object", {}]]
+							}]]
+							service_account_email: "string"
+							state:                 "string"
+							table:                 "string"
+							write_metadata:        "bool"
+						}]]
+						description: """
+									If delivery to Bigtable is used with this subscription, this field is used to configure it.
+									Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+									If none of them are set, then the subscriber will pull and ack messages using API methods.
 									"""
 						description_kind: "plain"
 						computed:         true
@@ -359689,8 +361929,8 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						}]]
 						description: """
 									If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-									Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-									If all three are empty, then the subscriber will pull and ack messages using API methods.
+									Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+									If none of them are set, then the subscriber will pull and ack messages using API methods.
 									"""
 						description_kind: "plain"
 						computed:         true
@@ -360220,7 +362460,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 					authorization_mode: {
 						type:             "string"
-						description:      "Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster. Default value: \"AUTH_MODE_DISABLED\" Possible values: [\"AUTH_MODE_UNSPECIFIED\", \"AUTH_MODE_IAM_AUTH\", \"AUTH_MODE_DISABLED\"]"
+						description:      "Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster. Default value: \"AUTH_MODE_DISABLED\" Possible values: [\"AUTH_MODE_UNSPECIFIED\", \"AUTH_MODE_IAM_AUTH\", \"AUTH_MODE_DISABLED\", \"AUTH_MODE_TOKEN_AUTH\"]"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -374631,6 +376871,52 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_cloud_run_v2_instance: {
+			version: 1
+			attributes: {
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		google_cloud_run_v2_instance_iam_member: {
+			version: 1
+			attributes: {
+				condition_title: {
+					type:                "string"
+					optional_for_import: true
+				}
+				location: {
+					type:                "string"
+					optional_for_import: true
+				}
+				member: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				role: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		google_cloud_run_v2_job: {
 			version: 1
 			attributes: {
@@ -379759,6 +382045,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_dns_outbound_endpoint: {
+			version: 1
+			attributes: {
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
 		google_dns_policy: {
 			version: 1
 			attributes: {
@@ -379861,6 +382164,27 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				project: {
 					type:                "string"
 					optional_for_import: true
+				}
+			}
+		}
+		google_document_ai_schema_version: {
+			version: 1
+			attributes: {
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				schema_id: {
+					type:                "string"
+					required_for_import: true
 				}
 			}
 		}

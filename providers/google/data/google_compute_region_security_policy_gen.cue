@@ -83,6 +83,10 @@ google_compute_region_security_policy: {
 			})]
 			preconfigured_waf_config?: [...close({
 				exclusion?: [...close({
+					request_body?: [...close({
+						operator?: string
+						value?:    string
+					})]
 					request_cookie?: [...close({
 						operator?: string
 						value?:    string

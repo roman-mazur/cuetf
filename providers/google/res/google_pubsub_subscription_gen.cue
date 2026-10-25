@@ -7,6 +7,7 @@ google_pubsub_subscription: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_pubsub_subscription")
 	close({
 		bigquery_config?: matchN(1, [#bigquery_config, list.MaxItems(1) & [...#bigquery_config]])
+		bigtable_config?: matchN(1, [#bigtable_config, list.MaxItems(1) & [...#bigtable_config]])
 		cloud_storage_config?: matchN(1, [#cloud_storage_config, list.MaxItems(1) & [...#cloud_storage_config]])
 		dead_letter_policy?: matchN(1, [#dead_letter_policy, list.MaxItems(1) & [...#dead_letter_policy]])
 		expiration_policy?: matchN(1, [#expiration_policy, list.MaxItems(1) & [...#expiration_policy]])
@@ -157,6 +158,33 @@ google_pubsub_subscription: {
 		write_metadata?: bool
 	})
 
+	#bigtable_config: close({
+		column_family_mapping?: matchN(1, [_#defs."/$defs/bigtable_config/$defs/column_family_mapping", list.MaxItems(1) & [..._#defs."/$defs/bigtable_config/$defs/column_family_mapping"]])
+
+		// The app profile to use for the Bigtable writes. If not specified, the "default" application
+		// profile will be used. The app profile must use single-cluster routing.
+		app_profile_id?: string
+
+		// The service account to use to write to Bigtable. The subscription creator or updater that
+		// specifies this field must have 'iam.serviceAccounts.actAs' permission on the service account.
+		// If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+		// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+		service_account_email?: string
+
+		// An output-only field that indicates whether or not the subscription can receive messages.
+		state?: string
+
+		// The unique name of the table to write messages to, of the form
+		// 'projects/{project}/instances/{instance}/tables/{table}'.
+		table!: string
+
+		// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to
+		// additional columns in the table under the 'pubsub_metadata' column family. The subscription name,
+		// messageId, and publishTime fields are put in their own columns while all other message properties
+		// (other than data) are written to a JSON object in the attributes column.
+		write_metadata?: bool
+	})
+
 	#cloud_storage_config: close({
 		avro_config?: matchN(1, [_#defs."/$defs/cloud_storage_config/$defs/avro_config", list.MaxItems(1) & [..._#defs."/$defs/cloud_storage_config/$defs/avro_config"]])
 		text_config?: matchN(1, [_#defs."/$defs/cloud_storage_config/$defs/text_config", list.MaxItems(1) & [..._#defs."/$defs/cloud_storage_config/$defs/text_config"]])
@@ -297,6 +325,24 @@ google_pubsub_subscription: {
 		delete?: string
 		update?: string
 	})
+
+	_#defs: "/$defs/bigtable_config/$defs/column_family_mapping": close({
+		delimited_key?: matchN(1, [_#defs."/$defs/bigtable_config/$defs/column_family_mapping/$defs/delimited_key", list.MaxItems(1) & [..._#defs."/$defs/bigtable_config/$defs/column_family_mapping/$defs/delimited_key"]])
+		row_key_schema?: matchN(1, [_#defs."/$defs/bigtable_config/$defs/column_family_mapping/$defs/row_key_schema", list.MaxItems(1) & [..._#defs."/$defs/bigtable_config/$defs/column_family_mapping/$defs/row_key_schema"]])
+	})
+
+	_#defs: "/$defs/bigtable_config/$defs/column_family_mapping/$defs/delimited_key": close({
+		// The byte sequence used to delimit concatenated key fields, as a base64-encoded string
+		// (for example, 'Iw==' for '#'). Must be specified if multiple key fields are used. The
+		// delimiter must contain at least 1 character and at most 50 characters.
+		delimiter?: string
+
+		// The key fields to construct the row key from. The fields must be present in the message
+		// as top-level fields; JSON path expressions will not traverse into nested objects.
+		key_fields!: [...string]
+	})
+
+	_#defs: "/$defs/bigtable_config/$defs/column_family_mapping/$defs/row_key_schema": close({})
 
 	_#defs: "/$defs/cloud_storage_config/$defs/avro_config": close({
 		// When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.

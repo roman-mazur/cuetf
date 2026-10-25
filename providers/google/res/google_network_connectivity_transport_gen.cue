@@ -10,6 +10,10 @@ google_network_connectivity_transport: {
 		// and IPv6 addresses are supported.
 		advertised_routes?: [...string]
 
+		// Controls whether resources proposed by the Transport are automatically
+		// accepted on behalf of the user.
+		auto_accept?: bool
+
 		// Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
 		bandwidth?: string
 
@@ -34,7 +38,11 @@ google_network_connectivity_transport: {
 		// provider has accepted the key, the resource will move to the CONFIGURING
 		// state.
 		generated_activation_key?: string
-		id?:                       string
+
+		// The NCC Hub that the Transport should attach to. The hub must be in the same
+		// project as the Transport.
+		hub?: string
+		id?:  string
 
 		// Optional labels in key:value format. For more information about labels, see
 		// [Requirements for
@@ -66,6 +74,9 @@ google_network_connectivity_transport: {
 		// resource is in the PENDING_KEY state.
 		provided_activation_key?: string
 		project?:                 string
+
+		// Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
+		psc_routing_enabled?: bool
 
 		// The region of this resource. This is required to construct the resource name,
 		// but is not sent to the API since the region is already contained in the

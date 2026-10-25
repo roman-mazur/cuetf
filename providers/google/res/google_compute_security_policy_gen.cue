@@ -228,6 +228,7 @@ google_compute_security_policy: {
 	})
 
 	_#defs: "/$defs/rule/$defs/preconfigured_waf_config/$defs/exclusion": close({
+		request_body?: matchN(1, [_#defs."/$defs/rule/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_body", [..._#defs."/$defs/rule/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_body"]])
 		request_cookie?: matchN(1, [_#defs."/$defs/rule/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_cookie", [..._#defs."/$defs/rule/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_cookie"]])
 		request_header?: matchN(1, [_#defs."/$defs/rule/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_header", [..._#defs."/$defs/rule/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_header"]])
 		request_query_param?: matchN(1, [_#defs."/$defs/rule/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_query_param", [..._#defs."/$defs/rule/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_query_param"]])
@@ -240,6 +241,23 @@ google_compute_security_policy: {
 
 		// Target WAF rule set to apply the preconfigured WAF exclusion.
 		target_rule_set!: string
+	})
+
+	_#defs: "/$defs/rule/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_body": close({
+		// You can specify an exact match or a partial match by using a field operator
+		// and a field value. Available options: EQUALS: The operator matches if the
+		// field value equals the specified value. STARTS_WITH: The operator matches if
+		// the field value starts with the specified value. ENDS_WITH: The operator
+		// matches if the field value ends with the specified value. CONTAINS: The
+		// operator matches if the field value contains the specified value.
+		// EQUALS_ANY: The operator matches if the field value is any value.
+		operator!: string
+
+		// A request field matching the specified value will be excluded from inspection
+		// during preconfigured WAF evaluation. The field value must be given if the
+		// field operator is not EQUALS_ANY, and cannot be given if the field operator
+		// is EQUALS_ANY.
+		value?: string
 	})
 
 	_#defs: "/$defs/rule/$defs/preconfigured_waf_config/$defs/exclusion/$defs/request_cookie": close({

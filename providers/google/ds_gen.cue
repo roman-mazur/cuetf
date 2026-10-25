@@ -104,6 +104,7 @@ import (
 	_#ds: "\(#googlePrefix)_cloud_run_locations": close({data.google_cloud_run_locations & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_cloud_run_service": close({data.google_cloud_run_service & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_cloud_run_service_iam_policy": close({data.google_cloud_run_service_iam_policy & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_cloud_run_v2_instance_iam_policy": close({data.google_cloud_run_v2_instance_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_cloud_run_v2_job": close({data.google_cloud_run_v2_job & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_cloud_run_v2_job_iam_policy": close({data.google_cloud_run_v2_job_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_cloud_run_v2_service": close({data.google_cloud_run_v2_service & cuetf.MetaArgs})

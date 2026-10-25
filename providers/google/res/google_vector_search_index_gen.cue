@@ -66,9 +66,20 @@ google_vector_search_index: {
 		// Identifier. name of resource
 		name?: string
 
+		// Whether to skip waiting for the index to be created. Building an ANN
+		// index over a large collection can take several hours; setting 'skip_wait'
+		// to 'true' causes Terraform to return as soon as the creation request is
+		// accepted rather than blocking until the long-running build completes
+		// (which can exceed CI/CD timeouts or short-lived Terraform runner
+		// credentials). Leave this set to 'false' (the default) if downstream
+		// resources or workloads depend on the index being ready to serve queries
+		// immediately after 'terraform apply', or if you want Terraform to fail
+		// synchronously when an asynchronous index build fails.
+		skip_wait?: bool
+		project?:   string
+
 		// The fields to push into the index to enable inline data retrieval.
 		store_fields?: [...string]
-		project?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.
