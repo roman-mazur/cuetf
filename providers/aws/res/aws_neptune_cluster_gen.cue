@@ -39,6 +39,7 @@ aws_neptune_cluster: {
 		neptune_cluster_parameter_group_name?:  string
 		neptune_instance_parameter_group_name?: string
 		neptune_subnet_group_name?:             string
+		network_type?:                          string
 		port?:                                  number
 		preferred_backup_window?:               string
 		preferred_maintenance_window?:          string
