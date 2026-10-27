@@ -2,7 +2,6 @@ package jsonschema
 
 import (
 	"list"
-	"path"
 	"github.com/roman-mazur/cuetf"
 )
 
@@ -15,13 +14,17 @@ import (
 	"$id":     "https://github.com/roman-mazur/cuetf/schema/\(#name)"
 
 	let b = #block
-	(#blockTransform & {#path: [], #block: b}).out
+	(#blockTransform & {#ref: "#", #block: b}).out
 }
 
 // Transform Terraform block representation into an object schema.
 #blockTransform: {
-	#path: [...string]
+	// #ref is the JSON pointer to this block's schema, like "#/$defs/foo".
+	#ref:   string
 	#block: _
+
+	// Within the struct literals below, #ref would refer to their own field.
+	let ref = #ref
 
 	out: {
 		type: "object"
@@ -53,16 +56,8 @@ import (
 				for name, info in #block.block_types {
 					(name): (#nestingTransform & {
 						#nest: info
-						#def: "$ref": "#/\(path.Join([for el in _defPaths[name] {"$defs/\(el)"}]))"
+						#def: "$ref": "\(ref)/$defs/\(name)"
 					}).out
-				}
-			}
-		}
-
-		_defPaths: {
-			if #block.block_types != _|_ {
-				for name, _ in #block.block_types {
-					(name): list.Concat([#path, [name]])
 				}
 			}
 		}
@@ -70,7 +65,7 @@ import (
 		"$defs": {
 			if #block.block_types != _|_ {
 				for name, info in #block.block_types {
-					(name): (#blockTransform & {#block: info.block, #path: _defPaths[name]}).out
+					(name): (#blockTransform & {#block: info.block, #ref: "\(ref)/$defs/\(name)"}).out
 				}
 			}
 		}
