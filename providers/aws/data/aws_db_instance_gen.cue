@@ -38,6 +38,7 @@ aws_db_instance: {
 		monitoring_interval?:   number
 		monitoring_role_arn?:   string
 		multi_az?:              bool
+		multi_tenant?:          bool
 		network_type?:          string
 		option_group_memberships?: [...string]
 		port?:                         number

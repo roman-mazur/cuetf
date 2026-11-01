@@ -45,9 +45,10 @@ aws_bcmdataexports_export: {
 
 	_#defs: "/$defs/export/$defs/destination_configurations/$defs/s3_destination": close({
 		s3_output_configurations?: matchN(1, [_#defs."/$defs/export/$defs/destination_configurations/$defs/s3_destination/$defs/s3_output_configurations", [..._#defs."/$defs/export/$defs/destination_configurations/$defs/s3_destination/$defs/s3_output_configurations"]])
-		s3_bucket!: string
-		s3_prefix!: string
-		s3_region!: string
+		s3_bucket!:       string
+		s3_bucket_owner?: string
+		s3_prefix!:       string
+		s3_region!:       string
 	})
 
 	_#defs: "/$defs/export/$defs/destination_configurations/$defs/s3_destination/$defs/s3_output_configurations": close({

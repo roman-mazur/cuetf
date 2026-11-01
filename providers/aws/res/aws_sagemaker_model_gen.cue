@@ -68,10 +68,15 @@ aws_sagemaker_model: {
 	})
 
 	_#defs: "/$defs/container/$defs/additional_model_data_source/$defs/s3_data_source": close({
+		hub_access_config?: matchN(1, [_#defs."/$defs/container/$defs/additional_model_data_source/$defs/s3_data_source/$defs/hub_access_config", list.MaxItems(1) & [..._#defs."/$defs/container/$defs/additional_model_data_source/$defs/s3_data_source/$defs/hub_access_config"]])
 		model_access_config?: matchN(1, [_#defs."/$defs/container/$defs/additional_model_data_source/$defs/s3_data_source/$defs/model_access_config", list.MaxItems(1) & [..._#defs."/$defs/container/$defs/additional_model_data_source/$defs/s3_data_source/$defs/model_access_config"]])
 		compression_type!: string
 		s3_data_type!:     string
 		s3_uri!:           string
+	})
+
+	_#defs: "/$defs/container/$defs/additional_model_data_source/$defs/s3_data_source/$defs/hub_access_config": close({
+		hub_content_arn!: string
 	})
 
 	_#defs: "/$defs/container/$defs/additional_model_data_source/$defs/s3_data_source/$defs/model_access_config": close({
@@ -92,10 +97,15 @@ aws_sagemaker_model: {
 	})
 
 	_#defs: "/$defs/container/$defs/model_data_source/$defs/s3_data_source": close({
+		hub_access_config?: matchN(1, [_#defs."/$defs/container/$defs/model_data_source/$defs/s3_data_source/$defs/hub_access_config", list.MaxItems(1) & [..._#defs."/$defs/container/$defs/model_data_source/$defs/s3_data_source/$defs/hub_access_config"]])
 		model_access_config?: matchN(1, [_#defs."/$defs/container/$defs/model_data_source/$defs/s3_data_source/$defs/model_access_config", list.MaxItems(1) & [..._#defs."/$defs/container/$defs/model_data_source/$defs/s3_data_source/$defs/model_access_config"]])
 		compression_type!: string
 		s3_data_type!:     string
 		s3_uri!:           string
+	})
+
+	_#defs: "/$defs/container/$defs/model_data_source/$defs/s3_data_source/$defs/hub_access_config": close({
+		hub_content_arn!: string
 	})
 
 	_#defs: "/$defs/container/$defs/model_data_source/$defs/s3_data_source/$defs/model_access_config": close({
@@ -112,10 +122,15 @@ aws_sagemaker_model: {
 	})
 
 	_#defs: "/$defs/primary_container/$defs/additional_model_data_source/$defs/s3_data_source": close({
+		hub_access_config?: matchN(1, [_#defs."/$defs/primary_container/$defs/additional_model_data_source/$defs/s3_data_source/$defs/hub_access_config", list.MaxItems(1) & [..._#defs."/$defs/primary_container/$defs/additional_model_data_source/$defs/s3_data_source/$defs/hub_access_config"]])
 		model_access_config?: matchN(1, [_#defs."/$defs/primary_container/$defs/additional_model_data_source/$defs/s3_data_source/$defs/model_access_config", list.MaxItems(1) & [..._#defs."/$defs/primary_container/$defs/additional_model_data_source/$defs/s3_data_source/$defs/model_access_config"]])
 		compression_type!: string
 		s3_data_type!:     string
 		s3_uri!:           string
+	})
+
+	_#defs: "/$defs/primary_container/$defs/additional_model_data_source/$defs/s3_data_source/$defs/hub_access_config": close({
+		hub_content_arn!: string
 	})
 
 	_#defs: "/$defs/primary_container/$defs/additional_model_data_source/$defs/s3_data_source/$defs/model_access_config": close({
@@ -136,10 +151,15 @@ aws_sagemaker_model: {
 	})
 
 	_#defs: "/$defs/primary_container/$defs/model_data_source/$defs/s3_data_source": close({
+		hub_access_config?: matchN(1, [_#defs."/$defs/primary_container/$defs/model_data_source/$defs/s3_data_source/$defs/hub_access_config", list.MaxItems(1) & [..._#defs."/$defs/primary_container/$defs/model_data_source/$defs/s3_data_source/$defs/hub_access_config"]])
 		model_access_config?: matchN(1, [_#defs."/$defs/primary_container/$defs/model_data_source/$defs/s3_data_source/$defs/model_access_config", list.MaxItems(1) & [..._#defs."/$defs/primary_container/$defs/model_data_source/$defs/s3_data_source/$defs/model_access_config"]])
 		compression_type!: string
 		s3_data_type!:     string
 		s3_uri!:           string
+	})
+
+	_#defs: "/$defs/primary_container/$defs/model_data_source/$defs/s3_data_source/$defs/hub_access_config": close({
+		hub_content_arn!: string
 	})
 
 	_#defs: "/$defs/primary_container/$defs/model_data_source/$defs/s3_data_source/$defs/model_access_config": close({

@@ -21,6 +21,7 @@ aws_lambda_function: {
 		description?: string
 		durable_config?: [...close({
 			execution_timeout?: number
+			kms_key_arn?:       string
 			retention_period?:  number
 		})]
 		environment?: [...close({

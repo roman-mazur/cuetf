@@ -35,6 +35,7 @@ aws_backup_plan: {
 		completion_window?:        number
 		enable_continuous_backup?: bool
 		recovery_point_tags?: [string]: string
+		rule_id?:                                      string
 		rule_name!:                                    string
 		schedule?:                                     string
 		schedule_expression_timezone?:                 string

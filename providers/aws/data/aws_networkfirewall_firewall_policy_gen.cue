@@ -16,6 +16,13 @@ aws_networkfirewall_firewall_policy: {
 					key?: string
 				})]
 			})]
+			route53_resolved_ip_validation?: [...close({
+				action?: string
+				bypass_destination_validation_ip_ranges?: [...string]
+				dns_expiry_exception_policy?: string
+				dns_firewall_rule_group_id?:  string
+				source_ip_ranges?: [...string]
+			})]
 			stateful_default_actions?: [...string]
 			stateful_engine_options?: [...close({
 				flow_timeouts?: [...close({

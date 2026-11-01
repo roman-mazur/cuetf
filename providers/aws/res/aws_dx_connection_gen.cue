@@ -4,7 +4,14 @@ aws_dx_connection: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/aws_dx_connection")
 	close({
-		arn?:                                string
+		timeouts?: #timeouts
+		arn?:      string
+
+		// Region where this resource will be
+		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+		// Defaults to the Region set in the [provider
+		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+		region?:                             string
 		aws_device?:                         string
 		bandwidth!:                          string
 		encryption_mode?:                    string
@@ -28,17 +35,15 @@ aws_dx_connection: {
 			remaining?:       number
 			total_bandwidth?: string
 		})]
-
-		// Region where this resource will be
-		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
-		// Defaults to the Region set in the [provider
-		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:         string
 		request_macsec?: bool
 		skip_destroy?:   bool
 		state?:          string
 		tags?: [string]:     string
 		tags_all?: [string]: string
 		vlan_id?: number
+	})
+
+	#timeouts: close({
+		update?: string
 	})
 }
