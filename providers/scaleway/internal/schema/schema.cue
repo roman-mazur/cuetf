@@ -8327,15 +8327,27 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					security_group_id: {
+						type:             "string"
+						description:      "The ID of the security group associated with this interface"
+						description_kind: "plain"
+						optional:         true
+					}
 					server_id: {
 						type:             "string"
 						description:      "The server ID"
 						description_kind: "plain"
-						required:         true
+						optional:         true
 					}
 					srn: {
 						type:             "string"
 						description:      "The Scaleway Resource Name (SRN) of the private network interface"
+						description_kind: "plain"
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description:      "Current status of the private network interface"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -16617,11 +16629,18 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					clone_from: {
+						type:             "string"
+						description:      "ID of an existing Database Instance to clone. The clone includes all databases, users, and permissions. Conflicts with the `engine` and `snapshot_id` attributes."
+						description_kind: "plain"
+						optional:         true
+					}
 					disable_backup: {
 						type:             "bool"
 						description:      "Disable automated backup for the database instance"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					encryption_at_rest: {
 						type:             "bool"
@@ -16667,6 +16686,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "Enable or disable high availability for the database instance"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					maintenances: {
 						type: ["list", ["object", {
@@ -16754,7 +16774,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					snapshot_id: {
 						type:             "string"
-						description:      "ID of an existing snapshot to create a new instance from. This allows restoring a database instance to the state captured in the specified snapshot. Conflicts with the `engine` attribute."
+						description:      "ID of an existing snapshot to create a new instance from. This allows restoring a database instance to the state captured in the specified snapshot. Conflicts with the `engine` and `clone_from` attributes."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -26685,6 +26705,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					security_group_id: {
+						type:             "string"
+						description:      "The ID of the security group associated with this interface"
+						description_kind: "plain"
+						computed:         true
+					}
 					server_id: {
 						type:             "string"
 						description:      "The server ID"
@@ -26694,6 +26720,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					srn: {
 						type:             "string"
 						description:      "The Scaleway Resource Name (SRN) of the private network interface"
+						description_kind: "plain"
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description:      "Current status of the private network interface"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -32213,6 +32245,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					clone_from: {
+						type:             "string"
+						description:      "ID of an existing Database Instance to clone. The clone includes all databases, users, and permissions. Conflicts with the `engine` and `snapshot_id` attributes."
+						description_kind: "plain"
+						computed:         true
+					}
 					disable_backup: {
 						type:             "bool"
 						description:      "Disable automated backup for the database instance"
@@ -32394,7 +32432,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					snapshot_id: {
 						type:             "string"
-						description:      "ID of an existing snapshot to create a new instance from. This allows restoring a database instance to the state captured in the specified snapshot. Conflicts with the `engine` attribute."
+						description:      "ID of an existing snapshot to create a new instance from. This allows restoring a database instance to the state captured in the specified snapshot. Conflicts with the `engine` and `clone_from` attributes."
 						description_kind: "plain"
 						computed:         true
 					}
