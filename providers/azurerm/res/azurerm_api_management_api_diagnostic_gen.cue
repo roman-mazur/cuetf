@@ -19,6 +19,7 @@ azurerm_api_management_api_diagnostic: {
 		id?:                        string
 		identifier!:                string
 		log_client_ip?:             bool
+		metrics_enabled?:           bool
 		operation_name_format?:     string
 		resource_group_name!:       string
 		sampling_percentage?:       number
