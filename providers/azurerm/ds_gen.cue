@@ -375,6 +375,7 @@ import (
 	_#ds: "\(#azurermPrefix)_storage_account_blob_container_sas": close({data.azurerm_storage_account_blob_container_sas & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_storage_account": close({data.azurerm_storage_account & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_storage_account_sas": close({data.azurerm_storage_account_sas & cuetf.MetaArgs})
+	_#ds: "\(#azurermPrefix)_storage_account_static_website": close({data.azurerm_storage_account_static_website & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_storage_blob": close({data.azurerm_storage_blob & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_storage_container": close({data.azurerm_storage_container & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_storage_containers": close({data.azurerm_storage_containers & cuetf.MetaArgs})

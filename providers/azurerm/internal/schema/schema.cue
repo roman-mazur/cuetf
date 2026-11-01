@@ -2889,6 +2889,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						optional:         true
 						computed:         true
 					}
+					metrics_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+					}
 					operation_name_format: {
 						type:             "string"
 						description_kind: "plain"
@@ -5417,6 +5422,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+					metrics_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
 					}
 					operation_name_format: {
 						type:             "string"
@@ -43420,6 +43430,147 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 							}
 							description_kind: "plain"
 						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_data_protection_backup_policy_cosmosdb_account: {
+			version: 0
+			block: {
+				attributes: {
+					backup_frequency: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					backup_schedule: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					data_protection_backup_vault_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					default_retention_duration: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					incremental_backup_schedules: {
+						type: ["list", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: {
+					monthly_retention_rule: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								days_of_week: {
+									type: ["set", "string"]
+									description_kind: "plain"
+									optional:         true
+								}
+								duration: {
+									type:             "string"
+									description_kind: "plain"
+									required:         true
+								}
+								weeks_of_month: {
+									type: ["set", "string"]
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					weekly_retention_rule: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								days_of_week: {
+									type: ["set", "string"]
+									description_kind: "plain"
+									optional:         true
+								}
+								duration: {
+									type:             "string"
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					yearly_retention_rule: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								days_of_week: {
+									type: ["set", "string"]
+									description_kind: "plain"
+									optional:         true
+								}
+								duration: {
+									type:             "string"
+									description_kind: "plain"
+									required:         true
+								}
+								months_of_year: {
+									type: ["set", "string"]
+									description_kind: "plain"
+									optional:         true
+								}
+								weeks_of_month: {
+									type: ["set", "string"]
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+						max_items: 1
 					}
 				}
 				description_kind: "plain"
@@ -193655,6 +193806,46 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				description_kind: "plain"
 			}
 		}
+		azurerm_storage_account_static_website: {
+			version: 0
+			block: {
+				attributes: {
+					error_404_document: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					index_document: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					storage_account_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: read: {
+							type:             "string"
+							description_kind: "plain"
+							optional:         true
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		azurerm_storage_blob: {
 			version: 0
 			block: {
@@ -198238,6 +198429,17 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				description_kind: "plain"
 			}
 		}
+		azurerm_data_protection_backup_policy_cosmosdb_account: {
+			version: 0
+			block: {
+				attributes: data_protection_backup_vault_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
 		azurerm_dedicated_host_group: {
 			version: 0
 			block: {
@@ -199134,6 +199336,17 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						description_kind: "plain"
 						optional:         true
 					}
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_servicebus_queue: {
+			version: 0
+			block: {
+				attributes: servicebus_namespace_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
 				}
 				description_kind: "plain"
 			}
@@ -200517,6 +200730,27 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_data_protection_backup_policy_blob_storage: {
+			version: 0
+			attributes: {
+				backup_vault_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				resource_group_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				subscription_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		azurerm_data_protection_backup_policy_cosmosdb_account: {
 			version: 0
 			attributes: {
 				backup_vault_name: {
@@ -202472,6 +202706,27 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			version: 0
 			attributes: {
 				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				resource_group_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				subscription_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		azurerm_servicebus_queue: {
+			version: 0
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				namespace_name: {
 					type:                "string"
 					required_for_import: true
 				}

@@ -326,6 +326,7 @@ import (
 	_#res: "\(#azurermPrefix)_data_protection_backup_instance_postgresql_flexible_server": close({res.azurerm_data_protection_backup_instance_postgresql_flexible_server & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_data_protection_backup_instance_postgresql": close({res.azurerm_data_protection_backup_instance_postgresql & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_data_protection_backup_policy_blob_storage": close({res.azurerm_data_protection_backup_policy_blob_storage & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_protection_backup_policy_cosmosdb_account": close({res.azurerm_data_protection_backup_policy_cosmosdb_account & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_data_protection_backup_policy_data_lake_storage": close({res.azurerm_data_protection_backup_policy_data_lake_storage & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_data_protection_backup_policy_disk": close({res.azurerm_data_protection_backup_policy_disk & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_data_protection_backup_policy_kubernetes_cluster": close({res.azurerm_data_protection_backup_policy_kubernetes_cluster & cuetf.MetaArgs})
