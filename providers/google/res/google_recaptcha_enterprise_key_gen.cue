@@ -7,9 +7,11 @@ google_recaptcha_enterprise_key: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_recaptcha_enterprise_key")
 	close({
 		android_settings?: matchN(1, [#android_settings, list.MaxItems(1) & [...#android_settings]])
+		express_settings?: matchN(1, [#express_settings, list.MaxItems(1) & [...#express_settings]])
 		ios_settings?: matchN(1, [#ios_settings, list.MaxItems(1) & [...#ios_settings]])
 		testing_options?: matchN(1, [#testing_options, list.MaxItems(1) & [...#testing_options]])
 		timeouts?: #timeouts
+		universal_settings?: matchN(1, [#universal_settings, list.MaxItems(1) & [...#universal_settings]])
 		waf_settings?: matchN(1, [#waf_settings, list.MaxItems(1) & [...#waf_settings]])
 		web_settings?: matchN(1, [#web_settings, list.MaxItems(1) & [...#web_settings]])
 
@@ -58,6 +60,8 @@ google_recaptcha_enterprise_key: {
 		allowed_package_names?: [...string]
 	})
 
+	#express_settings: close({})
+
 	#ios_settings: close({
 		// If set to true, it means allowed_bundle_ids will not be enforced.
 		allow_all_bundle_ids?: bool
@@ -83,6 +87,8 @@ google_recaptcha_enterprise_key: {
 		delete?: string
 		update?: string
 	})
+
+	#universal_settings: close({})
 
 	#waf_settings: close({
 		// Supported WAF features. For more information, see

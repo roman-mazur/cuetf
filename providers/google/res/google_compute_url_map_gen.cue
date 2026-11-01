@@ -492,6 +492,10 @@ google_compute_url_map: {
 	_#defs: "/$defs/default_route_action/$defs/request_mirror_policy": close({
 		// The full or partial URL to the BackendService resource being mirrored to.
 		backend_service!: string
+
+		// The percentage of requests to be mirrored to backendService.
+		// The value must be between 0.0 and 100.0 inclusive.
+		mirror_percent?: number
 	})
 
 	_#defs: "/$defs/default_route_action/$defs/retry_policy": close({
@@ -942,6 +946,10 @@ google_compute_url_map: {
 	_#defs: "/$defs/path_matcher/$defs/default_route_action/$defs/request_mirror_policy": close({
 		// The full or partial URL to the BackendService resource being mirrored to.
 		backend_service!: string
+
+		// The percentage of requests to be mirrored to backendService.
+		// The value must be between 0.0 and 100.0 inclusive.
+		mirror_percent?: number
 	})
 
 	_#defs: "/$defs/path_matcher/$defs/default_route_action/$defs/retry_policy": close({
@@ -1466,6 +1474,10 @@ google_compute_url_map: {
 	_#defs: "/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/request_mirror_policy": close({
 		// The BackendService resource being mirrored to.
 		backend_service!: string
+
+		// The percentage of requests to be mirrored to backendService.
+		// The value must be between 0.0 and 100.0 inclusive.
+		mirror_percent?: number
 	})
 
 	_#defs: "/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/retry_policy": close({
@@ -2142,6 +2154,10 @@ google_compute_url_map: {
 	_#defs: "/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/request_mirror_policy": close({
 		// The BackendService resource being mirrored to.
 		backend_service!: string
+
+		// The percentage of requests to be mirrored to backendService.
+		// The value must be between 0.0 and 100.0 inclusive.
+		mirror_percent?: number
 	})
 
 	_#defs: "/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/retry_policy": close({

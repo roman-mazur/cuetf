@@ -111,11 +111,14 @@ google_compute_service_attachment: {
 		// Defaults to false.
 		send_propagated_connection_limit_if_zero?: bool
 
+		// The unique identifier number for the resource. This identifier is defined by the server.
+		service_attachment_id?: number
+		self_link?:             string
+
 		// NOTE: This field is temporarily non-functional due to an underlying API issue.
 		// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
 		// [If true, show NAT IPs of all connected endpoints.]
 		show_nat_ips?: bool
-		self_link?:    string
 
 		// The URL of a service serving the endpoint identified by this service attachment.
 		target_service!: string

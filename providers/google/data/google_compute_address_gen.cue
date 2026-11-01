@@ -5,6 +5,7 @@ google_compute_address: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_compute_address")
 	close({
 		address?:       string
+		address_id?:    string
 		address_type?:  string
 		id?:            string
 		name!:          string

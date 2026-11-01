@@ -46,6 +46,7 @@ google_container_cluster: {
 		release_channel?: matchN(1, [#release_channel, list.MaxItems(1) & [...#release_channel]])
 		resource_usage_export_config?: matchN(1, [#resource_usage_export_config, list.MaxItems(1) & [...#resource_usage_export_config]])
 		rollback_safe_upgrade?: matchN(1, [#rollback_safe_upgrade, list.MaxItems(1) & [...#rollback_safe_upgrade]])
+		schedule_upgrade_config?: matchN(1, [#schedule_upgrade_config, list.MaxItems(1) & [...#schedule_upgrade_config]])
 		secret_manager_config?: matchN(1, [#secret_manager_config, list.MaxItems(1) & [...#secret_manager_config]])
 		secret_sync_config?: matchN(1, [#secret_sync_config, list.MaxItems(1) & [...#secret_sync_config]])
 		security_posture_config?: matchN(1, [#security_posture_config, list.MaxItems(1) & [...#security_posture_config]])
@@ -166,10 +167,13 @@ google_container_cluster: {
 		in_transit_encryption_config?: string
 
 		// The number of nodes to create in this cluster's default node pool. In
-		// regional or multi-zonal clusters, this is the number of nodes per zone. Must
-		// be set if node_pool is not set. If you're using google_container_node_pool
-		// objects with no default node pool, you'll need to set this to a value of at
-		// least 1, alongside setting remove_default_node_pool to true.
+		// regional or multi-zonal clusters, this is the number of nodes per zone. When
+		// omitted (or set to 0) with no node_config or node_pool blocks defined, the
+		// cluster is created without a default node pool. This requires a GKE version
+		// that supports clusters without a default node pool (1.36.4-gke.1469000+).
+		// For older GKE versions, if you're using google_container_node_pool objects
+		// with no default node pool, you'll need to set this to a value of at least 1,
+		// alongside setting remove_default_node_pool to true.
 		initial_node_count?: number
 
 		// The fingerprint of the set of labels for this cluster.
@@ -248,11 +252,6 @@ google_container_cluster: {
 		// The ID of the project in which the resource belongs. If it is not provided,
 		// the provider project is used.
 		project?: string
-
-		// If true, deletes the default node pool upon cluster creation. If you're using
-		// google_container_node_pool resources with no default node pool, this should
-		// be set to true, alongside setting initial_node_count to at least 1.
-		remove_default_node_pool?: bool
 
 		// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 		//
@@ -811,7 +810,9 @@ google_container_cluster: {
 		// master(s) and the ILB VIP. This range must not overlap with any other ranges
 		// in use within the cluster's network, and it must be a /28 subnet. See
 		// Private Cluster Limitations for more details. This field only applies to
-		// private clusters, when enable_private_nodes is true.
+		// private clusters, when enable_private_nodes is true. On GKE versions 1.29
+		// and later, this field is optional when private_endpoint_subnetwork is
+		// specified. It is also optional for Autopilot clusters.
 		master_ipv4_cidr_block?: string
 
 		// The name of the peering between this cluster and the Google owned VPC.
@@ -872,6 +873,11 @@ google_container_cluster: {
 		// omitted, the two-step upgrade is skipped and a standard one-step upgrade is
 		// performed.
 		control_plane_soak_duration?: string
+	})
+
+	#schedule_upgrade_config: close({
+		// Whether scheduled upgrades are enabled.
+		enabled!: bool
 	})
 
 	#secret_manager_config: close({

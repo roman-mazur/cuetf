@@ -195,6 +195,8 @@ google_compute_region_disk: {
 
 	#disk_encryption_key: close({
 		// The name of the encryption key that is stored in Google Cloud KMS.
+		//
+		// Specify the key without a '/cryptoKeyVersions/' suffix.
 		kms_key_name?: string
 
 		// Specifies a 256-bit customer-supplied encryption key, encoded in
@@ -236,9 +238,9 @@ google_compute_region_disk: {
 		// features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features)
 		// to see a list of available options. Possible values: ["MULTI_IP_SUBNET",
 		// "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE",
-		// "WINDOWS", "GVNIC", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE",
+		// "WINDOWS", "GVNIC", "IDPF", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE",
 		// "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE", "SEV_LIVE_MIGRATABLE_V2",
-		// "SNP_SVSM_CAPABLE"]
+		// "SNP_SVSM_CAPABLE", "SUSPEND_SAFE_FPR"]
 		type!: string
 	})
 

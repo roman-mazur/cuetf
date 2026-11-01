@@ -25,12 +25,16 @@ google_compute_region_instance_group_manager: {
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
-		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
 		// the command will fail if this field is set to "PREVENT" in Terraform state.
 		// When set to "ABANDON", the command will remove the resource from Terraform
 		// management without updating or deleting the resource in the API.
-		// When set to "DELETE", deleting the resource is allowed.
+		// When set to "DELETE", deleting the resource is allowed. If graceful shutdown
+		// is configured, the MIG deletion waits for all instances to shut down
+		// gracefully before deletion.
+		// When set to "FORCE", deleting the resource is allowed, and graceful shutdown
+		// is skipped for instance deletion even if it's configured for the instances.
 		deletion_policy?: string
 
 		// An optional textual description of the instance group manager.
@@ -52,9 +56,55 @@ google_compute_region_instance_group_manager: {
 		// flexibility configuration on MIG overrides instance template configuration.
 		instance_flexibility_policy?: [...close({
 			instance_selections?: [...close({
+				disks?: [...close({
+					architecture?: string
+					auto_delete?:  bool
+					boot?:         bool
+					device_name?:  string
+					disk_encryption_key?: [...close({
+						kms_key_self_link?:       string
+						kms_key_service_account?: string
+						raw_key?:                 string
+						rsa_encrypted_key?:       string
+					})]
+					disk_name?:    string
+					disk_size_gb?: number
+					disk_type?:    string
+					guest_os_features?: [...string]
+					interface?: string
+					labels?: [...close({
+						key?:   string
+						value?: string
+					})]
+					mode?:                   string
+					provisioned_iops?:       number
+					provisioned_throughput?: number
+					resource_manager_tags?: [...close({
+						key?:   string
+						value?: string
+					})]
+					resource_policies?: [...string]
+					source?:       string
+					source_image?: string
+					source_image_encryption_key?: [...close({
+						kms_key_self_link?:       string
+						kms_key_service_account?: string
+						raw_key?:                 string
+						rsa_encrypted_key?:       string
+					})]
+					source_snapshot?: string
+					source_snapshot_encryption_key?: [...close({
+						kms_key_self_link?:       string
+						kms_key_service_account?: string
+						raw_key?:                 string
+						rsa_encrypted_key?:       string
+					})]
+					type?: string
+				})]
 				machine_types?: [...string]
-				name?: string
-				rank?: number
+				min_cpu_platform?: string
+				name?:             string
+				rank?:             number
 			})]
 		})]
 

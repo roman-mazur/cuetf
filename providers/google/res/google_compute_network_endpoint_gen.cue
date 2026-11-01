@@ -23,7 +23,11 @@ google_compute_network_endpoint: {
 		// IPv4 address of network endpoint. The IP address must belong
 		// to a VM in GCE (either the primary IP or as part of an aliased IP
 		// range).
-		ip_address!: string
+		ip_address?: string
+
+		// IPv6 address of network endpoint. The result of parsing the endpoint config,
+		// or empty if IPv6 is not used.
+		ipv6_address?: string
 
 		// The network endpoint group this endpoint is part of.
 		network_endpoint_group!: string

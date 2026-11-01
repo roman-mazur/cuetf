@@ -7,6 +7,7 @@ google_bigquery_reservation: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_reservation")
 	close({
 		autoscale?: matchN(1, [#autoscale, list.MaxItems(1) & [...#autoscale]])
+		scheduling_policy?: matchN(1, [#scheduling_policy, list.MaxItems(1) & [...#scheduling_policy]])
 		timeouts?: #timeouts
 
 		// Maximum number of queries that are allowed to run concurrently in this
@@ -103,6 +104,17 @@ google_bigquery_reservation: {
 		current_slots?: number
 
 		// Number of slots to be scaled when needed.
+		max_slots?: number
+	})
+
+	#scheduling_policy: close({
+		// If present and > 0, the reservation will attempt to limit the concurrency
+		// of jobs running for any particular project within it to the given value.
+		concurrency?: number
+
+		// If present and > 0, the reservation will attempt to limit the slot
+		// consumption of queries running for any particular project within it to
+		// the given value.
 		max_slots?: number
 	})
 

@@ -137,7 +137,7 @@ google_data_loss_prevention_discovery_config: {
 		pubsub_condition?: matchN(1, [_#defs."/$defs/actions/$defs/pub_sub_notification/$defs/pubsub_condition", list.MaxItems(1) & [..._#defs."/$defs/actions/$defs/pub_sub_notification/$defs/pubsub_condition"]])
 
 		// How much data to include in the pub/sub message. Possible values:
-		// ["TABLE_PROFILE", "RESOURCE_NAME"]
+		// ["TABLE_PROFILE", "RESOURCE_NAME", "FILE_STORE_PROFILE"]
 		detail_of_message?: string
 
 		// The type of event that triggers a Pub/Sub. At most one PubSubNotification per

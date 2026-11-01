@@ -37,6 +37,10 @@ google_compute_network_endpoints: {
 		// created with the type of 'GCE_VM_IP_DEDICATED_BACKEND'
 		ip_address?: string
 
+		// IPv6 address of network endpoint. The result of parsing the endpoint config,
+		// or empty if IPv6 is not used.
+		ipv6_address?: string
+
 		// Port number of network endpoint.
 		// **Note** 'port' is required unless the Network Endpoint Group is created
 		// with the type of 'GCE_VM_IP'

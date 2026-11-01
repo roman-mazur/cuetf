@@ -15,6 +15,7 @@ import (
 	_#ds: "\(#googlePrefix)_access_context_manager_supported_service": close({data.google_access_context_manager_supported_service & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_access_context_manager_supported_services": close({data.google_access_context_manager_supported_services & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_active_folder": close({data.google_active_folder & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_agent_identity_auth_provider_iam_policy": close({data.google_agent_identity_auth_provider_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_agent_registry_agent": close({data.google_agent_registry_agent & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_agent_registry_endpoint": close({data.google_agent_registry_endpoint & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_agent_registry_mcp_server": close({data.google_agent_registry_mcp_server & cuetf.MetaArgs})

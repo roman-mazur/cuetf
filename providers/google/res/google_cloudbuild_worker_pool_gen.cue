@@ -128,5 +128,9 @@ google_cloudbuild_worker_pool: {
 		// If true, workers are created without any public address, which prevents
 		// network egress to public IPs.
 		no_external_ip?: bool
+
+		// The release or release channel to use for the worker. Possible values are
+		// `rapid`, `regular`, `stable`, or a specific release version.
+		worker_release?: string
 	})
 }

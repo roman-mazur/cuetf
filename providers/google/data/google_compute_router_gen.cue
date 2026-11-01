@@ -63,7 +63,10 @@ google_compute_router: {
 		project?: string
 
 		// Region where the router resides.
-		region?:    string
+		region?: string
+
+		// The unique identifier number for the resource. This identifier is defined by the server.
+		router_id?: number
 		self_link?: string
 	})
 }

@@ -60,8 +60,9 @@ google_compute_disk: {
 		// the disk will be encrypted using an automatically generated key and
 		// you do not need to provide a key to use the disk later.
 		//
-		// ~>**NOTE** Only changing 'kms_key_self_link' between Cloud KMS keys is
-		// done in place; other changes to this block recreate the disk.
+		// ~>**NOTE** 'kms_key_self_link' can be added or changed in place.
+		// Removing it, or changing it while 'kms_key_service_account' is set,
+		// fails at plan time. Other changes to this block recreate the disk.
 		disk_encryption_key?: [...close({
 			kms_key_self_link?:            string
 			kms_key_service_account?:      string

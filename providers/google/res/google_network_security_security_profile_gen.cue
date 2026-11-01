@@ -11,6 +11,7 @@ google_network_security_security_profile: {
 		threat_prevention_profile?: matchN(1, [#threat_prevention_profile, list.MaxItems(1) & [...#threat_prevention_profile]])
 		timeouts?: #timeouts
 		url_filtering_profile?: matchN(1, [#url_filtering_profile, list.MaxItems(1) & [...#url_filtering_profile]])
+		wildfire_analysis_profile?: matchN(1, [#wildfire_analysis_profile, list.MaxItems(1) & [...#wildfire_analysis_profile]])
 
 		// Time the security profile was created in UTC.
 		create_time?: string
@@ -62,9 +63,9 @@ google_network_security_security_profile: {
 		// and default labels configured on the provider.
 		terraform_labels?: [string]: string
 
-		// The type of security profile. 'WILDFIRE_ANALYSIS' is beta-only. Possible
-		// values: ["THREAT_PREVENTION", "URL_FILTERING", "CUSTOM_MIRRORING",
-		// "CUSTOM_INTERCEPT", "WILDFIRE_ANALYSIS"]
+		// The type of security profile. Possible values: ["THREAT_PREVENTION",
+		// "URL_FILTERING", "CUSTOM_MIRRORING", "CUSTOM_INTERCEPT",
+		// "WILDFIRE_ANALYSIS"]
 		type!: string
 
 		// Time the security profile was updated in UTC.
@@ -113,6 +114,19 @@ google_network_security_security_profile: {
 		url_filters?: matchN(1, [_#defs."/$defs/url_filtering_profile/$defs/url_filters", [..._#defs."/$defs/url_filtering_profile/$defs/url_filters"]])
 	})
 
+	#wildfire_analysis_profile: close({
+		wildfire_inline_cloud_analysis_rules?: matchN(1, [_#defs."/$defs/wildfire_analysis_profile/$defs/wildfire_inline_cloud_analysis_rules", [..._#defs."/$defs/wildfire_analysis_profile/$defs/wildfire_inline_cloud_analysis_rules"]])
+		wildfire_inline_ml_overrides?: matchN(1, [_#defs."/$defs/wildfire_analysis_profile/$defs/wildfire_inline_ml_overrides", [..._#defs."/$defs/wildfire_analysis_profile/$defs/wildfire_inline_ml_overrides"]])
+		wildfire_inline_ml_setting?: matchN(1, [_#defs."/$defs/wildfire_analysis_profile/$defs/wildfire_inline_ml_setting", list.MaxItems(1) & [..._#defs."/$defs/wildfire_analysis_profile/$defs/wildfire_inline_ml_setting"]])
+		wildfire_overrides?: matchN(1, [_#defs."/$defs/wildfire_analysis_profile/$defs/wildfire_overrides", [..._#defs."/$defs/wildfire_analysis_profile/$defs/wildfire_overrides"]])
+		wildfire_submission_rules?: matchN(1, [_#defs."/$defs/wildfire_analysis_profile/$defs/wildfire_submission_rules", [..._#defs."/$defs/wildfire_analysis_profile/$defs/wildfire_submission_rules"]])
+		wildfire_threat_overrides?: matchN(1, [_#defs."/$defs/wildfire_analysis_profile/$defs/wildfire_threat_overrides", [..._#defs."/$defs/wildfire_analysis_profile/$defs/wildfire_threat_overrides"]])
+
+		// Whether to hold the transfer of a file while the WildFire real-time signature
+		// cloud performs a signature lookup. Default value is false.
+		wildfire_realtime_lookup?: bool
+	})
+
 	_#defs: "/$defs/threat_prevention_profile/$defs/antivirus_overrides": close({
 		// Threat action override. For some threat types, only a subset of actions
 		// applies. Possible values: ["ALERT", "ALLOW", "DEFAULT_ACTION", "DENY"]
@@ -156,5 +170,94 @@ google_network_security_security_profile: {
 		// A domain name must match with at least one of the strings in the list for a
 		// filter to be applicable.
 		urls?: [...string]
+	})
+
+	_#defs: "/$defs/wildfire_analysis_profile/$defs/wildfire_inline_cloud_analysis_rules": close({
+		custom_file_types?: matchN(1, [_#defs."/$defs/wildfire_analysis_profile/$defs/wildfire_inline_cloud_analysis_rules/$defs/custom_file_types", list.MaxItems(1) & [..._#defs."/$defs/wildfire_analysis_profile/$defs/wildfire_inline_cloud_analysis_rules/$defs/custom_file_types"]])
+
+		// The action to take when a rule is matched. Possible values: ["ALLOW", "DENY", "ALERT"]
+		action!: string
+
+		// Direction of traffic to match for a rule. Possible values: ["UPLOAD", "DOWNLOAD", "BOTH"]
+		direction!: string
+
+		// Defines the file selection mode for a rule. Possible values:
+		// ["ALL_FILE_TYPES", "CUSTOM_FILE_TYPES"]
+		file_selection_mode!: string
+	})
+
+	_#defs: "/$defs/wildfire_analysis_profile/$defs/wildfire_inline_cloud_analysis_rules/$defs/custom_file_types": close({
+		// The file types to match for a rule. For allowed values, see [API
+		// docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#wildfireinlinecloudanalysisrule).
+		file_types!: [...string]
+	})
+
+	_#defs: "/$defs/wildfire_analysis_profile/$defs/wildfire_inline_ml_overrides": close({
+		// Threat action override. Possible values: ["WILDFIRE_DEFAULT_ACTION",
+		// "WILDFIRE_ALLOW", "WILDFIRE_ALERT", "WILDFIRE_DENY"]
+		action!: string
+
+		// Required protocol to match. Possible values: ["WILDFIRE_SMTP",
+		// "WILDFIRE_SMB", "WILDFIRE_POP3", "WILDFIRE_IMAP", "WILDFIRE_HTTP2",
+		// "WILDFIRE_HTTP", "WILDFIRE_FTP"]
+		protocol!: string
+	})
+
+	_#defs: "/$defs/wildfire_analysis_profile/$defs/wildfire_inline_ml_setting": close({
+		file_exceptions?: matchN(1, [_#defs."/$defs/wildfire_analysis_profile/$defs/wildfire_inline_ml_setting/$defs/file_exceptions", [..._#defs."/$defs/wildfire_analysis_profile/$defs/wildfire_inline_ml_setting/$defs/file_exceptions"]])
+		inline_ml_configs?: matchN(1, [_#defs."/$defs/wildfire_analysis_profile/$defs/wildfire_inline_ml_setting/$defs/inline_ml_configs", [..._#defs."/$defs/wildfire_analysis_profile/$defs/wildfire_inline_ml_setting/$defs/inline_ml_configs"]])
+	})
+
+	_#defs: "/$defs/wildfire_analysis_profile/$defs/wildfire_inline_ml_setting/$defs/file_exceptions": close({
+		// The file name associated with the partial hash.
+		filename?: string
+
+		// Machine learning partial hash of the file to exclude from WildFire Inline ML analysis.
+		partial_hash!: string
+	})
+
+	_#defs: "/$defs/wildfire_analysis_profile/$defs/wildfire_inline_ml_setting/$defs/inline_ml_configs": close({
+		// The action to take for a file type. Possible values: ["DISABLE", "ALERT", "ENABLE"]
+		action!: string
+
+		// The file type to match. For allowed values, see [API
+		// docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#inlinemlfiletype)
+		file_type!: string
+	})
+
+	_#defs: "/$defs/wildfire_analysis_profile/$defs/wildfire_overrides": close({
+		// Threat action override. Possible values: ["WILDFIRE_DEFAULT_ACTION",
+		// "WILDFIRE_ALLOW", "WILDFIRE_ALERT", "WILDFIRE_DENY"]
+		action!: string
+
+		// Required protocol to match. Possible values: ["WILDFIRE_SMTP",
+		// "WILDFIRE_SMB", "WILDFIRE_POP3", "WILDFIRE_IMAP", "WILDFIRE_HTTP2",
+		// "WILDFIRE_HTTP", "WILDFIRE_FTP"]
+		protocol!: string
+	})
+
+	_#defs: "/$defs/wildfire_analysis_profile/$defs/wildfire_submission_rules": close({
+		custom_file_types?: matchN(1, [_#defs."/$defs/wildfire_analysis_profile/$defs/wildfire_submission_rules/$defs/custom_file_types", list.MaxItems(1) & [..._#defs."/$defs/wildfire_analysis_profile/$defs/wildfire_submission_rules/$defs/custom_file_types"]])
+
+		// Direction of traffic to match for a rule. Possible values: ["UPLOAD", "DOWNLOAD", "BOTH"]
+		direction!: string
+
+		// Defines the file selection mode for a rule. Possible values:
+		// ["ALL_FILE_TYPES", "CUSTOM_FILE_TYPES"]
+		file_selection_mode!: string
+	})
+
+	_#defs: "/$defs/wildfire_analysis_profile/$defs/wildfire_submission_rules/$defs/custom_file_types": close({
+		// The file types to match for a rule. For allowed values, see [API
+		// docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#wildfiresubmissionrule)
+		file_types!: [...string]
+	})
+
+	_#defs: "/$defs/wildfire_analysis_profile/$defs/wildfire_threat_overrides": close({
+		// Threat action override. Possible values: ["WILDFIRE_DEFAULT_ACTION", "WILDFIRE_ALLOW"]
+		action!: string
+
+		// Vendor-specific ID of a threat to override.
+		threat_id!: string
 	})
 }
