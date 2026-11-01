@@ -60,11 +60,14 @@ google_dataproc_cluster: {
 		initialization_action?: matchN(1, [_#defs."/$defs/cluster_config/$defs/initialization_action", [..._#defs."/$defs/cluster_config/$defs/initialization_action"]])
 		lifecycle_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/lifecycle_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/lifecycle_config"]])
 		master_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/master_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/master_config"]])
+		master_flexible_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/master_flexible_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/master_flexible_config"]])
 		metastore_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/metastore_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/metastore_config"]])
 		preemptible_worker_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/preemptible_worker_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/preemptible_worker_config"]])
+		secondary_worker_flexible_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/secondary_worker_flexible_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/secondary_worker_flexible_config"]])
 		security_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/security_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/security_config"]])
 		software_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/software_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/software_config"]])
 		worker_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/worker_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/worker_config"]])
+		worker_flexible_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/worker_flexible_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/worker_flexible_config"]])
 
 		// The name of the cloud storage bucket ultimately used to house the staging
 		// data for the cluster. If staging_bucket is specified, it will contain this
@@ -490,6 +493,25 @@ google_dataproc_cluster: {
 		type?: string
 	})
 
+	_#defs: "/$defs/cluster_config/$defs/master_flexible_config": close({
+		// The boot disk size in GB. Changing this forces a new resource to be created.
+		boot_disk_size_gb?: number
+
+		// The number of vCPUs per instance. Must be a power of 2: 2, 4, 8, 16, or 32.
+		// Changing this forces a new resource to be created.
+		core_count!: number
+
+		// The hardware class of instances. Allowed values are "STANDARD" and
+		// "PERFORMANCE". Defaults to "STANDARD". Changing this forces a new resource
+		// to be created.
+		hardware_class?: string
+
+		// Specifies the number of master instances to create. In High Obtainability
+		// (HO) mode, this must be 1. Defaults to 1. Changing this forces a new
+		// resource to be created.
+		num_instances?: number
+	})
+
 	_#defs: "/$defs/cluster_config/$defs/metastore_config": close({
 		// Resource name of an existing Dataproc Metastore service.
 		dataproc_metastore_service!: string
@@ -634,6 +656,25 @@ google_dataproc_cluster: {
 		// The percentage of target capacity that should use Standard VM. The remaining
 		// percentage will use Spot VMs.
 		standard_capacity_percent_above_base?: number
+	})
+
+	_#defs: "/$defs/cluster_config/$defs/secondary_worker_flexible_config": close({
+		// The boot disk size in GB. Changing this forces a new resource to be created.
+		boot_disk_size_gb?: number
+
+		// The number of vCPUs per instance. Must be a power of 2: 2, 4, 8, 16, or 32.
+		// Changing this forces a new resource to be created.
+		core_count!: number
+
+		// The hardware class of instances. Allowed values are "STANDARD" and
+		// "PERFORMANCE". Defaults to "STANDARD". Changing this forces a new resource
+		// to be created.
+		hardware_class?: string
+
+		// Specifies the number of secondary worker instances to create. Represents the
+		// desired capacity of the group and is updatable in place. Defaults to 0; can
+		// be scaled down to 0.
+		num_instances?: number
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/security_config": close({
@@ -875,6 +916,24 @@ google_dataproc_cluster: {
 		// "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml",
 		// "hyperdisk-throughput".
 		type?: string
+	})
+
+	_#defs: "/$defs/cluster_config/$defs/worker_flexible_config": close({
+		// The boot disk size in GB. Changing this forces a new resource to be created.
+		boot_disk_size_gb?: number
+
+		// The number of vCPUs per instance. Must be a power of 2: 2, 4, 8, 16, or 32.
+		// Changing this forces a new resource to be created.
+		core_count!: number
+
+		// The hardware class of instances. Allowed values are "STANDARD" and
+		// "PERFORMANCE". Defaults to "STANDARD". Changing this forces a new resource
+		// to be created.
+		hardware_class?: string
+
+		// Specifies the number of worker instances to create. Represents the desired
+		// capacity of the group and is updatable in place.
+		num_instances!: number
 	})
 
 	_#defs: "/$defs/virtual_cluster_config/$defs/auxiliary_services_config": close({

@@ -74,6 +74,7 @@ google_cloudbuild_worker_pool: {
 			enable_nested_virtualization?: bool
 			machine_type?:                 string
 			no_external_ip?:               bool
+			worker_release?:               string
 		})]
 	})
 }

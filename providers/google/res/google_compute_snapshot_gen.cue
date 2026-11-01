@@ -106,6 +106,8 @@ google_compute_snapshot: {
 
 	#snapshot_encryption_key: close({
 		// The name of the encryption key that is stored in Google Cloud KMS.
+		//
+		// Specify the key without a '/cryptoKeyVersions/' suffix.
 		kms_key_self_link?: string
 
 		// The service account used for the encryption request for the given KMS key.

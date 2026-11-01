@@ -1,9 +1,12 @@
 package res
 
+import "list"
+
 google_bigquery_reservation_assignment: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_bigquery_reservation_assignment")
 	close({
+		scheduling_policy?: matchN(1, [#scheduling_policy, list.MaxItems(1) & [...#scheduling_policy]])
 		timeouts?: #timeouts
 
 		// The resource which will use the reservation. E.g. projects/myproject,
@@ -21,7 +24,7 @@ google_bigquery_reservation_assignment: {
 
 		// Types of job, which could be specified when using the reservation. Possible
 		// values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
-		job_type!: string
+		job_type?: string
 
 		// The location for the resource
 		location?: string
@@ -54,6 +57,17 @@ google_bigquery_reservation_assignment: {
 		// present. It will become ACTIVE when some capacity commitment becomes active.
 		// Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
 		state?: string
+	})
+
+	#scheduling_policy: close({
+		// If present and > 0, the reservation will attempt to limit the concurrency
+		// of jobs running for any particular project within it to the given value.
+		concurrency?: number
+
+		// If present and > 0, the reservation will attempt to limit the slot
+		// consumption of queries running for any particular project within it to
+		// the given value.
+		max_slots?: number
 	})
 
 	#timeouts: close({

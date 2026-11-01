@@ -12,6 +12,7 @@ google_bigquery_connection: {
 		cloud_spanner?: matchN(1, [#cloud_spanner, list.MaxItems(1) & [...#cloud_spanner]])
 		cloud_sql?: matchN(1, [#cloud_sql, list.MaxItems(1) & [...#cloud_sql]])
 		configuration?: matchN(1, [#configuration, list.MaxItems(1) & [...#configuration]])
+		salesforce_data_cloud?: matchN(1, [#salesforce_data_cloud, list.MaxItems(1) & [...#salesforce_data_cloud]])
 		spark?: matchN(1, [#spark, list.MaxItems(1) & [...#spark]])
 		timeouts?: #timeouts
 
@@ -149,6 +150,19 @@ google_bigquery_connection: {
 		connector_id!: string
 	})
 
+	#salesforce_data_cloud: close({
+		cross_cloud_cache_options!: matchN(1, [_#defs."/$defs/salesforce_data_cloud/$defs/cross_cloud_cache_options", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/salesforce_data_cloud/$defs/cross_cloud_cache_options"]])
+
+		// A unique Google-owned and Google-generated service account identity for the connection.
+		identity?: string
+
+		// The URL to the user's Salesforce Data Cloud instance.
+		instance_uri!: string
+
+		// The ID of the user's Salesforce tenant.
+		tenant_id!: string
+	})
+
 	#spark: close({
 		metastore_service_config?: matchN(1, [_#defs."/$defs/spark/$defs/metastore_service_config", list.MaxItems(1) & [..._#defs."/$defs/spark/$defs/metastore_service_config"]])
 		spark_history_server_config?: matchN(1, [_#defs."/$defs/spark/$defs/spark_history_server_config", list.MaxItems(1) & [..._#defs."/$defs/spark/$defs/spark_history_server_config"]])
@@ -233,6 +247,13 @@ google_bigquery_connection: {
 		// The resource name of a network attachment in the format of
 		// 'projects/{project}/regions/{region}/networkAttachments/{networkAttachment}'.
 		network_attachment!: string
+	})
+
+	_#defs: "/$defs/salesforce_data_cloud/$defs/cross_cloud_cache_options": close({
+		// Whether cross-cloud caching is enabled for queries through BigQuery.
+		// When enabled, read data and metadata are cached, which can improve performance
+		// and reduce network egress costs for cross-cloud queries.
+		enabled?: bool
 	})
 
 	_#defs: "/$defs/spark/$defs/metastore_service_config": close({

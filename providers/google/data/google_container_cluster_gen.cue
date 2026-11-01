@@ -351,10 +351,13 @@ google_container_cluster: {
 		in_transit_encryption_config?: string
 
 		// The number of nodes to create in this cluster's default node pool. In
-		// regional or multi-zonal clusters, this is the number of nodes per zone. Must
-		// be set if node_pool is not set. If you're using google_container_node_pool
-		// objects with no default node pool, you'll need to set this to a value of at
-		// least 1, alongside setting remove_default_node_pool to true.
+		// regional or multi-zonal clusters, this is the number of nodes per zone. When
+		// omitted (or set to 0) with no node_config or node_pool blocks defined, the
+		// cluster is created without a default node pool. This requires a GKE version
+		// that supports clusters without a default node pool (1.36.4-gke.1469000+).
+		// For older GKE versions, if you're using google_container_node_pool objects
+		// with no default node pool, you'll need to set this to a value of at least 1,
+		// alongside setting remove_default_node_pool to true.
 		initial_node_count?: number
 
 		// Configuration of cluster IP allocation for VPC-native clusters. Adding this
@@ -1275,9 +1278,13 @@ google_container_cluster: {
 			channel?: string
 		})]
 
-		// If true, deletes the default node pool upon cluster creation. If you're using
-		// google_container_node_pool resources with no default node pool, this should
-		// be set to true, alongside setting initial_node_count to at least 1.
+		// If true, deletes the default node pool upon cluster creation. On GKE versions
+		// that support clusters without a default node pool, you can instead omit
+		// initial_node_count and node_config (or set initial_node_count to 0) to skip
+		// creating the default node pool without setting this field. For older GKE
+		// versions, if you're using google_container_node_pool resources with no
+		// default node pool, this should be set to true, alongside setting
+		// initial_node_count to at least 1.
 		remove_default_node_pool?: bool
 
 		// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
@@ -1299,6 +1306,11 @@ google_container_cluster: {
 		// Configuration for rollback-safe (two-step) upgrades.
 		rollback_safe_upgrade?: [...close({
 			control_plane_soak_duration?: string
+		})]
+
+		// Configuration for scheduled upgrades on the cluster.
+		schedule_upgrade_config?: [...close({
+			enabled?: bool
 		})]
 
 		// Configuration for the Secret Manager feature.

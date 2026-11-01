@@ -66,6 +66,18 @@ google_discovery_engine_search_engine: {
 		// Location.
 		location!: string
 
+		// Maps a model name to its specific configuration for this engine. This
+		// allows admin users to turn on/off individual models. This only stores
+		// models whose states are overridden by the admin. When the state is
+		// unspecified, or 'model_configs' is empty for this model, the system
+		// decides if this model is available based on the default configuration.
+		// For example, a preview model is disabled by default if the admin has not
+		// chosen to enable it. Each value is one of 'MODEL_STATE_UNSPECIFIED',
+		// 'MODEL_ENABLED', or 'MODEL_DISABLED'; see the [ModelState API
+		// reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+		// for details.
+		model_configs?: [string]: string
+
 		// The unique full resource name of the search engine. Values are of the format
 		// 'projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}'.
 		// This field must be a UTF-8 encoded string with a length limit of 1024

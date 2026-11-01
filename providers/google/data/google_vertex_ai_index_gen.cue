@@ -74,8 +74,9 @@ google_vertex_ai_index: {
 				algorithm_config?: [...close({
 					brute_force_config?: [...close({})]
 					tree_ah_config?: [...close({
-						leaf_node_embedding_count?:    number
-						leaf_nodes_to_search_percent?: number
+						fraction_leaf_nodes_to_search?: number
+						leaf_node_embedding_count?:     number
+						leaf_nodes_to_search_percent?:  number
 					})]
 				})]
 				approximate_neighbors_count?: number

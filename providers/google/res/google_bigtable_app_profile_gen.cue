@@ -74,6 +74,8 @@ google_bigtable_app_profile: {
 	})
 
 	#standard_isolation: close({
+		memory_config?: matchN(1, [_#defs."/$defs/standard_isolation/$defs/memory_config", list.MaxItems(1) & [..._#defs."/$defs/standard_isolation/$defs/memory_config"]])
+
 		// The priority of requests sent using this app profile. Possible values:
 		// ["PRIORITY_LOW", "PRIORITY_MEDIUM", "PRIORITY_HIGH"]
 		priority!: string
@@ -84,4 +86,6 @@ google_bigtable_app_profile: {
 		delete?: string
 		update?: string
 	})
+
+	_#defs: "/$defs/standard_isolation/$defs/memory_config": close({})
 }

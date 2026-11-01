@@ -42,7 +42,10 @@ google_compute_firewall: {
 		// not enforced and the network behaves as if it did not exist. If this
 		// is unspecified, the firewall rule will be enabled.
 		disabled?: bool
-		id?:       string
+
+		// The unique identifier number for the resource. This identifier is defined by the server.
+		firewall_id?: number
+		id?:          string
 
 		// Name of the resource. Provided by the client when the resource is
 		// created. The name must be 1-63 characters long, and comply with

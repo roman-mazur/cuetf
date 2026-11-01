@@ -5,6 +5,7 @@ google_container_engine_versions: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_container_engine_versions")
 	close({
 		default_cluster_version?: string
+		default_image_type?:      string
 		id?:                      string
 		latest_master_version?:   string
 		latest_node_version?:     string
@@ -13,6 +14,7 @@ google_container_engine_versions: {
 		release_channel_default_version?: [string]:        string
 		release_channel_latest_version?: [string]:         string
 		release_channel_upgrade_target_version?: [string]: string
+		valid_image_types?: [...string]
 		valid_master_versions?: [...string]
 		valid_node_versions?: [...string]
 		version_prefix?: string

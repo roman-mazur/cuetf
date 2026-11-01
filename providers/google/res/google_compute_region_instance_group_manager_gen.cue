@@ -30,12 +30,16 @@ google_compute_region_instance_group_manager: {
 		// Creation timestamp in RFC3339 text format.
 		creation_timestamp?: string
 
-		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+		// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
 		// the command will fail if this field is set to "PREVENT" in Terraform state.
 		// When set to "ABANDON", the command will remove the resource from Terraform
 		// management without updating or deleting the resource in the API.
-		// When set to "DELETE", deleting the resource is allowed.
+		// When set to "DELETE", deleting the resource is allowed. If graceful shutdown
+		// is configured, the MIG deletion waits for all instances to shut down
+		// gracefully before deletion.
+		// When set to "FORCE", deleting the resource is allowed, and graceful shutdown
+		// is skipped for instance deletion even if it's configured for the instances.
 		deletion_policy?: string
 
 		// An optional textual description of the instance group manager.
@@ -324,8 +328,13 @@ google_compute_region_instance_group_manager: {
 	})
 
 	_#defs: "/$defs/instance_flexibility_policy/$defs/instance_selections": close({
+		disks?: matchN(1, [_#defs."/$defs/instance_flexibility_policy/$defs/instance_selections/$defs/disks", [..._#defs."/$defs/instance_flexibility_policy/$defs/instance_selections/$defs/disks"]])
+
 		// Full machine-type names, e.g. "n1-standard-16"
 		machine_types!: [...string]
+
+		// Name of the minimum CPU platform to be used by this instance selection. e.g. 'Intel Ice Lake'
+		min_cpu_platform?: string
 
 		// Instance selection name.
 		name!: string
@@ -335,6 +344,168 @@ google_compute_region_instance_group_manager: {
 		// and fallback to next rank based on availability. Machine types and instance
 		// selections with the same rank have the same preference.
 		rank?: number
+	})
+
+	_#defs: "/$defs/instance_flexibility_policy/$defs/instance_selections/$defs/disks": close({
+		disk_encryption_key?: matchN(1, [_#defs."/$defs/instance_flexibility_policy/$defs/instance_selections/$defs/disks/$defs/disk_encryption_key", list.MaxItems(1) & [..._#defs."/$defs/instance_flexibility_policy/$defs/instance_selections/$defs/disks/$defs/disk_encryption_key"]])
+		labels?: matchN(1, [_#defs."/$defs/instance_flexibility_policy/$defs/instance_selections/$defs/disks/$defs/labels", [..._#defs."/$defs/instance_flexibility_policy/$defs/instance_selections/$defs/disks/$defs/labels"]])
+		resource_manager_tags?: matchN(1, [_#defs."/$defs/instance_flexibility_policy/$defs/instance_selections/$defs/disks/$defs/resource_manager_tags", [..._#defs."/$defs/instance_flexibility_policy/$defs/instance_selections/$defs/disks/$defs/resource_manager_tags"]])
+		source_image_encryption_key?: matchN(1, [_#defs."/$defs/instance_flexibility_policy/$defs/instance_selections/$defs/disks/$defs/source_image_encryption_key", list.MaxItems(1) & [..._#defs."/$defs/instance_flexibility_policy/$defs/instance_selections/$defs/disks/$defs/source_image_encryption_key"]])
+		source_snapshot_encryption_key?: matchN(1, [_#defs."/$defs/instance_flexibility_policy/$defs/instance_selections/$defs/disks/$defs/source_snapshot_encryption_key", list.MaxItems(1) & [..._#defs."/$defs/instance_flexibility_policy/$defs/instance_selections/$defs/disks/$defs/source_snapshot_encryption_key"]])
+
+		// The architecture of the image. Allowed values are ARM64 or X86_64.
+		architecture?: string
+
+		// Whether or not the disk should be auto-deleted. This defaults to true.
+		auto_delete?: bool
+
+		// Indicates that this is a boot disk. This defaults to false.
+		boot?: bool
+
+		// A unique device name that is reflected into the /dev/ tree of a Linux
+		// operating system running within the instance. If not specified, the server
+		// chooses a default device name to apply to this disk.
+		device_name?: string
+
+		// Name of the disk. When not provided, this defaults to the name of the instance.
+		disk_name?: string
+
+		// The size of the image in gigabytes. If not specified, it will inherit the
+		// size of its base image. For SCRATCH disks, the size must be one of 375 or
+		// 3000 GB, with a default of 375 GB.
+		disk_size_gb?: number
+
+		// The Google Compute Engine disk type. Such as "pd-ssd", "local-ssd",
+		// "pd-balanced" or "pd-standard".
+		disk_type?: string
+
+		// A list of features to enable on the guest operating system. Applicable only for bootable images.
+		guest_os_features?: [...string]
+
+		// Specifies the disk interface to use for attaching this disk.
+		interface?: string
+
+		// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If you
+		// are attaching or creating a boot disk, this must read-write mode.
+		mode?: string
+
+		// Indicates how many IOPS to provision for the disk. This sets the number of
+		// I/O operations per second that the disk can handle. For more details, see
+		// the [Extreme persistent disk
+		// documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk)
+		// or the [Hyperdisk
+		// documentation](https://cloud.google.com/compute/docs/disks/hyperdisks)
+		// depending on the selected disk_type.
+		provisioned_iops?: number
+
+		// Indicates how much throughput to provision for the disk, in MB/s. This sets
+		// the amount of data that can be read or written from the disk per second.
+		// Values must greater than or equal to 1. For more details, see the [Hyperdisk
+		// documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+		provisioned_throughput?: number
+
+		// A list (short name or id) of resource policies to attach to this disk.
+		// Currently a max of 1 resource policy is supported.
+		resource_policies?: [...string]
+
+		// The name (not self_link) of the disk (such as those managed by
+		// google_compute_disk) to attach. ~> Note: Either source or source_image is
+		// required when creating a new instance except for when creating a local SSD.
+		source?: string
+
+		// The image from which to initialize this disk. This can be one of: the image's
+		// self_link, projects/{project}/global/images/{image},
+		// projects/{project}/global/images/family/{family}, global/images/{image},
+		// global/images/family/{family}, family/{family}, {project}/{family},
+		// {project}/{image}, {family}, or {image}. ~> Note: Either source or
+		// source_image is required when creating a new instance except for when
+		// creating a local SSD.
+		source_image?: string
+
+		// The source snapshot to create this disk. When creating a new instance, one of
+		// initializeParams.sourceSnapshot, initializeParams.sourceImage, or
+		// disks.source is required except for local SSD.
+		source_snapshot?: string
+
+		// The type of Google Compute Engine disk, can be either "SCRATCH" or "PERSISTENT".
+		type?: string
+	})
+
+	_#defs: "/$defs/instance_flexibility_policy/$defs/instance_selections/$defs/disks/$defs/disk_encryption_key": close({
+		// The self link of the encryption key that is stored in Google Cloud KMS.
+		kms_key_self_link?: string
+
+		// The service account being used for the encryption request for the given KMS
+		// key. If absent, the Compute Engine default service account is used.
+		kms_key_service_account?: string
+
+		// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648
+		// base64 to either encrypt or decrypt this resource. Only one of
+		// kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+		raw_key?: string
+
+		// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied
+		// encryption key to either encrypt or decrypt this resource. Only one of
+		// kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+		rsa_encrypted_key?: string
+	})
+
+	_#defs: "/$defs/instance_flexibility_policy/$defs/instance_selections/$defs/disks/$defs/labels": close({
+		// The unique key of the label to assign to disks.
+		key!: string
+
+		// The value of the label to assign to disks.
+		value!: string
+	})
+
+	_#defs: "/$defs/instance_flexibility_policy/$defs/instance_selections/$defs/disks/$defs/resource_manager_tags": close({
+		// The unique key of the resource manager tag to assign to disks. Keys must be
+		// in the format tagKeys/{tag_key_id}.
+		key!: string
+
+		// The value of the resource manager tag to assign to disks. Values must be in
+		// the format tagValues/456.
+		value!: string
+	})
+
+	_#defs: "/$defs/instance_flexibility_policy/$defs/instance_selections/$defs/disks/$defs/source_image_encryption_key": close({
+		// The self link of the encryption key that is stored in Google Cloud KMS. Only
+		// one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+		kms_key_self_link?: string
+
+		// The service account being used for the encryption request for the given KMS
+		// key. If absent, the Compute Engine default service account is used.
+		kms_key_service_account?: string
+
+		// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648
+		// base64 to either encrypt or decrypt this resource. Only one of
+		// kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+		raw_key?: string
+
+		// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied
+		// encryption key to either encrypt or decrypt this resource. Only one of
+		// kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+		rsa_encrypted_key?: string
+	})
+
+	_#defs: "/$defs/instance_flexibility_policy/$defs/instance_selections/$defs/disks/$defs/source_snapshot_encryption_key": close({
+		// The self link of the encryption key that is stored in Google Cloud KMS. Only
+		// one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+		kms_key_self_link?: string
+
+		// The service account being used for the encryption request for the given KMS
+		// key. If absent, the Compute Engine default service account is used.
+		kms_key_service_account?: string
+
+		// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648
+		// base64 to either encrypt or decrypt this resource. Only one of
+		// kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+		raw_key?: string
+
+		// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied
+		// encryption key to either encrypt or decrypt this resource. Only one of
+		// kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+		rsa_encrypted_key?: string
 	})
 
 	_#defs: "/$defs/instance_lifecycle_policy/$defs/on_repair": close({

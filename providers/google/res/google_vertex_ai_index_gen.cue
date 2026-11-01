@@ -158,11 +158,12 @@ google_vertex_ai_index: {
 	_#defs: "/$defs/metadata/$defs/config/$defs/algorithm_config/$defs/brute_force_config": close({})
 
 	_#defs: "/$defs/metadata/$defs/config/$defs/algorithm_config/$defs/tree_ah_config": close({
+		// The default fraction of leaf nodes that any query may be searched. Must be in
+		// range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+		// This value can only be set when creating the index.
+		fraction_leaf_nodes_to_search?: number
+
 		// Number of embeddings on each leaf node. The default value is 1000 if not set.
 		leaf_node_embedding_count?: number
-
-		// The default percentage of leaf nodes that any query may be searched. Must be in
-		// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
-		leaf_nodes_to_search_percent?: number
 	})
 }

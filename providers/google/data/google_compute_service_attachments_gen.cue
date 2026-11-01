@@ -43,6 +43,7 @@ google_compute_service_attachments: {
 			region?:                                   string
 			self_link?:                                string
 			send_propagated_connection_limit_if_zero?: bool
+			service_attachment_id?:                    number
 			show_nat_ips?:                             bool
 			target_service?:                           string
 		})]

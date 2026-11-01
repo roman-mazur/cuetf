@@ -248,6 +248,8 @@ google_compute_disk: {
 		// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
 		// See
 		// https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+		//
+		// Specify the key without a '/cryptoKeyVersions/' suffix.
 		kms_key_self_link?: string
 
 		// The service account used for the encryption request for the given KMS key.

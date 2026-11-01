@@ -34,6 +34,9 @@ google_colab_notebook_execution: {
 		gcs_output_uri!: string
 		id?:             string
 
+		// The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+		kernel_name?: string
+
 		// The location for the resource: https://cloud.google.com/colab/docs/locations
 		location!: string
 
@@ -84,7 +87,8 @@ google_colab_notebook_execution: {
 	})
 
 	#workbench_runtime: close({
-		vm_image!: matchN(1, [_#defs."/$defs/workbench_runtime/$defs/vm_image", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/workbench_runtime/$defs/vm_image"]])
+		custom_container_image?: matchN(1, [_#defs."/$defs/workbench_runtime/$defs/custom_container_image", list.MaxItems(1) & [..._#defs."/$defs/workbench_runtime/$defs/custom_container_image"]])
+		vm_image?: matchN(1, [_#defs."/$defs/workbench_runtime/$defs/vm_image", list.MaxItems(1) & [..._#defs."/$defs/workbench_runtime/$defs/vm_image"]])
 	})
 
 	_#defs: "/$defs/custom_environment_spec/$defs/machine_spec": close({
@@ -135,6 +139,15 @@ google_colab_notebook_execution: {
 
 		// Defines whether the instance has the vTPM enabled. Enabled by default.
 		enable_vtpm?: bool
+	})
+
+	_#defs: "/$defs/workbench_runtime/$defs/custom_container_image": close({
+		// The path to the container image repository.
+		// For example: gcr.io/{project_id}/{imageName}
+		repository!: string
+
+		// The tag of the container image. If not specified, this defaults to the latest tag.
+		tag?: string
 	})
 
 	_#defs: "/$defs/workbench_runtime/$defs/vm_image": close({

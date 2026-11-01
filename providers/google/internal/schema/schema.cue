@@ -3829,11 +3829,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																					A Google Cloud resource that is allowed to ingress the perimeter.
 																					Requests from these resources will be allowed to access perimeter data.
 																					Projects, folders, organizations, and VPC networks are allowed.
-																					Project format: 'projects/{projectNumber}'
-																					Folder format: 'folders/{folderNumber}'
-																					Organization format: 'organizations/{organizationNumber}'
-																					VPC network format:
-																					'//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}'.
+																					Project format: 'projects/{project_number}'
+																					Folder format: 'folders/{folder_number}'
+																					Organization format: 'organizations/{organization_number}'
+																					VPC network format: '//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}'.
 																					The resource may be in any Google Cloud organization, not just the
 																					organization that the perimeter is defined in. '*' is not allowed, the case
 																					of allowing all Google Cloud resources only is not supported.
@@ -5081,9 +5080,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 															A Google Cloud resource that is allowed to ingress the perimeter.
 															Requests from these resources will be allowed to access perimeter data.
 															Projects, folders, organizations, and VPC networks are allowed.
-															Project format: 'projects/{projectNumber}'
-															Folder format: 'folders/{folderNumber}'
-															Organization format: 'organizations/{organizationNumber}'
+															Project format: 'projects/{project_number}'
+															Folder format: 'folders/{folder_number}'
+															Organization format: 'organizations/{organization_number}'
 															VPC network format:
 															'//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}'.
 															The resource may be in any Google Cloud organization, not just the
@@ -7208,6 +7207,187 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_agent_identity_auth_provider_iam_binding: {
+			version: 0
+			block: {
+				attributes: {
+					auth_provider_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					members: {
+						type: ["set", "string"]
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: condition: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							description: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							expression: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+							title: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						description_kind: "plain"
+					}
+					max_items: 1
+				}
+				description_kind: "plain"
+			}
+		}
+		google_agent_identity_auth_provider_iam_member: {
+			version: 0
+			block: {
+				attributes: {
+					auth_provider_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					member: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: condition: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							description: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							expression: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+							title: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						description_kind: "plain"
+					}
+					max_items: 1
+				}
+				description_kind: "plain"
+			}
+		}
+		google_agent_identity_auth_provider_iam_policy: {
+			version: 0
+			block: {
+				attributes: {
+					auth_provider_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					policy_data: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_agent_registry_binding: {
 			version: 0
 			block: {
@@ -7914,6 +8094,40 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						nesting_mode: "list"
 						block: {
 							block_types: {
+								audit_trail_export_options: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											append_audit_trail: {
+												type:             "bool"
+												description:      "If true, append the audit trail to the final response."
+												description_kind: "plain"
+												optional:         true
+											}
+											export_audit_trail_artifact: {
+												type:             "bool"
+												description:      "If true, export the audit trail as a separate artifact."
+												description_kind: "plain"
+												optional:         true
+											}
+											export_format: {
+												type: "string"
+												description: """
+															Format for audit trail export.
+															Possible values:
+															MARKDOWN
+															HTML
+															PDF
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Options for audit trail export."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
 								document_generation_options: {
 									nesting_mode: "list"
 									block: {
@@ -30242,6 +30456,56 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						}
 						max_items: 1
 					}
+					salesforce_data_cloud: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								identity: {
+									type:             "string"
+									description:      "A unique Google-owned and Google-generated service account identity for the connection."
+									description_kind: "plain"
+									computed:         true
+								}
+								instance_uri: {
+									type:             "string"
+									description:      "The URL to the user's Salesforce Data Cloud instance."
+									description_kind: "plain"
+									required:         true
+								}
+								tenant_id: {
+									type:             "string"
+									description:      "The ID of the user's Salesforce tenant."
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							block_types: cross_cloud_cache_options: {
+								nesting_mode: "list"
+								block: {
+									attributes: enabled: {
+										type: "bool"
+										description: """
+															Whether cross-cloud caching is enabled for queries through BigQuery.
+															When enabled, read data and metadata are cached, which can improve performance
+															and reduce network egress costs for cross-cloud queries.
+															"""
+										description_kind: "plain"
+										optional:         true
+									}
+									description:      "Configuration options for cross-cloud caching of data and metadata files."
+									description_kind: "plain"
+								}
+								min_items: 1
+								max_items: 1
+							}
+							description: """
+										Connection properties specific to Salesforce Data Cloud.
+										This connection type is intended for use only by Salesforce partner projects.
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
 					spark: {
 						nesting_mode: "list"
 						block: {
@@ -33832,6 +34096,39 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						}
 						max_items: 1
 					}
+					scheduling_policy: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								concurrency: {
+									type: "number"
+									description: """
+												If present and > 0, the reservation will attempt to limit the concurrency
+												of jobs running for any particular project within it to the given value.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								max_slots: {
+									type: "number"
+									description: """
+												If present and > 0, the reservation will attempt to limit the slot
+												consumption of queries running for any particular project within it to
+												the given value.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description: """
+										The scheduling policy to use for jobs and queries running under this
+										reservation. The scheduling policy controls how the reservation's resources
+										are distributed.
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
 					timeouts: {
 						nesting_mode: "single"
 						block: {
@@ -33894,7 +34191,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type:             "string"
 						description:      "Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS"
 						description_kind: "plain"
-						required:         true
+						optional:         true
 					}
 					location: {
 						type:             "string"
@@ -33943,22 +34240,58 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						computed:         true
 					}
 				}
-				block_types: timeouts: {
-					nesting_mode: "single"
-					block: {
-						attributes: {
-							create: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
+				block_types: {
+					scheduling_policy: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								concurrency: {
+									type: "number"
+									description: """
+												If present and > 0, the reservation will attempt to limit the concurrency
+												of jobs running for any particular project within it to the given value.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								max_slots: {
+									type: "number"
+									description: """
+												If present and > 0, the reservation will attempt to limit the slot
+												consumption of queries running for any particular project within it to
+												the given value.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
 							}
-							delete: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
+							description: """
+										The scheduling policy to use for jobs and queries of this assignee when
+										running under the associated reservation. The scheduling policy controls
+										how the reservation's resources are distributed. This overrides the default
+										scheduling policy specified on the reservation.
+										"""
+							description_kind: "plain"
 						}
-						description_kind: "plain"
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
 					}
 				}
 				description_kind: "plain"
@@ -36028,6 +36361,17 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								description_kind: "plain"
 								required:         true
 							}
+							block_types: memory_config: {
+								nesting_mode: "list"
+								block: {
+									description: """
+													The memory config to use for requests sent using this app profile.
+													If set, eligible single-row requests (currently limited to ReadRows) using this app profile will be routed to the memory layer. All eligible writes populate the memory layer. 'memory_config' can only be set if the AppProfile uses single cluster routing and the configured cluster has a memory layer enabled.
+													"""
+									description_kind: "plain"
+								}
+								max_items: 1
+							}
 							description:      "The standard options used for isolating this app profile's traffic from other use cases."
 							description_kind: "plain"
 						}
@@ -36865,6 +37209,97 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								optional:         true
 							}
 							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_bigtable_memory_layer: {
+			version: 0
+			block: {
+				attributes: {
+					cluster: {
+						type:             "string"
+						description:      "The ID of the cluster to enable the memory layer on."
+						description_kind: "plain"
+						required:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					etag: {
+						type:             "string"
+						description:      "System-generated token used by the server to ensure that the client has an up-to-date value before proceeding."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					instance: {
+						type:             "string"
+						description:      "The name of the instance to enable the memory layer within."
+						description_kind: "plain"
+						required:         true
+					}
+					memory_config: {
+						type: ["list", ["object", {
+							storage_size_gib: "number"
+						}]]
+						description:      "The memory configuration for the cluster."
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The unique name of the memory layer. Values are of the form 'projects/<project>/instances/<instance>/clusters/<cluster>/memoryLayer'."
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					state: {
+						type:             "string"
+						description:      "The current state of the memory layer."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
 								type:             "string"
 								description_kind: "plain"
 								optional:         true
@@ -71580,6 +72015,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									optional:         true
 									computed:         true
 								}
+								worker_release: {
+									type:             "string"
+									description:      "The release or release channel to use for the worker. Possible values are `rapid`, `regular`, `stable`, or a specific release version."
+									description_kind: "plain"
+									optional:         true
+								}
 							}
 							description:      "Configuration to be used for a creating workers in the `WorkerPool`."
 							description_kind: "plain"
@@ -77890,6 +78331,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						optional:         true
 						computed:         true
 					}
+					kernel_name: {
+						type:             "string"
+						description:      "The name of the kernel to use during notebook execution. If unset, the default kernel is used."
+						description_kind: "plain"
+						optional:         true
+					}
 					location: {
 						type:             "string"
 						description:      "The location for the resource: https://cloud.google.com/colab/docs/locations"
@@ -78118,34 +78565,60 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					workbench_runtime: {
 						nesting_mode: "list"
 						block: {
-							block_types: vm_image: {
-								nesting_mode: "list"
-								block: {
-									attributes: {
-										family: {
-											type:             "string"
-											description:      "Use this VM image family to find the image; the newest image in this family will be used."
-											description_kind: "plain"
-											optional:         true
+							block_types: {
+								custom_container_image: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											repository: {
+												type: "string"
+												description: """
+															The path to the container image repository.
+															For example: gcr.io/{project_id}/{imageName}
+															"""
+												description_kind: "plain"
+												required:         true
+											}
+											tag: {
+												type:             "string"
+												description:      "The tag of the container image. If not specified, this defaults to the latest tag."
+												description_kind: "plain"
+												optional:         true
+											}
 										}
-										name: {
-											type:             "string"
-											description:      "Use VM image name to find the image."
-											description_kind: "plain"
-											optional:         true
-										}
-										project: {
-											type:             "string"
-											description:      "The name of the Google Cloud project that this VM image belongs to. Format: {project_id}"
-											description_kind: "plain"
-											optional:         true
-										}
+										description:      "Use a container image to start the workbench instance."
+										description_kind: "plain"
 									}
-									description:      "Custom Compute Engine VM image for the Workbench instance."
-									description_kind: "plain"
+									max_items: 1
 								}
-								min_items: 1
-								max_items: 1
+								vm_image: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											family: {
+												type:             "string"
+												description:      "Use this VM image family to find the image; the newest image in this family will be used."
+												description_kind: "plain"
+												optional:         true
+											}
+											name: {
+												type:             "string"
+												description:      "Use VM image name to find the image."
+												description_kind: "plain"
+												optional:         true
+											}
+											project: {
+												type:             "string"
+												description:      "The name of the Google Cloud project that this VM image belongs to. Format: {project_id}"
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Custom Compute Engine VM image for the Workbench instance."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
 							}
 							description:      "Configuration for a Workbench Instances-based environment."
 							description_kind: "plain"
@@ -84063,6 +84536,8 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
 												'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
 												See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+
+												Specify the key without a '/cryptoKeyVersions/' suffix.
 												"""
 									description_kind: "plain"
 									optional:         true
@@ -84154,8 +84629,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 										the disk will be encrypted using an automatically generated key and
 										you do not need to provide a key to use the disk later.
 
-										~>**NOTE** Only changing 'kms_key_self_link' between Cloud KMS keys is
-										done in place; other changes to this block recreate the disk.
+										~>**NOTE** 'kms_key_self_link' can be added or changed in place.
+										Removing it, or changing it while 'kms_key_service_account' is set,
+										fails at plan time. Other changes to this block recreate the disk.
 										"""
 							description_kind: "plain"
 						}
@@ -84925,6 +85401,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						deprecated:       true
 						optional:         true
+						computed:         true
+					}
+					firewall_id: {
+						type:             "number"
+						description:      "The unique identifier number for the resource. This identifier is defined by the server."
+						description_kind: "plain"
 						computed:         true
 					}
 					id: {
@@ -89406,7 +89888,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						block: {
 							attributes: type: {
 								type:             "string"
-								description:      "The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: [\"MULTI_IP_SUBNET\", \"SECURE_BOOT\", \"SEV_CAPABLE\", \"UEFI_COMPATIBLE\", \"VIRTIO_SCSI_MULTIQUEUE\", \"WINDOWS\", \"GVNIC\", \"IDPF\", \"SEV_LIVE_MIGRATABLE\", \"SEV_SNP_CAPABLE\", \"SUSPEND_RESUME_COMPATIBLE\", \"TDX_CAPABLE\", \"SEV_LIVE_MIGRATABLE_V2\", \"SNP_SVSM_CAPABLE\"]"
+								description:      "The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: [\"MULTI_IP_SUBNET\", \"SECURE_BOOT\", \"SEV_CAPABLE\", \"UEFI_COMPATIBLE\", \"VIRTIO_SCSI_MULTIQUEUE\", \"WINDOWS\", \"GVNIC\", \"IDPF\", \"SEV_LIVE_MIGRATABLE\", \"SEV_SNP_CAPABLE\", \"SUSPEND_RESUME_COMPATIBLE\", \"TDX_CAPABLE\", \"SEV_LIVE_MIGRATABLE_V2\", \"SNP_SVSM_CAPABLE\", \"SUSPEND_SAFE_FPR\"]"
 								description_kind: "plain"
 								required:         true
 							}
@@ -92776,12 +93258,13 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					deletion_policy: {
 						type: "string"
 						description: """
-									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 									When a 'terraform destroy' or 'terraform apply' would delete the instance,
 									the command will fail if this field is set to "PREVENT" in Terraform state.
 									When set to "ABANDON", the command will remove the resource from Terraform
 									management without updating or deleting the resource in the API.
-									When set to "DELETE", deleting the resource is allowed.
+									When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG deletion waits for all instances to shut down gracefully before deletion.
+									When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
 
 									"""
 						description_kind: "plain"
@@ -97251,27 +97734,47 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						computed:         true
 					}
 				}
-				block_types: timeouts: {
-					nesting_mode: "single"
-					block: {
-						attributes: {
-							create: {
-								type:             "string"
+				block_types: {
+					params: {
+						nesting_mode: "list"
+						block: {
+							attributes: resource_manager_tags: {
+								type: ["map", "string"]
+								description: """
+												Resource manager tags to be bound to the networkEdgeSecurityService. Tag keys and values have the
+												same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+												and values are in the format tagValues/456.
+												"""
 								description_kind: "plain"
 								optional:         true
 							}
-							delete: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
-							update: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
+							description:      "Additional params passed with the request, but not persisted as part of resource payload"
+							description_kind: "plain"
 						}
-						description_kind: "plain"
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
 					}
 				}
 				description_kind: "plain"
@@ -97320,7 +97823,16 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									range).
 									"""
 						description_kind: "plain"
-						required:         true
+						optional:         true
+					}
+					ipv6_address: {
+						type: "string"
+						description: """
+									IPv6 address of network endpoint. The result of parsing the endpoint config,
+									or empty if IPv6 is not used.
+									"""
+						description_kind: "plain"
+						optional:         true
 					}
 					network_endpoint_group: {
 						type:             "string"
@@ -97581,6 +98093,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												to a VM in GCE (either the primary IP or as part of an aliased IP
 												range).
 												**Note** 'ip_address' is required unless the Network Endpoint Group is created with the type of 'GCE_VM_IP_DEDICATED_BACKEND'
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								ipv6_address: {
+									type: "string"
+									description: """
+												IPv6 address of network endpoint. The result of parsing the endpoint config,
+												or empty if IPv6 is not used.
 												"""
 									description_kind: "plain"
 									optional:         true
@@ -103899,8 +104420,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						block: {
 							attributes: {
 								kms_key_name: {
-									type:             "string"
-									description:      "The name of the encryption key that is stored in Google Cloud KMS."
+									type: "string"
+									description: """
+												The name of the encryption key that is stored in Google Cloud KMS.
+
+												Specify the key without a '/cryptoKeyVersions/' suffix.
+												"""
 									description_kind: "plain"
 									optional:         true
 								}
@@ -103982,8 +104507,8 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 										the disk will be encrypted using an automatically generated key and
 										you do not need to provide a key to use the disk later.
 
-										~>**NOTE** Only changing 'kms_key_name' between Cloud KMS keys is done
-										in place; other changes to this block recreate the disk.
+										~>**NOTE** 'kms_key_name' can be added or changed in place. Removing it
+										fails at plan time. Other changes to this block recreate the disk.
 										"""
 							description_kind: "plain"
 						}
@@ -103994,7 +104519,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						block: {
 							attributes: type: {
 								type:             "string"
-								description:      "The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: [\"MULTI_IP_SUBNET\", \"SECURE_BOOT\", \"SEV_CAPABLE\", \"UEFI_COMPATIBLE\", \"VIRTIO_SCSI_MULTIQUEUE\", \"WINDOWS\", \"GVNIC\", \"SEV_LIVE_MIGRATABLE\", \"SEV_SNP_CAPABLE\", \"SUSPEND_RESUME_COMPATIBLE\", \"TDX_CAPABLE\", \"SEV_LIVE_MIGRATABLE_V2\", \"SNP_SVSM_CAPABLE\"]"
+								description:      "The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: [\"MULTI_IP_SUBNET\", \"SECURE_BOOT\", \"SEV_CAPABLE\", \"UEFI_COMPATIBLE\", \"VIRTIO_SCSI_MULTIQUEUE\", \"WINDOWS\", \"GVNIC\", \"IDPF\", \"SEV_LIVE_MIGRATABLE\", \"SEV_SNP_CAPABLE\", \"SUSPEND_RESUME_COMPATIBLE\", \"TDX_CAPABLE\", \"SEV_LIVE_MIGRATABLE_V2\", \"SNP_SVSM_CAPABLE\", \"SUSPEND_SAFE_FPR\"]"
 								description_kind: "plain"
 								required:         true
 							}
@@ -105410,12 +105935,13 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					deletion_policy: {
 						type: "string"
 						description: """
-									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 									When a 'terraform destroy' or 'terraform apply' would delete the instance,
 									the command will fail if this field is set to "PREVENT" in Terraform state.
 									When set to "ABANDON", the command will remove the resource from Terraform
 									management without updating or deleting the resource in the API.
-									When set to "DELETE", deleting the resource is allowed.
+									When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG deletion waits for all instances to shut down gracefully before deletion.
+									When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
 
 									"""
 						description_kind: "plain"
@@ -105617,6 +106143,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											description_kind: "plain"
 											required:         true
 										}
+										min_cpu_platform: {
+											type:             "string"
+											description:      "Name of the minimum CPU platform to be used by this instance selection. e.g. 'Intel Ice Lake'"
+											description_kind: "plain"
+											optional:         true
+										}
 										name: {
 											type:             "string"
 											description:      "Instance selection name."
@@ -105628,6 +106160,269 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											description:      "Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference."
 											description_kind: "plain"
 											optional:         true
+										}
+									}
+									block_types: disks: {
+										nesting_mode: "list"
+										block: {
+											attributes: {
+												architecture: {
+													type:             "string"
+													description:      "The architecture of the image. Allowed values are ARM64 or X86_64."
+													description_kind: "plain"
+													optional:         true
+												}
+												auto_delete: {
+													type:             "bool"
+													description:      "Whether or not the disk should be auto-deleted. This defaults to true."
+													description_kind: "plain"
+													optional:         true
+												}
+												boot: {
+													type:             "bool"
+													description:      "Indicates that this is a boot disk. This defaults to false."
+													description_kind: "plain"
+													optional:         true
+												}
+												device_name: {
+													type:             "string"
+													description:      "A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk."
+													description_kind: "plain"
+													optional:         true
+												}
+												disk_name: {
+													type:             "string"
+													description:      "Name of the disk. When not provided, this defaults to the name of the instance."
+													description_kind: "plain"
+													optional:         true
+												}
+												disk_size_gb: {
+													type:             "number"
+													description:      "The size of the image in gigabytes. If not specified, it will inherit the size of its base image. For SCRATCH disks, the size must be one of 375 or 3000 GB, with a default of 375 GB."
+													description_kind: "plain"
+													optional:         true
+												}
+												disk_type: {
+													type:             "string"
+													description:      "The Google Compute Engine disk type. Such as \"pd-ssd\", \"local-ssd\", \"pd-balanced\" or \"pd-standard\"."
+													description_kind: "plain"
+													optional:         true
+												}
+												guest_os_features: {
+													type: ["list", "string"]
+													description:      "A list of features to enable on the guest operating system. Applicable only for bootable images."
+													description_kind: "plain"
+													optional:         true
+												}
+												interface: {
+													type:             "string"
+													description:      "Specifies the disk interface to use for attaching this disk."
+													description_kind: "plain"
+													optional:         true
+												}
+												mode: {
+													type:             "string"
+													description:      "The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If you are attaching or creating a boot disk, this must read-write mode."
+													description_kind: "plain"
+													optional:         true
+												}
+												provisioned_iops: {
+													type:             "number"
+													description:      "Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type."
+													description_kind: "plain"
+													optional:         true
+												}
+												provisioned_throughput: {
+													type:             "number"
+													description:      "Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks)."
+													description_kind: "plain"
+													optional:         true
+												}
+												resource_policies: {
+													type: ["list", "string"]
+													description:      "A list (short name or id) of resource policies to attach to this disk. Currently a max of 1 resource policy is supported."
+													description_kind: "plain"
+													optional:         true
+												}
+												source: {
+													type:             "string"
+													description:      "The name (not self_link) of the disk (such as those managed by google_compute_disk) to attach. ~> Note: Either source or source_image is required when creating a new instance except for when creating a local SSD."
+													description_kind: "plain"
+													optional:         true
+												}
+												source_image: {
+													type:             "string"
+													description:      "The image from which to initialize this disk. This can be one of: the image's self_link, projects/{project}/global/images/{image}, projects/{project}/global/images/family/{family}, global/images/{image}, global/images/family/{family}, family/{family}, {project}/{family}, {project}/{image}, {family}, or {image}. ~> Note: Either source or source_image is required when creating a new instance except for when creating a local SSD."
+													description_kind: "plain"
+													optional:         true
+												}
+												source_snapshot: {
+													type:             "string"
+													description:      "The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot, initializeParams.sourceImage, or disks.source is required except for local SSD."
+													description_kind: "plain"
+													optional:         true
+												}
+												type: {
+													type:             "string"
+													description:      "The type of Google Compute Engine disk, can be either \"SCRATCH\" or \"PERSISTENT\"."
+													description_kind: "plain"
+													optional:         true
+												}
+											}
+											block_types: {
+												disk_encryption_key: {
+													nesting_mode: "list"
+													block: {
+														attributes: {
+															kms_key_self_link: {
+																type:             "string"
+																description:      "The self link of the encryption key that is stored in Google Cloud KMS."
+																description_kind: "plain"
+																optional:         true
+															}
+															kms_key_service_account: {
+																type:             "string"
+																description:      "The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used."
+																description_kind: "plain"
+																optional:         true
+															}
+															raw_key: {
+																type:             "string"
+																description:      "Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set."
+																description_kind: "plain"
+																optional:         true
+																sensitive:        true
+															}
+															rsa_encrypted_key: {
+																type:             "string"
+																description:      "Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set."
+																description_kind: "plain"
+																optional:         true
+																sensitive:        true
+															}
+														}
+														description:      "Encrypts or decrypts a disk using a customer-supplied encryption key."
+														description_kind: "plain"
+													}
+													max_items: 1
+												}
+												labels: {
+													nesting_mode: "set"
+													block: {
+														attributes: {
+															key: {
+																type:             "string"
+																description:      "The unique key of the label to assign to disks."
+																description_kind: "plain"
+																required:         true
+															}
+															value: {
+																type:             "string"
+																description:      "The value of the label to assign to disks."
+																description_kind: "plain"
+																required:         true
+															}
+														}
+														description:      "A set of key/value label pairs to assign to disks."
+														description_kind: "plain"
+													}
+												}
+												resource_manager_tags: {
+													nesting_mode: "set"
+													block: {
+														attributes: {
+															key: {
+																type:             "string"
+																description:      "The unique key of the resource manager tag to assign to disks. Keys must be in the format tagKeys/{tag_key_id}."
+																description_kind: "plain"
+																required:         true
+															}
+															value: {
+																type:             "string"
+																description:      "The value of the resource manager tag to assign to disks. Values must be in the format tagValues/456."
+																description_kind: "plain"
+																required:         true
+															}
+														}
+														description:      "A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty."
+														description_kind: "plain"
+													}
+												}
+												source_image_encryption_key: {
+													nesting_mode: "list"
+													block: {
+														attributes: {
+															kms_key_self_link: {
+																type:             "string"
+																description:      "The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set."
+																description_kind: "plain"
+																optional:         true
+															}
+															kms_key_service_account: {
+																type:             "string"
+																description:      "The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used."
+																description_kind: "plain"
+																optional:         true
+															}
+															raw_key: {
+																type:             "string"
+																description:      "Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set."
+																description_kind: "plain"
+																optional:         true
+																sensitive:        true
+															}
+															rsa_encrypted_key: {
+																type:             "string"
+																description:      "Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set."
+																description_kind: "plain"
+																optional:         true
+																sensitive:        true
+															}
+														}
+														description:      "The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys."
+														description_kind: "plain"
+													}
+													max_items: 1
+												}
+												source_snapshot_encryption_key: {
+													nesting_mode: "list"
+													block: {
+														attributes: {
+															kms_key_self_link: {
+																type:             "string"
+																description:      "The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set."
+																description_kind: "plain"
+																optional:         true
+															}
+															kms_key_service_account: {
+																type:             "string"
+																description:      "The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used."
+																description_kind: "plain"
+																optional:         true
+															}
+															raw_key: {
+																type:             "string"
+																description:      "Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set."
+																description_kind: "plain"
+																optional:         true
+																sensitive:        true
+															}
+															rsa_encrypted_key: {
+																type:             "string"
+																description:      "Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set."
+																description_kind: "plain"
+																optional:         true
+																sensitive:        true
+															}
+														}
+														description:      "The customer-supplied encryption key of the source snapshot."
+														description_kind: "plain"
+													}
+													max_items: 1
+												}
+											}
+											description:      "List of disks to be attached to the instances created from this selection."
+											description_kind: "plain"
 										}
 									}
 									description:      "Named instance selections configuring properties that the group will use when creating new VMs."
@@ -111940,15 +112735,26 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								request_mirror_policy: {
 									nesting_mode: "list"
 									block: {
-										attributes: backend_service: {
-											type: "string"
-											description: """
+										attributes: {
+											backend_service: {
+												type: "string"
+												description: """
 															The full or partial URL to the RegionBackendService resource being mirrored to.
 															The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
 															Serverless NEG backends are not currently supported as a mirrored backend service.
 															"""
-											description_kind: "plain"
-											optional:         true
+												description_kind: "plain"
+												optional:         true
+											}
+											mirror_percent: {
+												type: "number"
+												description: """
+															The percentage of requests to be mirrored to backendService.
+															The value must be between 0.0 and 100.0 inclusive.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
 										}
 										description: """
 													Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
@@ -112662,11 +113468,22 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											request_mirror_policy: {
 												nesting_mode: "list"
 												block: {
-													attributes: backend_service: {
-														type:             "string"
-														description:      "The full or partial URL to the BackendService resource being mirrored to."
-														description_kind: "plain"
-														required:         true
+													attributes: {
+														backend_service: {
+															type:             "string"
+															description:      "The full or partial URL to the BackendService resource being mirrored to."
+															description_kind: "plain"
+															required:         true
+														}
+														mirror_percent: {
+															type: "number"
+															description: """
+																		The percentage of requests to be mirrored to backendService.
+																		The value must be between 0.0 and 100.0 inclusive.
+																		"""
+															description_kind: "plain"
+															optional:         true
+														}
 													}
 													description: """
 																Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
@@ -113380,11 +114197,22 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 														request_mirror_policy: {
 															nesting_mode: "list"
 															block: {
-																attributes: backend_service: {
-																	type:             "string"
-																	description:      "The RegionBackendService resource being mirrored to."
-																	description_kind: "plain"
-																	required:         true
+																attributes: {
+																	backend_service: {
+																		type:             "string"
+																		description:      "The RegionBackendService resource being mirrored to."
+																		description_kind: "plain"
+																		required:         true
+																	}
+																	mirror_percent: {
+																		type: "number"
+																		description: """
+																					The percentage of requests to be mirrored to backendService.
+																					The value must be between 0.0 and 100.0 inclusive.
+																					"""
+																		description_kind: "plain"
+																		optional:         true
+																	}
 																}
 																description: """
 																			Specifies the policy on how requests intended for the route's backends are
@@ -114429,11 +115257,22 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 														request_mirror_policy: {
 															nesting_mode: "list"
 															block: {
-																attributes: backend_service: {
-																	type:             "string"
-																	description:      "The RegionBackendService resource being mirrored to."
-																	description_kind: "plain"
-																	required:         true
+																attributes: {
+																	backend_service: {
+																		type:             "string"
+																		description:      "The RegionBackendService resource being mirrored to."
+																		description_kind: "plain"
+																		required:         true
+																	}
+																	mirror_percent: {
+																		type: "number"
+																		description: """
+																					The percentage of requests to be mirrored to backendService.
+																					The value must be between 0.0 and 100.0 inclusive.
+																					"""
+																		description_kind: "plain"
+																		optional:         true
+																	}
 																}
 																description: """
 																			Specifies the policy on how requests intended for the route's backends are
@@ -116678,6 +117517,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description:      "Region where the router resides."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					router_id: {
+						type:             "number"
+						description:      "The unique identifier number for the resource. This identifier is defined by the server."
+						description_kind: "plain"
 						computed:         true
 					}
 					self_link: {
@@ -119804,6 +120649,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						optional:         true
 					}
+					service_attachment_id: {
+						type:             "number"
+						description:      "The unique identifier number for the resource. This identifier is defined by the server."
+						description_kind: "plain"
+						computed:         true
+					}
 					show_nat_ips: {
 						type: "bool"
 						description: """
@@ -120204,8 +121055,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						block: {
 							attributes: {
 								kms_key_self_link: {
-									type:             "string"
-									description:      "The name of the encryption key that is stored in Google Cloud KMS."
+									type: "string"
+									description: """
+												The name of the encryption key that is stored in Google Cloud KMS.
+
+												Specify the key without a '/cryptoKeyVersions/' suffix.
+												"""
 									description_kind: "plain"
 									optional:         true
 								}
@@ -120263,8 +121118,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 										then the snapshot will be encrypted using an automatically generated
 										key and you do not need to provide a key to use the snapshot later.
 
-										~>**NOTE** Only changing 'kms_key_self_link' between Cloud KMS keys is
-										done in place; other changes to this block recreate the snapshot.
+										~>**NOTE** 'kms_key_self_link' can be added or changed in place.
+										Removing it, or changing it while 'kms_key_service_account' is set,
+										fails at plan time. Other changes to this block recreate the snapshot.
 										"""
 							description_kind: "plain"
 						}
@@ -121532,12 +122388,13 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					purpose: {
 						type: "string"
 						description: """
-									The purpose of the resource. This field can be either 'PRIVATE', 'REGIONAL_MANAGED_PROXY', 'GLOBAL_MANAGED_PROXY', 'PRIVATE_SERVICE_CONNECT', 'PEER_MIGRATION' or 'PRIVATE_NAT'([Beta](../guides/provider_versions.html.markdown)).
+									The purpose of the resource. This field can be either 'PRIVATE', 'REGIONAL_MANAGED_PROXY', 'GLOBAL_MANAGED_PROXY', 'PRIVATE_SERVICE_CONNECT', 'PEER_MIGRATION', 'PRIVATE_NAT'([Beta](../guides/provider_versions.html.markdown)) or 'CUSTOM_HARDWARE_LINK'([Beta](../guides/provider_versions.html.markdown)).
 									A subnet with purpose set to 'REGIONAL_MANAGED_PROXY' is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
 									A subnetwork in a given region with purpose set to 'GLOBAL_MANAGED_PROXY' is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
 									A subnetwork with purpose set to 'PRIVATE_SERVICE_CONNECT' reserves the subnet for hosting a Private Service Connect published service.
 									A subnetwork with purpose set to 'PEER_MIGRATION' is a user created subnetwork that is reserved for migrating resources from one peered network to another.
 									A subnetwork with purpose set to 'PRIVATE_NAT' is used as source range for Private NAT gateways.
+									A subnetwork with purpose set to 'CUSTOM_HARDWARE_LINK' is used by Custom Hardware Link.
 									Note that 'REGIONAL_MANAGED_PROXY' is the preferred setting for all regional Envoy load balancers.
 									If unspecified, the purpose defaults to 'PRIVATE'.
 									"""
@@ -123714,11 +124571,22 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								request_mirror_policy: {
 									nesting_mode: "list"
 									block: {
-										attributes: backend_service: {
-											type:             "string"
-											description:      "The full or partial URL to the BackendService resource being mirrored to."
-											description_kind: "plain"
-											required:         true
+										attributes: {
+											backend_service: {
+												type:             "string"
+												description:      "The full or partial URL to the BackendService resource being mirrored to."
+												description_kind: "plain"
+												required:         true
+											}
+											mirror_percent: {
+												type: "number"
+												description: """
+															The percentage of requests to be mirrored to backendService.
+															The value must be between 0.0 and 100.0 inclusive.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
 										}
 										description: """
 													Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
@@ -124914,11 +125782,22 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											request_mirror_policy: {
 												nesting_mode: "list"
 												block: {
-													attributes: backend_service: {
-														type:             "string"
-														description:      "The full or partial URL to the BackendService resource being mirrored to."
-														description_kind: "plain"
-														required:         true
+													attributes: {
+														backend_service: {
+															type:             "string"
+															description:      "The full or partial URL to the BackendService resource being mirrored to."
+															description_kind: "plain"
+															required:         true
+														}
+														mirror_percent: {
+															type: "number"
+															description: """
+																		The percentage of requests to be mirrored to backendService.
+																		The value must be between 0.0 and 100.0 inclusive.
+																		"""
+															description_kind: "plain"
+															optional:         true
+														}
 													}
 													description: """
 																Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
@@ -126084,11 +126963,22 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 														request_mirror_policy: {
 															nesting_mode: "list"
 															block: {
-																attributes: backend_service: {
-																	type:             "string"
-																	description:      "The BackendService resource being mirrored to."
-																	description_kind: "plain"
-																	required:         true
+																attributes: {
+																	backend_service: {
+																		type:             "string"
+																		description:      "The BackendService resource being mirrored to."
+																		description_kind: "plain"
+																		required:         true
+																	}
+																	mirror_percent: {
+																		type: "number"
+																		description: """
+																					The percentage of requests to be mirrored to backendService.
+																					The value must be between 0.0 and 100.0 inclusive.
+																					"""
+																		description_kind: "plain"
+																		optional:         true
+																	}
 																}
 																description: """
 																			Specifies the policy on how requests intended for the route's backends are
@@ -127591,11 +128481,22 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 														request_mirror_policy: {
 															nesting_mode: "list"
 															block: {
-																attributes: backend_service: {
-																	type:             "string"
-																	description:      "The BackendService resource being mirrored to."
-																	description_kind: "plain"
-																	required:         true
+																attributes: {
+																	backend_service: {
+																		type:             "string"
+																		description:      "The BackendService resource being mirrored to."
+																		description_kind: "plain"
+																		required:         true
+																	}
+																	mirror_percent: {
+																		type: "number"
+																		description: """
+																					The percentage of requests to be mirrored to backendService.
+																					The value must be between 0.0 and 100.0 inclusive.
+																					"""
+																		description_kind: "plain"
+																		optional:         true
+																	}
 																}
 																description: """
 																			Specifies the policy on how requests intended for the route's backends are
@@ -133451,7 +134352,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 					initial_node_count: {
 						type:             "number"
-						description:      "The number of nodes to create in this cluster's default node pool. In regional or multi-zonal clusters, this is the number of nodes per zone. Must be set if node_pool is not set. If you're using google_container_node_pool objects with no default node pool, you'll need to set this to a value of at least 1, alongside setting remove_default_node_pool to true."
+						description:      "The number of nodes to create in this cluster's default node pool. In regional or multi-zonal clusters, this is the number of nodes per zone. When omitted (or set to 0) with no node_config or node_pool blocks defined, the cluster is created without a default node pool. This requires a GKE version that supports clusters without a default node pool (1.36.4-gke.1469000+). For older GKE versions, if you're using google_container_node_pool objects with no default node pool, you'll need to set this to a value of at least 1, alongside setting remove_default_node_pool to true."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -133548,8 +134449,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 					remove_default_node_pool: {
 						type:             "bool"
-						description:      "If true, deletes the default node pool upon cluster creation. If you're using google_container_node_pool resources with no default node pool, this should be set to true, alongside setting initial_node_count to at least 1."
+						description:      "If true, deletes the default node pool upon cluster creation. On GKE versions that support clusters without a default node pool, you can instead omit initial_node_count and node_config (or set initial_node_count to 0) to skip creating the default node pool without setting this field. For older GKE versions, if you're using google_container_node_pool resources with no default node pool, this should be set to true, alongside setting initial_node_count to at least 1."
 						description_kind: "plain"
+						deprecated:       true
 						optional:         true
 					}
 					resource_labels: {
@@ -133827,6 +134729,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 										}
 										description:      "The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable."
 										description_kind: "plain"
+										deprecated:       true
 									}
 									max_items: 1
 								}
@@ -138700,7 +139603,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								}
 								master_ipv4_cidr_block: {
 									type:             "string"
-									description:      "The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enable_private_nodes is true."
+									description:      "The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enable_private_nodes is true. On GKE versions 1.29 and later, this field is optional when private_endpoint_subnetwork is specified. It is also optional for Autopilot clusters."
 									description_kind: "plain"
 									optional:         true
 									computed:         true
@@ -138839,6 +139742,20 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								optional:         true
 							}
 							description:      "Configuration for rollback-safe (two-step) upgrades."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					schedule_upgrade_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: enabled: {
+								type:             "bool"
+								description:      "Whether scheduled upgrades are enabled."
+								description_kind: "plain"
+								required:         true
+							}
+							description:      "Configuration for scheduled upgrades on the cluster."
 							description_kind: "plain"
 						}
 						max_items: 1
@@ -149632,7 +150549,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 										attributes: {
 											detail_of_message: {
 												type:             "string"
-												description:      "How much data to include in the pub/sub message. Possible values: [\"TABLE_PROFILE\", \"RESOURCE_NAME\"]"
+												description:      "How much data to include in the pub/sub message. Possible values: [\"TABLE_PROFILE\", \"RESOURCE_NAME\", \"FILE_STORE_PROFILE\"]"
 												description_kind: "plain"
 												optional:         true
 											}
@@ -155455,6 +156372,232 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							description_kind: "plain"
 						}
 						max_items: 1
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_dataflow_flex_template_job: {
+			version: 1
+			block: {
+				attributes: {
+					additional_experiments: {
+						type: ["set", "string"]
+						description:      "List of experiments that should be used by the job. An example value is [\"enable_stackdriver_agent_metrics\"]."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					additional_pipeline_options: {
+						type: ["set", "string"]
+						description:      "List of pipeline options that should be used by the job. An example value is [\"numberOfWorkerHarnessThreads=20\"]."
+						description_kind: "plain"
+						optional:         true
+					}
+					autoscaling_algorithm: {
+						type:             "string"
+						description:      "The algorithm to use for autoscaling"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					container_spec_gcs_path: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					create_ignore_already_exists: {
+						type:             "bool"
+						description:      "If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource."
+						description_kind: "plain"
+						optional:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					enable_streaming_engine: {
+						type:             "bool"
+						description:      "Indicates if the job should use the streaming engine feature."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					ip_configuration: {
+						type:             "string"
+						description:      "The configuration for VM IPs. Options are \"WORKER_IP_PUBLIC\" or \"WORKER_IP_PRIVATE\"."
+						description_kind: "plain"
+						optional:         true
+					}
+					job_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					kms_key_name: {
+						type:             "string"
+						description:      "The name for the Cloud KMS key for the job. Key format is: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									User labels to be specified for the job. Keys and values should follow the restrictions specified in the labeling restrictions page. NOTE: This field is non-authoritative, and will only manage the labels present in your configuration.
+									\t\t\t\tPlease refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					launcher_machine_type: {
+						type:             "string"
+						description:      "The machine type to use for launching the job. The default is n1-standard-1."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					machine_type: {
+						type:             "string"
+						description:      "The machine type to use for the job."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					max_workers: {
+						type:             "number"
+						description:      "The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					network: {
+						type:             "string"
+						description:      "The network to which VMs will be assigned. If it is not provided, \"default\" will be used."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					num_workers: {
+						type:             "number"
+						description:      "The initial number of Google Compute Engine instances for the job."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					on_delete: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					parameters: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						optional:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region in which the created job should run."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					sdk_container_image: {
+						type:             "string"
+						description:      "Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					service_account_email: {
+						type:             "string"
+						description:      "The Service Account email used to create the job."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					skip_wait_on_job_termination: {
+						type:             "bool"
+						description:      "If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are different, e.g. by embedding a release ID or by using a random_id."
+						description_kind: "plain"
+						optional:         true
+					}
+					staging_location: {
+						type:             "string"
+						description:      "The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					state: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					subnetwork: {
+						type:             "string"
+						description:      "The subnetwork to which VMs will be assigned. Should be of the form \"regions/REGION/subnetworks/SUBNETWORK\"."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					temp_location: {
+						type:             "string"
+						description:      "The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description:      "The combination of labels configured directly on the resource and default labels configured on the provider."
+						description_kind: "plain"
+						computed:         true
+					}
+					transform_name_mapping: {
+						type: ["map", "string"]
+						description:      "Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job."
+						description_kind: "plain"
+						optional:         true
+					}
+					type: {
+						type:             "string"
+						description:      "The type of this job, selected from the JobType enum."
+						description_kind: "plain"
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -164072,6 +165215,40 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									}
 									max_items: 1
 								}
+								master_flexible_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											boot_disk_size_gb: {
+												type:             "number"
+												description:      "The boot disk size in GB. Changing this forces a new resource to be created."
+												description_kind: "plain"
+												optional:         true
+											}
+											core_count: {
+												type:             "number"
+												description:      "The number of vCPUs per instance. Must be a power of 2: 2, 4, 8, 16, or 32. Changing this forces a new resource to be created."
+												description_kind: "plain"
+												required:         true
+											}
+											hardware_class: {
+												type:             "string"
+												description:      "The hardware class of instances. Allowed values are \"STANDARD\" and \"PERFORMANCE\". Defaults to \"STANDARD\". Changing this forces a new resource to be created."
+												description_kind: "plain"
+												optional:         true
+											}
+											num_instances: {
+												type:             "number"
+												description:      "Specifies the number of master instances to create. In High Obtainability (HO) mode, this must be 1. Defaults to 1. Changing this forces a new resource to be created."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "The configuration for the master flexible instance group in High Obtainability (HO) mode."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
 								metastore_config: {
 									nesting_mode: "list"
 									block: {
@@ -164351,6 +165528,40 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											}
 										}
 										description:      "The Google Compute Engine config settings for the additional (aka preemptible) instances in a cluster."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								secondary_worker_flexible_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											boot_disk_size_gb: {
+												type:             "number"
+												description:      "The boot disk size in GB. Changing this forces a new resource to be created."
+												description_kind: "plain"
+												optional:         true
+											}
+											core_count: {
+												type:             "number"
+												description:      "The number of vCPUs per instance. Must be a power of 2: 2, 4, 8, 16, or 32. Changing this forces a new resource to be created."
+												description_kind: "plain"
+												required:         true
+											}
+											hardware_class: {
+												type:             "string"
+												description:      "The hardware class of instances. Allowed values are \"STANDARD\" and \"PERFORMANCE\". Defaults to \"STANDARD\". Changing this forces a new resource to be created."
+												description_kind: "plain"
+												optional:         true
+											}
+											num_instances: {
+												type:             "number"
+												description:      "Specifies the number of secondary worker instances to create. Represents the desired capacity of the group and is updatable in place. Defaults to 0; can be scaled down to 0."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "The configuration for the secondary worker flexible instance group in High Obtainability (HO) mode."
 										description_kind: "plain"
 									}
 									max_items: 1
@@ -164805,6 +166016,40 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											}
 										}
 										description:      "The Compute Engine config settings for the cluster's worker instances."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								worker_flexible_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											boot_disk_size_gb: {
+												type:             "number"
+												description:      "The boot disk size in GB. Changing this forces a new resource to be created."
+												description_kind: "plain"
+												optional:         true
+											}
+											core_count: {
+												type:             "number"
+												description:      "The number of vCPUs per instance. Must be a power of 2: 2, 4, 8, 16, or 32. Changing this forces a new resource to be created."
+												description_kind: "plain"
+												required:         true
+											}
+											hardware_class: {
+												type:             "string"
+												description:      "The hardware class of instances. Allowed values are \"STANDARD\" and \"PERFORMANCE\". Defaults to \"STANDARD\". Changing this forces a new resource to be created."
+												description_kind: "plain"
+												optional:         true
+											}
+											num_instances: {
+												type:             "number"
+												description:      "Specifies the number of worker instances to create. Represents the desired capacity of the group and is updatable in place."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "The configuration for the worker flexible instance group in High Obtainability (HO) mode."
 										description_kind: "plain"
 									}
 									max_items: 1
@@ -171036,6 +172281,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												"""
 									description_kind: "plain"
 									optional:         true
+									sensitive:        true
 								}
 								username: {
 									type:             "string"
@@ -189078,6 +190324,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					model_configs: {
+						type: ["map", "string"]
+						description: """
+									Maps a model name to its specific configuration for this engine. This
+									allows admin users to turn on/off individual models. This only stores
+									models whose states are overridden by the admin. When the state is
+									unspecified, or 'model_configs' is empty for this model, the system
+									decides if this model is available based on the default configuration.
+									For example, a preview model is disabled by default if the admin has not
+									chosen to enable it. Each value is one of 'MODEL_STATE_UNSPECIFIED',
+									'MODEL_ENABLED', or 'MODEL_DISABLED'; see the [ModelState API reference](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines#modelstate)
+									for details.
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					name: {
 						type: "string"
 						description: """
@@ -202950,46 +204213,406 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											datasource_references: {
 												nesting_mode: "list"
 												block: {
-													block_types: bq: {
-														nesting_mode: "list"
-														block: {
-															block_types: table_references: {
-																nesting_mode: "list"
-																block: {
-																	attributes: {
-																		dataset_id: {
-																			type:             "string"
-																			description:      "Required. The dataset that the table belongs to."
+													block_types: {
+														bq: {
+															nesting_mode: "list"
+															block: {
+																block_types: {
+																	property_graph_references: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				dataset_id: {
+																					type:             "string"
+																					description:      "Required. The dataset that the property graph belongs to."
+																					description_kind: "plain"
+																					required:         true
+																				}
+																				project_id: {
+																					type:             "string"
+																					description:      "Required. The project that the property graph belongs to."
+																					description_kind: "plain"
+																					required:         true
+																				}
+																				property_graph_id: {
+																					type:             "string"
+																					description:      "Required. The property graph ID."
+																					description_kind: "plain"
+																					required:         true
+																				}
+																			}
+																			description:      "Optional. References to BigQuery property graphs."
 																			description_kind: "plain"
-																			required:         true
-																		}
-																		project_id: {
-																			type:             "string"
-																			description:      "Required. The project that the table belongs to."
-																			description_kind: "plain"
-																			required:         true
-																		}
-																		table_id: {
-																			type:             "string"
-																			description:      "Required. The table ID."
-																			description_kind: "plain"
-																			required:         true
 																		}
 																	}
-																	description:      "Optional. References to BigQuery tables."
-																	description_kind: "plain"
+																	table_references: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				dataset_id: {
+																					type:             "string"
+																					description:      "Required. The dataset that the table belongs to."
+																					description_kind: "plain"
+																					required:         true
+																				}
+																				project_id: {
+																					type:             "string"
+																					description:      "Required. The project that the table belongs to."
+																					description_kind: "plain"
+																					required:         true
+																				}
+																				table_id: {
+																					type:             "string"
+																					description:      "Required. The table ID."
+																					description_kind: "plain"
+																					required:         true
+																				}
+																			}
+																			block_types: schema: {
+																				nesting_mode: "list"
+																				block: {
+																					attributes: {
+																						description: {
+																							type:             "string"
+																							description:      "Optional. A textual description of the table's content and purpose."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																						display_name: {
+																							type:             "string"
+																							description:      "Optional. Table display name."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																						synonyms: {
+																							type: ["list", "string"]
+																							description:      "Optional. A list of alternative names or synonyms that can be used to refer to the table."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																						tags: {
+																							type: ["list", "string"]
+																							description:      "Optional. A list of tags or keywords associated with the table, used for categorization."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																					}
+																					block_types: {
+																						fields: {
+																							nesting_mode: "list"
+																							block: {
+																								attributes: {
+																									category: {
+																										type:             "string"
+																										description:      "Optional. Field category."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									description: {
+																										type:             "string"
+																										description:      "Optional. A brief description of the field."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									mode: {
+																										type:             "string"
+																										description:      "Optional. The mode of the field (e.g., NULLABLE, REPEATED)."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									name: {
+																										type:             "string"
+																										description:      "Optional. The name of the field."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									subfields: {
+																										type:             "string"
+																										description:      "Optional. Recursive property for nested schema structures, encoded as a JSON string representing a list of Field objects."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									synonyms: {
+																										type: ["list", "string"]
+																										description:      "Optional. A list of alternative names or synonyms that can be used to refer to this field."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									tags: {
+																										type: ["list", "string"]
+																										description:      "Optional. A list of tags or keywords associated with the field, used for categorization."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									type: {
+																										type:             "string"
+																										description:      "Optional. The type of the field."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									value_format: {
+																										type:             "string"
+																										description:      "Optional. Value format of the field."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																								}
+																								description:      "Optional. The fields in the schema."
+																								description_kind: "plain"
+																							}
+																						}
+																						filters: {
+																							nesting_mode: "list"
+																							block: {
+																								attributes: {
+																									field: {
+																										type:             "string"
+																										description:      "Optional. The field to filter on."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									type: {
+																										type:             "string"
+																										description:      "Optional. The type of filter present on a datasource, such as ALWAYS_FILTER."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									value: {
+																										type:             "string"
+																										description:      "Optional. The default value used for this filter if the filter is not overridden in a query."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																								}
+																								description:      "Optional. The filters on the datasource's underlying data."
+																								description_kind: "plain"
+																							}
+																						}
+																					}
+																					description:      "Optional. The schema of the datasource."
+																					description_kind: "plain"
+																				}
+																				max_items: 1
+																			}
+																			description:      "Optional. References to BigQuery tables."
+																			description_kind: "plain"
+																		}
+																	}
 																}
+																description:      "References to BigQuery tables and property graphs."
+																description_kind: "plain"
 															}
-															description:      "References to BigQuery tables."
-															description_kind: "plain"
+															max_items: 1
 														}
-														min_items: 1
-														max_items: 1
+														looker: {
+															nesting_mode: "list"
+															block: {
+																block_types: explore_references: {
+																	nesting_mode: "list"
+																	block: {
+																		attributes: {
+																			explore: {
+																				type:             "string"
+																				description:      "Required. Name of the LookML Explore."
+																				description_kind: "plain"
+																				required:         true
+																			}
+																			looker_instance_uri: {
+																				type:             "string"
+																				description:      "Optional. The base URL of the Looker instance."
+																				description_kind: "plain"
+																				optional:         true
+																			}
+																			lookml_model: {
+																				type:             "string"
+																				description:      "Required. Name of the LookML model."
+																				description_kind: "plain"
+																				required:         true
+																			}
+																		}
+																		block_types: {
+																			private_looker_instance_info: {
+																				nesting_mode: "list"
+																				block: {
+																					attributes: {
+																						looker_instance_id: {
+																							type:             "string"
+																							description:      "Optional. The Looker instance ID."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																						service_directory_name: {
+																							type:             "string"
+																							description:      "Optional. The service directory name of the Looker instance."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																					}
+																					description:      "Optional. Private Looker instance info if the Looker instance is behind a private network."
+																					description_kind: "plain"
+																				}
+																				max_items: 1
+																			}
+																			schema: {
+																				nesting_mode: "list"
+																				block: {
+																					attributes: {
+																						description: {
+																							type:             "string"
+																							description:      "Optional. A textual description of the explore's content and purpose."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																						display_name: {
+																							type:             "string"
+																							description:      "Optional. Explore display name."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																						synonyms: {
+																							type: ["list", "string"]
+																							description:      "Optional. A list of alternative names or synonyms that can be used to refer to the explore."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																						tags: {
+																							type: ["list", "string"]
+																							description:      "Optional. A list of tags or keywords associated with the explore, used for categorization."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																					}
+																					block_types: {
+																						fields: {
+																							nesting_mode: "list"
+																							block: {
+																								attributes: {
+																									category: {
+																										type:             "string"
+																										description:      "Optional. Field category."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									description: {
+																										type:             "string"
+																										description:      "Optional. A brief description of the field."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									mode: {
+																										type:             "string"
+																										description:      "Optional. The mode of the field (e.g., NULLABLE, REPEATED)."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									name: {
+																										type:             "string"
+																										description:      "Optional. The name of the field."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									subfields: {
+																										type:             "string"
+																										description:      "Optional. Recursive property for nested schema structures, encoded as a JSON string representing a list of Field objects."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									synonyms: {
+																										type: ["list", "string"]
+																										description:      "Optional. A list of alternative names or synonyms that can be used to refer to this field."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									tags: {
+																										type: ["list", "string"]
+																										description:      "Optional. A list of tags or keywords associated with the field, used for categorization."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									type: {
+																										type:             "string"
+																										description:      "Optional. The type of the field."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									value_format: {
+																										type:             "string"
+																										description:      "Optional. Value format of the field."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																								}
+																								description:      "Optional. The fields in the schema."
+																								description_kind: "plain"
+																							}
+																						}
+																						filters: {
+																							nesting_mode: "list"
+																							block: {
+																								attributes: {
+																									field: {
+																										type:             "string"
+																										description:      "Optional. The field to filter on."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									type: {
+																										type:             "string"
+																										description:      "Optional. The type of filter present on a datasource, such as ALWAYS_FILTER."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									value: {
+																										type:             "string"
+																										description:      "Optional. The default value used for this filter if the filter is not overridden in a query."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																								}
+																								description:      "Optional. The filters on the datasource's underlying data."
+																								description_kind: "plain"
+																							}
+																						}
+																					}
+																					description:      "Optional. The schema of the datasource."
+																					description_kind: "plain"
+																				}
+																				max_items: 1
+																			}
+																		}
+																		description:      "Required. References to Looker explores."
+																		description_kind: "plain"
+																	}
+																	min_items: 1
+																}
+																description:      "References to Looker explores."
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
+														studio: {
+															nesting_mode: "list"
+															block: {
+																block_types: studio_references: {
+																	nesting_mode: "list"
+																	block: {
+																		attributes: datasource_id: {
+																			type:             "string"
+																			description:      "Required. The ID of the datasource."
+																			description_kind: "plain"
+																			required:         true
+																		}
+																		description:      "Optional. The references to the studio datasources."
+																		description_kind: "plain"
+																	}
+																}
+																description:      "References to Looker Studio datasources."
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
 													}
-													description: """
-																Required. Data sources that are available for answering questions.
-																This Terraform resource currently supports BigQuery table references.
-																"""
+													description:      "Required. Data sources that are available for answering questions."
 													description_kind: "plain"
 												}
 												min_items: 1
@@ -203013,6 +204636,33 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																		"""
 															description_kind: "plain"
 															optional:         true
+														}
+													}
+													block_types: parameters: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																data_type: {
+																	type:             "string"
+																	description:      "Required. The data type of the parameter, e.g. \"STRING\", \"INT64\", \"DATE\"."
+																	description_kind: "plain"
+																	required:         true
+																}
+																description: {
+																	type:             "string"
+																	description:      "Optional. The description of the parameter that can be used by the LLM to extract the parameter value from the user question."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																name: {
+																	type:             "string"
+																	description:      "Required. The name of the parameter reference in the SQL query."
+																	description_kind: "plain"
+																	required:         true
+																}
+															}
+															description:      "Optional. The list of query parameters."
+															description_kind: "plain"
 														}
 													}
 													description:      "Optional. A list of example queries for BigQuery data sources."
@@ -203046,9 +204696,102 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 													description_kind: "plain"
 												}
 											}
+											looker_golden_queries: {
+												nesting_mode: "list"
+												block: {
+													attributes: natural_language_questions: {
+														type: ["list", "string"]
+														description:      "Optional. Natural language questions that a user might ask."
+														description_kind: "plain"
+														optional:         true
+													}
+													block_types: looker_query: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																client_id: {
+																	type:             "string"
+																	description:      "Optional. The short alphanumeric identifier for the query, used for share links and Explore URLs."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																explore: {
+																	type:             "string"
+																	description:      "Required. The LookML explore used to generate the query."
+																	description_kind: "plain"
+																	required:         true
+																}
+																fields: {
+																	type: ["list", "string"]
+																	description:      "Optional. The fields to retrieve from the explore."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																limit: {
+																	type:             "string"
+																	description:      "Optional. Limit in the query."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																model: {
+																	type:             "string"
+																	description:      "Required. The LookML model used to generate the query."
+																	description_kind: "plain"
+																	required:         true
+																}
+																query_id: {
+																	type:             "string"
+																	description:      "Optional. The primary identifier for the query resource in Looker."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																sorts: {
+																	type: ["list", "string"]
+																	description:      "Optional. The sorts to apply to the explore."
+																	description_kind: "plain"
+																	optional:         true
+																}
+															}
+															block_types: filters: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		field: {
+																			type:             "string"
+																			description:      "Required. The field to filter on."
+																			description_kind: "plain"
+																			required:         true
+																		}
+																		value: {
+																			type:             "string"
+																			description:      "Optional. The value for the field to filter on."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																	}
+																	description:      "Optional. The filters to apply to the explore."
+																	description_kind: "plain"
+																}
+															}
+															description:      "Optional. The Looker Query corresponding to the natural language questions."
+															description_kind: "plain"
+														}
+														max_items: 1
+													}
+													description:      "Optional. A list of golden queries for Looker data sources."
+													description_kind: "plain"
+												}
+											}
 											options: {
 												nesting_mode: "list"
 												block: {
+													attributes: model: {
+														type:             "string"
+														description:      "Optional. The model to use for the agent loop."
+														description_kind: "plain"
+														optional:         true
+														computed:         true
+													}
 													block_types: {
 														analysis: {
 															nesting_mode: "list"
@@ -203166,6 +204909,55 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																"""
 													description_kind: "plain"
 												}
+											}
+											user_functions: {
+												nesting_mode: "list"
+												block: {
+													block_types: bq_routines: {
+														nesting_mode: "list"
+														block: {
+															attributes: description: {
+																type:             "string"
+																description:      "Optional. User override or addition to description, to tell the agent when to use the UDF."
+																description_kind: "plain"
+																optional:         true
+															}
+															block_types: routine_reference: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		dataset_id: {
+																			type:             "string"
+																			description:      "Optional. The dataset ID of the routine."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		project_id: {
+																			type:             "string"
+																			description:      "Optional. The project ID of the routine."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		routine_id: {
+																			type:             "string"
+																			description:      "Optional. The routine ID of the routine."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																	}
+																	description:      "Optional. The reference to the BigQuery routine."
+																	description_kind: "plain"
+																}
+																max_items: 1
+															}
+															description:      "Optional. A list of BigQuery routines to include in the context."
+															description_kind: "plain"
+														}
+													}
+													description:      "Optional. A collection of user functions to be included in context."
+													description_kind: "plain"
+												}
+												max_items: 1
 											}
 										}
 										description: """
@@ -203192,46 +204984,406 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											datasource_references: {
 												nesting_mode: "list"
 												block: {
-													block_types: bq: {
-														nesting_mode: "list"
-														block: {
-															block_types: table_references: {
-																nesting_mode: "list"
-																block: {
-																	attributes: {
-																		dataset_id: {
-																			type:             "string"
-																			description:      "Required. The dataset that the table belongs to."
+													block_types: {
+														bq: {
+															nesting_mode: "list"
+															block: {
+																block_types: {
+																	property_graph_references: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				dataset_id: {
+																					type:             "string"
+																					description:      "Required. The dataset that the property graph belongs to."
+																					description_kind: "plain"
+																					required:         true
+																				}
+																				project_id: {
+																					type:             "string"
+																					description:      "Required. The project that the property graph belongs to."
+																					description_kind: "plain"
+																					required:         true
+																				}
+																				property_graph_id: {
+																					type:             "string"
+																					description:      "Required. The property graph ID."
+																					description_kind: "plain"
+																					required:         true
+																				}
+																			}
+																			description:      "Optional. References to BigQuery property graphs."
 																			description_kind: "plain"
-																			required:         true
-																		}
-																		project_id: {
-																			type:             "string"
-																			description:      "Required. The project that the table belongs to."
-																			description_kind: "plain"
-																			required:         true
-																		}
-																		table_id: {
-																			type:             "string"
-																			description:      "Required. The table ID."
-																			description_kind: "plain"
-																			required:         true
 																		}
 																	}
-																	description:      "Optional. References to BigQuery tables."
-																	description_kind: "plain"
+																	table_references: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				dataset_id: {
+																					type:             "string"
+																					description:      "Required. The dataset that the table belongs to."
+																					description_kind: "plain"
+																					required:         true
+																				}
+																				project_id: {
+																					type:             "string"
+																					description:      "Required. The project that the table belongs to."
+																					description_kind: "plain"
+																					required:         true
+																				}
+																				table_id: {
+																					type:             "string"
+																					description:      "Required. The table ID."
+																					description_kind: "plain"
+																					required:         true
+																				}
+																			}
+																			block_types: schema: {
+																				nesting_mode: "list"
+																				block: {
+																					attributes: {
+																						description: {
+																							type:             "string"
+																							description:      "Optional. A textual description of the table's content and purpose."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																						display_name: {
+																							type:             "string"
+																							description:      "Optional. Table display name."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																						synonyms: {
+																							type: ["list", "string"]
+																							description:      "Optional. A list of alternative names or synonyms that can be used to refer to the table."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																						tags: {
+																							type: ["list", "string"]
+																							description:      "Optional. A list of tags or keywords associated with the table, used for categorization."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																					}
+																					block_types: {
+																						fields: {
+																							nesting_mode: "list"
+																							block: {
+																								attributes: {
+																									category: {
+																										type:             "string"
+																										description:      "Optional. Field category."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									description: {
+																										type:             "string"
+																										description:      "Optional. A brief description of the field."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									mode: {
+																										type:             "string"
+																										description:      "Optional. The mode of the field (e.g., NULLABLE, REPEATED)."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									name: {
+																										type:             "string"
+																										description:      "Optional. The name of the field."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									subfields: {
+																										type:             "string"
+																										description:      "Optional. Recursive property for nested schema structures, encoded as a JSON string representing a list of Field objects."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									synonyms: {
+																										type: ["list", "string"]
+																										description:      "Optional. A list of alternative names or synonyms that can be used to refer to this field."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									tags: {
+																										type: ["list", "string"]
+																										description:      "Optional. A list of tags or keywords associated with the field, used for categorization."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									type: {
+																										type:             "string"
+																										description:      "Optional. The type of the field."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									value_format: {
+																										type:             "string"
+																										description:      "Optional. Value format of the field."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																								}
+																								description:      "Optional. The fields in the schema."
+																								description_kind: "plain"
+																							}
+																						}
+																						filters: {
+																							nesting_mode: "list"
+																							block: {
+																								attributes: {
+																									field: {
+																										type:             "string"
+																										description:      "Optional. The field to filter on."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									type: {
+																										type:             "string"
+																										description:      "Optional. The type of filter present on a datasource, such as ALWAYS_FILTER."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									value: {
+																										type:             "string"
+																										description:      "Optional. The default value used for this filter if the filter is not overridden in a query."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																								}
+																								description:      "Optional. The filters on the datasource's underlying data."
+																								description_kind: "plain"
+																							}
+																						}
+																					}
+																					description:      "Optional. The schema of the datasource."
+																					description_kind: "plain"
+																				}
+																				max_items: 1
+																			}
+																			description:      "Optional. References to BigQuery tables."
+																			description_kind: "plain"
+																		}
+																	}
 																}
+																description:      "References to BigQuery tables and property graphs."
+																description_kind: "plain"
 															}
-															description:      "References to BigQuery tables."
-															description_kind: "plain"
+															max_items: 1
 														}
-														min_items: 1
-														max_items: 1
+														looker: {
+															nesting_mode: "list"
+															block: {
+																block_types: explore_references: {
+																	nesting_mode: "list"
+																	block: {
+																		attributes: {
+																			explore: {
+																				type:             "string"
+																				description:      "Required. Name of the LookML Explore."
+																				description_kind: "plain"
+																				required:         true
+																			}
+																			looker_instance_uri: {
+																				type:             "string"
+																				description:      "Optional. The base URL of the Looker instance."
+																				description_kind: "plain"
+																				optional:         true
+																			}
+																			lookml_model: {
+																				type:             "string"
+																				description:      "Required. Name of the LookML model."
+																				description_kind: "plain"
+																				required:         true
+																			}
+																		}
+																		block_types: {
+																			private_looker_instance_info: {
+																				nesting_mode: "list"
+																				block: {
+																					attributes: {
+																						looker_instance_id: {
+																							type:             "string"
+																							description:      "Optional. The Looker instance ID."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																						service_directory_name: {
+																							type:             "string"
+																							description:      "Optional. The service directory name of the Looker instance."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																					}
+																					description:      "Optional. Private Looker instance info if the Looker instance is behind a private network."
+																					description_kind: "plain"
+																				}
+																				max_items: 1
+																			}
+																			schema: {
+																				nesting_mode: "list"
+																				block: {
+																					attributes: {
+																						description: {
+																							type:             "string"
+																							description:      "Optional. A textual description of the explore's content and purpose."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																						display_name: {
+																							type:             "string"
+																							description:      "Optional. Explore display name."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																						synonyms: {
+																							type: ["list", "string"]
+																							description:      "Optional. A list of alternative names or synonyms that can be used to refer to the explore."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																						tags: {
+																							type: ["list", "string"]
+																							description:      "Optional. A list of tags or keywords associated with the explore, used for categorization."
+																							description_kind: "plain"
+																							optional:         true
+																						}
+																					}
+																					block_types: {
+																						fields: {
+																							nesting_mode: "list"
+																							block: {
+																								attributes: {
+																									category: {
+																										type:             "string"
+																										description:      "Optional. Field category."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									description: {
+																										type:             "string"
+																										description:      "Optional. A brief description of the field."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									mode: {
+																										type:             "string"
+																										description:      "Optional. The mode of the field (e.g., NULLABLE, REPEATED)."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									name: {
+																										type:             "string"
+																										description:      "Optional. The name of the field."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									subfields: {
+																										type:             "string"
+																										description:      "Optional. Recursive property for nested schema structures, encoded as a JSON string representing a list of Field objects."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									synonyms: {
+																										type: ["list", "string"]
+																										description:      "Optional. A list of alternative names or synonyms that can be used to refer to this field."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									tags: {
+																										type: ["list", "string"]
+																										description:      "Optional. A list of tags or keywords associated with the field, used for categorization."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									type: {
+																										type:             "string"
+																										description:      "Optional. The type of the field."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									value_format: {
+																										type:             "string"
+																										description:      "Optional. Value format of the field."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																								}
+																								description:      "Optional. The fields in the schema."
+																								description_kind: "plain"
+																							}
+																						}
+																						filters: {
+																							nesting_mode: "list"
+																							block: {
+																								attributes: {
+																									field: {
+																										type:             "string"
+																										description:      "Optional. The field to filter on."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									type: {
+																										type:             "string"
+																										description:      "Optional. The type of filter present on a datasource, such as ALWAYS_FILTER."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																									value: {
+																										type:             "string"
+																										description:      "Optional. The default value used for this filter if the filter is not overridden in a query."
+																										description_kind: "plain"
+																										optional:         true
+																									}
+																								}
+																								description:      "Optional. The filters on the datasource's underlying data."
+																								description_kind: "plain"
+																							}
+																						}
+																					}
+																					description:      "Optional. The schema of the datasource."
+																					description_kind: "plain"
+																				}
+																				max_items: 1
+																			}
+																		}
+																		description:      "Required. References to Looker explores."
+																		description_kind: "plain"
+																	}
+																	min_items: 1
+																}
+																description:      "References to Looker explores."
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
+														studio: {
+															nesting_mode: "list"
+															block: {
+																block_types: studio_references: {
+																	nesting_mode: "list"
+																	block: {
+																		attributes: datasource_id: {
+																			type:             "string"
+																			description:      "Required. The ID of the datasource."
+																			description_kind: "plain"
+																			required:         true
+																		}
+																		description:      "Optional. The references to the studio datasources."
+																		description_kind: "plain"
+																	}
+																}
+																description:      "References to Looker Studio datasources."
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
 													}
-													description: """
-																Required. Data sources that are available for answering questions.
-																This Terraform resource currently supports BigQuery table references.
-																"""
+													description:      "Required. Data sources that are available for answering questions."
 													description_kind: "plain"
 												}
 												min_items: 1
@@ -203255,6 +205407,33 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																		"""
 															description_kind: "plain"
 															optional:         true
+														}
+													}
+													block_types: parameters: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																data_type: {
+																	type:             "string"
+																	description:      "Required. The data type of the parameter, e.g. \"STRING\", \"INT64\", \"DATE\"."
+																	description_kind: "plain"
+																	required:         true
+																}
+																description: {
+																	type:             "string"
+																	description:      "Optional. The description of the parameter that can be used by the LLM to extract the parameter value from the user question."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																name: {
+																	type:             "string"
+																	description:      "Required. The name of the parameter reference in the SQL query."
+																	description_kind: "plain"
+																	required:         true
+																}
+															}
+															description:      "Optional. The list of query parameters."
+															description_kind: "plain"
 														}
 													}
 													description:      "Optional. A list of example queries for BigQuery data sources."
@@ -203288,9 +205467,102 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 													description_kind: "plain"
 												}
 											}
+											looker_golden_queries: {
+												nesting_mode: "list"
+												block: {
+													attributes: natural_language_questions: {
+														type: ["list", "string"]
+														description:      "Optional. Natural language questions that a user might ask."
+														description_kind: "plain"
+														optional:         true
+													}
+													block_types: looker_query: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																client_id: {
+																	type:             "string"
+																	description:      "Optional. The short alphanumeric identifier for the query, used for share links and Explore URLs."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																explore: {
+																	type:             "string"
+																	description:      "Required. The LookML explore used to generate the query."
+																	description_kind: "plain"
+																	required:         true
+																}
+																fields: {
+																	type: ["list", "string"]
+																	description:      "Optional. The fields to retrieve from the explore."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																limit: {
+																	type:             "string"
+																	description:      "Optional. Limit in the query."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																model: {
+																	type:             "string"
+																	description:      "Required. The LookML model used to generate the query."
+																	description_kind: "plain"
+																	required:         true
+																}
+																query_id: {
+																	type:             "string"
+																	description:      "Optional. The primary identifier for the query resource in Looker."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																sorts: {
+																	type: ["list", "string"]
+																	description:      "Optional. The sorts to apply to the explore."
+																	description_kind: "plain"
+																	optional:         true
+																}
+															}
+															block_types: filters: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		field: {
+																			type:             "string"
+																			description:      "Required. The field to filter on."
+																			description_kind: "plain"
+																			required:         true
+																		}
+																		value: {
+																			type:             "string"
+																			description:      "Optional. The value for the field to filter on."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																	}
+																	description:      "Optional. The filters to apply to the explore."
+																	description_kind: "plain"
+																}
+															}
+															description:      "Optional. The Looker Query corresponding to the natural language questions."
+															description_kind: "plain"
+														}
+														max_items: 1
+													}
+													description:      "Optional. A list of golden queries for Looker data sources."
+													description_kind: "plain"
+												}
+											}
 											options: {
 												nesting_mode: "list"
 												block: {
+													attributes: model: {
+														type:             "string"
+														description:      "Optional. The model to use for the agent loop."
+														description_kind: "plain"
+														optional:         true
+														computed:         true
+													}
 													block_types: {
 														analysis: {
 															nesting_mode: "list"
@@ -203408,6 +205680,55 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																"""
 													description_kind: "plain"
 												}
+											}
+											user_functions: {
+												nesting_mode: "list"
+												block: {
+													block_types: bq_routines: {
+														nesting_mode: "list"
+														block: {
+															attributes: description: {
+																type:             "string"
+																description:      "Optional. User override or addition to description, to tell the agent when to use the UDF."
+																description_kind: "plain"
+																optional:         true
+															}
+															block_types: routine_reference: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		dataset_id: {
+																			type:             "string"
+																			description:      "Optional. The dataset ID of the routine."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		project_id: {
+																			type:             "string"
+																			description:      "Optional. The project ID of the routine."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		routine_id: {
+																			type:             "string"
+																			description:      "Optional. The routine ID of the routine."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																	}
+																	description:      "Optional. The reference to the BigQuery routine."
+																	description_kind: "plain"
+																}
+																max_items: 1
+															}
+															description:      "Optional. A list of BigQuery routines to include in the context."
+															description_kind: "plain"
+														}
+													}
+													description:      "Optional. A collection of user functions to be included in context."
+													description_kind: "plain"
+												}
+												max_items: 1
 											}
 										}
 										description: """
@@ -253412,11 +255733,36 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					endpoint_settings: {
 						nesting_mode: "list"
 						block: {
-							attributes: jumbo_frames_enabled: {
-								type:             "bool"
-								description:      "Indicates whether Jumbo Frames are enabled for the firewall endpoint."
-								description_kind: "plain"
-								optional:         true
+							attributes: {
+								content_cloud_region: {
+									type: "string"
+									description: """
+												The Palo Alto Networks content cloud region of the firewall endpoint,
+												for example 'US_CENTRAL' or 'CANADA'. See
+												[API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#contentcloudregion)
+												for the list of supported regions.
+												"""
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								http_partial_response_blocked: {
+									type: "bool"
+									description: """
+												Whether to block HTTP partial responses for the firewall endpoint.
+												When 'true', resumption of blocked malicious HTTP file downloads is
+												blocked by the firewall. 'false' provides maximum availability, 'true'
+												provides maximum security.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								jumbo_frames_enabled: {
+									type:             "bool"
+									description:      "Indicates whether Jumbo Frames are enabled for the firewall endpoint."
+									description_kind: "plain"
+									optional:         true
+								}
 							}
 							description:      "Settings for the endpoint."
 							description_kind: "plain"
@@ -253445,6 +255791,98 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}
 							description_kind: "plain"
 						}
+					}
+					wildfire_settings: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								enabled: {
+									type: "bool"
+									description: """
+												Indicates whether WildFire is enabled for the firewall endpoint.
+												Enabling WildFire requires accepting the WildFire end-user license
+												agreement (EULA) for the endpoint's billing project; see
+												[Configure WildFire](https://docs.cloud.google.com/firewall/docs/configure-wildfire).
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								wildfire_realtime_lookup_duration: {
+									type: "string"
+									description: """
+												The duration for which the firewall endpoint waits for a real-time
+												signature lookup response from the WildFire cloud before taking the
+												configured timeout action (1ms to 5000ms, default 1000ms).
+												A duration in seconds with up to nine fractional digits, ending with 's'.
+												Example: "1s".
+												"""
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								wildfire_realtime_lookup_timeout_action: {
+									type:             "string"
+									description:      "The action to take when a WildFire real-time signature lookup times out. Possible values: [\"ALLOW\", \"DENY\"]"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								wildfire_region: {
+									type: "string"
+									description: """
+												The WildFire region for the firewall endpoint, for example
+												'UNITED_STATES' or 'CANADA'. See
+												[API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#wildfireregion)
+												for the list of supported regions.
+												"""
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							block_types: wildfire_inline_cloud_analysis_settings: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										max_analysis_duration: {
+											type: "string"
+											description: """
+															The maximum duration for which the firewall endpoint holds a file
+															while waiting for an inline cloud analysis verdict before taking
+															the configured timeout action (1ms to 240000ms, default 30000ms).
+															A duration in seconds with up to nine fractional digits, ending with 's'.
+															Example: "30s".
+															"""
+											description_kind: "plain"
+											optional:         true
+											computed:         true
+										}
+										submission_timeout_logging_disabled: {
+											type: "bool"
+											description: """
+															Indicates whether logging is disabled when a WildFire inline cloud
+															analysis submission times out.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										timeout_action: {
+											type:             "string"
+											description:      "The action to take when WildFire inline cloud analysis times out. Possible values: [\"ALLOW\", \"DENY\"]"
+											description_kind: "plain"
+											optional:         true
+											computed:         true
+										}
+									}
+									description:      "Settings for WildFire inline cloud analysis."
+									description_kind: "plain"
+								}
+								max_items: 1
+							}
+							description:      "Settings for WildFire analysis on the firewall endpoint."
+							description_kind: "plain"
+						}
+						max_items: 1
 					}
 				}
 				description_kind: "plain"
@@ -255714,7 +258152,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 					type: {
 						type:             "string"
-						description:      "The type of security profile. 'WILDFIRE_ANALYSIS' is beta-only. Possible values: [\"THREAT_PREVENTION\", \"URL_FILTERING\", \"CUSTOM_MIRRORING\", \"CUSTOM_INTERCEPT\", \"WILDFIRE_ANALYSIS\"]"
+						description:      "The type of security profile. Possible values: [\"THREAT_PREVENTION\", \"URL_FILTERING\", \"CUSTOM_MIRRORING\", \"CUSTOM_INTERCEPT\", \"WILDFIRE_ANALYSIS\"]"
 						description_kind: "plain"
 						required:         true
 					}
@@ -255944,6 +258382,213 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						}
 						max_items: 1
 					}
+					wildfire_analysis_profile: {
+						nesting_mode: "list"
+						block: {
+							attributes: wildfire_realtime_lookup: {
+								type:             "bool"
+								description:      "Whether to hold the transfer of a file while the WildFire real-time signature cloud performs a signature lookup. Default value is false."
+								description_kind: "plain"
+								optional:         true
+							}
+							block_types: {
+								wildfire_inline_cloud_analysis_rules: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											action: {
+												type:             "string"
+												description:      "The action to take when a rule is matched. Possible values: [\"ALLOW\", \"DENY\", \"ALERT\"]"
+												description_kind: "plain"
+												required:         true
+											}
+											direction: {
+												type:             "string"
+												description:      "Direction of traffic to match for a rule. Possible values: [\"UPLOAD\", \"DOWNLOAD\", \"BOTH\"]"
+												description_kind: "plain"
+												required:         true
+											}
+											file_selection_mode: {
+												type:             "string"
+												description:      "Defines the file selection mode for a rule. Possible values: [\"ALL_FILE_TYPES\", \"CUSTOM_FILE_TYPES\"]"
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										block_types: custom_file_types: {
+											nesting_mode: "list"
+											block: {
+												attributes: file_types: {
+													type: ["set", "string"]
+													description:      "The file types to match for a rule. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#wildfireinlinecloudanalysisrule)."
+													description_kind: "plain"
+													required:         true
+												}
+												description:      "Defines the custom file types to match for a rule. The API will only accept this if 'file_selection_mode' is set to 'CUSTOM_FILE_TYPES'"
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										description:      "The configuration for inline cloud analysis of files."
+										description_kind: "plain"
+									}
+								}
+								wildfire_inline_ml_overrides: {
+									nesting_mode: "set"
+									block: {
+										attributes: {
+											action: {
+												type:             "string"
+												description:      "Threat action override. Possible values: [\"WILDFIRE_DEFAULT_ACTION\", \"WILDFIRE_ALLOW\", \"WILDFIRE_ALERT\", \"WILDFIRE_DENY\"]"
+												description_kind: "plain"
+												required:         true
+											}
+											protocol: {
+												type:             "string"
+												description:      "Required protocol to match. Possible values: [\"WILDFIRE_SMTP\", \"WILDFIRE_SMB\", \"WILDFIRE_POP3\", \"WILDFIRE_IMAP\", \"WILDFIRE_HTTP2\", \"WILDFIRE_HTTP\", \"WILDFIRE_FTP\"]"
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Defines what action to take for WildFire inline ML threats per protocol."
+										description_kind: "plain"
+									}
+								}
+								wildfire_inline_ml_setting: {
+									nesting_mode: "list"
+									block: {
+										block_types: {
+											file_exceptions: {
+												nesting_mode: "set"
+												block: {
+													attributes: {
+														filename: {
+															type:             "string"
+															description:      "The file name associated with the partial hash."
+															description_kind: "plain"
+															optional:         true
+														}
+														partial_hash: {
+															type:             "string"
+															description:      "Machine learning partial hash of the file to exclude from WildFire Inline ML analysis."
+															description_kind: "plain"
+															required:         true
+														}
+													}
+													description:      "File exceptions to exclude from WildFire inline ML."
+													description_kind: "plain"
+												}
+											}
+											inline_ml_configs: {
+												nesting_mode: "set"
+												block: {
+													attributes: {
+														action: {
+															type:             "string"
+															description:      "The action to take for a file type. Possible values: [\"DISABLE\", \"ALERT\", \"ENABLE\"]"
+															description_kind: "plain"
+															required:         true
+														}
+														file_type: {
+															type:             "string"
+															description:      "The file type to match. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#inlinemlfiletype)"
+															description_kind: "plain"
+															required:         true
+														}
+													}
+													description:      "Defines what action to take for a specific file type in WildFire inline ML."
+													description_kind: "plain"
+												}
+											}
+										}
+										description:      "WildFire inline Machine Learning setting for the Security Profile."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								wildfire_overrides: {
+									nesting_mode: "set"
+									block: {
+										attributes: {
+											action: {
+												type:             "string"
+												description:      "Threat action override. Possible values: [\"WILDFIRE_DEFAULT_ACTION\", \"WILDFIRE_ALLOW\", \"WILDFIRE_ALERT\", \"WILDFIRE_DENY\"]"
+												description_kind: "plain"
+												required:         true
+											}
+											protocol: {
+												type:             "string"
+												description:      "Required protocol to match. Possible values: [\"WILDFIRE_SMTP\", \"WILDFIRE_SMB\", \"WILDFIRE_POP3\", \"WILDFIRE_IMAP\", \"WILDFIRE_HTTP2\", \"WILDFIRE_HTTP\", \"WILDFIRE_FTP\"]"
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Defines what action to take for WildFire threats per protocol."
+										description_kind: "plain"
+									}
+								}
+								wildfire_submission_rules: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											direction: {
+												type:             "string"
+												description:      "Direction of traffic to match for a rule. Possible values: [\"UPLOAD\", \"DOWNLOAD\", \"BOTH\"]"
+												description_kind: "plain"
+												required:         true
+											}
+											file_selection_mode: {
+												type:             "string"
+												description:      "Defines the file selection mode for a rule. Possible values: [\"ALL_FILE_TYPES\", \"CUSTOM_FILE_TYPES\"]"
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										block_types: custom_file_types: {
+											nesting_mode: "list"
+											block: {
+												attributes: file_types: {
+													type: ["set", "string"]
+													description:      "The file types to match for a rule. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#wildfiresubmissionrule)"
+													description_kind: "plain"
+													required:         true
+												}
+												description:      "Defines the custom file types to match for a rule. The API will only accept this if 'file_selection_mode' is set to 'CUSTOM_FILE_TYPES'"
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										description:      "The configuration for file submission to WildFire in cloud."
+										description_kind: "plain"
+									}
+								}
+								wildfire_threat_overrides: {
+									nesting_mode: "set"
+									block: {
+										attributes: {
+											action: {
+												type:             "string"
+												description:      "Threat action override. Possible values: [\"WILDFIRE_DEFAULT_ACTION\", \"WILDFIRE_ALLOW\"]"
+												description_kind: "plain"
+												required:         true
+											}
+											threat_id: {
+												type:             "string"
+												description:      "Vendor-specific ID of a threat to override."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "The configuration for overriding threats actions by threat id match."
+										description_kind: "plain"
+									}
+								}
+							}
+							description:      "The wildfire analysis configuration for the security profile."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
 				}
 				description_kind: "plain"
 			}
@@ -256073,6 +258718,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					url_filtering_profile: {
 						type:             "string"
 						description:      "Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup."
+						description_kind: "plain"
+						optional:         true
+					}
+					wildfire_analysis_profile: {
+						type:             "string"
+						description:      "Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup."
 						description_kind: "plain"
 						optional:         true
 					}
@@ -263850,6 +266501,156 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				deprecated:       true
 			}
 		}
+		google_network_services_service_lb_policies: {
+			version: 0
+			block: {
+				attributes: {
+					create_time: {
+						type:             "string"
+						description:      "Time the ServiceLbPolicy was created in UTC."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "A free-text description of the resource. Max length 1024 characters."
+						description_kind: "plain"
+						optional:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									Set of label tags associated with the ServiceLbPolicy resource.
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					load_balancing_algorithm: {
+						type:             "string"
+						description:      "The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION. Possible values: [\"SPRAY_TO_REGION\", \"SPRAY_TO_WORLD\", \"WATERFALL_BY_REGION\", \"WATERFALL_BY_ZONE\"]"
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the service lb policy."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the ServiceLbPolicy resource. It matches pattern 'projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}'."
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Time the ServiceLbPolicy was updated in UTC."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					auto_capacity_drain: {
+						nesting_mode: "list"
+						block: {
+							attributes: enable: {
+								type:             "bool"
+								description:      "Optional. If set to 'True', an unhealthy MIG/NEG will be set as drained. - An MIG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the MIG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service."
+								description_kind: "plain"
+								optional:         true
+							}
+							description:      "Option to specify if an unhealthy MIG/NEG should be considered for global load balancing and traffic routing."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					failover_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: failover_health_threshold: {
+								type:             "number"
+								description:      "Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others."
+								description_kind: "plain"
+								required:         true
+							}
+							description:      "Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_network_services_tcp_route: {
 			version: 0
 			block: {
@@ -266875,12 +269676,14 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									type:             "number"
 									description:      "SCAN listener port - TCP"
 									description_kind: "plain"
+									optional:         true
 									computed:         true
 								}
 								scan_listener_port_tcp_ssl: {
 									type:             "number"
 									description:      "SCAN listener port - TLS"
 									description_kind: "plain"
+									optional:         true
 									computed:         true
 								}
 								shape: {
@@ -281403,6 +284206,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 				}
 				description_kind: "plain"
+				deprecated:       true
 			}
 		}
 		google_parameter_manager_parameter: {
@@ -289178,6 +291982,14 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						}
 						max_items: 1
 					}
+					express_settings: {
+						nesting_mode: "list"
+						block: {
+							description:      "Settings for keys that can be used by reCAPTCHA Express."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
 					ios_settings: {
 						nesting_mode: "list"
 						block: {
@@ -289245,6 +292057,14 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}
 							description_kind: "plain"
 						}
+					}
+					universal_settings: {
+						nesting_mode: "list"
+						block: {
+							description:      "Settings for keys that can be used by universal frontend integrations."
+							description_kind: "plain"
+						}
+						max_items: 1
 					}
 					waf_settings: {
 						nesting_mode: "list"
@@ -290974,6 +293794,295 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}
 							description_kind: "plain"
 						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_resource_manager_boundary: {
+			version: 0
+			block: {
+				attributes: {
+					boundary_id: {
+						type: "string"
+						description: """
+									The user-assigned ID for the Boundary, which becomes the final component
+									of the Boundary's resource name. Must be unique within the parent.
+									Must be 6 to 30 lowercase ASCII letters, digits, or hyphens, must start
+									with a letter, and may not end with a hyphen.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The creation time of the Boundary."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_name: {
+						type: "string"
+						description: """
+									Human-readable display name of the Boundary. When present it must be
+									between 4 and 30 characters. Allowed characters are lowercase and
+									uppercase letters, numbers, hyphen, single-quote, double-quote, space,
+									and exclamation point.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					etag: {
+						type: "string"
+						description: """
+									A checksum computed by the server based on the value of other fields. May
+									be sent on update requests to ensure the client has an up-to-date value
+									before proceeding.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					management_project: {
+						type: "string"
+						description: """
+									The Management Project associated with this Boundary, in the form
+									'projects/{project_number}'. This is populated by the service when the
+									Boundary is associated with a CapabilityConfig; it cannot be set directly
+									on the Boundary. To choose a management project, set it on the
+									'google_resource_manager_capability_config' resource instead.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									The unique resource name of the Boundary, in the form
+									'organizations/{organization_id}/boundaries/{boundary_id}' or
+									'folders/{folder_id}/boundaries/{boundary_id}'.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					parent: {
+						type: "string"
+						description: """
+									The parent resource under which the Boundary is created. Must be of the
+									form 'organizations/{organization_id}' or 'folders/{folder_id}'.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					state: {
+						type: "string"
+						description: """
+									The lifecycle state of the Boundary. Possible values are 'CREATING' and
+									'ACTIVE'.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "The most recent time this Boundary was modified."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					resource_filter: {
+						nesting_mode: "list"
+						block: {
+							block_types: tag_filter: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										tag_key: {
+											type: "string"
+											description: """
+															The namespaced name of the tag key, in the form
+															'{parent_id}/{tag_key_short_name}', for example '123456789012/env'.
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+										tag_value: {
+											type: "string"
+											description: """
+															The allowed short name of the tag value, for example 'production'.
+															A project matches this tag filter if its effective tag value for
+															the given 'tagKey' matches this value.
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									description: """
+													A tag based filter. A project must match it to be included in the
+													Boundary.
+													"""
+									description_kind: "plain"
+								}
+								min_items: 1
+								max_items: 1
+							}
+							description: """
+										The filter defining the criteria for descendant projects to be included
+										in the Boundary.
+
+										'tag_value' is the only part of the filter that can be changed after
+										creation, and it cannot be cleared.
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_resource_manager_boundary_config: {
+			version: 0
+			block: {
+				attributes: {
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					etag: {
+						type: "string"
+						description: """
+									A checksum computed by the server based on the value of other fields. May
+									be sent on update requests to ensure the client has an up-to-date value
+									before proceeding.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									The unique resource name of the BoundaryConfig, in the form
+									'organizations/{organization_id}/boundaryConfig' or
+									'folders/{folder_id}/boundaryConfig'.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					parent: {
+						type: "string"
+						description: """
+									The parent resource whose BoundaryConfig this is. Must be of the form
+									'organizations/{organization_id}' or 'folders/{folder_id}'.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					tag_key: {
+						type: "string"
+						description: """
+									The namespaced name of the partitioning tag key, in the form
+									'{parent_id}/{tag_key_short_name}', for example '123456789012/env'.
+									Boundaries under this parent filter projects on this tag key.
+
+									The service also accepts the 'tagKeys/{numeric_id}' form here, but
+									Boundaries accept only the namespaced form and are validated against this
+									value verbatim. Storing the 'tagKeys/{numeric_id}' form therefore makes
+									every subsequent Boundary create fail with 'FAILED_PRECONDITION'. Always
+									use the namespaced form, for example
+									'google_tags_tag_key.example.namespaced_name'.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "The most recent time this BoundaryConfig was modified."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
 					}
 				}
 				description_kind: "plain"
@@ -312473,6 +315582,589 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_vertex_ai_custom_job: {
+			version: 0
+			block: {
+				attributes: {
+					create_time: {
+						type:             "string"
+						description:      "Time when the CustomJob was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_name: {
+						type: "string"
+						description: """
+									The display name of the CustomJob.
+									The name can be up to 128 characters long and can consist of any UTF-8 characters.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					end_time: {
+						type:             "string"
+						description:      "Time when the CustomJob entered any of the following states: 'JOB_STATE_SUCCEEDED', 'JOB_STATE_FAILED', 'JOB_STATE_CANCELLED'."
+						description_kind: "plain"
+						computed:         true
+					}
+					error: {
+						type: ["list", ["object", {
+							code:    "number"
+							message: "string"
+						}]]
+						description:      "Only populated when job's state is 'JOB_STATE_FAILED' or 'JOB_STATE_CANCELLED'."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									The labels with user-defined metadata to organize CustomJobs.
+									Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed.
+									See https://goo.gl/xmQnxf for more information and examples of labels.
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The resource name of the CustomJob."
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The Google Cloud region to run the custom job in."
+						description_kind: "plain"
+						required:         true
+					}
+					start_time: {
+						type:             "string"
+						description:      "Time when the CustomJob for the first time entered the 'JOB_STATE_RUNNING' state."
+						description_kind: "plain"
+						computed:         true
+					}
+					state: {
+						type:             "string"
+						description:      "The detailed state of the job."
+						description_kind: "plain"
+						computed:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Time when the CustomJob was most recently updated."
+						description_kind: "plain"
+						computed:         true
+					}
+					web_access_uris: {
+						type: ["map", "string"]
+						description:      "URIs for accessing interactive shells (one URI for each training node)."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					encryption_spec: {
+						nesting_mode: "list"
+						block: {
+							attributes: kms_key_name: {
+								type: "string"
+								description: """
+												Resource name of the Cloud KMS key used to protect the resource.
+												The Cloud KMS key must be in the same region as the resource. It must have the format
+												'projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}'.
+												"""
+								description_kind: "plain"
+								required:         true
+							}
+							description:      "Customer-managed encryption key options for a CustomJob."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					job_spec: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								enable_dashboard_access: {
+									type:             "bool"
+									description:      "Whether you want Vertex AI to enable access to the customized dashboard in training chief container."
+									description_kind: "plain"
+									optional:         true
+								}
+								enable_web_access: {
+									type:             "bool"
+									description:      "Whether you want Vertex AI to enable interactive shell access to training containers."
+									description_kind: "plain"
+									optional:         true
+								}
+								network: {
+									type:             "string"
+									description:      "The full name of the Compute Engine network to which the Job should be peered."
+									description_kind: "plain"
+									optional:         true
+								}
+								reserved_ip_ranges: {
+									type: ["list", "string"]
+									description:      "A list of names for the reserved ip ranges under the VPC network that can be used for this job."
+									description_kind: "plain"
+									optional:         true
+								}
+								service_account: {
+									type:             "string"
+									description:      "Specifies the service account for workload run-as account."
+									description_kind: "plain"
+									optional:         true
+								}
+								tensorboard: {
+									type:             "string"
+									description:      "The name of a Vertex AI Tensorboard resource to which this CustomJob will upload Tensorboard logs."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							block_types: {
+								base_output_directory: {
+									nesting_mode: "list"
+									block: {
+										attributes: output_uri_prefix: {
+											type:             "string"
+											description:      "Cloud Storage folder URL to store the output."
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "The Cloud Storage location to store the output of this CustomJob or HyperparameterTuningJob."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								psc_interface_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: network_attachment: {
+											type:             "string"
+											description:      "The name of the attachment to connect to."
+											description_kind: "plain"
+											optional:         true
+										}
+										block_types: dns_peering_configs: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													domain: {
+														type:             "string"
+														description:      "The DNS name suffix of the zone being peered to, e.g., \"my-internal-domain.corp.\". Must end with a dot."
+														description_kind: "plain"
+														required:         true
+													}
+													target_network: {
+														type:             "string"
+														description:      "The VPC network name in the target_project where the DNS zone specified by 'domain' is visible."
+														description_kind: "plain"
+														required:         true
+													}
+													target_project: {
+														type:             "string"
+														description:      "The project ID hosting the Cloud DNS managed zone that contains the 'domain'. The Vertex AI Service Agent requires the dns.peer role on this project."
+														description_kind: "plain"
+														required:         true
+													}
+												}
+												description:      "DNS peering config for the PSC interface."
+												description_kind: "plain"
+											}
+										}
+										description:      "Configuration for PSC-I for CustomJob."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								scheduling: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											disable_retries: {
+												type:             "bool"
+												description:      "Indicates if the job should retry for internal errors after the job starts running."
+												description_kind: "plain"
+												optional:         true
+											}
+											max_wait_duration: {
+												type:             "string"
+												description:      "The maximum duration that a job will wait for the requested resources to be provisioned if the scheduling strategy is set to FLEX_START."
+												description_kind: "plain"
+												optional:         true
+											}
+											restart_job_on_worker_restart: {
+												type:             "bool"
+												description:      "Restarts the entire CustomJob if a worker gets restarted."
+												description_kind: "plain"
+												optional:         true
+											}
+											strategy: {
+												type:             "string"
+												description:      "This determines which type of scheduling strategy to use. Possible values: [\"STANDARD\", \"SPOT\", \"FLEX_START\"]"
+												description_kind: "plain"
+												optional:         true
+											}
+											timeout: {
+												type:             "string"
+												description:      "The maximum job running time. The default is 7 days. A duration in seconds with up to nine fractional digits, ending with 's'. Example: \"3.5s\"."
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Scheduling options for a CustomJob."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								worker_pool_specs: {
+									nesting_mode: "list"
+									block: {
+										attributes: replica_count: {
+											type:             "number"
+											description:      "The number of worker replicas to use for this worker pool."
+											description_kind: "plain"
+											optional:         true
+										}
+										block_types: {
+											container_spec: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														args: {
+															type: ["list", "string"]
+															description:      "The arguments to be passed when starting the container."
+															description_kind: "plain"
+															optional:         true
+														}
+														command: {
+															type: ["list", "string"]
+															description:      "The command to be invoked when the container is started. It overrides the entrypoint instruction in Dockerfile when provided."
+															description_kind: "plain"
+															optional:         true
+														}
+														image_uri: {
+															type:             "string"
+															description:      "The URI of a container image in the Container Registry that is to be run on each worker replica."
+															description_kind: "plain"
+															required:         true
+														}
+													}
+													block_types: env: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																name: {
+																	type:             "string"
+																	description:      "Name of the environment variable. Must be a valid C identifier."
+																	description_kind: "plain"
+																	required:         true
+																}
+																value: {
+																	type:             "string"
+																	description:      "Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container."
+																	description_kind: "plain"
+																	required:         true
+																}
+															}
+															description:      "Environment variables to be passed to the container. Maximum limit is 100."
+															description_kind: "plain"
+														}
+													}
+													description:      "The custom container task. Either 'container_spec' or 'python_package_spec' can be provided, but not both."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											disk_spec: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														boot_disk_size_gb: {
+															type:             "number"
+															description:      "Size in GB of the boot disk (default is 100GB)."
+															description_kind: "plain"
+															optional:         true
+														}
+														boot_disk_type: {
+															type:             "string"
+															description:      "Type of the disk. The default value depends on the machine type. Valid values include: \"pd-ssd\", \"pd-standard\", \"pd-balanced\", and \"hyperdisk-balanced\"."
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													description:      "Disk spec."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											lustre_mounts: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														filesystem: {
+															type:             "string"
+															description:      "The name of the Lustre filesystem."
+															description_kind: "plain"
+															required:         true
+														}
+														instance_ip: {
+															type:             "string"
+															description:      "IP address of the Lustre instance."
+															description_kind: "plain"
+															required:         true
+														}
+														mount_point: {
+															type:             "string"
+															description:      "Destination mount path. The Lustre file system will be mounted for the user under /mnt/lustre/<mount_point>."
+															description_kind: "plain"
+															required:         true
+														}
+														volume_handle: {
+															type:             "string"
+															description:      "The unique identifier of the Lustre volume."
+															description_kind: "plain"
+															required:         true
+														}
+													}
+													description:      "List of Lustre mounts."
+													description_kind: "plain"
+												}
+											}
+											machine_spec: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														accelerator_count: {
+															type:             "number"
+															description:      "The number of accelerators to attach to the machine."
+															description_kind: "plain"
+															optional:         true
+														}
+														accelerator_type: {
+															type:             "string"
+															description:      "The type of accelerator(s) that may be attached to the machine."
+															description_kind: "plain"
+															optional:         true
+														}
+														machine_type: {
+															type:             "string"
+															description:      "The type of the machine."
+															description_kind: "plain"
+															optional:         true
+														}
+														tpu_topology: {
+															type:             "string"
+															description:      "The topology of the TPUs."
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													block_types: reservation_affinity: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																key: {
+																	type:             "string"
+																	description:      "Corresponds to the label key of a reservation resource."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																reservation_affinity_type: {
+																	type:             "string"
+																	description:      "Specifies the reservation affinity type. Possible values: \"NO_RESERVATION\", \"ANY_RESERVATION\", and \"SPECIFIC_RESERVATION\""
+																	description_kind: "plain"
+																	required:         true
+																}
+																values: {
+																	type: ["list", "string"]
+																	description:      "Corresponds to the label values of a reservation resource."
+																	description_kind: "plain"
+																	optional:         true
+																}
+															}
+															description:      "Configuration for using robust to failure reservation."
+															description_kind: "plain"
+														}
+														max_items: 1
+													}
+													description:      "Specification of a single machine."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											nfs_mounts: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														mount_point: {
+															type:             "string"
+															description:      "Destination mount path. The path must be absolute."
+															description_kind: "plain"
+															required:         true
+														}
+														path: {
+															type:             "string"
+															description:      "Source path exported from NFS database."
+															description_kind: "plain"
+															required:         true
+														}
+														server: {
+															type:             "string"
+															description:      "IP address of the NFS server."
+															description_kind: "plain"
+															required:         true
+														}
+													}
+													description:      "List of NFS mount spec."
+													description_kind: "plain"
+												}
+											}
+											python_package_spec: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														args: {
+															type: ["list", "string"]
+															description:      "Command line arguments to be passed to the Python task."
+															description_kind: "plain"
+															optional:         true
+														}
+														executor_image_uri: {
+															type:             "string"
+															description:      "The URI of a container image in Artifact Registry that will run the provided Python package."
+															description_kind: "plain"
+															required:         true
+														}
+														package_uris: {
+															type: ["list", "string"]
+															description:      "The Google Cloud Storage location of the Python package files which are the training program and its dependent packages."
+															description_kind: "plain"
+															required:         true
+														}
+														python_module: {
+															type:             "string"
+															description:      "The Python module name to run after installing the packages."
+															description_kind: "plain"
+															required:         true
+														}
+													}
+													block_types: env: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																name: {
+																	type:             "string"
+																	description:      "Name of the environment variable."
+																	description_kind: "plain"
+																	required:         true
+																}
+																value: {
+																	type:             "string"
+																	description:      "Value of the environment variable."
+																	description_kind: "plain"
+																	required:         true
+																}
+															}
+															description:      "Environment variables to be passed to the python module. Maximum limit is 100."
+															description_kind: "plain"
+														}
+													}
+													description:      "The Python packaged task. Either 'container_spec' or 'python_package_spec' can be provided, but not both."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+										}
+										description: """
+													The spec of the worker pools including machine type and Docker image.
+													All worker pools except the first one are optional and can be skipped by providing an empty value.
+													"""
+										description_kind: "plain"
+									}
+									min_items: 1
+								}
+							}
+							description:      "Job spec."
+							description_kind: "plain"
+						}
+						min_items: 1
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_vertex_ai_dataset: {
 			version: 0
 			block: {
@@ -316301,6 +319993,17 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 													nesting_mode: "list"
 													block: {
 														attributes: {
+															fraction_leaf_nodes_to_search: {
+																type: "number"
+																description: """
+																					The default fraction of leaf nodes that any query may be searched. Must be in
+																					range 0.0-1.0, exclusive. The default value is 0.05 if not set.
+																					This value can only be set when creating the index.
+																					"""
+																description_kind: "plain"
+																optional:         true
+																computed:         true
+															}
 															leaf_node_embedding_count: {
 																type:             "number"
 																description:      "Number of embeddings on each leaf node. The default value is 1000 if not set."
@@ -316314,6 +320017,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																					range 1-100, inclusive. The default value is 10 (means 10%) if not set.
 																					"""
 																description_kind: "plain"
+																deprecated:       true
 																optional:         true
 															}
 														}
@@ -317961,6 +321665,359 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_vertex_ai_pipeline_job: {
+			version: 0
+			block: {
+				attributes: {
+					create_time: {
+						type:             "string"
+						description:      "Pipeline creation time in RFC3339 UTC \"Zulu\" format, with nanosecond resolution and up to nine fractional digits."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type:             "string"
+						description:      "This field uses a custom implementation please refer to documentation under /hashicorp/terraform-provider-google-beta/website/docs/r/vertex_ai_pipeline_job.html.markdown for specifics"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters."
+						description_kind: "plain"
+						optional:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					end_time: {
+						type:             "string"
+						description:      "Pipeline end time in RFC3339 UTC \"Zulu\" format, with nanosecond resolution and up to nine fractional digits."
+						description_kind: "plain"
+						computed:         true
+					}
+					error: {
+						type: ["list", ["object", {
+							code: "number"
+							details: ["list", ["map", "string"]]
+							message: "string"
+						}]]
+						description:      "The error that occurred during pipeline execution. Only populated when the pipeline's state is FAILED or CANCELLED."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					job_detail: {
+						type: ["list", ["object", {
+							pipeline_context: ["list", ["object", {
+								create_time:  "string"
+								description:  "string"
+								display_name: "string"
+								etag:         "string"
+								labels: ["map", "string"]
+								metadata: "string"
+								name:     "string"
+								parent_contexts: ["list", "string"]
+								schema_title:   "string"
+								schema_version: "string"
+								update_time:    "string"
+							}]]
+							pipeline_run_context: ["list", ["object", {
+								create_time:  "string"
+								description:  "string"
+								display_name: "string"
+								etag:         "string"
+								labels: ["map", "string"]
+								metadata: "string"
+								name:     "string"
+								parent_contexts: ["list", "string"]
+								schema_title:   "string"
+								schema_version: "string"
+								update_time:    "string"
+							}]]
+							task_details: ["list", ["object", {
+								create_time: "string"
+								end_time:    "string"
+								error: ["list", ["object", {
+									code:    "number"
+									message: "string"
+								}]]
+								parent_task_id:   "string"
+								start_time:       "string"
+								state:            "string"
+								task_id:          "string"
+								task_name:        "string"
+								task_unique_name: "string"
+							}]]
+						}]]
+						description:      "The details of pipeline run. Not available in the list view."
+						description_kind: "plain"
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									The labels with user-defined metadata to organize PipelineJob.
+
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The resource name of the PipelineJob. This is the final component of the resource path."
+						description_kind: "plain"
+						computed:         true
+					}
+					network: {
+						type:             "string"
+						description:      "The full name of the Compute Engine network to which the Pipeline Job's workload should be peered. For example, 'projects/12345/global/networks/myVPC'. Format is of the form 'projects/{project}/global/networks/{network}'. Where '{project}' is a project number, as in '12345', and '{network}' is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network."
+						description_kind: "plain"
+						optional:         true
+					}
+					pipeline_job_id: {
+						type: "string"
+						description: """
+									The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated.
+									This value should be less than 128 characters, and valid characters are '/[a-z][0-9]-/'.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					pipeline_spec: {
+						type:             "string"
+						description:      "The spec of the pipeline. This is a JSON object that describes the pipeline."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					preflight_validations: {
+						type:             "bool"
+						description:      "Whether to do component level validations before job creation."
+						description_kind: "plain"
+						optional:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region of the pipeline job. eg us-central1"
+						description_kind: "plain"
+						optional:         true
+					}
+					reserved_ip_ranges: {
+						type: ["list", "string"]
+						description:      "A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network."
+						description_kind: "plain"
+						optional:         true
+					}
+					schedule_name: {
+						type:             "string"
+						description:      "The schedule resource name. Only returned if the Pipeline is created by Schedule API."
+						description_kind: "plain"
+						computed:         true
+					}
+					service_account: {
+						type:             "string"
+						description:      "The service account that the pipeline workload runs as. If not specified, the Compute Engine default service account in the project will be used. Users starting the pipeline must have the iam.serviceAccounts.actAs permission on this service account."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					start_time: {
+						type:             "string"
+						description:      "Pipeline start time in RFC3339 UTC \"Zulu\" format, with nanosecond resolution and up to nine fractional digits."
+						description_kind: "plain"
+						computed:         true
+					}
+					state: {
+						type:             "string"
+						description:      "The detailed state of the job."
+						description_kind: "plain"
+						computed:         true
+					}
+					template_metadata: {
+						type: ["list", ["object", {
+							version: "string"
+						}]]
+						description:      "Pipeline template metadata. Will fill up fields if PipelineJob.template_uri is from supported template registry."
+						description_kind: "plain"
+						computed:         true
+					}
+					template_uri: {
+						type:             "string"
+						description:      "A template uri from where the PipelineJob.pipeline_spec, if empty, will be downloaded. Currently, only uri from Vertex Template Registry & Gallery is supported."
+						description_kind: "plain"
+						optional:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Timestamp when this PipelineJob was most recently updated in RFC3339 UTC \"Zulu\" format, with nanosecond resolution and up to nine fractional digits."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					encryption_spec: {
+						nesting_mode: "list"
+						block: {
+							attributes: kms_key_name: {
+								type:             "string"
+								description:      "The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: 'projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key'. The key needs to be in the same region as where the compute resource is created."
+								description_kind: "plain"
+								required:         true
+							}
+							description:      "Customer-managed encryption key options for a pipelineJob. If set, this PipelineJob and all of its sub-resources will be secured by this key."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					psc_interface_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: network_attachment: {
+								type:             "string"
+								description:      "The name of the Compute Engine network attachment to attach to the resource within the region and user project. To specify this field, you must have already created a network attachment. This field is only used for resources using PSC-I."
+								description_kind: "plain"
+								optional:         true
+							}
+							block_types: dns_peering_configs: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										domain: {
+											type:             "string"
+											description:      "The DNS name suffix of the zone being peered to, e.g., \"my-internal-domain.corp.\". Must end with a dot."
+											description_kind: "plain"
+											required:         true
+										}
+										target_network: {
+											type:             "string"
+											description:      "The VPC network name in the targetProject where the DNS zone specified by domain is visible."
+											description_kind: "plain"
+											required:         true
+										}
+										target_project: {
+											type:             "string"
+											description:      "The project ID hosting the Cloud DNS managed zone that contains the above domain. The Vertex AI Service Agent must be granted the dns.peer role on this project."
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									description:      "DNS peering configurations. When specified, Vertex AI will attempt to configure DNS peering zones in the tenant project VPC to resolve the specified domains using the target network's Cloud DNS. The user must grant the dns.peer role to the Vertex AI Service Agent on the target project."
+									description_kind: "plain"
+								}
+							}
+							description:      "Configuration for PSC-I for PipelineJob."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					runtime_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								failure_policy: {
+									type: "string"
+									description: """
+												Represents the failure policy of a pipeline. Currently, the default of a pipeline is that the pipeline will continue to run until no more tasks can be executed, also known as 'PIPELINE_FAILURE_POLICY_FAIL_SLOW'. However, if a pipeline is set to 'PIPELINE_FAILURE_POLICY_FAIL_FAST', it will stop scheduling any new tasks as soon as the pipeline fails.
+												Possible values are: 'PIPELINE_FAILURE_POLICY_UNSPECIFIED', 'PIPELINE_FAILURE_POLICY_FAIL_SLOW', 'PIPELINE_FAILURE_POLICY_FAIL_FAST'.
+												"""
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								gcs_output_directory: {
+									type:             "string"
+									description:      "A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-directory pattern '{job_id}/{task_id}/{output_key}' under the specified output directory. The service account specified in this pipeline must have the 'storage.objects.get' and 'storage.objects.create' permissions for this bucket."
+									description_kind: "plain"
+									required:         true
+								}
+								parameter_values: {
+									type: ["map", "string"]
+									description:      "The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using 'PipelineJob.pipeline_spec.schema_version' 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL."
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							block_types: input_artifacts: {
+								nesting_mode: "set"
+								block: {
+									attributes: {
+										artifact_id: {
+											type:             "string"
+											description:      "Artifact resource id from MLMD. Which is the last portion of an artifact resource name: 'projects/{project}/locations/{location}/metadataStores/default/artifacts/{artifact_id}'. The artifact must be within the same project, location and default metadatastore as the pipeline."
+											description_kind: "plain"
+											required:         true
+										}
+										artifact_key: {
+											type:             "string"
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									description:      "The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact."
+									description_kind: "plain"
+								}
+							}
+							description:      "Runtime config of the pipeline."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_vertex_ai_rag_corpus: {
 			version: 0
 			block: {
@@ -318386,6 +322443,297 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									optional:         true
 								}
 								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_vertex_ai_rag_file: {
+			version: 0
+			block: {
+				attributes: {
+					create_time: {
+						type:             "string"
+						description:      "Timestamp when this RagFile was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The description of the RagFile."
+						description_kind: "plain"
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "The display name of the RagFile, derived by the API from the source file."
+						description_kind: "plain"
+						computed:         true
+					}
+					file_status: {
+						type: ["list", ["object", {
+							error_status: "string"
+							state:        "string"
+						}]]
+						description:      "State of the RagFile."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					max_embedding_requests_per_min: {
+						type: "number"
+						description: """
+									The maximum number of queries per minute that the import is allowed to make
+									to the embedding model specified on the RagCorpus.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The generated ID of the RagFile."
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					rag_corpus: {
+						type: "string"
+						description: """
+									The ID of the RagCorpus to import the file into, for example the 'name'
+									attribute of a 'google_vertex_ai_rag_corpus' resource.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region of the RagCorpus. eg europe-west4"
+						description_kind: "plain"
+						required:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Timestamp when this RagFile was last updated."
+						description_kind: "plain"
+						computed:         true
+					}
+					user_metadata: {
+						type:             "string"
+						description:      "The metadata for metadata search, in JSON format."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					gcs_source: {
+						nesting_mode: "list"
+						block: {
+							attributes: uris: {
+								type: ["list", "string"]
+								description: """
+												The Cloud Storage URI of the file to import, for example
+												'gs://my-bucket/my-file.pdf'. Must reference a single file; directories
+												and wildcards are not supported because each resource manages one RagFile.
+												"""
+								description_kind: "plain"
+								required:         true
+							}
+							description:      "The Cloud Storage location of the file to import."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					google_drive_source: {
+						nesting_mode: "list"
+						block: {
+							block_types: resource_ids: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										resource_id: {
+											type:             "string"
+											description:      "The ID of the Google Drive file."
+											description_kind: "plain"
+											required:         true
+										}
+										resource_type: {
+											type: "string"
+											description: """
+															The type of the Google Drive resource. Only individual files are
+															supported because each resource manages one RagFile. Default value: "RESOURCE_TYPE_FILE" Possible values: ["RESOURCE_TYPE_FILE"]
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+									}
+									description:      "The Google Drive file to import."
+									description_kind: "plain"
+								}
+								min_items: 1
+								max_items: 1
+							}
+							description:      "The Google Drive location of the file to import."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					rag_file_parsing_config: {
+						nesting_mode: "list"
+						block: {
+							block_types: {
+								layout_parser: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											max_parsing_requests_per_min: {
+												type: "number"
+												description: """
+															The maximum number of requests the job is allowed to make to the
+															Document AI processor per minute.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											processor_name: {
+												type: "string"
+												description: """
+															The full resource name of a Document AI processor or processor version
+															of type 'LAYOUT_PARSER_PROCESSOR'. Format:
+															'projects/{project_id}/locations/{location}/processors/{processor_id}' or
+															'projects/{project_id}/locations/{location}/processors/{processor_id}/processorVersions/{processor_version_id}'.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "The Document AI Layout Parser to use for the file."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								llm_parser: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											custom_parsing_prompt: {
+												type:             "string"
+												description:      "The prompt to use for parsing. If not specified, a default prompt is used."
+												description_kind: "plain"
+												optional:         true
+											}
+											max_parsing_requests_per_min: {
+												type: "number"
+												description: """
+															The maximum number of requests the job is allowed to make to the LLM
+															model per minute.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											model_name: {
+												type: "string"
+												description: """
+															The name of a LLM model used for parsing. Format:
+															'projects/{project_id}/locations/{location}/publishers/{publisher}/models/{model}'.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "The LLM parser to use for the file."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+							}
+							description: """
+										The parsing config used when importing the file. The default parser is used
+										if this field is not set.
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					rag_file_transformation_config: {
+						nesting_mode: "list"
+						block: {
+							block_types: rag_file_chunking_config: {
+								nesting_mode: "list"
+								block: {
+									block_types: fixed_length_chunking: {
+										nesting_mode: "list"
+										block: {
+											attributes: {
+												chunk_overlap: {
+													type:             "number"
+													description:      "The overlap between chunks."
+													description_kind: "plain"
+													optional:         true
+												}
+												chunk_size: {
+													type:             "number"
+													description:      "The size of the chunks."
+													description_kind: "plain"
+													optional:         true
+												}
+											}
+											description:      "The fixed length chunking config."
+											description_kind: "plain"
+										}
+										max_items: 1
+									}
+									description:      "The chunking config for the file."
+									description_kind: "plain"
+								}
+								max_items: 1
+							}
+							description:      "The transformation config used when importing the file."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
 									type:             "string"
 									description_kind: "plain"
 									optional:         true
@@ -326246,6 +330594,47 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type:             "string"
 						description_kind: "plain"
 						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_agent_identity_auth_provider_iam_policy: {
+			version: 0
+			block: {
+				attributes: {
+					auth_provider_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					policy_data: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -335184,6 +339573,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							enable_nested_virtualization: "bool"
 							machine_type:                 "string"
 							no_external_ip:               "bool"
+							worker_release:               "string"
 						}]]
 						description:      "Configuration to be used for a creating workers in the `WorkerPool`."
 						description_kind: "plain"
@@ -336342,6 +340732,11 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						computed:         true
 					}
+					address_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
 					address_type: {
 						type:             "string"
 						description_kind: "plain"
@@ -337371,8 +341766,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									the disk will be encrypted using an automatically generated key and
 									you do not need to provide a key to use the disk later.
 
-									~>**NOTE** Only changing 'kms_key_self_link' between Cloud KMS keys is
-									done in place; other changes to this block recreate the disk.
+									~>**NOTE** 'kms_key_self_link' can be added or changed in place.
+									Removing it, or changing it while 'kms_key_service_account' is set,
+									fails at plan time. Other changes to this block recreate the disk.
 									"""
 						description_kind: "plain"
 						computed:         true
@@ -339977,12 +344373,13 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					deletion_policy: {
 						type: "string"
 						description: """
-									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 									When a 'terraform destroy' or 'terraform apply' would delete the instance,
 									the command will fail if this field is set to "PREVENT" in Terraform state.
 									When set to "ABANDON", the command will remove the resource from Terraform
 									management without updating or deleting the resource in the API.
-									When set to "DELETE", deleting the resource is allowed.
+									When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG deletion waits for all instances to shut down gracefully before deletion.
+									When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
 
 									"""
 						description_kind: "plain"
@@ -342254,8 +346651,8 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									the disk will be encrypted using an automatically generated key and
 									you do not need to provide a key to use the disk later.
 
-									~>**NOTE** Only changing 'kms_key_name' between Cloud KMS keys is done
-									in place; other changes to this block recreate the disk.
+									~>**NOTE** 'kms_key_name' can be added or changed in place. Removing it
+									fails at plan time. Other changes to this block recreate the disk.
 									"""
 						description_kind: "plain"
 						computed:         true
@@ -342684,12 +347081,13 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					deletion_policy: {
 						type: "string"
 						description: """
-									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 									When a 'terraform destroy' or 'terraform apply' would delete the instance,
 									the command will fail if this field is set to "PREVENT" in Terraform state.
 									When set to "ABANDON", the command will remove the resource from Terraform
 									management without updating or deleting the resource in the API.
-									When set to "DELETE", deleting the resource is allowed.
+									When set to "DELETE", deleting the resource is allowed. If graceful shutdown is configured, the MIG deletion waits for all instances to shut down gracefully before deletion.
+									When set to "FORCE", deleting the resource is allowed, and graceful shutdown is skipped for instance deletion even if it's configured for the instances.
 
 									"""
 						description_kind: "plain"
@@ -342728,8 +347126,28 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					instance_flexibility_policy: {
 						type: ["list", ["object", {
 							instance_selections: ["set", ["object", {
+								disks: ["list", ["object", {
+									architecture: "string", auto_delete: "bool", boot:                      "bool", device_name: "string", disk_encryption_key: ["list", ["object", {
+											kms_key_self_link:     "string", kms_key_service_account: "string", raw_key:   "string", rsa_encrypted_key: "string"
+									}]]
+									disk_name: "string", disk_size_gb: "number", disk_type: "string", guest_os_features: ["list", "string"]
+									interface: "string", labels: ["set", ["object", {
+											key: "string", value: "string"
+									}]]
+									mode: "string", provisioned_iops: "number", provisioned_throughput: "number", resource_manager_tags: ["set", ["object", {
+										key:                        "string", value:                  "string"
+									}]]
+									resource_policies: ["list", "string"]
+									source: "string", source_image: "string", source_image_encryption_key: ["list", ["object", {
+										kms_key_self_link:      "string", kms_key_service_account: "string", raw_key: "string", rsa_encrypted_key: "string"
+									}]]
+									source_snapshot: "string", source_snapshot_encryption_key: ["list", ["object", {
+												kms_key_self_link: "string", kms_key_service_account: "string", raw_key: "string", rsa_encrypted_key: "string"
+									}]]
+									type: "string"
+								}]]
 								machine_types: ["set", "string"]
-								name: "string", rank: "number"
+								min_cpu_platform: "string", name: "string", rank: "number"
 							}]]
 						}]]
 						description:      "The flexibility policy for this managed instance group. Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration."
@@ -345058,6 +349476,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						optional:         true
 					}
+					router_id: {
+						type:             "number"
+						description:      "The unique identifier number for the resource. This identifier is defined by the server."
+						description_kind: "plain"
+						computed:         true
+					}
 					self_link: {
 						type:             "string"
 						description_kind: "plain"
@@ -345967,6 +350391,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						computed:         true
 					}
+					service_attachment_id: {
+						type:             "number"
+						description:      "The unique identifier number for the resource. This identifier is defined by the server."
+						description_kind: "plain"
+						computed:         true
+					}
 					show_nat_ips: {
 						type: "bool"
 						description: """
@@ -346048,6 +350478,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							region:                                   "string"
 							self_link:                                "string"
 							send_propagated_connection_limit_if_zero: "bool"
+							service_attachment_id:                    "number"
 							show_nat_ips:                             "bool"
 							target_service:                           "string"
 						}]]
@@ -346215,8 +350646,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									then the snapshot will be encrypted using an automatically generated
 									key and you do not need to provide a key to use the snapshot later.
 
-									~>**NOTE** Only changing 'kms_key_self_link' between Cloud KMS keys is
-									done in place; other changes to this block recreate the snapshot.
+									~>**NOTE** 'kms_key_self_link' can be added or changed in place.
+									Removing it, or changing it while 'kms_key_service_account' is set,
+									fails at plan time. Other changes to this block recreate the snapshot.
 									"""
 						description_kind: "plain"
 						computed:         true
@@ -348157,7 +352589,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 					initial_node_count: {
 						type:             "number"
-						description:      "The number of nodes to create in this cluster's default node pool. In regional or multi-zonal clusters, this is the number of nodes per zone. Must be set if node_pool is not set. If you're using google_container_node_pool objects with no default node pool, you'll need to set this to a value of at least 1, alongside setting remove_default_node_pool to true."
+						description:      "The number of nodes to create in this cluster's default node pool. In regional or multi-zonal clusters, this is the number of nodes per zone. When omitted (or set to 0) with no node_config or node_pool blocks defined, the cluster is created without a default node pool. This requires a GKE version that supports clusters without a default node pool (1.36.4-gke.1469000+). For older GKE versions, if you're using google_container_node_pool objects with no default node pool, you'll need to set this to a value of at least 1, alongside setting remove_default_node_pool to true."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -349117,7 +353549,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 					remove_default_node_pool: {
 						type:             "bool"
-						description:      "If true, deletes the default node pool upon cluster creation. If you're using google_container_node_pool resources with no default node pool, this should be set to true, alongside setting initial_node_count to at least 1."
+						description:      "If true, deletes the default node pool upon cluster creation. On GKE versions that support clusters without a default node pool, you can instead omit initial_node_count and node_config (or set initial_node_count to 0) to skip creating the default node pool without setting this field. For older GKE versions, if you're using google_container_node_pool resources with no default node pool, this should be set to true, alongside setting initial_node_count to at least 1."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -349149,6 +353581,14 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							control_plane_soak_duration: "string"
 						}]]
 						description:      "Configuration for rollback-safe (two-step) upgrades."
+						description_kind: "plain"
+						computed:         true
+					}
+					schedule_upgrade_config: {
+						type: ["list", ["object", {
+							enabled: "bool"
+						}]]
+						description:      "Configuration for scheduled upgrades on the cluster."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -349274,6 +353714,11 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						computed:         true
 					}
+					default_image_type: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
 					id: {
 						type:             "string"
 						description_kind: "plain"
@@ -349312,6 +353757,11 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 					release_channel_upgrade_target_version: {
 						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					valid_image_types: {
+						type: ["list", "string"]
 						description_kind: "plain"
 						computed:         true
 					}
@@ -369006,8 +373456,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								algorithm_config: ["list", ["object", {
 									brute_force_config: ["list", ["object", {}]]
 									tree_ah_config: ["list", ["object", {
-										leaf_node_embedding_count:    "number"
-										leaf_nodes_to_search_percent: "number"
+										fraction_leaf_nodes_to_search: "number"
+										leaf_node_embedding_count:     "number"
+										leaf_nodes_to_search_percent:  "number"
 									}]]
 								}]]
 								approximate_neighbors_count: "number"
@@ -373925,6 +378376,35 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_agent_identity_auth_provider_iam_member: {
+			version: 1
+			attributes: {
+				auth_provider_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				condition_title: {
+					type:                "string"
+					optional_for_import: true
+				}
+				location: {
+					type:                "string"
+					optional_for_import: true
+				}
+				member: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				role: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		google_agent_registry_binding: {
 			version: 1
 			attributes: {
@@ -375786,6 +380266,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					optional_for_import: true
 				}
 				materialized_view_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		google_bigtable_memory_layer: {
+			version: 1
+			attributes: {
+				cluster: {
+					type:                "string"
+					required_for_import: true
+				}
+				instance: {
 					type:                "string"
 					required_for_import: true
 				}
@@ -378377,7 +382874,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 				ip_address: {
 					type:                "string"
-					required_for_import: true
+					optional_for_import: true
 				}
 				network_endpoint_group: {
 					type:                "string"
@@ -387055,6 +391552,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_network_services_service_lb_policies: {
+			version: 1
+			attributes: {
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
 		google_network_services_tcp_route: {
 			version: 1
 			attributes: {
@@ -388020,6 +392534,26 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					type:                "string"
 					optional_for_import: true
 				}
+			}
+		}
+		google_resource_manager_boundary: {
+			version: 1
+			attributes: {
+				boundary_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				parent: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_resource_manager_boundary_config: {
+			version: 1
+			attributes: parent: {
+				type:                "string"
+				required_for_import: true
 			}
 		}
 		google_resource_manager_capability: {
@@ -389412,6 +393946,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				optional_for_import: true
 			}
 		}
+		google_vertex_ai_custom_job: {
+			version: 1
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				region: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		google_vertex_ai_dataset: {
 			version: 1
 			attributes: {
@@ -389680,6 +394231,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_vertex_ai_pipeline_job: {
+			version: 1
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
 		google_vertex_ai_rag_corpus: {
 			version: 1
 			attributes: {
@@ -389707,6 +394275,27 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				region: {
 					type:                "string"
 					optional_for_import: true
+				}
+			}
+		}
+		google_vertex_ai_rag_file: {
+			version: 1
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				rag_corpus: {
+					type:                "string"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					required_for_import: true
 				}
 			}
 		}

@@ -69,6 +69,9 @@ google_network_security_security_profile_group: {
 
 		// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
 		url_filtering_profile?: string
+
+		// Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+		wildfire_analysis_profile?: string
 	})
 
 	#timeouts: close({

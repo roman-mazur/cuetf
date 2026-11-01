@@ -113,8 +113,9 @@ google_compute_subnetwork: {
 
 		// The purpose of the resource. This field can be either 'PRIVATE',
 		// 'REGIONAL_MANAGED_PROXY', 'GLOBAL_MANAGED_PROXY', 'PRIVATE_SERVICE_CONNECT',
-		// 'PEER_MIGRATION' or
-		// 'PRIVATE_NAT'([Beta](../guides/provider_versions.html.markdown)).
+		// 'PEER_MIGRATION',
+		// 'PRIVATE_NAT'([Beta](../guides/provider_versions.html.markdown)) or
+		// 'CUSTOM_HARDWARE_LINK'([Beta](../guides/provider_versions.html.markdown)).
 		// A subnet with purpose set to 'REGIONAL_MANAGED_PROXY' is a user-created
 		// subnetwork that is reserved for regional Envoy-based load balancers.
 		// A subnetwork in a given region with purpose set to 'GLOBAL_MANAGED_PROXY' is
@@ -126,6 +127,7 @@ google_compute_subnetwork: {
 		// subnetwork that is reserved for migrating resources from one peered network
 		// to another.
 		// A subnetwork with purpose set to 'PRIVATE_NAT' is used as source range for Private NAT gateways.
+		// A subnetwork with purpose set to 'CUSTOM_HARDWARE_LINK' is used by Custom Hardware Link.
 		// Note that 'REGIONAL_MANAGED_PROXY' is the preferred setting for all regional
 		// Envoy load balancers.
 		// If unspecified, the purpose defaults to 'PRIVATE'.
