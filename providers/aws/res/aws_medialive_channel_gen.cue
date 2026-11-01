@@ -51,6 +51,7 @@ aws_medialive_channel: {
 		motion_graphics_configuration?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/motion_graphics_configuration", list.MaxItems(1) & [..._#defs."/$defs/encoder_settings/$defs/motion_graphics_configuration"]])
 		nielsen_configuration?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/nielsen_configuration", list.MaxItems(1) & [..._#defs."/$defs/encoder_settings/$defs/nielsen_configuration"]])
 		output_groups!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/output_groups", [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/output_groups"]])
+		thumbnail_configuration?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/thumbnail_configuration", list.MaxItems(1) & [..._#defs."/$defs/encoder_settings/$defs/thumbnail_configuration"]])
 		timecode_config!: matchN(1, [_#defs."/$defs/encoder_settings/$defs/timecode_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/encoder_settings/$defs/timecode_config"]])
 		video_descriptions?: matchN(1, [_#defs."/$defs/encoder_settings/$defs/video_descriptions", [..._#defs."/$defs/encoder_settings/$defs/video_descriptions"]])
 	})
@@ -891,6 +892,10 @@ aws_medialive_channel: {
 		column_depth?: number
 		include_fec?:  string
 		row_length?:   number
+	})
+
+	_#defs: "/$defs/encoder_settings/$defs/thumbnail_configuration": close({
+		state!: string
 	})
 
 	_#defs: "/$defs/encoder_settings/$defs/timecode_config": close({

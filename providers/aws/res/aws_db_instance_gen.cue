@@ -77,6 +77,7 @@ aws_db_instance: {
 		monitoring_interval?:                   number
 		monitoring_role_arn?:                   string
 		multi_az?:                              bool
+		multi_tenant?:                          bool
 		nchar_character_set_name?:              string
 		network_type?:                          string
 		option_group_name?:                     string

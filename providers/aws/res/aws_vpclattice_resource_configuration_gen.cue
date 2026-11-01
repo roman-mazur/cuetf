@@ -31,6 +31,7 @@ aws_vpclattice_resource_configuration: {
 
 	#resource_configuration_definition: close({
 		arn_resource?: matchN(1, [_#defs."/$defs/resource_configuration_definition/$defs/arn_resource", [..._#defs."/$defs/resource_configuration_definition/$defs/arn_resource"]])
+		cidr_resource?: matchN(1, [_#defs."/$defs/resource_configuration_definition/$defs/cidr_resource", [..._#defs."/$defs/resource_configuration_definition/$defs/cidr_resource"]])
 		dns_resource?: matchN(1, [_#defs."/$defs/resource_configuration_definition/$defs/dns_resource", [..._#defs."/$defs/resource_configuration_definition/$defs/dns_resource"]])
 		ip_resource?: matchN(1, [_#defs."/$defs/resource_configuration_definition/$defs/ip_resource", [..._#defs."/$defs/resource_configuration_definition/$defs/ip_resource"]])
 	})
@@ -59,6 +60,10 @@ aws_vpclattice_resource_configuration: {
 
 	_#defs: "/$defs/resource_configuration_definition/$defs/arn_resource": close({
 		arn!: string
+	})
+
+	_#defs: "/$defs/resource_configuration_definition/$defs/cidr_resource": close({
+		cidr_ranges!: [...string]
 	})
 
 	_#defs: "/$defs/resource_configuration_definition/$defs/dns_resource": close({

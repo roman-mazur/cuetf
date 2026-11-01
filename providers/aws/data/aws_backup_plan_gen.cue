@@ -31,6 +31,7 @@ aws_backup_plan: {
 				opt_in_to_archive_for_supported_resources?: bool
 			})]
 			recovery_point_tags?: [string]: string
+			rule_id?:   string
 			rule_name?: string
 			scan_action?: [...close({
 				malware_scanner?: string

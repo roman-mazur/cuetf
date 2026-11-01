@@ -40,7 +40,10 @@ aws_sagemaker_hub_content_reference: {
 		// ARN of the public SageMaker JumpStart hub content to reference. The ARN must
 		// not include a version suffix.
 		sagemaker_public_hub_content_arn!: string
-		tags?: [string]:     string
+		tags?: [string]: string
+
+		// ARN of the hub content reference, including the version suffix.
+		versioned_hub_content_arn?: string
 		tags_all?: [string]: string
 	})
 

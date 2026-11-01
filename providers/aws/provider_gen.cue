@@ -306,6 +306,9 @@ provider: {
 		bedrockagentcore?: string
 
 		// Use this to override the default service endpoint URL
+		bedrockdataautomation?: string
+
+		// Use this to override the default service endpoint URL
 		bedrockruntime?: string
 
 		// Use this to override the default service endpoint URL
@@ -1033,6 +1036,9 @@ provider: {
 
 		// Use this to override the default service endpoint URL
 		securityhub?: string
+
+		// Use this to override the default service endpoint URL
+		securityir?: string
 
 		// Use this to override the default service endpoint URL
 		securitylake?: string

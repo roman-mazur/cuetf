@@ -14,6 +14,7 @@ aws_ecs_express_gateway_service: {
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:                  string
 		cpu?:                     string
+		cpu_architecture?:        string
 		execution_role_arn!:      string
 		health_check_path?:       string
 		infrastructure_role_arn!: string

@@ -30,6 +30,7 @@ aws_networkfirewall_firewall_policy: {
 
 	#firewall_policy: close({
 		policy_variables?: matchN(1, [_#defs."/$defs/firewall_policy/$defs/policy_variables", list.MaxItems(1) & [..._#defs."/$defs/firewall_policy/$defs/policy_variables"]])
+		route53_resolved_ip_validation?: matchN(1, [_#defs."/$defs/firewall_policy/$defs/route53_resolved_ip_validation", list.MaxItems(1) & [..._#defs."/$defs/firewall_policy/$defs/route53_resolved_ip_validation"]])
 		stateful_engine_options?: matchN(1, [_#defs."/$defs/firewall_policy/$defs/stateful_engine_options", list.MaxItems(1) & [..._#defs."/$defs/firewall_policy/$defs/stateful_engine_options"]])
 		stateful_rule_group_reference?: matchN(1, [_#defs."/$defs/firewall_policy/$defs/stateful_rule_group_reference", [..._#defs."/$defs/firewall_policy/$defs/stateful_rule_group_reference"]])
 		stateless_custom_action?: matchN(1, [_#defs."/$defs/firewall_policy/$defs/stateless_custom_action", [..._#defs."/$defs/firewall_policy/$defs/stateless_custom_action"]])
@@ -52,6 +53,14 @@ aws_networkfirewall_firewall_policy: {
 
 	_#defs: "/$defs/firewall_policy/$defs/policy_variables/$defs/rule_variables/$defs/ip_set": close({
 		definition!: [...string]
+	})
+
+	_#defs: "/$defs/firewall_policy/$defs/route53_resolved_ip_validation": close({
+		action!: string
+		bypass_destination_validation_ip_ranges?: [...string]
+		dns_expiry_exception_policy!: string
+		dns_firewall_rule_group_id!:  string
+		source_ip_ranges?: [...string]
 	})
 
 	_#defs: "/$defs/firewall_policy/$defs/stateful_engine_options": close({
