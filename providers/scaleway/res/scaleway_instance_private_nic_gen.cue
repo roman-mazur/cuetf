@@ -21,11 +21,17 @@ scaleway_instance_private_nic: {
 		// The project_id you want to attach the resource to
 		project_id?: string
 
+		// The ID of the security group associated with this interface
+		security_group_id?: string
+
 		// The server ID
-		server_id!: string
+		server_id?: string
 
 		// The Scaleway Resource Name (SRN) of the private network interface
 		srn?: string
+
+		// Current status of the private network interface
+		status?: string
 
 		// The tags associated with the private-nic
 		tags?: [...string]

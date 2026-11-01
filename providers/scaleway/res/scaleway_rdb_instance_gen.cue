@@ -24,6 +24,11 @@ scaleway_rdb_instance: {
 		// Certificate of the database instance
 		certificate?: string
 
+		// ID of an existing Database Instance to clone. The clone includes all
+		// databases, users, and permissions. Conflicts with the `engine` and
+		// `snapshot_id` attributes.
+		clone_from?: string
+
 		// Disable automated backup for the database instance
 		disable_backup?: bool
 
@@ -97,7 +102,7 @@ scaleway_rdb_instance: {
 
 		// ID of an existing snapshot to create a new instance from. This allows
 		// restoring a database instance to the state captured in the specified
-		// snapshot. Conflicts with the `engine` attribute.
+		// snapshot. Conflicts with the `engine` and `clone_from` attributes.
 		snapshot_id?: string
 
 		// List of tags ["tag1", "tag2", ...] attached to a database instance
