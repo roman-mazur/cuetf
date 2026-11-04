@@ -24,6 +24,10 @@ MetaArgs: {
 	depends_on?: [#TfExpr, ...#TfExpr]
 	count?: uint
 
+	// provider selects an alternate provider configuration, such as "aws.eu".
+	provider?: string
+	for_each?: #TfExpr | {...}
+
 	// See https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle
 	lifecycle?: {
 		action_trigger?: {
@@ -48,8 +52,6 @@ MetaArgs: {
 
 		destroy?: bool // Limited to "remove" blocks.
 	}
-
-	// TODO: Review how to handle provider, providers, and for_each.
 }
 
 // #TfExpr represents a terraform expression in a JSON document.
