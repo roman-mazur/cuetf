@@ -14,6 +14,9 @@ import "github.com/roman-mazur/cuetf"
 	terraform: required_providers: (prefix): {
 		source:  "hashicorp/helm"
 		version: #Version
+
+		// Aliases for additional provider configurations, such as "aws.eu".
+		configuration_aliases?: [string, ...string]
 	}
 
 	_#profiderDef: {
