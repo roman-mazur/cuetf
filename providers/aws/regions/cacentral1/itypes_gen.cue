@@ -18488,7 +18488,7 @@ InstanceTypes: [{
         }
         NvmeSupport:           "required"
         MaximumEbsAttachments: 64
-        AttachmentLimitType:   "shared"
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "75 Gigabit"
@@ -18585,7 +18585,7 @@ InstanceTypes: [{
         }
         NvmeSupport:           "required"
         MaximumEbsAttachments: 79
-        AttachmentLimitType:   "shared"
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -26771,7 +26771,7 @@ InstanceTypes: [{
         }
         NvmeSupport:           "required"
         MaximumEbsAttachments: 39
-        AttachmentLimitType:   "shared"
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 56.25 Gigabit"
@@ -26861,7 +26861,7 @@ InstanceTypes: [{
         }
         NvmeSupport:           "required"
         MaximumEbsAttachments: 79
-        AttachmentLimitType:   "shared"
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 100 Gigabit"
@@ -27838,7 +27838,7 @@ InstanceTypes: [{
         }
         NvmeSupport:           "required"
         MaximumEbsAttachments: 39
-        AttachmentLimitType:   "shared"
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -27928,7 +27928,7 @@ InstanceTypes: [{
         }
         NvmeSupport:           "required"
         MaximumEbsAttachments: 79
-        AttachmentLimitType:   "shared"
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "200 Gigabit"
@@ -28987,7 +28987,7 @@ InstanceTypes: [{
         }
         NvmeSupport:           "required"
         MaximumEbsAttachments: 79
-        AttachmentLimitType:   "shared"
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "Up to 100 Gigabit"
@@ -29982,7 +29982,7 @@ InstanceTypes: [{
         }
         NvmeSupport:           "required"
         MaximumEbsAttachments: 39
-        AttachmentLimitType:   "shared"
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "150 Gigabit"
@@ -30074,7 +30074,7 @@ InstanceTypes: [{
         }
         NvmeSupport:           "required"
         MaximumEbsAttachments: 79
-        AttachmentLimitType:   "shared"
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "300 Gigabit"
@@ -49066,7 +49066,7 @@ InstanceTypes: [{
         }
         NvmeSupport:           "required"
         MaximumEbsAttachments: 64
-        AttachmentLimitType:   "shared"
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "75 Gigabit"
@@ -49163,7 +49163,7 @@ InstanceTypes: [{
         }
         NvmeSupport:           "required"
         MaximumEbsAttachments: 79
-        AttachmentLimitType:   "shared"
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
@@ -63802,7 +63802,7 @@ InstanceTypes: [{
         }
         NvmeSupport:           "required"
         MaximumEbsAttachments: 79
-        AttachmentLimitType:   "shared"
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "75 Gigabit"
@@ -69027,7 +69027,7 @@ InstanceTypes: [{
         }
         NvmeSupport:           "required"
         MaximumEbsAttachments: 64
-        AttachmentLimitType:   "shared"
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "75 Gigabit"
@@ -69124,7 +69124,7 @@ InstanceTypes: [{
         }
         NvmeSupport:           "required"
         MaximumEbsAttachments: 79
-        AttachmentLimitType:   "shared"
+        AttachmentLimitType:   "dedicated"
     }
     NetworkInfo: {
         NetworkPerformance:       "100 Gigabit"
