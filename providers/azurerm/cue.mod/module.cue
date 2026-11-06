@@ -2,6 +2,6 @@ module: "github.com/roman-mazur/cuetf/providers/azurerm"
 language: version: "v0.15.4"
 source: kind:      "git"
 deps: "github.com/roman-mazur/cuetf@v0": {
-	v:       "v0.2608.1"
+	v:       "v0.2611.0"
 	default: true
 }
