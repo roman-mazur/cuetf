@@ -49,7 +49,11 @@ MetaArgs: {
 		destroy?: bool // Limited to "remove" blocks.
 	}
 
-	// TODO: Review how to handle provider, providers, and for_each.
+	provider?: string
+
+	// TODO: Review how to handle
+	// - providers: https://developer.hashicorp.com/terraform/language/meta-arguments/providers
+	// - for_each (is it even needed?): https://developer.hashicorp.com/terraform/language/meta-arguments/for_each
 }
 
 // #TfExpr represents a terraform expression in a JSON document.
