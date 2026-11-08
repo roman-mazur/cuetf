@@ -12,6 +12,7 @@ azurerm_mssql_managed_database: {
 		id?:                        string
 		managed_instance_id!:       string
 		name!:                      string
+		recover_database_id?:       string
 		short_term_retention_days?: number
 		tags?: [string]: string
 	})

@@ -43,6 +43,7 @@ azurerm_application_insights_standard_web_test: {
 	#validation_rules: close({
 		content?: matchN(1, [_#defs."/$defs/validation_rules/$defs/content", list.MaxItems(1) & [..._#defs."/$defs/validation_rules/$defs/content"]])
 		expected_status_code?:        number
+		ignore_status_code?:          bool
 		ssl_cert_remaining_lifetime?: number
 		ssl_check_enabled?:           bool
 	})

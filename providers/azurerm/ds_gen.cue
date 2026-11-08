@@ -333,6 +333,7 @@ import (
 	_#ds: "\(#azurermPrefix)_recovery_services_vault": close({data.azurerm_recovery_services_vault & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_redis_cache": close({data.azurerm_redis_cache & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_redis_enterprise_database": close({data.azurerm_redis_enterprise_database & cuetf.MetaArgs})
+	_#ds: "\(#azurermPrefix)_relay_namespace": close({data.azurerm_relay_namespace & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_resource_group": close({data.azurerm_resource_group & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_resource_group_template_deployment": close({data.azurerm_resource_group_template_deployment & cuetf.MetaArgs})
 	_#ds: "\(#azurermPrefix)_resources": close({data.azurerm_resources & cuetf.MetaArgs})

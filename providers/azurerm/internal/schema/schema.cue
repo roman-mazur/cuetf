@@ -12403,6 +12403,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 									description_kind: "plain"
 									optional:         true
 								}
+								ignore_status_code: {
+									type:             "bool"
+									description_kind: "plain"
+									optional:         true
+								}
 								ssl_cert_remaining_lifetime: {
 									type:             "number"
 									description_kind: "plain"
@@ -97953,6 +97958,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						type:             "string"
 						description_kind: "plain"
 						required:         true
+					}
+					recover_database_id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
 					}
 					short_term_retention_days: {
 						type:             "number"
@@ -189852,6 +189862,85 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 					}
 					zones: {
 						type: ["list", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: read: {
+							type:             "string"
+							description_kind: "plain"
+							optional:         true
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_relay_namespace: {
+			version: 0
+			block: {
+				attributes: {
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					metric_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					primary_connection_string: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+						sensitive:        true
+					}
+					primary_key: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+						sensitive:        true
+					}
+					resource_group_name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					secondary_connection_string: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+						sensitive:        true
+					}
+					secondary_key: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+						sensitive:        true
+					}
+					sku_name: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					tags: {
+						type: ["map", "string"]
 						description_kind: "plain"
 						computed:         true
 					}
