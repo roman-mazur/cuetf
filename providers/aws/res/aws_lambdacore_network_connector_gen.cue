@@ -12,9 +12,11 @@ aws_lambdacore_network_connector: {
 		// [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-		region?:        string
-		name!:          string
-		operator_role!: string
+		region?:             string
+		latest_version?:     number
+		latest_version_arn?: string
+		name!:               string
+		operator_role!:      string
 	})
 
 	#configuration: close({

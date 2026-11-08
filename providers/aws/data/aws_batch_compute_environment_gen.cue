@@ -19,7 +19,8 @@ aws_batch_compute_environment: {
 		status?:        string
 		status_reason?: string
 		tags?: [string]: string
-		type?: string
+		type?:            string
+		unmanaged_vcpus?: number
 		update_policy?: [...close({
 			job_execution_timeout_minutes?: number
 			terminate_jobs_on_update?:      bool

@@ -28134,6 +28134,12 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						description_kind: "plain"
 						required:         true
 					}
+					unmanaged_vcpus: {
+						type:             "number"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 				}
 				block_types: {
 					compute_resources: {
@@ -41324,6 +41330,952 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				description_kind: "plain"
 			}
 		}
+		aws_bedrockdataautomation_blueprint: {
+			version: 0
+			block: {
+				attributes: {
+					arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					blueprint_stage: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					creation_time: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					last_modified_time: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					schema: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						optional:         true
+					}
+					tags_all: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					type: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: encryption_configuration: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							kms_encryption_context: {
+								type: ["map", "string"]
+								description_kind: "plain"
+								optional:         true
+							}
+							kms_key_id: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_bedrockdataautomation_library: {
+			version: 0
+			block: {
+				attributes: {
+					arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					creation_time: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					entity_types: {
+						type: ["list", ["object", {
+							entity_metadata: "string"
+							entity_type:     "string"
+						}]]
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						optional:         true
+					}
+					tags_all: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					encryption_configuration: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								kms_encryption_context: {
+									type: ["map", "string"]
+									description_kind: "plain"
+									optional:         true
+								}
+								kms_key_id: {
+									type:             "string"
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: delete: {
+								type:             "string"
+								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+								description_kind: "plain"
+								optional:         true
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_bedrockdataautomation_project: {
+			version: 0
+			block: {
+				attributes: {
+					arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					creation_time: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					last_modified_time: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project_stage: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					status: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						optional:         true
+					}
+					tags_all: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					type: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: {
+					custom_output_configuration: {
+						nesting_mode: "list"
+						block: {
+							block_types: {
+								blueprint: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											blueprint_arn: {
+												type:             "string"
+												description_kind: "plain"
+												required:         true
+											}
+											blueprint_stage: {
+												type:             "string"
+												description_kind: "plain"
+												optional:         true
+											}
+											blueprint_version: {
+												type:             "string"
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								document: {
+									nesting_mode: "list"
+									block: {
+										block_types: fallback_blueprint: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													blueprint_arn: {
+														type:             "string"
+														description_kind: "plain"
+														required:         true
+													}
+													blueprint_stage: {
+														type:             "string"
+														description_kind: "plain"
+														optional:         true
+													}
+													blueprint_version: {
+														type:             "string"
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												description_kind: "plain"
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					data_automation_library_configuration: {
+						nesting_mode: "list"
+						block: {
+							block_types: library: {
+								nesting_mode: "list"
+								block: {
+									attributes: library_arn: {
+										type:             "string"
+										description_kind: "plain"
+										required:         true
+									}
+									description_kind: "plain"
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					encryption_configuration: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								kms_encryption_context: {
+									type: ["map", "string"]
+									description_kind: "plain"
+									optional:         true
+								}
+								kms_key_id: {
+									type:             "string"
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					override_configuration: {
+						nesting_mode: "list"
+						block: {
+							block_types: {
+								audio: {
+									nesting_mode: "list"
+									block: {
+										block_types: {
+											language_configuration: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														generative_output_language: {
+															type:             "string"
+															description_kind: "plain"
+															optional:         true
+														}
+														identify_multiple_languages: {
+															type:             "bool"
+															description_kind: "plain"
+															optional:         true
+														}
+														input_languages: {
+															type: ["set", "string"]
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													description_kind: "plain"
+												}
+											}
+											modality_processing: {
+												nesting_mode: "list"
+												block: {
+													attributes: state: {
+														type:             "string"
+														description_kind: "plain"
+														required:         true
+													}
+													description_kind: "plain"
+												}
+											}
+											sensitive_data_configuration: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														detection_mode: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+														detection_scope: {
+															type: ["set", "string"]
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													block_types: pii_entities_configuration: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																pii_entity_types: {
+																	type: ["set", "string"]
+																	description_kind: "plain"
+																	optional:         true
+																}
+																redaction_mask_mode: {
+																	type:             "string"
+																	description_kind: "plain"
+																	optional:         true
+																}
+															}
+															description_kind: "plain"
+														}
+													}
+													description_kind: "plain"
+												}
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								document: {
+									nesting_mode: "list"
+									block: {
+										block_types: {
+											modality_processing: {
+												nesting_mode: "list"
+												block: {
+													attributes: state: {
+														type:             "string"
+														description_kind: "plain"
+														required:         true
+													}
+													description_kind: "plain"
+												}
+											}
+											sensitive_data_configuration: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														detection_mode: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+														detection_scope: {
+															type: ["set", "string"]
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													block_types: pii_entities_configuration: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																pii_entity_types: {
+																	type: ["set", "string"]
+																	description_kind: "plain"
+																	optional:         true
+																}
+																redaction_mask_mode: {
+																	type:             "string"
+																	description_kind: "plain"
+																	optional:         true
+																}
+															}
+															description_kind: "plain"
+														}
+													}
+													description_kind: "plain"
+												}
+											}
+											splitter: {
+												nesting_mode: "list"
+												block: {
+													attributes: state: {
+														type:             "string"
+														description_kind: "plain"
+														required:         true
+													}
+													description_kind: "plain"
+												}
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								image: {
+									nesting_mode: "list"
+									block: {
+										block_types: {
+											modality_processing: {
+												nesting_mode: "list"
+												block: {
+													attributes: state: {
+														type:             "string"
+														description_kind: "plain"
+														required:         true
+													}
+													description_kind: "plain"
+												}
+											}
+											sensitive_data_configuration: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														detection_mode: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+														detection_scope: {
+															type: ["set", "string"]
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													block_types: pii_entities_configuration: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																pii_entity_types: {
+																	type: ["set", "string"]
+																	description_kind: "plain"
+																	optional:         true
+																}
+																redaction_mask_mode: {
+																	type:             "string"
+																	description_kind: "plain"
+																	optional:         true
+																}
+															}
+															description_kind: "plain"
+														}
+													}
+													description_kind: "plain"
+												}
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								modality_routing: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											jpeg: {
+												type:             "string"
+												description_kind: "plain"
+												optional:         true
+											}
+											mov: {
+												type:             "string"
+												description_kind: "plain"
+												optional:         true
+											}
+											mp4: {
+												type:             "string"
+												description_kind: "plain"
+												optional:         true
+											}
+											png: {
+												type:             "string"
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								video: {
+									nesting_mode: "list"
+									block: {
+										block_types: {
+											modality_processing: {
+												nesting_mode: "list"
+												block: {
+													attributes: state: {
+														type:             "string"
+														description_kind: "plain"
+														required:         true
+													}
+													description_kind: "plain"
+												}
+											}
+											sensitive_data_configuration: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														detection_mode: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+														detection_scope: {
+															type: ["set", "string"]
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													block_types: pii_entities_configuration: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																pii_entity_types: {
+																	type: ["set", "string"]
+																	description_kind: "plain"
+																	optional:         true
+																}
+																redaction_mask_mode: {
+																	type:             "string"
+																	description_kind: "plain"
+																	optional:         true
+																}
+															}
+															description_kind: "plain"
+														}
+													}
+													description_kind: "plain"
+												}
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					standard_output_configuration: {
+						nesting_mode: "list"
+						block: {
+							block_types: {
+								audio: {
+									nesting_mode: "list"
+									block: {
+										block_types: {
+											extraction: {
+												nesting_mode: "list"
+												block: {
+													block_types: category: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																state: {
+																	type:             "string"
+																	description_kind: "plain"
+																	required:         true
+																}
+																types: {
+																	type: ["set", "string"]
+																	description_kind: "plain"
+																	optional:         true
+																}
+															}
+															block_types: type_configuration: {
+																nesting_mode: "list"
+																block: {
+																	block_types: transcript: {
+																		nesting_mode: "list"
+																		block: {
+																			block_types: {
+																				channel_labeling: {
+																					nesting_mode: "list"
+																					block: {
+																						attributes: state: {
+																							type:             "string"
+																							description_kind: "plain"
+																							required:         true
+																						}
+																						description_kind: "plain"
+																					}
+																				}
+																				speaker_labeling: {
+																					nesting_mode: "list"
+																					block: {
+																						attributes: state: {
+																							type:             "string"
+																							description_kind: "plain"
+																							required:         true
+																						}
+																						description_kind: "plain"
+																					}
+																				}
+																			}
+																			description_kind: "plain"
+																		}
+																	}
+																	description_kind: "plain"
+																}
+															}
+															description_kind: "plain"
+														}
+													}
+													description_kind: "plain"
+												}
+											}
+											generative_field: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														state: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+														types: {
+															type: ["set", "string"]
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													description_kind: "plain"
+												}
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								document: {
+									nesting_mode: "list"
+									block: {
+										block_types: {
+											extraction: {
+												nesting_mode: "list"
+												block: {
+													block_types: {
+														bounding_box: {
+															nesting_mode: "list"
+															block: {
+																attributes: state: {
+																	type:             "string"
+																	description_kind: "plain"
+																	required:         true
+																}
+																description_kind: "plain"
+															}
+														}
+														granularity: {
+															nesting_mode: "list"
+															block: {
+																attributes: types: {
+																	type: ["set", "string"]
+																	description_kind: "plain"
+																	optional:         true
+																}
+																description_kind: "plain"
+															}
+														}
+													}
+													description_kind: "plain"
+												}
+											}
+											generative_field: {
+												nesting_mode: "list"
+												block: {
+													attributes: state: {
+														type:             "string"
+														description_kind: "plain"
+														required:         true
+													}
+													description_kind: "plain"
+												}
+											}
+											output_format: {
+												nesting_mode: "list"
+												block: {
+													block_types: {
+														additional_file_format: {
+															nesting_mode: "list"
+															block: {
+																attributes: state: {
+																	type:             "string"
+																	description_kind: "plain"
+																	required:         true
+																}
+																description_kind: "plain"
+															}
+														}
+														text_format: {
+															nesting_mode: "list"
+															block: {
+																attributes: types: {
+																	type: ["set", "string"]
+																	description_kind: "plain"
+																	optional:         true
+																}
+																description_kind: "plain"
+															}
+														}
+													}
+													description_kind: "plain"
+												}
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								image: {
+									nesting_mode: "list"
+									block: {
+										block_types: {
+											extraction: {
+												nesting_mode: "list"
+												block: {
+													block_types: {
+														bounding_box: {
+															nesting_mode: "list"
+															block: {
+																attributes: state: {
+																	type:             "string"
+																	description_kind: "plain"
+																	required:         true
+																}
+																description_kind: "plain"
+															}
+														}
+														category: {
+															nesting_mode: "list"
+															block: {
+																attributes: {
+																	state: {
+																		type:             "string"
+																		description_kind: "plain"
+																		required:         true
+																	}
+																	types: {
+																		type: ["set", "string"]
+																		description_kind: "plain"
+																		optional:         true
+																	}
+																}
+																description_kind: "plain"
+															}
+														}
+													}
+													description_kind: "plain"
+												}
+											}
+											generative_field: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														state: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+														types: {
+															type: ["set", "string"]
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													description_kind: "plain"
+												}
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								video: {
+									nesting_mode: "list"
+									block: {
+										block_types: {
+											extraction: {
+												nesting_mode: "list"
+												block: {
+													block_types: {
+														bounding_box: {
+															nesting_mode: "list"
+															block: {
+																attributes: state: {
+																	type:             "string"
+																	description_kind: "plain"
+																	required:         true
+																}
+																description_kind: "plain"
+															}
+														}
+														category: {
+															nesting_mode: "list"
+															block: {
+																attributes: {
+																	state: {
+																		type:             "string"
+																		description_kind: "plain"
+																		required:         true
+																	}
+																	types: {
+																		type: ["set", "string"]
+																		description_kind: "plain"
+																		optional:         true
+																	}
+																}
+																description_kind: "plain"
+															}
+														}
+													}
+													description_kind: "plain"
+												}
+											}
+											generative_field: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														state: {
+															type:             "string"
+															description_kind: "plain"
+															required:         true
+														}
+														types: {
+															type: ["set", "string"]
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													description_kind: "plain"
+												}
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		aws_billing_view: {
 			version: 0
 			block: {
@@ -51561,6 +52513,12 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						type:             "string"
 						description_kind: "plain"
 						required:         true
+					}
+					recursive_logging: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
 					}
 					region: {
 						type:             "string"
@@ -84105,6 +85063,38 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				description_kind: "plain"
 			}
 		}
+		aws_ec2_capacity_manager: {
+			version: 0
+			block: {
+				attributes: {
+					enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						deprecated:       true
+						computed:         true
+					}
+					organizations_access: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		aws_ec2_capacity_reservation: {
 			version: 0
 			block: {
@@ -96516,6 +97506,16 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						optional:         true
+					}
+					tags_all: {
+						type: ["map", "string"]
+						description_kind: "plain"
 						computed:         true
 					}
 					transit_encryption_enabled: {
@@ -132408,6 +133408,16 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						description_kind: "plain"
 						computed:         true
 					}
+					latest_version: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
+					latest_version_arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
 					name: {
 						type:             "string"
 						description_kind: "plain"
@@ -132788,6 +133798,402 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 							}
 							description_kind: "plain"
 						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_lambdaweb_function: {
+			version: 0
+			block: {
+				attributes: {
+					arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					function_name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						optional:         true
+					}
+					tags_all: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_lambdaweb_function_endpoint: {
+			version: 0
+			block: {
+				attributes: {
+					arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					auth_type: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					auto_deployment_mode: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					domain_name: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					endpoint_name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					endpoint_type: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					function_name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					regional_domain_names: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					regions: {
+						type: ["set", "string"]
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: {
+					revision_weight: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								revision_id: {
+									type:             "string"
+									description_kind: "plain"
+									required:         true
+								}
+								weight: {
+									type:             "number"
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					scaling_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: max_environments: {
+								type:             "number"
+								description_kind: "plain"
+								required:         true
+							}
+							description_kind: "plain"
+						}
+					}
+					throttle_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: rate_limit: {
+								type:             "number"
+								description_kind: "plain"
+								required:         true
+							}
+							description_kind: "plain"
+						}
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_lambdaweb_function_revision: {
+			version: 0
+			block: {
+				attributes: {
+					arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					function_name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					kms_key_arn: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					revision_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					build_config: {
+						nesting_mode: "list"
+						block: {
+							block_types: {
+								code_config: {
+									nesting_mode: "list"
+									block: {
+										block_types: s3_object: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													bucket: {
+														type:             "string"
+														description_kind: "plain"
+														required:         true
+													}
+													key: {
+														type:             "string"
+														description_kind: "plain"
+														required:         true
+													}
+													version_id: {
+														type:             "string"
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												description_kind: "plain"
+											}
+										}
+										description_kind: "plain"
+									}
+								}
+								runtime_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: runtime: {
+											type:             "string"
+											description_kind: "plain"
+											required:         true
+										}
+										description_kind: "plain"
+									}
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					service_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								egress_network_connector_arn: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								environment_variables: {
+									type: ["map", "string"]
+									description_kind: "plain"
+									optional:         true
+									sensitive:        true
+								}
+								execution_role_arn: {
+									type:             "string"
+									description_kind: "plain"
+									required:         true
+								}
+								max_concurrency_per_environment: {
+									type:             "number"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								telemetry_config_actual: {
+									type: ["list", ["object", {
+										logging_config: ["list", ["object", {
+											application_log_level: "string", log_group: "string", system_log_level: "string"
+										}]]
+									}]]
+									description_kind: "plain"
+									computed:         true
+								}
+								timeout_seconds: {
+									type:             "number"
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+							}
+							block_types: telemetry_config: {
+								nesting_mode: "list"
+								block: {
+									block_types: logging_config: {
+										nesting_mode: "list"
+										block: {
+											attributes: {
+												application_log_level: {
+													type:             "string"
+													description_kind: "plain"
+													optional:         true
+												}
+												log_group: {
+													type:             "string"
+													description_kind: "plain"
+													optional:         true
+												}
+												system_log_level: {
+													type:             "string"
+													description_kind: "plain"
+													optional:         true
+												}
+											}
+											description_kind: "plain"
+										}
+									}
+									description_kind: "plain"
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: create: {
+								type:             "string"
+								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+								description_kind: "plain"
+								optional:         true
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_lambdaweb_resource_policy: {
+			version: 0
+			block: {
+				attributes: {
+					policy: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					resource_arn: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					revision_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -172661,6 +174067,460 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				description_kind: "plain"
 			}
 		}
+		aws_networksecuritymanager_rule: {
+			version: 0
+			block: {
+				attributes: {
+					arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					configuration: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					description: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					firewall_type: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					is_published: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						optional:         true
+					}
+					tags_all: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					type: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_networksecuritymanager_scope: {
+			version: 0
+			block: {
+				attributes: {
+					arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					is_published: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						optional:         true
+					}
+					tags_all: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: scope_configuration: {
+					nesting_mode: "list"
+					block: {
+						block_types: {
+							account_filter: {
+								nesting_mode: "list"
+								block: {
+									attributes: include_all: {
+										type:             "bool"
+										description_kind: "plain"
+										optional:         true
+									}
+									block_types: {
+										exclude: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													account_ids: {
+														type: ["set", "string"]
+														description_kind: "plain"
+														optional:         true
+													}
+													organizational_units: {
+														type: ["set", "string"]
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												description_kind: "plain"
+											}
+										}
+										include: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													account_ids: {
+														type: ["set", "string"]
+														description_kind: "plain"
+														optional:         true
+													}
+													organizational_units: {
+														type: ["set", "string"]
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												description_kind: "plain"
+											}
+										}
+									}
+									description_kind: "plain"
+								}
+							}
+							resource_scope: {
+								nesting_mode: "set"
+								block: {
+									attributes: {
+										include_all: {
+											type:             "bool"
+											description_kind: "plain"
+											optional:         true
+										}
+										resource_type: {
+											type:             "string"
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									block_types: {
+										exclude: {
+											nesting_mode: "list"
+											block: {
+												attributes: explicit_arns: {
+													type: ["set", "string"]
+													description_kind: "plain"
+													optional:         true
+												}
+												block_types: expression: {
+													nesting_mode: "list"
+													block: {
+														block_types: {
+															and: {
+																nesting_mode: "list"
+																block: {
+																	attributes: tags: {
+																		type: ["map", "string"]
+																		description_kind: "plain"
+																		optional:         true
+																	}
+																	block_types: alb_config: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				ip_address_type: {
+																					type:             "string"
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				scheme: {
+																					type:             "string"
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																			}
+																			description_kind: "plain"
+																		}
+																	}
+																	description_kind: "plain"
+																}
+															}
+															criteria: {
+																nesting_mode: "list"
+																block: {
+																	attributes: tags: {
+																		type: ["map", "string"]
+																		description_kind: "plain"
+																		optional:         true
+																	}
+																	block_types: alb_config: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				ip_address_type: {
+																					type:             "string"
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				scheme: {
+																					type:             "string"
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																			}
+																			description_kind: "plain"
+																		}
+																	}
+																	description_kind: "plain"
+																}
+															}
+															not: {
+																nesting_mode: "list"
+																block: {
+																	attributes: tags: {
+																		type: ["map", "string"]
+																		description_kind: "plain"
+																		optional:         true
+																	}
+																	block_types: alb_config: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				ip_address_type: {
+																					type:             "string"
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				scheme: {
+																					type:             "string"
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																			}
+																			description_kind: "plain"
+																		}
+																	}
+																	description_kind: "plain"
+																}
+															}
+															or: {
+																nesting_mode: "list"
+																block: {
+																	attributes: tags: {
+																		type: ["map", "string"]
+																		description_kind: "plain"
+																		optional:         true
+																	}
+																	block_types: alb_config: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				ip_address_type: {
+																					type:             "string"
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				scheme: {
+																					type:             "string"
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																			}
+																			description_kind: "plain"
+																		}
+																	}
+																	description_kind: "plain"
+																}
+															}
+														}
+														description_kind: "plain"
+													}
+												}
+												description_kind: "plain"
+											}
+										}
+										include: {
+											nesting_mode: "list"
+											block: {
+												attributes: explicit_arns: {
+													type: ["set", "string"]
+													description_kind: "plain"
+													optional:         true
+												}
+												block_types: expression: {
+													nesting_mode: "list"
+													block: {
+														block_types: {
+															and: {
+																nesting_mode: "list"
+																block: {
+																	attributes: tags: {
+																		type: ["map", "string"]
+																		description_kind: "plain"
+																		optional:         true
+																	}
+																	block_types: alb_config: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				ip_address_type: {
+																					type:             "string"
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				scheme: {
+																					type:             "string"
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																			}
+																			description_kind: "plain"
+																		}
+																	}
+																	description_kind: "plain"
+																}
+															}
+															criteria: {
+																nesting_mode: "list"
+																block: {
+																	attributes: tags: {
+																		type: ["map", "string"]
+																		description_kind: "plain"
+																		optional:         true
+																	}
+																	block_types: alb_config: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				ip_address_type: {
+																					type:             "string"
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				scheme: {
+																					type:             "string"
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																			}
+																			description_kind: "plain"
+																		}
+																	}
+																	description_kind: "plain"
+																}
+															}
+															not: {
+																nesting_mode: "list"
+																block: {
+																	attributes: tags: {
+																		type: ["map", "string"]
+																		description_kind: "plain"
+																		optional:         true
+																	}
+																	block_types: alb_config: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				ip_address_type: {
+																					type:             "string"
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				scheme: {
+																					type:             "string"
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																			}
+																			description_kind: "plain"
+																		}
+																	}
+																	description_kind: "plain"
+																}
+															}
+															or: {
+																nesting_mode: "list"
+																block: {
+																	attributes: tags: {
+																		type: ["map", "string"]
+																		description_kind: "plain"
+																		optional:         true
+																	}
+																	block_types: alb_config: {
+																		nesting_mode: "list"
+																		block: {
+																			attributes: {
+																				ip_address_type: {
+																					type:             "string"
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				scheme: {
+																					type:             "string"
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																			}
+																			description_kind: "plain"
+																		}
+																	}
+																	description_kind: "plain"
+																}
+															}
+														}
+														description_kind: "plain"
+													}
+												}
+												description_kind: "plain"
+											}
+										}
+									}
+									description_kind: "plain"
+								}
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		aws_notifications_channel_association: {
 			version: 0
 			block: {
@@ -184130,6 +185990,32 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 							}
 							description_kind: "plain"
 						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_quicksight_account_custom_permission: {
+			version: 0
+			block: {
+				attributes: {
+					aws_account_id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					custom_permissions_name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
 					}
 				}
 				description_kind: "plain"
@@ -592652,6 +594538,142 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						type: ["map", "string"]
 						description_kind: "plain"
 						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_rds_tenant_database: {
+			version: 0
+			block: {
+				attributes: {
+					arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					character_set_name: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					db_instance_identifier: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					final_snapshot_identifier: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					manage_master_user_password: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+					}
+					master_user_password: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						sensitive:        true
+					}
+					master_user_password_wo: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						sensitive:        true
+						write_only:       true
+					}
+					master_user_password_wo_version: {
+						type:             "number"
+						description_kind: "plain"
+						optional:         true
+					}
+					master_user_secret: {
+						type: ["list", ["object", {
+							kms_key_id:    "string"
+							secret_arn:    "string"
+							secret_status: "string"
+						}]]
+						description_kind: "plain"
+						computed:         true
+					}
+					master_user_secret_kms_key_id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					master_username: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					nchar_character_set_name: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					skip_final_snapshot: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						optional:         true
+					}
+					tags_all: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					tenant_database_resource_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					tenant_db_name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
 					}
 				}
 				block_types: timeouts: {
@@ -1167649,6 +1169671,11 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 						description_kind: "plain"
 						computed:         true
 					}
+					unmanaged_vcpus: {
+						type:             "number"
+						description_kind: "plain"
+						computed:         true
+					}
 					update_policy: {
 						type: ["list", ["object", {
 							job_execution_timeout_minutes: "number"
@@ -1192371,6 +1194398,148 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 					}
 					updated_at: {
 						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_lambdaweb_function: {
+			version: 0
+			block: {
+				attributes: {
+					arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					function_name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					latest_revision_id: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					state: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					state_reason: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_lambdaweb_function_endpoint: {
+			version: 0
+			block: {
+				attributes: {
+					arn: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					auth_type: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					auto_deployment_mode: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					domain_name: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					endpoint_name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					endpoint_type: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					function_name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					regional_domain_names: {
+						type: ["map", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					regions: {
+						type: ["set", "string"]
+						description_kind: "plain"
+						computed:         true
+					}
+					revision_weights: {
+						type: ["list", ["object", {
+							revision_id: "string"
+							weight:      "number"
+						}]]
+						description_kind: "plain"
+						computed:         true
+					}
+					scaling_config: {
+						type: ["list", ["object", {
+							max_environments: "number"
+						}]]
+						description_kind: "plain"
+						computed:         true
+					}
+					state: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					state_reason: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					throttle_config: {
+						type: ["list", ["object", {
+							rate_limit: "number"
+						}]]
 						description_kind: "plain"
 						computed:         true
 					}
@@ -1245027,6 +1247196,42 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				description_kind: "plain"
 			}
 		}
+		aws_bedrockdataautomation_blueprint: {
+			version: 0
+			block: {
+				attributes: region: {
+					type:             "string"
+					description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_bedrockdataautomation_library: {
+			version: 0
+			block: {
+				attributes: region: {
+					type:             "string"
+					description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_bedrockdataautomation_project: {
+			version: 0
+			block: {
+				attributes: region: {
+					type:             "string"
+					description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
 		aws_cleanrooms_collaboration: {
 			version: 0
 			block: {
@@ -1246599,6 +1248804,58 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				description_kind: "plain"
 			}
 		}
+		aws_lambdaweb_function: {
+			version: 0
+			block: {
+				attributes: region: {
+					type:             "string"
+					description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_lambdaweb_function_endpoint: {
+			version: 0
+			block: {
+				attributes: {
+					function_name: {
+						type:             "string"
+						description:      "Web function name."
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_lambdaweb_function_revision: {
+			version: 0
+			block: {
+				attributes: {
+					function_name: {
+						type:             "string"
+						description:      "Web function name."
+						description_kind: "plain"
+						required:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		aws_launch_template: {
 			version: 0
 			block: {
@@ -1246984,6 +1249241,30 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				description_kind: "plain"
 			}
 		}
+		aws_networksecuritymanager_rule: {
+			version: 0
+			block: {
+				attributes: region: {
+					type:             "string"
+					description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_networksecuritymanager_scope: {
+			version: 0
+			block: {
+				attributes: region: {
+					type:             "string"
+					description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
 		aws_observabilityadmin_telemetry_rule: {
 			version: 0
 			block: {
@@ -1247310,6 +1249591,18 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				description_kind: "plain"
 			}
 		}
+		aws_quicksight_account_custom_permission: {
+			version: 0
+			block: {
+				attributes: region: {
+					type:             "string"
+					description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
 		aws_ram_principal_association: {
 			version: 0
 			block: {
@@ -1247354,6 +1249647,26 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 					description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
 					description_kind: "plain"
 					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_rds_tenant_database: {
+			version: 0
+			block: {
+				attributes: {
+					db_instance_identifier: {
+						type:             "string"
+						description:      "Identifier of the DB instance whose tenant databases to list. Defaults to all DB instances."
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				description_kind: "plain"
 			}
@@ -1247661,6 +1249974,18 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 			}
 		}
 		aws_s3_bucket_acl: {
+			version: 0
+			block: {
+				attributes: region: {
+					type:             "string"
+					description:      "Region to [query](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for resources of this type. Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference)."
+					description_kind: "plain"
+					optional:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		aws_s3_bucket_cors_configuration: {
 			version: 0
 			block: {
 				attributes: region: {
@@ -1249938,6 +1252263,27 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				}
 			}
 		}
+		aws_bedrockdataautomation_blueprint: {
+			version: 0
+			attributes: arn: {
+				type:                "string"
+				required_for_import: true
+			}
+		}
+		aws_bedrockdataautomation_library: {
+			version: 0
+			attributes: arn: {
+				type:                "string"
+				required_for_import: true
+			}
+		}
+		aws_bedrockdataautomation_project: {
+			version: 0
+			attributes: arn: {
+				type:                "string"
+				required_for_import: true
+			}
+		}
 		aws_ce_anomaly_monitor: {
 			version: 0
 			attributes: arn: {
@@ -1252055,6 +1254401,19 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				}
 			}
 		}
+		aws_ec2_capacity_manager: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
 		aws_ec2_image_block_public_access: {
 			version: 1
 			attributes: {
@@ -1253520,6 +1255879,72 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				}
 			}
 		}
+		aws_lambdaweb_function: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				function_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		aws_lambdaweb_function_endpoint: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				endpoint_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				function_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		aws_lambdaweb_function_revision: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				function_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+				revision_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		aws_lambdaweb_resource_policy: {
+			version: 0
+			attributes: resource_arn: {
+				type:                "string"
+				required_for_import: true
+			}
+		}
 		aws_launch_configuration: {
 			version: 0
 			attributes: {
@@ -1254002,6 +1256427,20 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 					type:                "string"
 					required_for_import: true
 				}
+			}
+		}
+		aws_networksecuritymanager_rule: {
+			version: 0
+			attributes: arn: {
+				type:                "string"
+				required_for_import: true
+			}
+		}
+		aws_networksecuritymanager_scope: {
+			version: 0
+			attributes: arn: {
+				type:                "string"
+				required_for_import: true
 			}
 		}
 		aws_observabilityadmin_dataset_integration: {
@@ -1254600,6 +1257039,23 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 				}
 			}
 		}
+		aws_quicksight_account_custom_permission: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				aws_account_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
 		aws_ram_permission: {
 			version: 0
 			attributes: arn: {
@@ -1254708,6 +1257164,23 @@ provider_schemas: "registry.terraform.io/hashicorp/aws": {
 			attributes: arn: {
 				type:                "string"
 				required_for_import: true
+			}
+		}
+		aws_rds_tenant_database: {
+			version: 0
+			attributes: {
+				account_id: {
+					type:                "string"
+					optional_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+				tenant_database_resource_id: {
+					type:                "string"
+					required_for_import: true
+				}
 			}
 		}
 		aws_redshift_integration: {

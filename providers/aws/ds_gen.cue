@@ -369,6 +369,8 @@ import (
 	_#ds: "\(#awsPrefix)_lambda_invocation": close({data.aws_lambda_invocation & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_lambda_layer_version": close({data.aws_lambda_layer_version & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_lambdamicrovms_image_version": close({data.aws_lambdamicrovms_image_version & cuetf.MetaArgs})
+	_#ds: "\(#awsPrefix)_lambdaweb_function_endpoint": close({data.aws_lambdaweb_function_endpoint & cuetf.MetaArgs})
+	_#ds: "\(#awsPrefix)_lambdaweb_function": close({data.aws_lambdaweb_function & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_launch_configuration": close({data.aws_launch_configuration & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_launch_template": close({data.aws_launch_template & cuetf.MetaArgs})
 	_#ds: "\(#awsPrefix)_lb": close({data.aws_lb & cuetf.MetaArgs})
