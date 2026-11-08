@@ -123,7 +123,8 @@ google_vertex_ai_endpoint_with_model_garden_deployment: {
 		max_replica_count?: number
 
 		// The minimum number of machine replicas that will be always deployed on.
-		// This value must be greater than or equal to 1.
+		// This value must be greater than or equal to 1. To enable scale-to-zero
+		// (in beta), set this value to 0 and also set 'initial_replica_count'.
 		//
 		// If traffic increases, it may dynamically be deployed onto more replicas,
 		// and as traffic decreases, some of these extra replicas may be freed.

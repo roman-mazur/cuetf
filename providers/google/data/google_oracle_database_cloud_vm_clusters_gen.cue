@@ -22,12 +22,13 @@ google_oracle_database_cloud_vm_clusters: {
 				service_agent_email?: string
 			})]
 			labels?: [string]: string
-			location?:    string
-			name?:        string
-			network?:     string
-			odb_network?: string
-			odb_subnet?:  string
-			project?:     string
+			location?:     string
+			name?:         string
+			network?:      string
+			odb_dns_zone?: string
+			odb_network?:  string
+			odb_subnet?:   string
+			project?:      string
 			properties?: [...close({
 				cluster_name?:            string
 				compartment_id?:          string

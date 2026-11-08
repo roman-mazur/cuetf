@@ -170,6 +170,10 @@ google_pubsub_subscription: {
 					parameters?: [string]: string
 				})]
 			})]
+			compression?: [...close({
+				compression_algorithm?: string
+				compression_mode?:      string
+			})]
 			disabled?: bool
 			javascript_udf?: [...close({
 				code?:          string

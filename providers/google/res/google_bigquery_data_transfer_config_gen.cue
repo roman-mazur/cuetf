@@ -9,6 +9,7 @@ google_bigquery_data_transfer_config: {
 		email_preferences?: matchN(1, [#email_preferences, list.MaxItems(1) & [...#email_preferences]])
 		encryption_configuration?: matchN(1, [#encryption_configuration, list.MaxItems(1) & [...#encryption_configuration]])
 		schedule_options?: matchN(1, [#schedule_options, list.MaxItems(1) & [...#schedule_options]])
+		schedule_options_v2?: matchN(1, [#schedule_options_v2, list.MaxItems(1) & [...#schedule_options_v2]])
 		sensitive_params?: matchN(1, [#sensitive_params, list.MaxItems(1) & [...#sensitive_params]])
 		timeouts?: #timeouts
 
@@ -116,6 +117,10 @@ google_bigquery_data_transfer_config: {
 		start_time?: string
 	})
 
+	#schedule_options_v2: close({
+		event_driven_schedule!: matchN(1, [_#defs."/$defs/schedule_options_v2/$defs/event_driven_schedule", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/schedule_options_v2/$defs/event_driven_schedule"]])
+	})
+
 	#sensitive_params: close({
 		// The Secret Access Key of the AWS account transferring data from.
 		secret_access_key?: string
@@ -134,5 +139,12 @@ google_bigquery_data_transfer_config: {
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/schedule_options_v2/$defs/event_driven_schedule": close({
+		// Pub/Sub subscription name used to receive events. Only the
+		// Google Cloud Storage data source supports this option. Format:
+		// projects/{project}/subscriptions/{subscription}.
+		pubsub_subscription!: string
 	})
 }

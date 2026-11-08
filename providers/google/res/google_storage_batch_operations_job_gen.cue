@@ -8,6 +8,7 @@ google_storage_batch_operations_job: {
 	close({
 		bucket_list?: matchN(1, [#bucket_list, list.MaxItems(1) & [...#bucket_list]])
 		delete_object?: matchN(1, [#delete_object, list.MaxItems(1) & [...#delete_object]])
+		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
 		put_metadata?: matchN(1, [#put_metadata, list.MaxItems(1) & [...#put_metadata]])
 		put_object_hold?: matchN(1, [#put_object_hold, list.MaxItems(1) & [...#put_object_hold]])
 		rewrite_object?: matchN(1, [#rewrite_object, list.MaxItems(1) & [...#rewrite_object]])
@@ -34,7 +35,12 @@ google_storage_batch_operations_job: {
 		// A description provided by the user for the job. Its max length is 1024 bytes
 		// when Unicode-encoded.
 		description?: string
-		id?:          string
+
+		// If true, the job runs in dry run mode, returning the total object count and,
+		// if the object configuration is a prefix list, the bytes found from source.
+		// No transformations are performed.
+		dry_run?: bool
+		id?:      string
 
 		// The ID of the job.
 		job_id?: string
@@ -58,6 +64,22 @@ google_storage_batch_operations_job: {
 		// enable flag to permanently delete object and all object versions if
 		// versioning is enabled on bucket.
 		permanent_object_deletion_enabled!: bool
+	})
+
+	#logging_config: close({
+		// States in which Action are logged.If empty, no logs are generated.
+		// Possible values include 'SUCCEEDED', 'FAILED'.
+		// See
+		// [LoggingConfig](https://cloud.google.com/storage/docs/batch-operations/reference/rest/v1/projects.locations.jobs#LoggingConfig)
+		// for allowed values.
+		log_action_states!: [...string]
+
+		// Specifies the actions to be logged.
+		// Possible values include 'TRANSFORM'.
+		// See
+		// [LoggingConfig](https://cloud.google.com/storage/docs/batch-operations/reference/rest/v1/projects.locations.jobs#LoggingConfig)
+		// for allowed values.
+		log_actions!: [...string]
 	})
 
 	#put_metadata: close({

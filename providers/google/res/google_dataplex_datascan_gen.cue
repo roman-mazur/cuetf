@@ -106,6 +106,14 @@ google_dataplex_datascan: {
 		// If set, the latest DataScan job result will be published to Knowledge Catalog.
 		catalog_publishing_enabled?: bool
 
+		// Specifies which components of the data documentation to generate. Any
+		// component that is required to generate the specified components will also be
+		// generated. If no generation scope is specified, all available documentation
+		// components will be generated. Possible values: ["ALL",
+		// "TABLE_AND_COLUMN_DESCRIPTIONS", "SQL_QUERIES",
+		// "BUSINESS_GLOSSARY_TERM_ASSOCIATIONS"]
+		generation_scopes?: [...string]
+
 		// The SQL dialect to use in the generated SQL queries.
 		// If not specified, the default dialect is Google SQL. Possible values: ["GOOGLE_SQL", "SPARK_SQL"]
 		sql_dialect?: string
@@ -118,6 +126,9 @@ google_dataplex_datascan: {
 
 		// If set, the latest DataScan job result will be published to Dataplex Catalog.
 		catalog_publishing_enabled?: bool
+
+		// The execution mode for the profile scan. Possible values: ["STANDARD", "LIGHTWEIGHT"]
+		mode?: string
 
 		// A filter applied to all rows in a single DataScan job. The filter needs to be
 		// a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax.
@@ -304,6 +315,7 @@ google_dataplex_datascan: {
 	})
 
 	_#defs: "/$defs/data_quality_spec/$defs/rules": close({
+		debug_queries?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/debug_queries", [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/debug_queries"]])
 		non_null_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/non_null_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/non_null_expectation"]])
 		range_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/range_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/range_expectation"]])
 		regex_expectation?: matchN(1, [_#defs."/$defs/data_quality_spec/$defs/rules/$defs/regex_expectation", list.MaxItems(1) & [..._#defs."/$defs/data_quality_spec/$defs/rules/$defs/regex_expectation"]])
@@ -347,6 +359,15 @@ google_dataplex_datascan: {
 		// The minimum ratio of passing_rows / total_rows required to pass this rule,
 		// with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
 		threshold?: number
+	})
+
+	_#defs: "/$defs/data_quality_spec/$defs/rules/$defs/debug_queries": close({
+		// Specifies the description of the debug query.
+		// The maximum length is 1,024 characters.
+		description?: string
+
+		// Specifies the SQL statement to be executed.
+		sql_statement!: string
 	})
 
 	_#defs: "/$defs/data_quality_spec/$defs/rules/$defs/non_null_expectation": close({})

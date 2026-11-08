@@ -62,6 +62,7 @@ google_privateca_ca_pool: {
 		allowed_key_types?: matchN(1, [_#defs."/$defs/issuance_policy/$defs/allowed_key_types", [..._#defs."/$defs/issuance_policy/$defs/allowed_key_types"]])
 		baseline_values?: matchN(1, [_#defs."/$defs/issuance_policy/$defs/baseline_values", list.MaxItems(1) & [..._#defs."/$defs/issuance_policy/$defs/baseline_values"]])
 		identity_constraints?: matchN(1, [_#defs."/$defs/issuance_policy/$defs/identity_constraints", list.MaxItems(1) & [..._#defs."/$defs/issuance_policy/$defs/identity_constraints"]])
+		passthrough_extensions?: matchN(1, [_#defs."/$defs/issuance_policy/$defs/passthrough_extensions", list.MaxItems(1) & [..._#defs."/$defs/issuance_policy/$defs/passthrough_extensions"]])
 
 		// If set to true, allows requesters to specify the requested_not_before_time
 		// field when creating a Certificate. Certificates requested with this
@@ -343,5 +344,21 @@ google_privateca_ca_pool: {
 		// Title for the expression, i.e. a short string describing its purpose. This
 		// can be used e.g. in UIs which allow to enter the expression.
 		title?: string
+	})
+
+	_#defs: "/$defs/issuance_policy/$defs/passthrough_extensions": close({
+		additional_extensions?: matchN(1, [_#defs."/$defs/issuance_policy/$defs/passthrough_extensions/$defs/additional_extensions", [..._#defs."/$defs/issuance_policy/$defs/passthrough_extensions/$defs/additional_extensions"]])
+
+		// A set of named X.509 extensions. Will be combined with additional_extensions
+		// to determine the full set of X.509 extensions.
+		// Acceptable values are: 'BASE_KEY_USAGE', 'EXTENDED_KEY_USAGE', 'CA_OPTIONS',
+		// 'POLICY_IDS', 'AIA_OCSP_SERVERS', 'NAME_CONSTRAINTS'.
+		known_extensions?: [...string]
+	})
+
+	_#defs: "/$defs/issuance_policy/$defs/passthrough_extensions/$defs/additional_extensions": close({
+		// An ObjectId specifies an object identifier (OID). These provide context and
+		// describe types in ASN.1 messages.
+		object_id_path!: [...number]
 	})
 }

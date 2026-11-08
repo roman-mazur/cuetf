@@ -96,6 +96,7 @@ google_pubsub_topic: {
 
 	#message_transforms: close({
 		ai_inference?: matchN(1, [_#defs."/$defs/message_transforms/$defs/ai_inference", list.MaxItems(1) & [..._#defs."/$defs/message_transforms/$defs/ai_inference"]])
+		compression?: matchN(1, [_#defs."/$defs/message_transforms/$defs/compression", list.MaxItems(1) & [..._#defs."/$defs/message_transforms/$defs/compression"]])
 		javascript_udf?: matchN(1, [_#defs."/$defs/message_transforms/$defs/javascript_udf", list.MaxItems(1) & [..._#defs."/$defs/message_transforms/$defs/javascript_udf"]])
 
 		// Controls whether or not to use this transform. If not set or 'false',
@@ -274,6 +275,19 @@ google_pubsub_topic: {
 		// The parameters object is combined with the data field of the Pub/Sub
 		// message to form the inference request.
 		parameters?: [string]: string
+	})
+
+	_#defs: "/$defs/message_transforms/$defs/compression": close({
+		// Specifies the compression algorithm to use.
+		// Possible values include 'ZLIB'.
+		// See
+		// [CompressionAlgorithm](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#CompressionAlgorithm)
+		// for allowed values.
+		compression_algorithm!: string
+
+		// Specifies whether to compress or decompress the message. Possible values:
+		// ["COMPRESS", "DECOMPRESS"]
+		compression_mode!: string
 	})
 
 	_#defs: "/$defs/message_transforms/$defs/javascript_udf": close({

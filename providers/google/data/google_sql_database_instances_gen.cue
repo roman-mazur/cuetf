@@ -10,6 +10,21 @@ google_sql_database_instances: {
 		instances?: [...close({
 			available_maintenance_versions?: [...string]
 			backupdr_backup?: string
+			blue_green_deployment?: [...close({
+				active_environment?:                  string
+				delete_old_source_on_destroy?:        bool
+				deployment_name?:                     string
+				old_source_instance_connection_name?: string
+				old_source_instance_name?:            string
+				target_database_version?:             string
+				target_instance_connection_name?:     string
+				target_instance_ip_addresses?: [...close({
+					ip_address?:     string
+					time_to_retire?: string
+					type?:           string
+				})]
+				target_instance_name?: string
+			})]
 			clone?: [...close({
 				allocated_ip_range?: string
 				database_names?: [...string]
@@ -19,11 +34,12 @@ google_sql_database_instances: {
 				source_instance_name?:          string
 				source_project?:                string
 			})]
-			connection_name?:     string
-			database_version?:    string
-			deletion_policy?:     string
-			deletion_protection?: bool
-			dns_name?:            string
+			connection_name?:             string
+			database_center_integration?: string
+			database_version?:            string
+			deletion_policy?:             string
+			deletion_protection?:         bool
+			dns_name?:                    string
 			dns_names?: [...close({
 				connection_type?: string
 				dns_scope?:       string

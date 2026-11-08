@@ -136,6 +136,10 @@ google_netapp_volume: {
 		// "CONTINUOUSLY_AVAILABLE"]
 		smb_settings?: [...string]
 
+		// Optional. Snap_reserve specifies percentage of volume storage reserved for
+		// snapshot storage. Default is 0 percent.
+		snap_reserve?: number
+
 		// If enabled, a NFS volume will contain a read-only .snapshot directory which
 		// provides access to each of the volume's snapshots. Will enable "Previous
 		// Versions" support for SMB.

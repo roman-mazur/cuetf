@@ -81,6 +81,12 @@ google_network_services_grpc_route: {
 		fault_injection_policy?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/fault_injection_policy", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/action/$defs/fault_injection_policy"]])
 		retry_policy?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/retry_policy", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/action/$defs/retry_policy"]])
 
+		// Specifies the idle timeout for the selected route. The idle timeout is
+		// defined as the period in which there are no bytes sent or received on either
+		// the upstream or downstream connection. If not set, the default idle timeout
+		// is 1 hour. If set to 0s, the timeout will be disabled.
+		idle_timeout?: string
+
 		// Specifies the timeout for selected route.
 		timeout?: string
 	})
@@ -151,5 +157,10 @@ google_network_services_grpc_route: {
 
 		// Required. Name of the service to match against.
 		grpc_service!: string
+
+		// Specifies how to match against the name. If not specified, a default value of
+		// "EXACT" is used. Default value: "EXACT" Possible values: ["EXACT",
+		// "REGULAR_EXPRESSION"]
+		type?: string
 	})
 }

@@ -16,6 +16,17 @@ google_discovery_engine_assistant: {
 		// The unique id of the collection.
 		collection_id!: string
 
+		// This field controls the default web grounding toggle for end users if
+		// 'web_grounding_type' is set to 'WEB_GROUNDING_TYPE_GOOGLE_SEARCH' or
+		// 'WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH'.
+		// By default, this field is set to false. If 'web_grounding_type' is
+		// 'WEB_GROUNDING_TYPE_GOOGLE_SEARCH' or
+		// 'WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH', end users will have web
+		// grounding enabled by default on UI. If true, grounding toggle will be
+		// disabled by default on UI. End users can still enable web grounding in
+		// the UI if web grounding is enabled.
+		default_web_grounding_toggle_off?: bool
+
 		// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
 		// When a 'terraform destroy' or 'terraform apply' would delete the instance,
 		// the command will fail if this field is set to "PREVENT" in Terraform state.

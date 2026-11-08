@@ -26,7 +26,10 @@ google_secret_manager_regional_secrets: {
 			labels?: [string]: string
 			location?: string
 			name?:     string
-			project?:  string
+			policy_member?: [...close({
+				iam_policy_uid_principal?: string
+			})]
+			project?: string
 			rotation?: [...close({
 				next_rotation_time?: string
 				rotation_period?:    string

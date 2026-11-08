@@ -51,6 +51,7 @@ google_data_loss_prevention_deidentify_template: {
 		image_transformations?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/image_transformations", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/image_transformations"]])
 		info_type_transformations?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/info_type_transformations", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/info_type_transformations"]])
 		record_transformations?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/record_transformations", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/record_transformations"]])
+		transformation_error_handling?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/transformation_error_handling", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/transformation_error_handling"]])
 	})
 
 	#timeouts: close({
@@ -2126,4 +2127,13 @@ google_data_loss_prevention_deidentify_template: {
 		// allow the value 60 if it allows leap-seconds.
 		seconds?: number
 	})
+
+	_#defs: "/$defs/deidentify_config/$defs/transformation_error_handling": close({
+		leave_untransformed?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/transformation_error_handling/$defs/leave_untransformed", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/transformation_error_handling/$defs/leave_untransformed"]])
+		throw_error?: matchN(1, [_#defs."/$defs/deidentify_config/$defs/transformation_error_handling/$defs/throw_error", list.MaxItems(1) & [..._#defs."/$defs/deidentify_config/$defs/transformation_error_handling/$defs/throw_error"]])
+	})
+
+	_#defs: "/$defs/deidentify_config/$defs/transformation_error_handling/$defs/leave_untransformed": close({})
+
+	_#defs: "/$defs/deidentify_config/$defs/transformation_error_handling/$defs/throw_error": close({})
 }

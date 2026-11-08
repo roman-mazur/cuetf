@@ -67,7 +67,10 @@ google_compute_region_network_endpoint_group: {
 
 		// This field is only used for PSC NEGs.
 		psc_data?: [...close({
-			producer_port?: string
+			consumer_psc_address?:  string
+			producer_port?:         string
+			psc_connection_id?:     string
+			psc_connection_status?: string
 		})]
 
 		// This field is only used for PSC and INTERNET NEGs.

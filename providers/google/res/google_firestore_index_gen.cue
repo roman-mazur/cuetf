@@ -7,6 +7,7 @@ google_firestore_index: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_firestore_index")
 	close({
 		fields!: matchN(1, [#fields, [_, ...] & [...#fields]])
+		search_index_options?: matchN(1, [#search_index_options, list.MaxItems(1) & [...#search_index_options]])
 		timeouts?: #timeouts
 
 		// The API scope at which a query is run. Default value: "ANY_API" Possible
@@ -74,6 +75,15 @@ google_firestore_index: {
 		// Only one of 'order', 'arrayConfig', 'searchConfig' and 'vectorConfig' can be
 		// specified. Possible values: ["ASCENDING", "DESCENDING"]
 		order?: string
+	})
+
+	#search_index_options: close({
+		// Optional. The language code used to parse all text fields included in the search index,
+		// for example, "en", "es", "jp".
+		text_language?: string
+
+		// Optional. The path to the field that records the text language override of each document.
+		text_language_override_field_path?: string
 	})
 
 	#timeouts: close({
