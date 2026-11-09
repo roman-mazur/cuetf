@@ -9,6 +9,7 @@ google_artifact_registry_repository: {
 		cleanup_policies?: matchN(1, [#cleanup_policies, [...#cleanup_policies]])
 		docker_config?: matchN(1, [#docker_config, list.MaxItems(1) & [...#docker_config]])
 		maven_config?: matchN(1, [#maven_config, list.MaxItems(1) & [...#maven_config]])
+		platform_logs_config?: matchN(1, [#platform_logs_config, list.MaxItems(1) & [...#platform_logs_config]])
 		remote_repository_config?: matchN(1, [#remote_repository_config, list.MaxItems(1) & [...#remote_repository_config]])
 		timeouts?: #timeouts
 		virtual_repository_config?: matchN(1, [#virtual_repository_config, list.MaxItems(1) & [...#virtual_repository_config]])
@@ -31,6 +32,10 @@ google_artifact_registry_repository: {
 
 		// The user-provided description of the repository.
 		description?: string
+
+		// If this is true, an unspecified repo type will be treated as error rather
+		// than defaulting to standard.
+		disallow_unspecified_mode?: bool
 
 		// All of labels (key/value pairs) present on the resource in GCP, including the
 		// labels configured through Terraform, other clients and services.
@@ -119,6 +124,17 @@ google_artifact_registry_repository: {
 		// value: "VERSION_POLICY_UNSPECIFIED" Possible values:
 		// ["VERSION_POLICY_UNSPECIFIED", "RELEASE", "SNAPSHOT"]
 		version_policy?: string
+	})
+
+	#platform_logs_config: close({
+		// The state of the platform logs: enabled or disabled. Possible values: ["ENABLED", "DISABLED"]
+		logging_state?: string
+
+		// The severity level for the logs. Logs will be generated if their
+		// severity level is >= than the value of the severity level mentioned here.
+		// Possible values: ["DEBUG", "INFO", "NOTICE", "WARNING", "ERROR", "CRITICAL",
+		// "ALERT", "EMERGENCY"]
+		severity_level?: string
 	})
 
 	#remote_repository_config: close({

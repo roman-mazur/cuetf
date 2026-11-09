@@ -9,6 +9,11 @@ google_network_security_tls_inspection_policy: {
 		// A CA pool resource used to issue interception certificates.
 		ca_pool!: string
 
+		// The mode used to issue certificates (local CA signing vs direct leaf).
+		// Possible values: ["DIRECT_LEAF_PROVISIONING",
+		// "LOCAL_INTERMEDIATE_CA_SIGNING"]
+		certificate_issuance_mode?: string
+
 		// The timestamp when the resource was created.
 		create_time?: string
 

@@ -548,10 +548,13 @@ google_dataproc_workflow_template: {
 		initialization_actions?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/initialization_actions", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/initialization_actions"]])
 		lifecycle_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/lifecycle_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/lifecycle_config"]])
 		master_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_config"]])
+		master_flexible_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_flexible_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_flexible_config"]])
 		secondary_worker_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config"]])
+		secondary_worker_flexible_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_flexible_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_flexible_config"]])
 		security_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/security_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/security_config"]])
 		software_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/software_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/software_config"]])
 		worker_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_config"]])
+		worker_flexible_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_flexible_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_flexible_config"]])
 
 		// Optional. A Cloud Storage bucket used to stage job dependencies, config
 		// files, and job driver console output. If you do not specify a staging
@@ -601,6 +604,7 @@ google_dataproc_workflow_template: {
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config": close({
+		multi_zone_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/multi_zone_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/multi_zone_config"]])
 		node_group_affinity?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/node_group_affinity", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/node_group_affinity"]])
 		reservation_affinity?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/reservation_affinity", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/reservation_affinity"]])
 		shielded_instance_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/shielded_instance_config"]])
@@ -674,6 +678,12 @@ google_dataproc_workflow_template: {
 		// `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]` *
 		// `projects/[project_id]/zones/[zone]` * `us-central1-f`
 		zone?: string
+	})
+
+	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/multi_zone_config": close({
+		// Optional. Specifies the target shape of the cluster. Possible values:
+		// TARGET_SHAPE_UNSPECIFIED, ANY
+		target_shape?: string
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/gce_cluster_config/$defs/node_group_affinity": close({
@@ -972,6 +982,21 @@ google_dataproc_workflow_template: {
 		type?: string
 	})
 
+	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/master_flexible_config": close({
+		// Optional. Size of the boot disk in GB for each instance in the instance group.
+		boot_disk_size_gb?: number
+
+		// Optional. The core count for each instance in the instance group.
+		core_count?: number
+
+		// Optional. The hardware class of instances in the instance group. Possible
+		// values: HARDWARE_CLASS_UNSPECIFIED, STANDARD, PERFORMANCE
+		hardware_class?: string
+
+		// Optional. Number of instances in the instance group.
+		num_instances?: number
+	})
+
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config": close({
 		accelerators?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/accelerators", [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/accelerators"]])
 		disk_config?: matchN(1, [_#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/disk_config", list.MaxItems(1) & [..._#defs."/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_config/$defs/disk_config"]])
@@ -1196,6 +1221,21 @@ google_dataproc_workflow_template: {
 		// Optional. The percentage of target capacity that will use Standard VMs above
 		// standardCapacityBase.
 		standard_capacity_percent_above_base?: number
+	})
+
+	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/secondary_worker_flexible_config": close({
+		// Optional. Size of the boot disk in GB for each instance in the instance group.
+		boot_disk_size_gb?: number
+
+		// Optional. The core count for each instance in the instance group.
+		core_count?: number
+
+		// Optional. The hardware class of instances in the instance group. Possible
+		// values: HARDWARE_CLASS_UNSPECIFIED, STANDARD, PERFORMANCE
+		hardware_class?: string
+
+		// Optional. Number of instances in the instance group.
+		num_instances?: number
 	})
 
 	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/security_config": close({
@@ -1505,5 +1545,20 @@ google_dataproc_workflow_template: {
 		// `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`,
 		// `hyperdisk-throughput`.
 		type?: string
+	})
+
+	_#defs: "/$defs/placement/$defs/managed_cluster/$defs/config/$defs/worker_flexible_config": close({
+		// Optional. Size of the boot disk in GB for each instance in the instance group.
+		boot_disk_size_gb?: number
+
+		// Optional. The core count for each instance in the instance group.
+		core_count?: number
+
+		// Optional. The hardware class of instances in the instance group. Possible
+		// values: HARDWARE_CLASS_UNSPECIFIED, STANDARD, PERFORMANCE
+		hardware_class?: string
+
+		// Optional. Number of instances in the instance group.
+		num_instances?: number
 	})
 }

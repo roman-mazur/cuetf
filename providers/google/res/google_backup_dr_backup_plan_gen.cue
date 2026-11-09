@@ -34,7 +34,19 @@ google_backup_dr_backup_plan: {
 		// The description allows for additional details about 'BackupPlan' and its use
 		// cases to be provided.
 		description?: string
-		id?:          string
+
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
+		effective_labels?: [string]: string
+		id?: string
+
+		// This collection of key/value pairs allows for custom labels to be supplied by the user.
+		//
+		//
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+		labels?: [string]: string
 
 		// The location for the backup plan
 		location!: string
@@ -61,6 +73,10 @@ google_backup_dr_backup_plan: {
 
 		// The list of all resource types to which the 'BackupPlan' can be applied.
 		supported_resource_types?: [...string]
+
+		// The combination of labels configured directly on the resource
+		// and default labels configured on the provider.
+		terraform_labels?: [string]: string
 
 		// When the 'BackupPlan' was last updated.
 		update_time?: string

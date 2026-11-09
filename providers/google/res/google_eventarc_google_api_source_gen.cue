@@ -7,6 +7,8 @@ google_eventarc_google_api_source: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_eventarc_google_api_source")
 	close({
 		logging_config?: matchN(1, [#logging_config, list.MaxItems(1) & [...#logging_config]])
+		organization_subscription?: matchN(1, [#organization_subscription, list.MaxItems(1) & [...#organization_subscription]])
+		project_subscriptions?: matchN(1, [#project_subscriptions, list.MaxItems(1) & [...#project_subscriptions]])
 		timeouts?: #timeouts
 
 		// Resource annotations.
@@ -96,6 +98,21 @@ google_eventarc_google_api_source: {
 		// Possible values: ["NONE", "DEBUG", "INFO", "NOTICE", "WARNING", "ERROR",
 		// "CRITICAL", "ALERT", "EMERGENCY"]
 		log_severity?: string
+	})
+
+	#organization_subscription: close({
+		// Enable org level subscription.
+		enabled!: bool
+	})
+
+	#project_subscriptions: close({
+		// A list of projects to receive events from.
+		//
+		// All the projects must be in the same org. The listed projects should have
+		// the format project/{identifier} where identifier can be either the
+		// project id for project number. A single list may contain both formats. At
+		// most 100 projects can be listed.
+		list!: [...string]
 	})
 
 	#timeouts: close({

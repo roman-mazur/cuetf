@@ -55,6 +55,7 @@ google_model_armor_template: {
 	})
 
 	#filter_config: close({
+		filter_rule_settings?: matchN(1, [_#defs."/$defs/filter_config/$defs/filter_rule_settings", list.MaxItems(1) & [..._#defs."/$defs/filter_config/$defs/filter_rule_settings"]])
 		malicious_uri_filter_settings?: matchN(1, [_#defs."/$defs/filter_config/$defs/malicious_uri_filter_settings", list.MaxItems(1) & [..._#defs."/$defs/filter_config/$defs/malicious_uri_filter_settings"]])
 		pi_and_jailbreak_filter_settings?: matchN(1, [_#defs."/$defs/filter_config/$defs/pi_and_jailbreak_filter_settings", list.MaxItems(1) & [..._#defs."/$defs/filter_config/$defs/pi_and_jailbreak_filter_settings"]])
 		rai_settings?: matchN(1, [_#defs."/$defs/filter_config/$defs/rai_settings", list.MaxItems(1) & [..._#defs."/$defs/filter_config/$defs/rai_settings"]])
@@ -80,6 +81,13 @@ google_model_armor_template: {
 		// Indicates the custom error message set by the user to be returned to the
 		// end user if the prompt trips Model Armor filters.
 		custom_prompt_safety_error_message?: string
+
+		// Indicates whether the template is subject to data residency compliance. If
+		// true (default for new templates), the template is subject to data residency
+		// compliance. If false, the template bypasses data residency compliance
+		// checks. If unset, the value is determined by the API; templates created
+		// before data residency enforcement may report false.
+		data_residency_compliant?: bool
 
 		// Possible values:
 		// INSPECT_ONLY
@@ -109,6 +117,52 @@ google_model_armor_template: {
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/filter_config/$defs/filter_rule_settings": close({
+		rule_sets?: matchN(1, [_#defs."/$defs/filter_config/$defs/filter_rule_settings/$defs/rule_sets", [..._#defs."/$defs/filter_config/$defs/filter_rule_settings/$defs/rule_sets"]])
+	})
+
+	_#defs: "/$defs/filter_config/$defs/filter_rule_settings/$defs/rule_sets": close({
+		rules!: matchN(1, [_#defs."/$defs/filter_config/$defs/filter_rule_settings/$defs/rule_sets/$defs/rules", [_, ...] & [..._#defs."/$defs/filter_config/$defs/filter_rule_settings/$defs/rule_sets/$defs/rules"]])
+
+		// List of filters this rule set is applied to.
+		// Possible values:
+		// PROMPT_INJECTION_AND_JAILBREAK
+		// RESPONSIBLE_AI
+		filter_types!: [...string]
+	})
+
+	_#defs: "/$defs/filter_config/$defs/filter_rule_settings/$defs/rule_sets/$defs/rules": close({
+		exclusion_rule?: matchN(1, [_#defs."/$defs/filter_config/$defs/filter_rule_settings/$defs/rule_sets/$defs/rules/$defs/exclusion_rule", list.MaxItems(1) & [..._#defs."/$defs/filter_config/$defs/filter_rule_settings/$defs/rule_sets/$defs/rules/$defs/exclusion_rule"]])
+	})
+
+	_#defs: "/$defs/filter_config/$defs/filter_rule_settings/$defs/rule_sets/$defs/rules/$defs/exclusion_rule": close({
+		dictionary?: matchN(1, [_#defs."/$defs/filter_config/$defs/filter_rule_settings/$defs/rule_sets/$defs/rules/$defs/exclusion_rule/$defs/dictionary", list.MaxItems(1) & [..._#defs."/$defs/filter_config/$defs/filter_rule_settings/$defs/rule_sets/$defs/rules/$defs/exclusion_rule/$defs/dictionary"]])
+		regex?: matchN(1, [_#defs."/$defs/filter_config/$defs/filter_rule_settings/$defs/rule_sets/$defs/rules/$defs/exclusion_rule/$defs/regex", list.MaxItems(1) & [..._#defs."/$defs/filter_config/$defs/filter_rule_settings/$defs/rule_sets/$defs/rules/$defs/exclusion_rule/$defs/regex"]])
+
+		// Specifies the scope of the input that should be matched against the
+		// exclusion rule. If unspecified, defaults to MATCHING_SCOPE_PARTIAL_MATCH.
+		// Possible values:
+		// MATCHING_SCOPE_FULL_MATCH
+		// MATCHING_SCOPE_PARTIAL_MATCH
+		matching_scope?: string
+	})
+
+	_#defs: "/$defs/filter_config/$defs/filter_rule_settings/$defs/rule_sets/$defs/rules/$defs/exclusion_rule/$defs/dictionary": close({
+		word_list?: matchN(1, [_#defs."/$defs/filter_config/$defs/filter_rule_settings/$defs/rule_sets/$defs/rules/$defs/exclusion_rule/$defs/dictionary/$defs/word_list", list.MaxItems(1) & [..._#defs."/$defs/filter_config/$defs/filter_rule_settings/$defs/rule_sets/$defs/rules/$defs/exclusion_rule/$defs/dictionary/$defs/word_list"]])
+	})
+
+	_#defs: "/$defs/filter_config/$defs/filter_rule_settings/$defs/rule_sets/$defs/rules/$defs/exclusion_rule/$defs/dictionary/$defs/word_list": close({
+		// Words or phrases defining the dictionary. The dictionary must contain at
+		// least one phrase and every phrase must contain at least two characters that
+		// are letters or digits.
+		words!: [...string]
+	})
+
+	_#defs: "/$defs/filter_config/$defs/filter_rule_settings/$defs/rule_sets/$defs/rules/$defs/exclusion_rule/$defs/regex": close({
+		// The regular expression pattern.
+		pattern!: string
 	})
 
 	_#defs: "/$defs/filter_config/$defs/malicious_uri_filter_settings": close({

@@ -97,7 +97,10 @@ google_biglake_iceberg_table: {
 		// Whether the field is required.
 		required!: bool
 
-		// The type of the field.
+		// The type of the field. Primitive types are plain names such as 'long'. List, map and
+		// struct types are JSON objects as defined by the
+		// [Iceberg spec](https://iceberg.apache.org/spec/#appendix-c-json-serialization),
+		// typically written with 'jsonencode'.
 		type!: string
 	})
 

@@ -85,6 +85,11 @@ google_oracle_database_cloud_vm_cluster: {
 		// Format: projects/{project}/global/networks/{network}
 		network?: string
 
+		// The name of the OdbDnsZone for using custom domain name for the VM Cluster.
+		// Format:
+		// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+		odb_dns_zone?: string
+
 		// The name of the OdbNetwork associated with the VM Cluster.
 		// Format:
 		// projects/{project}/locations/{location}/odbNetworks/{odb_network}

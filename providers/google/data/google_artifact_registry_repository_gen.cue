@@ -43,6 +43,10 @@ google_artifact_registry_repository: {
 		// The user-provided description of the repository.
 		description?: string
 
+		// If this is true, an unspecified repo type will be treated as error rather
+		// than defaulting to standard.
+		disallow_unspecified_mode?: bool
+
 		// Docker repository config contains repository level configuration for the
 		// repositories of docker type.
 		docker_config?: [...close({
@@ -102,7 +106,13 @@ google_artifact_registry_repository: {
 
 		// The name of the repository, for example:
 		// "repo1"
-		name?:    string
+		name?: string
+
+		// Configuration for platform logs.
+		platform_logs_config?: [...close({
+			logging_state?:  string
+			severity_level?: string
+		})]
 		project?: string
 
 		// The repository endpoint, for example: us-docker.pkg.dev/my-proj/my-repo.

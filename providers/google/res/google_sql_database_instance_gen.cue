@@ -6,6 +6,7 @@ google_sql_database_instance: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_sql_database_instance")
 	close({
+		blue_green_deployment?: matchN(1, [#blue_green_deployment, list.MaxItems(1) & [...#blue_green_deployment]])
 		clone?: matchN(1, [#clone, list.MaxItems(1) & [...#clone]])
 		point_in_time_restore_context?: matchN(1, [#point_in_time_restore_context, list.MaxItems(1) & [...#point_in_time_restore_context]])
 		replica_configuration?: matchN(1, [#replica_configuration, list.MaxItems(1) & [...#replica_configuration]])
@@ -23,6 +24,9 @@ google_sql_database_instance: {
 		// The connection name of the instance to be used in connection strings. For
 		// example, when connecting with Cloud SQL Proxy.
 		connection_name?: string
+
+		// The Database Center integration control.
+		database_center_integration?: string
 
 		// The MySQL, PostgreSQL or SQL Server version to use. Supported values include
 		// MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10,
@@ -167,6 +171,41 @@ google_sql_database_instance: {
 			expiration_time?:  string
 			sha1_fingerprint?: string
 		})]
+	})
+
+	#blue_green_deployment: close({
+		// Permissible values: "SOURCE" (default) or "TARGET". Changing to "TARGET"
+		// triggers the atomic switchover.
+		active_environment?: string
+
+		// Defaults to false. If true, removing the blue_green_deployment block after
+		// switchover automatically deletes the former Blue (Source) instance from GCP.
+		delete_old_source_on_destroy?: bool
+
+		// A unique identifier for the blue-green deployment within the project and region.
+		deployment_name!: string
+
+		// Auth Proxy connection string for the former Blue instance post-switchover.
+		old_source_instance_connection_name?: string
+
+		// Renamed GCP identifier of the former Blue (Source) instance post-switchover.
+		old_source_instance_name?: string
+
+		// The target database version for Major Version Upgrades (e.g., MYSQL_8_4 or POSTGRES_15).
+		target_database_version?: string
+
+		// The Cloud SQL Auth Proxy connection string for the Green instance.
+		target_instance_connection_name?: string
+
+		// Standard Cloud SQL IP address list for the Green instance.
+		target_instance_ip_addresses?: [...close({
+			ip_address?:     string
+			time_to_retire?: string
+			type?:           string
+		})]
+
+		// The auto-generated name of the Green instance (e.g., my-prod-mysql-target-xxxx).
+		target_instance_name?: string
 	})
 
 	#clone: close({
@@ -574,7 +613,7 @@ google_sql_database_instance: {
 
 	_#defs: "/$defs/settings/$defs/ip_configuration": close({
 		authorized_networks?: matchN(1, [_#defs."/$defs/settings/$defs/ip_configuration/$defs/authorized_networks", [..._#defs."/$defs/settings/$defs/ip_configuration/$defs/authorized_networks"]])
-		psc_config?: matchN(1, [_#defs."/$defs/settings/$defs/ip_configuration/$defs/psc_config", [..._#defs."/$defs/settings/$defs/ip_configuration/$defs/psc_config"]])
+		psc_config?: matchN(1, [_#defs."/$defs/settings/$defs/ip_configuration/$defs/psc_config", list.MaxItems(1) & [..._#defs."/$defs/settings/$defs/ip_configuration/$defs/psc_config"]])
 
 		// The name of the allocated ip range for the private ip CloudSQL instance. For
 		// example: "google-managed-services-default". If set, the instance ip will be

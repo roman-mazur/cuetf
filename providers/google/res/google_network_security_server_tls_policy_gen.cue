@@ -72,8 +72,16 @@ google_network_security_server_tls_policy: {
 		// Required if the policy is to be used with the external HTTPS load balancing.
 		// For Traffic Director it must be empty. Possible values:
 		// ["CLIENT_VALIDATION_MODE_UNSPECIFIED",
-		// "ALLOW_INVALID_OR_MISSING_CLIENT_CERT", "REJECT_INVALID"]
+		// "ALLOW_INVALID_OR_MISSING_CLIENT_CERT", "REJECT_INVALID",
+		// "ALLOW_VALIDATION_RELAXATIONS"]
 		client_validation_mode?: string
+
+		// List of validation relaxations to apply when validating client certificates.
+		// Must be non-empty when clientValidationMode is set to ALLOW_VALIDATION_RELAXATIONS,
+		// and must be empty for all other clientValidationMode values. Possible values:
+		// ["ALLOW_MISSING_EKU", "ALLOW_SHA1_HASHING",
+		// "ALLOW_EXPIRED_LEAF_CERTIFICATE"]
+		client_validation_relaxations?: [...string]
 
 		// Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
 		// If specified, the chain validation will be performed against certificates

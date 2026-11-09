@@ -10,6 +10,23 @@ google_sql_database_instance: {
 		// The name of the BackupDR backup to restore from.
 		backupdr_backup?: string
 
+		// Configuration for Blue-Green Deployment to perform near-zero downtime major version upgrades.
+		blue_green_deployment?: [...close({
+			active_environment?:                  string
+			delete_old_source_on_destroy?:        bool
+			deployment_name?:                     string
+			old_source_instance_connection_name?: string
+			old_source_instance_name?:            string
+			target_database_version?:             string
+			target_instance_connection_name?:     string
+			target_instance_ip_addresses?: [...close({
+				ip_address?:     string
+				time_to_retire?: string
+				type?:           string
+			})]
+			target_instance_name?: string
+		})]
+
 		// Configuration for creating a new instance as a clone of another instance.
 		clone?: [...close({
 			allocated_ip_range?: string
@@ -24,6 +41,9 @@ google_sql_database_instance: {
 		// The connection name of the instance to be used in connection strings. For
 		// example, when connecting with Cloud SQL Proxy.
 		connection_name?: string
+
+		// The Database Center integration control.
+		database_center_integration?: string
 
 		// The MySQL, PostgreSQL or SQL Server version to use. Supported values include
 		// MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10,

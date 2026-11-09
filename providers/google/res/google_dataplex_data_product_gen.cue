@@ -82,6 +82,7 @@ google_dataplex_data_product: {
 	})
 
 	#access_groups: close({
+		default_iam_role_config?: matchN(1, [_#defs."/$defs/access_groups/$defs/default_iam_role_config", list.MaxItems(1) & [..._#defs."/$defs/access_groups/$defs/default_iam_role_config"]])
 		principal!: matchN(1, [_#defs."/$defs/access_groups/$defs/principal", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/access_groups/$defs/principal"]])
 
 		// Description of the access group.
@@ -99,6 +100,12 @@ google_dataplex_data_product: {
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/access_groups/$defs/default_iam_role_config": close({
+		// Default IAM role associated with the access group, such as
+		// 'roles/bigquery.dataViewer'.
+		role!: string
 	})
 
 	_#defs: "/$defs/access_groups/$defs/principal": close({

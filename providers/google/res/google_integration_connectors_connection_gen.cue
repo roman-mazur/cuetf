@@ -15,6 +15,17 @@ google_integration_connectors_connection: {
 		node_config?: matchN(1, [#node_config, list.MaxItems(1) & [...#node_config]])
 		ssl_config?: matchN(1, [#ssl_config, list.MaxItems(1) & [...#ssl_config]])
 		timeouts?: #timeouts
+		traffic_shaping_configs?: matchN(1, [#traffic_shaping_configs, [...#traffic_shaping_configs]])
+
+		// Async operations enabled for the connection. If Async Operations is enabled,
+		// Connection allows the customers to initiate async long running operations
+		// using the actions API.
+		async_operations_enabled?: bool
+
+		// Auth override enabled for the connection. If Auth Override is enabled,
+		// Connection allows the backend service auth to be overridden in the
+		// entities/actions API.
+		auth_override_enabled?: bool
 
 		// Connection revision. This field is only updated when the connection is
 		// created or updated by User.
@@ -210,6 +221,15 @@ google_integration_connectors_connection: {
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	#traffic_shaping_configs: close({
+		// Specifies the duration over which the API call quota limits are calculated.
+		// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+		duration!: string
+
+		// Maximum number of api calls allowed.
+		quota_limit!: string
 	})
 
 	_#defs: "/$defs/auth_config/$defs/additional_variable": close({

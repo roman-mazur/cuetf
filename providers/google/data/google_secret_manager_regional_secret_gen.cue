@@ -89,12 +89,18 @@ google_secret_manager_regional_secret: {
 
 		// The resource name of the regional secret. Format:
 		// 'projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}'
-		name?:    string
+		name?: string
+
+		// An object containing a unique resource identity tied to the regional secret. This identity can be
+		// granted the permissions required by features such as managed rotation.
+		policy_member?: [...close({
+			iam_policy_uid_principal?: string
+		})]
 		project?: string
 
 		// The rotation time and period for a regional secret. At 'next_rotation_time', Secret Manager
 		// will send a Pub/Sub notification to the topics configured on the Secret. 'topics' must be
-		// set to configure rotation.
+		// set to configure rotation, unless 'secret_type' is 'CLOUD_SQL_DB_CREDENTIALS'.
 		rotation?: [...close({
 			next_rotation_time?: string
 			rotation_period?:    string
@@ -106,6 +112,15 @@ google_secret_manager_regional_secret: {
 		// This defines the type of the secret. Enforces certain structural requirements
 		// on the SecretVersions.
 		// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+		// Supported values are:
+		// * 'CLOUD_SQL_DB_CREDENTIALS': Secrets used for managed rotation of Cloud SQL single-user
+		// credentials. Managed rotation can be enabled on these secrets using the
+		// 'google_secret_manager_regional_secret_managed_rotation' resource. Secret versions cannot
+		// be added manually to secrets of this type.
+		// * 'OTHER_DB_CREDENTIALS': Secrets where the payload contains database credentials.
+		// * 'ACCESS_KEY': Secrets where the payload contains an access key.
+		// * 'CERTIFICATE': Secrets where the payload contains a certificate.
+		// * 'OTHER': Secrets whose type doesn't belong to any of the above types.
 		secret_type?: string
 
 		// A map of resource manager tags.

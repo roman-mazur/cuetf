@@ -364,6 +364,7 @@ import (
 	_#ds: "\(#googlePrefix)_oracle_database_goldengate_deployment_environments": close({data.google_oracle_database_goldengate_deployment_environments & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_oracle_database_goldengate_deployment_types": close({data.google_oracle_database_goldengate_deployment_types & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_oracle_database_goldengate_deployment_versions": close({data.google_oracle_database_goldengate_deployment_versions & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_oracle_database_odb_dns_zone": close({data.google_oracle_database_odb_dns_zone & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_oracle_database_odb_network": close({data.google_oracle_database_odb_network & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_oracle_database_odb_subnet": close({data.google_oracle_database_odb_subnet & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_organization": close({data.google_organization & cuetf.MetaArgs})

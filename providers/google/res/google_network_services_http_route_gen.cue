@@ -80,6 +80,7 @@ google_network_services_http_route: {
 	_#defs: "/$defs/rules/$defs/action": close({
 		cors_policy?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/cors_policy", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/action/$defs/cors_policy"]])
 		destinations?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/destinations", [..._#defs."/$defs/rules/$defs/action/$defs/destinations"]])
+		direct_response?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/direct_response", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/action/$defs/direct_response"]])
 		fault_injection_policy?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/fault_injection_policy", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/action/$defs/fault_injection_policy"]])
 		redirect?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/redirect", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/action/$defs/redirect"]])
 		request_header_modifier?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/request_header_modifier", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/action/$defs/request_header_modifier"]])
@@ -87,6 +88,14 @@ google_network_services_http_route: {
 		response_header_modifier?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/response_header_modifier", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/action/$defs/response_header_modifier"]])
 		retry_policy?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/retry_policy", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/action/$defs/retry_policy"]])
 		url_rewrite?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/url_rewrite", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/action/$defs/url_rewrite"]])
+
+		// Specifies the idle timeout for the selected route. The idle timeout is
+		// defined as the period in which there are no bytes sent or received on either
+		// the upstream or downstream connection. If not set, the default idle timeout
+		// is 1 hour. If set to 0s, the timeout will be disabled.
+		//
+		// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+		idle_timeout?: string
 
 		// Specifies the timeout for selected route.
 		timeout?: string
@@ -135,6 +144,17 @@ google_network_services_http_route: {
 		// If weights are unspecified for all services, then, traffic is distributed in
 		// equal proportions to all of them.
 		weight?: number
+	})
+
+	_#defs: "/$defs/rules/$defs/action/$defs/direct_response": close({
+		// Response body as base64 encoded bytes. Maximum body size is 4096B.
+		bytes_body?: string
+
+		// Status to return as part of HTTP Response. Must be a positive integer.
+		status!: number
+
+		// Response body as a string. Maximum body length is 1024 characters.
+		string_body?: string
 	})
 
 	_#defs: "/$defs/rules/$defs/action/$defs/fault_injection_policy": close({
@@ -203,6 +223,9 @@ google_network_services_http_route: {
 
 	_#defs: "/$defs/rules/$defs/action/$defs/request_mirror_policy": close({
 		destination?: matchN(1, [_#defs."/$defs/rules/$defs/action/$defs/request_mirror_policy/$defs/destination", list.MaxItems(1) & [..._#defs."/$defs/rules/$defs/action/$defs/request_mirror_policy/$defs/destination"]])
+
+		// The percentage of requests to get mirrored to the desired destination.
+		mirror_percent?: number
 	})
 
 	_#defs: "/$defs/rules/$defs/action/$defs/request_mirror_policy/$defs/destination": close({
