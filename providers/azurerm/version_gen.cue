@@ -1,3 +1,3 @@
 package azurerm
 
-#Version: "5.11.0"
+#Version: "5.12.0"
