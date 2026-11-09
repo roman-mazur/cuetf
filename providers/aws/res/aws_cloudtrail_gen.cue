@@ -27,6 +27,7 @@ aws_cloudtrail: {
 		is_organization_trail?:         bool
 		kms_key_id?:                    string
 		name!:                          string
+		recursive_logging?:             bool
 		s3_bucket_name!:                string
 		s3_key_prefix?:                 string
 		sns_topic_arn?:                 string

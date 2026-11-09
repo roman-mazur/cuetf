@@ -26,7 +26,8 @@ aws_batch_compute_environment: {
 		status_reason?:   string
 		tags?: [string]:     string
 		tags_all?: [string]: string
-		type!: string
+		type!:            string
+		unmanaged_vcpus?: number
 	})
 
 	#compute_resources: close({
