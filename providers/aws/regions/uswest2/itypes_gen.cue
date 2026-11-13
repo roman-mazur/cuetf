@@ -117789,6 +117789,239 @@ InstanceTypes: [{
     RebootMigrationSupport: "unsupported"
     SupportedInRegion:      true
 }, {
+    InstanceType:      "trn2.48xlarge"
+    CurrentGeneration: true
+    FreeTierEligible:  false
+    SupportedUsageClasses: ["capacity-block", "on-demand", "spot"]
+    SupportedRootDeviceTypes: ["ebs"]
+    SupportedVirtualizationTypes: ["hvm"]
+    BareMetal:  false
+    Hypervisor: "nitro"
+    ProcessorInfo: {
+        SupportedArchitectures: ["x86_64"]
+        SustainedClockSpeedInGhz: 3.5
+        Manufacturer:             "Intel"
+    }
+    VCpuInfo: {
+        DefaultVCpus:          192
+        DefaultCores:          96
+        DefaultThreadsPerCore: 2
+        ValidCores: [4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96]
+        ValidThreadsPerCore: [1, 2]
+    }
+    MemoryInfo: {
+        SizeInMiB: 2097152
+    }
+    InstanceStorageSupported: true
+    InstanceStorageInfo: {
+        TotalSizeInGB: 7600
+        Disks: [{
+            SizeInGB: 1900
+            Count:    4
+            Type:     "ssd"
+        }]
+        NvmeSupport:       "required"
+        EncryptionSupport: "required"
+    }
+    EbsInfo: {
+        EbsOptimizedSupport: "default"
+        EncryptionSupport:   "supported"
+        EbsOptimizedInfo: {
+            BaselineBandwidthInMbps:  80000
+            BaselineThroughputInMBps: 10000.0
+            BaselineIops:             260000
+            MaximumBandwidthInMbps:   80000
+            MaximumThroughputInMBps:  10000.0
+            MaximumIops:              260000
+        }
+        NvmeSupport:           "required"
+        MaximumEbsAttachments: 64
+        AttachmentLimitType:   "dedicated"
+    }
+    NetworkInfo: {
+        NetworkPerformance:       "16x 200 Gigabit"
+        MaximumNetworkInterfaces: 32
+        MaximumNetworkCards:      16
+        DefaultNetworkCardIndex:  0
+        NetworkCards: [{
+            NetworkCardIndex:                 0
+            NetworkPerformance:               "200 Gigabit"
+            MaximumNetworkInterfaces:         2
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 1
+            NetworkPerformance:               "200 Gigabit"
+            MaximumNetworkInterfaces:         2
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 2
+            NetworkPerformance:               "200 Gigabit"
+            MaximumNetworkInterfaces:         2
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 3
+            NetworkPerformance:               "200 Gigabit"
+            MaximumNetworkInterfaces:         2
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 4
+            NetworkPerformance:               "200 Gigabit"
+            MaximumNetworkInterfaces:         2
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 5
+            NetworkPerformance:               "200 Gigabit"
+            MaximumNetworkInterfaces:         2
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 6
+            NetworkPerformance:               "200 Gigabit"
+            MaximumNetworkInterfaces:         2
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 7
+            NetworkPerformance:               "200 Gigabit"
+            MaximumNetworkInterfaces:         2
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 8
+            NetworkPerformance:               "200 Gigabit"
+            MaximumNetworkInterfaces:         2
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 9
+            NetworkPerformance:               "200 Gigabit"
+            MaximumNetworkInterfaces:         2
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 10
+            NetworkPerformance:               "200 Gigabit"
+            MaximumNetworkInterfaces:         2
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 11
+            NetworkPerformance:               "200 Gigabit"
+            MaximumNetworkInterfaces:         2
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 12
+            NetworkPerformance:               "200 Gigabit"
+            MaximumNetworkInterfaces:         2
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 13
+            NetworkPerformance:               "200 Gigabit"
+            MaximumNetworkInterfaces:         2
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 14
+            NetworkPerformance:               "200 Gigabit"
+            MaximumNetworkInterfaces:         2
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }, {
+            NetworkCardIndex:                 15
+            NetworkPerformance:               "200 Gigabit"
+            MaximumNetworkInterfaces:         2
+            BaselineBandwidthInGbps:          200.0
+            PeakBandwidthInGbps:              200.0
+            DefaultEnaQueueCountPerInterface: 32
+            InterfaceTypes: ["interface", "efa", "efa-only"]
+        }]
+        Ipv4AddressesPerInterface: 50
+        Ipv6AddressesPerInterface: 50
+        Ipv6Supported:             true
+        EnaSupport:                "required"
+        EfaSupported:              true
+        EfaInfo: {
+            MaximumEfaInterfaces: 16
+        }
+        EncryptionInTransitSupported: true
+        EnaSrdSupported:              false
+        FlexibleEnaQueuesSupport:     "unsupported"
+        ConnectionTrackingConfiguration: {
+            DefaultTcpEstablishedTimeout: 432000
+            DefaultUdpTimeout:            30
+            DefaultUdpStreamTimeout:      180
+        }
+        SecondaryNetworkSupported:          false
+        Ipv4AddressesPerSecondaryInterface: 0
+    }
+    PlacementGroupInfo: {
+        SupportedStrategies: ["cluster", "partition", "spread"]
+    }
+    HibernationSupported:          false
+    BurstablePerformanceSupported: false
+    DedicatedHostsSupported:       false
+    AutoRecoverySupported:         false
+    SupportedBootModes: ["legacy-bios", "uefi"]
+    NitroEnclavesSupport: "supported"
+    NitroTpmSupport:      "supported"
+    NitroTpmInfo: {
+        SupportedVersions: ["2.0"]
+    }
+    NeuronInfo: {
+        NeuronDevices: [{
+            Count: 16
+            Name:  "Trainium2"
+            CoreInfo: {
+                Count:   8
+                Version: 3
+            }
+            MemoryInfo: {
+                SizeInMiB: 524288
+            }
+        }]
+        TotalNeuronDeviceMemoryInMiB: 8388608
+    }
+    PhcSupport:             "unsupported"
+    RebootMigrationSupport: "unsupported"
+    SupportedInRegion:      true
+}, {
     InstanceType:      "u-3tb1.56xlarge"
     CurrentGeneration: true
     FreeTierEligible:  false
