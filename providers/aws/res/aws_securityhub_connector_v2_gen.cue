@@ -26,8 +26,20 @@ aws_securityhub_connector_v2: {
 	})
 
 	#connector_provider: close({
+		azure?: matchN(1, [_#defs."/$defs/connector_provider/$defs/azure", [..._#defs."/$defs/connector_provider/$defs/azure"]])
 		jira_cloud?: matchN(1, [_#defs."/$defs/connector_provider/$defs/jira_cloud", [..._#defs."/$defs/connector_provider/$defs/jira_cloud"]])
 		service_now?: matchN(1, [_#defs."/$defs/connector_provider/$defs/service_now", [..._#defs."/$defs/connector_provider/$defs/service_now"]])
+	})
+
+	_#defs: "/$defs/connector_provider/$defs/azure": close({
+		scope_configuration?: matchN(1, [_#defs."/$defs/connector_provider/$defs/azure/$defs/scope_configuration", [..._#defs."/$defs/connector_provider/$defs/azure/$defs/scope_configuration"]])
+		aws_config_connector_arn!: string
+		azure_regions!: [...string]
+	})
+
+	_#defs: "/$defs/connector_provider/$defs/azure/$defs/scope_configuration": close({
+		scope_type!: string
+		scope_values?: [...string]
 	})
 
 	_#defs: "/$defs/connector_provider/$defs/jira_cloud": close({
