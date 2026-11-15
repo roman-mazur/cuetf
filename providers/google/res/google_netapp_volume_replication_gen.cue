@@ -191,6 +191,10 @@ google_netapp_volume_replication: {
 		// Default is 31.
 		cooling_threshold_days?: number
 
+		// Flag indicating that the hot tier bypass mode is enabled. Default is false.
+		// Only applicable to Flex service level.
+		hot_tier_bypass_mode_enabled?: bool
+
 		// Optional. Flag indicating if the volume has tiering policy enable/pause.
 		// Default is PAUSED. Default value: "PAUSED" Possible values: ["ENABLED",
 		// "PAUSED"]

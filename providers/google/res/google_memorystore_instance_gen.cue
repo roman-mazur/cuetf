@@ -331,6 +331,9 @@ google_memorystore_instance: {
 	})
 
 	#zone_distribution_config: close({
+		// The exact list of zones where the instance currently has active VMs.
+		active_zones?: [...string]
+
 		// Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
 		// Possible values:
 		// MULTI_ZONE
@@ -340,6 +343,11 @@ google_memorystore_instance: {
 		// Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
 		// Ignored for MULTI_ZONE mode.
 		zone?: string
+
+		// Specify the zones of a multi-zone instance where Memorystore
+		// instance allocates resources. This flag isn't applicable for single-zone
+		// instances.
+		zones?: [...string]
 	})
 
 	_#defs: "/$defs/automated_backup_config/$defs/fixed_frequency_schedule": close({

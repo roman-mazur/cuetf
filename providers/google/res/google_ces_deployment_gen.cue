@@ -8,6 +8,7 @@ google_ces_deployment: {
 	close({
 		channel_profile!: matchN(1, [#channel_profile, list.MaxItems(1) & [_, ...] & [...#channel_profile]])
 		instagram_credentials?: matchN(1, [#instagram_credentials, list.MaxItems(1) & [...#instagram_credentials]])
+		model_settings?: matchN(1, [#model_settings, list.MaxItems(1) & [...#model_settings]])
 		timeouts?: #timeouts
 		whatsapp_credentials?: matchN(1, [#whatsapp_credentials, list.MaxItems(1) & [...#whatsapp_credentials]])
 
@@ -43,6 +44,10 @@ google_ces_deployment: {
 		// Resource ID segment making up resource 'name'. It identifies the resource
 		// within its parent collection as described in https://google.aip.dev/122.
 		location!: string
+
+		// The modality of the deployment. Possible values: ["MODALITY_TEXT",
+		// "MODALITY_VOICE", "MODALITY_VIDEO"]
+		modality?: string
 
 		// Identifier. The resource name of the deployment.
 		// Format:
@@ -100,6 +105,21 @@ google_ces_deployment: {
 
 		// The Conversation Profile ID to use for the deployment.
 		conversation_profile_id?: string
+	})
+
+	#model_settings: close({
+		// The LLM model that the agent should use.
+		// If not set, the agent will inherit the model from its parent agent.
+		model?: string
+
+		// If set, this temperature will be used for the LLM model. Temperature
+		// controls the randomness of the model's responses. Lower temperatures
+		// produce responses that are more predictable. Higher temperatures produce
+		// responses that are more creative.
+		temperature?: number
+
+		// The thinking level of the model. Possible values: ["DEFAULT", "LOW", "MEDIUM", "HIGH"]
+		thinking_level?: string
 	})
 
 	#timeouts: close({

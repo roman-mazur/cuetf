@@ -1,9 +1,12 @@
 package res
 
+import "list"
+
 google_storage_managed_folder: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_storage_managed_folder")
 	close({
+		rapid_cache_config?: matchN(1, [#rapid_cache_config, list.MaxItems(1) & [...#rapid_cache_config]])
 		timeouts?: #timeouts
 
 		// The name of the bucket that contains the managed folder.
@@ -39,9 +42,24 @@ google_storage_managed_folder: {
 		self_link?:   string
 	})
 
+	#rapid_cache_config: close({
+		policies!: matchN(1, [_#defs."/$defs/rapid_cache_config/$defs/policies", [_, ...] & [..._#defs."/$defs/rapid_cache_config/$defs/policies"]])
+	})
+
 	#timeouts: close({
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/rapid_cache_config/$defs/policies": close({
+		// The ingest-on-write policy for objects in the managed folder. When
+		// set to 'enabled', objects are automatically ingested into the cache
+		// when they are written to the managed folder.
+		// Possible values: ["enabled", "unspecified"]
+		ingest_on_write?: string
+
+		// The unique identifier of the rapid cache.
+		rapid_cache_id!: string
 	})
 }

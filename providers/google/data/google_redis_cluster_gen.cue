@@ -261,8 +261,10 @@ google_redis_cluster: {
 
 		// Immutable. Zone distribution config for Memorystore Redis cluster.
 		zone_distribution_config?: [...close({
+			active_zones?: [...string]
 			mode?: string
 			zone?: string
+			zones?: [...string]
 		})]
 	})
 }

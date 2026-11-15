@@ -20,7 +20,18 @@ google_apigee_api: {
 		// A hash of local config bundle in string, user needs to use a Terraform Hash
 		// function of their choice. A change in hash will trigger an update.
 		detect_md5hash?: string
-		id?:             string
+
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
+		effective_labels?: [string]: string
+		id?: string
+
+		// User labels applied to this API proxy.
+		//
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+		labels?: [string]: string
 
 		// The id of the most recently created revision for this API proxy.
 		latest_revision_id?: string
@@ -43,6 +54,10 @@ google_apigee_api: {
 
 		// A list of revisions of this API proxy.
 		revision?: [...string]
+
+		// The combination of labels configured directly on the resource and default
+		// labels configured on the provider.
+		terraform_labels?: [string]: string
 	})
 
 	#timeouts: close({

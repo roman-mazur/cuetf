@@ -507,6 +507,11 @@ google_cloudbuild_trigger: {
 		//
 		// This field is experimental.
 		worker_pool?: string
+
+		// Option to specify which release or release channel to use to run this build.
+		// Possible values are the release channels 'rapid', 'regular', or 'stable', or a specific
+		// release version such as 'legacy'.
+		worker_release?: string
 	})
 
 	_#defs: "/$defs/build/$defs/options/$defs/volumes": close({

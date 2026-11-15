@@ -6,9 +6,13 @@ google_compute_interconnect: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_compute_interconnect")
 	close({
+		application_aware_interconnect?: matchN(1, [#application_aware_interconnect, list.MaxItems(1) & [...#application_aware_interconnect]])
 		macsec?: matchN(1, [#macsec, list.MaxItems(1) & [...#macsec]])
 		params?: matchN(1, [#params, list.MaxItems(1) & [...#params]])
 		timeouts?: #timeouts
+
+		// Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+		aai_enabled?: bool
 
 		// Administrative status of the interconnect. When this is set to true, the Interconnect is
 		// functional and can carry traffic. When set to false, no packets can be carried over the
@@ -209,6 +213,15 @@ google_compute_interconnect: {
 		wire_groups?: [...string]
 	})
 
+	#application_aware_interconnect: close({
+		bandwidth_percentage_policy?: matchN(1, [_#defs."/$defs/application_aware_interconnect/$defs/bandwidth_percentage_policy", list.MaxItems(1) & [..._#defs."/$defs/application_aware_interconnect/$defs/bandwidth_percentage_policy"]])
+		shape_average_percentage?: matchN(1, [_#defs."/$defs/application_aware_interconnect/$defs/shape_average_percentage", [..._#defs."/$defs/application_aware_interconnect/$defs/shape_average_percentage"]])
+		strict_priority_policy?: matchN(1, [_#defs."/$defs/application_aware_interconnect/$defs/strict_priority_policy", list.MaxItems(1) & [..._#defs."/$defs/application_aware_interconnect/$defs/strict_priority_policy"]])
+
+		// A description for the AAI profile on this interconnect.
+		profile_description?: string
+	})
+
 	#macsec: close({
 		pre_shared_keys!: matchN(1, [_#defs."/$defs/macsec/$defs/pre_shared_keys", [_, ...] & [..._#defs."/$defs/macsec/$defs/pre_shared_keys"]])
 
@@ -232,6 +245,32 @@ google_compute_interconnect: {
 		delete?: string
 		update?: string
 	})
+
+	_#defs: "/$defs/application_aware_interconnect/$defs/bandwidth_percentage_policy": close({
+		bandwidth_percentage?: matchN(1, [_#defs."/$defs/application_aware_interconnect/$defs/bandwidth_percentage_policy/$defs/bandwidth_percentage", [..._#defs."/$defs/application_aware_interconnect/$defs/bandwidth_percentage_policy/$defs/bandwidth_percentage"]])
+	})
+
+	_#defs: "/$defs/application_aware_interconnect/$defs/bandwidth_percentage_policy/$defs/bandwidth_percentage": close({
+		// Bandwidth percentage for a specific traffic class.
+		percentage?: number
+
+		// Enum representing the various traffic classes offered by AAI. Default value:
+		// "TC_UNSPECIFIED" Possible values: ["TC_UNSPECIFIED", "TC1", "TC2", "TC3",
+		// "TC4", "TC5", "TC6"]
+		traffic_class?: string
+	})
+
+	_#defs: "/$defs/application_aware_interconnect/$defs/shape_average_percentage": close({
+		// Bandwidth percentage for a specific traffic class.
+		percentage?: number
+
+		// Enum representing the various traffic classes offered by AAI. Default value:
+		// "TC_UNSPECIFIED" Possible values: ["TC_UNSPECIFIED", "TC1", "TC2", "TC3",
+		// "TC4", "TC5", "TC6"]
+		traffic_class?: string
+	})
+
+	_#defs: "/$defs/application_aware_interconnect/$defs/strict_priority_policy": close({})
 
 	_#defs: "/$defs/macsec/$defs/pre_shared_keys": close({
 		// A name for this pre-shared key. The name must be 1-63 characters long, and

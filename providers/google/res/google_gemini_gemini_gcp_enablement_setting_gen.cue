@@ -31,7 +31,10 @@ google_gemini_gemini_gcp_enablement_setting: {
 
 		// Id of the Gemini Gcp Enablement setting.
 		gemini_gcp_enablement_setting_id!: string
-		id?:                               string
+
+		// Indicates whether custom instructions are defined.
+		has_custom_instructions?: bool
+		id?:                      string
 
 		// Labels as key value pairs.
 		//

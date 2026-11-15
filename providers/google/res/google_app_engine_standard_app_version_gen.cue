@@ -14,6 +14,7 @@ google_app_engine_standard_app_version: {
 		libraries?: matchN(1, [#libraries, [...#libraries]])
 		manual_scaling?: matchN(1, [#manual_scaling, list.MaxItems(1) & [...#manual_scaling]])
 		timeouts?: #timeouts
+		vpc_access?: matchN(1, [#vpc_access, list.MaxItems(1) & [...#vpc_access]])
 		vpc_access_connector?: matchN(1, [#vpc_access_connector, list.MaxItems(1) & [...#vpc_access_connector]])
 
 		// Allows App Engine second generation runtimes to access the legacy bundled services.
@@ -195,6 +196,15 @@ google_app_engine_standard_app_version: {
 		update?: string
 	})
 
+	#vpc_access: close({
+		network_interfaces?: matchN(1, [_#defs."/$defs/vpc_access/$defs/network_interfaces", [..._#defs."/$defs/vpc_access/$defs/network_interfaces"]])
+
+		// The traffic egress setting for the VPC network interface, controlling what
+		// traffic is diverted through it. Possible values: ["ALL_TRAFFIC",
+		// "PRIVATE_IP_RANGES"]
+		vpc_egress?: string
+	})
+
 	#vpc_access_connector: close({
 		// The egress setting for the connector, controlling what traffic is diverted through it.
 		egress_setting?: string
@@ -284,5 +294,27 @@ google_app_engine_standard_app_version: {
 		// Regular expression that matches the file paths for all files that should be
 		// referenced by this handler.
 		upload_path_regex?: string
+	})
+
+	_#defs: "/$defs/vpc_access/$defs/network_interfaces": close({
+		// The VPC network that the App Engine resource will be able to send traffic to.
+		// At least one of network or subnetwork must be specified. If both network and
+		// subnetwork are specified, the given VPC subnetwork must belong to the given
+		// VPC network. If network is not specified, it will be looked up from the
+		// subnetwork. Could be either a short name or a full path (e.g. 'default' or
+		// 'projects/my-project/global/networks/default').
+		network?: string
+
+		// The VPC subnetwork that the App Engine resource will get IPs from. At least
+		// one of network or subnetwork must be specified. If both network and
+		// subnetwork are specified, the given VPC subnetwork must belong to the given
+		// VPC network. If subnetwork is not specified, the subnetwork with the same
+		// name with the network will be used. Could be either a short name or a full
+		// path (e.g. 'default' or
+		// 'projects/my-project/regions/us-central1/subnetworks/default').
+		subnetwork?: string
+
+		// Network tags applied to this App Engine version.
+		tags?: [...string]
 	})
 }

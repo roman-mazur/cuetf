@@ -67,7 +67,7 @@ google_network_services_lb_traffic_extension: {
 		// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
 		// and can have a maximum length of 63 characters. Additionally, the first
 		// character must be a letter
-		// and the last a letter or a number.
+		// and the last character must be a letter or a number.
 		name!: string
 	})
 
@@ -113,6 +113,16 @@ google_network_services_lb_traffic_extension: {
 		// character must be a letter
 		// and the last a letter or a number.
 		name!: string
+
+		// When set to 'TRUE', enables 'observability_mode' on the 'ext_proc' filter.
+		// This makes 'ext_proc' calls asynchronous. Envoy doesn't check for the
+		// response from 'ext_proc' calls.
+		// For more information about the filter, see:
+		// https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+		// This field is helpful when you want to try out the extension in async log-only mode.
+		// Supported by regional 'LbTrafficExtension' and 'LbRouteExtension' resources.
+		// Only 'STREAMED' (default) body processing mode is supported.
+		observability_mode?: bool
 
 		// The reference to the service that runs the extension.
 		//

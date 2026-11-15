@@ -8996,6 +8996,26 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									required:         true
 								}
+								session_id_header: {
+									type: "string"
+									description: """
+												The HTTP header name used to pass the agent session ID in MCP server
+												requests (defaults to 'X-Session-Id' when unset). Must be a valid HTTP
+												header field name (RFC 9110 token).
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								task_id_header: {
+									type: "string"
+									description: """
+												The HTTP header name used to pass the agent task ID in MCP server
+												requests (defaults to 'X-Task-Id' when unset). Must be a valid HTTP
+												header field name (RFC 9110 token).
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
 							}
 							description:      "The MCP data source selections to be used by the agent."
 							description_kind: "plain"
@@ -11155,11 +11175,28 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						optional:         true
 						computed:         true
 					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
 					id: {
 						type:             "string"
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									User labels applied to this API proxy.
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
 					}
 					latest_revision_id: {
 						type:             "string"
@@ -11198,6 +11235,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					revision: {
 						type: ["list", "string"]
 						description:      "A list of revisions of this API proxy."
+						description_kind: "plain"
+						computed:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description:      "The combination of labels configured directly on the resource and default labels configured on the provider."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -14837,7 +14880,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
 									is not EVALUATION). It controls how long Organization data will be retained after the initial delete
 									operation completes. During this period, the Organization may be restored to its last known state.
-									After this period, the Organization will no longer be able to be restored. Default value: "DELETION_RETENTION_UNSPECIFIED" Possible values: ["DELETION_RETENTION_UNSPECIFIED", "MINIMUM"]
+									After this period, the Organization will no longer be able to be restored. Default value: "DELETION_RETENTION_UNSPECIFIED" Possible values: ["DELETION_RETENTION_UNSPECIFIED", "MINIMUM", "NO_RETENTION"]
 									"""
 						description_kind: "plain"
 						optional:         true
@@ -19852,6 +19895,50 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							description_kind: "plain"
 						}
 					}
+					vpc_access: {
+						nesting_mode: "list"
+						block: {
+							attributes: vpc_egress: {
+								type:             "string"
+								description:      "The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it. Possible values: [\"ALL_TRAFFIC\", \"PRIVATE_IP_RANGES\"]"
+								description_kind: "plain"
+								optional:         true
+								computed:         true
+							}
+							block_types: network_interfaces: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										network: {
+											type:             "string"
+											description:      "The VPC network that the App Engine resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork. Could be either a short name or a full path (e.g. 'default' or 'projects/my-project/global/networks/default')."
+											description_kind: "plain"
+											optional:         true
+											computed:         true
+										}
+										subnetwork: {
+											type:             "string"
+											description:      "The VPC subnetwork that the App Engine resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. Could be either a short name or a full path (e.g. 'default' or 'projects/my-project/regions/us-central1/subnetworks/default')."
+											description_kind: "plain"
+											optional:         true
+											computed:         true
+										}
+										tags: {
+											type: ["list", "string"]
+											description:      "Network tags applied to this App Engine version."
+											description_kind: "plain"
+											optional:         true
+										}
+									}
+									description:      "List of network interfaces for the VPC Access. Currently only a single network interface is supported."
+									description_kind: "plain"
+								}
+							}
+							description:      "Direct VPC Access settings for standard apps."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
 					vpc_access_connector: {
 						nesting_mode: "list"
 						block: {
@@ -22234,6 +22321,216 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_backup_dr_auto_protection_policy: {
+			version: 0
+			block: {
+				attributes: {
+					auto_protection_policy_id: {
+						type:             "string"
+						description:      "The ID of the auto protection policy. This becomes the final component of the policy's resource name."
+						description_kind: "plain"
+						required:         true
+					}
+					binding_summary: {
+						type: ["list", ["object", {
+							project_count: "string"
+						}]]
+						description:      "A summary of the scopes that the policy is applied to through bindings."
+						description_kind: "plain"
+						computed:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The time when the auto protection policy was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "A description of the auto protection policy."
+						description_kind: "plain"
+						optional:         true
+					}
+					etag: {
+						type:             "string"
+						description:      "The etag of the auto protection policy, used for optimistic concurrency control."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the auto protection policy."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									The resource name of the auto protection policy, in the format
+									'projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy_id}'.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					policy_evaluation_summary: {
+						type: ["list", ["object", {
+							failed_resource_count:    "string"
+							matching_resource_count:  "string"
+							protected_resource_count: "string"
+						}]]
+						description:      "A summary of the last run of the job that applies the policy to matching resources."
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					state: {
+						type: "string"
+						description: """
+									The current state of the auto protection policy.
+									Possible values are 'CREATING', 'ACTIVE', 'UPDATING', and 'DELETING'.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "The time when the auto protection policy was last updated."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					backup_plan_details: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								backup_plan: {
+									type: "string"
+									description: """
+												The resource name of the backup plan to apply to the matching resources, in the format
+												'projects/{project}/locations/{location}/backupPlans/{backup_plan_id}'. The backup plan
+												must be in the same location as the auto protection policy.
+												"""
+									description_kind: "plain"
+									required:         true
+								}
+								resource_type: {
+									type: "string"
+									description: """
+												The type of resource that this policy automatically protects, for example
+												'compute.googleapis.com/Instance' or 'compute.googleapis.com/Disk'.
+												"""
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description: """
+										The backup plans to apply to the resources that match the policy's criteria. Each entry
+										specifies a resource type and the backup plan that protects resources of that type.
+										Currently, only one entry is supported.
+										"""
+							description_kind: "plain"
+						}
+						min_items: 1
+					}
+					criteria: {
+						nesting_mode: "list"
+						block: {
+							block_types: matching_conditions: {
+								nesting_mode: "list"
+								block: {
+									block_types: label_condition: {
+										nesting_mode: "list"
+										block: {
+											attributes: {
+												key: {
+													type:             "string"
+													description:      "The key of the label to match."
+													description_kind: "plain"
+													required:         true
+												}
+												values: {
+													type: ["list", "string"]
+													description: """
+																		The values of the label to match. A resource matches the condition if its label
+																		value is equal to any of the listed values. Currently, only one value is supported.
+																		"""
+													description_kind: "plain"
+													required:         true
+												}
+											}
+											description:      "A condition that matches resources based on their labels."
+											description_kind: "plain"
+										}
+										max_items: 1
+									}
+									description: """
+													A list of matching conditions that a resource must meet to be protected by the policy.
+													Currently, only one condition is supported.
+													"""
+									description_kind: "plain"
+								}
+								min_items: 1
+							}
+							description:      "The criteria that a resource must meet to be protected by the policy."
+							description_kind: "plain"
+						}
+						min_items: 1
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_backup_dr_backup_plan: {
 			version: 0
 			block: {
@@ -22341,7 +22638,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type: "string"
 						description: """
 									The resource type to which the 'BackupPlan' will be applied.
-									Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+									Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance", "netapp.googleapis.com/Volume" and "storage.googleapis.com/Bucket".
 									"""
 						description_kind: "plain"
 						required:         true
@@ -22569,6 +22866,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									- A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
 									- A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
 									- A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
+									- A Backup Plan configured for 'netapp.googleapis.com/Volume' can only protect NetApp volumes.
 									"""
 						description_kind: "plain"
 						required:         true
@@ -22640,7 +22938,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type: "string"
 						description: """
 									The resource type of workload on which backupplan is applied.
-									Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
+									Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", "file.googleapis.com/Instance", and "netapp.googleapis.com/Volume"
 									"""
 						description_kind: "plain"
 						required:         true
@@ -29957,6 +30255,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									"""
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					commitment_end_time: {
 						type:             "string"
@@ -43605,6 +43904,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						required:         true
 					}
+					modality: {
+						type:             "string"
+						description:      "The modality of the deployment. Possible values: [\"MODALITY_TEXT\", \"MODALITY_VOICE\", \"MODALITY_VIDEO\"]"
+						description_kind: "plain"
+						optional:         true
+					}
 					name: {
 						type: "string"
 						description: """
@@ -43861,6 +44166,45 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								}
 							}
 							description:      "Ephemeral Meta credentials required when configuring an Instagram channel profile."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					model_settings: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								model: {
+									type: "string"
+									description: """
+												The LLM model that the agent should use.
+												If not set, the agent will inherit the model from its parent agent.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								temperature: {
+									type: "number"
+									description: """
+												If set, this temperature will be used for the LLM model. Temperature
+												controls the randomness of the model's responses. Lower temperatures
+												produce responses that are more predictable. Higher temperatures produce
+												responses that are more creative.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								thinking_level: {
+									type:             "string"
+									description:      "The thinking level of the model. Possible values: [\"DEFAULT\", \"LOW\", \"MEDIUM\", \"HIGH\"]"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description: """
+										Model settings for the deployment.
+										Overrides model settings configured at the app/agent levels.
+										"""
 							description_kind: "plain"
 						}
 						max_items: 1
@@ -70960,6 +71304,16 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												description_kind: "plain"
 												optional:         true
 											}
+											worker_release: {
+												type: "string"
+												description: """
+															Option to specify which release or release channel to use to run this build.
+															Possible values are the release channels 'rapid', 'regular', or 'stable', or a specific
+															release version such as 'legacy'.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
 										}
 										block_types: volumes: {
 											nesting_mode: "list"
@@ -95888,6 +96242,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 			version: 0
 			block: {
 				attributes: {
+					aai_enabled: {
+						type:             "bool"
+						description:      "Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect."
+						description_kind: "plain"
+						optional:         true
+					}
 					admin_enabled: {
 						type: "bool"
 						description: """
@@ -96217,6 +96577,92 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 				}
 				block_types: {
+					application_aware_interconnect: {
+						nesting_mode: "list"
+						block: {
+							attributes: profile_description: {
+								type:             "string"
+								description:      "A description for the AAI profile on this interconnect."
+								description_kind: "plain"
+								optional:         true
+							}
+							block_types: {
+								bandwidth_percentage_policy: {
+									nesting_mode: "list"
+									block: {
+										block_types: bandwidth_percentage: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													percentage: {
+														type:             "number"
+														description:      "Bandwidth percentage for a specific traffic class."
+														description_kind: "plain"
+														optional:         true
+													}
+													traffic_class: {
+														type:             "string"
+														description:      "Enum representing the various traffic classes offered by AAI. Default value: \"TC_UNSPECIFIED\" Possible values: [\"TC_UNSPECIFIED\", \"TC1\", \"TC2\", \"TC3\", \"TC4\", \"TC5\", \"TC6\"]"
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												description: """
+																Specify bandwidth percentages for various traffic classes for queuing
+																type Bandwidth Percent.
+																"""
+												description_kind: "plain"
+											}
+										}
+										description: """
+													Bandwidth Percentage policy allows you to have granular control over how your Interconnect
+													bandwidth is utilized among your workloads mapping to different traffic classes.
+													"""
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								shape_average_percentage: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											percentage: {
+												type:             "number"
+												description:      "Bandwidth percentage for a specific traffic class."
+												description_kind: "plain"
+												optional:         true
+											}
+											traffic_class: {
+												type:             "string"
+												description:      "Enum representing the various traffic classes offered by AAI. Default value: \"TC_UNSPECIFIED\" Possible values: [\"TC_UNSPECIFIED\", \"TC1\", \"TC2\", \"TC3\", \"TC4\", \"TC5\", \"TC6\"]"
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description: """
+													Optional field to specify a list of shape average percentages to be
+													applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
+													"""
+										description_kind: "plain"
+									}
+								}
+								strict_priority_policy: {
+									nesting_mode: "list"
+									block: {
+										description:      "Specify configuration for StrictPriorityPolicy."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+							}
+							description: """
+										Configuration that enables Media Access Control security (MACsec) on the Cloud
+										Interconnect connection between Google and your on-premises router.
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
 					macsec: {
 						nesting_mode: "list"
 						block: {
@@ -111032,7 +111478,8 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 															* REGION_CODE: The country/region from which the request originates.
 															* TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 															* TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
-															* USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+															* USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+															* ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP", "ASN"]
 															"""
 												description_kind: "plain"
 												optional:         true
@@ -111111,7 +111558,8 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																		* REGION_CODE: The country/region from which the request originates.
 																		* TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 																		* TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
-																		* USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+																		* USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+																		* ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP", "ASN"]
 																		"""
 															description_kind: "plain"
 															optional:         true
@@ -111697,7 +112145,8 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												* REGION_CODE: The country/region from which the request originates.
 												* TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 												* TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
-												* USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+												* USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+												* ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP", "ASN"]
 												"""
 									description_kind: "plain"
 									optional:         true
@@ -111776,7 +112225,8 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 															* REGION_CODE: The country/region from which the request originates.
 															* TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 															* TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
-															* USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+															* USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+															* ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP", "ASN"]
 															"""
 												description_kind: "plain"
 												optional:         true
@@ -117785,6 +118235,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description:      "Value of the key used for MD5 authentication."
 									description_kind: "plain"
 									required:         true
+									sensitive:        true
 								}
 								name: {
 									type: "string"
@@ -117798,6 +118249,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}
 							description:      "Keys used for MD5 authentication."
 							description_kind: "plain"
+							deprecated:       true
 						}
 						max_items: 1
 					}
@@ -120415,7 +120867,8 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												* REGION_CODE: The country/region from which the request originates.
 												* TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 												* TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
-												* USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+												* USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+												* ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP", "ASN"]
 												"""
 									description_kind: "plain"
 									optional:         true
@@ -120494,7 +120947,8 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 															* REGION_CODE: The country/region from which the request originates.
 															* TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
 															* TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
-															* USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+															* USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
+															* ASN: The autonomous system number of the originating client. If not available, the key type defaults to ALL. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP", "ASN"]
 															"""
 												description_kind: "plain"
 												optional:         true
@@ -124677,6 +125131,24 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									}
 									max_items: 1
 								}
+								image_optimization_policy: {
+									nesting_mode: "list"
+									block: {
+										attributes: query_parameter_interpretation: {
+											type: "string"
+											description: """
+															Controls whether presets or control parameters specified as URL query
+															parameters are used to optimize the image. If not specified, the default
+															value is DISABLED. Possible values: ["DISABLED", "ENABLED"]
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										description:      "Specifies the policy for optimizing images returned in the HTTP response."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
 								max_stream_duration: {
 									nesting_mode: "list"
 									block: {
@@ -125888,6 +126360,24 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												}
 												max_items: 1
 											}
+											image_optimization_policy: {
+												nesting_mode: "list"
+												block: {
+													attributes: query_parameter_interpretation: {
+														type: "string"
+														description: """
+																		Controls whether presets or control parameters specified as URL query
+																		parameters are used to optimize the image. If not specified, the default
+																		value is DISABLED. Possible values: ["DISABLED", "ENABLED"]
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													description:      "Specifies the policy for optimizing images returned in the HTTP response."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
 											max_stream_duration: {
 												nesting_mode: "list"
 												block: {
@@ -127064,6 +127554,24 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																			Loadbalancer for a percentage of requests. timeout and retry_policy will be
 																			ignored by clients that are configured with a fault_injection_policy.
 																			"""
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
+														image_optimization_policy: {
+															nesting_mode: "list"
+															block: {
+																attributes: query_parameter_interpretation: {
+																	type: "string"
+																	description: """
+																					Controls whether presets or control parameters specified as URL query
+																					parameters are used to optimize the image. If not specified, the default
+																					value is DISABLED. Possible values: ["DISABLED", "ENABLED"]
+																					"""
+																	description_kind: "plain"
+																	optional:         true
+																}
+																description:      "Specifies the policy for optimizing images returned in the HTTP response."
 																description_kind: "plain"
 															}
 															max_items: 1
@@ -128582,6 +129090,24 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																			Loadbalancer for a percentage of requests. timeout and retry_policy will be
 																			ignored by clients that are configured with a fault_injection_policy.
 																			"""
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
+														image_optimization_policy: {
+															nesting_mode: "list"
+															block: {
+																attributes: query_parameter_interpretation: {
+																	type: "string"
+																	description: """
+																					Controls whether presets or control parameters specified as URL query
+																					parameters are used to optimize the image. If not specified, the default
+																					value is DISABLED. Possible values: ["DISABLED", "ENABLED"]
+																					"""
+																	description_kind: "plain"
+																	optional:         true
+																}
+																description:      "Specifies the policy for optimizing images returned in the HTTP response."
 																description_kind: "plain"
 															}
 															max_items: 1
@@ -144419,6 +144945,367 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_data_lineage_open_lineage_job: {
+			version: 0
+			block: {
+				attributes: {
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Description of the OpenLineage job. Changes to description do not trigger updates."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the OpenLineage job."
+						description_kind: "plain"
+						required:         true
+					}
+					namespace: {
+						type:             "string"
+						description:      "Namespace of the OpenLineage job."
+						description_kind: "plain"
+						required:         true
+					}
+					process: {
+						type:             "string"
+						description:      "Data Lineage process identifier created for this lineage job."
+						description_kind: "plain"
+						computed:         true
+					}
+					run: {
+						type:             "string"
+						description:      "Latest Data Lineage run identifier for this lineage job."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					input: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								name: {
+									type:             "string"
+									description:      "Name of the dataset."
+									description_kind: "plain"
+									required:         true
+								}
+								namespace: {
+									type:             "string"
+									description:      "Namespace of the dataset."
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							block_types: {
+								catalog: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											framework: {
+												type:             "string"
+												description:      "Catalog framework."
+												description_kind: "plain"
+												required:         true
+											}
+											name: {
+												type:             "string"
+												description:      "Catalog entity name."
+												description_kind: "plain"
+												required:         true
+											}
+											type: {
+												type:             "string"
+												description:      "Catalog entity type."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Catalog information for the dataset."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								symlink: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											name: {
+												type:             "string"
+												description:      "Name of the symlink target."
+												description_kind: "plain"
+												required:         true
+											}
+											namespace: {
+												type:             "string"
+												description:      "Namespace of the symlink target."
+												description_kind: "plain"
+												required:         true
+											}
+											type: {
+												type:             "string"
+												description:      "Type of the symlink target."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Symlink targets for the dataset."
+										description_kind: "plain"
+									}
+								}
+							}
+							description:      "Input datasets consumed by this job."
+							description_kind: "plain"
+						}
+					}
+					output: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								name: {
+									type:             "string"
+									description:      "Name of the dataset."
+									description_kind: "plain"
+									required:         true
+								}
+								namespace: {
+									type:             "string"
+									description:      "Namespace of the dataset."
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							block_types: {
+								catalog: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											framework: {
+												type:             "string"
+												description:      "Catalog framework."
+												description_kind: "plain"
+												required:         true
+											}
+											name: {
+												type:             "string"
+												description:      "Catalog entity name."
+												description_kind: "plain"
+												required:         true
+											}
+											type: {
+												type:             "string"
+												description:      "Catalog entity type."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Catalog information for the dataset."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								column_lineage: {
+									nesting_mode: "list"
+									block: {
+										block_types: {
+											dataset_input: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														field: {
+															type:             "string"
+															description:      "Source field name."
+															description_kind: "plain"
+															required:         true
+														}
+														name: {
+															type:             "string"
+															description:      "Name of the source dataset."
+															description_kind: "plain"
+															required:         true
+														}
+														namespace: {
+															type:             "string"
+															description:      "Namespace of the source dataset."
+															description_kind: "plain"
+															required:         true
+														}
+													}
+													block_types: transformation: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																subtype: {
+																	type:             "string"
+																	description:      "Transformation subtype."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																type: {
+																	type:             "string"
+																	description:      "Transformation type."
+																	description_kind: "plain"
+																	required:         true
+																}
+															}
+															description:      "Transformations applied to fields from this input."
+															description_kind: "plain"
+														}
+													}
+													description:      "Input fields affecting whole dataset, e.g. filtering columns."
+													description_kind: "plain"
+												}
+											}
+											field: {
+												nesting_mode: "list"
+												block: {
+													attributes: name: {
+														type:             "string"
+														description:      "Output field name."
+														description_kind: "plain"
+														required:         true
+													}
+													block_types: input: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																field: {
+																	type:             "string"
+																	description:      "Source field name."
+																	description_kind: "plain"
+																	required:         true
+																}
+																name: {
+																	type:             "string"
+																	description:      "Name of the source dataset."
+																	description_kind: "plain"
+																	required:         true
+																}
+																namespace: {
+																	type:             "string"
+																	description:      "Namespace of the source dataset."
+																	description_kind: "plain"
+																	required:         true
+																}
+															}
+															block_types: transformation: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		subtype: {
+																			type:             "string"
+																			description:      "Transformation subtype."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		type: {
+																			type:             "string"
+																			description:      "Transformation type."
+																			description_kind: "plain"
+																			required:         true
+																		}
+																	}
+																	description:      "Transformations applied from source to output field."
+																	description_kind: "plain"
+																}
+															}
+															description:      "Input fields contributing to this output field."
+															description_kind: "plain"
+														}
+														min_items: 1
+													}
+													description:      "Field-level lineage mappings."
+													description_kind: "plain"
+												}
+												min_items: 1
+											}
+										}
+										description:      "Column-level lineage information for the output dataset."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								symlink: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											name: {
+												type:             "string"
+												description:      "Name of the symlink target."
+												description_kind: "plain"
+												required:         true
+											}
+											namespace: {
+												type:             "string"
+												description:      "Namespace of the symlink target."
+												description_kind: "plain"
+												required:         true
+											}
+											type: {
+												type:             "string"
+												description:      "Type of the symlink target."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Symlink targets for the dataset."
+										description_kind: "plain"
+									}
+								}
+							}
+							description:      "Output datasets produced by this job."
+							description_kind: "plain"
+						}
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_data_loss_prevention_content_policy: {
 			version: 0
 			block: {
@@ -156648,6 +157535,118 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_dataflow_config_store_setting: {
+			version: 0
+			block: {
+				attributes: {
+					config_store_setting_id: {
+						type:             "string"
+						description:      "The ID of the config store setting (e.g. 'default_launcher_machine_type')."
+						description_kind: "plain"
+						required:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The Dataflow region for the setting (e.g. 'us-central1')."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									The resource name of the setting.
+									Format: 'projects/{project_number}/locations/{location}/configStoreSettings/{config_store_setting_id}'
+									or 'folders/{folder_id}/locations/{location}/configStoreSettings/{config_store_setting_id}'
+									or 'organizations/{organization_id}/locations/{location}/configStoreSettings/{config_store_setting_id}'
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					parent: {
+						type: "string"
+						description: """
+									The parent resource in which to create the config store setting.
+									Must be in one of the following formats:
+									* 'projects/{project_number}' (numeric project number is required)
+									* 'folders/{folder_id}'
+									* 'organizations/{organization_id}'
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: {
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					value: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								bool_value: {
+									type:             "bool"
+									description:      "Represents a boolean value."
+									description_kind: "plain"
+									optional:         true
+								}
+								string_value: {
+									type:             "string"
+									description:      "Represents a string value."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description:      "The configuration value of the setting."
+							description_kind: "plain"
+						}
+						min_items: 1
+						max_items: 1
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_dataflow_flex_template_job: {
 			version: 1
 			block: {
@@ -157069,6 +158068,61 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_dataform_config: {
+			version: 0
+			block: {
+				attributes: {
+					default_kms_key_name: {
+						type:             "string"
+						description:      "Optional. A reference to the customer-managed encryption key (CMEK) that will be used by default to encrypt user data."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "A reference to the region"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_dataform_folder: {
 			version: 0
 			block: {
@@ -157234,6 +158288,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description:      "A reference to the region"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					service_account: {
 						type:             "string"
@@ -157545,6 +158600,368 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type:             "string"
 						description_kind: "plain"
 						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_dataform_repository_release_config: {
+			version: 0
+			block: {
+				attributes: {
+					cron_schedule: {
+						type:             "string"
+						description:      "Optional. Optional schedule (in cron format) for automatic creation of compilation results."
+						description_kind: "plain"
+						optional:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					disabled: {
+						type:             "bool"
+						description:      "Disables automatic creation of compilation results."
+						description_kind: "plain"
+						optional:         true
+					}
+					git_commitish: {
+						type:             "string"
+						description:      "Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository."
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The release's name."
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					recent_scheduled_release_records: {
+						type: ["list", ["object", {
+							compilation_result: "string"
+							error_status: ["list", ["object", {
+								code:    "number"
+								message: "string"
+							}]]
+							release_time: "string"
+						}]]
+						description:      "Records of the 10 most recent scheduled release attempts, ordered in in descending order of releaseTime. Updated whenever automatic creation of a compilation result is triggered by cronSchedule."
+						description_kind: "plain"
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "A reference to the region"
+						description_kind: "plain"
+						optional:         true
+					}
+					repository: {
+						type:             "string"
+						description:      "A reference to the Dataform repository"
+						description_kind: "plain"
+						optional:         true
+					}
+					time_zone: {
+						type:             "string"
+						description:      "Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC."
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: {
+					code_compilation_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								assertion_schema: {
+									type:             "string"
+									description:      "Optional. The default schema (BigQuery dataset ID) for assertions."
+									description_kind: "plain"
+									optional:         true
+								}
+								database_suffix: {
+									type:             "string"
+									description:      "Optional. The suffix that should be appended to all database (Google Cloud project ID) names."
+									description_kind: "plain"
+									optional:         true
+								}
+								default_database: {
+									type:             "string"
+									description:      "Optional. The default database (Google Cloud project ID)."
+									description_kind: "plain"
+									optional:         true
+								}
+								default_location: {
+									type: "string"
+									description: """
+												Optional. The default BigQuery location to use. Defaults to "US".
+												See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								default_schema: {
+									type:             "string"
+									description:      "Optional. The default schema (BigQuery dataset ID)."
+									description_kind: "plain"
+									optional:         true
+								}
+								schema_suffix: {
+									type:             "string"
+									description:      "Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names."
+									description_kind: "plain"
+									optional:         true
+								}
+								table_prefix: {
+									type:             "string"
+									description:      "Optional. The prefix that should be prepended to all table names."
+									description_kind: "plain"
+									optional:         true
+								}
+								vars: {
+									type: ["map", "string"]
+									description: """
+												Optional. User-defined variables that are made available to project code during compilation.
+												An object containing a list of "key": value pairs.
+												Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description:      "Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_dataform_repository_workflow_config: {
+			version: 0
+			block: {
+				attributes: {
+					cron_schedule: {
+						type:             "string"
+						description:      "Optional. Optional schedule (in cron format) for automatic creation of compilation results."
+						description_kind: "plain"
+						optional:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					disabled: {
+						type:             "bool"
+						description:      "Disables automatic creation of workflow invocations."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The workflow's name."
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					recent_scheduled_execution_records: {
+						type: ["list", ["object", {
+							error_status: ["list", ["object", {
+								code:    "number"
+								message: "string"
+							}]]
+							execution_time:      "string"
+							workflow_invocation: "string"
+						}]]
+						description:      "Records of the 10 most recent scheduled execution attempts, ordered in in descending order of executionTime. Updated whenever automatic creation of a workflow invocation is triggered by cronSchedule."
+						description_kind: "plain"
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "A reference to the region"
+						description_kind: "plain"
+						optional:         true
+					}
+					release_config: {
+						type:             "string"
+						description:      "The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*."
+						description_kind: "plain"
+						required:         true
+					}
+					repository: {
+						type:             "string"
+						description:      "A reference to the Dataform repository"
+						description_kind: "plain"
+						optional:         true
+					}
+					time_zone: {
+						type:             "string"
+						description:      "Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC."
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: {
+					invocation_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								fully_refresh_incremental_tables_enabled: {
+									type:             "bool"
+									description:      "Optional. When set to true, any incremental tables will be fully refreshed."
+									description_kind: "plain"
+									optional:         true
+								}
+								included_tags: {
+									type: ["list", "string"]
+									description:      "Optional. The set of tags to include."
+									description_kind: "plain"
+									optional:         true
+								}
+								service_account: {
+									type:             "string"
+									description:      "Optional. The service account to run workflow invocations under."
+									description_kind: "plain"
+									optional:         true
+								}
+								transitive_dependencies_included: {
+									type:             "bool"
+									description:      "Optional. When set to true, transitive dependencies of included actions will be executed."
+									description_kind: "plain"
+									optional:         true
+								}
+								transitive_dependents_included: {
+									type:             "bool"
+									description:      "Optional. When set to true, transitive dependents of included actions will be executed."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							block_types: included_targets: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										database: {
+											type:             "string"
+											description:      "The action's database (Google Cloud project ID)."
+											description_kind: "plain"
+											optional:         true
+										}
+										name: {
+											type:             "string"
+											description:      "The action's name, within database and schema."
+											description_kind: "plain"
+											optional:         true
+										}
+										schema: {
+											type:             "string"
+											description:      "The action's schema (BigQuery dataset ID), within database."
+											description_kind: "plain"
+											optional:         true
+										}
+									}
+									description:      "Optional. The set of action identifiers to include."
+									description_kind: "plain"
+								}
+							}
+							description:      "Optional. If left unset, a default InvocationConfig will be used."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
 					}
 				}
 				description_kind: "plain"
@@ -177988,6 +179405,345 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_dialogflow_companion_agent: {
+			version: 0
+			block: {
+				attributes: {
+					companion_agent_id: {
+						type:             "string"
+						description:      "The ID to use for the companion agent, which will become the final component of the companion agent's resource name."
+						description_kind: "plain"
+						required:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "Creation time of this companion agent."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Description for the companion agent."
+						description_kind: "plain"
+						optional:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "Display name for the companion agent."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the companion agent."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									The unique identifier of the companion agent.
+									Format: 'projects/{project}/locations/{location}/companionAgents/{companion_agent}'.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Update time of this companion agent."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					ces_tool_specs: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								ces_tool: {
+									type: "string"
+									description: """
+												The resource name of the CES tool.
+												Format: 'projects/{project}/locations/{location}/apps/{app}/tools/{tool}'.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								confirmation_requirement: {
+									type:             "string"
+									description:      "Indicates whether the tool requires human confirmation. Possible values: [\"REQUIRED\", \"NOT_REQUIRED\"]"
+									description_kind: "plain"
+									optional:         true
+								}
+								proactive_enabled: {
+									type: "bool"
+									description: """
+												Indicates whether the tool is enabled in proactive mode.
+												All tools are enabled in proactive mode by default. To disable a tool in proactive mode, set this field to 'false'.
+												NOTE: At least one of 'proactive_enabled' or 'reactive_enabled' should be 'true' else the tool will be ignored.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								reactive_enabled: {
+									type: "bool"
+									description: """
+												Indicates whether the tool is enabled in reactive mode.
+												All tools are disabled in reactive mode by default. To enable a tool in reactive mode, set this field to 'true'.
+												NOTE: At least one of 'reactive_enabled' or 'proactive_enabled' should be 'true' else the tool will be ignored. CompanionAgent config will throw an error if any unsupported tool is enabled in reactive mode.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							block_types: parameter_overrides: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										context_reference_key: {
+											type:             "string"
+											description:      "The key of the context reference in ingested context references."
+											description_kind: "plain"
+											required:         true
+										}
+										field_path: {
+											type: "string"
+											description: """
+															The path into the JSON object of the latest content ingested under 'context_reference_key' (e.g. 'email' or 'user.email'). If omitted, the entire content under 'context_reference_key' is used.
+															If the path cannot be resolved when the tool is called, the value predicted by the model is used (or omitted if the model did not predict it).
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										parameter_name: {
+											type:             "string"
+											description:      "The name of the tool input parameter to override, as defined in the tool's input schema. For example, 'user_email'."
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									description:      "Overrides for the tool's input parameters. When the tool is called, each listed parameter is set to the value found in the ingested context references, populating it if omitted by the model or replacing any value predicted by the model. Duplicate entries for the same 'parameter_name' are disallowed and rejected during Companion Agent validation."
+									description_kind: "plain"
+								}
+							}
+							description:      "List of CES tool specs that the companion agent can choose from."
+							description_kind: "plain"
+						}
+					}
+					skill_configs: {
+						nesting_mode: "list"
+						block: {
+							attributes: skill_triggering_event: {
+								type:             "string"
+								description:      "The event that should trigger the skill. Possible values: [\"END_OF_UTTERANCE\", \"CUSTOMER_MESSAGE\", \"AGENT_MESSAGE\"]"
+								description_kind: "plain"
+								optional:         true
+							}
+							block_types: guidance_skill_config: {
+								nesting_mode: "list"
+								block: {
+									attributes: overarching_guidance: {
+										type:             "string"
+										description:      "This is specific additional guidance that can be configured by the user."
+										description_kind: "plain"
+										optional:         true
+									}
+									block_types: guidance_instructions: {
+										nesting_mode: "list"
+										block: {
+											attributes: {
+												condition: {
+													type:             "string"
+													description:      "The condition of the instruction."
+													description_kind: "plain"
+													optional:         true
+												}
+												disable_suggested_reply: {
+													type:             "bool"
+													description:      "Whether to disable suggested reply generation for this instruction."
+													description_kind: "plain"
+													optional:         true
+												}
+												display_details: {
+													type:             "string"
+													description:      "The detailed description of this instruction."
+													description_kind: "plain"
+													optional:         true
+												}
+												display_name: {
+													type:             "string"
+													description:      "Display name for the instruction."
+													description_kind: "plain"
+													optional:         true
+												}
+												trigger_event: {
+													type:             "string"
+													description:      "Event that triggers the guidance instruction. Possible values: [\"END_OF_UTTERANCE\", \"CUSTOMER_MESSAGE\", \"AGENT_MESSAGE\"]"
+													description_kind: "plain"
+													optional:         true
+												}
+											}
+											block_types: actions: {
+												nesting_mode: "list"
+												block: {
+													attributes: description: {
+														type:             "string"
+														description:      "Description of action item."
+														description_kind: "plain"
+														required:         true
+													}
+													description:      "The action items that can be processed."
+													description_kind: "plain"
+												}
+											}
+											description:      "Customized instructions for guidance."
+											description_kind: "plain"
+										}
+									}
+									description:      "Guidance skill configuration."
+									description_kind: "plain"
+								}
+								max_items: 1
+							}
+							description: """
+										List of skill configs for the companion agent.
+										At most one skill config of each type (for example, at most one 'guidance_skill_config') may be configured.
+										"""
+							description_kind: "plain"
+						}
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					toolset_tools: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								confirmation_requirement: {
+									type:             "string"
+									description:      "Indicates whether the tool requires human confirmation. Possible values: [\"REQUIRED\", \"NOT_REQUIRED\"]"
+									description_kind: "plain"
+									optional:         true
+								}
+								operation_id: {
+									type:             "string"
+									description:      "The 'operationId' field of the OpenAPI endpoint. The 'operationId' must be present in the toolset's definition."
+									description_kind: "plain"
+									optional:         true
+								}
+								proactive_enabled: {
+									type: "bool"
+									description: """
+												Indicates whether the toolset tool is enabled in proactive mode.
+												NOTE: At least one of 'proactive_enabled' or 'reactive_enabled' should be 'true' else the toolset tool will be ignored.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								reactive_enabled: {
+									type: "bool"
+									description: """
+												Indicates whether the toolset tool is enabled in reactive mode.
+												NOTE: At least one of 'reactive_enabled' or 'proactive_enabled' should be 'true' else the toolset tool will be ignored.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								toolset: {
+									type: "string"
+									description: """
+												The name of the toolset to retrieve the schema for.
+												Format: 'projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}'.
+												"""
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							block_types: parameter_overrides: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										context_reference_key: {
+											type:             "string"
+											description:      "The key of the context reference in ingested context references."
+											description_kind: "plain"
+											required:         true
+										}
+										field_path: {
+											type: "string"
+											description: """
+															The path into the JSON object of the latest content ingested under 'context_reference_key' (e.g. 'email' or 'user.email'). If omitted, the entire content under 'context_reference_key' is used.
+															If the path cannot be resolved when the tool is called, the value predicted by the model is used (or omitted if the model did not predict it).
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										parameter_name: {
+											type:             "string"
+											description:      "The name of the tool input parameter to override, as defined in the tool's input schema. For example, 'user_email'."
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									description:      "Overrides for the tool's input parameters. When the tool is called, each listed parameter is set to the value found in the ingested context references, populating it if omitted by the model or replacing any value predicted by the model. Duplicate entries for the same 'parameter_name' are disallowed and rejected during Companion Agent validation."
+									description_kind: "plain"
+								}
+							}
+							description:      "List of CES toolset specs that the companion agent can choose from."
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_dialogflow_conversation_profile: {
 			version: 0
 			block: {
@@ -189442,6 +191198,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description:      "User-facing, version-independent label for this connector."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					update_time: {
 						type:             "string"
@@ -190295,6 +192052,102 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									optional:         true
 								}
 								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_discovery_engine_project_provision: {
+			version: 0
+			block: {
+				attributes: {
+					accept_data_use_terms: {
+						type: "bool"
+						description: """
+									Set to 'true' to specify that the caller has read and consents to the
+									[Terms for data use](https://cloud.google.com/retail/data-use-terms).
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					data_use_terms_version: {
+						type: "string"
+						description: """
+									The version of the [Terms for data use](https://cloud.google.com/retail/data-use-terms)
+									that the caller has read and consents to. An acceptable version is '2022-11-23',
+									and this may change over time.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type: "string"
+						description: """
+									The geographic location in which to provision the project, such as
+									'global', 'us', or 'eu'.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+				}
+				block_types: {
+					saas_params: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								accept_biz_qos: {
+									type: "bool"
+									description: """
+												Set to 'true' to specify that the caller has read and consents to the
+												Terms for business edition quality of service.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								is_biz: {
+									type: "bool"
+									description: """
+												Indicates whether the current request is for Business edition ('true')
+												or not ('false').
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description:      "Parameters for Gemini Enterprise (Agentspace) provisioning."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
 									type:             "string"
 									description_kind: "plain"
 									optional:         true
@@ -207088,6 +208941,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description:      "Id of the Gemini Gcp Enablement setting."
 						description_kind: "plain"
 						required:         true
+					}
+					has_custom_instructions: {
+						type:             "bool"
+						description:      "Indicates whether custom instructions are defined."
+						description_kind: "plain"
+						optional:         true
 					}
 					id: {
 						type:             "string"
@@ -231924,11 +233783,25 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					eventing_config: {
 						nesting_mode: "list"
 						block: {
-							attributes: enrichment_enabled: {
-								type:             "bool"
-								description:      "Enrichment Enabled."
-								description_kind: "plain"
-								optional:         true
+							attributes: {
+								allowed_event_types: {
+									type: ["list", "string"]
+									description:      "List of allowed event types for the connection."
+									description_kind: "plain"
+									optional:         true
+								}
+								enrichment_enabled: {
+									type:             "bool"
+									description:      "Enrichment Enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								global_event_filter: {
+									type:             "string"
+									description:      "Filter to be applied on the events to be received by the connection."
+									description_kind: "plain"
+									optional:         true
+								}
 							}
 							block_types: {
 								additional_variable: {
@@ -232133,6 +234006,42 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											}
 										}
 										description:      "authConfig for Eventing Configuration."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								dead_letter_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											project_id: {
+												type:             "string"
+												description:      "Project which has the topic given."
+												description_kind: "plain"
+												required:         true
+											}
+											topic: {
+												type:             "string"
+												description:      "Topic to push events which couldn't be processed."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Dead letter configuration for eventing of a connection."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								enrichment_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: append_acl: {
+											type:             "bool"
+											description:      "Append ACL to the event."
+											description_kind: "plain"
+											optional:         true
+										}
+										description:      "Data enrichment configuration."
 										description_kind: "plain"
 									}
 									max_items: 1
@@ -232998,6 +234907,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									nesting_mode: "list"
 									block: {
 										attributes: {
+											apply_reauth_policy: {
+												type:             "bool"
+												description:      "Indicates if the user has opted in Google Reauth Policy. If opted in, the refresh token will be valid for 20 hours, after which time users must re-authenticate in order to obtain a new one."
+												description_kind: "plain"
+												optional:         true
+											}
 											auth_endpoint: {
 												type:             "string"
 												description:      "The auth url endpoint to send the auth code request to."
@@ -233016,6 +234931,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												description_kind: "plain"
 												optional:         true
 											}
+											request_type: {
+												type:             "string"
+												description:      "Represent how to pass parameters to fetch access token Possible values: [\"REQUEST_BODY\", \"QUERY_PARAMETERS\", \"ENCODED_HEADER\"]"
+												description_kind: "plain"
+												optional:         true
+											}
 											scope: {
 												type:             "string"
 												description:      "A space-delimited list of requested scope permissions."
@@ -233027,6 +234948,130 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												description:      "The token url endpoint to send the token request to."
 												description_kind: "plain"
 												optional:         true
+											}
+										}
+										block_types: {
+											auth_params: {
+												nesting_mode: "list"
+												block: {
+													block_types: entries: {
+														nesting_mode: "list"
+														block: {
+															block_types: {
+																key: {
+																	nesting_mode: "list"
+																	block: {
+																		block_types: literal_value: {
+																			nesting_mode: "list"
+																			block: {
+																				attributes: string_value: {
+																					type:             "string"
+																					description:      "The string value of the parameter key."
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				description:      "Literal value of the parameter key."
+																				description_kind: "plain"
+																			}
+																			max_items: 1
+																		}
+																		description:      "Key of the map entry."
+																		description_kind: "plain"
+																	}
+																	max_items: 1
+																}
+																value: {
+																	nesting_mode: "list"
+																	block: {
+																		block_types: literal_value: {
+																			nesting_mode: "list"
+																			block: {
+																				attributes: string_value: {
+																					type:             "string"
+																					description:      "The string value of the parameter."
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				description:      "Literal value of the parameter."
+																				description_kind: "plain"
+																			}
+																			max_items: 1
+																		}
+																		description:      "Value of the map entry."
+																		description_kind: "plain"
+																	}
+																	max_items: 1
+																}
+															}
+															description:      "A list of parameter map entries."
+															description_kind: "plain"
+														}
+													}
+													description:      "The auth parameters sent along with the auth code request."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											token_params: {
+												nesting_mode: "list"
+												block: {
+													block_types: entries: {
+														nesting_mode: "list"
+														block: {
+															block_types: {
+																key: {
+																	nesting_mode: "list"
+																	block: {
+																		block_types: literal_value: {
+																			nesting_mode: "list"
+																			block: {
+																				attributes: string_value: {
+																					type:             "string"
+																					description:      "The string value of the parameter key."
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				description:      "Literal value of the parameter key."
+																				description_kind: "plain"
+																			}
+																			max_items: 1
+																		}
+																		description:      "Key of the map entry."
+																		description_kind: "plain"
+																	}
+																	max_items: 1
+																}
+																value: {
+																	nesting_mode: "list"
+																	block: {
+																		block_types: literal_value: {
+																			nesting_mode: "list"
+																			block: {
+																				attributes: string_value: {
+																					type:             "string"
+																					description:      "The string value of the parameter."
+																					description_kind: "plain"
+																					optional:         true
+																				}
+																				description:      "Literal value of the parameter."
+																				description_kind: "plain"
+																			}
+																			max_items: 1
+																		}
+																		description:      "Value of the map entry."
+																		description_kind: "plain"
+																	}
+																	max_items: 1
+																}
+															}
+															description:      "A list of parameter map entries."
+															description_kind: "plain"
+														}
+													}
+													description:      "The token parameters sent along with the token request."
+													description_kind: "plain"
+												}
+												max_items: 1
 											}
 										}
 										description:      "OAuth2 authorization code credential."
@@ -241046,6 +243091,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						nesting_mode: "list"
 						block: {
 							attributes: {
+								active_zones: {
+									type: ["list", "string"]
+									description:      "The exact list of zones where the instance currently has active VMs."
+									description_kind: "plain"
+									computed:         true
+								}
 								mode: {
 									type: "string"
 									description: """
@@ -241063,6 +243114,16 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description: """
 												Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
 												Ignored for MULTI_ZONE mode.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								zones: {
+									type: ["list", "string"]
+									description: """
+												Specify the zones of a multi-zone instance where Memorystore
+												instance allocates resources. This flag isn't applicable for single-zone
+												instances.
 												"""
 									description_kind: "plain"
 									optional:         true
@@ -250375,6 +252436,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											description: """
 															Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
 															Default is 31.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										hot_tier_bypass_mode_enabled: {
+											type: "bool"
+											description: """
+															Flag indicating that the hot tier bypass mode is enabled. Default is false.
+															Only applicable to Flex service level.
 															"""
 											description_kind: "plain"
 											optional:         true
@@ -265169,7 +267239,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												The name for this extension chain. The name is logged as part of the HTTP request logs.
 												The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
 												and can have a maximum length of 63 characters. Additionally, the first character must be a letter
-												and the last a letter or a number.
+												and the last character must be a letter or a number.
 												"""
 								description_kind: "plain"
 								required:         true
@@ -265241,6 +267311,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												description_kind: "plain"
 												required:         true
 											}
+											observability_mode: {
+												type: "bool"
+												description: """
+															When set to 'TRUE', enables 'observability_mode' on the 'ext_proc' filter.
+															This makes 'ext_proc' calls asynchronous. Envoy doesn't check for the response from 'ext_proc' calls.
+															For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+															This field is helpful when you want to try out the extension in async log-only mode.
+															Supported by regional 'LbTrafficExtension' and 'LbRouteExtension' resources.
+															Only 'STREAMED' (default) body processing mode is supported.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
 											service: {
 												type: "string"
 												description: """
@@ -265277,7 +267360,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 													A set of extensions to execute for the matching request.
 													At least one extension is required. Up to 3 extensions can be defined for each extension chain for
 													LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
-													Further documentation to be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
+													Further documentation can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
 													"""
 										description_kind: "plain"
 									}
@@ -290565,6 +292648,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description:      "The region of the pubsub lite reservation."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					throughput_capacity: {
 						type: "number"
@@ -290658,6 +292742,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description:      "The zone of the pubsub lite topic."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: {
@@ -290751,6 +292836,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description:      "The zone of the pubsub lite topic."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 				}
 				block_types: {
@@ -294026,6 +296112,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						nesting_mode: "list"
 						block: {
 							attributes: {
+								active_zones: {
+									type: ["list", "string"]
+									description:      "The exact list of zones where the cluster currently has active VMs."
+									description_kind: "plain"
+									computed:         true
+								}
 								mode: {
 									type: "string"
 									description: """
@@ -294039,6 +296131,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								zone: {
 									type:             "string"
 									description:      "Immutable. The zone for single zone Memorystore Redis cluster."
+									description_kind: "plain"
+									optional:         true
+								}
+								zones: {
+									type: ["list", "string"]
+									description: """
+												Specify the zones of a multi-zone cluster where Redis Cluster
+												allocates resources. This flag isn't applicable for single-zone clusters.
+												"""
 									description_kind: "plain"
 									optional:         true
 								}
@@ -294181,6 +296282,93 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}
 							description_kind: "plain"
 						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_redis_cluster_token_auth_user: {
+			version: 0
+			block: {
+				attributes: {
+					cluster: {
+						type:             "string"
+						description:      "The name or resource ID of the Redis cluster."
+						description_kind: "plain"
+						required:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The full resource name of the Token Auth User."
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The name of the region of the Redis cluster."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					state: {
+						type:             "string"
+						description:      "The current state of the Token Auth User."
+						description_kind: "plain"
+						computed:         true
+					}
+					user_id: {
+						type: "string"
+						description: """
+									The unique ID (username) of the Token Auth User.
+									The 'default' user cannot be managed with this resource.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
 					}
 				}
 				description_kind: "plain"
@@ -295285,6 +297473,16 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 			version: 0
 			block: {
 				attributes: {
+					boundaries: {
+						type: ["set", "string"]
+						description: """
+									The list of Boundaries associated with this capability config.
+									Format: 'organizations/{organization}/boundaries/{boundary}' or 'folders/{folder}/boundaries/{boundary}'.
+									Boundaries must share the capability config's parent, and cannot be specified for project-scoped capability configs.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
 					capability_config_id: {
 						type: "string"
 						description: """
@@ -305087,6 +307285,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description:      "The id of the Google Cloud project containing the consumer network."
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					service: {
 						type: "string"
@@ -312364,6 +314563,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						optional:         true
 					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
 					force_destroy: {
 						type:             "bool"
 						description:      "If set, all the inventory report details associated with this report configuration are deleted."
@@ -312375,6 +314580,18 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						optional:         true
 						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									Labels as key value pairs. Have a character limit of 64 per key and value.
+
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
 					}
 					location: {
 						type: "string"
@@ -312395,6 +314612,15 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type:             "string"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
 						computed:         true
 					}
 				}
@@ -312664,27 +314890,67 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						computed:         true
 					}
 				}
-				block_types: timeouts: {
-					nesting_mode: "single"
-					block: {
-						attributes: {
-							create: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
+				block_types: {
+					rapid_cache_config: {
+						nesting_mode: "list"
+						block: {
+							block_types: policies: {
+								nesting_mode: "set"
+								block: {
+									attributes: {
+										ingest_on_write: {
+											type: "string"
+											description: """
+															The ingest-on-write policy for objects in the managed folder. When
+															set to 'enabled', objects are automatically ingested into the cache
+															when they are written to the managed folder.
+															Possible values: ["enabled", "unspecified"]
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										rapid_cache_id: {
+											type:             "string"
+											description:      "The unique identifier of the rapid cache."
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									description: """
+													A map of rapid cache IDs to the corresponding RapidCachePolicy
+													configurations for a managed folder.
+													"""
+									description_kind: "plain"
+								}
+								min_items: 1
 							}
-							delete: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
-							update: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
+							description:      "Configuration options for the rapid cache of a managed folder."
+							description_kind: "plain"
 						}
-						description_kind: "plain"
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
 					}
 				}
 				description_kind: "plain"
@@ -319694,6 +321960,468 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_vertex_ai_evaluation_item: {
+			version: 0
+			block: {
+				attributes: {
+					create_time: {
+						type:             "string"
+						description:      "Timestamp when this EvaluationItem was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "The user-friendly display name for the EvaluationItem."
+						description_kind: "plain"
+						required:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					error: {
+						type: ["list", ["object", {
+							code:    "number"
+							message: "string"
+						}]]
+						description:      "The error that occurred during the evaluation item processing."
+						description_kind: "plain"
+						computed:         true
+					}
+					evaluation_item_type: {
+						type:             "string"
+						description:      "The type of the EvaluationItem. Possible values: [\"REQUEST\", \"RESULT\"]"
+						description_kind: "plain"
+						required:         true
+					}
+					evaluation_response: {
+						type: ["list", ["object", {
+							candidate_results: ["list", ["object", {
+								additional_results: "string"
+								candidate:          "string"
+								error: ["list", ["object", {
+									code:    "number"
+									message: "string"
+								}]]
+								explanation: "string"
+								metric:      "string"
+								rubric_verdicts: ["list", ["object", {
+									evaluated_rubric: "string"
+									reasoning:        "string"
+									verdict:          "bool"
+								}]]
+								score: "number"
+							}]]
+							evaluation_request: "string"
+							evaluation_run:     "string"
+							metadata:           "string"
+							metric:             "string"
+							request:            "string"
+						}]]
+						description:      "The response from evaluation."
+						description_kind: "plain"
+						computed:         true
+					}
+					gcs_uri: {
+						type: "string"
+						description: """
+									The Cloud Storage object where the request or response is stored.
+									Exactly one of 'evaluation_request' or 'gcs_uri' can be set.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									Labels for the EvaluationItem.
+
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					metadata: {
+						type:             "string"
+						description:      "User-defined metadata for this evaluation item as a JSON string."
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The short name of the EvaluationItem (the final component of the resource name)."
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The region of the EvaluationItem. eg us-central1"
+						description_kind: "plain"
+						required:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					evaluation_request: {
+						nesting_mode: "list"
+						block: {
+							block_types: {
+								candidate_responses: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											agent_data: {
+												type: "string"
+												description: """
+															Represents the complete execution trace of a multi-turn conversation,
+															which can involve single or multiple agents, as a JSON string. This
+															field is used to provide the full output of an agent's run, including
+															all turns and events, for direct evaluation.
+															At most one of 'text', 'value', or 'agent_data' can be set.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											candidate: {
+												type:             "string"
+												description:      "The name of the candidate that produced the response."
+												description_kind: "plain"
+												required:         true
+											}
+											error: {
+												type: ["list", ["object", {
+													code:    "number"
+													message: "string"
+												}]]
+												description:      "Error while scraping model or agent."
+												description_kind: "plain"
+												computed:         true
+											}
+											text: {
+												type: "string"
+												description: """
+															Text response.
+															At most one of 'text', 'value', or 'agent_data' can be set.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											value: {
+												type: "string"
+												description: """
+															Fields and values that can be used to populate the response template, as a JSON string.
+															At most one of 'text', 'value', or 'agent_data' can be set.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Responses from model under test and other baseline models for comparison."
+										description_kind: "plain"
+									}
+								}
+								golden_response: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											agent_data: {
+												type: "string"
+												description: """
+															Represents the complete execution trace of a multi-turn conversation,
+															which can involve single or multiple agents, as a JSON string. This
+															field is used to provide the full output of an agent's run, including
+															all turns and events, for direct evaluation.
+															At most one of 'text', 'value', or 'agent_data' can be set.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											candidate: {
+												type:             "string"
+												description:      "The name of the candidate that produced the response."
+												description_kind: "plain"
+												required:         true
+											}
+											error: {
+												type: ["list", ["object", {
+													code:    "number"
+													message: "string"
+												}]]
+												description:      "Error while scraping model or agent."
+												description_kind: "plain"
+												computed:         true
+											}
+											text: {
+												type: "string"
+												description: """
+															Text response.
+															At most one of 'text', 'value', or 'agent_data' can be set.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											value: {
+												type: "string"
+												description: """
+															Fields and values that can be used to populate the response template, as a JSON string.
+															At most one of 'text', 'value', or 'agent_data' can be set.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "The ideal response or ground truth."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								prompt: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											agent_data: {
+												type: "string"
+												description: """
+															Represents the complete execution trace of a multi-turn conversation,
+															which can involve single or multiple agents, as a JSON string. This
+															serves as the input context for agent scraping.
+															At most one of 'text', 'value', 'prompt_template_data', 'agent_data', or 'user_scenario' can be set.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											text: {
+												type: "string"
+												description: """
+															Text prompt.
+															At most one of 'text', 'value', 'prompt_template_data', 'agent_data', or 'user_scenario' can be set.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											value: {
+												type: "string"
+												description: """
+															Fields and values that can be used to populate the prompt template, as a JSON string.
+															At most one of 'text', 'value', 'prompt_template_data', 'agent_data', or 'user_scenario' can be set.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										block_types: {
+											prompt_template_data: {
+												nesting_mode: "list"
+												block: {
+													attributes: values: {
+														type: "string"
+														description: """
+																		The values for fields in the prompt template, as a JSON string mapping
+																		field names to Content objects.
+																		"""
+														description_kind: "plain"
+														optional:         true
+													}
+													description: """
+																Prompt template data.
+																At most one of 'text', 'value', 'prompt_template_data', 'agent_data', or 'user_scenario' can be set.
+																"""
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											user_scenario: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														conversation_plan: {
+															type: "string"
+															description: """
+																		The plan for the conversation, used to drive the multi-turn agent run and
+																		generate the simulated agent evaluation dataset.
+																		"""
+															description_kind: "plain"
+															required:         true
+														}
+														starting_prompt: {
+															type: "string"
+															description: """
+																		The prompt that starts the conversation between the simulated user and
+																		the agent under test.
+																		"""
+															description_kind: "plain"
+															required:         true
+														}
+													}
+													description: """
+																The generated user scenario used to drive multi-turn agent running results.
+																At most one of 'text', 'value', 'prompt_template_data', 'agent_data', or 'user_scenario' can be set.
+																"""
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+										}
+										description:      "The request/prompt to evaluate."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								rubrics: {
+									nesting_mode: "set"
+									block: {
+										attributes: {
+											display_name: {
+												type:             "string"
+												description:      "Human-readable name for the group."
+												description_kind: "plain"
+												optional:         true
+											}
+											group_id: {
+												type:             "string"
+												description:      "Unique identifier for the group."
+												description_kind: "plain"
+												optional:         true
+											}
+											name: {
+												type:             "string"
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										block_types: rubrics: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													importance: {
+														type:             "string"
+														description:      "The relative importance of this rubric. Possible values: [\"HIGH\", \"MEDIUM\", \"LOW\"]"
+														description_kind: "plain"
+														optional:         true
+													}
+													rubric_id: {
+														type:             "string"
+														description:      "Unique identifier for the rubric."
+														description_kind: "plain"
+														optional:         true
+													}
+													type: {
+														type:             "string"
+														description:      "A type designator for the rubric, e.g. 'SUMMARIZATION_QUALITY'."
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												block_types: content: {
+													nesting_mode: "list"
+													block: {
+														block_types: property: {
+															nesting_mode: "list"
+															block: {
+																attributes: description: {
+																	type:             "string"
+																	description:      "Description of the property being evaluated."
+																	description_kind: "plain"
+																	optional:         true
+																}
+																description:      "Evaluation criteria based on a specific property."
+																description_kind: "plain"
+															}
+															max_items: 1
+														}
+														description:      "The actual testable criteria for the rubric."
+														description_kind: "plain"
+													}
+													min_items: 1
+													max_items: 1
+												}
+												description:      "Rubrics that are part of this group."
+												description_kind: "plain"
+											}
+										}
+										description: """
+													Named groups of rubrics associated with this prompt.
+													The key is a user-defined name for the rubric group.
+													"""
+										description_kind: "plain"
+									}
+								}
+							}
+							description: """
+										The request to evaluate.
+										Exactly one of 'evaluation_request' or 'gcs_uri' can be set.
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_vertex_ai_evaluation_metric: {
 			version: 0
 			block: {
@@ -320373,6 +323101,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						block: {
 							description:      "Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore"
 							description_kind: "plain"
+							deprecated:       true
 						}
 						max_items: 1
 					}
@@ -324526,6 +327255,28 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 																												}
 																											}
 																											description:      "The inline data content of the part."
+																											description_kind: "plain"
+																										}
+																										max_items: 1
+																									}
+																									speech_metadata: {
+																										nesting_mode: "list"
+																										block: {
+																											attributes: {
+																												speaker: {
+																													type:             "string"
+																													description:      "Identifies which speaker is speaking this turn."
+																													description_kind: "plain"
+																													optional:         true
+																												}
+																												style: {
+																													type:             "string"
+																													description:      "Natural language description of the vocal style (e.g., \"cheerful\")."
+																													description_kind: "plain"
+																													optional:         true
+																												}
+																											}
+																											description:      "Turn-level metadata for speech generation. May be set alongside 'text' to attach speaker and style information to a text part."
 																											description_kind: "plain"
 																										}
 																										max_items: 1
@@ -335669,7 +338420,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type: "string"
 						description: """
 									The resource type to which the 'BackupPlan' will be applied.
-									Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+									Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance", "netapp.googleapis.com/Volume" and "storage.googleapis.com/Bucket".
 									"""
 						description_kind: "plain"
 						computed:         true
@@ -335712,6 +338463,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									- A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
 									- A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
 									- A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
+									- A Backup Plan configured for 'netapp.googleapis.com/Volume' can only protect NetApp volumes.
 									"""
 						description_kind: "plain"
 						computed:         true
@@ -335781,7 +338533,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						type: "string"
 						description: """
 									The resource type of workload on which backupplan is applied.
-									Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
+									Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", "file.googleapis.com/Instance", and "netapp.googleapis.com/Volume"
 									"""
 						description_kind: "plain"
 						computed:         true
@@ -341226,7 +343978,8 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									name: "string"
 									path: "string"
 								}]]
-								worker_pool: "string"
+								worker_pool:    "string"
+								worker_release: "string"
 							}]]
 							queue_ttl: "string"
 							secret: ["list", ["object", {
@@ -363392,8 +366145,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 					zone_distribution_config: {
 						type: ["list", ["object", {
+							active_zones: ["list", "string"]
 							mode: "string"
 							zone: "string"
+							zones: ["list", "string"]
 						}]]
 						description:      "Zone distribution configuration for allocation of instance resources."
 						description_kind: "plain"
@@ -369549,8 +372304,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 					zone_distribution_config: {
 						type: ["list", ["object", {
+							active_zones: ["list", "string"]
 							mode: "string"
 							zone: "string"
+							zones: ["list", "string"]
 						}]]
 						description:      "Immutable. Zone distribution config for Memorystore Redis cluster."
 						description_kind: "plain"
@@ -369642,6 +372399,72 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									"""
 						description_kind: "plain"
 						computed:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_redis_cluster_token_auth_user: {
+			version: 0
+			block: {
+				attributes: {
+					cluster: {
+						type:             "string"
+						description:      "The name or resource ID of the Redis cluster."
+						description_kind: "plain"
+						required:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The full resource name of the Token Auth User."
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description:      "The name of the region of the Redis cluster."
+						description_kind: "plain"
+						optional:         true
+					}
+					state: {
+						type:             "string"
+						description:      "The current state of the Token Auth User."
+						description_kind: "plain"
+						computed:         true
+					}
+					user_id: {
+						type: "string"
+						description: """
+									The unique ID (username) of the Token Auth User.
+									The 'default' user cannot be managed with this resource.
+									"""
+						description_kind: "plain"
+						required:         true
 					}
 				}
 				description_kind: "plain"
@@ -380251,6 +383074,24 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_vertex_ai_evaluation_item: {
+			version: 0
+			block: {
+				attributes: {
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					region: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_vertex_ai_evaluation_metric: {
 			version: 0
 			block: {
@@ -381552,6 +384393,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				rule_id: {
 					type:                "string"
 					required_for_import: true
+				}
+			}
+		}
+		google_backup_dr_auto_protection_policy: {
+			version: 1
+			attributes: {
+				auto_protection_policy_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
 				}
 			}
 		}
@@ -383612,7 +386470,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 			version: 1
 			attributes: parent: {
 				type:                "string"
-				required_for_import: true
+				optional_for_import: true
 			}
 		}
 		google_cloud_quotas_quota_preference: {
@@ -383624,7 +386482,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 				parent: {
 					type:                "string"
-					required_for_import: true
+					optional_for_import: true
 				}
 			}
 		}
@@ -387134,6 +389992,36 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_dataflow_config_store_setting: {
+			version: 1
+			attributes: {
+				config_store_setting_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				parent: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_dataform_config: {
+			version: 1
+			attributes: {
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				region: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		google_dataform_folder: {
 			version: 1
 			attributes: {
@@ -387194,6 +390082,48 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				role: {
 					type:                "string"
 					required_for_import: true
+				}
+			}
+		}
+		google_dataform_repository_release_config: {
+			version: 1
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+				repository: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		google_dataform_repository_workflow_config: {
+			version: 1
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+				repository: {
+					type:                "string"
+					optional_for_import: true
 				}
 			}
 		}
@@ -388197,6 +391127,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 			attributes: project: {
 				type:                "string"
 				optional_for_import: true
+			}
+		}
+		google_dialogflow_companion_agent: {
+			version: 1
+			attributes: {
+				companion_agent_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
 			}
 		}
 		google_dialogflow_conversation_profile: {
@@ -394817,7 +397764,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 			attributes: {
 				name: {
 					type:                "string"
-					required_for_import: true
+					optional_for_import: true
 				}
 				project: {
 					type:                "string"
@@ -394843,6 +397790,27 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				project: {
 					type:                "string"
 					optional_for_import: true
+				}
+			}
+		}
+		google_redis_cluster_token_auth_user: {
+			version: 1
+			attributes: {
+				cluster: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				region: {
+					type:                "string"
+					optional_for_import: true
+				}
+				user_id: {
+					type:                "string"
+					required_for_import: true
 				}
 			}
 		}
@@ -396388,6 +399356,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_vertex_ai_evaluation_item: {
+			version: 1
+			attributes: {
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				region: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		google_vertex_ai_evaluation_metric: {
 			version: 1
 			attributes: {
@@ -396477,7 +399462,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 				region: {
 					type:                "string"
-					required_for_import: true
+					optional_for_import: true
 				}
 			}
 		}
@@ -397162,5 +400147,35 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+	}
+	action_schemas: google_compute_instance_reset: block: {
+		attributes: {
+			instance: {
+				type:             "string"
+				description:      "The instance to reset. Accepts the instance name, a partial URI(projects/{project}/zones/{zone}/instances/{name} or zones/{zone}/instances/{name}), or a self link."
+				description_kind: "markdown"
+				required:         true
+			}
+			project: {
+				type:             "string"
+				description:      "The project of the instance. If it is not provided, the project in `instance` is used, and then the provider project."
+				description_kind: "plain"
+				optional:         true
+			}
+			timeout: {
+				type:             "string"
+				description:      "How long to wait for the instance to be ready for a reset and for the reset operation to complete, as a duration string such as \"10m\". Must be between 1s and 1h. Defaults to \"20m\"."
+				description_kind: "plain"
+				optional:         true
+			}
+			zone: {
+				type:             "string"
+				description:      "The zone of the instance. If it is not provided, the zone in `instance` is used, and then the provider zone."
+				description_kind: "plain"
+				optional:         true
+			}
+		}
+		description:      "Performs a hard reset ([`instance.reset`](https://cloud.google.com/compute/docs/reference/rest/v1/instances/reset)) of a running Compute Engine instance. The guest OS is not shut down gracefully."
+		description_kind: "markdown"
 	}
 }

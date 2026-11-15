@@ -158,6 +158,14 @@ google_integrations_auth_config: {
 	})
 
 	_#defs: "/$defs/decrypted_credential/$defs/oauth2_authorization_code": close({
+		auth_params?: matchN(1, [_#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/auth_params", list.MaxItems(1) & [..._#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/auth_params"]])
+		token_params?: matchN(1, [_#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/token_params", list.MaxItems(1) & [..._#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/token_params"]])
+
+		// Indicates if the user has opted in Google Reauth Policy. If opted in, the
+		// refresh token will be valid for 20 hours, after which time users must
+		// re-authenticate in order to obtain a new one.
+		apply_reauth_policy?: bool
+
 		// The auth url endpoint to send the auth code request to.
 		auth_endpoint?: string
 
@@ -167,11 +175,69 @@ google_integrations_auth_config: {
 		// The client's secret.
 		client_secret?: string
 
+		// Represent how to pass parameters to fetch access token Possible values:
+		// ["REQUEST_BODY", "QUERY_PARAMETERS", "ENCODED_HEADER"]
+		request_type?: string
+
 		// A space-delimited list of requested scope permissions.
 		scope?: string
 
 		// The token url endpoint to send the token request to.
 		token_endpoint?: string
+	})
+
+	_#defs: "/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/auth_params": close({
+		entries?: matchN(1, [_#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/auth_params/$defs/entries", [..._#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/auth_params/$defs/entries"]])
+	})
+
+	_#defs: "/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/auth_params/$defs/entries": close({
+		key?: matchN(1, [_#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/auth_params/$defs/entries/$defs/key", list.MaxItems(1) & [..._#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/auth_params/$defs/entries/$defs/key"]])
+		value?: matchN(1, [_#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/auth_params/$defs/entries/$defs/value", list.MaxItems(1) & [..._#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/auth_params/$defs/entries/$defs/value"]])
+	})
+
+	_#defs: "/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/auth_params/$defs/entries/$defs/key": close({
+		literal_value?: matchN(1, [_#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/auth_params/$defs/entries/$defs/key/$defs/literal_value", list.MaxItems(1) & [..._#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/auth_params/$defs/entries/$defs/key/$defs/literal_value"]])
+	})
+
+	_#defs: "/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/auth_params/$defs/entries/$defs/key/$defs/literal_value": close({
+		// The string value of the parameter key.
+		string_value?: string
+	})
+
+	_#defs: "/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/auth_params/$defs/entries/$defs/value": close({
+		literal_value?: matchN(1, [_#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/auth_params/$defs/entries/$defs/value/$defs/literal_value", list.MaxItems(1) & [..._#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/auth_params/$defs/entries/$defs/value/$defs/literal_value"]])
+	})
+
+	_#defs: "/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/auth_params/$defs/entries/$defs/value/$defs/literal_value": close({
+		// The string value of the parameter.
+		string_value?: string
+	})
+
+	_#defs: "/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/token_params": close({
+		entries?: matchN(1, [_#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/token_params/$defs/entries", [..._#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/token_params/$defs/entries"]])
+	})
+
+	_#defs: "/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/token_params/$defs/entries": close({
+		key?: matchN(1, [_#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/token_params/$defs/entries/$defs/key", list.MaxItems(1) & [..._#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/token_params/$defs/entries/$defs/key"]])
+		value?: matchN(1, [_#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/token_params/$defs/entries/$defs/value", list.MaxItems(1) & [..._#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/token_params/$defs/entries/$defs/value"]])
+	})
+
+	_#defs: "/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/token_params/$defs/entries/$defs/key": close({
+		literal_value?: matchN(1, [_#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/token_params/$defs/entries/$defs/key/$defs/literal_value", list.MaxItems(1) & [..._#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/token_params/$defs/entries/$defs/key/$defs/literal_value"]])
+	})
+
+	_#defs: "/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/token_params/$defs/entries/$defs/key/$defs/literal_value": close({
+		// The string value of the parameter key.
+		string_value?: string
+	})
+
+	_#defs: "/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/token_params/$defs/entries/$defs/value": close({
+		literal_value?: matchN(1, [_#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/token_params/$defs/entries/$defs/value/$defs/literal_value", list.MaxItems(1) & [..._#defs."/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/token_params/$defs/entries/$defs/value/$defs/literal_value"]])
+	})
+
+	_#defs: "/$defs/decrypted_credential/$defs/oauth2_authorization_code/$defs/token_params/$defs/entries/$defs/value/$defs/literal_value": close({
+		// The string value of the parameter.
+		string_value?: string
 	})
 
 	_#defs: "/$defs/decrypted_credential/$defs/oauth2_client_credentials": close({

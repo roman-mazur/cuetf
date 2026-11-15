@@ -92,8 +92,8 @@ google_backup_dr_backup_plan: {
 		// The resource type to which the 'BackupPlan' will be applied.
 		// Examples include, "compute.googleapis.com/Instance",
 		// "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance",
-		// "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and
-		// "storage.googleapis.com/Bucket".
+		// "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance",
+		// "netapp.googleapis.com/Volume" and "storage.googleapis.com/Bucket".
 		resource_type?: string
 
 		// The list of all resource types to which the 'BackupPlan' can be applied.
