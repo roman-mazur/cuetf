@@ -450,6 +450,9 @@ provider: {
 		connectcases?: string
 
 		// Use this to override the default service endpoint URL
+		continuum?: string
+
+		// Use this to override the default service endpoint URL
 		controltower?: string
 
 		// Use this to override the default service endpoint URL

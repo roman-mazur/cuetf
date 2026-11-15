@@ -13,6 +13,7 @@ aws_elasticache_serverless_cache: {
 		// Defaults to the Region set in the [provider
 		// configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
 		region?:              string
+		connection_type?:     string
 		create_time?:         string
 		daily_snapshot_time?: string
 		description?:         string

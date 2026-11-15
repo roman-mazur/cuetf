@@ -16,6 +16,7 @@ aws_elasticache_serverless_cache: {
 				minimum?: number
 			})
 		})
+		connection_type?:     string
 		create_time?:         string
 		daily_snapshot_time?: string
 		description?:         string
