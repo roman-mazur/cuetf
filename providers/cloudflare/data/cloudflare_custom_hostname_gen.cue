@@ -202,8 +202,8 @@ cloudflare_custom_hostname: {
 				tls_1_3?: string
 			})
 
-			// If a custom uploaded certificate is used.
-			custom_certificate?: string
+			// The identifier for the Custom CSR that was used.
+			custom_csr_id?: string
 
 			// Domain validation errors that have been received by the certificate authority (CA).
 			validation_errors?: matchN(1, [close({
@@ -214,8 +214,8 @@ cloudflare_custom_hostname: {
 				message?: string
 			})]])
 
-			// The identifier for the Custom CSR that was used.
-			custom_csr_id?: string
+			// The time the custom certificate expires on.
+			expires_on?: string
 			validation_records?: matchN(1, [close({
 				// The CNAME record hostname for DCV delegation.
 				cname?: string
@@ -271,12 +271,6 @@ cloudflare_custom_hostname: {
 				// The TXT record that the certificate authority (CA) will check during domain validation.
 				txt_value?: string
 			})]])
-
-			// The key for a custom uploaded certificate.
-			custom_key?: string
-
-			// The time the custom certificate expires on.
-			expires_on?: string
 
 			// A list of Hostnames on a custom uploaded certificate.
 			hosts?: [...string]

@@ -13,8 +13,13 @@ cloudflare_workflow: {
 		})
 		id?: string
 		instances?: [string]: number
-		modified_on?: string
-		name?:        string
+
+		// Jurisdiction where instances of this workflow run and store data. Set when
+		// the workflow is created and cannot be changed.
+		// Available values: "eu", "fedramp", "us".
+		jurisdiction?: string
+		modified_on?:  string
+		name?:         string
 		schedules?: matchN(1, [close({
 			cron?:          string
 			next_instance?: string

@@ -53,9 +53,13 @@ cloudflare_zero_trust_access_identity_provider: {
 			claims?: [...string]
 
 			// Your OAuth Client ID
+			//
+			// The client ID from the Duo Generic OIDC Relying Party metadata.
 			client_id?: string
 
 			// Your OAuth Client Secret
+			//
+			// The client secret from the Duo Generic OIDC Relying Party metadata.
 			client_secret?: string
 
 			// Should Cloudflare try to load authentication contexts from your account
@@ -87,6 +91,8 @@ cloudflare_zero_trust_access_identity_provider: {
 			// X509 certificate to verify the signature in the SAML authentication response
 			idp_public_certs?: [...string]
 
+			// The issuer URL from the Duo Generic OIDC Relying Party metadata.
+			//
 			// IdP Entity ID or Issuer URL
 			issuer_url?: string
 
@@ -121,6 +127,8 @@ cloudflare_zero_trust_access_identity_provider: {
 			// providing account selection experience listing all the accounts either in
 			// session or any remembered account or an option to choose to use a different
 			// account altogether.
+			//
+			// Configures the prompt behavior for Google authentication.
 			// Available values: "login", "select_account", "none", "consent".
 			prompt?:       string
 			redirect_url?: string
@@ -143,7 +151,9 @@ cloudflare_zero_trust_access_identity_provider: {
 			// Should Cloudflare try to load groups from your account
 			support_groups?: bool
 
-			// The token_endpoint URL of your IdP
+			// The token_endpoint URL of your IdP. Updates that change its origin (scheme,
+			// host, or port) require client_secret in the request. Path-only changes do
+			// not require client_secret.
 			token_url?: string
 
 			// Whether to use a previously authenticated Access email as a Google login hint
@@ -238,8 +248,8 @@ cloudflare_zero_trust_access_identity_provider: {
 		// provider, refer to our [developer
 		// documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
 		// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook",
-		// "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin",
-		// "pingone", "yandex", "cloudflare", "passkeys".
+		// "github", "google-apps", "google", "linkedin", "oidc", "duo", "okta",
+		// "onelogin", "pingone", "yandex", "cloudflare", "passkeys".
 		type!: string
 
 		// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

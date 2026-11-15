@@ -21,9 +21,10 @@ cloudflare_zone_dns_settings: {
 
 		// Controls the nameservers through which the zone is available.
 		nameservers?: close({
-			// Identifier of the account-owned Custom Nameserver Set to use for this zone.
+			// For `type: custom`: Identifier of the account-owned Custom Nameserver Set to use for this zone.
 			nameserver_set_id?: string
 
+			// For `type: custom.account` or `type: custom.tenant` or `type: custom.zone`:
 			// Configured nameserver set number to use for this zone.
 			ns_set?: number
 

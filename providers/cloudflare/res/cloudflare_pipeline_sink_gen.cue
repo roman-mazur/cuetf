@@ -10,6 +10,8 @@ cloudflare_pipeline_sink: {
 		// Defines the configuration of the R2 Sink.
 		config?: close({
 			// Cloudflare Account ID for the bucket
+			//
+			// Cloudflare Account ID
 			account_id!: string
 			credentials?: close({
 				// Cloudflare Account ID for the bucket
@@ -20,6 +22,8 @@ cloudflare_pipeline_sink: {
 			})
 
 			// R2 Bucket to write to
+			//
+			// The R2 Bucket that hosts this catalog
 			bucket!: string
 
 			// Controls filename prefix/suffix and strategy.
@@ -72,7 +76,7 @@ cloudflare_pipeline_sink: {
 
 		// Defines the output data format of a sink.
 		format?: close({
-			// Specifies the compression applied to JSON sink output.
+			// For `type: json`: Specifies the compression applied to JSON sink output.
 			// Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
 			compression?: string
 

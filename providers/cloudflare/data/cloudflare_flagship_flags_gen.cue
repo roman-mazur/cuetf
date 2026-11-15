@@ -38,10 +38,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -53,10 +49,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -86,10 +78,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -101,10 +89,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -150,10 +134,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -165,10 +145,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -198,10 +174,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -213,10 +185,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -278,10 +246,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -293,10 +257,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -326,10 +286,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -341,10 +297,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -390,10 +342,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -405,10 +353,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -438,10 +382,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -453,10 +393,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -534,10 +470,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -549,10 +481,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -582,10 +510,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -597,10 +521,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -646,10 +566,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -661,10 +577,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -694,10 +606,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -709,10 +617,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -774,10 +678,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -789,10 +689,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -822,10 +718,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -837,10 +729,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -886,10 +774,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -901,10 +785,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -934,10 +814,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -949,10 +825,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -1046,10 +918,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -1061,10 +929,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -1094,10 +958,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -1109,10 +969,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -1158,10 +1014,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -1173,10 +1025,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -1206,10 +1054,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -1221,10 +1065,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -1286,10 +1126,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -1301,10 +1137,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -1334,10 +1166,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -1349,10 +1177,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -1398,10 +1222,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -1413,10 +1233,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -1446,10 +1262,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -1461,10 +1273,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -1542,10 +1350,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -1557,10 +1361,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -1590,10 +1390,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -1605,10 +1401,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -1654,10 +1446,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -1669,10 +1457,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -1702,10 +1486,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -1717,10 +1497,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -1782,10 +1558,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -1797,10 +1569,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -1830,10 +1598,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -1845,10 +1609,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -1894,10 +1654,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -1909,10 +1665,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -1942,10 +1694,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -1957,10 +1705,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -2073,10 +1817,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -2088,10 +1828,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -2121,10 +1857,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -2136,10 +1868,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -2185,10 +1913,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -2200,10 +1924,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -2233,10 +1953,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -2248,10 +1964,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -2313,10 +2025,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -2328,10 +2036,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -2361,10 +2065,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -2376,10 +2076,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -2425,10 +2121,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -2440,10 +2132,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -2473,10 +2161,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -2488,10 +2172,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -2569,10 +2249,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -2584,10 +2260,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -2617,10 +2289,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -2632,10 +2300,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -2681,10 +2345,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -2696,10 +2356,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -2729,10 +2385,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -2744,10 +2396,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -2809,10 +2457,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -2824,10 +2468,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -2857,10 +2497,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -2872,10 +2508,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -2921,10 +2553,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -2936,10 +2564,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -2969,10 +2593,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -2984,10 +2604,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -3081,10 +2697,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -3096,10 +2708,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -3129,10 +2737,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -3144,10 +2748,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -3193,10 +2793,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -3208,10 +2804,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -3241,10 +2833,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -3256,10 +2844,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -3321,10 +2905,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -3336,10 +2916,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -3369,10 +2945,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -3384,10 +2956,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -3433,10 +3001,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -3448,10 +3012,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -3481,10 +3041,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -3496,10 +3052,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -3577,10 +3129,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -3592,10 +3140,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -3625,10 +3169,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -3640,10 +3180,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -3689,10 +3225,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -3704,10 +3236,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -3737,10 +3265,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -3752,10 +3276,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -3817,10 +3337,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -3832,10 +3348,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -3865,10 +3377,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -3880,10 +3388,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -3929,10 +3433,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -3944,10 +3444,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -3977,10 +3473,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -3992,10 +3484,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -4106,6 +3594,9 @@ cloudflare_flagship_flags: {
 
 			// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 			key?: string
+
+			// Key-value metadata associated with the flag. Returned only when the flag has metadata.
+			metadata?: _
 
 			// Server-inferred value type shared by all of the flag's variations.
 			// Available values: "boolean", "string", "number", "json".
@@ -4138,10 +3629,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -4153,10 +3640,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -4186,10 +3669,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -4201,10 +3680,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -4250,10 +3725,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -4265,10 +3736,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -4298,10 +3765,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -4313,10 +3776,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -4378,10 +3837,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -4393,10 +3848,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -4426,10 +3877,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -4441,10 +3888,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -4490,10 +3933,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -4505,10 +3944,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -4538,10 +3973,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -4553,10 +3984,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -4634,10 +4061,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -4649,10 +4072,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -4682,10 +4101,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -4697,10 +4112,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -4746,10 +4157,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -4761,10 +4168,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -4794,10 +4197,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -4809,10 +4208,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -4874,10 +4269,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -4889,10 +4280,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -4922,10 +4309,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -4937,10 +4320,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -4986,10 +4365,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -5001,10 +4376,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -5034,10 +4405,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -5049,10 +4416,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -5146,10 +4509,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -5161,10 +4520,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -5194,10 +4549,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -5209,10 +4560,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -5258,10 +4605,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -5273,10 +4616,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -5306,10 +4645,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -5321,10 +4656,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -5386,10 +4717,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -5401,10 +4728,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -5434,10 +4757,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -5449,10 +4768,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -5498,10 +4813,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -5513,10 +4824,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -5546,10 +4853,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -5561,10 +4864,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -5642,10 +4941,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -5657,10 +4952,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -5690,10 +4981,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -5705,10 +4992,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -5754,10 +5037,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -5769,10 +5048,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -5802,10 +5077,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -5817,10 +5088,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -5882,10 +5149,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -5897,10 +5160,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -5930,10 +5189,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -5945,10 +5200,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -5994,10 +5245,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -6009,10 +5256,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -6042,10 +5285,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -6057,10 +5296,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -6173,10 +5408,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -6188,10 +5419,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -6221,10 +5448,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -6236,10 +5459,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -6285,10 +5504,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -6300,10 +5515,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -6333,10 +5544,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -6348,10 +5555,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -6413,10 +5616,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -6428,10 +5627,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -6461,10 +5656,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -6476,10 +5667,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -6525,10 +5712,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -6540,10 +5723,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -6573,10 +5752,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -6588,10 +5763,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -6669,10 +5840,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -6684,10 +5851,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -6717,10 +5880,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -6732,10 +5891,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -6781,10 +5936,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -6796,10 +5947,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -6829,10 +5976,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -6844,10 +5987,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -6909,10 +6048,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -6924,10 +6059,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -6957,10 +6088,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -6972,10 +6099,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -7021,10 +6144,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -7036,10 +6155,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -7069,10 +6184,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -7084,10 +6195,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -7181,10 +6288,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -7196,10 +6299,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -7229,10 +6328,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -7244,10 +6339,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -7293,10 +6384,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -7308,10 +6395,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -7341,10 +6424,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -7356,10 +6435,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -7421,10 +6496,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -7436,10 +6507,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -7469,10 +6536,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -7484,10 +6547,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -7533,10 +6592,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -7548,10 +6603,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -7581,10 +6632,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -7596,10 +6643,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -7677,10 +6720,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -7692,10 +6731,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -7725,10 +6760,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -7740,10 +6771,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -7789,10 +6816,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -7804,10 +6827,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -7837,10 +6856,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -7852,10 +6867,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -7917,10 +6928,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -7932,10 +6939,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -7965,10 +6968,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -7980,10 +6979,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -8029,10 +7024,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -8044,10 +7035,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -8077,10 +7064,6 @@ cloudflare_flagship_flags: {
 									clauses?: matchN(1, [close({
 										attribute?: string
 
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
-
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 										// "ends_with", "in", "not_in", "has", "not_has".
@@ -8092,10 +7075,6 @@ cloudflare_flagship_flags: {
 										value?: string
 									}), [...close({
 										attribute?: string
-
-										// Available values: "AND", "OR".
-										logical_operator?: string
-										clauses?: [...string]
 
 										// Available values: "equals", "not_equals", "greater_than", "less_than",
 										// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
@@ -8206,6 +7185,9 @@ cloudflare_flagship_flags: {
 
 			// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 			key?: string
+
+			// Key-value metadata associated with the flag. Returned only when the flag has metadata.
+			metadata?: _
 
 			// Server-inferred value type shared by all of the flag's variations.
 			// Available values: "boolean", "string", "number", "json".

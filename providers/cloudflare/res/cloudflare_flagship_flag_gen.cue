@@ -25,6 +25,11 @@ cloudflare_flagship_flag: {
 		// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 		key!: string
 
+		// Key-value metadata associated with the flag. `null` or an empty object clears
+		// existing metadata; omission semantics depend on the endpoint (PUT clears it,
+		// PATCH preserves it).
+		metadata?: _
+
 		// Targeting rules evaluated in ascending `priority`; the first matching rule
 		// wins. An empty array means the flag always serves `default_variation`.
 		rules!: matchN(1, [close({
@@ -40,37 +45,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -88,37 +85,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -152,37 +141,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -200,37 +181,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -280,37 +253,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -328,37 +293,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -392,37 +349,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -440,37 +389,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -536,37 +477,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -584,37 +517,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -648,37 +573,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -696,37 +613,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -776,37 +685,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -824,37 +725,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -888,37 +781,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -936,37 +821,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -1048,37 +925,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -1096,37 +965,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -1160,37 +1021,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -1208,37 +1061,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -1288,37 +1133,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -1336,37 +1173,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -1400,37 +1229,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -1448,37 +1269,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -1544,37 +1357,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -1592,37 +1397,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -1656,37 +1453,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -1704,37 +1493,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -1784,37 +1565,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -1832,37 +1605,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -1896,37 +1661,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -1944,37 +1701,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -2075,37 +1824,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -2123,37 +1864,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -2187,37 +1920,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -2235,37 +1960,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -2315,37 +2032,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -2363,37 +2072,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -2427,37 +2128,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -2475,37 +2168,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -2571,37 +2256,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -2619,37 +2296,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -2683,37 +2352,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -2731,37 +2392,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -2811,37 +2464,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -2859,37 +2504,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -2923,37 +2560,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -2971,37 +2600,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -3083,37 +2704,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -3131,37 +2744,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -3195,37 +2800,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -3243,37 +2840,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -3323,37 +2912,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -3371,37 +2952,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -3435,37 +3008,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -3483,37 +3048,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -3579,37 +3136,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -3627,37 +3176,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -3691,37 +3232,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -3739,37 +3272,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -3819,37 +3344,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -3867,37 +3384,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -3931,37 +3440,29 @@ cloudflare_flagship_flag: {
 							clauses?: matchN(1, [close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".
@@ -3979,37 +3480,29 @@ cloudflare_flagship_flag: {
 							}), [...close({
 								attribute?: string
 								clauses?: matchN(1, [close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								}), [...close({
-									attribute?: string
-
-									// Available values: "AND", "OR".
-									logical_operator?: string
-									clauses?: [...string]
+									attribute!: string
 
 									// Available values: "equals", "not_equals", "greater_than", "less_than",
 									// "greater_than_or_equals", "less_than_or_equals", "contains", "starts_with",
 									// "ends_with", "in", "not_in", "has", "not_has".
-									operator?: string
+									operator!: string
 
 									// Value to compare against the context attribute. Must be an array for `in` and
 									// `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering
 									// operators.
-									value?: string
+									value!: string
 								})]])
 
 								// Available values: "AND", "OR".

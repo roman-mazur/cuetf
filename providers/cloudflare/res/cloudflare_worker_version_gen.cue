@@ -73,11 +73,11 @@ cloudflare_worker_version: {
 		// our docs:
 		// https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 		bindings?: matchN(1, [close({
-			// Algorithm-specific key parameters. [Learn
+			// For `type: secret_key`: Algorithm-specific key parameters. [Learn
 			// more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
 			algorithm?: string
 
-			// Outbound worker.
+			// For `type: dispatch_namespace`: Outbound worker.
 			outbound?: close({
 				// Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
 				params?: matchN(1, [close({
@@ -101,29 +101,10 @@ cloudflare_worker_version: {
 				})
 			})
 
-			// List of allowed destination addresses.
+			// For `type: send_email`: List of allowed destination addresses.
 			allowed_destination_addresses?: [...string]
 
-			// Retry policy for calls made to the Durable Object through this binding.
-			// Omitted or null properties use the runtime defaults. These limits are upper
-			// bounds and do not enable retries for otherwise ineligible calls.
-			retry?: close({
-				// Maximum number of retries after the initial request, not the total number of
-				// attempts. Defaults to 4. Zero disables retries.
-				max_attempts?: number
-
-				// Retry timeout in milliseconds, measured from the start of the call. No retry
-				// starts after it expires, and a retry still running when it expires is
-				// cancelled. This is not a request timeout; it does not limit the initial
-				// request, which is still subject to any timeouts set by your Worker. Defaults
-				// to 10000.
-				timeout_ms?: number
-			})
-
-			// List of allowed sender addresses.
-			allowed_sender_addresses?: [...string]
-
-			// The rate limit configuration.
+			// For `type: ratelimit`: The rate limit configuration.
 			simple?: close({
 				// The limit (requests per period).
 				limit!: number
@@ -137,124 +118,186 @@ cloudflare_worker_version: {
 				period!: number
 			})
 
-			// ID of the Flagship app to bind to for feature flag evaluation.
+			// For `type: send_email`: List of allowed sender addresses.
+			allowed_sender_addresses?: [...string]
+
+			// For `type: flagship`: ID of the Flagship app to bind to for feature flag evaluation.
 			app_id?: string
 
-			// R2 bucket to bind to.
+			// For `type: r2_bucket`: R2 bucket to bind to.
 			bucket_name?: string
 
-			// Identifier of the certificate to bind to.
+			// For `type: mtls_certificate`: Identifier of the certificate to bind to.
 			certificate_id?: string
 
-			// The exported class name of the Durable Object.
+			// For `type: durable_object_namespace`: The exported class name of the Durable Object.
+			//
+			// For `type: workflow`: Class name of the Workflow. Should only be provided if
+			// the Workflow belongs to this script.
 			class_name?: string
 
-			// Identifier of the D1 database to bind to.
+			// For `type: d1`: Identifier of the D1 database to bind to.
 			database_id?: string
 
-			// The name of the dataset to bind to.
+			// For `type: analytics_engine`: The name of the dataset to bind to.
 			dataset?: string
 
-			// Destination address for the email.
+			// For `type: send_email`: Destination address for the email.
 			destination_address?: string
 
-			// The dispatch namespace the Durable Object script belongs to.
+			// For `type: durable_object_namespace`: The dispatch namespace the Durable
+			// Object script belongs to.
 			dispatch_namespace?: string
 
-			// Entrypoint to invoke on the target Worker.
+			// For `type: service`: Entrypoint to invoke on the target Worker.
 			entrypoint?: string
 
-			// The environment of the script_name to bind to.
+			// For `type: durable_object_namespace`: The environment of the script_name to bind to.
+			//
+			// For `type: service`: Optional environment if the Worker utilizes one.
 			environment?: string
 
-			// Data format of the key. [Learn
+			// For `type: secret_key`: Data format of the key. [Learn
 			// more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
 			// Available values: "raw", "pkcs8", "spki", "jwk".
 			format?: string
 
-			// Identifier of the D1 database to bind to.
+			// For `type: d1`: Identifier of the D1 database to bind to.
+			//
+			// For `type: hyperdrive`: Identifier of the Hyperdrive connection to bind to.
 			id?: string
 
-			// Enables Gateway identity for the binding. Requires network_id to be
-			// "cf1:network" and cannot be combined with tunnel_id.
+			// For `type: vpc_network`: Enables Gateway identity for the binding. Requires
+			// network_id to be "cf1:network" and cannot be combined with tunnel_id or an
+			// explicit "cf1:vnet:<UUID>" network_id.
 			// Available values: "runtime-email-alpha".
 			identity?: string
 
-			// Name of the Vectorize index to bind to.
+			// For `type: vectorize`: Name of the Vectorize index to bind to.
 			index_name?: string
 
-			// The user-chosen instance name. Must exist at deploy time. The worker can
-			// search, chat, update, and manage items/jobs on this instance.
+			// For `type: ai_search`: The user-chosen instance name. Must exist at deploy
+			// time. The worker can search, chat, update, and manage items/jobs on this
+			// instance.
 			instance_name?: string
 
-			// JSON data to use.
+			// For `type: json`: JSON data to use.
 			json?: string
 
-			// The
+			// For `type: r2_bucket`: The
 			// [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
 			// of the R2 bucket.
 			// Available values: "eu", "fedramp", "fedramp-high", "us".
 			jurisdiction?: string
 
-			// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+			// For `type: secret_key`: Base64-encoded key data. Required if `format` is
+			// "raw", "pkcs8", or "spki".
 			key_base64?: string
 
-			// Key data in [JSON Web
+			// For `type: secret_key`: Key data in [JSON Web
 			// Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key)
 			// format. Required if `format` is "jwk".
 			key_jwk?: string
 
-			// A JavaScript variable name for the binding.
+			// For `type: ai` or `type: ai_search` or `type: ai_search_namespace` or `type:
+			// messaging` or `type: analytics_engine` or `type: artifacts` or `type:
+			// assets` or `type: browser` or `type: d1` or `type: data_blob` or `type:
+			// dispatch_namespace` or `type: durable_object_namespace` or `type:
+			// hyperdrive` or `type: images` or `type: json` or `type: kv_namespace` or
+			// `type: media` or `type: mtls_certificate` or `type: plain_text` or `type:
+			// pipelines` or `type: k2` or `type: queue` or `type: ratelimit` or `type:
+			// r2_bucket` or `type: secret_text` or `type: send_email` or `type: service`
+			// or `type: text_blob` or `type: vectorize` or `type: version_metadata` or
+			// `type: secrets_store_secret` or `type: flagship` or `type: secret_key` or
+			// `type: workflow` or `type: wasm_module` or `type: vpc_service` or `type:
+			// vpc_network` or `type: worker_loader`: A JavaScript variable name for the
+			// binding.
+			//
+			// For `type: inherit`: The name of the inherited binding.
 			name!: string
 
-			// The namespace the instance belongs to. Defaults to "default" if omitted.
-			// Customers who don't use namespaces can simply omit this field.
+			// For `type: ai_search`: The namespace the instance belongs to. Defaults to
+			// "default" if omitted. Customers who don't use namespaces can simply omit
+			// this field.
+			//
+			// For `type: ai_search_namespace`: The user-chosen namespace name. Must exist
+			// before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket
+			// pattern). The "default" namespace is auto-created by config-api for new
+			// accounts. Grants full access (CRUD + search + chat) to all instances within
+			// the namespace.
+			//
+			// For `type: messaging`: The Messaging namespace to bind to.
+			//
+			// For `type: artifacts`: The Artifacts namespace exposed to the Worker in the
+			// Worker's account. Must be 2-63 characters, start with an ASCII alphanumeric
+			// character, contain only ASCII alphanumeric characters, dots, underscores,
+			// and hyphens, and must not end with a hyphen. The namespace does not need to
+			// be created before binding it.
+			//
+			// For `type: dispatch_namespace`: The name of the dispatch namespace.
 			namespace?: string
 
-			// Namespace identifier tag.
+			// For `type: durable_object_namespace` or `type: kv_namespace`: Namespace identifier tag.
+			//
+			// For `type: ratelimit`: Identifier of the rate limit namespace to bind to.
 			namespace_id?: string
 
-			// Identifier of the network to bind to. Only "cf1:network" is currently
-			// supported. Mutually exclusive with tunnel_id.
+			// For `type: vpc_network`: Identifier of the network to bind to. Use
+			// "cf1:network" to select the account's default virtual network at runtime, or
+			// "cf1:vnet:<UUID>" to select an explicit virtual network in the Worker's
+			// account. Mutually exclusive with tunnel_id.
 			network_id?: string
 
-			// The old name of the inherited binding. If set, the binding will be renamed
-			// from `old_name` to `name` in the new version. If not set, the binding will
-			// keep the same name between versions.
+			// For `type: inherit`: The old name of the inherited binding. If set, the
+			// binding will be renamed from `old_name` to `name` in the new version. If not
+			// set, the binding will keep the same name between versions.
 			old_name?: string
 
-			// The name of the file containing the data content. Only accepted for `service
-			// worker syntax` Workers.
+			// For `type: data_blob`: The name of the file containing the data content. Only
+			// accepted for `service worker syntax` Workers.
+			//
+			// For `type: text_blob`: The name of the file containing the text content. Only
+			// accepted for `service worker syntax` Workers.
+			//
+			// For `type: wasm_module`: The name of the file containing the WebAssembly
+			// module content. Only accepted for `service worker syntax` Workers.
 			part?: string
 
-			// Name of the Pipeline to bind to.
+			// For `type: pipelines`: Name of the Pipeline to bind to.
 			pipeline?: string
 
-			// Name of the Queue to bind to.
+			// For `type: queue`: Name of the Queue to bind to.
 			queue_name?: string
 
-			// The script where the Durable Object is defined, if it is external to this Worker.
+			// For `type: durable_object_namespace`: The script where the Durable Object is
+			// defined, if it is external to this Worker.
+			//
+			// For `type: workflow`: Script name that contains the Workflow. If not
+			// provided, defaults to this script name.
 			script_name?: string
 
-			// Name of the secret in the store.
+			// For `type: secrets_store_secret`: Name of the secret in the store.
 			secret_name?: string
 
-			// Name of Worker to bind to.
+			// For `type: service`: Name of Worker to bind to.
 			service?: string
 
-			// Identifier of the VPC service to bind to.
+			// For `type: vpc_service`: Identifier of the VPC service to bind to.
 			service_id?: string
 
-			// ID of the store containing the secret.
+			// For `type: secrets_store_secret`: ID of the store containing the secret.
 			store_id?: string
 
-			// ID of a K2 stream owned by the account deploying the Worker.
+			// For `type: k2`: ID of a K2 stream owned by the account deploying the Worker.
 			stream?: string
 
-			// The text value to use.
+			// For `type: plain_text`: The text value to use.
+			//
+			// For `type: secret_text`: The secret value to use.
 			text?: string
 
-			// UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+			// For `type: vpc_network`: UUID of the Cloudflare Tunnel to bind to. Mutually
+			// exclusive with network_id.
 			tunnel_id?: string
 
 			// The kind of resource that the binding provides.
@@ -265,26 +308,30 @@ cloudflare_worker_version: {
 			// "pipelines", "k2", "queue", "ratelimit", "r2_bucket", "secret_text",
 			// "send_email", "service", "text_blob", "vectorize", "version_metadata",
 			// "secrets_store_secret", "flagship", "secret_key", "workflow", "wasm_module",
-			// "vpc_service", "vpc_network".
+			// "vpc_service", "vpc_network", "worker_loader".
 			type!: string
 
-			// Allowed operations with the key. [Learn
+			// For `type: secret_key`: Allowed operations with the key. [Learn
 			// more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
 			usages?: [...string]
 
-			// Identifier for the version to inherit the binding from, which can be the
-			// version ID or the literal "latest" to inherit from the latest version.
-			// Defaults to inheriting the binding from the latest version.
+			// For `type: inherit`: Identifier for the version to inherit the binding from.
+			// This can be a version ID, or the literal "latest" to inherit from the most
+			// recently uploaded version, which may not be the deployed version. Defaults
+			// to "latest". Only the Workers API version endpoints under
+			// `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a
+			// version ID. Other endpoints, including script upload and script version
+			// upload, accept only "latest" and reject a version ID with error 10057.
 			version_id?: string
 
-			// Name of the Workflow to bind to.
+			// For `type: workflow`: Name of the Workflow to bind to.
 			workflow_name?: string
 		}), [...close({
-			// Algorithm-specific key parameters. [Learn
+			// For `type: secret_key`: Algorithm-specific key parameters. [Learn
 			// more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
 			algorithm?: string
 
-			// Outbound worker.
+			// For `type: dispatch_namespace`: Outbound worker.
 			outbound?: close({
 				// Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
 				params?: matchN(1, [close({
@@ -308,29 +355,10 @@ cloudflare_worker_version: {
 				})
 			})
 
-			// List of allowed destination addresses.
+			// For `type: send_email`: List of allowed destination addresses.
 			allowed_destination_addresses?: [...string]
 
-			// Retry policy for calls made to the Durable Object through this binding.
-			// Omitted or null properties use the runtime defaults. These limits are upper
-			// bounds and do not enable retries for otherwise ineligible calls.
-			retry?: close({
-				// Maximum number of retries after the initial request, not the total number of
-				// attempts. Defaults to 4. Zero disables retries.
-				max_attempts?: number
-
-				// Retry timeout in milliseconds, measured from the start of the call. No retry
-				// starts after it expires, and a retry still running when it expires is
-				// cancelled. This is not a request timeout; it does not limit the initial
-				// request, which is still subject to any timeouts set by your Worker. Defaults
-				// to 10000.
-				timeout_ms?: number
-			})
-
-			// List of allowed sender addresses.
-			allowed_sender_addresses?: [...string]
-
-			// The rate limit configuration.
+			// For `type: ratelimit`: The rate limit configuration.
 			simple?: close({
 				// The limit (requests per period).
 				limit!: number
@@ -344,124 +372,186 @@ cloudflare_worker_version: {
 				period!: number
 			})
 
-			// ID of the Flagship app to bind to for feature flag evaluation.
+			// For `type: send_email`: List of allowed sender addresses.
+			allowed_sender_addresses?: [...string]
+
+			// For `type: flagship`: ID of the Flagship app to bind to for feature flag evaluation.
 			app_id?: string
 
-			// R2 bucket to bind to.
+			// For `type: r2_bucket`: R2 bucket to bind to.
 			bucket_name?: string
 
-			// Identifier of the certificate to bind to.
+			// For `type: mtls_certificate`: Identifier of the certificate to bind to.
 			certificate_id?: string
 
-			// The exported class name of the Durable Object.
+			// For `type: durable_object_namespace`: The exported class name of the Durable Object.
+			//
+			// For `type: workflow`: Class name of the Workflow. Should only be provided if
+			// the Workflow belongs to this script.
 			class_name?: string
 
-			// Identifier of the D1 database to bind to.
+			// For `type: d1`: Identifier of the D1 database to bind to.
 			database_id?: string
 
-			// The name of the dataset to bind to.
+			// For `type: analytics_engine`: The name of the dataset to bind to.
 			dataset?: string
 
-			// Destination address for the email.
+			// For `type: send_email`: Destination address for the email.
 			destination_address?: string
 
-			// The dispatch namespace the Durable Object script belongs to.
+			// For `type: durable_object_namespace`: The dispatch namespace the Durable
+			// Object script belongs to.
 			dispatch_namespace?: string
 
-			// Entrypoint to invoke on the target Worker.
+			// For `type: service`: Entrypoint to invoke on the target Worker.
 			entrypoint?: string
 
-			// The environment of the script_name to bind to.
+			// For `type: durable_object_namespace`: The environment of the script_name to bind to.
+			//
+			// For `type: service`: Optional environment if the Worker utilizes one.
 			environment?: string
 
-			// Data format of the key. [Learn
+			// For `type: secret_key`: Data format of the key. [Learn
 			// more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
 			// Available values: "raw", "pkcs8", "spki", "jwk".
 			format?: string
 
-			// Identifier of the D1 database to bind to.
+			// For `type: d1`: Identifier of the D1 database to bind to.
+			//
+			// For `type: hyperdrive`: Identifier of the Hyperdrive connection to bind to.
 			id?: string
 
-			// Enables Gateway identity for the binding. Requires network_id to be
-			// "cf1:network" and cannot be combined with tunnel_id.
+			// For `type: vpc_network`: Enables Gateway identity for the binding. Requires
+			// network_id to be "cf1:network" and cannot be combined with tunnel_id or an
+			// explicit "cf1:vnet:<UUID>" network_id.
 			// Available values: "runtime-email-alpha".
 			identity?: string
 
-			// Name of the Vectorize index to bind to.
+			// For `type: vectorize`: Name of the Vectorize index to bind to.
 			index_name?: string
 
-			// The user-chosen instance name. Must exist at deploy time. The worker can
-			// search, chat, update, and manage items/jobs on this instance.
+			// For `type: ai_search`: The user-chosen instance name. Must exist at deploy
+			// time. The worker can search, chat, update, and manage items/jobs on this
+			// instance.
 			instance_name?: string
 
-			// JSON data to use.
+			// For `type: json`: JSON data to use.
 			json?: string
 
-			// The
+			// For `type: r2_bucket`: The
 			// [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
 			// of the R2 bucket.
 			// Available values: "eu", "fedramp", "fedramp-high", "us".
 			jurisdiction?: string
 
-			// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+			// For `type: secret_key`: Base64-encoded key data. Required if `format` is
+			// "raw", "pkcs8", or "spki".
 			key_base64?: string
 
-			// Key data in [JSON Web
+			// For `type: secret_key`: Key data in [JSON Web
 			// Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key)
 			// format. Required if `format` is "jwk".
 			key_jwk?: string
 
-			// A JavaScript variable name for the binding.
+			// For `type: ai` or `type: ai_search` or `type: ai_search_namespace` or `type:
+			// messaging` or `type: analytics_engine` or `type: artifacts` or `type:
+			// assets` or `type: browser` or `type: d1` or `type: data_blob` or `type:
+			// dispatch_namespace` or `type: durable_object_namespace` or `type:
+			// hyperdrive` or `type: images` or `type: json` or `type: kv_namespace` or
+			// `type: media` or `type: mtls_certificate` or `type: plain_text` or `type:
+			// pipelines` or `type: k2` or `type: queue` or `type: ratelimit` or `type:
+			// r2_bucket` or `type: secret_text` or `type: send_email` or `type: service`
+			// or `type: text_blob` or `type: vectorize` or `type: version_metadata` or
+			// `type: secrets_store_secret` or `type: flagship` or `type: secret_key` or
+			// `type: workflow` or `type: wasm_module` or `type: vpc_service` or `type:
+			// vpc_network` or `type: worker_loader`: A JavaScript variable name for the
+			// binding.
+			//
+			// For `type: inherit`: The name of the inherited binding.
 			name!: string
 
-			// The namespace the instance belongs to. Defaults to "default" if omitted.
-			// Customers who don't use namespaces can simply omit this field.
+			// For `type: ai_search`: The namespace the instance belongs to. Defaults to
+			// "default" if omitted. Customers who don't use namespaces can simply omit
+			// this field.
+			//
+			// For `type: ai_search_namespace`: The user-chosen namespace name. Must exist
+			// before deploy -- Wrangler handles auto-creation on deploy failure (R2 bucket
+			// pattern). The "default" namespace is auto-created by config-api for new
+			// accounts. Grants full access (CRUD + search + chat) to all instances within
+			// the namespace.
+			//
+			// For `type: messaging`: The Messaging namespace to bind to.
+			//
+			// For `type: artifacts`: The Artifacts namespace exposed to the Worker in the
+			// Worker's account. Must be 2-63 characters, start with an ASCII alphanumeric
+			// character, contain only ASCII alphanumeric characters, dots, underscores,
+			// and hyphens, and must not end with a hyphen. The namespace does not need to
+			// be created before binding it.
+			//
+			// For `type: dispatch_namespace`: The name of the dispatch namespace.
 			namespace?: string
 
-			// Namespace identifier tag.
+			// For `type: durable_object_namespace` or `type: kv_namespace`: Namespace identifier tag.
+			//
+			// For `type: ratelimit`: Identifier of the rate limit namespace to bind to.
 			namespace_id?: string
 
-			// Identifier of the network to bind to. Only "cf1:network" is currently
-			// supported. Mutually exclusive with tunnel_id.
+			// For `type: vpc_network`: Identifier of the network to bind to. Use
+			// "cf1:network" to select the account's default virtual network at runtime, or
+			// "cf1:vnet:<UUID>" to select an explicit virtual network in the Worker's
+			// account. Mutually exclusive with tunnel_id.
 			network_id?: string
 
-			// The old name of the inherited binding. If set, the binding will be renamed
-			// from `old_name` to `name` in the new version. If not set, the binding will
-			// keep the same name between versions.
+			// For `type: inherit`: The old name of the inherited binding. If set, the
+			// binding will be renamed from `old_name` to `name` in the new version. If not
+			// set, the binding will keep the same name between versions.
 			old_name?: string
 
-			// The name of the file containing the data content. Only accepted for `service
-			// worker syntax` Workers.
+			// For `type: data_blob`: The name of the file containing the data content. Only
+			// accepted for `service worker syntax` Workers.
+			//
+			// For `type: text_blob`: The name of the file containing the text content. Only
+			// accepted for `service worker syntax` Workers.
+			//
+			// For `type: wasm_module`: The name of the file containing the WebAssembly
+			// module content. Only accepted for `service worker syntax` Workers.
 			part?: string
 
-			// Name of the Pipeline to bind to.
+			// For `type: pipelines`: Name of the Pipeline to bind to.
 			pipeline?: string
 
-			// Name of the Queue to bind to.
+			// For `type: queue`: Name of the Queue to bind to.
 			queue_name?: string
 
-			// The script where the Durable Object is defined, if it is external to this Worker.
+			// For `type: durable_object_namespace`: The script where the Durable Object is
+			// defined, if it is external to this Worker.
+			//
+			// For `type: workflow`: Script name that contains the Workflow. If not
+			// provided, defaults to this script name.
 			script_name?: string
 
-			// Name of the secret in the store.
+			// For `type: secrets_store_secret`: Name of the secret in the store.
 			secret_name?: string
 
-			// Name of Worker to bind to.
+			// For `type: service`: Name of Worker to bind to.
 			service?: string
 
-			// Identifier of the VPC service to bind to.
+			// For `type: vpc_service`: Identifier of the VPC service to bind to.
 			service_id?: string
 
-			// ID of the store containing the secret.
+			// For `type: secrets_store_secret`: ID of the store containing the secret.
 			store_id?: string
 
-			// ID of a K2 stream owned by the account deploying the Worker.
+			// For `type: k2`: ID of a K2 stream owned by the account deploying the Worker.
 			stream?: string
 
-			// The text value to use.
+			// For `type: plain_text`: The text value to use.
+			//
+			// For `type: secret_text`: The secret value to use.
 			text?: string
 
-			// UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+			// For `type: vpc_network`: UUID of the Cloudflare Tunnel to bind to. Mutually
+			// exclusive with network_id.
 			tunnel_id?: string
 
 			// The kind of resource that the binding provides.
@@ -472,19 +562,23 @@ cloudflare_worker_version: {
 			// "pipelines", "k2", "queue", "ratelimit", "r2_bucket", "secret_text",
 			// "send_email", "service", "text_blob", "vectorize", "version_metadata",
 			// "secrets_store_secret", "flagship", "secret_key", "workflow", "wasm_module",
-			// "vpc_service", "vpc_network".
+			// "vpc_service", "vpc_network", "worker_loader".
 			type!: string
 
-			// Allowed operations with the key. [Learn
+			// For `type: secret_key`: Allowed operations with the key. [Learn
 			// more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
 			usages?: [...string]
 
-			// Identifier for the version to inherit the binding from, which can be the
-			// version ID or the literal "latest" to inherit from the latest version.
-			// Defaults to inheriting the binding from the latest version.
+			// For `type: inherit`: Identifier for the version to inherit the binding from.
+			// This can be a version ID, or the literal "latest" to inherit from the most
+			// recently uploaded version, which may not be the deployed version. Defaults
+			// to "latest". Only the Workers API version endpoints under
+			// `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a
+			// version ID. Other endpoints, including script upload and script version
+			// upload, accept only "latest" and reject a version ID with error 10057.
 			version_id?: string
 
-			// Name of the Workflow to bind to.
+			// For `type: workflow`: Name of the Workflow to bind to.
 			workflow_name?: string
 		})]])
 
@@ -508,9 +602,12 @@ cloudflare_worker_version: {
 			enabled?: bool
 		})
 
-		// Flags that enable or disable certain features in the Workers runtime. Used to
-		// enable upcoming features or opt in or out of specific changes not included
-		// in a `compatibility_date`.
+		// Enables or disables specific Workers runtime features, such as upcoming
+		// features or changes outside the `compatibility_date`.
+		//
+		// Responses list only the flags this version sets explicitly and exclude
+		// behavior that `compatibility_date` enables. Responses omit the field when
+		// the list is empty, so a missing field means the version sets zero flags.
 		compatibility_flags?: [...string]
 
 		// List of containers attached to a Worker. Containers can only be attached to
@@ -536,54 +633,69 @@ cloudflare_worker_version: {
 		// `expecting-transfer`) are returned. `exports` and `migrations`
 		// are mutually exclusive on upload.
 		exports?: [string]: close({
-			// Cache override for this entrypoint. It applies only to
-			// `type: worker` entries and overrides the Worker's global
-			// `cache_options.enabled` for that entrypoint.
+			// For `type: worker`: Cache override for this entrypoint. Overrides the Worker's
+			// global `cache_options.enabled` for this entrypoint only.
 			cache?: close({
 				// Whether caching is enabled for this entrypoint.
 				enabled!: bool
 			})
 
-			// Destination class name for a `state: renamed` tombstone. The
-			// target must appear as a live (`created`) entry in the same
-			// `exports` map. Write-only: never present in GET responses.
+			// For `type: durable-object` and `state: created`: Name of the container (declared in the upload's
+			// `metadata.containers`) that backs this Durable Object. When
+			// set, the namespace is container-enabled. Valid only on live
+			// entries.
+			//
+			// For `state: expecting-transfer`: Name of the container (declared in the upload's
+			// `metadata.containers`) that backs this Durable Object once the
+			// transfer settles. Valid only on live entries.
+			container?: string
+
+			// For `state: renamed`: The destination class name. Must differ from the source class
+			// (the map key) and must be declared as a live (`created`) entry
+			// in the same `exports` map. Write-only: never present in GET
+			// responses.
 			renamed_to?: string
 
-			// Lifecycle state of the export entry. Defaults to `created`
-			// (a normal, live export) when omitted.
+			// For `state: created`: Live export. May be omitted; defaults to `created`.
 			//
-			// `deleted`, `renamed`, and `transferred` are tombstones:
-			// write-only lifecycle operations that retire, rename, or hand
-			// off a provisioned Durable Object namespace. They are applied
-			// at upload and are filtered out of GET responses, so a read
-			// only ever returns `created` or `expecting-transfer`.
+			// For `state: deleted`: Tombstone that deletes the namespace.
 			//
-			// `expecting-transfer` is a live export whose data is being
-			// received from another script via the two-phase transfer flow;
-			// it carries `storage` and `transfer_from`.
+			// For `state: renamed`: Tombstone that renames the namespace's class.
+			//
+			// For `state: transferred`: Tombstone that transfers the namespace to another script.
+			//
+			// For `state: expecting-transfer`: Target side of a two-phase transfer.
 			// Available values: "created", "deleted", "renamed", "transferred", "expecting-transfer".
 			state?: string
 
-			// Storage backend for a `type: durable-object` export. Required
-			// for live Durable Object entries (`created` and
-			// `expecting-transfer`). `sqlite` selects SQLite-backed storage;
-			// `legacy-kv` selects the legacy key-value storage.
+			// For `type: durable-object` and `state: created`: Durable Object storage
+			// backend. `sqlite` is the recommended (and
+			// only) backend for new namespaces. `legacy-kv` is accepted only for
+			// a class whose namespace already exists as KV-backed; the `exports`
+			// flow never provisions a new `legacy-kv` namespace.
+			//
+			// For `type: durable-object` and `state: expecting-transfer`: Durable Object
+			// storage backend. `sqlite` is the recommended (and
+			// only) backend for new namespaces. `legacy-kv` is accepted only for
+			// a class whose namespace already exists as KV-backed; the `exports`
+			// flow never provisions a new `legacy-kv` namespace.
 			// Available values: "sqlite", "legacy-kv".
 			storage?: string
 
-			// Source script for a `state: expecting-transfer` entry. The
-			// namespace on this script is materialised from the source
-			// script's data via the pending-transfer flow. Present on reads
-			// for `expecting-transfer` entries.
+			// For `state: expecting-transfer`: The source script name to receive the namespace from. Must be
+			// in the same account and dispatch-namespace context. Present on
+			// reads for `expecting-transfer` entries.
 			transfer_from?: string
 
-			// Destination script for a `state: transferred` tombstone. Must
-			// reference a script in the same account; cross-dispatch-namespace
-			// transfers are rejected. Write-only: never present in GET
-			// responses.
+			// For `state: transferred`: The destination script name. Must be in the same account and
+			// the same dispatch-namespace context (or both non-dispatch).
+			// Cross-dispatch-namespace transfers are rejected. Write-only:
+			// never present in GET responses.
 			transferred_to?: string
 
-			// The kind of export.
+			// For `type: worker`: Marks this entry as a Worker entrypoint export.
+			//
+			// For `type: durable-object`: Marks this entry as a Durable Object export.
 			// Available values: "worker", "durable-object".
 			type!: string
 		})
@@ -734,10 +846,11 @@ cloudflare_worker_version: {
 		// Version identifier.
 		id?: string
 
-		// Whether to include the `modules` property of the version in the response,
-		// which contains code and sourcemap content and may add several megabytes to
-		// the response size.
-		// Available values: "modules".
+		// Optional properties to include in the response. `modules` includes the
+		// `modules` property, which contains code and may add several megabytes to the
+		// response size. `modules,sourcemaps` also includes the version's source maps
+		// in `modules`.
+		// Available values: "modules", "modules,sourcemaps".
 		include?: string
 
 		// Resource limits enforced at runtime.
@@ -869,6 +982,12 @@ cloudflare_worker_version: {
 
 		// Code, sourcemaps, and other content used at runtime.
 		//
+		// Source maps use content type `application/source-map`. Responses include them
+		// only when requested with
+		// `include=modules,sourcemaps`. Workers stores the source map fields used to
+		// remap stack traces, so a returned
+		// source map is equivalent to the uploaded file but not byte-identical.
+		//
 		// This includes
 		// [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers)
 		// and
@@ -967,6 +1086,8 @@ cloudflare_worker_version: {
 
 			// Enables [Smart
 			// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+			//
+			// Targeted placement mode.
 			// Available values: "smart", "targeted".
 			mode?: string
 

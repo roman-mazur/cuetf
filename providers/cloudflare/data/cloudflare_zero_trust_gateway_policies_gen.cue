@@ -38,7 +38,7 @@ cloudflare_zero_trust_gateway_policies: {
 			// device posture expressions either absent or evaluate to `true`.
 			// Available values: "on", "off", "allow", "block", "scan", "noscan",
 			// "safesearch", "ytrestricted", "isolate", "noisolate", "override",
-			// "l4_override", "egress", "resolve", "quarantine", "redirect".
+			// "l4_override", "egress", "resolve", "quarantine", "redirect", "forward".
 			action?: string
 
 			// Defines the expiration time stamp and default duration of a DNS policy. Takes
@@ -78,17 +78,6 @@ cloudflare_zero_trust_gateway_policies: {
 				// rules with the action set to `allow`.
 				add_headers?: [string]: [...string]
 
-				// Define the settings for the Audit SSH action. Settable only for `l4` rules
-				// with `audit_ssh` action.
-				audit_ssh?: close({
-					// Enable SSH command logging.
-					command_logging?: bool
-				})
-
-				// Set to enable MSP children to bypass this rule. Only parent MSP accounts can
-				// set this. this rule. Settable for all types of rules.
-				allow_child_bypass?: bool
-
 				// Configure browser isolation behavior. Settable only for `http` rules with the
 				// action set to `isolate`.
 				biso_admin_controls?: close({
@@ -119,9 +108,13 @@ cloudflare_zero_trust_gateway_policies: {
 					// Set to false to enable uploading. Only applies when `version == "v1"`.
 					du?: bool
 
-					// Configure keyboard usage behavior. If this field is absent, keyboard usage
-					// remains enabled. Applies only when version == "v2".
-					// Available values: "enabled", "disabled".
+					// Configure keyboard usage behavior. When set to enable_read_only_actions, only
+					// approved browser commands (find, copy, print, zoom, and select-all) may
+					// execute; other keyboard input is blocked from reaching the page. Copy and
+					// print remain subject to their independent controls. If this field is absent,
+					// keyboard usage remains enabled. Applies only when version == "v2". The
+					// enable_read_only_actions value requires an explicit version of "v2".
+					// Available values: "enabled", "disabled", "enable_read_only_actions".
 					keyboard?: string
 
 					// Configure paste behavior. If set to remote_only, users cannot paste content
@@ -148,8 +141,9 @@ cloudflare_zero_trust_gateway_policies: {
 					wm_id?: string
 				})
 
-				// Enable the custom block page. Settable only for `dns` rules with action `block`.
-				block_page_enabled?: bool
+				// Set to enable MSP children to bypass this rule. Only parent MSP accounts can
+				// set this. this rule. Settable for all types of rules.
+				allow_child_bypass?: bool
 
 				// Configure custom block page settings. If missing or null, use the account
 				// settings. Settable only for `http` rules with the action set to `block`.
@@ -161,10 +155,8 @@ cloudflare_zero_trust_gateway_policies: {
 					target_uri?: string
 				})
 
-				// Explain why the rule blocks the request. The custom block page shows this
-				// text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the
-				// action set to `block`.
-				block_reason?: string
+				// Enable the custom block page. Settable only for `dns` rules with action `block`.
+				block_page_enabled?: bool
 
 				// Configure session check behavior. Settable only for `l4` and `http` rules
 				// with the action set to `allow`.
@@ -177,9 +169,10 @@ cloudflare_zero_trust_gateway_policies: {
 					enforce?: bool
 				})
 
-				// Set to enable MSP accounts to bypass their parent's rules. Only MSP child
-				// accounts can set this. Settable for all types of rules.
-				bypass_parent_rule?: bool
+				// Explain why the rule blocks the request. The custom block page shows this
+				// text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the
+				// action set to `block`.
+				block_reason?: string
 
 				// Configure custom resolvers to route queries that match the resolver policy.
 				// Unused with 'resolve_dns_through_cloudflare' or 'resolve_dns_internally'
@@ -243,11 +236,9 @@ cloudflare_zero_trust_gateway_policies: {
 					})]])
 				})
 
-				// Remove headers from allowed requests by name. A maximum of 20 header
-				// operations (add + set + delete) is allowed per policy. Each header name may
-				// not exceed 256 bytes. Settable only for `http` rules with the action set to
-				// `allow`.
-				delete_headers?: [...string]
+				// Set to enable MSP accounts to bypass their parent's rules. Only MSP child
+				// accounts can set this. Settable for all types of rules.
+				bypass_parent_rule?: bool
 
 				// Configure how Gateway Proxy traffic egresses. You can enable this setting for
 				// rules with Egress actions and filters, or omit it to indicate local egress
@@ -264,15 +255,28 @@ cloudflare_zero_trust_gateway_policies: {
 					ipv6?: string
 				})
 
-				// Ignore category matches at CNAME domains in a response. When off, evaluate
-				// categories in this rule against all CNAME domain categories in the response.
-				// Settable only for `dns` and `dns_resolver` rules.
-				ignore_cname_category_matches?: bool
+				// Remove headers from allowed requests by name. A maximum of 20 header
+				// operations (add + set + delete) is allowed per policy. Each header name may
+				// not exceed 256 bytes. Settable only for `http` rules with the action set to
+				// `allow`.
+				delete_headers?: [...string]
 
 				// Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
 				forensic_copy?: close({
 					// Enable sending the copy to storage.
 					enabled?: bool
+				})
+
+				// Ignore category matches at CNAME domains in a response. When off, evaluate
+				// categories in this rule against all CNAME domain categories in the response.
+				// Settable only for `dns` and `dns_resolver` rules.
+				ignore_cname_category_matches?: bool
+
+				// Forward matching HTTP requests to a Worker. Required for `http` rules with
+				// the action set to `forward`.
+				forward?: close({
+					// Specify the public Worker ID of the target Worker.
+					worker_id?: string
 				})
 
 				// Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE].
@@ -505,7 +509,7 @@ cloudflare_zero_trust_gateway_policies: {
 			// device posture expressions either absent or evaluate to `true`.
 			// Available values: "on", "off", "allow", "block", "scan", "noscan",
 			// "safesearch", "ytrestricted", "isolate", "noisolate", "override",
-			// "l4_override", "egress", "resolve", "quarantine", "redirect".
+			// "l4_override", "egress", "resolve", "quarantine", "redirect", "forward".
 			action?: string
 
 			// Defines the expiration time stamp and default duration of a DNS policy. Takes
@@ -545,17 +549,6 @@ cloudflare_zero_trust_gateway_policies: {
 				// rules with the action set to `allow`.
 				add_headers?: [string]: [...string]
 
-				// Define the settings for the Audit SSH action. Settable only for `l4` rules
-				// with `audit_ssh` action.
-				audit_ssh?: close({
-					// Enable SSH command logging.
-					command_logging?: bool
-				})
-
-				// Set to enable MSP children to bypass this rule. Only parent MSP accounts can
-				// set this. this rule. Settable for all types of rules.
-				allow_child_bypass?: bool
-
 				// Configure browser isolation behavior. Settable only for `http` rules with the
 				// action set to `isolate`.
 				biso_admin_controls?: close({
@@ -586,9 +579,13 @@ cloudflare_zero_trust_gateway_policies: {
 					// Set to false to enable uploading. Only applies when `version == "v1"`.
 					du?: bool
 
-					// Configure keyboard usage behavior. If this field is absent, keyboard usage
-					// remains enabled. Applies only when version == "v2".
-					// Available values: "enabled", "disabled".
+					// Configure keyboard usage behavior. When set to enable_read_only_actions, only
+					// approved browser commands (find, copy, print, zoom, and select-all) may
+					// execute; other keyboard input is blocked from reaching the page. Copy and
+					// print remain subject to their independent controls. If this field is absent,
+					// keyboard usage remains enabled. Applies only when version == "v2". The
+					// enable_read_only_actions value requires an explicit version of "v2".
+					// Available values: "enabled", "disabled", "enable_read_only_actions".
 					keyboard?: string
 
 					// Configure paste behavior. If set to remote_only, users cannot paste content
@@ -615,8 +612,9 @@ cloudflare_zero_trust_gateway_policies: {
 					wm_id?: string
 				})
 
-				// Enable the custom block page. Settable only for `dns` rules with action `block`.
-				block_page_enabled?: bool
+				// Set to enable MSP children to bypass this rule. Only parent MSP accounts can
+				// set this. this rule. Settable for all types of rules.
+				allow_child_bypass?: bool
 
 				// Configure custom block page settings. If missing or null, use the account
 				// settings. Settable only for `http` rules with the action set to `block`.
@@ -628,10 +626,8 @@ cloudflare_zero_trust_gateway_policies: {
 					target_uri?: string
 				})
 
-				// Explain why the rule blocks the request. The custom block page shows this
-				// text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the
-				// action set to `block`.
-				block_reason?: string
+				// Enable the custom block page. Settable only for `dns` rules with action `block`.
+				block_page_enabled?: bool
 
 				// Configure session check behavior. Settable only for `l4` and `http` rules
 				// with the action set to `allow`.
@@ -644,9 +640,10 @@ cloudflare_zero_trust_gateway_policies: {
 					enforce?: bool
 				})
 
-				// Set to enable MSP accounts to bypass their parent's rules. Only MSP child
-				// accounts can set this. Settable for all types of rules.
-				bypass_parent_rule?: bool
+				// Explain why the rule blocks the request. The custom block page shows this
+				// text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the
+				// action set to `block`.
+				block_reason?: string
 
 				// Configure custom resolvers to route queries that match the resolver policy.
 				// Unused with 'resolve_dns_through_cloudflare' or 'resolve_dns_internally'
@@ -710,11 +707,9 @@ cloudflare_zero_trust_gateway_policies: {
 					})]])
 				})
 
-				// Remove headers from allowed requests by name. A maximum of 20 header
-				// operations (add + set + delete) is allowed per policy. Each header name may
-				// not exceed 256 bytes. Settable only for `http` rules with the action set to
-				// `allow`.
-				delete_headers?: [...string]
+				// Set to enable MSP accounts to bypass their parent's rules. Only MSP child
+				// accounts can set this. Settable for all types of rules.
+				bypass_parent_rule?: bool
 
 				// Configure how Gateway Proxy traffic egresses. You can enable this setting for
 				// rules with Egress actions and filters, or omit it to indicate local egress
@@ -731,15 +726,28 @@ cloudflare_zero_trust_gateway_policies: {
 					ipv6?: string
 				})
 
-				// Ignore category matches at CNAME domains in a response. When off, evaluate
-				// categories in this rule against all CNAME domain categories in the response.
-				// Settable only for `dns` and `dns_resolver` rules.
-				ignore_cname_category_matches?: bool
+				// Remove headers from allowed requests by name. A maximum of 20 header
+				// operations (add + set + delete) is allowed per policy. Each header name may
+				// not exceed 256 bytes. Settable only for `http` rules with the action set to
+				// `allow`.
+				delete_headers?: [...string]
 
 				// Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
 				forensic_copy?: close({
 					// Enable sending the copy to storage.
 					enabled?: bool
+				})
+
+				// Ignore category matches at CNAME domains in a response. When off, evaluate
+				// categories in this rule against all CNAME domain categories in the response.
+				// Settable only for `dns` and `dns_resolver` rules.
+				ignore_cname_category_matches?: bool
+
+				// Forward matching HTTP requests to a Worker. Required for `http` rules with
+				// the action set to `forward`.
+				forward?: close({
+					// Specify the public Worker ID of the target Worker.
+					worker_id?: string
 				})
 
 				// Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE].

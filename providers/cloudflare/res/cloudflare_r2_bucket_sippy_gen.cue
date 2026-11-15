@@ -39,41 +39,55 @@ cloudflare_r2_bucket_sippy: {
 		jurisdiction?: string
 
 		// AWS S3 bucket to copy objects from.
+		//
+		// GCS bucket to copy objects from.
+		//
+		// General S3-compatible provider to copy objects from.
+		//
+		// Azure Blob Storage container to copy objects from.
 		source?: close({
-			// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
+			// For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Access
+			// Key ID of an IAM credential (ideally scoped to a single S3 bucket).
 			access_key_id?: string
 
-			// Access key for the Azure Storage account. Mutually exclusive with sasToken.
+			// For `r2_bucket_sippy_provider: azure`: Access key for the Azure Storage
+			// account. Mutually exclusive with sasToken.
 			account_key?: string
 
-			// Name of the Azure Storage account.
+			// For `r2_bucket_sippy_provider: azure`: Name of the Azure Storage account.
 			account_name?: string
 
-			// Name of the AWS S3 bucket.
+			// For `r2_bucket_sippy_provider: aws`: Name of the AWS S3 bucket.
+			//
+			// For `r2_bucket_sippy_provider: gcs`: Name of the GCS bucket.
 			bucket?: string
 
-			// URL to the S3-compatible API of the bucket.
+			// For `r2_bucket_sippy_provider: s3`: URL to the S3-compatible API of the bucket.
 			bucket_url?: string
 
-			// Client email of an IAM credential (ideally scoped to a single GCS bucket).
+			// For `r2_bucket_sippy_provider: gcs`: Client email of an IAM credential
+			// (ideally scoped to a single GCS bucket).
 			client_email?: string
 
 			// Available values: "aws", "gcs", "s3", "azure".
 			cloud_provider?: string
 
-			// Name of the Azure Blob Storage container.
+			// For `r2_bucket_sippy_provider: azure`: Name of the Azure Blob Storage container.
 			container?: string
 
-			// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
+			// For `r2_bucket_sippy_provider: gcs`: Private Key of an IAM credential
+			// (ideally scoped to a single GCS bucket).
 			private_key?: string
 
-			// AWS region containing the source S3 bucket.
+			// For `r2_bucket_sippy_provider: aws`: AWS region containing the source S3 bucket.
 			region?: string
 
-			// Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
+			// For `r2_bucket_sippy_provider: azure`: Shared Access Signature token for the
+			// Azure Storage account. Mutually exclusive with accountKey.
 			sas_token?: string
 
-			// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
+			// For `r2_bucket_sippy_provider: aws` or `r2_bucket_sippy_provider: s3`: Secret
+			// Access Key of an IAM credential (ideally scoped to a single S3 bucket).
 			secret_access_key?: string
 		})
 	})

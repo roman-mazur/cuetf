@@ -345,7 +345,7 @@ cloudflare_user_groups: {
 				})]])
 			})]])
 
-			// User Group identifier tag.
+			// Identifier of the user group.
 			id?: string
 
 			// Last time the user group was modified.
@@ -674,7 +674,7 @@ cloudflare_user_groups: {
 				})]])
 			})]])
 
-			// User Group identifier tag.
+			// Identifier of the user group.
 			id?: string
 
 			// Last time the user group was modified.

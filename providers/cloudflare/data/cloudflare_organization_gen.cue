@@ -25,6 +25,16 @@ cloudflare_organization: {
 				user?: string
 			})
 
+			// Sort direction for the `order_by` field. Defaults to `asc` when `order_by` is
+			// specified.
+			// Available values: "asc", "desc".
+			direction?: string
+			member?: close({
+				// Filter organizations to those where the given user, by email, is an active member of
+				// that exact organization. This does not include hierarchy-derived access.
+				email?: string
+			})
+
 			// Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements
 			// by repeating the query value.
 			id?: [...string]
@@ -42,8 +52,17 @@ cloudflare_organization: {
 				starts_with?: string
 			})
 
-			// The amount of items to return. Defaults to 10.
-			page_size?: number
+			// Field to order results by. Currently supported values: `name`.
+			// When not specified, results are ordered by hierarchy.
+			// Available values: "name".
+			order_by?: string
+
+			// An opaque token returned from the last list response that when
+			// provided will retrieve the next page.
+			//
+			// Parameters used to filter the retrieved list must remain in subsequent
+			// requests with a page token.
+			page_token?: string
 			parent?: close({
 				// Filter the list of organizations to the ones that are a sub-organization
 				// of the specified organization.
@@ -53,15 +72,13 @@ cloudflare_organization: {
 				id?: string
 			})
 
-			// An opaque token returned from the last list response that when
-			// provided will retrieve the next page.
-			//
-			// Parameters used to filter the retrieved list must remain in subsequent
-			// requests with a page token.
-			page_token?: string
+			// The amount of items to return. Defaults to 10.
+			page_size?: number
 		})
 		id?: string
 		meta?: close({
+			are_child_accounts_accessible_by_org_members?: bool
+
 			// Ordered chain of organization tags from the root organization down to
 			// (and including) this organization itself. Root organizations return a
 			// single-element array containing their own tag; sub-organizations return
@@ -81,7 +98,8 @@ cloudflare_organization: {
 				member_management?:                        string
 				sub_org_creation?:                         string
 			})
-			managed_by?: string
+			managed_by?:  string
+			tenant_type?: string
 		})
 		name?:            string
 		organization_id?: string

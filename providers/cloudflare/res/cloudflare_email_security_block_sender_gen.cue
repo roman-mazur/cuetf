@@ -9,6 +9,11 @@ cloudflare_email_security_block_sender: {
 		comments?:   string
 		created_at?: string
 
+		// Timestamp at which the pattern expires. After this time, Email Security
+		// ignores the pattern. The value must lie in the future. Send `null` to clear
+		// the expiration.
+		expires_at?: string
+
 		// Blocked sender pattern identifier.
 		id?: string
 

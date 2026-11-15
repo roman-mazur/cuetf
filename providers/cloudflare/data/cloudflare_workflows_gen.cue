@@ -12,6 +12,11 @@ cloudflare_workflows: {
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			class_name?: string
+
+			// Jurisdiction where instances of this workflow run and store data. Set when
+			// the workflow is created and cannot be changed.
+			// Available values: "eu", "fedramp", "us".
+			jurisdiction?: string
 			schedules?: matchN(1, [close({
 				cron?:          string
 				next_instance?: string
@@ -19,10 +24,10 @@ cloudflare_workflows: {
 				cron?:          string
 				next_instance?: string
 			})]])
+			created_on?: string
 
 			// Whether the bound Worker was deleted, leaving this Workflow inactive.
 			script_deleted?: bool
-			created_on?:     string
 			id?:             string
 			instances?: [string]: number
 			modified_on?:  string
@@ -31,6 +36,11 @@ cloudflare_workflows: {
 			triggered_on?: string
 		}), [...close({
 			class_name?: string
+
+			// Jurisdiction where instances of this workflow run and store data. Set when
+			// the workflow is created and cannot be changed.
+			// Available values: "eu", "fedramp", "us".
+			jurisdiction?: string
 			schedules?: matchN(1, [close({
 				cron?:          string
 				next_instance?: string
@@ -38,10 +48,10 @@ cloudflare_workflows: {
 				cron?:          string
 				next_instance?: string
 			})]])
+			created_on?: string
 
 			// Whether the bound Worker was deleted, leaving this Workflow inactive.
 			script_deleted?: bool
-			created_on?:     string
 			id?:             string
 			instances?: [string]: number
 			modified_on?:  string

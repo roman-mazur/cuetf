@@ -18,25 +18,27 @@ cloudflare_share_recipients: {
 			// Account identifier.
 			account_id?: string
 			resources?: matchN(1, [close({
-				// Share Recipient error message.
+				// Error from the most recent attempt to apply the resource to the recipient.
+				// Empty string when no error has been recorded.
 				error?: string
 
-				// Share Resource identifier.
+				// Identifier assigned by the service that owns the shared resource.
 				resource_id?: string
 
-				// Resource Version.
+				// Resource version applied to the recipient, if reconciliation has occurred.
 				resource_version?: number
 
 				// Whether the error is terminal or will be continually retried.
 				terminal?: bool
 			}), [...close({
-				// Share Recipient error message.
+				// Error from the most recent attempt to apply the resource to the recipient.
+				// Empty string when no error has been recorded.
 				error?: string
 
-				// Share Resource identifier.
+				// Identifier assigned by the service that owns the shared resource.
 				resource_id?: string
 
-				// Resource Version.
+				// Resource version applied to the recipient, if reconciliation has occurred.
 				resource_version?: number
 
 				// Whether the error is terminal or will be continually retried.
@@ -60,37 +62,39 @@ cloudflare_share_recipients: {
 			// Available values: "associating", "associated", "disassociating", "disassociated".
 			association_status?: string
 
-			// When the share was created.
+			// When the object was created.
 			created?: string
 
 			// Share Recipient identifier tag.
 			id?: string
 
-			// When the share was modified.
+			// When the object was last modified.
 			modified?: string
 		}), [...close({
 			// Account identifier.
 			account_id?: string
 			resources?: matchN(1, [close({
-				// Share Recipient error message.
+				// Error from the most recent attempt to apply the resource to the recipient.
+				// Empty string when no error has been recorded.
 				error?: string
 
-				// Share Resource identifier.
+				// Identifier assigned by the service that owns the shared resource.
 				resource_id?: string
 
-				// Resource Version.
+				// Resource version applied to the recipient, if reconciliation has occurred.
 				resource_version?: number
 
 				// Whether the error is terminal or will be continually retried.
 				terminal?: bool
 			}), [...close({
-				// Share Recipient error message.
+				// Error from the most recent attempt to apply the resource to the recipient.
+				// Empty string when no error has been recorded.
 				error?: string
 
-				// Share Resource identifier.
+				// Identifier assigned by the service that owns the shared resource.
 				resource_id?: string
 
-				// Resource Version.
+				// Resource version applied to the recipient, if reconciliation has occurred.
 				resource_version?: number
 
 				// Whether the error is terminal or will be continually retried.
@@ -114,13 +118,13 @@ cloudflare_share_recipients: {
 			// Available values: "associating", "associated", "disassociating", "disassociated".
 			association_status?: string
 
-			// When the share was created.
+			// When the object was created.
 			created?: string
 
 			// Share Recipient identifier tag.
 			id?: string
 
-			// When the share was modified.
+			// When the object was last modified.
 			modified?: string
 		})]])
 

@@ -20,6 +20,10 @@ cloudflare_r2_data_catalog: {
 		// Specifies the R2 bucket name.
 		id?: string
 
+		// Specifies the data-locality jurisdiction of the catalog. The first enable
+		// sets it, and it cannot change. Currently always `default`.
+		jurisdiction?: string
+
 		// Configures maintenance for the catalog.
 		maintenance_config?: close({
 			// Configures compaction for catalog maintenance.

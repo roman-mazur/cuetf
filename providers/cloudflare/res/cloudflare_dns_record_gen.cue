@@ -16,7 +16,31 @@ cloudflare_dns_record: {
 		// When the record was created.
 		created_on?: string
 
-		// Components of a MX record.
+		// For `type: CAA`: Components of a CAA record.
+		//
+		// For `type: CERT`: Components of a CERT record.
+		//
+		// For `type: DNSKEY`: Components of a DNSKEY record.
+		//
+		// For `type: DS`: Components of a DS record.
+		//
+		// For `type: HTTPS`: Components of a HTTPS record.
+		//
+		// For `type: LOC`: Components of a LOC record.
+		//
+		// For `type: NAPTR`: Components of a NAPTR record.
+		//
+		// For `type: SMIMEA`: Components of a SMIMEA record.
+		//
+		// For `type: SRV`: Components of a SRV record.
+		//
+		// For `type: SSHFP`: Components of a SSHFP record.
+		//
+		// For `type: SVCB`: Components of a SVCB record.
+		//
+		// For `type: TLSA`: Components of a TLSA record.
+		//
+		// For `type: URI`: Components of a URI record.
 		data?: close({
 			// Algorithm.
 			algorithm?: number
@@ -37,6 +61,8 @@ cloudflare_dns_record: {
 			fingerprint?: string
 
 			// Flags for the CAA record.
+			//
+			// Flags.
 			flags?: _
 
 			// Key Tag.
@@ -87,6 +113,11 @@ cloudflare_dns_record: {
 			preference?: number
 
 			// Priority.
+			//
+			// Required for MX and URI records; ignored for other record types (but may
+			// still be returned by the API). Records with lower priorities are preferred.
+			// This field is to be deprecated in favor of the priority field within the
+			// data map.
 			priority?: number
 
 			// Protocol.
@@ -114,6 +145,10 @@ cloudflare_dns_record: {
 			tag?: string
 
 			// Target.
+			//
+			// A valid hostname.
+			//
+			// The record content.
 			target?: string
 
 			// Type.
@@ -123,6 +158,8 @@ cloudflare_dns_record: {
 			usage?: number
 
 			// Value of the record. This field's semantics depend on the chosen tag.
+			//
+			// Value.
 			value?: string
 
 			// The record weight.
@@ -150,7 +187,7 @@ cloudflare_dns_record: {
 		// with lower priorities are preferred.
 		priority?: number
 
-		// Enables private network routing to the origin.
+		// For `type: A` or `type: AAAA`: Enables private network routing to the origin.
 		private_routing?: bool
 
 		// Whether the record can be proxied by Cloudflare or not.

@@ -30,15 +30,22 @@ cloudflare_connectivity_directory_service: {
 		tcp_port?:   number
 
 		// TLS settings for a connectivity service.
-		//
-		// If omitted, the default mode (`verify_full`) is used.
 		tls_settings?: close({
 			// TLS certificate verification mode for the connection to the origin.
 			//
 			// - `"verify_full"` — verify certificate chain and hostname (default)
 			// - `"verify_ca"` — verify certificate chain only, skip hostname check
 			// - `"disabled"` — do not verify the server certificate at all
+			//
+			// `disabled` cannot be combined with `certificate_authority`: a custom CA is
+			// only used to verify the server certificate.
 			cert_verification_mode!: string
+
+			// UUID of the custom CA certificate or chain.
+			certificate_authority?: string
+
+			// UUID of the mTLS client certificate and private key.
+			client_certificate?: string
 		})
 
 		// Available values: "tcp", "http".

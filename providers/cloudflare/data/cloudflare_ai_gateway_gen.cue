@@ -4,7 +4,10 @@ cloudflare_ai_gateway: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_ai_gateway")
 	close({
-		account_id?:     string
+		account_id?: string
+
+		// Require authentication for gateway access. New gateways must have
+		// authentication enabled. Once enabled, authentication cannot be disabled.
 		authentication?: bool
 
 		// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
@@ -35,18 +38,18 @@ cloudflare_ai_gateway: {
 			profiles?: [...string]
 		})
 
-		// Unique identifier of the AI Gateway within the account.
-		id?: string
+		// FedRAMP compliance level: fedramp-medium or fedramp-high.
+		// Available values: "fedramp-medium", "fedramp-high".
+		fedramp_level?: string
+
+		// FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but
+		// allows fallback. "require" strictly filters.
+		// Available values: "prefer", "require".
+		fedramp_mode?: string
 		filter?: close({
 			// Search by id
 			search?: string
 		})
-		is_default?:         bool
-		log_classification?: bool
-		log_management?:     number
-
-		// Available values: "STOP_INSERTING", "DELETE_OLDEST".
-		log_management_strategy?: string
 		guardrails?: close({
 			prompt?: close({
 				// Available values: "FLAG", "BLOCK".
@@ -66,6 +69,9 @@ cloudflare_ai_gateway: {
 
 				// Available values: "FLAG", "BLOCK".
 				s13?: string
+
+				// Available values: "FLAG", "BLOCK".
+				s14?: string
 
 				// Available values: "FLAG", "BLOCK".
 				s2?: string
@@ -111,6 +117,9 @@ cloudflare_ai_gateway: {
 				s13?: string
 
 				// Available values: "FLAG", "BLOCK".
+				s14?: string
+
+				// Available values: "FLAG", "BLOCK".
 				s2?: string
 
 				// Available values: "FLAG", "BLOCK".
@@ -135,14 +144,18 @@ cloudflare_ai_gateway: {
 				s9?: string
 			})
 		})
-		logpush?:                bool
-		logpush_public_key?:     string
-		modified_at?:            string
-		rate_limiting_interval?: number
-		rate_limiting_limit?:    number
 
-		// Available values: "fixed", "sliding".
-		rate_limiting_technique?: string
+		// Unique identifier of the AI Gateway within the account.
+		id?:                 string
+		is_default?:         bool
+		log_classification?: bool
+		log_management?:     number
+
+		// Available values: "STOP_INSERTING", "DELETE_OLDEST".
+		log_management_strategy?: string
+		logpush?:                 bool
+		logpush_public_key?:      string
+		modified_at?:             string
 		otel?: matchN(1, [close({
 			authorization?: string
 
@@ -158,6 +171,11 @@ cloudflare_ai_gateway: {
 			headers?: [string]: string
 			url?: string
 		})]])
+		rate_limiting_interval?: number
+		rate_limiting_limit?:    number
+
+		// Available values: "fixed", "sliding".
+		rate_limiting_technique?: string
 
 		// Backoff strategy for retry delays
 		// Available values: "constant", "linear", "exponential".
@@ -224,6 +242,9 @@ cloudflare_ai_gateway: {
 				window?: number
 			})]])
 		})
+
+		// Secrets Store used by this gateway. Omit on update to keep the current store.
+		// Cannot be cleared while stored keys or secret references depend on it.
 		store_id?: string
 		stripe?: close({
 			authorization?: string

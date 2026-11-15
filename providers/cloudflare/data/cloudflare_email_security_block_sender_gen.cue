@@ -8,10 +8,19 @@ cloudflare_email_security_block_sender: {
 		account_id!: string
 		comments?:   string
 		created_at?: string
+
+		// Timestamp at which the pattern expires. After this time, Email Security
+		// ignores the pattern. The value must lie in the future. Send `null` to clear
+		// the expiration.
+		expires_at?: string
 		filter?: close({
 			// The sorting direction.
 			// Available values: "asc", "desc".
 			direction?: string
+
+			// Filter to return only expired patterns (`true`) or only patterns that still
+			// apply (`false`). Omit to return both.
+			expired?: bool
 
 			// Field to sort by.
 			// Available values: "pattern", "created_at".

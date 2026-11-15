@@ -13,6 +13,7 @@ cloudflare_workers_deployments: {
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			deployments?: matchN(1, [close({
+				// Metadata attached to the deployment.
 				annotations?: close({
 					// Human-readable message about the deployment. Truncated to 1000 bytes if longer.
 					workers_message?: string
@@ -21,11 +22,22 @@ cloudflare_workers_deployments: {
 					workers_triggered_by?: string
 				})
 				author_email?: string
-				id?:           string
-				source?:       string
 
-				// Available values: "percentage".
-				strategy?: string
+				// Choose whether to apply Durable Object code updates immediately or defer
+				// them. When omitted, the default strategy applies.
+				code_update_strategy?: close({
+					// For `mode: deferred`: Set the maximum number of seconds to wait before
+					// forcing the update. When omitted, the default maximum delay applies.
+					max_delay?: number
+
+					// For `mode: immediate`: Apply Durable Object code updates immediately.
+					//
+					// For `mode: deferred`: Allow active Durable Objects to hibernate before updating their code.
+					// Available values: "immediate", "deferred".
+					mode?: string
+				})
+				created_on?: string
+				source?:     string
 
 				// Worker versions included in this deployment. Each object must contain a
 				// `version_id` UUID and a `percentage`; percentages across all objects must
@@ -46,8 +58,14 @@ cloudflare_workers_deployments: {
 					// Identifier of the Worker Version.
 					version_id?: string
 				})]])
-				created_on?: string
+
+				// Strategy for routing traffic across the listed versions. `percentage` splits
+				// traffic according to each version's `percentage`.
+				// Available values: "percentage".
+				strategy?: string
+				id?:       string
 			}), [...close({
+				// Metadata attached to the deployment.
 				annotations?: close({
 					// Human-readable message about the deployment. Truncated to 1000 bytes if longer.
 					workers_message?: string
@@ -56,11 +74,22 @@ cloudflare_workers_deployments: {
 					workers_triggered_by?: string
 				})
 				author_email?: string
-				id?:           string
-				source?:       string
 
-				// Available values: "percentage".
-				strategy?: string
+				// Choose whether to apply Durable Object code updates immediately or defer
+				// them. When omitted, the default strategy applies.
+				code_update_strategy?: close({
+					// For `mode: deferred`: Set the maximum number of seconds to wait before
+					// forcing the update. When omitted, the default maximum delay applies.
+					max_delay?: number
+
+					// For `mode: immediate`: Apply Durable Object code updates immediately.
+					//
+					// For `mode: deferred`: Allow active Durable Objects to hibernate before updating their code.
+					// Available values: "immediate", "deferred".
+					mode?: string
+				})
+				created_on?: string
+				source?:     string
 
 				// Worker versions included in this deployment. Each object must contain a
 				// `version_id` UUID and a `percentage`; percentages across all objects must
@@ -81,10 +110,16 @@ cloudflare_workers_deployments: {
 					// Identifier of the Worker Version.
 					version_id?: string
 				})]])
-				created_on?: string
+
+				// Strategy for routing traffic across the listed versions. `percentage` splits
+				// traffic according to each version's `percentage`.
+				// Available values: "percentage".
+				strategy?: string
+				id?:       string
 			})]])
 		}), [...close({
 			deployments?: matchN(1, [close({
+				// Metadata attached to the deployment.
 				annotations?: close({
 					// Human-readable message about the deployment. Truncated to 1000 bytes if longer.
 					workers_message?: string
@@ -93,11 +128,22 @@ cloudflare_workers_deployments: {
 					workers_triggered_by?: string
 				})
 				author_email?: string
-				id?:           string
-				source?:       string
 
-				// Available values: "percentage".
-				strategy?: string
+				// Choose whether to apply Durable Object code updates immediately or defer
+				// them. When omitted, the default strategy applies.
+				code_update_strategy?: close({
+					// For `mode: deferred`: Set the maximum number of seconds to wait before
+					// forcing the update. When omitted, the default maximum delay applies.
+					max_delay?: number
+
+					// For `mode: immediate`: Apply Durable Object code updates immediately.
+					//
+					// For `mode: deferred`: Allow active Durable Objects to hibernate before updating their code.
+					// Available values: "immediate", "deferred".
+					mode?: string
+				})
+				created_on?: string
+				source?:     string
 
 				// Worker versions included in this deployment. Each object must contain a
 				// `version_id` UUID and a `percentage`; percentages across all objects must
@@ -118,8 +164,14 @@ cloudflare_workers_deployments: {
 					// Identifier of the Worker Version.
 					version_id?: string
 				})]])
-				created_on?: string
+
+				// Strategy for routing traffic across the listed versions. `percentage` splits
+				// traffic according to each version's `percentage`.
+				// Available values: "percentage".
+				strategy?: string
+				id?:       string
 			}), [...close({
+				// Metadata attached to the deployment.
 				annotations?: close({
 					// Human-readable message about the deployment. Truncated to 1000 bytes if longer.
 					workers_message?: string
@@ -128,11 +180,22 @@ cloudflare_workers_deployments: {
 					workers_triggered_by?: string
 				})
 				author_email?: string
-				id?:           string
-				source?:       string
 
-				// Available values: "percentage".
-				strategy?: string
+				// Choose whether to apply Durable Object code updates immediately or defer
+				// them. When omitted, the default strategy applies.
+				code_update_strategy?: close({
+					// For `mode: deferred`: Set the maximum number of seconds to wait before
+					// forcing the update. When omitted, the default maximum delay applies.
+					max_delay?: number
+
+					// For `mode: immediate`: Apply Durable Object code updates immediately.
+					//
+					// For `mode: deferred`: Allow active Durable Objects to hibernate before updating their code.
+					// Available values: "immediate", "deferred".
+					mode?: string
+				})
+				created_on?: string
+				source?:     string
 
 				// Worker versions included in this deployment. Each object must contain a
 				// `version_id` UUID and a `percentage`; percentages across all objects must
@@ -153,7 +216,12 @@ cloudflare_workers_deployments: {
 					// Identifier of the Worker Version.
 					version_id?: string
 				})]])
-				created_on?: string
+
+				// Strategy for routing traffic across the listed versions. `percentage` splits
+				// traffic according to each version's `percentage`.
+				// Available values: "percentage".
+				strategy?: string
+				id?:       string
 			})]])
 		})]])
 

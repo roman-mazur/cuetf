@@ -7,8 +7,14 @@ cloudflare_hyperdrive_config: {
 		// Define configurations using a unique string identifier.
 		account_id!: string
 		caching?: close({
-			disabled?:               bool
-			max_age?:                number
+			disabled?: bool
+
+			// Specify the maximum duration (in seconds) items should persist in the cache.
+			// Defaults to 60 seconds if not specified.
+			max_age?: number
+
+			// Specify the number of seconds the cache may serve a stale response. Defaults
+			// to 15 seconds if not specified.
 			stale_while_revalidate?: number
 		})
 
@@ -16,7 +22,13 @@ cloudflare_hyperdrive_config: {
 		created_on?: string
 
 		// Define configurations using a unique string identifier.
-		id?:          string
+		id?: string
+
+		// Selects a PlanetScale database and provisions credentials managed by
+		// Cloudflare when creating a Hyperdrive configuration. The Cloudflare account
+		// must already be linked to PlanetScale in the Hyperdrive dashboard. The
+		// selection is returned as read-only metadata and cannot be changed with
+		// replace or update operations.
 		integration?: string
 
 		// Defines the last modified time of the Hyperdrive configuration.
@@ -55,6 +67,8 @@ cloudflare_hyperdrive_config: {
 
 			// Defines the publicly reachable hostname or IP of your origin database.
 			// Private, loopback, and link-local IP addresses are not allowed.
+			//
+			// Defines the host (hostname or IP) of your origin database.
 			host?: string
 
 			// Set the password needed to access your origin database. The API never returns

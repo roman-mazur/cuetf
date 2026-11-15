@@ -11,8 +11,8 @@ cloudflare_logpush_dataset_job: {
 		// [Developer
 		// Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
 		// Available values: "access_requests", "account_abuse_protection_events",
-		// "audit_logs", "audit_logs_v2", "biso_user_actions", "casb_findings",
-		// "device_posture_results", "dex_application_tests",
+		// "ai_gateway_events", "audit_logs", "audit_logs_v2", "biso_user_actions",
+		// "casb_findings", "device_posture_results", "dex_application_tests",
 		// "dex_device_state_events", "dlp_forensic_copies", "dns_firewall_logs",
 		// "dns_logs", "email_security_alerts", "email_security_post_delivery_events",
 		// "firewall_events", "gateway_dns", "gateway_http", "gateway_network",
@@ -28,8 +28,8 @@ cloudflare_logpush_dataset_job: {
 		// [Developer
 		// Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
 		// Available values: "access_requests", "account_abuse_protection_events",
-		// "audit_logs", "audit_logs_v2", "biso_user_actions", "casb_findings",
-		// "device_posture_results", "dex_application_tests",
+		// "ai_gateway_events", "audit_logs", "audit_logs_v2", "biso_user_actions",
+		// "casb_findings", "device_posture_results", "dex_application_tests",
 		// "dex_device_state_events", "dlp_forensic_copies", "dns_firewall_logs",
 		// "dns_logs", "email_security_alerts", "email_security_post_delivery_events",
 		// "firewall_events", "gateway_dns", "gateway_http", "gateway_network",

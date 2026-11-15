@@ -13,12 +13,22 @@ cloudflare_r2_data_catalog: {
 		// Specifies the R2 bucket name.
 		bucket_name!: string
 
+		// Contains request to store catalog credentials.
+		credential?: close({
+			// Provides the Cloudflare API token for accessing R2.
+			token!: string
+		})
+
 		// Shows the credential configuration status.
 		// Available values: "present", "absent".
 		credential_status?: string
 
 		// Use this to uniquely identify the activated catalog.
 		id?: string
+
+		// Specifies the data-locality jurisdiction of the catalog. The first enable
+		// sets it, and it cannot change. Currently always `default`.
+		jurisdiction?: string
 
 		// Configures maintenance for the catalog.
 		maintenance_config?: close({

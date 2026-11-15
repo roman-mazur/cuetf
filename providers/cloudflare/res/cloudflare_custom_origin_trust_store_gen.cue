@@ -25,7 +25,7 @@ cloudflare_custom_origin_trust_store: {
 		// "pending_deletion", "deleted", "expired".
 		status?: string
 
-		// When the certificate was last modified.
+		// When the certificate was last modified. Only returned when uploading a certificate.
 		updated_at?: string
 
 		// When the certificate was uploaded to Cloudflare.

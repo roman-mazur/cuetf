@@ -7,6 +7,8 @@ cloudflare_organization: {
 		create_time?: string
 		id?:          string
 		meta?: close({
+			are_child_accounts_accessible_by_org_members?: bool
+
 			// Ordered chain of organization tags from the root organization down to
 			// (and including) this organization itself. Root organizations return a
 			// single-element array containing their own tag; sub-organizations return
@@ -26,19 +28,27 @@ cloudflare_organization: {
 				member_management?:                        string
 				sub_org_creation?:                         string
 			})
-			managed_by?: string
+			managed_by?:  string
+			tenant_type?: string
 		})
+
+		// The Organization name, limited to 65 UTF-8 bytes.
 		name!: string
 		parent?: close({
-			id!:   string
-			name?: string
+			id!: string
 		})
+
+		// The current parent Organization ID. A different value is rejected; this
+		// endpoint cannot move an Organization.
+		parent_id?: string
+
+		// Optional profile fields, each limited to 1,000 UTF-8 bytes. An empty profile is ignored.
 		profile?: close({
-			business_address!:  string
-			business_email!:    string
-			business_name!:     string
-			business_phone!:    string
-			external_metadata!: string
+			business_address?:  string
+			business_email?:    string
+			business_name?:     string
+			business_phone?:    string
+			external_metadata?: string
 		})
 	})
 }

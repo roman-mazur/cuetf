@@ -26,6 +26,9 @@ cloudflare_magic_transit_site_wans: {
 
 				// A valid CIDR notation representing an IP range.
 				secondary_address?: string
+
+				// Gateway address for the secondary connector of a high availability site.
+				secondary_gateway_address?: string
 			})
 
 			// Identifier
@@ -36,9 +39,15 @@ cloudflare_magic_transit_site_wans: {
 			priority?: number
 			name?:     string
 
+			// Provisioned download rate of the WAN circuit in kilobits per second.
+			provisioned_download_kbps?: number
+			physport?:                  number
+
+			// Provisioned upload rate of the WAN circuit in kilobits per second.
+			provisioned_upload_kbps?: number
+
 			// Identifier
-			site_id?:  string
-			physport?: number
+			site_id?: string
 
 			// VLAN ID. Use zero for untagged.
 			vlan_tag?: number
@@ -57,6 +66,9 @@ cloudflare_magic_transit_site_wans: {
 
 				// A valid CIDR notation representing an IP range.
 				secondary_address?: string
+
+				// Gateway address for the secondary connector of a high availability site.
+				secondary_gateway_address?: string
 			})
 
 			// Identifier
@@ -67,9 +79,15 @@ cloudflare_magic_transit_site_wans: {
 			priority?: number
 			name?:     string
 
+			// Provisioned download rate of the WAN circuit in kilobits per second.
+			provisioned_download_kbps?: number
+			physport?:                  number
+
+			// Provisioned upload rate of the WAN circuit in kilobits per second.
+			provisioned_upload_kbps?: number
+
 			// Identifier
-			site_id?:  string
-			physport?: number
+			site_id?: string
 
 			// VLAN ID. Use zero for untagged.
 			vlan_tag?: number

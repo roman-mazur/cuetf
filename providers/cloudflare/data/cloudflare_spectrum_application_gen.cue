@@ -26,16 +26,21 @@ cloudflare_spectrum_application: {
 
 		// The anycast edge IP configuration for the hostname of this application.
 		edge_ips?: close({
-			// The IP versions supported for inbound connections on Spectrum anycast IPs.
+			// For `type: dynamic`: The IP versions supported for inbound connections on Spectrum anycast IPs.
 			// Available values: "all", "ipv4", "ipv6".
 			connectivity?: string
 
-			// The array of customer owned IPs we broadcast via anycast for this hostname and application.
+			// For `type: static`: The array of customer owned IPs we broadcast via anycast
+			// for this hostname and application.
 			ips?: [...string]
 
-			// The type of edge IP configuration specified. Dynamically allocated edge IPs
-			// use Spectrum anycast IPs in accordance with the connectivity you specify.
-			// Only valid with CNAME DNS names.
+			// For `type: dynamic`: The type of edge IP configuration specified. Dynamically
+			// allocated edge IPs use Spectrum anycast IPs in accordance with the
+			// connectivity you specify. Only valid with CNAME DNS names.
+			//
+			// For `type: static`: The type of edge IP configuration specified. Statically
+			// allocated edge IPs use customer IPs in accordance with the ips array you
+			// specify. Only valid with ADDRESS DNS names.
 			// Available values: "dynamic", "static".
 			type?: string
 		})
@@ -89,6 +94,14 @@ cloudflare_spectrum_application: {
 		// exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and
 		// argo_smart_routing. tls may only be "off" or "flexible".
 		origin_worker_id?: string
+
+		// Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.
+		origin_worker_name?: string
+
+		// Lookup status of the Worker origin. Unknown indicates that its name could not
+		// be resolved. Only returned for Worker origins.
+		// Available values: "available", "not_found", "unknown".
+		origin_worker_status?: string
 
 		// The port configuration at Cloudflare's edge. May specify a single port, for
 		// example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.

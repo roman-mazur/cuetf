@@ -18,7 +18,7 @@ cloudflare_share_resources: {
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
-			// When the share was created.
+			// When the object was created.
 			created?: string
 
 			// Share Resource identifier.
@@ -27,13 +27,13 @@ cloudflare_share_resources: {
 			// Resource Metadata.
 			meta?: string
 
-			// When the share was modified.
+			// When the object was last modified.
 			modified?: string
 
 			// Account identifier.
 			resource_account_id?: string
 
-			// Share Resource identifier.
+			// Identifier assigned by the service that owns the shared resource.
 			resource_id?: string
 
 			// Resource Type.
@@ -49,7 +49,7 @@ cloudflare_share_resources: {
 			// Available values: "active", "deleting", "deleted".
 			status?: string
 		}), [...close({
-			// When the share was created.
+			// When the object was created.
 			created?: string
 
 			// Share Resource identifier.
@@ -58,13 +58,13 @@ cloudflare_share_resources: {
 			// Resource Metadata.
 			meta?: string
 
-			// When the share was modified.
+			// When the object was last modified.
 			modified?: string
 
 			// Account identifier.
 			resource_account_id?: string
 
-			// Share Resource identifier.
+			// Identifier assigned by the service that owns the shared resource.
 			resource_id?: string
 
 			// Resource Type.

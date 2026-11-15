@@ -7,11 +7,19 @@ cloudflare_pipeline_streams: {
 		// Specifies the public ID of the account.
 		account_id?: string
 
+		// Sort direction.
+		// Available values: "asc", "desc".
+		direction?: string
+
 		// Max items to fetch, default: 1000
 		max_items?: number
 
 		// Filters streams by name (case-insensitive substring).
 		name?: string
+
+		// Sorts streams by this field. Defaults to `created_at`.
+		// Available values: "name", "created_at".
+		order_by?: string
 
 		// Specifies the public ID of the pipeline.
 		pipeline_id?: string

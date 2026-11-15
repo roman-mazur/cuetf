@@ -150,6 +150,11 @@ cloudflare_zero_trust_device_custom_profiles: {
 			// this policy option is set to `true`.
 			disable_auto_fallback?: bool
 
+			// Determines whether the WARP client can silently reauthenticate the user with
+			// device credentials (Microsoft Entra) instead of prompting for browser-based
+			// reauthentication.
+			enable_device_credential_authentication?: bool
+
 			// Whether the policy will be applied to matching devices.
 			enabled?: bool
 
@@ -342,6 +347,11 @@ cloudflare_zero_trust_device_custom_profiles: {
 			// will fall back to a best guess of the default/system DNS resolvers unless
 			// this policy option is set to `true`.
 			disable_auto_fallback?: bool
+
+			// Determines whether the WARP client can silently reauthenticate the user with
+			// device credentials (Microsoft Entra) instead of prompting for browser-based
+			// reauthentication.
+			enable_device_credential_authentication?: bool
 
 			// Whether the policy will be applied to matching devices.
 			enabled?: bool

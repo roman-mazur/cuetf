@@ -18,7 +18,7 @@ cloudflare_share: {
 		// included when requested via the 'include_recipient_counts' parameter.
 		associating_recipient_count?: number
 
-		// When the share was created.
+		// When the object was created.
 		created?: string
 
 		// The number of recipients in the 'disassociated' state. This field is only
@@ -29,6 +29,17 @@ cloudflare_share: {
 		// included when requested via the 'include_recipient_counts' parameter.
 		disassociating_recipient_count?: number
 
+		// Accounts to exclude from an organization-targeted share. Only allowed when
+		// `recipients` contains no account entries. The share owner cannot be
+		// excluded. Duplicate entries are ignored.
+		excluded_recipients?: matchN(1, [close({
+			// The account to exclude from the organization-targeted share.
+			account_id!: string
+		}), [...close({
+			// The account to exclude from the organization-targeted share.
+			account_id!: string
+		})]])
+
 		// Share identifier tag.
 		id?: string
 
@@ -38,10 +49,16 @@ cloudflare_share: {
 		// Include resources in the response.
 		include_resources?: bool
 
+		// Include share tags in the response. `api` reads tags from the tag service;
+		// `mirror` reads a local, eventually consistent replica. If the tag lookup
+		// fails, the response omits `tags`.
+		// Available values: "api", "mirror".
+		include_tags_from?: string
+
 		// Available values: "sent", "received".
 		kind?: string
 
-		// When the share was modified.
+		// When the object was last modified.
 		modified?: string
 
 		// The name of the share.
@@ -49,7 +66,7 @@ cloudflare_share: {
 
 		// Organization identifier.
 		organization_id?: string
-		recipients!: matchN(1, [close({
+		recipients?: matchN(1, [close({
 			// Organization identifier.
 			organization_id?: string
 
@@ -62,14 +79,14 @@ cloudflare_share: {
 			// The account that will receive the share.
 			recipient_account_id?: string
 		})]])
-		resources!: matchN(1, [close({
+		resources?: matchN(1, [close({
 			// Resource Metadata.
 			meta!: string
 
-			// Account identifier.
+			// The account that owns the resource. Must match the `account_id` in the path.
 			resource_account_id!: string
 
-			// Share Resource identifier.
+			// Identifier assigned by the service that owns the shared resource.
 			resource_id!: string
 
 			// Resource Type.
@@ -81,10 +98,10 @@ cloudflare_share: {
 			// Resource Metadata.
 			meta!: string
 
-			// Account identifier.
+			// The account that owns the resource. Must match the `account_id` in the path.
 			resource_account_id!: string
 
-			// Share Resource identifier.
+			// Identifier assigned by the service that owns the shared resource.
 			resource_id!: string
 
 			// Resource Type.
@@ -96,6 +113,9 @@ cloudflare_share: {
 
 		// Available values: "active", "deleting", "deleted".
 		status?: string
+
+		// Tags associated with the share.
+		tags?: [string]: string
 
 		// Available values: "account", "organization".
 		target_type?: string

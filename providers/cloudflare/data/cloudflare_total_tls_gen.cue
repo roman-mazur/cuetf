@@ -5,6 +5,7 @@ cloudflare_total_tls: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_total_tls")
 	close({
 		// The Certificate Authority that Total TLS certificates will be issued through.
+		// Not returned in responses when Total TLS is disabled.
 		// Available values: "google", "lets_encrypt", "ssl_com".
 		certificate_authority?: string
 
@@ -15,7 +16,8 @@ cloudflare_total_tls: {
 		// Identifier.
 		id?: string
 
-		// The validity period in days for the certificates ordered via Total TLS.
+		// The validity period in days for the certificates ordered via Total TLS. Not
+		// returned when Total TLS is disabled.
 		// Available values: 90.
 		validity_period?: number
 

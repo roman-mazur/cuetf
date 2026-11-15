@@ -11,6 +11,10 @@ cloudflare_zero_trust_dns_location: {
 		client_default?: bool
 		created_at?:     string
 
+		// Enable DNS64 synthesis for DNS queries matched to this location. When
+		// updating a location, omitting this field resets it to false.
+		dns64_enabled?: bool
+
 		// Indicate the identifier of the pair of IPv4 addresses assigned to this location.
 		dns_destination_ips_id?: string
 

@@ -100,25 +100,6 @@ cloudflare_worker_versions: {
 				// List of allowed destination addresses.
 				allowed_destination_addresses?: [...string]
 
-				// Retry policy for calls made to the Durable Object through this binding.
-				// Omitted or null properties use the runtime defaults. These limits are upper
-				// bounds and do not enable retries for otherwise ineligible calls.
-				retry?: close({
-					// Maximum number of retries after the initial request, not the total number of
-					// attempts. Defaults to 4. Zero disables retries.
-					max_attempts?: number
-
-					// Retry timeout in milliseconds, measured from the start of the call. No retry
-					// starts after it expires, and a retry still running when it expires is
-					// cancelled. This is not a request timeout; it does not limit the initial
-					// request, which is still subject to any timeouts set by your Worker. Defaults
-					// to 10000.
-					timeout_ms?: number
-				})
-
-				// List of allowed sender addresses.
-				allowed_sender_addresses?: [...string]
-
 				// The rate limit configuration.
 				simple?: close({
 					// The limit (requests per period).
@@ -132,6 +113,9 @@ cloudflare_worker_versions: {
 					// The period in seconds.
 					period?: number
 				})
+
+				// List of allowed sender addresses.
+				allowed_sender_addresses?: [...string]
 
 				// ID of the Flagship app to bind to for feature flag evaluation.
 				app_id?: string
@@ -172,7 +156,8 @@ cloudflare_worker_versions: {
 				id?: string
 
 				// Enables Gateway identity for the binding. Requires network_id to be
-				// "cf1:network" and cannot be combined with tunnel_id.
+				// "cf1:network" and cannot be combined with tunnel_id or an explicit
+				// "cf1:vnet:<UUID>" network_id.
 				// Available values: "runtime-email-alpha".
 				identity?: string
 
@@ -210,8 +195,10 @@ cloudflare_worker_versions: {
 				// Namespace identifier tag.
 				namespace_id?: string
 
-				// Identifier of the network to bind to. Only "cf1:network" is currently
-				// supported. Mutually exclusive with tunnel_id.
+				// Identifier of the network to bind to. Use "cf1:network" to select the
+				// account's default virtual network at runtime, or "cf1:vnet:<UUID>" to select
+				// an explicit virtual network in the Worker's account. Mutually exclusive with
+				// tunnel_id.
 				network_id?: string
 
 				// The old name of the inherited binding. If set, the binding will be renamed
@@ -268,9 +255,13 @@ cloudflare_worker_versions: {
 				// more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
 				usages?: [...string]
 
-				// Identifier for the version to inherit the binding from, which can be the
-				// version ID or the literal "latest" to inherit from the latest version.
-				// Defaults to inheriting the binding from the latest version.
+				// Identifier for the version to inherit the binding from. This can be a version
+				// ID, or the literal "latest" to inherit from the most recently uploaded
+				// version, which may not be the deployed version. Defaults to "latest". Only
+				// the Workers API version endpoints under
+				// `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a
+				// version ID. Other endpoints, including script upload and script version
+				// upload, accept only "latest" and reject a version ID with error 10057.
 				version_id?: string
 
 				// Name of the Workflow to bind to.
@@ -307,25 +298,6 @@ cloudflare_worker_versions: {
 				// List of allowed destination addresses.
 				allowed_destination_addresses?: [...string]
 
-				// Retry policy for calls made to the Durable Object through this binding.
-				// Omitted or null properties use the runtime defaults. These limits are upper
-				// bounds and do not enable retries for otherwise ineligible calls.
-				retry?: close({
-					// Maximum number of retries after the initial request, not the total number of
-					// attempts. Defaults to 4. Zero disables retries.
-					max_attempts?: number
-
-					// Retry timeout in milliseconds, measured from the start of the call. No retry
-					// starts after it expires, and a retry still running when it expires is
-					// cancelled. This is not a request timeout; it does not limit the initial
-					// request, which is still subject to any timeouts set by your Worker. Defaults
-					// to 10000.
-					timeout_ms?: number
-				})
-
-				// List of allowed sender addresses.
-				allowed_sender_addresses?: [...string]
-
 				// The rate limit configuration.
 				simple?: close({
 					// The limit (requests per period).
@@ -339,6 +311,9 @@ cloudflare_worker_versions: {
 					// The period in seconds.
 					period?: number
 				})
+
+				// List of allowed sender addresses.
+				allowed_sender_addresses?: [...string]
 
 				// ID of the Flagship app to bind to for feature flag evaluation.
 				app_id?: string
@@ -379,7 +354,8 @@ cloudflare_worker_versions: {
 				id?: string
 
 				// Enables Gateway identity for the binding. Requires network_id to be
-				// "cf1:network" and cannot be combined with tunnel_id.
+				// "cf1:network" and cannot be combined with tunnel_id or an explicit
+				// "cf1:vnet:<UUID>" network_id.
 				// Available values: "runtime-email-alpha".
 				identity?: string
 
@@ -417,8 +393,10 @@ cloudflare_worker_versions: {
 				// Namespace identifier tag.
 				namespace_id?: string
 
-				// Identifier of the network to bind to. Only "cf1:network" is currently
-				// supported. Mutually exclusive with tunnel_id.
+				// Identifier of the network to bind to. Use "cf1:network" to select the
+				// account's default virtual network at runtime, or "cf1:vnet:<UUID>" to select
+				// an explicit virtual network in the Worker's account. Mutually exclusive with
+				// tunnel_id.
 				network_id?: string
 
 				// The old name of the inherited binding. If set, the binding will be renamed
@@ -475,9 +453,13 @@ cloudflare_worker_versions: {
 				// more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
 				usages?: [...string]
 
-				// Identifier for the version to inherit the binding from, which can be the
-				// version ID or the literal "latest" to inherit from the latest version.
-				// Defaults to inheriting the binding from the latest version.
+				// Identifier for the version to inherit the binding from. This can be a version
+				// ID, or the literal "latest" to inherit from the most recently uploaded
+				// version, which may not be the deployed version. Defaults to "latest". Only
+				// the Workers API version endpoints under
+				// `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a
+				// version ID. Other endpoints, including script upload and script version
+				// upload, accept only "latest" and reject a version ID with error 10057.
 				version_id?: string
 
 				// Name of the Workflow to bind to.
@@ -904,25 +886,6 @@ cloudflare_worker_versions: {
 				// List of allowed destination addresses.
 				allowed_destination_addresses?: [...string]
 
-				// Retry policy for calls made to the Durable Object through this binding.
-				// Omitted or null properties use the runtime defaults. These limits are upper
-				// bounds and do not enable retries for otherwise ineligible calls.
-				retry?: close({
-					// Maximum number of retries after the initial request, not the total number of
-					// attempts. Defaults to 4. Zero disables retries.
-					max_attempts?: number
-
-					// Retry timeout in milliseconds, measured from the start of the call. No retry
-					// starts after it expires, and a retry still running when it expires is
-					// cancelled. This is not a request timeout; it does not limit the initial
-					// request, which is still subject to any timeouts set by your Worker. Defaults
-					// to 10000.
-					timeout_ms?: number
-				})
-
-				// List of allowed sender addresses.
-				allowed_sender_addresses?: [...string]
-
 				// The rate limit configuration.
 				simple?: close({
 					// The limit (requests per period).
@@ -936,6 +899,9 @@ cloudflare_worker_versions: {
 					// The period in seconds.
 					period?: number
 				})
+
+				// List of allowed sender addresses.
+				allowed_sender_addresses?: [...string]
 
 				// ID of the Flagship app to bind to for feature flag evaluation.
 				app_id?: string
@@ -976,7 +942,8 @@ cloudflare_worker_versions: {
 				id?: string
 
 				// Enables Gateway identity for the binding. Requires network_id to be
-				// "cf1:network" and cannot be combined with tunnel_id.
+				// "cf1:network" and cannot be combined with tunnel_id or an explicit
+				// "cf1:vnet:<UUID>" network_id.
 				// Available values: "runtime-email-alpha".
 				identity?: string
 
@@ -1014,8 +981,10 @@ cloudflare_worker_versions: {
 				// Namespace identifier tag.
 				namespace_id?: string
 
-				// Identifier of the network to bind to. Only "cf1:network" is currently
-				// supported. Mutually exclusive with tunnel_id.
+				// Identifier of the network to bind to. Use "cf1:network" to select the
+				// account's default virtual network at runtime, or "cf1:vnet:<UUID>" to select
+				// an explicit virtual network in the Worker's account. Mutually exclusive with
+				// tunnel_id.
 				network_id?: string
 
 				// The old name of the inherited binding. If set, the binding will be renamed
@@ -1072,9 +1041,13 @@ cloudflare_worker_versions: {
 				// more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
 				usages?: [...string]
 
-				// Identifier for the version to inherit the binding from, which can be the
-				// version ID or the literal "latest" to inherit from the latest version.
-				// Defaults to inheriting the binding from the latest version.
+				// Identifier for the version to inherit the binding from. This can be a version
+				// ID, or the literal "latest" to inherit from the most recently uploaded
+				// version, which may not be the deployed version. Defaults to "latest". Only
+				// the Workers API version endpoints under
+				// `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a
+				// version ID. Other endpoints, including script upload and script version
+				// upload, accept only "latest" and reject a version ID with error 10057.
 				version_id?: string
 
 				// Name of the Workflow to bind to.
@@ -1111,25 +1084,6 @@ cloudflare_worker_versions: {
 				// List of allowed destination addresses.
 				allowed_destination_addresses?: [...string]
 
-				// Retry policy for calls made to the Durable Object through this binding.
-				// Omitted or null properties use the runtime defaults. These limits are upper
-				// bounds and do not enable retries for otherwise ineligible calls.
-				retry?: close({
-					// Maximum number of retries after the initial request, not the total number of
-					// attempts. Defaults to 4. Zero disables retries.
-					max_attempts?: number
-
-					// Retry timeout in milliseconds, measured from the start of the call. No retry
-					// starts after it expires, and a retry still running when it expires is
-					// cancelled. This is not a request timeout; it does not limit the initial
-					// request, which is still subject to any timeouts set by your Worker. Defaults
-					// to 10000.
-					timeout_ms?: number
-				})
-
-				// List of allowed sender addresses.
-				allowed_sender_addresses?: [...string]
-
 				// The rate limit configuration.
 				simple?: close({
 					// The limit (requests per period).
@@ -1143,6 +1097,9 @@ cloudflare_worker_versions: {
 					// The period in seconds.
 					period?: number
 				})
+
+				// List of allowed sender addresses.
+				allowed_sender_addresses?: [...string]
 
 				// ID of the Flagship app to bind to for feature flag evaluation.
 				app_id?: string
@@ -1183,7 +1140,8 @@ cloudflare_worker_versions: {
 				id?: string
 
 				// Enables Gateway identity for the binding. Requires network_id to be
-				// "cf1:network" and cannot be combined with tunnel_id.
+				// "cf1:network" and cannot be combined with tunnel_id or an explicit
+				// "cf1:vnet:<UUID>" network_id.
 				// Available values: "runtime-email-alpha".
 				identity?: string
 
@@ -1221,8 +1179,10 @@ cloudflare_worker_versions: {
 				// Namespace identifier tag.
 				namespace_id?: string
 
-				// Identifier of the network to bind to. Only "cf1:network" is currently
-				// supported. Mutually exclusive with tunnel_id.
+				// Identifier of the network to bind to. Use "cf1:network" to select the
+				// account's default virtual network at runtime, or "cf1:vnet:<UUID>" to select
+				// an explicit virtual network in the Worker's account. Mutually exclusive with
+				// tunnel_id.
 				network_id?: string
 
 				// The old name of the inherited binding. If set, the binding will be renamed
@@ -1279,9 +1239,13 @@ cloudflare_worker_versions: {
 				// more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
 				usages?: [...string]
 
-				// Identifier for the version to inherit the binding from, which can be the
-				// version ID or the literal "latest" to inherit from the latest version.
-				// Defaults to inheriting the binding from the latest version.
+				// Identifier for the version to inherit the binding from. This can be a version
+				// ID, or the literal "latest" to inherit from the most recently uploaded
+				// version, which may not be the deployed version. Defaults to "latest". Only
+				// the Workers API version endpoints under
+				// `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a
+				// version ID. Other endpoints, including script upload and script version
+				// upload, accept only "latest" and reject a version ID with error 10057.
 				version_id?: string
 
 				// Name of the Workflow to bind to.

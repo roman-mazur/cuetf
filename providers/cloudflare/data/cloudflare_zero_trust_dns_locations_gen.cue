@@ -104,8 +104,9 @@ cloudflare_zero_trust_dns_locations: {
 			})
 			created_at?: string
 
-			// Indicate the identifier of the pair of IPv4 addresses assigned to this location.
-			dns_destination_ips_id?: string
+			// Enable DNS64 synthesis for DNS queries matched to this location. When
+			// updating a location, omitting this field resets it to false.
+			dns64_enabled?: bool
 
 			// Controls how DNS response TTLs are capped for this location relative to the
 			// account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to
@@ -121,10 +122,8 @@ cloudflare_zero_trust_dns_locations: {
 				ttl_secs?: number
 			})
 
-			// Specify the UUID of the IPv6 block brought to the gateway so that this
-			// location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6)
-			// block rather than the standard Cloudflare IPv6 block.
-			dns_destination_ipv6_block_id?: string
+			// Indicate the identifier of the pair of IPv4 addresses assigned to this location.
+			dns_destination_ips_id?: string
 
 			// Specify the list of network ranges from which requests at this location
 			// originate. The list takes effect only if it is non-empty and the IPv4
@@ -136,6 +135,11 @@ cloudflare_zero_trust_dns_locations: {
 				// Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.
 				network?: string
 			})]])
+
+			// Specify the UUID of the IPv6 block brought to the gateway so that this
+			// location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6)
+			// block rather than the standard Cloudflare IPv6 block.
+			dns_destination_ipv6_block_id?: string
 
 			// Specify the DNS over HTTPS domain that receives DNS requests. Gateway
 			// automatically generates this value.
@@ -222,8 +226,9 @@ cloudflare_zero_trust_dns_locations: {
 			})
 			created_at?: string
 
-			// Indicate the identifier of the pair of IPv4 addresses assigned to this location.
-			dns_destination_ips_id?: string
+			// Enable DNS64 synthesis for DNS queries matched to this location. When
+			// updating a location, omitting this field resets it to false.
+			dns64_enabled?: bool
 
 			// Controls how DNS response TTLs are capped for this location relative to the
 			// account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to
@@ -239,10 +244,8 @@ cloudflare_zero_trust_dns_locations: {
 				ttl_secs?: number
 			})
 
-			// Specify the UUID of the IPv6 block brought to the gateway so that this
-			// location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6)
-			// block rather than the standard Cloudflare IPv6 block.
-			dns_destination_ipv6_block_id?: string
+			// Indicate the identifier of the pair of IPv4 addresses assigned to this location.
+			dns_destination_ips_id?: string
 
 			// Specify the list of network ranges from which requests at this location
 			// originate. The list takes effect only if it is non-empty and the IPv4
@@ -254,6 +257,11 @@ cloudflare_zero_trust_dns_locations: {
 				// Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.
 				network?: string
 			})]])
+
+			// Specify the UUID of the IPv6 block brought to the gateway so that this
+			// location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6)
+			// block rather than the standard Cloudflare IPv6 block.
+			dns_destination_ipv6_block_id?: string
 
 			// Specify the DNS over HTTPS domain that receives DNS requests. Gateway
 			// automatically generates this value.

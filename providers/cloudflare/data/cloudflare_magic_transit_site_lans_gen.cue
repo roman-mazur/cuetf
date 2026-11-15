@@ -24,6 +24,22 @@ cloudflare_magic_transit_site_lans: {
 
 			// Identifier
 			id?: string
+			remote_subnets?: matchN(1, [close({
+				// A valid CIDR notation representing an IP range.
+				local_alias_prefix?: string
+
+				// A valid CIDR notation representing an IP range.
+				remote_prefix?: string
+			}), [...close({
+				// A valid CIDR notation representing an IP range.
+				local_alias_prefix?: string
+
+				// A valid CIDR notation representing an IP range.
+				remote_prefix?: string
+			})]])
+
+			// mark true to use this LAN for source-based breakout traffic
+			is_breakout?: bool
 			routed_subnets?: matchN(1, [close({
 				nat?: close({
 					// A valid CIDR notation representing an IP range.
@@ -48,8 +64,8 @@ cloudflare_magic_transit_site_lans: {
 				prefix?: string
 			})]])
 
-			// mark true to use this LAN for source-based breakout traffic
-			is_breakout?: bool
+			// mark true to use this LAN for source-based prioritized traffic
+			is_prioritized?: bool
 
 			// If the site is not configured in high availability mode, this configuration
 			// is optional (if omitted, use DHCP). However, if in high availability mode,
@@ -115,9 +131,6 @@ cloudflare_magic_transit_site_lans: {
 				// A valid CIDR notation representing an IP range.
 				virtual_address?: string
 			})
-
-			// mark true to use this LAN for source-based prioritized traffic
-			is_prioritized?: bool
 
 			// Identifier
 			site_id?:  string
@@ -139,6 +152,22 @@ cloudflare_magic_transit_site_lans: {
 
 			// Identifier
 			id?: string
+			remote_subnets?: matchN(1, [close({
+				// A valid CIDR notation representing an IP range.
+				local_alias_prefix?: string
+
+				// A valid CIDR notation representing an IP range.
+				remote_prefix?: string
+			}), [...close({
+				// A valid CIDR notation representing an IP range.
+				local_alias_prefix?: string
+
+				// A valid CIDR notation representing an IP range.
+				remote_prefix?: string
+			})]])
+
+			// mark true to use this LAN for source-based breakout traffic
+			is_breakout?: bool
 			routed_subnets?: matchN(1, [close({
 				nat?: close({
 					// A valid CIDR notation representing an IP range.
@@ -163,8 +192,8 @@ cloudflare_magic_transit_site_lans: {
 				prefix?: string
 			})]])
 
-			// mark true to use this LAN for source-based breakout traffic
-			is_breakout?: bool
+			// mark true to use this LAN for source-based prioritized traffic
+			is_prioritized?: bool
 
 			// If the site is not configured in high availability mode, this configuration
 			// is optional (if omitted, use DHCP). However, if in high availability mode,
@@ -230,9 +259,6 @@ cloudflare_magic_transit_site_lans: {
 				// A valid CIDR notation representing an IP range.
 				virtual_address?: string
 			})
-
-			// mark true to use this LAN for source-based prioritized traffic
-			is_prioritized?: bool
 
 			// Identifier
 			site_id?:  string

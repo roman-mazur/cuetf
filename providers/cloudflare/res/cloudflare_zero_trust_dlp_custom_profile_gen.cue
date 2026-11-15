@@ -11,7 +11,7 @@ cloudflare_zero_trust_dlp_custom_profile: {
 		allowed_match_count?:  number
 		confidence_threshold?: string
 
-		// When the profile was created.
+		// For `type: custom`: When the profile was created.
 		created_at?: string
 
 		// Data class IDs to associate with the profile.
@@ -29,7 +29,7 @@ cloudflare_zero_trust_dlp_custom_profile: {
 		name!:           string
 		ocr_enabled?:    bool
 
-		// Whether this profile can be accessed by anyone.
+		// For `type: predefined`: Whether this profile can be accessed by anyone.
 		open_access?: bool
 
 		// Sensitivity levels to associate with the profile.
@@ -60,7 +60,7 @@ cloudflare_zero_trust_dlp_custom_profile: {
 		// Available values: "custom", "predefined", "integration".
 		type?: string
 
-		// When the profile was lasted updated.
+		// For `type: custom`: When the profile was lasted updated.
 		updated_at?: string
 	})
 }

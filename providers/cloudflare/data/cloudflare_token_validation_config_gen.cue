@@ -14,11 +14,12 @@ cloudflare_token_validation_config: {
 				// "ES256", "ES384", "HS256", "HS384", "HS512".
 				alg?: string
 
-				// Curve
+				// For `alg: ES256` or `alg: ES384`: Curve
 				// Available values: "P-256", "P-384".
 				crv?: string
 
-				// RSA exponent
+				// For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg:
+				// PS384` or `alg: PS512`: RSA exponent
 				e?: string
 
 				// Key ID
@@ -28,13 +29,14 @@ cloudflare_token_validation_config: {
 				// Available values: "RSA", "EC", "oct".
 				kty?: string
 
-				// RSA modulus
+				// For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg:
+				// PS384` or `alg: PS512`: RSA modulus
 				n?: string
 
-				// X EC coordinate
+				// For `alg: ES256` or `alg: ES384`: X EC coordinate
 				x?: string
 
-				// Y EC coordinate
+				// For `alg: ES256` or `alg: ES384`: Y EC coordinate
 				y?: string
 			}), [...close({
 				// Algorithm
@@ -42,11 +44,12 @@ cloudflare_token_validation_config: {
 				// "ES256", "ES384", "HS256", "HS384", "HS512".
 				alg?: string
 
-				// Curve
+				// For `alg: ES256` or `alg: ES384`: Curve
 				// Available values: "P-256", "P-384".
 				crv?: string
 
-				// RSA exponent
+				// For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg:
+				// PS384` or `alg: PS512`: RSA exponent
 				e?: string
 
 				// Key ID
@@ -56,13 +59,14 @@ cloudflare_token_validation_config: {
 				// Available values: "RSA", "EC", "oct".
 				kty?: string
 
-				// RSA modulus
+				// For `alg: RS256` or `alg: RS384` or `alg: RS512` or `alg: PS256` or `alg:
+				// PS384` or `alg: PS512`: RSA modulus
 				n?: string
 
-				// X EC coordinate
+				// For `alg: ES256` or `alg: ES384`: X EC coordinate
 				x?: string
 
-				// Y EC coordinate
+				// For `alg: ES256` or `alg: ES384`: Y EC coordinate
 				y?: string
 			})]])
 		})

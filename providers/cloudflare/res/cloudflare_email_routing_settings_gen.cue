@@ -27,7 +27,7 @@ cloudflare_email_routing_settings: {
 		status?: string
 
 		// Whether subaddressing (plus-addressing) is honored when matching incoming
-		// mail against routing rules.
+		// mail against routing rules. When omitted, preserves the existing setting.
 		support_subaddress?: bool
 
 		// Identifier.

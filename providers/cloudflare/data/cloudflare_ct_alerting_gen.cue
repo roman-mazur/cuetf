@@ -6,7 +6,8 @@ cloudflare_ct_alerting: {
 	close({
 		// Email addresses that receive CT alert notifications for the zone. A maximum
 		// of 100 addresses may be configured. Each address must be a valid RFC 5322
-		// email address and must not contain a comma.
+		// email address and must not contain a comma. Omitted from responses when no
+		// addresses are configured.
 		emails?: [...string]
 
 		// Whether CT alerting is enabled for the zone.

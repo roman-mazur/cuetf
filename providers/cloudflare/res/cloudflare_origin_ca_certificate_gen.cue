@@ -34,5 +34,12 @@ cloudflare_origin_ca_certificate: {
 		// The number of days for which the certificate should be valid.
 		// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 		requested_validity?: number
+
+		// When the certificate was revoked.
+		revoked_at?: string
+
+		// Identifier of the zone whose keyless servers the certificate is for. Required
+		// when `request_type` is `keyless-certificate`; ignored otherwise.
+		zone_id?: string
 	})
 }

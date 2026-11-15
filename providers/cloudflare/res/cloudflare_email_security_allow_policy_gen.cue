@@ -9,6 +9,11 @@ cloudflare_email_security_allow_policy: {
 		comments?:   string
 		created_at?: string
 
+		// Timestamp at which the policy expires. After this time, Email Security
+		// ignores the policy. The value must lie in the future. Send `null` to clear
+		// the expiration.
+		expires_at?: string
+
 		// Allow policy identifier.
 		id?: string
 
@@ -30,7 +35,8 @@ cloudflare_email_security_allow_policy: {
 		// for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or
 		// `2606:4700:4700::/48`); the API rejects private or unique-local, loopback,
 		// link-local, unspecified, and IPv4 broadcast addresses, including their
-		// IPv4-mapped IPv6 equivalents.
+		// IPv4-mapped IPv6 equivalents. The API also rejects a pattern that equals a
+		// domain onboarded to the account, ignoring case.
 		pattern!: string
 
 		// Type of pattern matching.

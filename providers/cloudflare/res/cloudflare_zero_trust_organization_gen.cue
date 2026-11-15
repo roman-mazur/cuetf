@@ -40,6 +40,9 @@ cloudflare_zero_trust_organization: {
 		// that matches the request.
 		deny_unmatched_requests_exempted_zone_names?: [...string]
 
+		// Whether creation of end user applications is disabled for this organization.
+		disable_end_user_app_creation?: bool
+
 		// Lock all settings as Read-Only in the Dashboard, regardless of user
 		// permission. Updates may only be made via the API or Terraform for this
 		// account when enabled.

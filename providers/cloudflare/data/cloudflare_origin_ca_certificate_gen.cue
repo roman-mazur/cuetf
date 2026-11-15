@@ -16,12 +16,6 @@ cloudflare_origin_ca_certificate: {
 		// When the certificate will expire.
 		expires_on?: string
 		filter?: close({
-			// Limit to the number of records returned.
-			limit?: number
-
-			// Offset the results.
-			offset?: number
-
 			// Identifier.
 			zone_id!: string
 		})
@@ -44,8 +38,13 @@ cloudflare_origin_ca_certificate: {
 		// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
 		request_type?: string
 
-		// The number of days for which the certificate should be valid.
+		// The number of days for which the certificate was requested to be valid. Only
+		// returned in the Create Certificate response, where it echoes the requested
+		// value. Not returned when getting or listing certificates.
 		// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 		requested_validity?: number
+
+		// When the certificate was revoked.
+		revoked_at?: string
 	})
 }
