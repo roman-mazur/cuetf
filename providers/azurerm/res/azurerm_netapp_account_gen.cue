@@ -17,10 +17,21 @@ azurerm_netapp_account: {
 	})
 
 	#active_directory: close({
+		ldap_search_scope?: matchN(1, [_#defs."/$defs/active_directory/$defs/ldap_search_scope", list.MaxItems(1) & [..._#defs."/$defs/active_directory/$defs/ldap_search_scope"]])
+
+		// Domain users to be added to the built-in Administrators active directory group.
+		administrator_users?: [...string]
+
 		// If enabled, AES encryption will be enabled for SMB communication.
 		aes_encryption_enabled?: bool
+
+		// Domain users to be added to the built-in Backup Operators active directory group.
+		backup_users?: [...string]
 		dns_servers!: [...string]
-		domain!: string
+
+		// Specifies if traffic between the Domain Controller and SMB server is encrypted.
+		domain_controller_connection_encryption_enabled?: bool
+		domain!:                                          string
 
 		// Name of the active directory machine. This optional parameter is used only
 		// while creating kerberos volume.
@@ -29,6 +40,9 @@ azurerm_netapp_account: {
 		// IP address of the KDC server (usually same the DC). This optional parameter
 		// is used only while creating kerberos volume.
 		kerberos_kdc_ip?: string
+
+		// Specifies the preferred LDAP server IPs for the LDAP client.
+		ldap_client_preferred_servers?: [...string]
 
 		// Specifies whether or not the LDAP traffic needs to be secured via TLS.
 		ldap_over_tls_enabled?: bool
@@ -42,13 +56,16 @@ azurerm_netapp_account: {
 		// The Organizational Unit (OU) within the Windows Active Directory where
 		// machines will be created. If blank, defaults to 'CN=Computers'
 		organizational_unit?: string
-		password!:            string
+
+		// Domain users to be given SeSecurityPrivilege privilege.
+		security_users?: [...string]
 
 		// When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64
 		// encoded Active Directory Certificate Service's self-signed root CA
 		// certificate, this optional parameter is used only for dual protocol with
 		// LDAP user-mapping volumes.
 		server_root_ca_certificate?: string
+		password!:                   string
 
 		// The Active Directory site the service will limit Domain Controller discovery
 		// to. If blank, defaults to 'Default-First-Site-Name'
@@ -69,5 +86,17 @@ azurerm_netapp_account: {
 		delete?: string
 		read?:   string
 		update?: string
+	})
+
+	_#defs: "/$defs/active_directory/$defs/ldap_search_scope": close({
+		// Specifies the group DN, which overrides the base DN for group lookups.
+		group_dn?: string
+
+		// Specifies the custom LDAP search filter to be used when looking up group
+		// membership from LDAP server.
+		group_membership_filter?: string
+
+		// Specifies the user DN, which overrides the base DN for user lookups.
+		user_dn?: string
 	})
 }

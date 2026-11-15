@@ -21,26 +21,29 @@ azurerm_orchestrated_virtual_machine_scale_set: {
 		sku_profile?: matchN(1, [#sku_profile, list.MaxItems(1) & [...#sku_profile]])
 		source_image_reference?: matchN(1, [#source_image_reference, list.MaxItems(1) & [...#source_image_reference]])
 		termination_notification?: matchN(1, [#termination_notification, list.MaxItems(1) & [...#termination_notification]])
-		timeouts?:                      #timeouts
-		capacity_reservation_group_id?: string
-		encryption_at_host_enabled?:    bool
-		eviction_policy?:               string
-		extension_operations_enabled?:  bool
-		extensions_time_budget?:        string
-		id?:                            string
-		instances?:                     number
-		license_type?:                  string
-		location!:                      string
-		max_bid_price?:                 number
-		name!:                          string
-		network_api_version?:           string
-		platform_fault_domain_count!:   number
-		priority?:                      string
-		proximity_placement_group_id?:  string
-		resource_group_name!:           string
-		single_placement_group?:        bool
-		sku_name?:                      string
-		source_image_id?:               string
+		timeouts?:                                   #timeouts
+		automatic_zone_rebalancing_enabled?:         bool
+		capacity_reservation_group_id?:              string
+		encryption_at_host_enabled?:                 bool
+		eviction_policy?:                            string
+		extension_operations_enabled?:               bool
+		extensions_time_budget?:                     string
+		id?:                                         string
+		instances?:                                  number
+		license_type?:                               string
+		location!:                                   string
+		max_bid_price?:                              number
+		name!:                                       string
+		network_api_version?:                        string
+		platform_fault_domain_count!:                number
+		priority?:                                   string
+		proximity_placement_group_id?:               string
+		resilient_virtual_machine_creation_enabled?: bool
+		resilient_virtual_machine_deletion_enabled?: bool
+		resource_group_name!:                        string
+		single_placement_group?:                     bool
+		sku_name?:                                   string
+		source_image_id?:                            string
 		tags?: [string]: string
 		unique_id?:        string
 		upgrade_mode?:     string

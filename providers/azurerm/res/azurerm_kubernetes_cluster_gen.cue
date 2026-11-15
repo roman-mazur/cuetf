@@ -215,6 +215,7 @@ azurerm_kubernetes_cluster: {
 	})
 
 	#key_management_service: close({
+		key_vault_id?:             string
 		key_vault_key_id!:         string
 		key_vault_network_access?: string
 	})

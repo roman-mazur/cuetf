@@ -29,6 +29,7 @@ azurerm_windows_virtual_machine_scale_set: {
 		admin_password!:                                    string
 		admin_username!:                                    string
 		automatic_updates_enabled?:                         bool
+		automatic_zone_rebalancing_enabled?:                bool
 		capacity_reservation_group_id?:                     string
 		computer_name_prefix?:                              string
 		custom_data?:                                       string

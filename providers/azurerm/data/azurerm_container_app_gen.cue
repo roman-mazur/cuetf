@@ -52,7 +52,8 @@ azurerm_container_app: {
 				ip_address_range?: string
 				name?:             string
 			})]
-			target_port?: number
+			session_affinity_enabled?: bool
+			target_port?:              number
 			traffic_weight?: [...close({
 				label?:           string
 				latest_revision?: bool
