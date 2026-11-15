@@ -6,8 +6,10 @@ elasticstack_fleet_integration: {
 	close({
 		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
 
-		// Set to true to force the requested action.
-		force?: bool
+		// Set to true to allow installing a version older than the latest available.
+		// Bypasses only the out-of-date version check. Setting this attribute, even to
+		// `false`, requires server version 9.6.0 or higher.
+		allow_outdated_version?: bool
 		timeouts?: close({
 			// A string that can be [parsed as a
 			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
@@ -36,6 +38,9 @@ elasticstack_fleet_integration: {
 			// "m" (minutes), "h" (hours).
 			update?: string
 		})
+
+		// Set to true to force the requested action.
+		force?: bool
 
 		// The ID of this resource.
 		id?: string
@@ -80,6 +85,11 @@ elasticstack_fleet_integration: {
 		// A comma-separated list of endpoints where the terraform provider will point
 		// to, this must include the http(s) schema and port number.
 		endpoints?: [...string]
+
+		// A map of headers to be sent with each request to Kibana. Custom header values
+		// may appear in provider debug logs: Authorization is masked, but arbitrary
+		// custom proxy-token headers are not generally redacted.
+		headers?: [string]: string
 
 		// Disable TLS certificate validation
 		insecure?: bool

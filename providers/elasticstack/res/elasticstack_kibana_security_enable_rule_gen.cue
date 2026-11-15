@@ -68,6 +68,11 @@ elasticstack_kibana_security_enable_rule: {
 		// to, this must include the http(s) schema and port number.
 		endpoints?: [...string]
 
+		// A map of headers to be sent with each request to Kibana. Custom header values
+		// may appear in provider debug logs: Authorization is masked, but arbitrary
+		// custom proxy-token headers are not generally redacted.
+		headers?: [string]: string
+
 		// Disable TLS certificate validation
 		insecure?: bool
 

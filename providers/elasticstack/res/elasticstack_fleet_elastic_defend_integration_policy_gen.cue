@@ -6,12 +6,11 @@ elasticstack_fleet_elastic_defend_integration_policy: {
 	close({
 		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
 
-		// Elastic Defend advanced settings as a map of setting name to value. Keys use
-		// Elastic's documented dot notation with OS prefix (for example
-		// `linux.advanced.artifacts.global.base_url`). See
-		// https://www.elastic.co/docs/reference/security/defend-advanced-settings for
-		// available settings.
-		advanced_settings?: [string]: string
+		// Additional data stream permissions granted to the integration policy, for
+		// example `logs-nginx-*`. Requires Elastic Stack >= 9.1.0. Removing this
+		// attribute from configuration does not revoke previously granted permissions
+		// on the server; set it to `[]` to clear them.
+		additional_datastreams_permissions?: [...string]
 
 		// Elastic Defend policy configuration.
 		policy!: close({
@@ -389,6 +388,13 @@ elasticstack_fleet_elastic_defend_integration_policy: {
 			})
 		})
 
+		// Elastic Defend advanced settings as a map of setting name to value. Keys use
+		// Elastic's documented dot notation with OS prefix (for example
+		// `linux.advanced.artifacts.global.base_url`). See
+		// https://www.elastic.co/docs/reference/security/defend-advanced-settings for
+		// available settings.
+		advanced_settings?: [string]: string
+
 		// ID of the agent policy. Conflicts with agent_policy_ids.
 		agent_policy_id?: string
 
@@ -445,6 +451,11 @@ elasticstack_fleet_elastic_defend_integration_policy: {
 		// A comma-separated list of endpoints where the terraform provider will point
 		// to, this must include the http(s) schema and port number.
 		endpoints?: [...string]
+
+		// A map of headers to be sent with each request to Kibana. Custom header values
+		// may appear in provider debug logs: Authorization is masked, but arbitrary
+		// custom proxy-token headers are not generally redacted.
+		headers?: [string]: string
 
 		// Disable TLS certificate validation
 		insecure?: bool
