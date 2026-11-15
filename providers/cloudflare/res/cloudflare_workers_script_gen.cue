@@ -19,9 +19,10 @@ cloudflare_workers_script: {
 			workers_triggered_by?: string
 		})
 
-		// When set to "strict", the upload will fail if any `inherit` type bindings
-		// cannot be resolved against the previous version of the Worker. Without this,
-		// unresolvable inherit bindings are silently dropped.
+		// When set to "strict", the upload will fail with error 10057 if any `inherit`
+		// type bindings cannot be resolved against the latest uploaded version of the
+		// Worker, which may not be the deployed version. Without this, unresolvable
+		// inherit bindings are silently dropped.
 		// Available values: "strict".
 		bindings_inherit?: string
 
@@ -185,7 +186,7 @@ cloudflare_workers_script: {
 			// The
 			// [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
 			// of the R2 bucket.
-			// Available values: "eu", "fedramp", "fedramp-high".
+			// Available values: "eu", "fedramp", "fedramp-high", "us".
 			jurisdiction?: string
 
 			// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
@@ -264,9 +265,13 @@ cloudflare_workers_script: {
 			// more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
 			usages?: [...string]
 
-			// Identifier for the version to inherit the binding from, which can be the
-			// version ID or the literal "latest" to inherit from the latest version.
-			// Defaults to inheriting the binding from the latest version.
+			// Identifier for the version to inherit the binding from. This can be a version
+			// ID, or the literal "latest" to inherit from the most recently uploaded
+			// version, which may not be the deployed version. Defaults to "latest". Only
+			// the Workers API version endpoints under
+			// `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a
+			// version ID. Other endpoints, including script upload and script version
+			// upload, accept only "latest" and reject a version ID with error 10057.
 			version_id?: string
 
 			// Name of the Workflow to bind to.
@@ -378,7 +383,7 @@ cloudflare_workers_script: {
 			// The
 			// [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
 			// of the R2 bucket.
-			// Available values: "eu", "fedramp", "fedramp-high".
+			// Available values: "eu", "fedramp", "fedramp-high", "us".
 			jurisdiction?: string
 
 			// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
@@ -457,9 +462,13 @@ cloudflare_workers_script: {
 			// more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
 			usages?: [...string]
 
-			// Identifier for the version to inherit the binding from, which can be the
-			// version ID or the literal "latest" to inherit from the latest version.
-			// Defaults to inheriting the binding from the latest version.
+			// Identifier for the version to inherit the binding from. This can be a version
+			// ID, or the literal "latest" to inherit from the most recently uploaded
+			// version, which may not be the deployed version. Defaults to "latest". Only
+			// the Workers API version endpoints under
+			// `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a
+			// version ID. Other endpoints, including script upload and script version
+			// upload, accept only "latest" and reject a version ID with error 10057.
 			version_id?: string
 
 			// Name of the Workflow to bind to.
@@ -490,6 +499,18 @@ cloudflare_workers_script: {
 		// enable upcoming features or opt in or out of specific changes not included
 		// in a `compatibility_date`.
 		compatibility_flags?: [...string]
+
+		// Choose whether to apply Durable Object code updates immediately or defer
+		// them. When omitted, the default strategy applies.
+		code_update_strategy?: close({
+			// Set the maximum number of seconds to wait before forcing the update. When
+			// omitted, the default maximum delay applies.
+			max_delay?: number
+
+			// Apply Durable Object code updates immediately.
+			// Available values: "immediate", "deferred".
+			mode!: string
+		})
 
 		// Module or Service Worker contents of the Worker. Conflicts with `content_file`.
 		content?: string
@@ -829,6 +850,8 @@ cloudflare_workers_script: {
 
 			// Enables [Smart
 			// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+			//
+			// Targeted placement mode.
 			// Available values: "smart", "targeted".
 			mode?: string
 

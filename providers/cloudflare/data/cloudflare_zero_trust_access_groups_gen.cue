@@ -152,6 +152,15 @@ cloudflare_zero_trust_access_groups: {
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				service_token_tag?: close({
+					// The tag key to match. Keys are case-sensitive and may contain Unicode letters
+					// and digits, underscores, periods, and hyphens.
+					key?: string
+
+					// The tag value to match. Values are case-sensitive, preserve whitespace, and
+					// must not contain NUL characters.
+					value?: string
+				})
 				user_risk_score?: close({
 					// A list of risk score levels to match. Values can be low, medium, high, or unscored.
 					user_risk_score?: [...string]
@@ -290,6 +299,15 @@ cloudflare_zero_trust_access_groups: {
 				service_token?: close({
 					// The ID of a Service Token.
 					token_id?: string
+				})
+				service_token_tag?: close({
+					// The tag key to match. Keys are case-sensitive and may contain Unicode letters
+					// and digits, underscores, periods, and hyphens.
+					key?: string
+
+					// The tag value to match. Values are case-sensitive, preserve whitespace, and
+					// must not contain NUL characters.
+					value?: string
 				})
 				user_risk_score?: close({
 					// A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -436,6 +454,15 @@ cloudflare_zero_trust_access_groups: {
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				service_token_tag?: close({
+					// The tag key to match. Keys are case-sensitive and may contain Unicode letters
+					// and digits, underscores, periods, and hyphens.
+					key?: string
+
+					// The tag value to match. Values are case-sensitive, preserve whitespace, and
+					// must not contain NUL characters.
+					value?: string
+				})
 				user_risk_score?: close({
 					// A list of risk score levels to match. Values can be low, medium, high, or unscored.
 					user_risk_score?: [...string]
@@ -574,6 +601,15 @@ cloudflare_zero_trust_access_groups: {
 				service_token?: close({
 					// The ID of a Service Token.
 					token_id?: string
+				})
+				service_token_tag?: close({
+					// The tag key to match. Keys are case-sensitive and may contain Unicode letters
+					// and digits, underscores, periods, and hyphens.
+					key?: string
+
+					// The tag value to match. Values are case-sensitive, preserve whitespace, and
+					// must not contain NUL characters.
+					value?: string
 				})
 				user_risk_score?: close({
 					// A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -721,6 +757,15 @@ cloudflare_zero_trust_access_groups: {
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				service_token_tag?: close({
+					// The tag key to match. Keys are case-sensitive and may contain Unicode letters
+					// and digits, underscores, periods, and hyphens.
+					key?: string
+
+					// The tag value to match. Values are case-sensitive, preserve whitespace, and
+					// must not contain NUL characters.
+					value?: string
+				})
 				user_risk_score?: close({
 					// A list of risk score levels to match. Values can be low, medium, high, or unscored.
 					user_risk_score?: [...string]
@@ -859,6 +904,15 @@ cloudflare_zero_trust_access_groups: {
 				service_token?: close({
 					// The ID of a Service Token.
 					token_id?: string
+				})
+				service_token_tag?: close({
+					// The tag key to match. Keys are case-sensitive and may contain Unicode letters
+					// and digits, underscores, periods, and hyphens.
+					key?: string
+
+					// The tag value to match. Values are case-sensitive, preserve whitespace, and
+					// must not contain NUL characters.
+					value?: string
 				})
 				user_risk_score?: close({
 					// A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -1003,6 +1057,15 @@ cloudflare_zero_trust_access_groups: {
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				service_token_tag?: close({
+					// The tag key to match. Keys are case-sensitive and may contain Unicode letters
+					// and digits, underscores, periods, and hyphens.
+					key?: string
+
+					// The tag value to match. Values are case-sensitive, preserve whitespace, and
+					// must not contain NUL characters.
+					value?: string
+				})
 				user_risk_score?: close({
 					// A list of risk score levels to match. Values can be low, medium, high, or unscored.
 					user_risk_score?: [...string]
@@ -1141,6 +1204,15 @@ cloudflare_zero_trust_access_groups: {
 				service_token?: close({
 					// The ID of a Service Token.
 					token_id?: string
+				})
+				service_token_tag?: close({
+					// The tag key to match. Keys are case-sensitive and may contain Unicode letters
+					// and digits, underscores, periods, and hyphens.
+					key?: string
+
+					// The tag value to match. Values are case-sensitive, preserve whitespace, and
+					// must not contain NUL characters.
+					value?: string
 				})
 				user_risk_score?: close({
 					// A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -1285,6 +1357,15 @@ cloudflare_zero_trust_access_groups: {
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				service_token_tag?: close({
+					// The tag key to match. Keys are case-sensitive and may contain Unicode letters
+					// and digits, underscores, periods, and hyphens.
+					key?: string
+
+					// The tag value to match. Values are case-sensitive, preserve whitespace, and
+					// must not contain NUL characters.
+					value?: string
+				})
 				user_risk_score?: close({
 					// A list of risk score levels to match. Values can be low, medium, high, or unscored.
 					user_risk_score?: [...string]
@@ -1423,6 +1504,15 @@ cloudflare_zero_trust_access_groups: {
 				service_token?: close({
 					// The ID of a Service Token.
 					token_id?: string
+				})
+				service_token_tag?: close({
+					// The tag key to match. Keys are case-sensitive and may contain Unicode letters
+					// and digits, underscores, periods, and hyphens.
+					key?: string
+
+					// The tag value to match. Values are case-sensitive, preserve whitespace, and
+					// must not contain NUL characters.
+					value?: string
 				})
 				user_risk_score?: close({
 					// A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -1569,6 +1659,15 @@ cloudflare_zero_trust_access_groups: {
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				service_token_tag?: close({
+					// The tag key to match. Keys are case-sensitive and may contain Unicode letters
+					// and digits, underscores, periods, and hyphens.
+					key?: string
+
+					// The tag value to match. Values are case-sensitive, preserve whitespace, and
+					// must not contain NUL characters.
+					value?: string
+				})
 				user_risk_score?: close({
 					// A list of risk score levels to match. Values can be low, medium, high, or unscored.
 					user_risk_score?: [...string]
@@ -1707,6 +1806,15 @@ cloudflare_zero_trust_access_groups: {
 				service_token?: close({
 					// The ID of a Service Token.
 					token_id?: string
+				})
+				service_token_tag?: close({
+					// The tag key to match. Keys are case-sensitive and may contain Unicode letters
+					// and digits, underscores, periods, and hyphens.
+					key?: string
+
+					// The tag value to match. Values are case-sensitive, preserve whitespace, and
+					// must not contain NUL characters.
+					value?: string
 				})
 				user_risk_score?: close({
 					// A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -1854,6 +1962,15 @@ cloudflare_zero_trust_access_groups: {
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				service_token_tag?: close({
+					// The tag key to match. Keys are case-sensitive and may contain Unicode letters
+					// and digits, underscores, periods, and hyphens.
+					key?: string
+
+					// The tag value to match. Values are case-sensitive, preserve whitespace, and
+					// must not contain NUL characters.
+					value?: string
+				})
 				user_risk_score?: close({
 					// A list of risk score levels to match. Values can be low, medium, high, or unscored.
 					user_risk_score?: [...string]
@@ -1992,6 +2109,15 @@ cloudflare_zero_trust_access_groups: {
 				service_token?: close({
 					// The ID of a Service Token.
 					token_id?: string
+				})
+				service_token_tag?: close({
+					// The tag key to match. Keys are case-sensitive and may contain Unicode letters
+					// and digits, underscores, periods, and hyphens.
+					key?: string
+
+					// The tag value to match. Values are case-sensitive, preserve whitespace, and
+					// must not contain NUL characters.
+					value?: string
 				})
 				user_risk_score?: close({
 					// A list of risk score levels to match. Values can be low, medium, high, or unscored.
@@ -2136,6 +2262,15 @@ cloudflare_zero_trust_access_groups: {
 					// The ID of a Service Token.
 					token_id?: string
 				})
+				service_token_tag?: close({
+					// The tag key to match. Keys are case-sensitive and may contain Unicode letters
+					// and digits, underscores, periods, and hyphens.
+					key?: string
+
+					// The tag value to match. Values are case-sensitive, preserve whitespace, and
+					// must not contain NUL characters.
+					value?: string
+				})
 				user_risk_score?: close({
 					// A list of risk score levels to match. Values can be low, medium, high, or unscored.
 					user_risk_score?: [...string]
@@ -2274,6 +2409,15 @@ cloudflare_zero_trust_access_groups: {
 				service_token?: close({
 					// The ID of a Service Token.
 					token_id?: string
+				})
+				service_token_tag?: close({
+					// The tag key to match. Keys are case-sensitive and may contain Unicode letters
+					// and digits, underscores, periods, and hyphens.
+					key?: string
+
+					// The tag value to match. Values are case-sensitive, preserve whitespace, and
+					// must not contain NUL characters.
+					value?: string
 				})
 				user_risk_score?: close({
 					// A list of risk score levels to match. Values can be low, medium, high, or unscored.

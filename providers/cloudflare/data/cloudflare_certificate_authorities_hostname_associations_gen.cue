@@ -4,6 +4,8 @@ cloudflare_certificate_authorities_hostname_associations: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_certificate_authorities_hostname_associations")
 	close({
+		// Hostnames are returned in lowercase punycode, in no particular order. Null
+		// when there are no associations.
 		hostnames?: [...string]
 
 		// Identifier.

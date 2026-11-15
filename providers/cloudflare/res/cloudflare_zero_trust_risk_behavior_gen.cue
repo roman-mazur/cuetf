@@ -8,7 +8,7 @@ cloudflare_zero_trust_risk_behavior: {
 		behaviors!: [string]: close({
 			enabled!: bool
 
-			// Available values: "low", "medium", "high".
+			// Available values: "info", "low", "medium", "high".
 			risk_level!: string
 		})
 	})

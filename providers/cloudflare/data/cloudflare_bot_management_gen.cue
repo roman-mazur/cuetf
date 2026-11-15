@@ -4,12 +4,31 @@ cloudflare_bot_management: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_bot_management")
 	close({
+		// Configure blocking behavior for supported personal AI agents.
+		ai_agents?: close({
+			// Action to apply to one supported personal AI agent.
+			// Available values: "disabled", "block", "only_on_ad_pages".
+			anthropic_agent?: string
+
+			// Action to apply to one supported personal AI agent.
+			// Available values: "disabled", "block", "only_on_ad_pages".
+			google_agent?: string
+
+			// Action to apply to one supported personal AI agent.
+			// Available values: "disabled", "block", "only_on_ad_pages".
+			instinct?: string
+
+			// Action to apply to one supported personal AI agent.
+			// Available values: "disabled", "block", "only_on_ad_pages".
+			muse?: string
+
+			// Action to apply to one supported personal AI agent.
+			// Available values: "disabled", "block", "only_on_ad_pages".
+			openai_agent?: string
+		})
+
 		// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
 		ai_bots_migration_opt_out?: bool
-
-		// Enable rule to block AI Scrapers and Crawlers.
-		// Available values: "block", "disabled", "only_on_ad_pages".
-		ai_bots_protection?: string
 
 		// Configure robots.txt policy for AI model training bots.
 		// Available values: "disabled", "disallow", "block", "only_on_ad_pages".
@@ -113,6 +132,10 @@ cloudflare_bot_management: {
 			// Indicates that the zone's session score tracking is disabled.
 			suppress_session_score?: bool
 		})
+
+		// Enable rule to block AI Scrapers and Crawlers.
+		// Available values: "block", "disabled", "only_on_ad_pages".
+		ai_bots_protection?: string
 
 		// Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
 		suppress_session_score?: bool

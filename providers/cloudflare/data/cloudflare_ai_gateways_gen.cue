@@ -11,10 +11,9 @@ cloudflare_ai_gateways: {
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
+			// Require authentication for gateway access. New gateways must have
+			// authentication enabled. Once enabled, authentication cannot be disabled.
 			authentication?: bool
-
-			// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
-			byok_only?: bool
 			dlp?: close({
 				// Available values: "BLOCK", "FLAG".
 				action?: string
@@ -37,8 +36,8 @@ cloudflare_ai_gateways: {
 				profiles?: [...string]
 			})
 
-			// Unique identifier of the AI Gateway within the account.
-			id?: string
+			// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+			byok_only?: bool
 			guardrails?: close({
 				prompt?: close({
 					// Available values: "FLAG", "BLOCK".
@@ -58,6 +57,9 @@ cloudflare_ai_gateways: {
 
 					// Available values: "FLAG", "BLOCK".
 					s13?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s14?: string
 
 					// Available values: "FLAG", "BLOCK".
 					s2?: string
@@ -103,6 +105,9 @@ cloudflare_ai_gateways: {
 					s13?: string
 
 					// Available values: "FLAG", "BLOCK".
+					s14?: string
+
+					// Available values: "FLAG", "BLOCK".
 					s2?: string
 
 					// Available values: "FLAG", "BLOCK".
@@ -129,8 +134,9 @@ cloudflare_ai_gateways: {
 			})
 			cache_invalidate_on_update?: bool
 
-			// Available values: "STOP_INSERTING", "DELETE_OLDEST".
-			log_management_strategy?: string
+			// FedRAMP compliance level: fedramp-medium or fedramp-high.
+			// Available values: "fedramp-medium", "fedramp-high".
+			fedramp_level?: string
 			otel?: matchN(1, [close({
 				authorization?: string
 
@@ -148,8 +154,10 @@ cloudflare_ai_gateways: {
 			})]])
 			cache_ttl?: number
 
-			// Available values: "fixed", "sliding".
-			rate_limiting_technique?: string
+			// FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but
+			// allows fallback. "require" strictly filters.
+			// Available values: "prefer", "require".
+			fedramp_mode?: string
 			spend_limits?: close({
 				enabled?: bool
 				rules?: matchN(1, [close({
@@ -208,9 +216,8 @@ cloudflare_ai_gateways: {
 			})
 			collect_logs?: bool
 
-			// Backoff strategy for retry delays
-			// Available values: "constant", "linear", "exponential".
-			retry_backoff?: string
+			// Unique identifier of the AI Gateway within the account.
+			id?: string
 			stripe?: close({
 				authorization?: string
 				usage_events?: matchN(1, [close({
@@ -221,12 +228,28 @@ cloudflare_ai_gateways: {
 			})
 			created_at?: string
 
+			// Available values: "STOP_INSERTING", "DELETE_OLDEST".
+			log_management_strategy?: string
+
+			// Available values: "fixed", "sliding".
+			rate_limiting_technique?: string
+
+			// Backoff strategy for retry delays
+			// Available values: "constant", "linear", "exponential".
+			retry_backoff?: string
+
 			// Delay between retry attempts in milliseconds (0-60000)
 			retry_delay?: number
+			is_default?:  bool
 
 			// Maximum number of retry attempts for failed requests (1-5)
 			retry_max_attempts?: number
-			is_default?:         bool
+			log_classification?: bool
+
+			// Secrets Store used by this gateway. Omit on update to keep the current store.
+			// Cannot be cleared while stored keys or secret references depend on it.
+			store_id?:       string
+			log_management?: number
 
 			// Controls how Workers AI inference calls routed through this gateway are
 			// billed. 'postpaid' bills the account directly through Workers AI; 'unified'
@@ -234,20 +257,16 @@ cloudflare_ai_gateways: {
 			// billing to AI Gateway.
 			// Available values: "postpaid", "unified".
 			workers_ai_billing_mode?: string
-			log_classification?:      bool
-			log_management?:          number
 			logpush?:                 bool
 			logpush_public_key?:      string
 			modified_at?:             string
 			rate_limiting_interval?:  number
 			rate_limiting_limit?:     number
-			store_id?:                string
 			zdr?:                     bool
 		}), [...close({
+			// Require authentication for gateway access. New gateways must have
+			// authentication enabled. Once enabled, authentication cannot be disabled.
 			authentication?: bool
-
-			// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
-			byok_only?: bool
 			dlp?: close({
 				// Available values: "BLOCK", "FLAG".
 				action?: string
@@ -270,8 +289,8 @@ cloudflare_ai_gateways: {
 				profiles?: [...string]
 			})
 
-			// Unique identifier of the AI Gateway within the account.
-			id?: string
+			// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+			byok_only?: bool
 			guardrails?: close({
 				prompt?: close({
 					// Available values: "FLAG", "BLOCK".
@@ -291,6 +310,9 @@ cloudflare_ai_gateways: {
 
 					// Available values: "FLAG", "BLOCK".
 					s13?: string
+
+					// Available values: "FLAG", "BLOCK".
+					s14?: string
 
 					// Available values: "FLAG", "BLOCK".
 					s2?: string
@@ -336,6 +358,9 @@ cloudflare_ai_gateways: {
 					s13?: string
 
 					// Available values: "FLAG", "BLOCK".
+					s14?: string
+
+					// Available values: "FLAG", "BLOCK".
 					s2?: string
 
 					// Available values: "FLAG", "BLOCK".
@@ -362,8 +387,9 @@ cloudflare_ai_gateways: {
 			})
 			cache_invalidate_on_update?: bool
 
-			// Available values: "STOP_INSERTING", "DELETE_OLDEST".
-			log_management_strategy?: string
+			// FedRAMP compliance level: fedramp-medium or fedramp-high.
+			// Available values: "fedramp-medium", "fedramp-high".
+			fedramp_level?: string
 			otel?: matchN(1, [close({
 				authorization?: string
 
@@ -381,8 +407,10 @@ cloudflare_ai_gateways: {
 			})]])
 			cache_ttl?: number
 
-			// Available values: "fixed", "sliding".
-			rate_limiting_technique?: string
+			// FedRAMP enforcement mode. "prefer" prioritizes compliant connectors but
+			// allows fallback. "require" strictly filters.
+			// Available values: "prefer", "require".
+			fedramp_mode?: string
 			spend_limits?: close({
 				enabled?: bool
 				rules?: matchN(1, [close({
@@ -441,9 +469,8 @@ cloudflare_ai_gateways: {
 			})
 			collect_logs?: bool
 
-			// Backoff strategy for retry delays
-			// Available values: "constant", "linear", "exponential".
-			retry_backoff?: string
+			// Unique identifier of the AI Gateway within the account.
+			id?: string
 			stripe?: close({
 				authorization?: string
 				usage_events?: matchN(1, [close({
@@ -454,12 +481,28 @@ cloudflare_ai_gateways: {
 			})
 			created_at?: string
 
+			// Available values: "STOP_INSERTING", "DELETE_OLDEST".
+			log_management_strategy?: string
+
+			// Available values: "fixed", "sliding".
+			rate_limiting_technique?: string
+
+			// Backoff strategy for retry delays
+			// Available values: "constant", "linear", "exponential".
+			retry_backoff?: string
+
 			// Delay between retry attempts in milliseconds (0-60000)
 			retry_delay?: number
+			is_default?:  bool
 
 			// Maximum number of retry attempts for failed requests (1-5)
 			retry_max_attempts?: number
-			is_default?:         bool
+			log_classification?: bool
+
+			// Secrets Store used by this gateway. Omit on update to keep the current store.
+			// Cannot be cleared while stored keys or secret references depend on it.
+			store_id?:       string
+			log_management?: number
 
 			// Controls how Workers AI inference calls routed through this gateway are
 			// billed. 'postpaid' bills the account directly through Workers AI; 'unified'
@@ -467,14 +510,11 @@ cloudflare_ai_gateways: {
 			// billing to AI Gateway.
 			// Available values: "postpaid", "unified".
 			workers_ai_billing_mode?: string
-			log_classification?:      bool
-			log_management?:          number
 			logpush?:                 bool
 			logpush_public_key?:      string
 			modified_at?:             string
 			rate_limiting_interval?:  number
 			rate_limiting_limit?:     number
-			store_id?:                string
 			zdr?:                     bool
 		})]])
 

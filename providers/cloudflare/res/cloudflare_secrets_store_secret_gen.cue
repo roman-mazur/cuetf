@@ -22,9 +22,11 @@ cloudflare_secrets_store_secret: {
 		// The name of the secret
 		name!: string
 
-		// The list of services that can use this secret. Valid values are `workers`,
-		// `ai_gateway`, `dex`, and `access`. Must be listed in alphabetical order.
-		scopes!: [...string]
+		// The list of services that can use this secret, or null when the secret
+		// inherits its store's scopes. Set it to null in a patch to inherit again. An
+		// empty list lets no service use the secret. Explicit scopes must be listed in
+		// alphabetical order.
+		scopes?: [...string]
 
 		// Available values: "pending", "active", "deleted".
 		status?: string

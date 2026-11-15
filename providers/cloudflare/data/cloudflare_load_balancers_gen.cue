@@ -176,14 +176,17 @@ cloudflare_load_balancers: {
 					// used by default, or when region_pools are not configured for a given region.
 					default_pools?: [...string]
 
-					// Configures pool weights.
+					// Configures pool weights for a rule override. An omitted default_weight
+					// inherits the load balancer's default weight.
 					// - `steering_policy="random"`: A random pool is selected with probability
 					// proportional to pool weights.
 					// - `steering_policy="least_outstanding_requests"`: Use pool weights to scale
 					// each pool's outstanding requests.
 					// - `steering_policy="least_connections"`: Use pool weights to scale each pool's open connections.
 					random_steering?: close({
-						// The default weight for pools in the load balancer that are not specified in the pool_weights map.
+						// The default weight for pools in the load balancer that are not specified in
+						// the pool_weights map. An omitted value inherits the load balancer's default
+						// weight.
 						default_weight?: number
 
 						// A mapping of pool IDs to custom weights. The weight is relative to other
@@ -326,9 +329,9 @@ cloudflare_load_balancers: {
 				name?: string
 
 				// The order in which rules should be executed in relation to each other. Lower
-				// values are executed first. Values do not need to be sequential. If no value
-				// is provided for any rule the array order of the rules field will be used to
-				// assign a priority.
+				// values are executed first. Values do not need to be sequential. If all
+				// priorities are omitted or zero, the API assigns priorities based on the
+				// array order of the rules field.
 				priority?: number
 
 				// If this rule's condition is true, this causes rule evaluation to stop after processing this rule.
@@ -410,14 +413,17 @@ cloudflare_load_balancers: {
 					// used by default, or when region_pools are not configured for a given region.
 					default_pools?: [...string]
 
-					// Configures pool weights.
+					// Configures pool weights for a rule override. An omitted default_weight
+					// inherits the load balancer's default weight.
 					// - `steering_policy="random"`: A random pool is selected with probability
 					// proportional to pool weights.
 					// - `steering_policy="least_outstanding_requests"`: Use pool weights to scale
 					// each pool's outstanding requests.
 					// - `steering_policy="least_connections"`: Use pool weights to scale each pool's open connections.
 					random_steering?: close({
-						// The default weight for pools in the load balancer that are not specified in the pool_weights map.
+						// The default weight for pools in the load balancer that are not specified in
+						// the pool_weights map. An omitted value inherits the load balancer's default
+						// weight.
 						default_weight?: number
 
 						// A mapping of pool IDs to custom weights. The weight is relative to other
@@ -560,9 +566,9 @@ cloudflare_load_balancers: {
 				name?: string
 
 				// The order in which rules should be executed in relation to each other. Lower
-				// values are executed first. Values do not need to be sequential. If no value
-				// is provided for any rule the array order of the rules field will be used to
-				// assign a priority.
+				// values are executed first. Values do not need to be sequential. If all
+				// priorities are omitted or zero, the API assigns priorities based on the
+				// array order of the rules field.
 				priority?: number
 
 				// If this rule's condition is true, this causes rule evaluation to stop after processing this rule.
@@ -859,14 +865,17 @@ cloudflare_load_balancers: {
 					// used by default, or when region_pools are not configured for a given region.
 					default_pools?: [...string]
 
-					// Configures pool weights.
+					// Configures pool weights for a rule override. An omitted default_weight
+					// inherits the load balancer's default weight.
 					// - `steering_policy="random"`: A random pool is selected with probability
 					// proportional to pool weights.
 					// - `steering_policy="least_outstanding_requests"`: Use pool weights to scale
 					// each pool's outstanding requests.
 					// - `steering_policy="least_connections"`: Use pool weights to scale each pool's open connections.
 					random_steering?: close({
-						// The default weight for pools in the load balancer that are not specified in the pool_weights map.
+						// The default weight for pools in the load balancer that are not specified in
+						// the pool_weights map. An omitted value inherits the load balancer's default
+						// weight.
 						default_weight?: number
 
 						// A mapping of pool IDs to custom weights. The weight is relative to other
@@ -1009,9 +1018,9 @@ cloudflare_load_balancers: {
 				name?: string
 
 				// The order in which rules should be executed in relation to each other. Lower
-				// values are executed first. Values do not need to be sequential. If no value
-				// is provided for any rule the array order of the rules field will be used to
-				// assign a priority.
+				// values are executed first. Values do not need to be sequential. If all
+				// priorities are omitted or zero, the API assigns priorities based on the
+				// array order of the rules field.
 				priority?: number
 
 				// If this rule's condition is true, this causes rule evaluation to stop after processing this rule.
@@ -1093,14 +1102,17 @@ cloudflare_load_balancers: {
 					// used by default, or when region_pools are not configured for a given region.
 					default_pools?: [...string]
 
-					// Configures pool weights.
+					// Configures pool weights for a rule override. An omitted default_weight
+					// inherits the load balancer's default weight.
 					// - `steering_policy="random"`: A random pool is selected with probability
 					// proportional to pool weights.
 					// - `steering_policy="least_outstanding_requests"`: Use pool weights to scale
 					// each pool's outstanding requests.
 					// - `steering_policy="least_connections"`: Use pool weights to scale each pool's open connections.
 					random_steering?: close({
-						// The default weight for pools in the load balancer that are not specified in the pool_weights map.
+						// The default weight for pools in the load balancer that are not specified in
+						// the pool_weights map. An omitted value inherits the load balancer's default
+						// weight.
 						default_weight?: number
 
 						// A mapping of pool IDs to custom weights. The weight is relative to other
@@ -1243,9 +1255,9 @@ cloudflare_load_balancers: {
 				name?: string
 
 				// The order in which rules should be executed in relation to each other. Lower
-				// values are executed first. Values do not need to be sequential. If no value
-				// is provided for any rule the array order of the rules field will be used to
-				// assign a priority.
+				// values are executed first. Values do not need to be sequential. If all
+				// priorities are omitted or zero, the API assigns priorities based on the
+				// array order of the rules field.
 				priority?: number
 
 				// If this rule's condition is true, this causes rule evaluation to stop after processing this rule.

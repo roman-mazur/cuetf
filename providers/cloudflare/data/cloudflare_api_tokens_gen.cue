@@ -227,6 +227,16 @@ cloudflare_api_tokens: {
 			// Status of the token.
 			// Available values: "active", "disabled", "expired".
 			status?: string
+
+			// The prefix of the token value, before the first underscore. Use it with
+			// `token_suffix` to identify a token. Only present for tokens created or
+			// rolled after this field was added.
+			token_prefix?: string
+
+			// The last 4 characters of the token value. Use it with `token_prefix` to
+			// identify a token. It is not unique. Only present for tokens created or
+			// rolled after this field was added.
+			token_suffix?: string
 		}), [...close({
 			condition?: close({
 				// Client IP restrictions.
@@ -439,6 +449,16 @@ cloudflare_api_tokens: {
 			// Status of the token.
 			// Available values: "active", "disabled", "expired".
 			status?: string
+
+			// The prefix of the token value, before the first underscore. Use it with
+			// `token_suffix` to identify a token. Only present for tokens created or
+			// rolled after this field was added.
+			token_prefix?: string
+
+			// The last 4 characters of the token value. Use it with `token_prefix` to
+			// identify a token. It is not unique. Only present for tokens created or
+			// rolled after this field was added.
+			token_suffix?: string
 		})]])
 	})
 }

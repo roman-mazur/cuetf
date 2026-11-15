@@ -212,6 +212,8 @@ cloudflare_worker: {
 
 				// Enables [Smart
 				// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+				//
+				// Targeted placement mode.
 				// Available values: "smart", "targeted".
 				mode?: string
 

@@ -10,7 +10,7 @@ cloudflare_user_group: {
 		// Timestamp for the creation of the user group
 		created_on?: string
 
-		// User Group identifier tag.
+		// Identifier of the user group.
 		id?: string
 
 		// Last time the user group was modified.

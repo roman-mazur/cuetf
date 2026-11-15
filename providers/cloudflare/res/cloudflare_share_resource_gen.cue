@@ -7,7 +7,7 @@ cloudflare_share_resource: {
 		// Account identifier.
 		account_id!: string
 
-		// When the share was created.
+		// When the object was created.
 		created?: string
 
 		// Share Resource identifier.
@@ -16,13 +16,13 @@ cloudflare_share_resource: {
 		// Resource Metadata.
 		meta!: string
 
-		// When the share was modified.
+		// When the object was last modified.
 		modified?: string
 
-		// Account identifier.
+		// The account that owns the resource. Must match the `account_id` in the path.
 		resource_account_id!: string
 
-		// Share Resource identifier.
+		// Identifier assigned by the service that owns the shared resource.
 		resource_id!: string
 
 		// Resource Type.

@@ -25,6 +25,12 @@ cloudflare_workflow: {
 		id?: string
 		instances?: [string]: number
 		is_deleted?: number
+
+		// Jurisdiction where instances of this workflow run and store data. Can only be
+		// set when the workflow is created and cannot be changed afterwards; omit it
+		// to keep the existing jurisdiction.
+		// Available values: "eu", "fedramp", "us".
+		jurisdiction?: string
 		limits?: close({
 			steps?: number
 		})

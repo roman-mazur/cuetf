@@ -35,7 +35,7 @@ cloudflare_queue: {
 			// Name of the dead letter queue, or empty string if not configured
 			dead_letter_queue?: string
 
-			// Name of a Worker
+			// For `type: worker`: Name of a Worker
 			script_name?: string
 			queue_name?:  string
 
@@ -70,7 +70,7 @@ cloudflare_queue: {
 			// Name of the dead letter queue, or empty string if not configured
 			dead_letter_queue?: string
 
-			// Name of a Worker
+			// For `type: worker`: Name of a Worker
 			script_name?: string
 			queue_name?:  string
 

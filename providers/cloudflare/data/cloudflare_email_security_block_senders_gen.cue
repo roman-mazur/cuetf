@@ -11,6 +11,10 @@ cloudflare_email_security_block_senders: {
 		// Available values: "asc", "desc".
 		direction?: string
 
+		// Filter to return only expired patterns (`true`) or only patterns that still
+		// apply (`false`). Omit to return both.
+		expired?: bool
+
 		// Max items to fetch, default: 1000
 		max_items?: number
 
@@ -29,9 +33,14 @@ cloudflare_email_security_block_senders: {
 		result?: matchN(1, [close({
 			comments?: string
 
-			// Blocked sender pattern identifier.
-			id?:         string
+			// Timestamp at which the pattern expires. After this time, Email Security
+			// ignores the pattern. The value must lie in the future. Send `null` to clear
+			// the expiration.
+			expires_at?: string
 			created_at?: string
+
+			// Blocked sender pattern identifier.
+			id?: string
 
 			// Whether `pattern` is a regular expression instead of a literal value.
 			is_regex?: bool
@@ -61,9 +70,14 @@ cloudflare_email_security_block_senders: {
 		}), [...close({
 			comments?: string
 
-			// Blocked sender pattern identifier.
-			id?:         string
+			// Timestamp at which the pattern expires. After this time, Email Security
+			// ignores the pattern. The value must lie in the future. Send `null` to clear
+			// the expiration.
+			expires_at?: string
 			created_at?: string
+
+			// Blocked sender pattern identifier.
+			id?: string
 
 			// Whether `pattern` is a regular expression instead of a literal value.
 			is_regex?: bool

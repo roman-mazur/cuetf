@@ -7,35 +7,38 @@ cloudflare_zero_trust_dlp_custom_profile: {
 		account_id?:         string
 		ai_context_enabled?: bool
 
-		// Related DLP policies will trigger when the match count exceeds the number set.
+		// For `type: custom`: Related DLP policies will trigger when the match count
+		// exceeds the number set.
 		allowed_match_count?: number
 
 		// Available values: "low", "medium", "high", "very_high".
 		confidence_threshold?: string
 
-		// When the profile was created.
+		// For `type: custom`: When the profile was created.
 		created_at?: string
 
-		// Data classes associated with this profile.
+		// For `type: custom`: Data classes associated with this profile.
 		data_classes?: [...string]
 
-		// Data tags associated with this profile.
+		// For `type: custom`: Data tags associated with this profile.
 		data_tags?: [...string]
 
-		// The description of the profile.
+		// For `type: custom` or `type: integration`: The description of the profile.
 		description?:    string
 		id?:             string
 		integration_id?: string
 
-		// The name of the profile.
+		// For `type: custom`: The name of the profile.
+		//
+		// For `type: predefined`: The name of the predefined profile.
 		name?:        string
 		ocr_enabled?: bool
 
-		// Whether this profile can be accessed by anyone.
+		// For `type: predefined`: Whether this profile can be accessed by anyone.
 		open_access?: bool
 		profile_id!:  string
 
-		// Sensitivity levels associated with this profile.
+		// For `type: custom`: Sensitivity levels associated with this profile.
 		sensitivity_levels?: matchN(1, [close({
 			group_id?: string
 			level_id?: string
@@ -44,7 +47,7 @@ cloudflare_zero_trust_dlp_custom_profile: {
 			level_id?: string
 		})]])
 		shared_entries?: matchN(1, [close({
-			// Only applies to custom word lists.
+			// For `type: exact_data`: Only applies to custom word lists.
 			// Determines if the words should be matched in a case-sensitive manner
 			// Cannot be set to false if secret is true
 			case_sensitive?: bool
@@ -57,20 +60,27 @@ cloudflare_zero_trust_dlp_custom_profile: {
 			})
 			created_at?: string
 
-			// Whether this entry is deprecated for new use. This is computed from the static catalog and
+			// For `type: predefined`: Whether this entry is deprecated for new use. This is
+			// computed from the static catalog and
 			// emitted only when true.
 			deprecated?: bool
 			pattern?: close({
 				regex?: string
 			})
 
-			// Available values: "custom", "custom_prompt_topic", "predefined",
-			// "integration", "exact_data", "document_fingerprint", "word_list".
-			type?: string
+			// For `type: custom_prompt_topic`: The optional description of the custom prompt topic entry.
+			//
+			// For `type: exact_data`: The optional description of the exact data entry.
+			//
+			// For `type: document_fingerprint`: The optional description of the document fingerprint entry.
+			description?: string
 
-			// A Predefined AI prompt classification topic entry.
+			// For `type: predefined`: A Predefined AI prompt classification topic entry.
 			variant?: close({
-				// A customer-facing explanation of what this predefined AI prompt topic represents.
+				// For `type: PromptTopic`: A customer-facing explanation of what this
+				// predefined AI prompt topic represents.
+				//
+				// For `type: General`: A customer-facing explanation of what this predefined entry represents.
 				description?: string
 
 				// Available values: "Intent", "Content".
@@ -79,16 +89,27 @@ cloudflare_zero_trust_dlp_custom_profile: {
 				// Available values: "PromptTopic", "General".
 				type?: string
 			})
-			description?: string
-			enabled?:     bool
-			id?:          string
-			name?:        string
-			profile_id?:  string
-			secret?:      bool
-			updated_at?:  string
+
+			// Available values: "custom", "custom_prompt_topic", "predefined",
+			// "integration", "exact_data", "document_fingerprint", "word_list".
+			type?:    string
+			enabled?: bool
+
+			// For `type: custom`: Validators this entry references, by id, at most 10. An
+			// empty list means the entry
+			// references none.
+			//
+			// Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+			// as profiles.
+			validator_ids?: [...string]
+			id?:         string
+			name?:       string
+			profile_id?: string
+			secret?:     bool
+			updated_at?: string
 			word_list?: [...string]
 		}), [...close({
-			// Only applies to custom word lists.
+			// For `type: exact_data`: Only applies to custom word lists.
 			// Determines if the words should be matched in a case-sensitive manner
 			// Cannot be set to false if secret is true
 			case_sensitive?: bool
@@ -101,20 +122,27 @@ cloudflare_zero_trust_dlp_custom_profile: {
 			})
 			created_at?: string
 
-			// Whether this entry is deprecated for new use. This is computed from the static catalog and
+			// For `type: predefined`: Whether this entry is deprecated for new use. This is
+			// computed from the static catalog and
 			// emitted only when true.
 			deprecated?: bool
 			pattern?: close({
 				regex?: string
 			})
 
-			// Available values: "custom", "custom_prompt_topic", "predefined",
-			// "integration", "exact_data", "document_fingerprint", "word_list".
-			type?: string
+			// For `type: custom_prompt_topic`: The optional description of the custom prompt topic entry.
+			//
+			// For `type: exact_data`: The optional description of the exact data entry.
+			//
+			// For `type: document_fingerprint`: The optional description of the document fingerprint entry.
+			description?: string
 
-			// A Predefined AI prompt classification topic entry.
+			// For `type: predefined`: A Predefined AI prompt classification topic entry.
 			variant?: close({
-				// A customer-facing explanation of what this predefined AI prompt topic represents.
+				// For `type: PromptTopic`: A customer-facing explanation of what this
+				// predefined AI prompt topic represents.
+				//
+				// For `type: General`: A customer-facing explanation of what this predefined entry represents.
 				description?: string
 
 				// Available values: "Intent", "Content".
@@ -123,20 +151,31 @@ cloudflare_zero_trust_dlp_custom_profile: {
 				// Available values: "PromptTopic", "General".
 				type?: string
 			})
-			description?: string
-			enabled?:     bool
-			id?:          string
-			name?:        string
-			profile_id?:  string
-			secret?:      bool
-			updated_at?:  string
+
+			// Available values: "custom", "custom_prompt_topic", "predefined",
+			// "integration", "exact_data", "document_fingerprint", "word_list".
+			type?:    string
+			enabled?: bool
+
+			// For `type: custom`: Validators this entry references, by id, at most 10. An
+			// empty list means the entry
+			// references none.
+			//
+			// Returned by the entry endpoints. Not returned on entries embedded in other responses, such
+			// as profiles.
+			validator_ids?: [...string]
+			id?:         string
+			name?:       string
+			profile_id?: string
+			secret?:     bool
+			updated_at?: string
 			word_list?: [...string]
 		})]])
 
 		// Available values: "custom", "predefined", "integration".
 		type?: string
 
-		// When the profile was lasted updated.
+		// For `type: custom`: When the profile was lasted updated.
 		updated_at?: string
 	})
 }

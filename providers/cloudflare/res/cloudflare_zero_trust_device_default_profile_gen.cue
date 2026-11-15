@@ -45,6 +45,11 @@ cloudflare_zero_trust_device_default_profile: {
 			suffix!: string
 		})]])
 
+		// Determines whether the WARP client can silently reauthenticate the user with
+		// device credentials (Microsoft Entra) instead of prompting for browser-based
+		// reauthentication.
+		enable_device_credential_authentication?: bool
+
 		// Whether the policy will be applied to matching devices.
 		enabled?: bool
 
@@ -101,8 +106,16 @@ cloudflare_zero_trust_device_default_profile: {
 		// See
 		// https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
 		global_acceleration?: close({
+			// Whether WARP users may manually override the automatic Global Acceleration
+			// decision. Defaults to true when not provided.
+			allow_manual_override?: bool
+
 			// IP:port entries for the API endpoints.
 			api_endpoints!: [...string]
+
+			// Automatically switch Global Acceleration regions based on device location.
+			// Defaults to false when not provided.
+			autoswitch?: bool
 
 			// Global acceleration settings are used only when "enabled".
 			enabled!: bool

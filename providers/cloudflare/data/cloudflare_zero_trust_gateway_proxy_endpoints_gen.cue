@@ -46,7 +46,7 @@ cloudflare_zero_trust_gateway_proxy_endpoints: {
 		result?: matchN(1, [close({
 			created_at?: string
 
-			// Specify the list of CIDRs to restrict ingress connections.
+			// For `kind: ip`: Specify the list of CIDRs to restrict ingress connections.
 			ips?: [...string]
 			id?: string
 
@@ -63,7 +63,7 @@ cloudflare_zero_trust_gateway_proxy_endpoints: {
 		}), [...close({
 			created_at?: string
 
-			// Specify the list of CIDRs to restrict ingress connections.
+			// For `kind: ip`: Specify the list of CIDRs to restrict ingress connections.
 			ips?: [...string]
 			id?: string
 

@@ -11,6 +11,10 @@ cloudflare_zero_trust_dns_location: {
 		client_default?: bool
 		created_at?:     string
 
+		// Enable DNS64 synthesis for DNS queries matched to this location. When
+		// updating a location, omitting this field resets it to false.
+		dns64_enabled?: bool
+
 		// Specify the identifier of the pair of IPv4 addresses assigned to this
 		// location. When creating a location, if this field is absent or set to null,
 		// the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is

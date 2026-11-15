@@ -23,6 +23,16 @@ cloudflare_organizations: {
 			user?: string
 		})
 
+		// Sort direction for the `order_by` field. Defaults to `asc` when `order_by` is
+		// specified.
+		// Available values: "asc", "desc".
+		direction?: string
+		member?: close({
+			// Filter organizations to those where the given user, by email, is an active member of
+			// that exact organization. This does not include hierarchy-derived access.
+			email?: string
+		})
+
 		// Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements
 		// by repeating the query value.
 		id?: [...string]
@@ -42,6 +52,13 @@ cloudflare_organizations: {
 
 		// Max items to fetch, default: 1000
 		max_items?: number
+
+		// An opaque token returned from the last list response that when
+		// provided will retrieve the next page.
+		//
+		// Parameters used to filter the retrieved list must remain in subsequent
+		// requests with a page token.
+		page_token?: string
 		parent?: close({
 			// Filter the list of organizations to the ones that are a sub-organization
 			// of the specified organization.
@@ -51,13 +68,17 @@ cloudflare_organizations: {
 			id?: string
 		})
 
-		// The amount of items to return. Defaults to 10.
-		page_size?: number
+		// Field to order results by. Currently supported values: `name`.
+		// When not specified, results are ordered by hierarchy.
+		// Available values: "name".
+		order_by?: string
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
 			create_time?: string
 			meta?: close({
+				are_child_accounts_accessible_by_org_members?: bool
+
 				// Ordered chain of organization tags from the root organization down to
 				// (and including) this organization itself. Root organizations return a
 				// single-element array containing their own tag; sub-organizations return
@@ -77,7 +98,8 @@ cloudflare_organizations: {
 					member_management?:                        string
 					sub_org_creation?:                         string
 				})
-				managed_by?: string
+				managed_by?:  string
+				tenant_type?: string
 			})
 			id?: string
 			parent?: close({
@@ -95,6 +117,8 @@ cloudflare_organizations: {
 		}), [...close({
 			create_time?: string
 			meta?: close({
+				are_child_accounts_accessible_by_org_members?: bool
+
 				// Ordered chain of organization tags from the root organization down to
 				// (and including) this organization itself. Root organizations return a
 				// single-element array containing their own tag; sub-organizations return
@@ -114,7 +138,8 @@ cloudflare_organizations: {
 					member_management?:                        string
 					sub_org_creation?:                         string
 				})
-				managed_by?: string
+				managed_by?:  string
+				tenant_type?: string
 			})
 			id?: string
 			parent?: close({
@@ -131,11 +156,7 @@ cloudflare_organizations: {
 			})
 		})]])
 
-		// An opaque token returned from the last list response that when
-		// provided will retrieve the next page.
-		//
-		// Parameters used to filter the retrieved list must remain in subsequent
-		// requests with a page token.
-		page_token?: string
+		// The amount of items to return. Defaults to 10.
+		page_size?: number
 	})
 }

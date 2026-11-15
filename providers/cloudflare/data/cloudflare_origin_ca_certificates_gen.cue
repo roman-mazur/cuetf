@@ -4,14 +4,8 @@ cloudflare_origin_ca_certificates: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_origin_ca_certificates")
 	close({
-		// Limit to the number of records returned.
-		limit?: number
-
 		// Max items to fetch, default: 1000
 		max_items?: number
-
-		// Offset the results.
-		offset?: number
 
 		// The items returned by the data source
 		result?: matchN(1, [close({
@@ -42,9 +36,14 @@ cloudflare_origin_ca_certificates: {
 			// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
 			request_type?: string
 
-			// The number of days for which the certificate should be valid.
+			// The number of days for which the certificate was requested to be valid. Only
+			// returned in the Create Certificate response, where it echoes the requested
+			// value. Not returned when getting or listing certificates.
 			// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 			requested_validity?: number
+
+			// When the certificate was revoked.
+			revoked_at?: string
 		}), [...close({
 			// The Origin CA certificate. Will be newline-encoded.
 			certificate?: string
@@ -73,9 +72,14 @@ cloudflare_origin_ca_certificates: {
 			// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
 			request_type?: string
 
-			// The number of days for which the certificate should be valid.
+			// The number of days for which the certificate was requested to be valid. Only
+			// returned in the Create Certificate response, where it echoes the requested
+			// value. Not returned when getting or listing certificates.
 			// Available values: 7, 30, 90, 365, 730, 1095, 5475.
 			requested_validity?: number
+
+			// When the certificate was revoked.
+			revoked_at?: string
 		})]])
 
 		// Identifier.

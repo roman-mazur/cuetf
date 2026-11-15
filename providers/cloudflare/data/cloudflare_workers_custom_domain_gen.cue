@@ -5,19 +5,31 @@ cloudflare_workers_custom_domain: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/cloudflare_workers_custom_domain")
 	close({
 		// Identifier.
-		account_id?: string
+		account_id!: string
 
 		// ID of the TLS certificate issued for the domain.
 		cert_id?: string
 
 		// ID of the domain.
 		domain_id?: string
+
+		// Whether the configured hostname is routable for the domain. If disabled, then
+		// requests to the configured hostname will not be routed to the configured
+		// Worker. If disabled, then preview routing must be enabled, and only
+		// subdomains of the configured hostname will be routable.
+		enabled?: bool
 		filter?: close({
+			// Whether the configured hostname is routable for the domain.
+			enabled?: bool
+
 			// Worker environment associated with the domain.
 			environment?: string
 
 			// Hostname of the domain.
 			hostname?: string
+
+			// Whether previews are routable for the domain.
+			previews_enabled?: bool
 
 			// Name of the Worker associated with the domain.
 			service?: string
@@ -35,6 +47,14 @@ cloudflare_workers_custom_domain: {
 
 		// ID of the domain.
 		id?: string
+
+		// Whether previews are routable for the domain. If enabled, previews will be
+		// routable as subdomains of the configured hostname. For example, if the
+		// configured hostname is `app.example.com`, then requests to
+		// `my-feature.app.example.com` will be routed to the preview with slug
+		// `my-feature`, if such a preview exists. If preview routing is disabled, then
+		// hostname routing must be enabled.
+		previews_enabled?: bool
 
 		// Name of the Worker associated with the domain. Requests to the configured
 		// hostname will be routed to this Worker.

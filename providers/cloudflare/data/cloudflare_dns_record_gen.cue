@@ -11,12 +11,80 @@ cloudflare_dns_record: {
 		comment_modified_on?: string
 
 		// A valid IPv4 address.
+		//
+		// A valid IPv6 address.
+		//
+		// A valid hostname. Must not match the record's name.
+		//
+		// A valid mail server hostname.
+		//
+		// A valid name server host name.
+		//
+		// A single Base64-encoded OpenPGP Transferable Public Key (RFC 4880 Section 11.1)
+		//
+		// Domain name pointing to the address.
+		//
+		// Text content for the record. The content must consist of quoted "character
+		// strings" (RFC 1035), each with a length of up to 255 bytes. Strings
+		// exceeding this allowed maximum length are automatically split.
+		//
+		// Learn more at <https://www.cloudflare.com/learning/dns/dns-records/dns-txt-record/>.
+		//
+		// Formatted CAA content. See 'data' to set CAA properties.
+		//
+		// Formatted CERT content. See 'data' to set CERT properties.
+		//
+		// Formatted DNSKEY content. See 'data' to set DNSKEY properties.
+		//
+		// Formatted DS content. See 'data' to set DS properties.
+		//
+		// Formatted HTTPS content. See 'data' to set HTTPS properties.
+		//
+		// Formatted LOC content. See 'data' to set LOC properties.
+		//
+		// Formatted NAPTR content. See 'data' to set NAPTR properties.
+		//
+		// Formatted SMIMEA content. See 'data' to set SMIMEA properties.
+		//
+		// Priority, weight, port, and SRV target. See 'data' for setting the individual component values.
+		//
+		// Formatted SSHFP content. See 'data' to set SSHFP properties.
+		//
+		// Formatted SVCB content. See 'data' to set SVCB properties.
+		//
+		// Formatted TLSA content. See 'data' to set TLSA properties.
+		//
+		// Formatted URI content. See 'data' to set URI properties.
 		content?: string
 
 		// When the record was created.
 		created_on?: string
 
-		// Components of a MX record.
+		// Components of a CAA record.
+		//
+		// Components of a CERT record.
+		//
+		// Components of a DNSKEY record.
+		//
+		// Components of a DS record.
+		//
+		// Components of a HTTPS record.
+		//
+		// Components of a LOC record.
+		//
+		// Components of a NAPTR record.
+		//
+		// Components of a SMIMEA record.
+		//
+		// Components of a SRV record.
+		//
+		// Components of a SSHFP record.
+		//
+		// Components of a SVCB record.
+		//
+		// Components of a TLSA record.
+		//
+		// Components of a URI record.
 		data?: close({
 			// Algorithm.
 			algorithm?: number
@@ -37,6 +105,8 @@ cloudflare_dns_record: {
 			fingerprint?: string
 
 			// Flags for the CAA record.
+			//
+			// Flags.
 			flags?: _
 
 			// Key Tag.
@@ -126,6 +196,8 @@ cloudflare_dns_record: {
 			usage?: number
 
 			// Value of the record. This field's semantics depend on the chosen tag.
+			//
+			// Value.
 			value?: string
 
 			// The record weight.

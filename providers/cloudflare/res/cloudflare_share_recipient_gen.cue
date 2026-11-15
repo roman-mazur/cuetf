@@ -24,7 +24,7 @@ cloudflare_share_recipient: {
 		// Available values: "associating", "associated", "disassociating", "disassociated".
 		association_status?: string
 
-		// When the share was created.
+		// When the object was created.
 		created?: string
 
 		// Share Recipient identifier tag.
@@ -33,34 +33,33 @@ cloudflare_share_recipient: {
 		// Include resources in the response.
 		include_resources?: bool
 
-		// When the share was modified.
+		// When the object was last modified.
 		modified?: string
-
-		// Organization identifier.
-		organization_id?: string
 
 		// The account that will receive the share.
 		recipient_account_id?: string
 		resources?: matchN(1, [close({
-			// Share Recipient error message.
+			// Error from the most recent attempt to apply the resource to the recipient.
+			// Empty string when no error has been recorded.
 			error?: string
 
-			// Share Resource identifier.
+			// Identifier assigned by the service that owns the shared resource.
 			resource_id?: string
 
-			// Resource Version.
+			// Resource version applied to the recipient, if reconciliation has occurred.
 			resource_version?: number
 
 			// Whether the error is terminal or will be continually retried.
 			terminal?: bool
 		}), [...close({
-			// Share Recipient error message.
+			// Error from the most recent attempt to apply the resource to the recipient.
+			// Empty string when no error has been recorded.
 			error?: string
 
-			// Share Resource identifier.
+			// Identifier assigned by the service that owns the shared resource.
 			resource_id?: string
 
-			// Resource Version.
+			// Resource version applied to the recipient, if reconciliation has occurred.
 			resource_version?: number
 
 			// Whether the error is terminal or will be continually retried.

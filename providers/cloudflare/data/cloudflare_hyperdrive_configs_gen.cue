@@ -89,6 +89,8 @@ cloudflare_hyperdrive_configs: {
 
 				// Defines the publicly reachable hostname or IP of your origin database.
 				// Private, loopback, and link-local IP addresses are not allowed.
+				//
+				// Defines the host (hostname or IP) of your origin database.
 				host?: string
 
 				// Set the password needed to access your origin database. The API never returns
@@ -206,6 +208,8 @@ cloudflare_hyperdrive_configs: {
 
 				// Defines the publicly reachable hostname or IP of your origin database.
 				// Private, loopback, and link-local IP addresses are not allowed.
+				//
+				// Defines the host (hostname or IP) of your origin database.
 				host?: string
 
 				// Set the password needed to access your origin database. The API never returns

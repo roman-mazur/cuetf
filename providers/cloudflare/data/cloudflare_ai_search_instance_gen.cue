@@ -37,11 +37,8 @@ cloudflare_ai_search_instance: {
 		enable?:          bool
 		engine_version?:  number
 		filter?: close({
-			// Filter by exact Search for Agents hostname (case-insensitive).
+			// Return only instances with this exact Search for Agents hostname (case-insensitive).
 			hostname?: string
-
-			// Filter by namespace.
-			namespace?: string
 
 			// Field to order results by.
 			// Available values: "created_at".
@@ -59,8 +56,8 @@ cloudflare_ai_search_instance: {
 		fusion_method?: string
 		id?:            string
 
-		// Controls which storage backends are used during indexing. Defaults to vector
-		// and keyword indexing for new instances.
+		// Controls which storage backends indexing uses. Defaults to vector and keyword
+		// indexing for new instances. When set, both vector and keyword are required.
 		index_method?: close({
 			// Enable keyword (BM25) storage backend.
 			keyword?: bool
@@ -106,7 +103,7 @@ cloudflare_ai_search_instance: {
 		public_endpoint_params?: close({
 			authorized_hosts?: [...string]
 			chat_completions_endpoint?: close({
-				// Disable chat completions endpoint for this public endpoint
+				// Disable chat completions endpoint for this public endpoint.
 				disabled?: bool
 			})
 
@@ -118,7 +115,7 @@ cloudflare_ai_search_instance: {
 			mcp?: close({
 				description?: string
 
-				// Disable MCP endpoint for this public endpoint
+				// Disable MCP endpoint for this public endpoint.
 				disabled?: bool
 			})
 
@@ -138,20 +135,14 @@ cloudflare_ai_search_instance: {
 			})
 			enabled?: bool
 			search_endpoint?: close({
-				// Disable search endpoint for this public endpoint
+				// Disable search endpoint for this public endpoint.
 				disabled?: bool
 			})
 		})
-		rewrite_query?:   bool
-		score_threshold?: number
-		source?:          string
-		status?:          string
+		rewrite_query?: bool
 
-		// Interval between automatic syncs, in seconds. Allowed values: 900 (15min),
-		// 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h),
-		// 86400 (24h).
-		// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
-		sync_interval?: number
+		// Minimum similarity score a chunk must reach to be returned. Defaults to 0.4.
+		score_threshold?: number
 		retrieval_options?: close({
 			// Metadata fields to boost search results by. Each entry specifies a metadata
 			// field and an optional direction. Direction defaults to 'asc' for
@@ -185,35 +176,37 @@ cloudflare_ai_search_instance: {
 				field?: string
 			})]])
 
-			// Controls which documents are candidates for BM25 scoring. 'and' restricts
+			// Controls which documents become candidates for BM25 scoring. 'and' restricts
 			// candidates to documents containing all query terms; 'or' includes any
-			// document containing at least one term, ranked by BM25 relevance. Defaults to
-			// 'and'.
+			// document containing at least one term and ranks results according to BM25
+			// relevance. When omitted on an update, the existing stored value stays
+			// unchanged; when never set, search falls back to 'and'.
 			// Available values: "and", "or".
 			keyword_match_mode?: string
 		})
-		token_id?: string
+		source?: string
+		status?: string
 
-		// Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer
-		// web-crawler and existing R2 bucket names infer r2. A missing or blank source
-		// without a type uses managed upload-only storage.
-		// Available values: "r2", "web-crawler".
-		type?: string
+		// Interval between automatic syncs, in seconds. Allowed values: 900 (15min),
+		// 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h),
+		// 86400 (24h). Defaults to 86400 (24h).
+		// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
+		sync_interval?: number
 		source_params?: close({
 			// List of path patterns to exclude. Uses micromatch glob syntax: * matches
 			// within a path segment, ** matches across path segments (e.g., /admin/**
-			// matches /admin/users and /admin/settings/advanced). Most accounts are
-			// limited to 10 rules; contact support to raise it.
+			// matches /admin/users and /admin/settings/advanced). Most accounts have a
+			// limit of 10 rules; contact support to raise it.
 			exclude_items?: [...string]
 			web_crawler?: close({
-				// Options for parse_type 'discover', where Browser Run discovers URLs by link
-				// following and sitemaps. Ignored for 'sitemap'.
+				// Options for parse_type 'discover', where Browser Run discovers URLs through
+				// link following and sitemaps. Ignored for 'sitemap'.
 				discover_options?: close({
 					// Maximum link-follow depth from the seed URL.
 					depth?: number
 
-					// Follow links that point outside the source domain. Must stay `false` —
-					// discover crawls are restricted to the zone you own.
+					// Follow links that point outside the source domain. Must stay `false` because
+					// discover crawls only cover the zone you own.
 					include_external_links?: bool
 
 					// Follow links to subdomains of the source host.
@@ -231,42 +224,42 @@ cloudflare_ai_search_instance: {
 					source?: string
 				})
 
-				// How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows
-				// links recursively and requires the source to be a Verified zone on this
-				// account.
+				// How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows
+				// links recursively and requires the source to belong to a Verified zone on
+				// this account.
 				// Available values: "sitemap", "discover".
 				parse_type?: string
 				parse_options?: close({
 					// List of path-to-selector mappings for extracting specific content from
 					// crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The
-					// first matching path wins. Only the matched HTML fragment is stored and
-					// indexed. Omit the field to disable content selection — empty arrays are
-					// rejected.
+					// first matching path wins. The crawler stores and indexes only the matched
+					// HTML fragment. Omit the field to disable content selection; the API rejects
+					// empty arrays.
 					content_selector?: matchN(1, [close({
 						// Glob pattern to match against the page URL path. Uses standard glob syntax: *
 						// matches within a segment, ** crosses directories.
 						path?: string
 
-						// CSS selector to extract content from pages matching the path pattern. Must
-						// not contain disallowed characters (;, `, $, {, }, \). Must target a single
-						// element; if multiple elements match, the selector is ignored and the full
-						// page is used.
+						// CSS selector to extract content from pages matching the path pattern.
+						// Disallowed characters: ;, `, $, {, }, \. Must target a single element; if
+						// multiple elements match, the crawler ignores the selector and uses the full
+						// page.
 						selector?: string
 					}), [...close({
 						// Glob pattern to match against the page URL path. Uses standard glob syntax: *
 						// matches within a segment, ** crosses directories.
 						path?: string
 
-						// CSS selector to extract content from pages matching the path pattern. Must
-						// not contain disallowed characters (;, `, $, {, }, \). Must target a single
-						// element; if multiple elements match, the selector is ignored and the full
-						// page is used.
+						// CSS selector to extract content from pages matching the path pattern.
+						// Disallowed characters: ;, `, $, {, }, \. Must target a single element; if
+						// multiple elements match, the crawler ignores the selector and uses the full
+						// page.
 						selector?: string
 					})]])
 
-					// Up to 5 custom HTTP headers sent with each crawl request. Names must be
-					// RFC-7230 token characters (no spaces, colons, or control characters); values
-					// must be HTAB + printable ASCII (no CR/LF).
+					// Up to 5 custom HTTP headers sent with each crawl request. Names must use
+					// RFC-7230 token characters, excluding spaces, colons, and control characters.
+					// Values must use HTAB and printable ASCII only, excluding CR and LF.
 					include_headers?: [string]: string
 					include_images?: bool
 
@@ -274,22 +267,22 @@ cloudflare_ai_search_instance: {
 					specific_sitemaps?: [...string]
 					use_browser_rendering?: bool
 				})
-				store_options?: close({
-					r2_jurisdiction?: string
-
-					// Available values: "r2".
-					storage_type?: string
-					storage_id?:   string
-				})
 			})
 
 			// List of path patterns to include. Uses micromatch glob syntax: * matches
 			// within a path segment, ** matches across path segments (e.g., /blog/**
-			// matches /blog/post and /blog/2024/post). Most accounts are limited to 10
+			// matches /blog/post and /blog/2024/post). Most accounts have a limit of 10
 			// rules; contact support to raise it.
 			include_items?: [...string]
 			prefix?:          string
 			r2_jurisdiction?: string
 		})
+		token_id?: string
+
+		// Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer
+		// web-crawler and existing R2 bucket names infer r2. A missing or blank source
+		// without a type uses managed upload-only storage.
+		// Available values: "r2", "web-crawler".
+		type?: string
 	})
 }

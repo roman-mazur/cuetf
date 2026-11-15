@@ -11,8 +11,16 @@ cloudflare_pipeline_stream: {
 		// Indicates the endpoint URL of this stream.
 		endpoint?: string
 		filter?: close({
+			// Sort direction.
+			// Available values: "asc", "desc".
+			direction?: string
+
 			// Filters streams by name (case-insensitive substring).
 			name?: string
+
+			// Sorts streams by this field. Defaults to `created_at`.
+			// Available values: "name", "created_at".
+			order_by?: string
 
 			// Specifies the public ID of the pipeline.
 			pipeline_id?: string

@@ -105,7 +105,9 @@ cloudflare_pages_project: {
 				// Available values: "plain_text", "secret_text".
 				type?: string
 
-				// Environment variable value.
+				// For `type: plain_text`: Environment variable value.
+				//
+				// For `type: secret_text`: Secret value.
 				value?: string
 			})
 
@@ -290,7 +292,9 @@ cloudflare_pages_project: {
 					// Available values: "plain_text", "secret_text".
 					type!: string
 
-					// Environment variable value.
+					// For `type: plain_text`: Environment variable value.
+					//
+					// For `type: secret_text`: Secret value.
 					value!: string
 				})
 
@@ -408,7 +412,9 @@ cloudflare_pages_project: {
 					// Available values: "plain_text", "secret_text".
 					type!: string
 
-					// Environment variable value.
+					// For `type: plain_text`: Environment variable value.
+					//
+					// For `type: secret_text`: Secret value.
 					value!: string
 				})
 
@@ -544,7 +550,9 @@ cloudflare_pages_project: {
 				// Available values: "plain_text", "secret_text".
 				type?: string
 
-				// Environment variable value.
+				// For `type: plain_text`: Environment variable value.
+				//
+				// For `type: secret_text`: Secret value.
 				value?: string
 			})
 

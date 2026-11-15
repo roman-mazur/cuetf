@@ -45,6 +45,11 @@ cloudflare_zero_trust_device_default_profile: {
 			suffix?: string
 		})]])
 
+		// Determines whether the WARP client can silently reauthenticate the user with
+		// device credentials (Microsoft Entra) instead of prompting for browser-based
+		// reauthentication.
+		enable_device_credential_authentication?: bool
+
 		// Whether the policy will be applied to matching devices.
 		enabled?: bool
 

@@ -27,21 +27,21 @@ cloudflare_account_dns_settings: {
 				reference_zone_id?: string
 			})
 
-			// Whether to enable Foundation DNS Advanced Nameservers on the zone.
-			foundation_dns?: bool
-
-			// Settings determining the nameservers through which the zone should be available.
-			nameservers?: close({
-				// Nameserver type
-				// Available values: "cloudflare.standard", "cloudflare.standard.random",
-				// "custom.account", "custom.tenant".
-				type?: string
-			})
-
 			// Whether to enable multi-provider DNS, which causes Cloudflare to activate the
 			// zone even when non-Cloudflare NS records exist, and to respect NS records at
 			// the zone apex during outbound zone transfers.
 			multi_provider?: bool
+
+			// Settings determining the nameservers through which the zone should be available.
+			nameservers?: close({
+				// Nameserver type
+				// Available values: "cloudflare.standard", "cloudflare.advanced",
+				// "cloudflare.standard.random", "custom.account", "custom.tenant".
+				type?: string
+			})
+
+			// The time to live (TTL) of the zone's nameserver (NS) records.
+			ns_ttl?: number
 
 			// Components of the zone's SOA record.
 			soa?: close({
@@ -71,9 +71,6 @@ cloudflare_account_dns_settings: {
 				// The time to live (TTL) of the SOA record itself.
 				ttl?: number
 			})
-
-			// The time to live (TTL) of the zone's nameserver (NS) records.
-			ns_ttl?: number
 
 			// Allows a Secondary DNS zone to use (proxied) override records and CNAME
 			// flattening at the zone apex.

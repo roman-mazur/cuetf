@@ -18,7 +18,7 @@ cloudflare_queue_consumer: {
 		queue_id!:   string
 		queue_name?: string
 
-		// Name of a Worker
+		// For `type: worker`: Name of a Worker
 		script_name?: string
 		settings?: close({
 			// The maximum number of messages to include in a batch.

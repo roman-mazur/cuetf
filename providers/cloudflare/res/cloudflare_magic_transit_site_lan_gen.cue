@@ -26,6 +26,19 @@ cloudflare_magic_transit_site_lan: {
 			static_prefix?: string
 		})
 		physport?: number
+		remote_subnets?: matchN(1, [close({
+			// A valid CIDR notation representing an IP range.
+			local_alias_prefix!: string
+
+			// A valid CIDR notation representing an IP range.
+			remote_prefix!: string
+		}), [...close({
+			// A valid CIDR notation representing an IP range.
+			local_alias_prefix!: string
+
+			// A valid CIDR notation representing an IP range.
+			remote_prefix!: string
+		})]])
 		routed_subnets?: matchN(1, [close({
 			nat?: close({
 				// A valid CIDR notation representing an IP range.

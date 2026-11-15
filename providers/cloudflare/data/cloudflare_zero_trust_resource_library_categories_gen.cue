@@ -13,6 +13,7 @@ cloudflare_zero_trust_resource_library_categories: {
 		max_items?: number
 
 		// Number of results to skip. Defaults to 0; negative values are clamped to 0.
+		// Ignored when `cursor` is provided.
 		offset?: number
 
 		// The items returned by the data source

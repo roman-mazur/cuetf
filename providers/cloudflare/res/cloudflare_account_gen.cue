@@ -10,6 +10,23 @@ cloudflare_account: {
 		// Identifier
 		id?: string
 
+		// Legacy account flags.
+		legacy_flags?: close({
+			// Enterprise zone quota for standard and enterprise accounts. Accounts without
+			// a quota have a maximum of 0.
+			enterprise_zone_quota?: close({
+				// Number of additional Enterprise zones available. Returns 0 if the quota is
+				// not allocated or is exhausted.
+				available?: number
+
+				// Current number of Enterprise zones.
+				current?: number
+
+				// Maximum number of Enterprise zones allowed.
+				maximum?: number
+			})
+		})
+
 		// Parent container details
 		managed_by?: close({
 			// ID of the parent Organization, if one exists
@@ -17,9 +34,15 @@ cloudflare_account: {
 
 			// Name of the parent Organization, if one exists
 			parent_org_name?: string
+
+			// ID of the root Organization, if one exists
+			root_org_id?: string
+
+			// Indicates whether the parent Organization hierarchy should be displayed
+			should_display_parent_orgs?: bool
 		})
 
-		// Account name
+		// Account name, limited to 65 UTF-8 bytes.
 		name!: string
 
 		// Account settings

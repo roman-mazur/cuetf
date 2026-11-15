@@ -8,20 +8,34 @@ cloudflare_zone_lockdown: {
 		// specified in the Zone Lockdown rule. You can include any number of `ip` or
 		// `ip_range` configurations.
 		configurations!: matchN(1, [close({
-			// The configuration target. You must set the target to `ip` when specifying an
-			// IP address in the Zone Lockdown rule.
+			// For `target: ip`: The configuration target. You must set the target to `ip`
+			// when specifying an IP address in the Zone Lockdown rule.
+			//
+			// For `target: ip_range`: The configuration target. You must set the target to
+			// `ip_range` when specifying an IP address range in the Zone Lockdown rule.
 			// Available values: "ip", "ip_range".
 			target?: string
 
-			// The IP address to match. This address will be compared to the IP address of incoming requests.
+			// For `target: ip`: The IP address to match. This address will be compared to
+			// the IP address of incoming requests.
+			//
+			// For `target: ip_range`: The IP address range to match. You can only use
+			// prefix lengths `/16` and `/24`.
 			value?: string
 		}), [...close({
-			// The configuration target. You must set the target to `ip` when specifying an
-			// IP address in the Zone Lockdown rule.
+			// For `target: ip`: The configuration target. You must set the target to `ip`
+			// when specifying an IP address in the Zone Lockdown rule.
+			//
+			// For `target: ip_range`: The configuration target. You must set the target to
+			// `ip_range` when specifying an IP address range in the Zone Lockdown rule.
 			// Available values: "ip", "ip_range".
 			target?: string
 
-			// The IP address to match. This address will be compared to the IP address of incoming requests.
+			// For `target: ip`: The IP address to match. This address will be compared to
+			// the IP address of incoming requests.
+			//
+			// For `target: ip_range`: The IP address range to match. You can only use
+			// prefix lengths `/16` and `/24`.
 			value?: string
 		})]])
 

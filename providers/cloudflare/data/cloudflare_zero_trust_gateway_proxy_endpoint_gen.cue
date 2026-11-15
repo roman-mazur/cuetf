@@ -46,7 +46,7 @@ cloudflare_zero_trust_gateway_proxy_endpoint: {
 		})
 		id?: string
 
-		// Specify the list of CIDRs to restrict ingress connections.
+		// For `kind: ip`: Specify the list of CIDRs to restrict ingress connections.
 		ips?: [...string]
 
 		// The proxy endpoint kind

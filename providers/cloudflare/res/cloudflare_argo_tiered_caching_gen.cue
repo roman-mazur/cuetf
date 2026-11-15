@@ -13,7 +13,7 @@ cloudflare_argo_tiered_caching: {
 		// Last time this setting was modified.
 		modified_on?: string
 
-		// Enables Tiered Caching.
+		// Enables or disables Tiered Cache.
 		// Available values: "on", "off".
 		value!: string
 

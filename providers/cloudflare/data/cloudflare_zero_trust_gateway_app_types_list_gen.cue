@@ -21,6 +21,9 @@ cloudflare_zero_trust_gateway_app_types_list: {
 			description?: string
 
 			// Identify this application. Only one application per ID.
+			//
+			// Identify the type of this application. Multiple applications can share the
+			// same type. Refers to the `id` of a returned application type.
 			id?: number
 
 			// Specify the name of the application or application type.
@@ -35,6 +38,9 @@ cloudflare_zero_trust_gateway_app_types_list: {
 			description?: string
 
 			// Identify this application. Only one application per ID.
+			//
+			// Identify the type of this application. Multiple applications can share the
+			// same type. Refers to the `id` of a returned application type.
 			id?: number
 
 			// Specify the name of the application or application type.

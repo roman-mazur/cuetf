@@ -17,6 +17,12 @@ cloudflare_shares: {
 		// Include resources in the response.
 		include_resources?: bool
 
+		// Include share tags in the response. `api` reads tags from the tag service;
+		// `mirror` reads a local, eventually consistent replica. If the tag lookup
+		// fails, the response omits `tags`.
+		// Available values: "api", "mirror".
+		include_tags_from?: string
+
 		// Filter shares by kind.
 		// Available values: "sent", "received".
 		kind?: string
@@ -39,7 +45,7 @@ cloudflare_shares: {
 			// A list of resources that are part of the share. This field is only included
 			// when requested via the 'include_resources' parameter.
 			resources?: matchN(1, [close({
-				// When the share was created.
+				// When the object was created.
 				created?: string
 
 				// Share Resource identifier.
@@ -48,13 +54,13 @@ cloudflare_shares: {
 				// Resource Metadata.
 				meta?: string
 
-				// When the share was modified.
+				// When the object was last modified.
 				modified?: string
 
 				// Account identifier.
 				resource_account_id?: string
 
-				// Share Resource identifier.
+				// Identifier assigned by the service that owns the shared resource.
 				resource_id?: string
 
 				// Resource Type.
@@ -70,7 +76,7 @@ cloudflare_shares: {
 				// Available values: "active", "deleting", "deleted".
 				status?: string
 			}), [...close({
-				// When the share was created.
+				// When the object was created.
 				created?: string
 
 				// Share Resource identifier.
@@ -79,13 +85,13 @@ cloudflare_shares: {
 				// Resource Metadata.
 				meta?: string
 
-				// When the share was modified.
+				// When the object was last modified.
 				modified?: string
 
 				// Account identifier.
 				resource_account_id?: string
 
-				// Share Resource identifier.
+				// Identifier assigned by the service that owns the shared resource.
 				resource_id?: string
 
 				// Resource Type.
@@ -113,7 +119,7 @@ cloudflare_shares: {
 			// included when requested via the 'include_recipient_counts' parameter.
 			associating_recipient_count?: number
 
-			// When the share was created.
+			// When the object was created.
 			created?: string
 
 			// The number of recipients in the 'disassociated' state. This field is only
@@ -130,7 +136,7 @@ cloudflare_shares: {
 			// Available values: "sent", "received".
 			kind?: string
 
-			// When the share was modified.
+			// When the object was last modified.
 			modified?: string
 
 			// The name of the share.
@@ -141,6 +147,11 @@ cloudflare_shares: {
 
 			// Available values: "active", "deleting", "deleted".
 			status?: string
+
+			// Tags associated with the share. Included in create and update responses when
+			// tags are supplied, and in read responses when the `include_tags_from`
+			// parameter is set.
+			tags?: [string]: string
 
 			// Available values: "account", "organization".
 			target_type?: string
@@ -151,7 +162,7 @@ cloudflare_shares: {
 			// A list of resources that are part of the share. This field is only included
 			// when requested via the 'include_resources' parameter.
 			resources?: matchN(1, [close({
-				// When the share was created.
+				// When the object was created.
 				created?: string
 
 				// Share Resource identifier.
@@ -160,13 +171,13 @@ cloudflare_shares: {
 				// Resource Metadata.
 				meta?: string
 
-				// When the share was modified.
+				// When the object was last modified.
 				modified?: string
 
 				// Account identifier.
 				resource_account_id?: string
 
-				// Share Resource identifier.
+				// Identifier assigned by the service that owns the shared resource.
 				resource_id?: string
 
 				// Resource Type.
@@ -182,7 +193,7 @@ cloudflare_shares: {
 				// Available values: "active", "deleting", "deleted".
 				status?: string
 			}), [...close({
-				// When the share was created.
+				// When the object was created.
 				created?: string
 
 				// Share Resource identifier.
@@ -191,13 +202,13 @@ cloudflare_shares: {
 				// Resource Metadata.
 				meta?: string
 
-				// When the share was modified.
+				// When the object was last modified.
 				modified?: string
 
 				// Account identifier.
 				resource_account_id?: string
 
-				// Share Resource identifier.
+				// Identifier assigned by the service that owns the shared resource.
 				resource_id?: string
 
 				// Resource Type.
@@ -225,7 +236,7 @@ cloudflare_shares: {
 			// included when requested via the 'include_recipient_counts' parameter.
 			associating_recipient_count?: number
 
-			// When the share was created.
+			// When the object was created.
 			created?: string
 
 			// The number of recipients in the 'disassociated' state. This field is only
@@ -242,7 +253,7 @@ cloudflare_shares: {
 			// Available values: "sent", "received".
 			kind?: string
 
-			// When the share was modified.
+			// When the object was last modified.
 			modified?: string
 
 			// The name of the share.
@@ -253,6 +264,11 @@ cloudflare_shares: {
 
 			// Available values: "active", "deleting", "deleted".
 			status?: string
+
+			// Tags associated with the share. Included in create and update responses when
+			// tags are supplied, and in read responses when the `include_tags_from`
+			// parameter is set.
+			tags?: [string]: string
 
 			// Available values: "account", "organization".
 			target_type?: string

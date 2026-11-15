@@ -18,7 +18,7 @@ cloudflare_ai_search_namespaces: {
 			public_endpoint_params?: close({
 				authorized_hosts?: [...string]
 				chat_completions_endpoint?: close({
-					// Disable chat completions endpoint for this public endpoint
+					// Disable chat completions endpoint for this public endpoint.
 					disabled?: bool
 				})
 
@@ -30,7 +30,7 @@ cloudflare_ai_search_namespaces: {
 				mcp?: close({
 					description?: string
 
-					// Disable MCP endpoint for this public endpoint
+					// Disable MCP endpoint for this public endpoint.
 					disabled?: bool
 				})
 
@@ -50,16 +50,17 @@ cloudflare_ai_search_namespaces: {
 				})
 
 				// Instance IDs exposed through the namespace public endpoint. Empty means
-				// nothing is searchable. Every ID must be an existing instance in this
-				// namespace, and the list cannot exceed the account's multi-instance search
+				// nothing is searchable. Every ID must reference an existing instance in this
+				// namespace, and the list must stay within the account's multi-instance search
 				// limit.
 				instances_allowed?: [...string]
 				enabled?: bool
 				search_endpoint?: close({
-					// Disable search endpoint for this public endpoint
+					// Disable search endpoint for this public endpoint.
 					disabled?: bool
 				})
 			})
+			id?:                 string
 			name?:               string
 			public_endpoint_id?: string
 		}), [...close({
@@ -70,7 +71,7 @@ cloudflare_ai_search_namespaces: {
 			public_endpoint_params?: close({
 				authorized_hosts?: [...string]
 				chat_completions_endpoint?: close({
-					// Disable chat completions endpoint for this public endpoint
+					// Disable chat completions endpoint for this public endpoint.
 					disabled?: bool
 				})
 
@@ -82,7 +83,7 @@ cloudflare_ai_search_namespaces: {
 				mcp?: close({
 					description?: string
 
-					// Disable MCP endpoint for this public endpoint
+					// Disable MCP endpoint for this public endpoint.
 					disabled?: bool
 				})
 
@@ -102,16 +103,17 @@ cloudflare_ai_search_namespaces: {
 				})
 
 				// Instance IDs exposed through the namespace public endpoint. Empty means
-				// nothing is searchable. Every ID must be an existing instance in this
-				// namespace, and the list cannot exceed the account's multi-instance search
+				// nothing is searchable. Every ID must reference an existing instance in this
+				// namespace, and the list must stay within the account's multi-instance search
 				// limit.
 				instances_allowed?: [...string]
 				enabled?: bool
 				search_endpoint?: close({
-					// Disable search endpoint for this public endpoint
+					// Disable search endpoint for this public endpoint.
 					disabled?: bool
 				})
 			})
+			id?:                 string
 			name?:               string
 			public_endpoint_id?: string
 		})]])

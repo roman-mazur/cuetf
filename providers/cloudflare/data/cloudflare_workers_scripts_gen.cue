@@ -38,9 +38,8 @@ cloudflare_workers_scripts: {
 			// entries are omitted, so only live exports (`created` and
 			// `expecting-transfer`) are returned.
 			exports?: [string]: close({
-				// Cache override for this entrypoint. It applies only to
-				// `type: worker` entries and overrides the Worker's global
-				// `cache_options.enabled` for that entrypoint.
+				// For `type: worker`: Cache override for this entrypoint. Overrides the Worker's
+				// global `cache_options.enabled` for this entrypoint only.
 				cache?: close({
 					// Whether caching is enabled for this entrypoint.
 					enabled?: bool
@@ -51,41 +50,46 @@ cloudflare_workers_scripts: {
 				// `exports` map. Write-only: never present in GET responses.
 				renamed_to?: string
 
-				// Lifecycle state of the export entry. Defaults to `created`
-				// (a normal, live export) when omitted.
+				// For `state: created`: Live export. May be omitted; defaults to `created`.
 				//
-				// `deleted`, `renamed`, and `transferred` are tombstones:
-				// write-only lifecycle operations that retire, rename, or hand
-				// off a provisioned Durable Object namespace. They are applied
-				// at upload and are filtered out of GET responses, so a read
-				// only ever returns `created` or `expecting-transfer`.
+				// For `state: deleted`: Tombstone that deletes the namespace.
 				//
-				// `expecting-transfer` is a live export whose data is being
-				// received from another script via the two-phase transfer flow;
-				// it carries `storage` and `transfer_from`.
+				// For `state: renamed`: Tombstone that renames the namespace's class.
+				//
+				// For `state: transferred`: Tombstone that transfers the namespace to another script.
+				//
+				// For `state: expecting-transfer`: Target side of a two-phase transfer.
 				// Available values: "created", "deleted", "renamed", "transferred", "expecting-transfer".
 				state?: string
 
-				// Storage backend for a `type: durable-object` export. Required
-				// for live Durable Object entries (`created` and
-				// `expecting-transfer`). `sqlite` selects SQLite-backed storage;
-				// `legacy-kv` selects the legacy key-value storage.
+				// For `type: durable-object` and `state: created`: Durable Object storage
+				// backend. `sqlite` is the recommended (and
+				// only) backend for new namespaces. `legacy-kv` is accepted only for
+				// a class whose namespace already exists as KV-backed; the `exports`
+				// flow never provisions a new `legacy-kv` namespace.
+				//
+				// For `type: durable-object` and `state: expecting-transfer`: Durable Object
+				// storage backend. `sqlite` is the recommended (and
+				// only) backend for new namespaces. `legacy-kv` is accepted only for
+				// a class whose namespace already exists as KV-backed; the `exports`
+				// flow never provisions a new `legacy-kv` namespace.
 				// Available values: "sqlite", "legacy-kv".
 				storage?: string
 
-				// Source script for a `state: expecting-transfer` entry. The
-				// namespace on this script is materialised from the source
-				// script's data via the pending-transfer flow. Present on reads
-				// for `expecting-transfer` entries.
+				// For `state: expecting-transfer`: The source script name to receive the namespace from. Must be
+				// in the same account and dispatch-namespace context. Present on
+				// reads for `expecting-transfer` entries.
 				transfer_from?: string
 
-				// Destination script for a `state: transferred` tombstone. Must
-				// reference a script in the same account; cross-dispatch-namespace
-				// transfers are rejected. Write-only: never present in GET
-				// responses.
+				// For `state: transferred`: The destination script name. Must be in the same account and
+				// the same dispatch-namespace context (or both non-dispatch).
+				// Cross-dispatch-namespace transfers are rejected. Write-only:
+				// never present in GET responses.
 				transferred_to?: string
 
-				// The kind of export.
+				// For `type: worker`: Marks this entry as a Worker entrypoint export.
+				//
+				// For `type: durable-object`: Marks this entry as a Durable Object export.
 				// Available values: "worker", "durable-object".
 				type?: string
 			})
@@ -230,6 +234,8 @@ cloudflare_workers_scripts: {
 
 				// Enables [Smart
 				// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+				//
+				// Targeted placement mode.
 				// Available values: "smart", "targeted".
 				mode?: string
 
@@ -331,9 +337,8 @@ cloudflare_workers_scripts: {
 			// entries are omitted, so only live exports (`created` and
 			// `expecting-transfer`) are returned.
 			exports?: [string]: close({
-				// Cache override for this entrypoint. It applies only to
-				// `type: worker` entries and overrides the Worker's global
-				// `cache_options.enabled` for that entrypoint.
+				// For `type: worker`: Cache override for this entrypoint. Overrides the Worker's
+				// global `cache_options.enabled` for this entrypoint only.
 				cache?: close({
 					// Whether caching is enabled for this entrypoint.
 					enabled?: bool
@@ -344,41 +349,46 @@ cloudflare_workers_scripts: {
 				// `exports` map. Write-only: never present in GET responses.
 				renamed_to?: string
 
-				// Lifecycle state of the export entry. Defaults to `created`
-				// (a normal, live export) when omitted.
+				// For `state: created`: Live export. May be omitted; defaults to `created`.
 				//
-				// `deleted`, `renamed`, and `transferred` are tombstones:
-				// write-only lifecycle operations that retire, rename, or hand
-				// off a provisioned Durable Object namespace. They are applied
-				// at upload and are filtered out of GET responses, so a read
-				// only ever returns `created` or `expecting-transfer`.
+				// For `state: deleted`: Tombstone that deletes the namespace.
 				//
-				// `expecting-transfer` is a live export whose data is being
-				// received from another script via the two-phase transfer flow;
-				// it carries `storage` and `transfer_from`.
+				// For `state: renamed`: Tombstone that renames the namespace's class.
+				//
+				// For `state: transferred`: Tombstone that transfers the namespace to another script.
+				//
+				// For `state: expecting-transfer`: Target side of a two-phase transfer.
 				// Available values: "created", "deleted", "renamed", "transferred", "expecting-transfer".
 				state?: string
 
-				// Storage backend for a `type: durable-object` export. Required
-				// for live Durable Object entries (`created` and
-				// `expecting-transfer`). `sqlite` selects SQLite-backed storage;
-				// `legacy-kv` selects the legacy key-value storage.
+				// For `type: durable-object` and `state: created`: Durable Object storage
+				// backend. `sqlite` is the recommended (and
+				// only) backend for new namespaces. `legacy-kv` is accepted only for
+				// a class whose namespace already exists as KV-backed; the `exports`
+				// flow never provisions a new `legacy-kv` namespace.
+				//
+				// For `type: durable-object` and `state: expecting-transfer`: Durable Object
+				// storage backend. `sqlite` is the recommended (and
+				// only) backend for new namespaces. `legacy-kv` is accepted only for
+				// a class whose namespace already exists as KV-backed; the `exports`
+				// flow never provisions a new `legacy-kv` namespace.
 				// Available values: "sqlite", "legacy-kv".
 				storage?: string
 
-				// Source script for a `state: expecting-transfer` entry. The
-				// namespace on this script is materialised from the source
-				// script's data via the pending-transfer flow. Present on reads
-				// for `expecting-transfer` entries.
+				// For `state: expecting-transfer`: The source script name to receive the namespace from. Must be
+				// in the same account and dispatch-namespace context. Present on
+				// reads for `expecting-transfer` entries.
 				transfer_from?: string
 
-				// Destination script for a `state: transferred` tombstone. Must
-				// reference a script in the same account; cross-dispatch-namespace
-				// transfers are rejected. Write-only: never present in GET
-				// responses.
+				// For `state: transferred`: The destination script name. Must be in the same account and
+				// the same dispatch-namespace context (or both non-dispatch).
+				// Cross-dispatch-namespace transfers are rejected. Write-only:
+				// never present in GET responses.
 				transferred_to?: string
 
-				// The kind of export.
+				// For `type: worker`: Marks this entry as a Worker entrypoint export.
+				//
+				// For `type: durable-object`: Marks this entry as a Durable Object export.
 				// Available values: "worker", "durable-object".
 				type?: string
 			})
@@ -523,6 +533,8 @@ cloudflare_workers_scripts: {
 
 				// Enables [Smart
 				// Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+				//
+				// Targeted placement mode.
 				// Available values: "smart", "targeted".
 				mode?: string
 

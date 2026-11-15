@@ -49,6 +49,9 @@ cloudflare_zero_trust_device_posture_rule: {
 			check_private_key?: bool
 
 			// Common Name that is protected by the certificate.
+			//
+			// Certificate Common Name. This may include one or more variables in the ${ }
+			// notation. Only ${serial_number} and ${hostname} are valid variables.
 			cn?: string
 
 			// Compliance Status.
@@ -79,6 +82,8 @@ cloudflare_zero_trust_device_posture_rule: {
 			extended_key_usage?: [...string]
 
 			// List ID.
+			//
+			// UUID of Access List.
 			id?: string
 
 			// Whether device is infected.
@@ -98,6 +103,8 @@ cloudflare_zero_trust_device_posture_rule: {
 			network_status?: string
 
 			// Operating system.
+			//
+			// Operating System.
 			// Available values: "windows", "linux", "mac", "android", "ios", "chromeos".
 			operating_system?: string
 
@@ -108,6 +115,8 @@ cloudflare_zero_trust_device_posture_rule: {
 			operational_state?: string
 
 			// Operator.
+			//
+			// Operator to evaluate risk_level or eid_last_seen.
 			// Available values: "<", "<=", ">", ">=", "==".
 			operator?: string
 
@@ -129,6 +138,8 @@ cloudflare_zero_trust_device_posture_rule: {
 			overall?: string
 
 			// File path.
+			//
+			// Path for the application.
 			path?: string
 
 			// Whether to check all disks for encryption.
@@ -168,6 +179,8 @@ cloudflare_zero_trust_device_posture_rule: {
 			update_window_days?: number
 
 			// Version of OS.
+			//
+			// Version.
 			version?: string
 
 			// Version Operator.

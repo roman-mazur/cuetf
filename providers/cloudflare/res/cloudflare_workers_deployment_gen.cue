@@ -6,6 +6,8 @@ cloudflare_workers_deployment: {
 	close({
 		// Identifier.
 		account_id!: string
+
+		// Metadata attached to the deployment.
 		annotations?: close({
 			// Human-readable message about the deployment. Truncated to 1000 bytes if longer.
 			workers_message?: string
@@ -14,7 +16,21 @@ cloudflare_workers_deployment: {
 			workers_triggered_by?: string
 		})
 		author_email?: string
-		created_on?:   string
+
+		// Choose whether to apply Durable Object code updates immediately or defer
+		// them. When omitted, the default strategy applies.
+		code_update_strategy?: close({
+			// For `mode: deferred`: Set the maximum number of seconds to wait before
+			// forcing the update. When omitted, the default maximum delay applies.
+			max_delay?: number
+
+			// For `mode: immediate`: Apply Durable Object code updates immediately.
+			//
+			// For `mode: deferred`: Allow active Durable Objects to hibernate before updating their code.
+			// Available values: "immediate", "deferred".
+			mode!: string
+		})
+		created_on?: string
 
 		// If set to true, the deployment will be created even if normally blocked by
 		// something such rolling back to an older version when a secret has changed.
@@ -25,6 +41,8 @@ cloudflare_workers_deployment: {
 		script_name!: string
 		source?:      string
 
+		// Strategy for routing traffic across the listed versions. `percentage` splits
+		// traffic according to each version's `percentage`.
 		// Available values: "percentage".
 		strategy!: string
 

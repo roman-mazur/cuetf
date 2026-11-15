@@ -176,10 +176,13 @@ cloudflare_zero_trust_access_applications: {
 			app_launcher_visible?: bool
 
 			// Configures multi-factor authentication (MFA) settings for the application.
-			// Only valid for self_hosted, ssh, vnc, and rdp application types.
+			// Only valid for self_hosted, ssh, vnc, rdp, and infrastructure application
+			// types. For infrastructure applications, supported authenticators are
+			// `piv_key` and `ssh_fido2_key`; for other application types use `totp`,
+			// `biometrics`, or `security_key`.
 			mfa_config?: close({
 				// The authenticators allowed for MFA.
-				// Available values: "totp", "biometrics", "security_key".
+				// Available values: "totp", "biometrics", "security_key", "piv_key", "ssh_fido2_key".
 				allowed_authenticators?: [...string]
 
 				// Whether MFA is disabled for this application.
@@ -757,10 +760,13 @@ cloudflare_zero_trust_access_applications: {
 				// The UUID of the policy
 				id?: string
 
-				// Configures multi-factor authentication (MFA) settings for this policy.
+				// Configures multi-factor authentication (MFA) settings for this policy. For
+				// infrastructure applications, supported authenticators are `piv_key` and
+				// `ssh_fido2_key`; for other application types use `totp`, `biometrics`, or
+				// `security_key`.
 				mfa_config?: close({
 					// The authenticators allowed for MFA.
-					// Available values: "totp", "biometrics", "security_key", "ssh_piv_key".
+					// Available values: "totp", "biometrics", "security_key", "piv_key", "ssh_fido2_key".
 					allowed_authenticators?: [...string]
 
 					// Whether MFA is disabled for this policy.
@@ -1618,10 +1624,13 @@ cloudflare_zero_trust_access_applications: {
 				// The UUID of the policy
 				id?: string
 
-				// Configures multi-factor authentication (MFA) settings for this policy.
+				// Configures multi-factor authentication (MFA) settings for this policy. For
+				// infrastructure applications, supported authenticators are `piv_key` and
+				// `ssh_fido2_key`; for other application types use `totp`, `biometrics`, or
+				// `security_key`.
 				mfa_config?: close({
 					// The authenticators allowed for MFA.
-					// Available values: "totp", "biometrics", "security_key", "ssh_piv_key".
+					// Available values: "totp", "biometrics", "security_key", "piv_key", "ssh_fido2_key".
 					allowed_authenticators?: [...string]
 
 					// Whether MFA is disabled for this policy.
@@ -2565,10 +2574,13 @@ cloudflare_zero_trust_access_applications: {
 			app_launcher_visible?: bool
 
 			// Configures multi-factor authentication (MFA) settings for the application.
-			// Only valid for self_hosted, ssh, vnc, and rdp application types.
+			// Only valid for self_hosted, ssh, vnc, rdp, and infrastructure application
+			// types. For infrastructure applications, supported authenticators are
+			// `piv_key` and `ssh_fido2_key`; for other application types use `totp`,
+			// `biometrics`, or `security_key`.
 			mfa_config?: close({
 				// The authenticators allowed for MFA.
-				// Available values: "totp", "biometrics", "security_key".
+				// Available values: "totp", "biometrics", "security_key", "piv_key", "ssh_fido2_key".
 				allowed_authenticators?: [...string]
 
 				// Whether MFA is disabled for this application.
@@ -3146,10 +3158,13 @@ cloudflare_zero_trust_access_applications: {
 				// The UUID of the policy
 				id?: string
 
-				// Configures multi-factor authentication (MFA) settings for this policy.
+				// Configures multi-factor authentication (MFA) settings for this policy. For
+				// infrastructure applications, supported authenticators are `piv_key` and
+				// `ssh_fido2_key`; for other application types use `totp`, `biometrics`, or
+				// `security_key`.
 				mfa_config?: close({
 					// The authenticators allowed for MFA.
-					// Available values: "totp", "biometrics", "security_key", "ssh_piv_key".
+					// Available values: "totp", "biometrics", "security_key", "piv_key", "ssh_fido2_key".
 					allowed_authenticators?: [...string]
 
 					// Whether MFA is disabled for this policy.
@@ -4007,10 +4022,13 @@ cloudflare_zero_trust_access_applications: {
 				// The UUID of the policy
 				id?: string
 
-				// Configures multi-factor authentication (MFA) settings for this policy.
+				// Configures multi-factor authentication (MFA) settings for this policy. For
+				// infrastructure applications, supported authenticators are `piv_key` and
+				// `ssh_fido2_key`; for other application types use `totp`, `biometrics`, or
+				// `security_key`.
 				mfa_config?: close({
 					// The authenticators allowed for MFA.
-					// Available values: "totp", "biometrics", "security_key", "ssh_piv_key".
+					// Available values: "totp", "biometrics", "security_key", "piv_key", "ssh_fido2_key".
 					allowed_authenticators?: [...string]
 
 					// Whether MFA is disabled for this policy.
