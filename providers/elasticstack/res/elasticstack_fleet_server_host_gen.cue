@@ -8,6 +8,37 @@ elasticstack_fleet_server_host: {
 
 		// Set as default.
 		default?: bool
+
+		// TLS configuration Fleet Server presents to Elastic Agents. Requires Elastic
+		// Stack 9.1.0 or later. Changing SSL settings on a Fleet Server host that is
+		// already enrolled can disconnect connected Elastic Agents and may require
+		// them to be re-enrolled. Kibana replaces the whole `ssl` object on update and
+		// this resource reads any `ssl` already stored on a host, so when upgrading
+		// the provider add the existing SSL settings of such a host to your
+		// configuration; otherwise Terraform plans to remove them. The `agent_*` and
+		// `es_*` SSL fields are not managed by this resource, and updating `ssl` on a
+		// host that stores any of them is rejected so they are not erased.
+		ssl?: close({
+			// The TLS certificate Fleet Server presents to Elastic Agents.
+			certificate?: string
+
+			// Certificate authorities used to validate Elastic Agent client certificates. Accepts 1-10 entries.
+			certificate_authorities?: [...string]
+
+			// Whether Fleet Server requests client certificates from Elastic Agents. Valid
+			// values are `none`, `optional`, and `required`.
+			client_auth?: string
+
+			// The private key for the Fleet Server TLS certificate.
+			key?: string
+		})
+
+		// Unique identifier of the Fleet server host. When omitted, Fleet
+		// auto-generates an ID. When set, the value must be 1-255 characters and must
+		// not contain path separators ("/"), traversal sequences (".."), or reserved
+		// keys ("__proto__", "constructor", "prototype"). Invalid explicit values fail
+		// at plan time.
+		host_id?: string
 		timeouts?: close({
 			// A string that can be [parsed as a
 			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
@@ -36,13 +67,6 @@ elasticstack_fleet_server_host: {
 			// "m" (minutes), "h" (hours).
 			update?: string
 		})
-
-		// Unique identifier of the Fleet server host. When omitted, Fleet
-		// auto-generates an ID. When set, the value must be 1-255 characters and must
-		// not contain path separators ("/"), traversal sequences (".."), or reserved
-		// keys ("__proto__", "constructor", "prototype"). Invalid explicit values fail
-		// at plan time.
-		host_id?: string
 
 		// A list of hosts.
 		hosts!: [...string]
@@ -76,6 +100,11 @@ elasticstack_fleet_server_host: {
 		// A comma-separated list of endpoints where the terraform provider will point
 		// to, this must include the http(s) schema and port number.
 		endpoints?: [...string]
+
+		// A map of headers to be sent with each request to Kibana. Custom header values
+		// may appear in provider debug logs: Authorization is masked, but arbitrary
+		// custom proxy-token headers are not generally redacted.
+		headers?: [string]: string
 
 		// Disable TLS certificate validation
 		insecure?: bool

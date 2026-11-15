@@ -4,10 +4,43 @@ elasticstack_kibana_agentbuilder_agent: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/elasticstack_kibana_agentbuilder_agent")
 	close({
+		// Symbol or initials for the agent avatar (e.g., `SI`).
+		avatar_symbol?: string
+
+		// The agent description.
+		description?: string
+
+		// The composite ID of the agent: `<space_id>/<agent_id>`.
+		id?: string
+
+		// Optional system instructions that define the agent behavior.
+		instructions?: string
 		kibana_connection?: matchN(1, [#kibana_connection, [...#kibana_connection]])
+
+		// Access control for the agent. Requires Elastic Stack 9.5.0 or later when set.
+		// `access_mode` is one of `public`, `shared`, or `private`. When omitted, the
+		// server-assigned mode is read back and not managed by Terraform; removing the
+		// block from configuration relinquishes management of the mode (the server
+		// keeps its current mode) rather than resetting it.
+		access_control?: close({
+			// The access mode: `public`, `shared`, or `private`.
+			access_mode!: string
+		})
 
 		// The agent ID.
 		agent_id!: string
+
+		// Set of labels for the agent.
+		labels?: [...string]
+
+		// The agent name.
+		name!: string
+
+		// Set of skill IDs to assign to the agent. Requires Elastic Stack 9.4.0 or later.
+		skill_ids?: [...string]
+
+		// An identifier for the space. If space_id is not provided, the default space is used.
+		space_id?: string
 		timeouts?: close({
 			// A string that can be [parsed as a
 			// duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and
@@ -40,30 +73,6 @@ elasticstack_kibana_agentbuilder_agent: {
 		// Hex color code for the agent avatar (e.g., `#BFDBFF`).
 		avatar_color?: string
 
-		// Symbol or initials for the agent avatar (e.g., `SI`).
-		avatar_symbol?: string
-
-		// The agent description.
-		description?: string
-
-		// The composite ID of the agent: `<space_id>/<agent_id>`.
-		id?: string
-
-		// Optional system instructions that define the agent behavior.
-		instructions?: string
-
-		// Set of labels for the agent.
-		labels?: [...string]
-
-		// The agent name.
-		name!: string
-
-		// Set of skill IDs to assign to the agent. Requires Elastic Stack 9.4.0 or later.
-		skill_ids?: [...string]
-
-		// An identifier for the space. If space_id is not provided, the default space is used.
-		space_id?: string
-
 		// Set of tool IDs that the agent can use.
 		tools?: [...string]
 	})
@@ -81,6 +90,11 @@ elasticstack_kibana_agentbuilder_agent: {
 		// A comma-separated list of endpoints where the terraform provider will point
 		// to, this must include the http(s) schema and port number.
 		endpoints?: [...string]
+
+		// A map of headers to be sent with each request to Kibana. Custom header values
+		// may appear in provider debug logs: Authorization is masked, but arbitrary
+		// custom proxy-token headers are not generally redacted.
+		headers?: [string]: string
 
 		// Disable TLS certificate validation
 		insecure?: bool

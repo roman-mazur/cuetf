@@ -5468,11 +5468,15 @@ elasticstack_kibana_dashboard: {
 								// Array of Y-axis metrics. Each entry defines a metric to display on the Y-axis.
 								y!: matchN(1, [close({
 									// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-									// operation. For standard: axis, color, and metric definition.
+									// operation. For standard: axis, color, and metric definition. A format with
+									// type "duration" that also sets decimals and/or compact requires Elastic
+									// Stack 9.5.2 or later.
 									config_json!: string
 								}), [...close({
 									// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-									// operation. For standard: axis, color, and metric definition.
+									// operation. For standard: axis, color, and metric definition. A format with
+									// type "duration" that also sets decimals and/or compact requires Elastic
+									// Stack 9.5.2 or later.
 									config_json!: string
 								})]])
 
@@ -5504,11 +5508,9 @@ elasticstack_kibana_dashboard: {
 
 								// Array of reference line thresholds.
 								thresholds!: matchN(1, [close({
-									// Which axis the reference line applies to. Not settable against Kibana 9.6:
-									// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-									// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-									// attribute; it defaults to the Y axis. Tracked in
-									// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+									// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+									// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+									// `y` when omitted.
 									axis?: string
 
 									// Color for the reference line. Can be a static color string or dynamic color
@@ -5543,11 +5545,9 @@ elasticstack_kibana_dashboard: {
 									// for the threshold value.
 									value_json?: string
 								}), [...close({
-									// Which axis the reference line applies to. Not settable against Kibana 9.6:
-									// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-									// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-									// attribute; it defaults to the Y axis. Tracked in
-									// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+									// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+									// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+									// `y` when omitted.
 									axis?: string
 
 									// Color for the reference line. Can be a static color string or dynamic color
@@ -5601,11 +5601,15 @@ elasticstack_kibana_dashboard: {
 								// Array of Y-axis metrics. Each entry defines a metric to display on the Y-axis.
 								y!: matchN(1, [close({
 									// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-									// operation. For standard: axis, color, and metric definition.
+									// operation. For standard: axis, color, and metric definition. A format with
+									// type "duration" that also sets decimals and/or compact requires Elastic
+									// Stack 9.5.2 or later.
 									config_json!: string
 								}), [...close({
 									// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-									// operation. For standard: axis, color, and metric definition.
+									// operation. For standard: axis, color, and metric definition. A format with
+									// type "duration" that also sets decimals and/or compact requires Elastic
+									// Stack 9.5.2 or later.
 									config_json!: string
 								})]])
 
@@ -5637,11 +5641,9 @@ elasticstack_kibana_dashboard: {
 
 								// Array of reference line thresholds.
 								thresholds!: matchN(1, [close({
-									// Which axis the reference line applies to. Not settable against Kibana 9.6:
-									// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-									// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-									// attribute; it defaults to the Y axis. Tracked in
-									// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+									// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+									// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+									// `y` when omitted.
 									axis?: string
 
 									// Color for the reference line. Can be a static color string or dynamic color
@@ -5676,11 +5678,9 @@ elasticstack_kibana_dashboard: {
 									// for the threshold value.
 									value_json?: string
 								}), [...close({
-									// Which axis the reference line applies to. Not settable against Kibana 9.6:
-									// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-									// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-									// attribute; it defaults to the Y axis. Tracked in
-									// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+									// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+									// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+									// `y` when omitted.
 									axis?: string
 
 									// Color for the reference line. Can be a static color string or dynamic color
@@ -11184,11 +11184,15 @@ elasticstack_kibana_dashboard: {
 								// Array of Y-axis metrics. Each entry defines a metric to display on the Y-axis.
 								y!: matchN(1, [close({
 									// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-									// operation. For standard: axis, color, and metric definition.
+									// operation. For standard: axis, color, and metric definition. A format with
+									// type "duration" that also sets decimals and/or compact requires Elastic
+									// Stack 9.5.2 or later.
 									config_json!: string
 								}), [...close({
 									// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-									// operation. For standard: axis, color, and metric definition.
+									// operation. For standard: axis, color, and metric definition. A format with
+									// type "duration" that also sets decimals and/or compact requires Elastic
+									// Stack 9.5.2 or later.
 									config_json!: string
 								})]])
 
@@ -11220,11 +11224,9 @@ elasticstack_kibana_dashboard: {
 
 								// Array of reference line thresholds.
 								thresholds!: matchN(1, [close({
-									// Which axis the reference line applies to. Not settable against Kibana 9.6:
-									// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-									// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-									// attribute; it defaults to the Y axis. Tracked in
-									// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+									// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+									// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+									// `y` when omitted.
 									axis?: string
 
 									// Color for the reference line. Can be a static color string or dynamic color
@@ -11259,11 +11261,9 @@ elasticstack_kibana_dashboard: {
 									// for the threshold value.
 									value_json?: string
 								}), [...close({
-									// Which axis the reference line applies to. Not settable against Kibana 9.6:
-									// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-									// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-									// attribute; it defaults to the Y axis. Tracked in
-									// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+									// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+									// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+									// `y` when omitted.
 									axis?: string
 
 									// Color for the reference line. Can be a static color string or dynamic color
@@ -11317,11 +11317,15 @@ elasticstack_kibana_dashboard: {
 								// Array of Y-axis metrics. Each entry defines a metric to display on the Y-axis.
 								y!: matchN(1, [close({
 									// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-									// operation. For standard: axis, color, and metric definition.
+									// operation. For standard: axis, color, and metric definition. A format with
+									// type "duration" that also sets decimals and/or compact requires Elastic
+									// Stack 9.5.2 or later.
 									config_json!: string
 								}), [...close({
 									// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-									// operation. For standard: axis, color, and metric definition.
+									// operation. For standard: axis, color, and metric definition. A format with
+									// type "duration" that also sets decimals and/or compact requires Elastic
+									// Stack 9.5.2 or later.
 									config_json!: string
 								})]])
 
@@ -11353,11 +11357,9 @@ elasticstack_kibana_dashboard: {
 
 								// Array of reference line thresholds.
 								thresholds!: matchN(1, [close({
-									// Which axis the reference line applies to. Not settable against Kibana 9.6:
-									// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-									// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-									// attribute; it defaults to the Y axis. Tracked in
-									// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+									// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+									// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+									// `y` when omitted.
 									axis?: string
 
 									// Color for the reference line. Can be a static color string or dynamic color
@@ -11392,11 +11394,9 @@ elasticstack_kibana_dashboard: {
 									// for the threshold value.
 									value_json?: string
 								}), [...close({
-									// Which axis the reference line applies to. Not settable against Kibana 9.6:
-									// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-									// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-									// attribute; it defaults to the Y axis. Tracked in
-									// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+									// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+									// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+									// `y` when omitted.
 									axis?: string
 
 									// Color for the reference line. Can be a static color string or dynamic color
@@ -11564,10 +11564,10 @@ elasticstack_kibana_dashboard: {
 				variable_type!: string
 			})
 
-			// Panel type discriminator for this pinned control entry. Must match exactly
-			// one of the four typed `*_control_config` blocks on the same object (for
-			// example `options_list_control` with `options_list_control_config`).
-			type!: string
+			// Whether the control expands to fill the available horizontal space. When
+			// omitted, Kibana applies its default (`false`). After `terraform import`, an
+			// entry whose `grow` was not configured shows Kibana's default (`false`).
+			grow?: bool
 
 			// These blocks apply to the dashboard pinned control bar rather than an in-grid
 			// panel. Attribute definitions match the corresponding `panels[]` control
@@ -11710,6 +11710,11 @@ elasticstack_kibana_dashboard: {
 				})
 			})
 
+			// Panel type discriminator for this pinned control entry. Must match exactly
+			// one of the four typed `*_control_config` blocks on the same object (for
+			// example `options_list_control` with `options_list_control_config`).
+			type!: string
+
 			// These blocks apply to the dashboard pinned control bar rather than an in-grid
 			// panel. Attribute definitions match the corresponding `panels[]` control
 			// configs for the same block names.
@@ -11770,6 +11775,12 @@ elasticstack_kibana_dashboard: {
 					value?: [...string]
 				})
 			})
+
+			// Width of the control in the control bar. Valid values are `small`, `medium`,
+			// and `large`. When omitted, Kibana applies its default (`medium`). After
+			// `terraform import`, an entry whose `width` was not configured shows Kibana's
+			// default (`medium`).
+			width?: string
 
 			// These blocks apply to the dashboard pinned control bar rather than an in-grid
 			// panel. Attribute definitions match the corresponding `panels[]` control
@@ -11844,10 +11855,10 @@ elasticstack_kibana_dashboard: {
 				variable_type!: string
 			})
 
-			// Panel type discriminator for this pinned control entry. Must match exactly
-			// one of the four typed `*_control_config` blocks on the same object (for
-			// example `options_list_control` with `options_list_control_config`).
-			type!: string
+			// Whether the control expands to fill the available horizontal space. When
+			// omitted, Kibana applies its default (`false`). After `terraform import`, an
+			// entry whose `grow` was not configured shows Kibana's default (`false`).
+			grow?: bool
 
 			// These blocks apply to the dashboard pinned control bar rather than an in-grid
 			// panel. Attribute definitions match the corresponding `panels[]` control
@@ -11990,6 +12001,11 @@ elasticstack_kibana_dashboard: {
 				})
 			})
 
+			// Panel type discriminator for this pinned control entry. Must match exactly
+			// one of the four typed `*_control_config` blocks on the same object (for
+			// example `options_list_control` with `options_list_control_config`).
+			type!: string
+
 			// These blocks apply to the dashboard pinned control bar rather than an in-grid
 			// panel. Attribute definitions match the corresponding `panels[]` control
 			// configs for the same block names.
@@ -12050,6 +12066,12 @@ elasticstack_kibana_dashboard: {
 					value?: [...string]
 				})
 			})
+
+			// Width of the control in the control bar. Valid values are `small`, `medium`,
+			// and `large`. When omitted, Kibana applies its default (`medium`). After
+			// `terraform import`, an entry whose `width` was not configured shows Kibana's
+			// default (`medium`).
+			width?: string
 
 			// These blocks apply to the dashboard pinned control bar rather than an in-grid
 			// panel. Attribute definitions match the corresponding `panels[]` control
@@ -17519,11 +17541,15 @@ elasticstack_kibana_dashboard: {
 									// Array of Y-axis metrics. Each entry defines a metric to display on the Y-axis.
 									y!: matchN(1, [close({
 										// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-										// operation. For standard: axis, color, and metric definition.
+										// operation. For standard: axis, color, and metric definition. A format with
+										// type "duration" that also sets decimals and/or compact requires Elastic
+										// Stack 9.5.2 or later.
 										config_json!: string
 									}), [...close({
 										// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-										// operation. For standard: axis, color, and metric definition.
+										// operation. For standard: axis, color, and metric definition. A format with
+										// type "duration" that also sets decimals and/or compact requires Elastic
+										// Stack 9.5.2 or later.
 										config_json!: string
 									})]])
 
@@ -17555,11 +17581,9 @@ elasticstack_kibana_dashboard: {
 
 									// Array of reference line thresholds.
 									thresholds!: matchN(1, [close({
-										// Which axis the reference line applies to. Not settable against Kibana 9.6:
-										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-										// attribute; it defaults to the Y axis. Tracked in
-										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+										// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+										// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+										// `y` when omitted.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -17594,11 +17618,9 @@ elasticstack_kibana_dashboard: {
 										// for the threshold value.
 										value_json?: string
 									}), [...close({
-										// Which axis the reference line applies to. Not settable against Kibana 9.6:
-										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-										// attribute; it defaults to the Y axis. Tracked in
-										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+										// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+										// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+										// `y` when omitted.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -17652,11 +17674,15 @@ elasticstack_kibana_dashboard: {
 									// Array of Y-axis metrics. Each entry defines a metric to display on the Y-axis.
 									y!: matchN(1, [close({
 										// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-										// operation. For standard: axis, color, and metric definition.
+										// operation. For standard: axis, color, and metric definition. A format with
+										// type "duration" that also sets decimals and/or compact requires Elastic
+										// Stack 9.5.2 or later.
 										config_json!: string
 									}), [...close({
 										// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-										// operation. For standard: axis, color, and metric definition.
+										// operation. For standard: axis, color, and metric definition. A format with
+										// type "duration" that also sets decimals and/or compact requires Elastic
+										// Stack 9.5.2 or later.
 										config_json!: string
 									})]])
 
@@ -17688,11 +17714,9 @@ elasticstack_kibana_dashboard: {
 
 									// Array of reference line thresholds.
 									thresholds!: matchN(1, [close({
-										// Which axis the reference line applies to. Not settable against Kibana 9.6:
-										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-										// attribute; it defaults to the Y axis. Tracked in
-										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+										// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+										// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+										// `y` when omitted.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -17727,11 +17751,9 @@ elasticstack_kibana_dashboard: {
 										// for the threshold value.
 										value_json?: string
 									}), [...close({
-										// Which axis the reference line applies to. Not settable against Kibana 9.6:
-										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-										// attribute; it defaults to the Y axis. Tracked in
-										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+										// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+										// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+										// `y` when omitted.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -23235,11 +23257,15 @@ elasticstack_kibana_dashboard: {
 									// Array of Y-axis metrics. Each entry defines a metric to display on the Y-axis.
 									y!: matchN(1, [close({
 										// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-										// operation. For standard: axis, color, and metric definition.
+										// operation. For standard: axis, color, and metric definition. A format with
+										// type "duration" that also sets decimals and/or compact requires Elastic
+										// Stack 9.5.2 or later.
 										config_json!: string
 									}), [...close({
 										// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-										// operation. For standard: axis, color, and metric definition.
+										// operation. For standard: axis, color, and metric definition. A format with
+										// type "duration" that also sets decimals and/or compact requires Elastic
+										// Stack 9.5.2 or later.
 										config_json!: string
 									})]])
 
@@ -23271,11 +23297,9 @@ elasticstack_kibana_dashboard: {
 
 									// Array of reference line thresholds.
 									thresholds!: matchN(1, [close({
-										// Which axis the reference line applies to. Not settable against Kibana 9.6:
-										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-										// attribute; it defaults to the Y axis. Tracked in
-										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+										// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+										// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+										// `y` when omitted.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -23310,11 +23334,9 @@ elasticstack_kibana_dashboard: {
 										// for the threshold value.
 										value_json?: string
 									}), [...close({
-										// Which axis the reference line applies to. Not settable against Kibana 9.6:
-										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-										// attribute; it defaults to the Y axis. Tracked in
-										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+										// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+										// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+										// `y` when omitted.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -23368,11 +23390,15 @@ elasticstack_kibana_dashboard: {
 									// Array of Y-axis metrics. Each entry defines a metric to display on the Y-axis.
 									y!: matchN(1, [close({
 										// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-										// operation. For standard: axis, color, and metric definition.
+										// operation. For standard: axis, color, and metric definition. A format with
+										// type "duration" that also sets decimals and/or compact requires Elastic
+										// Stack 9.5.2 or later.
 										config_json!: string
 									}), [...close({
 										// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-										// operation. For standard: axis, color, and metric definition.
+										// operation. For standard: axis, color, and metric definition. A format with
+										// type "duration" that also sets decimals and/or compact requires Elastic
+										// Stack 9.5.2 or later.
 										config_json!: string
 									})]])
 
@@ -23404,11 +23430,9 @@ elasticstack_kibana_dashboard: {
 
 									// Array of reference line thresholds.
 									thresholds!: matchN(1, [close({
-										// Which axis the reference line applies to. Not settable against Kibana 9.6:
-										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-										// attribute; it defaults to the Y axis. Tracked in
-										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+										// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+										// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+										// `y` when omitted.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -23443,11 +23467,9 @@ elasticstack_kibana_dashboard: {
 										// for the threshold value.
 										value_json?: string
 									}), [...close({
-										// Which axis the reference line applies to. Not settable against Kibana 9.6:
-										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-										// attribute; it defaults to the Y axis. Tracked in
-										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+										// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+										// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+										// `y` when omitted.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -28969,11 +28991,15 @@ elasticstack_kibana_dashboard: {
 									// Array of Y-axis metrics. Each entry defines a metric to display on the Y-axis.
 									y!: matchN(1, [close({
 										// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-										// operation. For standard: axis, color, and metric definition.
+										// operation. For standard: axis, color, and metric definition. A format with
+										// type "duration" that also sets decimals and/or compact requires Elastic
+										// Stack 9.5.2 or later.
 										config_json!: string
 									}), [...close({
 										// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-										// operation. For standard: axis, color, and metric definition.
+										// operation. For standard: axis, color, and metric definition. A format with
+										// type "duration" that also sets decimals and/or compact requires Elastic
+										// Stack 9.5.2 or later.
 										config_json!: string
 									})]])
 
@@ -29005,11 +29031,9 @@ elasticstack_kibana_dashboard: {
 
 									// Array of reference line thresholds.
 									thresholds!: matchN(1, [close({
-										// Which axis the reference line applies to. Not settable against Kibana 9.6:
-										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-										// attribute; it defaults to the Y axis. Tracked in
-										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+										// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+										// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+										// `y` when omitted.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -29044,11 +29068,9 @@ elasticstack_kibana_dashboard: {
 										// for the threshold value.
 										value_json?: string
 									}), [...close({
-										// Which axis the reference line applies to. Not settable against Kibana 9.6:
-										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-										// attribute; it defaults to the Y axis. Tracked in
-										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+										// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+										// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+										// `y` when omitted.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -29102,11 +29124,15 @@ elasticstack_kibana_dashboard: {
 									// Array of Y-axis metrics. Each entry defines a metric to display on the Y-axis.
 									y!: matchN(1, [close({
 										// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-										// operation. For standard: axis, color, and metric definition.
+										// operation. For standard: axis, color, and metric definition. A format with
+										// type "duration" that also sets decimals and/or compact requires Elastic
+										// Stack 9.5.2 or later.
 										config_json!: string
 									}), [...close({
 										// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-										// operation. For standard: axis, color, and metric definition.
+										// operation. For standard: axis, color, and metric definition. A format with
+										// type "duration" that also sets decimals and/or compact requires Elastic
+										// Stack 9.5.2 or later.
 										config_json!: string
 									})]])
 
@@ -29138,11 +29164,9 @@ elasticstack_kibana_dashboard: {
 
 									// Array of reference line thresholds.
 									thresholds!: matchN(1, [close({
-										// Which axis the reference line applies to. Not settable against Kibana 9.6:
-										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-										// attribute; it defaults to the Y axis. Tracked in
-										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+										// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+										// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+										// `y` when omitted.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -29177,11 +29201,9 @@ elasticstack_kibana_dashboard: {
 										// for the threshold value.
 										value_json?: string
 									}), [...close({
-										// Which axis the reference line applies to. Not settable against Kibana 9.6:
-										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-										// attribute; it defaults to the Y axis. Tracked in
-										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+										// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+										// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+										// `y` when omitted.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -34685,11 +34707,15 @@ elasticstack_kibana_dashboard: {
 									// Array of Y-axis metrics. Each entry defines a metric to display on the Y-axis.
 									y!: matchN(1, [close({
 										// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-										// operation. For standard: axis, color, and metric definition.
+										// operation. For standard: axis, color, and metric definition. A format with
+										// type "duration" that also sets decimals and/or compact requires Elastic
+										// Stack 9.5.2 or later.
 										config_json!: string
 									}), [...close({
 										// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-										// operation. For standard: axis, color, and metric definition.
+										// operation. For standard: axis, color, and metric definition. A format with
+										// type "duration" that also sets decimals and/or compact requires Elastic
+										// Stack 9.5.2 or later.
 										config_json!: string
 									})]])
 
@@ -34721,11 +34747,9 @@ elasticstack_kibana_dashboard: {
 
 									// Array of reference line thresholds.
 									thresholds!: matchN(1, [close({
-										// Which axis the reference line applies to. Not settable against Kibana 9.6:
-										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-										// attribute; it defaults to the Y axis. Tracked in
-										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+										// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+										// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+										// `y` when omitted.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -34760,11 +34784,9 @@ elasticstack_kibana_dashboard: {
 										// for the threshold value.
 										value_json?: string
 									}), [...close({
-										// Which axis the reference line applies to. Not settable against Kibana 9.6:
-										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-										// attribute; it defaults to the Y axis. Tracked in
-										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+										// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+										// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+										// `y` when omitted.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -34818,11 +34840,15 @@ elasticstack_kibana_dashboard: {
 									// Array of Y-axis metrics. Each entry defines a metric to display on the Y-axis.
 									y!: matchN(1, [close({
 										// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-										// operation. For standard: axis, color, and metric definition.
+										// operation. For standard: axis, color, and metric definition. A format with
+										// type "duration" that also sets decimals and/or compact requires Elastic
+										// Stack 9.5.2 or later.
 										config_json!: string
 									}), [...close({
 										// Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and
-										// operation. For standard: axis, color, and metric definition.
+										// operation. For standard: axis, color, and metric definition. A format with
+										// type "duration" that also sets decimals and/or compact requires Elastic
+										// Stack 9.5.2 or later.
 										config_json!: string
 									})]])
 
@@ -34854,11 +34880,9 @@ elasticstack_kibana_dashboard: {
 
 									// Array of reference line thresholds.
 									thresholds!: matchN(1, [close({
-										// Which axis the reference line applies to. Not settable against Kibana 9.6:
-										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-										// attribute; it defaults to the Y axis. Tracked in
-										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+										// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+										// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+										// `y` when omitted.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -34893,11 +34917,9 @@ elasticstack_kibana_dashboard: {
 										// for the threshold value.
 										value_json?: string
 									}), [...close({
-										// Which axis the reference line applies to. Not settable against Kibana 9.6:
-										// the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects,
-										// while the values it accepts (`y`, `y2`) are not in the schema. Omit this
-										// attribute; it defaults to the Y axis. Tracked in
-										// https://github.com/elastic/terraform-provider-elasticstack/issues/4958.
+										// Which axis the reference line is drawn on. Valid values: `x` (the chart's X
+										// axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to
+										// `y` when omitted.
 										axis?: string
 
 										// Color for the reference line. Can be a static color string or dynamic color
@@ -35063,6 +35085,11 @@ elasticstack_kibana_dashboard: {
 		// A comma-separated list of endpoints where the terraform provider will point
 		// to, this must include the http(s) schema and port number.
 		endpoints?: [...string]
+
+		// A map of headers to be sent with each request to Kibana. Custom header values
+		// may appear in provider debug logs: Authorization is masked, but arbitrary
+		// custom proxy-token headers are not generally redacted.
+		headers?: [string]: string
 
 		// Disable TLS certificate validation
 		insecure?: bool

@@ -86,8 +86,23 @@ elasticstack_fleet_agent_policy: {
 			// Timeout for downloading agent updates (e.g., '2h', '30m').
 			download_timeout?: string
 
+			// Disable policy change acknowledgements from agents (maps to
+			// `agent_features_disable_policy_change_acks_enabled`). Requires Elastic Stack
+			// 9.4.0 or above.
+			features_disable_policy_change_acks_enabled?: bool
+
+			// Include the agent's tags in events it sends (maps to
+			// `agent_features_include_tags_in_events_enabled`). Requires Elastic Stack
+			// 9.6.0 or above.
+			features_include_tags_in_events_enabled?: bool
+
 			// Maximum number of CPUs that the agent can use (GOMAXPROCS). Set to 0 to use all available CPUs.
 			go_max_procs?: number
+
+			// Advanced internal agent settings as free-form YAML (maps to
+			// `agent_internal`). Kibana provides no stability guarantee for the keys
+			// accepted here. Requires Elastic Stack 9.3.0 or above.
+			internal?: string
 
 			// Interval for log file rotation (e.g., '30s', '1m', '1h').
 			logging_files_interval?: string
@@ -189,6 +204,11 @@ elasticstack_fleet_agent_policy: {
 		// A comma-separated list of endpoints where the terraform provider will point
 		// to, this must include the http(s) schema and port number.
 		endpoints?: [...string]
+
+		// A map of headers to be sent with each request to Kibana. Custom header values
+		// may appear in provider debug logs: Authorization is masked, but arbitrary
+		// custom proxy-token headers are not generally redacted.
+		headers?: [string]: string
 
 		// Disable TLS certificate validation
 		insecure?: bool

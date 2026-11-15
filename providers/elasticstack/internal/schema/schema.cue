@@ -198,6 +198,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -289,6 +296,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -429,6 +443,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -9062,6 +9083,212 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				description_kind: "markdown"
 			}
 		}
+		elasticstack_elasticsearch_rollover_index_series: {
+			version: 0
+			block: {
+				attributes: {
+					deletion_protection: {
+						type:             "bool"
+						description:      "Whether Terraform may destroy this series. Defaults to `true`. While enabled, destroy is rejected and no index is deleted, including when a replacement destroys this resource. Set it to `false` in a prior, separate apply before a destroy or replacement. Setting it to `false` only in the same operation that replaces the resource leaves the previously applied protection in place, so destroy is still rejected. After that prior apply, destroy deletes every index currently attached to `rollover_alias`, including indices outside `prefix`."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "Internal identifier in the form `<cluster_uuid>/<rollover_alias>`. It stays the same when the effective writer or alias membership changes."
+						description_kind: "markdown"
+						computed:         true
+					}
+					indices: {
+						type: ["set", "string"]
+						description:      "Concrete indices currently attached to `rollover_alias`, including members that do not match `prefix`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					prefix: {
+						type:             "string"
+						description:      "Literal prefix used only to name the bootstrap index `<prefix>-000001`. Changing it forces replacement. Membership and deletion follow `rollover_alias`, not this prefix."
+						description_kind: "markdown"
+						required:         true
+					}
+					rollover_alias: {
+						type:             "string"
+						description:      "Dedicated ordinary-index alias. It is the series identity and the only membership boundary. Changing it forces replacement."
+						description_kind: "markdown"
+						required:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+					write_index: {
+						type:             "string"
+						description:      "Concrete name of the effective write index. Null when the alias has no effective writer."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				block_types: elasticsearch_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Elasticsearch"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_data: {
+								type:             "string"
+								description:      "PEM-encoded custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_file: {
+								type:             "string"
+								description:      "Path to a custom Certificate Authority certificate"
+								description_kind: "markdown"
+								optional:         true
+							}
+							ca_fingerprint: {
+								type:             "string"
+								description:      "SHA-256 hex fingerprint (64 hexadecimal characters, no colons or separators) of the server TLS certificate used to pin the connection instead of a full CA chain"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_data: {
+								type:             "string"
+								description:      "PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							cert_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded certificate for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							es_client_authentication: {
+								type:             "string"
+								description:      "ES Client Authentication field to be used with the JWT token"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A list of headers to be sent with each request to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							key_data: {
+								type:             "string"
+								description:      "PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							key_file: {
+								type:             "string"
+								description:      "Path to a file containing the PEM encoded private key for client auth"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Elasticsearch."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Elasticsearch connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description: """
+					Manages one alias-owned Elasticsearch index series for ILM rollover.
+
+					When `rollover_alias` is missing, Terraform creates `<prefix>-000001` and attaches that alias as its only write alias. The create request does not set index settings or mappings. Settings and mappings are externally template-managed: put them on an index template that matches the series, including `index.lifecycle.name` and `index.lifecycle.rollover_alias`. The template must not also define `rollover_alias` in its aliases, because Elasticsearch then reports a duplicate alias during rollover.
+
+					When the alias already exists, Terraform adopts it without an extra flag and without changing indices or aliases, but only when it is an ordinary index alias with one effective writer whose name ends in `-<digits>`. Adoption includes every index currently attached to the alias, including indices whose names do not start with `prefix`. Adopting the alias acquires deletion rights over every one of those indices once `deletion_protection` is disabled. `deletion_protection` defaults to `true`, and destroy is rejected while it remains enabled. Disabling it takes a prior, separate apply. Destroy and replacement both read that previously applied value.
+
+					Keep `rollover_alias` for this series alone. Do not also manage that alias with `elasticstack_elasticsearch_alias`, and do not manage its member indices with `elasticstack_elasticsearch_index`. Those resources would compete to own the same alias and indices.
+
+					The series exists only while the exact `rollover_alias` exists. Refresh reads that alias's current members and effective writer. It does not restore a write flag, move the alias onto another index, or put a removed member back. A missing effective writer, or a writer whose name does not end in `-<digits>`, produces a warning only: membership is refreshed, state is kept, and `write_index` is null only when no effective writer exists. The actual writer name is still reported when one exists.
+
+					If that exact alias is absent, refresh removes this resource from state. It does not look up former members or names matching `<prefix>-*`. The next apply bootstraps `<prefix>-000001` when that name is free. A detached index is left unchanged and is outside the new alias. This resource does not clean up detached indices. If `<prefix>-000001` is still occupied, create fails and does not attach the alias or modify that index.
+
+					Changing `prefix` or `rollover_alias` replaces the resource. The old instance must be destroyed before the replacement is created: destroy before create. Terraform Core controls that ordering. This provider does not enforce it, and it does not block `create_before_destroy` set on this resource or propagated through dependencies. If a replacement adopts the same alias before the old instance is destroyed, the old instance can delete the replacement's members. Setting `deletion_protection = false` in the same operation that replaces the resource does not disable protection, because destroy still uses the previously applied state. Apply `deletion_protection = false` first, then replace or destroy.
+
+					Before a destroy, quiesce producers and let in-flight lifecycle replacements finish. Destroy then deletes only the concrete indices currently attached to `rollover_alias`, including hidden and closed members, and it rediscovers membership until the delete timeout. Those rechecks can pick up a rollover that attaches during destroy. They cannot guarantee discovery of a transformation target that is not yet attached to the alias, such as a shrink index or searchable snapshot ILM has not swapped onto the alias yet.
+
+					Direct index deletion leaves searchable snapshots in their repositories. Snapshots and detached indices need separate cleanup. Detached indices, and other series that still reference the same ILM policy, can still block policy deletion. None of that authorizes broader cleanup: this resource does not delete snapshots, remove another series' policy reference, stop ILM, or change `action.destructive_requires_name`.
+
+					Import an existing series with `<cluster_uuid>/<rollover_alias>/<prefix>`. Terraform stores `id` as `<cluster_uuid>/<rollover_alias>` and sets `prefix` from the import identifier. It does not store the three-part string as `id`, and it does not infer `prefix` from the current writer's name. Import initializes `deletion_protection` to `true`. Destroy stays blocked until a later apply sets `deletion_protection` to `false`. Import reads a healthy ordinary alias and does not mutate it. Create adopts a healthy alias the same way, with no extra flag.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
 		elasticstack_elasticsearch_script: {
 			version: 0
 			block: {
@@ -12163,6 +12390,74 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			version: 0
 			block: {
 				attributes: {
+					auth: {
+						nested_type: {
+							attributes: {
+								api_key: {
+									type:             "string"
+									description:      "API key used to authenticate download requests. Conflicts with api_key_wo and the password attributes."
+									description_kind: "plain"
+									optional:         true
+									sensitive:        true
+								}
+								api_key_wo: {
+									type:             "string"
+									description:      "Write-only API key used to authenticate download requests. Never stored in Terraform state; changes are detected from a hash kept in private state. Conflicts with api_key and the password attributes."
+									description_kind: "plain"
+									optional:         true
+									sensitive:        true
+									write_only:       true
+								}
+								headers: {
+									nested_type: {
+										attributes: {
+											key: {
+												type:             "string"
+												description:      "HTTP header name."
+												description_kind: "plain"
+												required:         true
+											}
+											value: {
+												type:             "string"
+												description:      "HTTP header value."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										nesting_mode: "list"
+									}
+									description:      "Custom HTTP headers sent with every download request."
+									description_kind: "plain"
+									optional:         true
+								}
+								password: {
+									type:             "string"
+									description:      "Password for HTTP Basic authentication. Required when username is set. Conflicts with password_wo and the api_key attributes."
+									description_kind: "plain"
+									optional:         true
+									sensitive:        true
+								}
+								password_wo: {
+									type:             "string"
+									description:      "Write-only password for HTTP Basic authentication. Never stored in Terraform state; changes are detected from a hash kept in private state. Required when username is set. Conflicts with password and the api_key attributes."
+									description_kind: "plain"
+									optional:         true
+									sensitive:        true
+									write_only:       true
+								}
+								username: {
+									type:             "string"
+									description:      "Username for HTTP Basic authentication. Required when password or password_wo is set."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Authentication used by Elastic Agents when downloading binaries from this source."
+						description_kind: "plain"
+						optional:         true
+					}
 					default: {
 						type:             "bool"
 						description:      "Set this download source as the default for agents."
@@ -12207,6 +12502,43 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						optional:         true
 						computed:         true
+					}
+					ssl: {
+						nested_type: {
+							attributes: {
+								certificate: {
+									type:             "string"
+									description:      "Client SSL certificate for the download source host."
+									description_kind: "plain"
+									optional:         true
+								}
+								certificate_authorities: {
+									type: ["list", "string"]
+									description:      "Server SSL certificate authorities trusted for the download source host."
+									description_kind: "plain"
+									optional:         true
+								}
+								key: {
+									type:             "string"
+									description:      "Client SSL certificate key for the download source host. Sent to Fleet as a managed secret."
+									description_kind: "plain"
+									optional:         true
+									sensitive:        true
+								}
+								key_wo: {
+									type:             "string"
+									description:      "Write-only client SSL certificate key for the download source host. Never stored in Terraform state; changes are detected from a hash kept in private state. Conflicts with `key`."
+									description_kind: "plain"
+									optional:         true
+									sensitive:        true
+									write_only:       true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "SSL/TLS configuration for the download source host."
+						description_kind: "plain"
+						optional:         true
 					}
 					timeouts: {
 						nested_type: {
@@ -12269,6 +12601,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -12447,12 +12786,30 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 									computed:         true
 								}
+								features_disable_policy_change_acks_enabled: {
+									type:             "bool"
+									description:      "Disable policy change acknowledgements from agents (maps to `agent_features_disable_policy_change_acks_enabled`). Requires Elastic Stack 9.4.0 or above."
+									description_kind: "plain"
+									optional:         true
+								}
+								features_include_tags_in_events_enabled: {
+									type:             "bool"
+									description:      "Include the agent's tags in events it sends (maps to `agent_features_include_tags_in_events_enabled`). Requires Elastic Stack 9.6.0 or above."
+									description_kind: "plain"
+									optional:         true
+								}
 								go_max_procs: {
 									type:             "number"
 									description:      "Maximum number of CPUs that the agent can use (GOMAXPROCS). Set to 0 to use all available CPUs."
 									description_kind: "plain"
 									optional:         true
 									computed:         true
+								}
+								internal: {
+									type:             "string"
+									description:      "Advanced internal agent settings as free-form YAML (maps to `agent_internal`). Kibana provides no stability guarantee for the keys accepted here. Requires Elastic Stack 9.3.0 or above."
+									description_kind: "plain"
+									optional:         true
 								}
 								logging_files_interval: {
 									type:             "string"
@@ -12704,6 +13061,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -12859,6 +13223,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -12895,6 +13266,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			version: 0
 			block: {
 				attributes: {
+					additional_datastreams_permissions: {
+						type: ["list", "string"]
+						description:      "Additional data stream permissions granted to the integration policy, for example `logs-nginx-*`. Requires Elastic Stack >= 9.1.0. Removing this attribute from configuration does not revoke previously granted permissions on the server; set it to `[]` to clear them."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					advanced_settings: {
 						type: ["map", "string"]
 						description:      "Elastic Defend advanced settings as a map of setting name to value. Keys use Elastic's documented dot notation with OS prefix (for example `linux.advanced.artifacts.global.base_url`). See https://www.elastic.co/docs/reference/security/defend-advanced-settings for available settings."
@@ -14012,6 +14390,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -14044,6 +14429,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			version: 1
 			block: {
 				attributes: {
+					allow_outdated_version: {
+						type:             "bool"
+						description:      "Set to true to allow installing a version older than the latest available. Bypasses only the out-of-date version check. Setting this attribute, even to `false`, requires server version 9.6.0 or higher."
+						description_kind: "plain"
+						optional:         true
+					}
 					force: {
 						type:             "bool"
 						description:      "Set to true to force the requested action."
@@ -14166,6 +14557,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -14434,6 +14832,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -14792,6 +15197,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -15227,6 +15639,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -15387,6 +15806,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -15467,6 +15893,41 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						optional:         true
 						computed:         true
 					}
+					ssl: {
+						nested_type: {
+							attributes: {
+								certificate: {
+									type:             "string"
+									description:      "The TLS certificate Fleet Server presents to Elastic Agents."
+									description_kind: "plain"
+									optional:         true
+								}
+								certificate_authorities: {
+									type: ["list", "string"]
+									description:      "Certificate authorities used to validate Elastic Agent client certificates. Accepts 1-10 entries."
+									description_kind: "plain"
+									optional:         true
+								}
+								client_auth: {
+									type:             "string"
+									description:      "Whether Fleet Server requests client certificates from Elastic Agents. Valid values are `none`, `optional`, and `required`."
+									description_kind: "plain"
+									optional:         true
+								}
+								key: {
+									type:             "string"
+									description:      "The private key for the Fleet Server TLS certificate."
+									description_kind: "plain"
+									optional:         true
+									sensitive:        true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "TLS configuration Fleet Server presents to Elastic Agents. Requires Elastic Stack 9.1.0 or later. Changing SSL settings on a Fleet Server host that is already enrolled can disconnect connected Elastic Agents and may require them to be re-enrolled. Kibana replaces the whole `ssl` object on update and this resource reads any `ssl` already stored on a host, so when upgrading the provider add the existing SSL settings of such a host to your configuration; otherwise Terraform plans to remove them. The `agent_*` and `es_*` SSL fields are not managed by this resource, and updating `ssl` on a host that stores any of them is rejected so they are not erased."
+						description_kind: "plain"
+						optional:         true
+					}
 					timeouts: {
 						nested_type: {
 							attributes: {
@@ -15528,6 +15989,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -15649,6 +16117,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -15836,6 +16311,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -15868,6 +16350,21 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			version: 0
 			block: {
 				attributes: {
+					access_control: {
+						nested_type: {
+							attributes: access_mode: {
+								type:             "string"
+								description:      "The access mode: `public`, `shared`, or `private`."
+								description_kind: "markdown"
+								required:         true
+							}
+							nesting_mode: "single"
+						}
+						description:      "Access control for the agent. Requires Elastic Stack 9.5.0 or later when set. `access_mode` is one of `public`, `shared`, or `private`. When omitted, the server-assigned mode is read back and not managed by Terraform; removing the block from configuration relinquishes management of the mode (the server keeps its current mode) rather than resetting it."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
 					agent_id: {
 						type:             "string"
 						description:      "The agent ID."
@@ -15998,6 +16495,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -16170,6 +16674,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -16306,6 +16817,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -16453,6 +16971,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -16875,6 +17400,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									optional:         true
 									sensitive:        true
 								}
+								headers: {
+									type: ["map", "string"]
+									description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
 								insecure: {
 									type:             "bool"
 									description:      "Disable TLS certificate validation"
@@ -16910,6 +17442,377 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 					```
 					Could not create API key - Unsupported scheme "ApiKey" for granting API Key
 					```
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_case_field_definition: {
+			version: 0
+			block: {
+				attributes: {
+					definition: {
+						type:             "string"
+						description:      "The field definition as a YAML string describing a single field (type, label, control, metadata, validation). Known limitation: edits that only reformat the YAML (key order, whitespace) may still plan an in-place update even though the value is semantically unchanged. Limited to 30000 characters."
+						description_kind: "markdown"
+						required:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Optional human-readable description of the field's purpose. The API preserves the stored value when the attribute is omitted, so removing it from configuration does not clear it; set it to an empty string (`\"\"`) to clear it."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					display_order: {
+						type:             "number"
+						description:      "Position of a global field in the case details view, assigned by the server when the field is first made global; it is unset for fields that have never been global."
+						description_kind: "markdown"
+						computed:         true
+					}
+					field_definition_id: {
+						type:             "string"
+						description:      "The server-assigned UUID of the field definition."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The composite ID of the field definition: `<space_id>/<field_definition_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					is_global: {
+						type:             "bool"
+						description:      "When true, the field is rendered in every case for this owner regardless of the template used. A global field cannot be set back to false while it is linked to an active custom field. The API preserves the stored value when the attribute is omitted, so removing it from configuration does not reset it; set it to `false` explicitly."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The field name, unique per owner (case-insensitive). Must match the `name` key in `definition`. When omitted, the server extracts it from `definition`. Immutable: changing this forces a new resource."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					owner: {
+						type:             "string"
+						description:      "The solution that owns the field definition: `cases` (Stack), `securitySolution`, or `observability`. Changing this forces a new resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description: """
+					Manages a single field in the Kibana Cases field library. Requires Elastic Stack 9.6.0 or later.
+
+					**Technical Preview:** the underlying Kibana API (`/api/cases/field_definitions`) is marked Technical Preview in the Kibana OpenAPI specification, even though the Field Library feature is generally available in the Kibana UI as of 9.5. The public API is only available from Elastic Stack 9.6.0 (Stack 9.5 serves only internal routes). The API may change in a future release.
+
+					The field's shape (type, label, control, metadata, validation) is declared as YAML in `definition`. The field `name` and the YAML `type` are immutable after creation:
+
+					- Changing the top-level `name` attribute (together with the matching `name` key in `definition`) replaces the resource.
+					- Editing only the `name` key inside `definition` so that it no longer matches `name` is rejected by the API with a 400 error.
+					- Editing the YAML `type` is rejected by the API with a 409 `field_identity_immutable` error.
+					- Deleting a field that is still referenced by a case template or custom field is rejected with a 409 error.
+
+					If `name` is omitted from configuration, it is taken from the YAML on create and then kept in state; editing only the `name` key inside `definition` afterwards is rejected by the API (400) rather than replacing the resource. Set `name` explicitly, or change both together, to rename (replace) a field.
+
+					"""
+				description_kind: "markdown"
+			}
+		}
+		elasticstack_kibana_case_template: {
+			version: 0
+			block: {
+				attributes: {
+					definition_yaml: {
+						type:             "string"
+						description:      "The template definition as a YAML string: case defaults (`name`, `severity`, `category`, `tags`, `assignees`, `connector`, `settings`) and a `fields` array of inline field definitions and/or `$ref` entries into the field library. Edits that only change whitespace, comments, or mapping-key order are ignored at plan time. Limited to 30000 characters."
+						description_kind: "markdown"
+						required:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Optional description of the template, at most 1000 characters. Removing it from configuration clears the stored value; an empty string is kept as an empty string."
+						description_kind: "markdown"
+						optional:         true
+					}
+					field_count: {
+						type:             "number"
+						description:      "The number of fields defined in the template, when reported by the API."
+						description_kind: "markdown"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The composite ID of the template: `<space_id>/<template_id>`."
+						description_kind: "markdown"
+						computed:         true
+					}
+					is_default: {
+						type:             "bool"
+						description:      "Whether this is the default template for its owner, when reported by the API."
+						description_kind: "markdown"
+						computed:         true
+					}
+					is_enabled: {
+						type:             "bool"
+						description:      "Whether the template is enabled. Disabled templates are hidden from the case creation flow but remain manageable. The server default of `true` applies only on create; omitting the attribute on a later update keeps the current value, so set it to `true` explicitly to re-enable a disabled template."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The template name, 1-50 characters, unique per owner (case-insensitive)."
+						description_kind: "markdown"
+						required:         true
+					}
+					owner: {
+						type:             "string"
+						description:      "The solution that owns the template: `cases` (Stack), `securitySolution`, or `observability`. Changing this forces a new resource."
+						description_kind: "markdown"
+						required:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					tags: {
+						type: ["list", "string"]
+						description:      "Optional tags (at most 200, each between 1 and 256 characters). Order and duplicates are preserved. Removing the attribute from configuration clears the stored tags; an empty list is kept as an empty list."
+						description_kind: "markdown"
+						optional:         true
+					}
+					template_id: {
+						type:             "string"
+						description:      "The server-assigned ID of the template, stable across versions."
+						description_kind: "markdown"
+						computed:         true
+					}
+					template_version: {
+						type:             "number"
+						description:      "The current version of the template. Increments on every successful update."
+						description_kind: "markdown"
+						computed:         true
+					}
+					timeouts: {
+						nested_type: {
+							attributes: {
+								create: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs."
+									description_kind: "plain"
+									optional:         true
+								}
+								read: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled."
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description:      "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours)."
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description_kind: "plain"
+						optional:         true
+					}
+					usage_count: {
+						type:             "number"
+						description:      "The number of times the template has been used to create a case, when reported by the API."
+						description_kind: "markdown"
+						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description: """
+					Manages a single Kibana Cases template. Requires Elastic Stack 9.5.2 or later.
+
+					**Technical Preview:** the underlying Kibana API (`/api/cases/templates`) is marked Technical Preview in the Kibana OpenAPI specification and may change in a future release.
+
+					The templates routes are also gated by the Kibana setting `xpack.cases.templates.enabled`. It defaults to `true`, but when it is set to `false` the routes are removed and Kibana answers with a 404, which is indistinguishable from a server that is too old at the HTTP level (only the response body differs). If operations fail with a 404 against a supported stack version, check this setting.
+
+					Case defaults (`name`, `severity`, `category`, `tags`, `assignees`, `connector`, `settings`) and the template's custom fields (inline definitions or `$ref` entries into the field library, see `elasticstack_kibana_case_field_definition`) are declared as YAML in `definition_yaml`. The `connector` and `settings` keys (including `settings.syncAlerts`) belong inside the YAML; they are not separate resource attributes.
+
+					Every update creates a new template version in Kibana, so edits to `definition_yaml` that only change whitespace, comments, or mapping-key order are suppressed at plan time and do not trigger an update. Unlike the field definition resource, `description` and `tags` are cleared when they are removed from configuration. Destroying the resource soft-deletes all versions of the template; cases already created from it keep their pinned template reference.
 
 					"""
 				description_kind: "markdown"
@@ -25239,7 +26142,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																								nested_type: {
 																									attributes: config_json: {
 																										type:             "string"
-																										description:      "Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and operation. For standard: axis, color, and metric definition."
+																										description:      "Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and operation. For standard: axis, color, and metric definition. A format with type \"duration\" that also sets decimals and/or compact requires Elastic Stack 9.5.2 or later."
 																										description_kind: "markdown"
 																										required:         true
 																									}
@@ -25284,7 +26187,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																									attributes: {
 																										axis: {
 																											type:             "string"
-																											description:      "Which axis the reference line applies to. Not settable against Kibana 9.6: the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects, while the values it accepts (`y`, `y2`) are not in the schema. Omit this attribute; it defaults to the Y axis. Tracked in https://github.com/elastic/terraform-provider-elasticstack/issues/4958."
+																											description:      "Which axis the reference line is drawn on. Valid values: `x` (the chart's X axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to `y` when omitted."
 																											description_kind: "markdown"
 																											optional:         true
 																										}
@@ -25624,6 +26527,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 
 												Configuration for an ES|QL control. Binds ES|QL variables for the dashboard. Mutually exclusive with `time_slider_control_config`, `options_list_control_config`, `range_slider_control_config`.
 												"""
+									description_kind: "markdown"
+									optional:         true
+								}
+								grow: {
+									type:             "bool"
+									description:      "Whether the control expands to fill the available horizontal space. When omitted, Kibana applies its default (`false`). After `terraform import`, an entry whose `grow` was not configured shows Kibana's default (`false`)."
 									description_kind: "markdown"
 									optional:         true
 								}
@@ -26072,6 +26981,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									description:      "Panel type discriminator for this pinned control entry. Must match exactly one of the four typed `*_control_config` blocks on the same object (for example `options_list_control` with `options_list_control_config`)."
 									description_kind: "markdown"
 									required:         true
+								}
+								width: {
+									type:             "string"
+									description:      "Width of the control in the control bar. Valid values are `small`, `medium`, and `large`. When omitted, Kibana applies its default (`medium`). After `terraform import`, an entry whose `width` was not configured shows Kibana's default (`medium`)."
+									description_kind: "markdown"
+									optional:         true
 								}
 							}
 							nesting_mode: "list"
@@ -34373,7 +35288,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																											nested_type: {
 																												attributes: config_json: {
 																													type:             "string"
-																													description:      "Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and operation. For standard: axis, color, and metric definition."
+																													description:      "Y-axis metric configuration as JSON. For ES|QL: axis, color, column, and operation. For standard: axis, color, and metric definition. A format with type \"duration\" that also sets decimals and/or compact requires Elastic Stack 9.5.2 or later."
 																													description_kind: "markdown"
 																													required:         true
 																												}
@@ -34418,7 +35333,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 																												attributes: {
 																													axis: {
 																														type:             "string"
-																														description:      "Which axis the reference line applies to. Not settable against Kibana 9.6: the schema accepts `bottom`/`left`/`right`, all of which Kibana 9.6 rejects, while the values it accepts (`y`, `y2`) are not in the schema. Omit this attribute; it defaults to the Y axis. Tracked in https://github.com/elastic/terraform-provider-elasticstack/issues/4958."
+																														description:      "Which axis the reference line is drawn on. Valid values: `x` (the chart's X axis), `y` (the primary Y axis), `y2` (the secondary Y axis). Defaults to `y` when omitted."
 																														description_kind: "markdown"
 																														optional:         true
 																													}
@@ -34777,6 +35692,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -35190,6 +36112,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -35318,6 +36247,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -35476,6 +36412,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -35618,6 +36561,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -35851,6 +36801,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -36074,6 +37031,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -36264,6 +37228,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -37353,6 +38324,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -37487,6 +38465,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -37723,6 +38708,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -38834,6 +39826,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -38962,6 +39961,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -38991,7 +39997,7 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 			}
 		}
 		elasticstack_kibana_security_exception_item: {
-			version: 0
+			version: 1
 			block: {
 				attributes: {
 					comments: {
@@ -39001,7 +40007,19 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 									type:             "string"
 									description:      "The comment text."
 									description_kind: "markdown"
-									required:         true
+									computed:         true
+								}
+								created_at: {
+									type:             "string"
+									description:      "The timestamp of when the comment was created (`2006-01-02T15:04:05.000Z`)."
+									description_kind: "markdown"
+									computed:         true
+								}
+								created_by: {
+									type:             "string"
+									description:      "The user who created the comment."
+									description_kind: "markdown"
+									computed:         true
 								}
 								id: {
 									type:             "string"
@@ -39012,9 +40030,9 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							}
 							nesting_mode: "list"
 						}
-						description:      "Array of comments about the exception item."
+						description:      "The full comment log stored in Kibana, including comments created outside Terraform. Computed; read-only."
 						description_kind: "markdown"
-						optional:         true
+						computed:         true
 					}
 					created_at: {
 						type:             "string"
@@ -39187,6 +40205,12 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 						description_kind: "markdown"
 						optional:         true
 					}
+					required_comments: {
+						type: ["list", "string"]
+						description:      "Comment texts that must be present in the item's comment log. The provider appends any missing text in configuration order; it never edits, reorders, or deletes stored comments. Texts are matched exactly and must not be empty, whitespace-only, or repeated."
+						description_kind: "markdown"
+						optional:         true
+					}
 					space_id: {
 						type:             "string"
 						description:      "An identifier for the space. If space_id is not provided, the default space is used."
@@ -39285,6 +40309,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -39490,6 +40521,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -39689,6 +40727,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -39819,6 +40864,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -39988,6 +41040,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -40296,6 +41355,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								endpoints: {
 									type: ["list", "string"]
 									description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								headers: {
+									type: ["map", "string"]
+									description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 									description_kind: "markdown"
 									optional:         true
 									sensitive:        true
@@ -40666,6 +41732,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								endpoints: {
 									type: ["list", "string"]
 									description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+									description_kind: "markdown"
+									optional:         true
+									sensitive:        true
+								}
+								headers: {
+									type: ["map", "string"]
+									description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 									description_kind: "markdown"
 									optional:         true
 									sensitive:        true
@@ -41262,6 +42335,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -41570,6 +42650,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -42100,6 +43187,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -42253,6 +43347,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -42440,6 +43541,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -49409,6 +50517,414 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 				description_kind: "markdown"
 			}
 		}
+		elasticstack_fleet_agent_policy: {
+			version: 0
+			block: {
+				attributes: {
+					advanced_monitoring_options: {
+						nested_type: {
+							attributes: {
+								diagnostics: {
+									nested_type: {
+										attributes: {
+											file_uploader: {
+												nested_type: {
+													attributes: {
+														backoff_duration: {
+															type:             "string"
+															description:      "Maximum backoff duration between retry attempts."
+															description_kind: "plain"
+															computed:         true
+														}
+														init_duration: {
+															type:             "string"
+															description:      "Initial duration before the first retry attempt."
+															description_kind: "plain"
+															computed:         true
+														}
+														max_retries: {
+															type:             "number"
+															description:      "Maximum number of retry attempts for file uploads."
+															description_kind: "plain"
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Diagnostic file upload retry configuration."
+												description_kind: "plain"
+												computed:         true
+											}
+											rate_limits: {
+												nested_type: {
+													attributes: {
+														burst: {
+															type:             "number"
+															description:      "Rate limiting burst count for diagnostics requests."
+															description_kind: "plain"
+															computed:         true
+														}
+														interval: {
+															type:             "string"
+															description:      "Rate limiting interval for diagnostics requests."
+															description_kind: "plain"
+															computed:         true
+														}
+													}
+													nesting_mode: "single"
+												}
+												description:      "Rate limiting configuration for diagnostics requests from Fleet."
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "Diagnostic settings for rate limiting and file upload behavior."
+									description_kind: "plain"
+									computed:         true
+								}
+								http_monitoring_endpoint: {
+									nested_type: {
+										attributes: {
+											buffer_enabled: {
+												type:             "bool"
+												description:      "Whether the monitoring buffer for the HTTP endpoint is enabled."
+												description_kind: "plain"
+												computed:         true
+											}
+											enabled: {
+												type:             "bool"
+												description:      "Whether the HTTP monitoring endpoint is enabled."
+												description_kind: "plain"
+												computed:         true
+											}
+											host: {
+												type:             "string"
+												description:      "Host for the HTTP monitoring endpoint."
+												description_kind: "plain"
+												computed:         true
+											}
+											port: {
+												type:             "number"
+												description:      "Port for the HTTP monitoring endpoint."
+												description_kind: "plain"
+												computed:         true
+											}
+											pprof_enabled: {
+												type:             "bool"
+												description:      "Whether /debug/pprof profiling endpoints are enabled."
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										nesting_mode: "single"
+									}
+									description:      "HTTP monitoring endpoint configuration for agent health checks and liveness probes."
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Advanced monitoring options for the agent policy, including the HTTP monitoring endpoint and diagnostic settings."
+						description_kind: "plain"
+						computed:         true
+					}
+					advanced_settings: {
+						nested_type: {
+							attributes: {
+								download_target_directory: {
+									type:             "string"
+									description:      "Target directory for downloading agent updates."
+									description_kind: "plain"
+									computed:         true
+								}
+								download_timeout: {
+									type:             "string"
+									description:      "Timeout for downloading agent updates."
+									description_kind: "plain"
+									computed:         true
+								}
+								features_disable_policy_change_acks_enabled: {
+									type:             "bool"
+									description:      "Whether policy change acknowledgements from agents are disabled."
+									description_kind: "plain"
+									computed:         true
+								}
+								features_include_tags_in_events_enabled: {
+									type:             "bool"
+									description:      "Whether the agent's tags are included in events it sends."
+									description_kind: "plain"
+									computed:         true
+								}
+								go_max_procs: {
+									type:             "number"
+									description:      "Maximum number of CPUs that the agent can use (GOMAXPROCS)."
+									description_kind: "plain"
+									computed:         true
+								}
+								internal: {
+									type:             "string"
+									description:      "Advanced internal agent settings as free-form YAML."
+									description_kind: "plain"
+									computed:         true
+								}
+								logging_files_interval: {
+									type:             "string"
+									description:      "Interval for log file rotation."
+									description_kind: "plain"
+									computed:         true
+								}
+								logging_files_keepfiles: {
+									type:             "number"
+									description:      "Number of rotated log files to keep."
+									description_kind: "plain"
+									computed:         true
+								}
+								logging_files_rotateeverybytes: {
+									type:             "number"
+									description:      "Rotate log files when they reach this size in bytes."
+									description_kind: "plain"
+									computed:         true
+								}
+								logging_level: {
+									type:             "string"
+									description:      "Logging level for the agent."
+									description_kind: "plain"
+									computed:         true
+								}
+								logging_metrics_period: {
+									type:             "string"
+									description:      "Period for logging agent metrics."
+									description_kind: "plain"
+									computed:         true
+								}
+								logging_to_files: {
+									type:             "bool"
+									description:      "Whether logging to files is enabled."
+									description_kind: "plain"
+									computed:         true
+								}
+								monitoring_runtime_experimental: {
+									type:             "string"
+									description:      "Experimental runtime monitoring mode."
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "single"
+						}
+						description:      "Advanced agent settings for logging, resource limits, and downloads."
+						description_kind: "plain"
+						computed:         true
+					}
+					data_output_id: {
+						type:             "string"
+						description:      "The identifier for the data output."
+						description_kind: "plain"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The description of the agent policy, as returned by the Fleet API."
+						description_kind: "plain"
+						computed:         true
+					}
+					download_source_id: {
+						type:             "string"
+						description:      "The identifier for the Elastic Agent binary download server."
+						description_kind: "plain"
+						computed:         true
+					}
+					fleet_server_host_id: {
+						type:             "string"
+						description:      "The identifier for the Fleet server host."
+						description_kind: "plain"
+						computed:         true
+					}
+					global_data_tags: {
+						nested_type: {
+							attributes: {
+								number_value: {
+									type:             "number"
+									description:      "Number value for the tag."
+									description_kind: "plain"
+									computed:         true
+								}
+								string_value: {
+									type:             "string"
+									description:      "String value for the tag."
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							nesting_mode: "map"
+						}
+						description:      "User-defined tags. Keyed by tag name; each entry has exactly one of `string_value` or `number_value`."
+						description_kind: "plain"
+						computed:         true
+					}
+					host_name_format: {
+						type:             "string"
+						description:      "Hostname format reported for agents in this policy. `hostname` is the short hostname; `fqdn` is the fully qualified domain name."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description:      "The ID of this agent policy."
+						description_kind: "plain"
+						computed:         true
+					}
+					inactivity_timeout: {
+						type:             "string"
+						description:      "Time an agent can be inactive before it is marked inactive. A duration string such as `30s`, `2m`, or `1h`."
+						description_kind: "plain"
+						computed:         true
+					}
+					is_protected: {
+						type:             "bool"
+						description:      "Whether tamper protection is enabled for this agent policy (Fleet API `is_protected`)."
+						description_kind: "plain"
+						computed:         true
+					}
+					monitor_logs: {
+						type:             "bool"
+						description:      "Whether collection of agent logs is enabled."
+						description_kind: "plain"
+						computed:         true
+					}
+					monitor_metrics: {
+						type:             "bool"
+						description:      "Whether collection of agent metrics is enabled."
+						description_kind: "plain"
+						computed:         true
+					}
+					monitoring_output_id: {
+						type:             "string"
+						description:      "The identifier for monitoring output."
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The name of the agent policy. Set exactly one of `policy_id` or `name`; the other is populated from the API response."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					namespace: {
+						type:             "string"
+						description:      "The namespace of the agent policy."
+						description_kind: "plain"
+						computed:         true
+					}
+					policy_id: {
+						type:             "string"
+						description:      "The identifier of the agent policy. Set exactly one of `policy_id` or `name`; the other is populated from the API response."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					required_versions: {
+						type: ["map", "number"]
+						description:      "Map of agent versions to target percentages for automatic upgrade. The key is the target version and the value is the percentage of agents to upgrade to that version."
+						description_kind: "plain"
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "An identifier for the space. If space_id is not provided, the default space is used."
+						description_kind: "markdown"
+						optional:         true
+						computed:         true
+					}
+					space_ids: {
+						type: ["set", "string"]
+						description:      "The Kibana space IDs that this agent policy is available in."
+						description_kind: "plain"
+						computed:         true
+					}
+					supports_agentless: {
+						type:             "bool"
+						description:      "Whether the agent policy supports agentless data collection."
+						description_kind: "plain"
+						computed:         true
+					}
+					unenrollment_timeout: {
+						type:             "string"
+						description:      "Time an agent can be inactive before it is automatically unenrolled. A duration string such as `30s`, `2m`, or `1h`."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: kibana_connection: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							api_key: {
+								type:             "string"
+								description:      "API Key to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							bearer_token: {
+								type:             "string"
+								description:      "Bearer Token to use for authentication to Kibana"
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							ca_certs: {
+								type: ["list", "string"]
+								description:      "A list of paths to CA certificates to validate the certificate presented by the Kibana server."
+								description_kind: "markdown"
+								optional:         true
+							}
+							endpoints: {
+								type: ["list", "string"]
+								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							insecure: {
+								type:             "bool"
+								description:      "Disable TLS certificate validation"
+								description_kind: "markdown"
+								optional:         true
+							}
+							password: {
+								type:             "string"
+								description:      "Password to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							username: {
+								type:             "string"
+								description:      "Username to use for API authentication to Kibana."
+								description_kind: "markdown"
+								optional:         true
+							}
+						}
+						description:      "Kibana connection configuration block."
+						description_kind: "markdown"
+					}
+				}
+				description:      "Returns a Fleet agent policy looked up by `policy_id` or `name`. See https://www.elastic.co/guide/en/fleet/current/agent-policy.html"
+				description_kind: "plain"
+			}
+		}
 		elasticstack_fleet_enrollment_tokens: {
 			version: 0
 			block: {
@@ -49520,6 +51036,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -49613,6 +51136,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -49770,6 +51300,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -49886,6 +51423,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -50091,6 +51635,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -50226,6 +51777,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -50357,6 +51915,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -50442,6 +52007,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -50599,6 +52171,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -50712,6 +52291,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -50908,6 +52494,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -51069,6 +52662,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -51375,6 +52975,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -51460,6 +53067,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -51671,6 +53285,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true
@@ -51943,6 +53564,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 								optional:         true
 								sensitive:        true
 							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
 							insecure: {
 								type:             "bool"
 								description:      "Disable TLS certificate validation"
@@ -52067,6 +53695,13 @@ provider_schemas: "registry.terraform.io/elastic/elasticstack": {
 							endpoints: {
 								type: ["list", "string"]
 								description:      "A comma-separated list of endpoints where the terraform provider will point to, this must include the http(s) schema and port number."
+								description_kind: "markdown"
+								optional:         true
+								sensitive:        true
+							}
+							headers: {
+								type: ["map", "string"]
+								description:      "A map of headers to be sent with each request to Kibana. Custom header values may appear in provider debug logs: Authorization is masked, but arbitrary custom proxy-token headers are not generally redacted."
 								description_kind: "markdown"
 								optional:         true
 								sensitive:        true

@@ -59,6 +59,7 @@ import (
 	_#ds: "\(#elasticstackPrefix)_elasticsearch_security_user": close({data.elasticstack_elasticsearch_security_user & cuetf.MetaArgs})
 	_#ds: "\(#elasticstackPrefix)_elasticsearch_snapshot_repository": close({data.elasticstack_elasticsearch_snapshot_repository & cuetf.MetaArgs})
 	_#ds: "\(#elasticstackPrefix)_elasticsearch_synonym_set": close({data.elasticstack_elasticsearch_synonym_set & cuetf.MetaArgs})
+	_#ds: "\(#elasticstackPrefix)_fleet_agent_policy": close({data.elasticstack_fleet_agent_policy & cuetf.MetaArgs})
 	_#ds: "\(#elasticstackPrefix)_fleet_enrollment_tokens": close({data.elasticstack_fleet_enrollment_tokens & cuetf.MetaArgs})
 	_#ds: "\(#elasticstackPrefix)_fleet_integration": close({data.elasticstack_fleet_integration & cuetf.MetaArgs})
 	_#ds: "\(#elasticstackPrefix)_fleet_output": close({data.elasticstack_fleet_output & cuetf.MetaArgs})
