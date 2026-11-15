@@ -295,6 +295,9 @@ google_redis_cluster: {
 	})
 
 	#zone_distribution_config: close({
+		// The exact list of zones where the cluster currently has active VMs.
+		active_zones?: [...string]
+
 		// Immutable. The mode for zone distribution for Memorystore Redis cluster.
 		// If not provided, MULTI_ZONE will be used as default Possible values:
 		// ["MULTI_ZONE", "SINGLE_ZONE"]
@@ -302,6 +305,10 @@ google_redis_cluster: {
 
 		// Immutable. The zone for single zone Memorystore Redis cluster.
 		zone?: string
+
+		// Specify the zones of a multi-zone cluster where Redis Cluster
+		// allocates resources. This flag isn't applicable for single-zone clusters.
+		zones?: [...string]
 	})
 
 	_#defs: "/$defs/automated_backup_config/$defs/fixed_frequency_schedule": close({

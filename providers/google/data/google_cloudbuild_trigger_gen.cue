@@ -80,7 +80,8 @@ google_cloudbuild_trigger: {
 					name?: string
 					path?: string
 				})]
-				worker_pool?: string
+				worker_pool?:    string
+				worker_release?: string
 			})]
 			queue_ttl?: string
 			secret?: [...close({

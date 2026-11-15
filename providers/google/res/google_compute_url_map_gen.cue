@@ -76,6 +76,7 @@ google_compute_url_map: {
 		cache_policy?: matchN(1, [_#defs."/$defs/default_route_action/$defs/cache_policy", list.MaxItems(1) & [..._#defs."/$defs/default_route_action/$defs/cache_policy"]])
 		cors_policy?: matchN(1, [_#defs."/$defs/default_route_action/$defs/cors_policy", list.MaxItems(1) & [..._#defs."/$defs/default_route_action/$defs/cors_policy"]])
 		fault_injection_policy?: matchN(1, [_#defs."/$defs/default_route_action/$defs/fault_injection_policy", list.MaxItems(1) & [..._#defs."/$defs/default_route_action/$defs/fault_injection_policy"]])
+		image_optimization_policy?: matchN(1, [_#defs."/$defs/default_route_action/$defs/image_optimization_policy", list.MaxItems(1) & [..._#defs."/$defs/default_route_action/$defs/image_optimization_policy"]])
 		max_stream_duration?: matchN(1, [_#defs."/$defs/default_route_action/$defs/max_stream_duration", list.MaxItems(1) & [..._#defs."/$defs/default_route_action/$defs/max_stream_duration"]])
 		request_mirror_policy?: matchN(1, [_#defs."/$defs/default_route_action/$defs/request_mirror_policy", list.MaxItems(1) & [..._#defs."/$defs/default_route_action/$defs/request_mirror_policy"]])
 		retry_policy?: matchN(1, [_#defs."/$defs/default_route_action/$defs/retry_policy", list.MaxItems(1) & [..._#defs."/$defs/default_route_action/$defs/retry_policy"]])
@@ -477,6 +478,13 @@ google_compute_url_map: {
 		seconds?: string
 	})
 
+	_#defs: "/$defs/default_route_action/$defs/image_optimization_policy": close({
+		// Controls whether presets or control parameters specified as URL query
+		// parameters are used to optimize the image. If not specified, the default
+		// value is DISABLED. Possible values: ["DISABLED", "ENABLED"]
+		query_parameter_interpretation?: string
+	})
+
 	_#defs: "/$defs/default_route_action/$defs/max_stream_duration": close({
 		// Span of time that's a fraction of a second at nanosecond resolution.
 		// Durations less than one second are represented
@@ -699,6 +707,7 @@ google_compute_url_map: {
 		cache_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cache_policy"]])
 		cors_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cors_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/cors_policy"]])
 		fault_injection_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/fault_injection_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/fault_injection_policy"]])
+		image_optimization_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/image_optimization_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/image_optimization_policy"]])
 		max_stream_duration?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/max_stream_duration", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/max_stream_duration"]])
 		request_mirror_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/request_mirror_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/request_mirror_policy"]])
 		retry_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/default_route_action/$defs/retry_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/default_route_action/$defs/retry_policy"]])
@@ -929,6 +938,13 @@ google_compute_url_map: {
 		// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day *
 		// 365.25 days/year * 10000 years
 		seconds?: string
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/default_route_action/$defs/image_optimization_policy": close({
+		// Controls whether presets or control parameters specified as URL query
+		// parameters are used to optimize the image. If not specified, the default
+		// value is DISABLED. Possible values: ["DISABLED", "ENABLED"]
+		query_parameter_interpretation?: string
 	})
 
 	_#defs: "/$defs/path_matcher/$defs/default_route_action/$defs/max_stream_duration": close({
@@ -1234,6 +1250,7 @@ google_compute_url_map: {
 		cache_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cache_policy"]])
 		cors_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cors_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/cors_policy"]])
 		fault_injection_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/fault_injection_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/fault_injection_policy"]])
+		image_optimization_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/image_optimization_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/image_optimization_policy"]])
 		max_stream_duration?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/max_stream_duration", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/max_stream_duration"]])
 		request_mirror_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/request_mirror_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/request_mirror_policy"]])
 		retry_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/retry_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/retry_policy"]])
@@ -1458,6 +1475,13 @@ google_compute_url_map: {
 		// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
 		// inclusive.
 		seconds!: string
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/image_optimization_policy": close({
+		// Controls whether presets or control parameters specified as URL query
+		// parameters are used to optimize the image. If not specified, the default
+		// value is DISABLED. Possible values: ["DISABLED", "ENABLED"]
+		query_parameter_interpretation?: string
 	})
 
 	_#defs: "/$defs/path_matcher/$defs/path_rule/$defs/route_action/$defs/max_stream_duration": close({
@@ -1913,6 +1937,7 @@ google_compute_url_map: {
 		cache_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cache_policy"]])
 		cors_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cors_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/cors_policy"]])
 		fault_injection_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/fault_injection_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/fault_injection_policy"]])
+		image_optimization_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/image_optimization_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/image_optimization_policy"]])
 		max_stream_duration?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/max_stream_duration", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/max_stream_duration"]])
 		request_mirror_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/request_mirror_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/request_mirror_policy"]])
 		retry_policy?: matchN(1, [_#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/retry_policy", list.MaxItems(1) & [..._#defs."/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/retry_policy"]])
@@ -2138,6 +2163,13 @@ google_compute_url_map: {
 		// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
 		// inclusive.
 		seconds!: string
+	})
+
+	_#defs: "/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/image_optimization_policy": close({
+		// Controls whether presets or control parameters specified as URL query
+		// parameters are used to optimize the image. If not specified, the default
+		// value is DISABLED. Possible values: ["DISABLED", "ENABLED"]
+		query_parameter_interpretation?: string
 	})
 
 	_#defs: "/$defs/path_matcher/$defs/route_rules/$defs/route_action/$defs/max_stream_duration": close({

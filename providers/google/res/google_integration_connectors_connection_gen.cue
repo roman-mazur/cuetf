@@ -164,10 +164,18 @@ google_integration_connectors_connection: {
 	#eventing_config: close({
 		additional_variable?: matchN(1, [_#defs."/$defs/eventing_config/$defs/additional_variable", [..._#defs."/$defs/eventing_config/$defs/additional_variable"]])
 		auth_config?: matchN(1, [_#defs."/$defs/eventing_config/$defs/auth_config", list.MaxItems(1) & [..._#defs."/$defs/eventing_config/$defs/auth_config"]])
+		dead_letter_config?: matchN(1, [_#defs."/$defs/eventing_config/$defs/dead_letter_config", list.MaxItems(1) & [..._#defs."/$defs/eventing_config/$defs/dead_letter_config"]])
+		enrichment_config?: matchN(1, [_#defs."/$defs/eventing_config/$defs/enrichment_config", list.MaxItems(1) & [..._#defs."/$defs/eventing_config/$defs/enrichment_config"]])
 		registration_destination_config!: matchN(1, [_#defs."/$defs/eventing_config/$defs/registration_destination_config", list.MaxItems(1) & [_, ...] & [..._#defs."/$defs/eventing_config/$defs/registration_destination_config"]])
+
+		// List of allowed event types for the connection.
+		allowed_event_types?: [...string]
 
 		// Enrichment Enabled.
 		enrichment_enabled?: bool
+
+		// Filter to be applied on the events to be received by the connection.
+		global_event_filter?: string
 	})
 
 	#lock_config: close({
@@ -469,6 +477,19 @@ google_integration_connectors_connection: {
 		// The resource name of the secret version in the format,
 		// format as: projects/*/secrets/*/versions/*.
 		secret_version!: string
+	})
+
+	_#defs: "/$defs/eventing_config/$defs/dead_letter_config": close({
+		// Project which has the topic given.
+		project_id!: string
+
+		// Topic to push events which couldn't be processed.
+		topic!: string
+	})
+
+	_#defs: "/$defs/eventing_config/$defs/enrichment_config": close({
+		// Append ACL to the event.
+		append_acl?: bool
 	})
 
 	_#defs: "/$defs/eventing_config/$defs/registration_destination_config": close({

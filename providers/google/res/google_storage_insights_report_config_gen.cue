@@ -24,9 +24,21 @@ google_storage_insights_report_config: {
 		// of 256 characters. Can be empty.
 		display_name?: string
 
+		// All of labels (key/value pairs) present on the resource in GCP, including the
+		// labels configured through Terraform, other clients and services.
+		effective_labels?: [string]: string
+
 		// If set, all the inventory report details associated with this report configuration are deleted.
 		force_destroy?: bool
 		id?:            string
+
+		// Labels as key value pairs. Have a character limit of 64 per key and value.
+		//
+		//
+		// **Note**: This field is non-authoritative, and will only manage the labels
+		// present in your configuration.
+		// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+		labels?: [string]: string
 
 		// The location of the ReportConfig. The source and destination buckets
 		// specified in the ReportConfig
@@ -34,7 +46,11 @@ google_storage_insights_report_config: {
 		location!: string
 
 		// The UUID of the inventory report configuration.
-		name?:    string
+		name?: string
+
+		// The combination of labels configured directly on the resource
+		// and default labels configured on the provider.
+		terraform_labels?: [string]: string
 		project?: string
 	})
 

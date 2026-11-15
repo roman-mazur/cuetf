@@ -6,6 +6,13 @@ google_resource_manager_capability_config: {
 	close({
 		timeouts?: #timeouts
 
+		// The list of Boundaries associated with this capability config.
+		// Format: 'organizations/{organization}/boundaries/{boundary}' or
+		// 'folders/{folder}/boundaries/{boundary}'.
+		// Boundaries must share the capability config's parent, and cannot be specified
+		// for project-scoped capability configs.
+		boundaries?: [...string]
+
 		// User-specified identifier of the capability config. Must be 6 to 30 characters,
 		// and contain only lowercase letters, numbers, and hyphens.
 		capability_config_id!: string

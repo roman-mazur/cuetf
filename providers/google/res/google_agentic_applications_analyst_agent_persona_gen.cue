@@ -168,6 +168,16 @@ google_agentic_applications_analyst_agent_persona: {
 
 		// The URL of the MCP server.
 		server_url!: string
+
+		// The HTTP header name used to pass the agent session ID in MCP server
+		// requests (defaults to 'X-Session-Id' when unset). Must be a valid HTTP
+		// header field name (RFC 9110 token).
+		session_id_header?: string
+
+		// The HTTP header name used to pass the agent task ID in MCP server
+		// requests (defaults to 'X-Task-Id' when unset). Must be a valid HTTP
+		// header field name (RFC 9110 token).
+		task_id_header?: string
 	})
 
 	#resources: close({

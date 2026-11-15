@@ -80,7 +80,7 @@ google_apigee_organization: {
 		// its last known state.
 		// After this period, the Organization will no longer be able to be restored.
 		// Default value: "DELETION_RETENTION_UNSPECIFIED" Possible values:
-		// ["DELETION_RETENTION_UNSPECIFIED", "MINIMUM"]
+		// ["DELETION_RETENTION_UNSPECIFIED", "MINIMUM", "NO_RETENTION"]
 		retention?: string
 
 		// Cloud KMS key name used for encrypting the data that is stored and replicated

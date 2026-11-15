@@ -14,6 +14,7 @@ google_backup_dr_backup_plan_association: {
 		// protect Filestore instances.
 		// - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only
 		// protect Cloud SQL instances.
+		// - A Backup Plan configured for 'netapp.googleapis.com/Volume' can only protect NetApp volumes.
 		backup_plan?: string
 
 		// The id of backupplan association
@@ -46,8 +47,8 @@ google_backup_dr_backup_plan_association: {
 
 		// The resource type of workload on which backupplan is applied.
 		// Examples include, "compute.googleapis.com/Instance",
-		// "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and
-		// "file.googleapis.com/Instance"
+		// "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk",
+		// "file.googleapis.com/Instance", and "netapp.googleapis.com/Volume"
 		resource_type?: string
 
 		// Message for rules config info

@@ -399,6 +399,7 @@ import (
 	_#ds: "\(#googlePrefix)_pubsub_topic_iam_policy": close({data.google_pubsub_topic_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_redis_cluster_acl_policy": close({data.google_redis_cluster_acl_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_redis_cluster": close({data.google_redis_cluster & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_redis_cluster_token_auth_user": close({data.google_redis_cluster_token_auth_user & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_redis_instance": close({data.google_redis_instance & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_scc_source_iam_policy": close({data.google_scc_source_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_scc_v2_organization_source_iam_policy": close({data.google_scc_v2_organization_source_iam_policy & cuetf.MetaArgs})

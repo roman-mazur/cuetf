@@ -429,6 +429,7 @@ google_vertex_ai_reasoning_engine: {
 		function_call?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/function_call", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/function_call"]])
 		function_response?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/function_response", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/function_response"]])
 		inline_data?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/inline_data", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/inline_data"]])
+		speech_metadata?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/speech_metadata", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/speech_metadata"]])
 		video_metadata?: matchN(1, [_#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/video_metadata", list.MaxItems(1) & [..._#defs."/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/video_metadata"]])
 
 		// The text content of the part.
@@ -520,6 +521,14 @@ google_vertex_ai_reasoning_engine: {
 
 		// The IANA standard MIME type of the source data.
 		mime_type!: string
+	})
+
+	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/speech_metadata": close({
+		// Identifies which speaker is speaking this turn.
+		speaker?: string
+
+		// Natural language description of the vocal style (e.g., "cheerful").
+		style?: string
 	})
 
 	_#defs: "/$defs/context_spec/$defs/memory_bank_config/$defs/customization_configs/$defs/generate_memories_examples/$defs/conversation_source/$defs/events/$defs/content/$defs/parts/$defs/video_metadata": close({
