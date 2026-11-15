@@ -84,6 +84,9 @@ azurerm_container_app: {
 		// The FQDN of the ingress.
 		fqdn?: string
 
+		// Is session affinity enabled.
+		session_affinity_enabled?: bool
+
 		// The target port on the container for the Ingress traffic.
 		target_port!: number
 

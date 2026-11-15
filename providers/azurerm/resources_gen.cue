@@ -319,6 +319,7 @@ import (
 	_#res: "\(#azurermPrefix)_data_factory_trigger_schedule": close({res.azurerm_data_factory_trigger_schedule & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_data_factory_trigger_tumbling_window": close({res.azurerm_data_factory_trigger_tumbling_window & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_data_protection_backup_instance_blob_storage": close({res.azurerm_data_protection_backup_instance_blob_storage & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_data_protection_backup_instance_cosmosdb_account": close({res.azurerm_data_protection_backup_instance_cosmosdb_account & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_data_protection_backup_instance_data_lake_storage": close({res.azurerm_data_protection_backup_instance_data_lake_storage & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_data_protection_backup_instance_disk": close({res.azurerm_data_protection_backup_instance_disk & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_data_protection_backup_instance_kubernetes_cluster": close({res.azurerm_data_protection_backup_instance_kubernetes_cluster & cuetf.MetaArgs})

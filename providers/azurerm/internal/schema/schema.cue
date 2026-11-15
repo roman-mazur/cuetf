@@ -27487,6 +27487,12 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 									description_kind: "plain"
 									computed:         true
 								}
+								session_affinity_enabled: {
+									type:             "bool"
+									description:      "Is session affinity enabled."
+									description_kind: "plain"
+									optional:         true
+								}
 								target_port: {
 									type:             "number"
 									description:      "The target port on the container for the Ingress traffic."
@@ -42837,6 +42843,78 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						type:             "string"
 						description_kind: "plain"
 						required:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							read: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_data_protection_backup_instance_cosmosdb_account: {
+			version: 0
+			block: {
+				attributes: {
+					cosmosdb_account_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					data_protection_backup_policy_cosmosdb_account_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					data_protection_backup_vault_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					protection_state: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
 					}
 				}
 				block_types: timeouts: {
@@ -70619,6 +70697,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						nesting_mode: "list"
 						block: {
 							attributes: {
+								key_vault_id: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
 								key_vault_key_id: {
 									type:             "string"
 									description_kind: "plain"
@@ -79346,6 +79429,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						type:             "string"
 						description_kind: "plain"
 						required:         true
+					}
+					automatic_zone_rebalancing_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
 					}
 					capacity_reservation_group_id: {
 						type:             "string"
@@ -101051,9 +101139,21 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						nesting_mode: "list"
 						block: {
 							attributes: {
+								administrator_users: {
+									type: ["set", "string"]
+									description:      "Domain users to be added to the built-in Administrators active directory group."
+									description_kind: "plain"
+									optional:         true
+								}
 								aes_encryption_enabled: {
 									type:             "bool"
 									description:      "If enabled, AES encryption will be enabled for SMB communication."
+									description_kind: "plain"
+									optional:         true
+								}
+								backup_users: {
+									type: ["set", "string"]
+									description:      "Domain users to be added to the built-in Backup Operators active directory group."
 									description_kind: "plain"
 									optional:         true
 								}
@@ -101067,6 +101167,12 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 									description_kind: "plain"
 									required:         true
 								}
+								domain_controller_connection_encryption_enabled: {
+									type:             "bool"
+									description:      "Specifies if traffic between the Domain Controller and SMB server is encrypted."
+									description_kind: "plain"
+									optional:         true
+								}
 								kerberos_ad_name: {
 									type:             "string"
 									description:      "Name of the active directory machine. This optional parameter is used only while creating kerberos volume."
@@ -101076,6 +101182,12 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 								kerberos_kdc_ip: {
 									type:             "string"
 									description:      "IP address of the KDC server (usually same the DC). This optional parameter is used only while creating kerberos volume."
+									description_kind: "plain"
+									optional:         true
+								}
+								ldap_client_preferred_servers: {
+									type: ["list", "string"]
+									description:      "Specifies the preferred LDAP server IPs for the LDAP client."
 									description_kind: "plain"
 									optional:         true
 								}
@@ -101109,6 +101221,12 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 									required:         true
 									sensitive:        true
 								}
+								security_users: {
+									type: ["set", "string"]
+									description:      "Domain users to be given SeSecurityPrivilege privilege."
+									description_kind: "plain"
+									optional:         true
+								}
 								server_root_ca_certificate: {
 									type:             "string"
 									description:      "When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes."
@@ -101132,6 +101250,34 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 									description_kind: "plain"
 									required:         true
 								}
+							}
+							block_types: ldap_search_scope: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										group_dn: {
+											type:             "string"
+											description:      "Specifies the group DN, which overrides the base DN for group lookups."
+											description_kind: "plain"
+											optional:         true
+										}
+										group_membership_filter: {
+											type:             "string"
+											description:      "Specifies the custom LDAP search filter to be used when looking up group membership from LDAP server."
+											description_kind: "plain"
+											optional:         true
+										}
+										user_dn: {
+											type:             "string"
+											description:      "Specifies the user DN, which overrides the base DN for user lookups."
+											description_kind: "plain"
+											optional:         true
+										}
+									}
+									description:      "Specifies the LDAP search scope for the LDAP client."
+									description_kind: "plain"
+								}
+								max_items: 1
 							}
 							description_kind: "plain"
 						}
@@ -101935,6 +102081,7 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						type:             "string"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
 					}
 					volume_path: {
 						type:             "string"
@@ -108640,6 +108787,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			version: 0
 			block: {
 				attributes: {
+					automatic_zone_rebalancing_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+					}
 					capacity_reservation_group_id: {
 						type:             "string"
 						description_kind: "plain"
@@ -108714,6 +108866,16 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 					}
 					proximity_placement_group_id: {
 						type:             "string"
+						description_kind: "plain"
+						optional:         true
+					}
+					resilient_virtual_machine_creation_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+					}
+					resilient_virtual_machine_deletion_enabled: {
+						type:             "bool"
 						description_kind: "plain"
 						optional:         true
 					}
@@ -134795,6 +134957,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						description_kind: "plain"
 						optional:         true
 					}
+					smb_oauth_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+					}
 					table_encryption_key_type: {
 						type:             "string"
 						description_kind: "plain"
@@ -157365,6 +157532,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						description_kind: "plain"
 						optional:         true
 					}
+					automatic_zone_rebalancing_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						optional:         true
+					}
 					capacity_reservation_group_id: {
 						type:             "string"
 						description_kind: "plain"
@@ -168881,7 +169053,8 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 								ip_address_range: "string"
 								name:             "string"
 							}]]
-							target_port: "number"
+							session_affinity_enabled: "bool"
+							target_port:              "number"
 							traffic_weight: ["list", ["object", {
 								label:           "string"
 								latest_revision: "bool"
@@ -193524,6 +193697,11 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 						description_kind: "plain"
 						computed:         true
 					}
+					smb_oauth_enabled: {
+						type:             "bool"
+						description_kind: "plain"
+						computed:         true
+					}
 					table_encryption_key_type: {
 						type:             "string"
 						description_kind: "plain"
@@ -198314,6 +198492,17 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				description_kind: "plain"
 			}
 		}
+		azurerm_automation_runtime_environment_package: {
+			version: 0
+			block: {
+				attributes: automation_runtime_environment_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
 		azurerm_availability_set: {
 			version: 0
 			block: {
@@ -198511,6 +198700,17 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			version: 0
 			block: {
 				attributes: cognitive_account_id: {
+					type:             "string"
+					description_kind: "plain"
+					required:         true
+				}
+				description_kind: "plain"
+			}
+		}
+		azurerm_data_protection_backup_instance_cosmosdb_account: {
+			version: 0
+			block: {
+				attributes: data_protection_backup_vault_id: {
 					type:             "string"
 					description_kind: "plain"
 					required:         true
@@ -200241,6 +200441,31 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 				}
 			}
 		}
+		azurerm_automation_runtime_environment_package: {
+			version: 0
+			attributes: {
+				automation_account_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				resource_group_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				runtime_environment_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				subscription_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
 		azurerm_availability_set: {
 			version: 0
 			attributes: {
@@ -200714,6 +200939,27 @@ provider_schemas: "registry.terraform.io/hashicorp/azurerm": {
 			}
 		}
 		azurerm_data_protection_backup_instance_blob_storage: {
+			version: 0
+			attributes: {
+				backup_vault_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				name: {
+					type:                "string"
+					required_for_import: true
+				}
+				resource_group_name: {
+					type:                "string"
+					required_for_import: true
+				}
+				subscription_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		azurerm_data_protection_backup_instance_cosmosdb_account: {
 			version: 0
 			attributes: {
 				backup_vault_name: {

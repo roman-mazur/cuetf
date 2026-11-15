@@ -115,6 +115,7 @@ azurerm_storage_account: {
 		secondary_web_internet_host?:        string
 		secondary_web_microsoft_endpoint?:   string
 		secondary_web_microsoft_host?:       string
+		smb_oauth_enabled?:                  bool
 		table_encryption_key_type?:          string
 		tags?: [string]: string
 	})

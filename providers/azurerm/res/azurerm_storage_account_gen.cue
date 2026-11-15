@@ -117,6 +117,7 @@ azurerm_storage_account: {
 		secondary_web_microsoft_host?:                   string
 		sftp_enabled?:                                   bool
 		shared_access_key_enabled?:                      bool
+		smb_oauth_enabled?:                              bool
 		table_encryption_key_type?:                      string
 		tags?: [string]: string
 	})
