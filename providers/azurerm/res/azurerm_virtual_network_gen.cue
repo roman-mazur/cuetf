@@ -11,6 +11,7 @@ azurerm_virtual_network: {
 		ip_address_pool?: matchN(1, [#ip_address_pool, list.MaxItems(2) & [...#ip_address_pool]])
 		timeouts?: #timeouts
 		address_space?: [...string]
+		advertised_gateway_prefixes?: [...string]
 		bgp_community?: string
 		dns_servers?: [...string]
 		edge_zone?:                      string

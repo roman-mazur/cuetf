@@ -205,6 +205,7 @@ import (
 	_#res: "\(#azurermPrefix)_cognitive_account_connection_entra_id": close({res.azurerm_cognitive_account_connection_entra_id & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_cognitive_account_customer_managed_key": close({res.azurerm_cognitive_account_customer_managed_key & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_cognitive_account": close({res.azurerm_cognitive_account & cuetf.MetaArgs})
+	_#res: "\(#azurermPrefix)_cognitive_account_project_connection_entra_id": close({res.azurerm_cognitive_account_project_connection_entra_id & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_cognitive_account_project": close({res.azurerm_cognitive_account_project & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_cognitive_account_rai_blocklist": close({res.azurerm_cognitive_account_rai_blocklist & cuetf.MetaArgs})
 	_#res: "\(#azurermPrefix)_cognitive_account_rai_policy": close({res.azurerm_cognitive_account_rai_policy & cuetf.MetaArgs})

@@ -8,7 +8,7 @@ azurerm_cost_management_scheduled_action: {
 		day_of_month?: number
 		days_of_week?: [...string]
 		display_name!:         string
-		email_address_sender!: string
+		email_address_sender?: string
 		email_addresses!: [...string]
 		email_subject!: string
 		end_date!:      string

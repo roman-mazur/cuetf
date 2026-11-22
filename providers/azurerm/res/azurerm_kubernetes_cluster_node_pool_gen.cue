@@ -9,6 +9,7 @@ azurerm_kubernetes_cluster_node_pool: {
 		kubelet_config?: matchN(1, [#kubelet_config, list.MaxItems(1) & [...#kubelet_config]])
 		linux_os_config?: matchN(1, [#linux_os_config, list.MaxItems(1) & [...#linux_os_config]])
 		node_network_profile?: matchN(1, [#node_network_profile, list.MaxItems(1) & [...#node_network_profile]])
+		security?: matchN(1, [#security, list.MaxItems(1) & [...#security]])
 		timeouts?: #timeouts
 		upgrade_settings?: matchN(1, [#upgrade_settings, list.MaxItems(1) & [...#upgrade_settings]])
 		windows_profile?: matchN(1, [#windows_profile, list.MaxItems(1) & [...#windows_profile]])
@@ -78,6 +79,11 @@ azurerm_kubernetes_cluster_node_pool: {
 		allowed_host_ports?: matchN(1, [_#defs."/$defs/node_network_profile/$defs/allowed_host_ports", [..._#defs."/$defs/node_network_profile/$defs/allowed_host_ports"]])
 		application_security_group_ids?: [...string]
 		node_public_ip_tags?: [string]: string
+	})
+
+	#security: close({
+		secure_boot_enabled?: bool
+		vtpm_enabled?:        bool
 	})
 
 	#timeouts: close({

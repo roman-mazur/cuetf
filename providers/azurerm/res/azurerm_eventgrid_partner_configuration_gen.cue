@@ -14,8 +14,8 @@ azurerm_eventgrid_partner_configuration: {
 
 	#partner_authorization: close({
 		authorization_expiration_time_in_utc?: string
-		partner_name!:                         string
-		partner_registration_id!:              string
+		partner_name?:                         string
+		partner_registration_id?:              string
 	})
 
 	#timeouts: close({

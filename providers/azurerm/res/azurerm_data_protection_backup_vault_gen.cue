@@ -7,17 +7,18 @@ azurerm_data_protection_backup_vault: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/azurerm_data_protection_backup_vault")
 	close({
 		identity?: matchN(1, [#identity, list.MaxItems(1) & [...#identity]])
-		timeouts?:                     #timeouts
-		cross_region_restore_enabled?: bool
-		datastore_type!:               string
-		id?:                           string
-		immutability?:                 string
-		location!:                     string
-		name!:                         string
-		redundancy!:                   string
-		resource_group_name!:          string
-		retention_duration_in_days?:   number
-		soft_delete?:                  string
+		timeouts?:                            #timeouts
+		alerts_for_all_job_failures_enabled?: bool
+		cross_region_restore_enabled?:        bool
+		datastore_type!:                      string
+		id?:                                  string
+		immutability?:                        string
+		location!:                            string
+		name!:                                string
+		redundancy!:                          string
+		resource_group_name!:                 string
+		retention_duration_in_days?:          number
+		soft_delete?:                         string
 		tags?: [string]: string
 	})
 

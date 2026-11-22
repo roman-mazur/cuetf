@@ -24,6 +24,7 @@ azurerm_oracle_autonomous_database: {
 		id?:                       string
 		license_model!:            string
 		location!:                 string
+		maintenance_patch_level?:  string
 		mtls_connection_required!: bool
 		name!:                     string
 		national_character_set!:   string

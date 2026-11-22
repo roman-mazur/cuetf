@@ -17,6 +17,7 @@ azurerm_private_endpoint: {
 		custom_network_interface_name?: string
 		edge_zone?:                     string
 		id?:                            string
+		ip_version_type?:               string
 		location!:                      string
 		name!:                          string
 		network_interface?: [...close({
@@ -54,12 +55,15 @@ azurerm_private_endpoint: {
 	})
 
 	#private_service_connection: close({
+		action_required?:                   string
+		description?:                       string
 		is_manual_connection!:              bool
 		name!:                              string
 		private_connection_resource_alias?: string
 		private_connection_resource_id?:    string
 		private_ip_address?:                string
 		request_message?:                   string
+		status?:                            string
 		subresource_names?: [...string]
 	})
 
