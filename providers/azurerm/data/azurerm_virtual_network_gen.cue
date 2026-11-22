@@ -6,6 +6,7 @@ azurerm_virtual_network: {
 	close({
 		timeouts?: #timeouts
 		address_space?: [...string]
+		advertised_gateway_prefixes?: [...string]
 		dns_servers?: [...string]
 		guid?:                string
 		id?:                  string

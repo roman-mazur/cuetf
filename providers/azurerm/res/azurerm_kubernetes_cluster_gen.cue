@@ -151,6 +151,7 @@ azurerm_kubernetes_cluster: {
 		kubelet_config?: matchN(1, [_#defs."/$defs/default_node_pool/$defs/kubelet_config", list.MaxItems(1) & [..._#defs."/$defs/default_node_pool/$defs/kubelet_config"]])
 		linux_os_config?: matchN(1, [_#defs."/$defs/default_node_pool/$defs/linux_os_config", list.MaxItems(1) & [..._#defs."/$defs/default_node_pool/$defs/linux_os_config"]])
 		node_network_profile?: matchN(1, [_#defs."/$defs/default_node_pool/$defs/node_network_profile", list.MaxItems(1) & [..._#defs."/$defs/default_node_pool/$defs/node_network_profile"]])
+		security?: matchN(1, [_#defs."/$defs/default_node_pool/$defs/security", list.MaxItems(1) & [..._#defs."/$defs/default_node_pool/$defs/security"]])
 		upgrade_settings?: matchN(1, [_#defs."/$defs/default_node_pool/$defs/upgrade_settings", list.MaxItems(1) & [..._#defs."/$defs/default_node_pool/$defs/upgrade_settings"]])
 		auto_scaling_enabled?:          bool
 		capacity_reservation_group_id?: string
@@ -432,6 +433,11 @@ azurerm_kubernetes_cluster: {
 		port_end?:   number
 		port_start?: number
 		protocol?:   string
+	})
+
+	_#defs: "/$defs/default_node_pool/$defs/security": close({
+		secure_boot_enabled?: bool
+		vtpm_enabled?:        bool
 	})
 
 	_#defs: "/$defs/default_node_pool/$defs/upgrade_settings": close({
