@@ -1,9 +1,12 @@
 package res
 
+import "list"
+
 google_identity_platform_tenant_oauth_idp_config: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_identity_platform_tenant_oauth_idp_config")
 	close({
+		response_type?: matchN(1, [#response_type, list.MaxItems(1) & [...#response_type]])
 		timeouts?: #timeouts
 
 		// The client id of an OAuth client.
@@ -36,6 +39,14 @@ google_identity_platform_tenant_oauth_idp_config: {
 		// The name of the tenant where this OIDC IDP configuration resource exists
 		tenant!:  string
 		project?: string
+	})
+
+	#response_type: close({
+		// If true, authorization code is returned from IdP's authorization endpoint.
+		code?: bool
+
+		// If true, ID token is returned from IdP's authorization endpoint.
+		id_token?: bool
 	})
 
 	#timeouts: close({

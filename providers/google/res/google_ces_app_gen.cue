@@ -98,6 +98,7 @@ google_ces_app: {
 	#audio_processing_config: close({
 		ambient_sound_config?: matchN(1, [_#defs."/$defs/audio_processing_config/$defs/ambient_sound_config", list.MaxItems(1) & [..._#defs."/$defs/audio_processing_config/$defs/ambient_sound_config"]])
 		barge_in_config?: matchN(1, [_#defs."/$defs/audio_processing_config/$defs/barge_in_config", list.MaxItems(1) & [..._#defs."/$defs/audio_processing_config/$defs/barge_in_config"]])
+		custom_voice_samples?: matchN(1, [_#defs."/$defs/audio_processing_config/$defs/custom_voice_samples", [..._#defs."/$defs/audio_processing_config/$defs/custom_voice_samples"]])
 		synthesize_speech_configs?: matchN(1, [_#defs."/$defs/audio_processing_config/$defs/synthesize_speech_configs", [..._#defs."/$defs/audio_processing_config/$defs/synthesize_speech_configs"]])
 
 		// The duration of user inactivity (no speech or interaction) before the agent
@@ -210,6 +211,15 @@ google_ces_app: {
 		conversation_logging_settings?: matchN(1, [_#defs."/$defs/logging_settings/$defs/conversation_logging_settings", list.MaxItems(1) & [..._#defs."/$defs/logging_settings/$defs/conversation_logging_settings"]])
 		metric_analysis_settings?: matchN(1, [_#defs."/$defs/logging_settings/$defs/metric_analysis_settings", list.MaxItems(1) & [..._#defs."/$defs/logging_settings/$defs/metric_analysis_settings"]])
 		redaction_config?: matchN(1, [_#defs."/$defs/logging_settings/$defs/redaction_config", list.MaxItems(1) & [..._#defs."/$defs/logging_settings/$defs/redaction_config"]])
+
+		// Whether the app has to say what may be recorded before anything is kept.
+		// When true, a session starts with recording off and stays off until the
+		// client sends SessionInput.recording_control, which then decides every turn
+		// from that point on. This covers audio recording as well as conversation
+		// history, BigQuery export and Cloud Logging.
+		// When 'false', the default, the settings above decide on their own and the
+		// client does not have to send anything.
+		required_recording_consent?: bool
 	})
 
 	#model_settings: close({
@@ -290,6 +300,25 @@ google_ces_app: {
 		// This should not be used in scenarios where agent responses are displayed
 		// visually.
 		barge_in_awareness?: bool
+	})
+
+	_#defs: "/$defs/audio_processing_config/$defs/custom_voice_samples": close({
+		// Consent audio for voice cloning.
+		consent_audio_gcs_uri?: string
+
+		// The user-defined name for the custom voice sample.
+		name?: string
+
+		// Text for synthesizing preview audio for custom voice.
+		preview_text?: string
+
+		// Natural language instructions for voice style, tone, pacing, or
+		// pronunciation.
+		voice_instruction?: string
+
+		// The Cloud Storage URI to the audio sample for voice cloning. The
+		// audio sample should be a mono-channel, 24kHz WAV file.
+		voice_sample_gcs_uri?: string
 	})
 
 	_#defs: "/$defs/audio_processing_config/$defs/synthesize_speech_configs": close({

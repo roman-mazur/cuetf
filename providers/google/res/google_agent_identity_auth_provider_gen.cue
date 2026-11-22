@@ -94,8 +94,10 @@ google_agent_identity_auth_provider: {
 
 	#auth_provider_type_params: close({
 		api_key?: matchN(1, [_#defs."/$defs/auth_provider_type_params/$defs/api_key", list.MaxItems(1) & [..._#defs."/$defs/auth_provider_type_params/$defs/api_key"]])
+		connector_reference_auth_provider?: matchN(1, [_#defs."/$defs/auth_provider_type_params/$defs/connector_reference_auth_provider", list.MaxItems(1) & [..._#defs."/$defs/auth_provider_type_params/$defs/connector_reference_auth_provider"]])
 		three_legged_oauth?: matchN(1, [_#defs."/$defs/auth_provider_type_params/$defs/three_legged_oauth", list.MaxItems(1) & [..._#defs."/$defs/auth_provider_type_params/$defs/three_legged_oauth"]])
 		two_legged_oauth?: matchN(1, [_#defs."/$defs/auth_provider_type_params/$defs/two_legged_oauth", list.MaxItems(1) & [..._#defs."/$defs/auth_provider_type_params/$defs/two_legged_oauth"]])
+		xaa_auth_provider?: matchN(1, [_#defs."/$defs/auth_provider_type_params/$defs/xaa_auth_provider", list.MaxItems(1) & [..._#defs."/$defs/auth_provider_type_params/$defs/xaa_auth_provider"]])
 
 		// Message describing GeminiEnterpriseAuthProviderParams object.
 		// Since GeminiEnterpriseAuthProviderParams currently takes no subfields,
@@ -112,6 +114,20 @@ google_agent_identity_auth_provider: {
 	_#defs: "/$defs/auth_provider_type_params/$defs/api_key": close({
 		// Input only. The API key for this auth_provider.
 		api_key?: string
+	})
+
+	_#defs: "/$defs/auth_provider_type_params/$defs/connector_reference_auth_provider": close({
+		// Optional. Rich Authorization Requests (RFC 9396) detailing targeted OAuth
+		// resources/scopes, formatted as a JSON array of JSON objects.
+		authorization_details?: string
+
+		// Required. The name of the referenced connector. For Gemini Enterprise, this
+		// is either a Data Connector name
+		// ('projects/{{project}}/locations/{{location}}/collections/{{collection}}/dataConnector'),
+		// an Authorization name
+		// ('projects/{{project}}/locations/{{location}}/authorizations/{{authorization}}'),
+		// or a connector ID (e.g. 'salesforce-connector-prod').
+		connector!: string
 	})
 
 	_#defs: "/$defs/auth_provider_type_params/$defs/three_legged_oauth": close({
@@ -170,5 +186,47 @@ google_agent_identity_auth_provider: {
 
 		// The token endpoint of the OAuth client.
 		token_url?: string
+	})
+
+	_#defs: "/$defs/auth_provider_type_params/$defs/xaa_auth_provider": close({
+		client_assertion_jwt_auth?: matchN(1, [_#defs."/$defs/auth_provider_type_params/$defs/xaa_auth_provider/$defs/client_assertion_jwt_auth", list.MaxItems(1) & [..._#defs."/$defs/auth_provider_type_params/$defs/xaa_auth_provider/$defs/client_assertion_jwt_auth"]])
+		client_secret_auth?: matchN(1, [_#defs."/$defs/auth_provider_type_params/$defs/xaa_auth_provider/$defs/client_secret_auth", list.MaxItems(1) & [..._#defs."/$defs/auth_provider_type_params/$defs/xaa_auth_provider/$defs/client_secret_auth"]])
+		custom_issuer?: matchN(1, [_#defs."/$defs/auth_provider_type_params/$defs/xaa_auth_provider/$defs/custom_issuer", list.MaxItems(1) & [..._#defs."/$defs/auth_provider_type_params/$defs/xaa_auth_provider/$defs/custom_issuer"]])
+		id_token_input?: matchN(1, [_#defs."/$defs/auth_provider_type_params/$defs/xaa_auth_provider/$defs/id_token_input", list.MaxItems(1) & [..._#defs."/$defs/auth_provider_type_params/$defs/xaa_auth_provider/$defs/id_token_input"]])
+
+		// Optional. Additional parameters to be passed to the token endpoint.
+		additional_parameters?: [string]: string
+	})
+
+	_#defs: "/$defs/auth_provider_type_params/$defs/xaa_auth_provider/$defs/client_assertion_jwt_auth": close({
+		// Required. The client identifier.
+		client_id!: string
+	})
+
+	_#defs: "/$defs/auth_provider_type_params/$defs/xaa_auth_provider/$defs/client_secret_auth": close({
+		// Required. The client identifier.
+		client_id!: string
+
+		// Required. Input only. The client secret.
+		client_secret!: string
+	})
+
+	_#defs: "/$defs/auth_provider_type_params/$defs/xaa_auth_provider/$defs/custom_issuer": close({
+		// Optional. The issuer identifier of the target Authorization Server.
+		issuer?: string
+
+		// Required. The token endpoint of the target OAuth authorization server to
+		// retrieve resource tokens.
+		token_url!: string
+	})
+
+	_#defs: "/$defs/auth_provider_type_params/$defs/xaa_auth_provider/$defs/id_token_input": close({
+		// Optional additional claims to include when fetching an ID-JAG, represented as
+		// a JSON-encoded string.
+		id_jag_additional_claims?: string
+
+		// The resource name of the ID-JAG auth provider. Format:
+		// 'projects/{{project}}/locations/{{location}}/authProviders/{{auth_provider}}'
+		id_jag_auth_provider?: string
 	})
 }

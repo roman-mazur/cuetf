@@ -140,8 +140,10 @@ google_iam_workforce_pool_provider: {
 		// workforce identity pool provider will produce an error.
 		// * SCIM_USAGE_UNSPECIFIED: Default behaviour
 		// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the 'google.groups'
+		// attribute mapping for authorization checks
+		// * ENABLED_FOR_USERS_GROUPS: Use SCIM-managed groups and users instead of the 'google.groups'
 		// attribute mapping for authorization checks Possible values:
-		// ["SCIM_USAGE_UNSPECIFIED", "ENABLED_FOR_GROUPS"]
+		// ["SCIM_USAGE_UNSPECIFIED", "ENABLED_FOR_GROUPS", "ENABLED_FOR_USERS_GROUPS"]
 		scim_usage?: string
 
 		// The current state of the provider.

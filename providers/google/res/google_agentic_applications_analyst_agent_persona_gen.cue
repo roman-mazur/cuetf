@@ -134,6 +134,8 @@ google_agentic_applications_analyst_agent_persona: {
 	})
 
 	#mcp_data_sources: close({
+		request_headers?: matchN(1, [_#defs."/$defs/mcp_data_sources/$defs/request_headers", [..._#defs."/$defs/mcp_data_sources/$defs/request_headers"]])
+
 		// Input only. The API key of the MCP server.
 		api_key?: string
 
@@ -676,6 +678,23 @@ google_agentic_applications_analyst_agent_persona: {
 	_#defs: "/$defs/external_data_sources/$defs/treasury_securities_auctions": close({})
 
 	_#defs: "/$defs/external_data_sources/$defs/usda": close({})
+
+	_#defs: "/$defs/mcp_data_sources/$defs/request_headers": close({
+		// A value the agent fills in for each request.
+		// Possible values:
+		// USER_ID
+		dynamic_value?: string
+
+		// The header name. Must be a valid HTTP field name (RFC 9110 token),
+		// unique ignoring case within the data source, and not a header managed
+		// by the agent (such as 'Authorization', 'Content-Type', 'mcp-session-id',
+		// or the configured API key, session ID, or task ID headers).
+		header_name!: string
+
+		// A static value, sent as-is on every request. The value is stored and
+		// returned in plain text, so do not use it for credentials.
+		value?: string
+	})
 
 	_#defs: "/$defs/resources/$defs/bigquery_resource": close({
 		// Points to a bigquery dataset to use.

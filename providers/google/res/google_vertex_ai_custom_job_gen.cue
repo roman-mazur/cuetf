@@ -95,8 +95,39 @@ google_vertex_ai_custom_job: {
 		// Whether you want Vertex AI to enable interactive shell access to training containers.
 		enable_web_access?: bool
 
+		// The Experiment associated with this job.
+		// Format:
+		// 'projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}'
+		experiment?: string
+
+		// The Experiment Run associated with this job.
+		// Format:
+		// 'projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}'
+		experiment_run?: string
+
+		// The name of the Model resources for which to generate a mapping to artifact
+		// URIs. Applicable only to some of the Google-provided custom jobs.
+		// Format: 'projects/{project}/locations/{location}/models/{model}'
+		// In order to retrieve a specific version of the model, also provide the
+		// version ID or version alias.
+		// Example: 'projects/{project}/locations/{location}/models/{model}@2' or
+		// 'projects/{project}/locations/{location}/models/{model}@golden'
+		// If no version ID or alias is specified, the "default" version will be returned.
+		models?: [...string]
+
 		// The full name of the Compute Engine network to which the Job should be peered.
 		network?: string
+
+		// The ID of the PersistentResource in the same Project and Location which to run.
+		// If this is specified, the job will be run on existing machines held by the
+		// PersistentResource instead of on-demand short-live machines.
+		// The network and CMEK configs on the job should be consistent with those on
+		// the PersistentResource, otherwise, the job will be rejected.
+		persistent_resource_id?: string
+
+		// The ID of the location to store protected artifacts. e.g. us-central1.
+		// Populate only when the location is different than CustomJob location.
+		protected_artifact_location_id?: string
 
 		// A list of names for the reserved ip ranges under the VPC network that can be used for this job.
 		reserved_ip_ranges?: [...string]

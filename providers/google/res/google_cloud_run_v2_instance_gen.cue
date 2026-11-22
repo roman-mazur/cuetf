@@ -7,6 +7,7 @@ google_cloud_run_v2_instance: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/res/google_cloud_run_v2_instance")
 	close({
 		containers!: matchN(1, [#containers, [_, ...] & [...#containers]])
+		sandboxes?: matchN(1, [#sandboxes, list.MaxItems(1) & [...#sandboxes]])
 		timeouts?: #timeouts
 		volumes?: matchN(1, [#volumes, [...#volumes]])
 
@@ -253,9 +254,16 @@ google_cloud_run_v2_instance: {
 		// Name of the container specified as a DNS_LABEL.
 		name?: string
 
+		// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+		sandbox_launcher?: bool
+
 		// Container's working directory. If not specified, the container runtime's
 		// default will be used, which might be configured in the container image.
 		working_dir?: string
+	})
+
+	#sandboxes: close({
+		templates?: matchN(1, [_#defs."/$defs/sandboxes/$defs/templates", [..._#defs."/$defs/sandboxes/$defs/templates"]])
 	})
 
 	#timeouts: close({
@@ -444,6 +452,54 @@ google_cloud_run_v2_instance: {
 	})
 
 	_#defs: "/$defs/containers/$defs/volume_mounts": close({
+		// Path within the container at which the volume should be mounted. Must not
+		// contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise
+		// be /cloudsql. All instances defined in the Volume will be available as
+		// /cloudsql/[instance]. For more information on Cloud SQL volumes, visit
+		// https://cloud.google.com/sql/docs/mysql/connect-run
+		mount_path!: string
+
+		// This must match the Name of a Volume.
+		name!: string
+
+		// Path within the volume from which the container's volume should be mounted.
+		sub_path?: string
+	})
+
+	_#defs: "/$defs/sandboxes/$defs/templates": close({
+		env?: matchN(1, [_#defs."/$defs/sandboxes/$defs/templates/$defs/env", [..._#defs."/$defs/sandboxes/$defs/templates/$defs/env"]])
+		volume_mounts?: matchN(1, [_#defs."/$defs/sandboxes/$defs/templates/$defs/volume_mounts", [..._#defs."/$defs/sandboxes/$defs/templates/$defs/volume_mounts"]])
+
+		// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+		args?: [...string]
+
+		// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT
+		// is used if this is not provided.
+		command?: [...string]
+
+		// Name of the container image in Dockerhub or Artifact Registry. If the host is
+		// not provided, Dockerhub is assumed.
+		image!: string
+
+		// Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+		name!: string
+
+		// Container's working directory. If not specified, the container runtime's
+		// default will be used, which might be configured in the container image.
+		working_dir?: string
+	})
+
+	_#defs: "/$defs/sandboxes/$defs/templates/$defs/env": close({
+		// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+		name!: string
+
+		// Literal value of the environment variable. Defaults to "" and the maximum
+		// allowed length is 32768 characters. Variable references are not supported in
+		// Cloud Run.
+		value?: string
+	})
+
+	_#defs: "/$defs/sandboxes/$defs/templates/$defs/volume_mounts": close({
 		// Path within the container at which the volume should be mounted. Must not
 		// contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise
 		// be /cloudsql. All instances defined in the Volume will be available as

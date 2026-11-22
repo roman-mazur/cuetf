@@ -4,6 +4,18 @@ google_iam_workload_identity_pool_provider: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/google_iam_workload_identity_pool_provider")
 	close({
+		// A list of the resource names of 'WorkloadIdentityPoolProvider's in the same pool
+		// that are authorized to issue actor tokens for this provider. An actor token
+		// represents the identity of the acting party to whom authority is delegated. At
+		// most 3 actor providers can be specified. Actor providers are only supported for
+		// OIDC providers.
+		//
+		// Each entry must be formatted as
+		// 'projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}',
+		// where '{project}' matches the 'project' configured on this resource (for example,
+		// by referencing 'google_iam_workload_identity_pool_provider.<actor>.id').
+		actor_providers?: [...string]
+
 		// [A Common Expression Language](https://github.com/google/cel-spec) expression, in
 		// plain text, to restrict what otherwise valid authentication credentials issued by the
 		// provider should not be accepted.
@@ -118,8 +130,9 @@ google_iam_workload_identity_pool_provider: {
 		// An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
 		oidc?: [...close({
 			allowed_audiences?: [...string]
-			issuer_uri?: string
-			jwks_json?:  string
+			discovery_uri?: string
+			issuer_uri?:    string
+			jwks_json?:     string
 		})]
 		project?: string
 

@@ -185,6 +185,9 @@ google_sql_database_instance: {
 		// A unique identifier for the blue-green deployment within the project and region.
 		deployment_name!: string
 
+		// User-provided description for the blue-green deployment.
+		description?: string
+
 		// Auth Proxy connection string for the former Blue instance post-switchover.
 		old_source_instance_connection_name?: string
 

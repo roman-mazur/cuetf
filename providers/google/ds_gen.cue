@@ -244,6 +244,7 @@ import (
 	_#ds: "\(#googlePrefix)_dataproc_metastore_service_iam_policy": close({data.google_dataproc_metastore_service_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_dataproc_metastore_table_iam_policy": close({data.google_dataproc_metastore_table_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_datastream_static_ips": close({data.google_datastream_static_ips & cuetf.MetaArgs})
+	_#ds: "\(#googlePrefix)_design_center_space_iam_policy": close({data.google_design_center_space_iam_policy & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_discovery_engine_data_store": close({data.google_discovery_engine_data_store & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_discovery_engine_data_stores": close({data.google_discovery_engine_data_stores & cuetf.MetaArgs})
 	_#ds: "\(#googlePrefix)_discovery_engine_search_engine_iam_policy": close({data.google_discovery_engine_search_engine_iam_policy & cuetf.MetaArgs})

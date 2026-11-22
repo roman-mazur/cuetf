@@ -15,6 +15,7 @@ google_sql_database_instance: {
 			active_environment?:                  string
 			delete_old_source_on_destroy?:        bool
 			deployment_name?:                     string
+			description?:                         string
 			old_source_instance_connection_name?: string
 			old_source_instance_name?:            string
 			target_database_version?:             string

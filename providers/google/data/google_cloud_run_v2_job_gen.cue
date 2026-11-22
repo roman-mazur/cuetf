@@ -257,6 +257,24 @@ google_cloud_run_v2_job: {
 				node_selector?: [...close({
 					accelerator?: string
 				})]
+				sandboxes?: [...close({
+					templates?: [...close({
+						args?: [...string]
+						command?: [...string]
+						env?: [...close({
+							name?:  string
+							value?: string
+						})]
+						image?: string
+						name?:  string
+						volume_mounts?: [...close({
+							mount_path?: string
+							name?:       string
+							sub_path?:   string
+						})]
+						working_dir?: string
+					})]
+				})]
 				service_account?: string
 				timeout?:         string
 				volumes?: [...close({

@@ -229,6 +229,7 @@ google_dataproc_cluster: {
 
 	_#defs: "/$defs/cluster_config/$defs/gce_cluster_config": close({
 		confidential_instance_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/confidential_instance_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/confidential_instance_config"]])
+		multi_zone_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/multi_zone_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/multi_zone_config"]])
 		node_group_affinity?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/node_group_affinity", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/node_group_affinity"]])
 		reservation_affinity?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/reservation_affinity", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/reservation_affinity"]])
 		shielded_instance_config?: matchN(1, [_#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/shielded_instance_config", list.MaxItems(1) & [..._#defs."/$defs/cluster_config/$defs/gce_cluster_config/$defs/shielded_instance_config"]])
@@ -284,6 +285,11 @@ google_dataproc_cluster: {
 	_#defs: "/$defs/cluster_config/$defs/gce_cluster_config/$defs/confidential_instance_config": close({
 		// Defines the type of Confidential Compute technology to use.
 		confidential_instance_type?: string
+	})
+
+	_#defs: "/$defs/cluster_config/$defs/gce_cluster_config/$defs/multi_zone_config": close({
+		// The distribution shape of the nodes in the multi-zonal cluster. Valid values are "ANY".
+		target_shape!: string
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/gce_cluster_config/$defs/node_group_affinity": close({
@@ -659,16 +665,18 @@ google_dataproc_cluster: {
 	})
 
 	_#defs: "/$defs/cluster_config/$defs/secondary_worker_flexible_config": close({
-		// The boot disk size in GB. Changing this forces a new resource to be created.
+		// The boot disk size in GB. Changing this on an existing secondary worker group
+		// forces a new resource to be created.
 		boot_disk_size_gb?: number
 
 		// The number of vCPUs per instance. Must be a power of 2: 2, 4, 8, 16, or 32.
-		// Changing this forces a new resource to be created.
+		// Changing this on an existing secondary worker group forces a new resource to
+		// be created.
 		core_count!: number
 
 		// The hardware class of instances. Allowed values are "STANDARD" and
-		// "PERFORMANCE". Defaults to "STANDARD". Changing this forces a new resource
-		// to be created.
+		// "PERFORMANCE". Defaults to "STANDARD". Changing this on an existing
+		// secondary worker group forces a new resource to be created.
 		hardware_class?: string
 
 		// Specifies the number of secondary worker instances to create. Represents the
