@@ -12,6 +12,18 @@ google_iam_workload_identity_pool_provider: {
 		timeouts?: #timeouts
 		x509?: matchN(1, [#x509, list.MaxItems(1) & [...#x509]])
 
+		// A list of the resource names of 'WorkloadIdentityPoolProvider's in the same pool
+		// that are authorized to issue actor tokens for this provider. An actor token
+		// represents the identity of the acting party to whom authority is delegated. At
+		// most 3 actor providers can be specified. Actor providers are only supported for
+		// OIDC providers.
+		//
+		// Each entry must be formatted as
+		// 'projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}',
+		// where '{project}' matches the 'project' configured on this resource (for example,
+		// by referencing 'google_iam_workload_identity_pool_provider.<actor>.id').
+		actor_providers?: [...string]
+
 		// [A Common Expression Language](https://github.com/google/cel-spec) expression, in
 		// plain text, to restrict what otherwise valid authentication credentials issued by the
 		// provider should not be accepted.
@@ -158,6 +170,26 @@ google_iam_workload_identity_pool_provider: {
 		// https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
 		// '''
 		allowed_audiences?: [...string]
+
+		// The URL to fetch the OIDC discovery document from, overriding the default URL
+		// derived from 'issuer_uri'. If not set, 'discovery_uri' defaults to 'issuer_uri'
+		// with '/.well-known/openid-configuration' appended, as per the OpenID Connect
+		// Discovery 1.0 specification.
+		//
+		// If set, 'discovery_uri' must meet the following requirements:
+		// * Must start with 'https://'.
+		// * Must not exceed 2000 characters.
+		// * The scheme, host, and port must match 'issuer_uri'.
+		// * The path must contain '/.well-known/<suffix>' (where '<suffix>' is not
+		// empty, such as 'openid-configuration') and conform to the 'issuer_uri'
+		// topology:
+		// * The well-known path segment is inserted before the issuer path (for
+		// example, 'https://example.com/.well-known/openid-configuration/tenant1'
+		// for issuer 'https://example.com/tenant1'), or
+		// * The well-known path segment is appended under the issuer path (for
+		// example, 'https://example.com/tenant1/.well-known/openid-configuration'
+		// for issuer 'https://example.com/tenant1').
+		discovery_uri?: string
 
 		// The OIDC issuer URL.
 		issuer_uri!: string

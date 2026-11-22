@@ -204,7 +204,8 @@ google_compute_backend_service: {
 		// [Choosing a load
 		// balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 		// Default value: "EXTERNAL_MANAGED" Possible values: ["EXTERNAL",
-		// "INTERNAL_SELF_MANAGED", "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+		// "INTERNAL_SELF_MANAGED", "INTERNAL_MANAGED", "EXTERNAL_MANAGED",
+		// "EXTERNAL_PASSTHROUGH"]
 		load_balancing_scheme?: string
 
 		// A list of locality load balancing policies to be used in order of

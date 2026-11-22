@@ -10,6 +10,12 @@ google_compute_global_forwarding_rule: {
 		service_directory_registrations?: matchN(1, [#service_directory_registrations, list.MaxItems(1) & [...#service_directory_registrations]])
 		timeouts?: #timeouts
 
+		// Identifies the backend service to which the forwarding rule sends traffic.
+		//
+		// Required for Global External Passthrough Network Load Balancing;
+		// must be omitted for all other load balancer types.
+		backend_service?: string
+
 		// [Output Only] The URL for the corresponding base Forwarding Rule. By base
 		// Forwarding Rule, we mean the Forwarding Rule that has the same IP address,
 		// protocol, and port settings with the current Forwarding Rule, but without
@@ -103,6 +109,11 @@ google_compute_global_forwarding_rule: {
 		// address number.
 		ip_address?: string
 
+		// IP addresses for which this forwarding rule accepts traffic, ordered by
+		// Availability Group 0 followed by Availability Group 1. Specify literal
+		// IP addresses (for example, 'google_compute_global_address.example.address').
+		ip_addresses?: [...string]
+
 		// The IP protocol to which this rule applies.
 		//
 		// For protocol forwarding, valid
@@ -138,7 +149,8 @@ google_compute_global_forwarding_rule: {
 		// [Forwarding rule
 		// concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
 		// Default value: "EXTERNAL_MANAGED" Possible values: ["EXTERNAL",
-		// "EXTERNAL_MANAGED", "INTERNAL_MANAGED", "INTERNAL_SELF_MANAGED"]
+		// "EXTERNAL_MANAGED", "INTERNAL_MANAGED", "INTERNAL_SELF_MANAGED",
+		// "EXTERNAL_PASSTHROUGH"]
 		load_balancing_scheme?: string
 
 		// Name of the resource; provided by the client when the resource is created.
@@ -252,7 +264,7 @@ google_compute_global_forwarding_rule: {
 		//
 		// For Private Service Connect forwarding rules that forward traffic to managed
 		// services, the target must be a service attachment.
-		target!: string
+		target?: string
 
 		// The combination of labels configured directly on the resource
 		// and default labels configured on the provider.

@@ -44,10 +44,11 @@ google_cloud_quotas_quota_preference: {
 		etag?: string
 		id?:   string
 
-		// The list of quota safety checks to be ignored. Default value:
-		// "QUOTA_SAFETY_CHECK_UNSPECIFIED" Possible values:
-		// ["QUOTA_SAFETY_CHECK_UNSPECIFIED", "QUOTA_DECREASE_BELOW_USAGE",
-		// "QUOTA_DECREASE_PERCENTAGE_TOO_HIGH"]
+		// A comma-separated list of quota safety checks to be ignored, for example
+		// 'QUOTA_DECREASE_BELOW_USAGE,QUOTA_DECREASE_PERCENTAGE_TOO_HIGH'. Possible
+		// values are 'QUOTA_SAFETY_CHECK_UNSPECIFIED', 'QUOTA_DECREASE_BELOW_USAGE' and
+		// 'QUOTA_DECREASE_PERCENTAGE_TOO_HIGH'. 'QUOTA_SAFETY_CHECK_UNSPECIFIED' cannot
+		// be combined with other values.
 		ignore_safety_checks?: string
 
 		// The reason / justification for this quota preference.

@@ -22,7 +22,19 @@ google_discovery_engine_project_provision: {
 		// The geographic location in which to provision the project, such as
 		// 'global', 'us', or 'eu'.
 		location?: string
-		project?:  string
+
+		// The Gemini Enterprise experience that the project is provisioned for.
+		// 'PROVISION_INTENT_SOBI' provisions the project for the new Gemini Enterprise
+		// experience, and 'PROVISION_INTENT_LEGACY' provisions it for the classic
+		// Gemini Enterprise experience. If unset, the API chooses the experience.
+		//
+		// Changing this field forces a new resource, which calls the provisioning API
+		// again with the new value. Provisioning doesn't remove an experience that the
+		// project was already provisioned for, and the API may reject provisioning a
+		// project that uses the classic experience for the new experience. Possible
+		// values: ["PROVISION_INTENT_SOBI", "PROVISION_INTENT_LEGACY"]
+		provision_intent?: string
+		project?:          string
 	})
 
 	#saas_params: close({

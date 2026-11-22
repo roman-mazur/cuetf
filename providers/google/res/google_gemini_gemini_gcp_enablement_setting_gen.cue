@@ -24,6 +24,13 @@ google_gemini_gemini_gcp_enablement_setting: {
 		// Whether customer data sharing should be enabled.
 		enable_customer_data_sharing?: bool
 
+		// The Cloud Storage bucket name allocated for this setting.
+		// Note: Please make sure the cloudaicompanion service agent
+		// 'service-<PROJECT-NUMBER>@gcp-sa-cloudaicompanion.iam.gserviceaccount.com'
+		// has 'storage.objects.get' and 'storage.objects.create' permission to the
+		// Cloud Storage bucket.
+		gcs_bucket?: string
+
 		// The Gemini enterprise project for this setting.
 		// Format: projects/{project}
 		// The '{project}' segment can be the project ID or project number.

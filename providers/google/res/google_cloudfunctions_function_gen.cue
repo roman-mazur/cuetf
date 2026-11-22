@@ -99,7 +99,7 @@ google_cloudfunctions_function: {
 		// Region of function. If it is not provided, the provider region is used.
 		region?: string
 
-		// The runtime in which the function is going to run. Eg. "nodejs20", "python37", "go111".
+		// The runtime in which the function is going to run. Eg. "nodejs22", "python37", "go111".
 		runtime!: string
 
 		// If provided, the self-provided service account to run the function with.

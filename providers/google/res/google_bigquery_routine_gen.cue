@@ -91,10 +91,10 @@ google_bigquery_routine: {
 		table_type?: matchN(1, [_#defs."/$defs/arguments/$defs/table_type", list.MaxItems(1) & [..._#defs."/$defs/arguments/$defs/table_type"]])
 
 		// Defaults to FIXED_TYPE. Default value: "FIXED_TYPE" Possible values:
-		// ["FIXED_TYPE", "ANY_TYPE", "FIXED_TABLE"]
+		// ["FIXED_TYPE", "ANY_TYPE", "FIXED_TABLE", "ANY_TABLE"]
 		argument_kind?: string
 
-		// A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+		// A JSON schema for the data type. Required if argumentKind = FIXED_TYPE.
 		// ~>**NOTE**: Because this field expects a JSON string, any changes to the string
 		// will create a diff, even if the JSON itself hasn't changed. If the API returns
 		// a different value for the same schema, e.g. it switched the order of values

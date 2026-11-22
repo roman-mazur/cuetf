@@ -52,6 +52,9 @@ google_firebase_app_hosting_traffic: {
 	})
 
 	#rollout_policy: close({
+		ignored_paths?: matchN(1, [_#defs."/$defs/rollout_policy/$defs/ignored_paths", [..._#defs."/$defs/rollout_policy/$defs/ignored_paths"]])
+		required_paths?: matchN(1, [_#defs."/$defs/rollout_policy/$defs/required_paths", [..._#defs."/$defs/rollout_policy/$defs/required_paths"]])
+
 		// Specifies a branch that triggers a new build to be started with this
 		// policy. If not set, no automatic rollouts will happen.
 		codebase_branch?: string
@@ -71,6 +74,22 @@ google_firebase_app_hosting_traffic: {
 		create?: string
 		delete?: string
 		update?: string
+	})
+
+	_#defs: "/$defs/rollout_policy/$defs/ignored_paths": close({
+		// The pattern to match against.
+		pattern!: string
+
+		// The type of pattern to match against. Possible values: ["RE2", "GLOB", "PREFIX"]
+		type!: string
+	})
+
+	_#defs: "/$defs/rollout_policy/$defs/required_paths": close({
+		// The pattern to match against.
+		pattern!: string
+
+		// The type of pattern to match against. Possible values: ["RE2", "GLOB", "PREFIX"]
+		type!: string
 	})
 
 	_#defs: "/$defs/target/$defs/splits": close({

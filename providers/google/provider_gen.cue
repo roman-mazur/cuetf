@@ -89,6 +89,7 @@ provider: {
 		default_labels?: [string]: string
 		deletion_policy?:                        string
 		deployment_manager_custom_endpoint?:     string
+		design_center_custom_endpoint?:          string
 		developer_connect_custom_endpoint?:      string
 		dialogflow_custom_endpoint?:             string
 		dialogflow_cx_custom_endpoint?:          string
@@ -172,6 +173,7 @@ provider: {
 		resource_manager3_custom_endpoint?:          string
 		resource_manager_custom_endpoint?:           string
 		resource_manager_v3_custom_endpoint?:        string
+		saas_runtime_custom_endpoint?:               string
 		scopes?: [...string]
 		secret_manager_custom_endpoint?:                string
 		secret_manager_regional_custom_endpoint?:       string

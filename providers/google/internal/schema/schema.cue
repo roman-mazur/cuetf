@@ -421,6 +421,11 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					description_kind: "plain"
 					optional:         true
 				}
+				design_center_custom_endpoint: {
+					type:             "string"
+					description_kind: "plain"
+					optional:         true
+				}
 				developer_connect_custom_endpoint: {
 					type:             "string"
 					description_kind: "plain"
@@ -832,6 +837,11 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					optional:         true
 				}
 				resource_manager_v3_custom_endpoint: {
+					type:             "string"
+					description_kind: "plain"
+					optional:         true
+				}
+				saas_runtime_custom_endpoint: {
 					type:             "string"
 					description_kind: "plain"
 					optional:         true
@@ -7046,6 +7056,38 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									}
 									max_items: 1
 								}
+								connector_reference_auth_provider: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											authorization_details: {
+												type: "string"
+												description: """
+															Optional. Rich Authorization Requests (RFC 9396) detailing targeted OAuth
+															resources/scopes, formatted as a JSON array of JSON objects.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											connector: {
+												type: "string"
+												description: """
+															Required. The name of the referenced connector. For Gemini Enterprise, this
+															is either a Data Connector name
+															('projects/{{project}}/locations/{{location}}/collections/{{collection}}/dataConnector'),
+															an Authorization name
+															('projects/{{project}}/locations/{{location}}/authorizations/{{authorization}}'),
+															or a connector ID (e.g. 'salesforce-connector-prod').
+															"""
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Parameters for Connector Reference authentication."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
 								three_legged_oauth: {
 									nesting_mode: "list"
 									block: {
@@ -7166,6 +7208,103 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											}
 										}
 										description:      "Message describing TwoLeggedOAuth object."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								xaa_auth_provider: {
+									nesting_mode: "list"
+									block: {
+										attributes: additional_parameters: {
+											type: ["map", "string"]
+											description:      "Optional. Additional parameters to be passed to the token endpoint."
+											description_kind: "plain"
+											optional:         true
+										}
+										block_types: {
+											client_assertion_jwt_auth: {
+												nesting_mode: "list"
+												block: {
+													attributes: client_id: {
+														type:             "string"
+														description:      "Required. The client identifier."
+														description_kind: "plain"
+														required:         true
+													}
+													description:      "Option 2: Authenticate using a standard 'client_id' and a Client Assertion JWT."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											client_secret_auth: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														client_id: {
+															type:             "string"
+															description:      "Required. The client identifier."
+															description_kind: "plain"
+															required:         true
+														}
+														client_secret: {
+															type:             "string"
+															description:      "Required. Input only. The client secret."
+															description_kind: "plain"
+															required:         true
+															sensitive:        true
+														}
+													}
+													description:      "Option 1: Authenticate using a standard 'client_id' and 'client_secret'."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											custom_issuer: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														issuer: {
+															type:             "string"
+															description:      "Optional. The issuer identifier of the target Authorization Server."
+															description_kind: "plain"
+															optional:         true
+														}
+														token_url: {
+															type:             "string"
+															description:      "Required. The token endpoint of the target OAuth authorization server to retrieve resource tokens."
+															description_kind: "plain"
+															required:         true
+														}
+													}
+													description:      "Configuration for a custom or third-party authorization server issuer."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+											id_token_input: {
+												nesting_mode: "list"
+												block: {
+													attributes: {
+														id_jag_additional_claims: {
+															type:             "string"
+															description:      "Optional additional claims to include when fetching an ID-JAG, represented as a JSON-encoded string."
+															description_kind: "plain"
+															optional:         true
+														}
+														id_jag_auth_provider: {
+															type:             "string"
+															description:      "The resource name of the ID-JAG auth provider. Format: 'projects/{{project}}/locations/{{location}}/authProviders/{{auth_provider}}'"
+															description_kind: "plain"
+															optional:         true
+														}
+													}
+													description:      "Configuration for when the input is an ID token."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
+										}
+										description:      "Parameters for Cross-App Access authentication."
 										description_kind: "plain"
 									}
 									max_items: 1
@@ -9015,6 +9154,50 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												"""
 									description_kind: "plain"
 									optional:         true
+								}
+							}
+							block_types: request_headers: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										dynamic_value: {
+											type: "string"
+											description: """
+															A value the agent fills in for each request.
+															Possible values:
+															USER_ID
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										header_name: {
+											type: "string"
+											description: """
+															The header name. Must be a valid HTTP field name (RFC 9110 token),
+															unique ignoring case within the data source, and not a header managed
+															by the agent (such as 'Authorization', 'Content-Type', 'mcp-session-id',
+															or the configured API key, session ID, or task ID headers).
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+										value: {
+											type: "string"
+											description: """
+															A static value, sent as-is on every request. The value is stored and
+															returned in plain text, so do not use it for credentials.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+									}
+									description: """
+													Additional HTTP headers sent on every request to the MCP server, for
+													example a static header required by an API gateway. Headers managed by the
+													agent take precedence and cannot be set here. When empty, no additional
+													headers are sent.
+													"""
+									description_kind: "plain"
 								}
 							}
 							description:      "The MCP data source selections to be used by the agent."
@@ -16151,6 +16334,253 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_apihub_addon: {
+			version: 0
+			block: {
+				attributes: {
+					addon_id: {
+						type:             "string"
+						description:      "The ID of the addon."
+						description_kind: "plain"
+						required:         true
+					}
+					boost_spec_gemini_region_id: {
+						type:             "string"
+						description:      "The Vertex AI region where the BoostSpec Gemini model calls run for this API Hub instance."
+						description_kind: "plain"
+						computed:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The time at which the addon was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					data_source: {
+						type:             "string"
+						description:      "The data source on which the addon operates."
+						description_kind: "plain"
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "The description of the addon."
+						description_kind: "plain"
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "The display name of the addon."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Identifier. The name of the addon. Format: 'projects/{project}/locations/{location}/addons/{addon}'."
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					state: {
+						type:             "string"
+						description:      "The state of the addon."
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "The time at which the addon was last updated."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					config: {
+						nesting_mode: "list"
+						block: {
+							block_types: {
+								all_data_addon_config: {
+									nesting_mode: "list"
+									block: {
+										attributes: enabled: {
+											type:             "bool"
+											description:      "If true, the addon is enabled for all data in the API hub."
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "Configuration for addons which act on all data in the API hub."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								gateway_plugin_addon_config: {
+									nesting_mode: "list"
+									block: {
+										block_types: gateway_plugin_configs: {
+											nesting_mode: "list"
+											block: {
+												attributes: plugin_instance: {
+													type: "string"
+													description: """
+																		The name of the gateway plugin instance for which the config is to be specified.
+																		Format: projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}
+																		"""
+													description_kind: "plain"
+													required:         true
+												}
+												block_types: {
+													apigee_edge_config: {
+														nesting_mode: "list"
+														block: {
+															block_types: environment_filter: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		all_environments: {
+																			type:             "bool"
+																			description:      "Indicates if this filter should match all environments or only a subset of environments."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		environments: {
+																			type: ["list", "string"]
+																			description:      "If provided, only environments in this list are matched."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																	}
+																	description:      "The filter to apply on the resources managed by the gateway plugin instance."
+																	description_kind: "plain"
+																}
+																max_items: 1
+															}
+															description:      "Configuration for Apigee Edge gateways."
+															description_kind: "plain"
+														}
+														max_items: 1
+													}
+													apigee_opdk_config: {
+														nesting_mode: "list"
+														block: {
+															block_types: environment_filter: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		all_environments: {
+																			type:             "bool"
+																			description:      "Indicates if this filter should match all environments or only a subset of environments."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		environments: {
+																			type: ["list", "string"]
+																			description:      "If provided, only environments in this list are matched."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																	}
+																	description:      "The filter to apply on the resources managed by the gateway plugin instance."
+																	description_kind: "plain"
+																}
+																max_items: 1
+															}
+															description:      "Configuration for Apigee OPDK gateways."
+															description_kind: "plain"
+														}
+														max_items: 1
+													}
+													apigee_x_hybrid_config: {
+														nesting_mode: "list"
+														block: {
+															block_types: environment_filter: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		all_environments: {
+																			type:             "bool"
+																			description:      "Indicates if this filter should match all environments or only a subset of environments."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																		environments: {
+																			type: ["list", "string"]
+																			description:      "If provided, only environments in this list are matched."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																	}
+																	description:      "The filter to apply on the resources managed by the gateway plugin instance."
+																	description_kind: "plain"
+																}
+																max_items: 1
+															}
+															description:      "Configuration for Apigee X and Apigee Hybrid gateways."
+															description_kind: "plain"
+														}
+														max_items: 1
+													}
+												}
+												description:      "The list of gateway plugin configs for which the addon is enabled."
+												description_kind: "plain"
+											}
+											min_items: 1
+										}
+										description:      "Configuration for gateway plugin addons."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+							}
+							description:      "The configuration of the addon."
+							description_kind: "plain"
+						}
+						min_items: 1
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_apihub_api_hub_instance: {
 			version: 0
 			block: {
@@ -22526,6 +22956,145 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}
 							description_kind: "plain"
 						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_backup_dr_auto_protection_policy_binding: {
+			version: 0
+			block: {
+				attributes: {
+					auto_protection_policy_binding_id: {
+						type:             "string"
+						description:      "The ID of the binding. This becomes the final component of the binding's resource name."
+						description_kind: "plain"
+						required:         true
+					}
+					auto_protection_policy_id: {
+						type:             "string"
+						description:      "The ID of the auto protection policy to bind."
+						description_kind: "plain"
+						required:         true
+					}
+					binding_evaluation_summary: {
+						type: ["list", ["object", {
+							failed_resource_count:    "string"
+							matching_resource_count:  "string"
+							protected_resource_count: "string"
+						}]]
+						description:      "A summary of the last run of the job that applies the policy to matching resources within the binding's scope."
+						description_kind: "plain"
+						computed:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The time when the binding was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					etag: {
+						type:             "string"
+						description:      "The etag of the binding, used for optimistic concurrency control."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the auto protection policy."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									The resource name of the binding, in the format
+									'projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy_id}/bindings/{auto_protection_policy_binding_id}'.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					scope: {
+						type:             "string"
+						description:      "The container that the policy is applied to, in the format 'projects/{project}'."
+						description_kind: "plain"
+						required:         true
+					}
+					state: {
+						type: "string"
+						description: """
+									The current state of the binding.
+									Possible values are 'CREATING', 'ACTIVE', and 'DELETION_INITIATED'.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "The time when the binding was last updated."
+						description_kind: "plain"
+						computed:         true
+					}
+					wait_for_delete: {
+						type: "bool"
+						description: """
+									Whether Terraform should wait for the binding and all associated background resource
+									unprotection operations to be completely deleted before returning. Setting
+									'wait_for_delete = true' will block the Terraform script/execution until all resources
+									are unprotected and the binding is fully removed.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
 					}
 				}
 				description_kind: "plain"
@@ -34931,14 +35500,14 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							attributes: {
 								argument_kind: {
 									type:             "string"
-									description:      "Defaults to FIXED_TYPE. Default value: \"FIXED_TYPE\" Possible values: [\"FIXED_TYPE\", \"ANY_TYPE\", \"FIXED_TABLE\"]"
+									description:      "Defaults to FIXED_TYPE. Default value: \"FIXED_TYPE\" Possible values: [\"FIXED_TYPE\", \"ANY_TYPE\", \"FIXED_TABLE\", \"ANY_TABLE\"]"
 									description_kind: "plain"
 									optional:         true
 								}
 								data_type: {
 									type: "string"
 									description: """
-												A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
+												A JSON schema for the data type. Required if argumentKind = FIXED_TYPE.
 												~>**NOTE**: Because this field expects a JSON string, any changes to the string
 												will create a diff, even if the JSON itself hasn't changed. If the API returns
 												a different value for the same schema, e.g. it switched the order of values
@@ -42061,6 +42630,51 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									}
 									max_items: 1
 								}
+								custom_voice_samples: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											consent_audio_gcs_uri: {
+												type:             "string"
+												description:      "Consent audio for voice cloning."
+												description_kind: "plain"
+												optional:         true
+											}
+											name: {
+												type:             "string"
+												description:      "The user-defined name for the custom voice sample."
+												description_kind: "plain"
+												optional:         true
+											}
+											preview_text: {
+												type:             "string"
+												description:      "Text for synthesizing preview audio for custom voice."
+												description_kind: "plain"
+												optional:         true
+											}
+											voice_instruction: {
+												type: "string"
+												description: """
+															Natural language instructions for voice style, tone, pacing, or
+															pronunciation.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+											voice_sample_gcs_uri: {
+												type: "string"
+												description: """
+															The Cloud Storage URI to the audio sample for voice cloning. The
+															audio sample should be a mono-channel, 24kHz WAV file.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description:      "Configures custom voice samples for voice cloning."
+										description_kind: "plain"
+									}
+								}
 								synthesize_speech_configs: {
 									nesting_mode: "set"
 									block: {
@@ -42623,6 +43237,20 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					logging_settings: {
 						nesting_mode: "list"
 						block: {
+							attributes: required_recording_consent: {
+								type: "bool"
+								description: """
+												Whether the app has to say what may be recorded before anything is kept.
+												When true, a session starts with recording off and stays off until the
+												client sends SessionInput.recording_control, which then decides every turn
+												from that point on. This covers audio recording as well as conversation
+												history, BigQuery export and Cloud Logging.
+												When 'false', the default, the settings above decide on their own and the
+												client does not have to send anything.
+												"""
+								description_kind: "plain"
+								optional:         true
+							}
 							block_types: {
 								audio_recording_config: {
 									nesting_mode: "list"
@@ -59410,6 +60038,425 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_cloud_identity_inbound_oidc_sso_profile: {
+			version: 0
+			block: {
+				attributes: {
+					customer: {
+						type:             "string"
+						description:      "The customer. For example: 'customers/C0123abc'. If omitted, the customer of the caller is used."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "Human-readable name of the OIDC SSO profile."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					inbound_oidc_sso_profile_id: {
+						type:             "string"
+						description:      "The server-assigned ID of the OIDC SSO profile (the last segment of 'name')."
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Resource name of the OIDC SSO profile, in the format 'inboundOidcSsoProfiles/{inbound_oidc_sso_profile_id}'."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					idp_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								change_password_uri: {
+									type: "string"
+									description: """
+												The **Change Password URL** of the identity provider. Users will be sent to this URL
+												when changing their passwords at 'myaccount.google.com'. This takes precedence over
+												the change password URL configured at customer-level. Must use 'HTTPS'.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								issuer_uri: {
+									type: "string"
+									description: """
+												The Issuer identifier for the IdP. Must be a URL. The discovery URL will be derived
+												from this as described in Section 4 of the OIDC specification.
+												"""
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description:      "OIDC identity provider configuration."
+							description_kind: "plain"
+						}
+						min_items: 1
+						max_items: 1
+					}
+					rp_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								client_id: {
+									type:             "string"
+									description:      "OAuth2 client ID for OIDC. Must be set together with 'client_secret'."
+									description_kind: "plain"
+									optional:         true
+								}
+								client_secret: {
+									type:             "string"
+									description:      "Input only. OAuth2 client secret for OIDC. Must be set together with 'client_id'."
+									description_kind: "plain"
+									optional:         true
+									sensitive:        true
+								}
+								redirect_uris: {
+									type: ["list", "string"]
+									description:      "The URL(s) that this client may use in authentication requests."
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							description: """
+										OIDC relying party (RP) configuration for this OIDC SSO profile. These are the RP details
+										provided by Google that should be configured on the corresponding identity provider.
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_cloud_identity_inbound_saml_sso_profile: {
+			version: 0
+			block: {
+				attributes: {
+					customer: {
+						type:             "string"
+						description:      "The customer. For example: 'customers/C0123abc'. If omitted, the customer of the caller is used."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "Human-readable name of the SAML SSO profile."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					inbound_saml_sso_profile_id: {
+						type: "string"
+						description: """
+									The server-assigned ID of the SAML SSO profile (the last segment of
+									'name').
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Resource name of the SAML SSO profile, assigned by the server.
+									Format: 'inboundSamlSsoProfiles/{inbound_saml_sso_profile_id}'.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					sp_config: {
+						type: ["list", ["object", {
+							assertion_consumer_service_uri: "string"
+							entity_id:                      "string"
+						}]]
+						description: """
+									SAML service provider configuration for this SAML SSO profile. These are the service
+									provider details provided by Google that should be configured on the corresponding
+									identity provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					idp_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								change_password_uri: {
+									type: "string"
+									description: """
+												The **Change Password URL** of the identity provider. Users will be sent to this URL
+												when changing their passwords at 'myaccount.google.com'. This takes precedence over
+												the change password URL configured at customer-level. Must use 'HTTPS'.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								entity_id: {
+									type:             "string"
+									description:      "The SAML **Entity ID** of the identity provider."
+									description_kind: "plain"
+									required:         true
+								}
+								logout_redirect_uri: {
+									type: "string"
+									description: """
+												The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user
+												clicks the sign-out link on a Google page, they will be redirected to this URL. This is
+												a pure redirect with no attached SAML 'LogoutRequest' i.e. SAML single logout is not
+												supported. Must use 'HTTPS'.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								single_sign_on_service_uri: {
+									type: "string"
+									description: """
+												The 'SingleSignOnService' endpoint location (sign-in page URL) of the identity provider.
+												This is the URL where the 'AuthnRequest' will be sent. Must use 'HTTPS'.
+												Assumed to accept the 'HTTP-Redirect' binding.
+												"""
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description:      "SAML identity provider configuration."
+							description_kind: "plain"
+						}
+						min_items: 1
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_cloud_identity_policy: {
+			version: 0
+			block: {
+				attributes: {
+					customer: {
+						type:             "string"
+						description:      "The customer that the Policy belongs to. Format: 'customers/{customer_id}'."
+						description_kind: "plain"
+						required:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					name: {
+						type:             "string"
+						description:      "The resource name of the Policy. Format: 'policies/{policy_id}'."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					policy_query: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								group: {
+									type:             "string"
+									description:      "The group that the query applies to."
+									description_kind: "plain"
+									optional:         true
+								}
+								org_unit: {
+									type: "string"
+									description: """
+												The OrgUnit the query applies to, in the format 'orgUnits/{org_unit_id}'.
+												'{org_unit_id}' is the obfuscated org unit ID, the same value the Admin SDK
+												Directory API returns as 'orgUnitId' without its 'id:' prefix. Org unit paths
+												and display names are not resolved and are rejected for most settings.
+												For detector settings ('settings/detector.*'), the API ignores this value and
+												always applies the policy to, and returns, the customer's root org unit, so any
+												other value produces a diff; set it to the root org unit's ID.
+												"""
+									description_kind: "plain"
+									required:         true
+								}
+								query: {
+									type:             "string"
+									description:      "The CEL query that defines which entities the Policy applies to."
+									description_kind: "plain"
+									optional:         true
+								}
+								sort_order: {
+									type:             "number"
+									description:      "Decimal sort order of this PolicyQuery."
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							description:      "The PolicyQuery the Setting applies to."
+							description_kind: "plain"
+						}
+						min_items: 1
+						max_items: 1
+					}
+					setting: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								type: {
+									type:             "string"
+									description:      "The type of the Setting."
+									description_kind: "plain"
+									required:         true
+								}
+								value_json: {
+									type:             "string"
+									description:      "The value of the Setting as JSON string."
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description:      "The Setting configured by this Policy."
+							description_kind: "plain"
+						}
+						min_items: 1
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_cloud_ids_endpoint: {
 			version: 0
 			block: {
@@ -59663,8 +60710,14 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						computed:         true
 					}
 					ignore_safety_checks: {
-						type:             "string"
-						description:      "The list of quota safety checks to be ignored. Default value: \"QUOTA_SAFETY_CHECK_UNSPECIFIED\" Possible values: [\"QUOTA_SAFETY_CHECK_UNSPECIFIED\", \"QUOTA_DECREASE_BELOW_USAGE\", \"QUOTA_DECREASE_PERCENTAGE_TOO_HIGH\"]"
+						type: "string"
+						description: """
+									A comma-separated list of quota safety checks to be ignored, for example
+									'QUOTA_DECREASE_BELOW_USAGE,QUOTA_DECREASE_PERCENTAGE_TOO_HIGH'. Possible
+									values are 'QUOTA_SAFETY_CHECK_UNSPECIFIED', 'QUOTA_DECREASE_BELOW_USAGE' and
+									'QUOTA_DECREASE_PERCENTAGE_TOO_HIGH'. 'QUOTA_SAFETY_CHECK_UNSPECIFIED' cannot
+									be combined with other values.
+									"""
 						description_kind: "plain"
 						optional:         true
 					}
@@ -61924,6 +62977,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									optional:         true
 								}
+								sandbox_launcher: {
+									type:             "bool"
+									description:      "Indicates that this container can act as a sandbox supervisor and launch sandboxes."
+									description_kind: "plain"
+									optional:         true
+								}
 								working_dir: {
 									type:             "string"
 									description:      "Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image."
@@ -62272,6 +63331,103 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							description_kind: "plain"
 						}
 						min_items: 1
+					}
+					sandboxes: {
+						nesting_mode: "list"
+						block: {
+							block_types: templates: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										args: {
+											type: ["list", "string"]
+											description:      "Arguments to the entrypoint. The docker image's CMD is used if this is not provided."
+											description_kind: "plain"
+											optional:         true
+										}
+										command: {
+											type: ["list", "string"]
+											description:      "Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided."
+											description_kind: "plain"
+											optional:         true
+										}
+										image: {
+											type:             "string"
+											description:      "Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed."
+											description_kind: "plain"
+											required:         true
+										}
+										name: {
+											type:             "string"
+											description:      "Name of the sandbox specified as a DNS_LABEL (RFC 1123)."
+											description_kind: "plain"
+											required:         true
+										}
+										working_dir: {
+											type:             "string"
+											description:      "Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image."
+											description_kind: "plain"
+											optional:         true
+										}
+									}
+									block_types: {
+										env: {
+											nesting_mode: "set"
+											block: {
+												attributes: {
+													name: {
+														type:             "string"
+														description:      "Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters."
+														description_kind: "plain"
+														required:         true
+													}
+													value: {
+														type:             "string"
+														description:      "Literal value of the environment variable. Defaults to \"\" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run."
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												description:      "List of environment variables to set in the sandbox."
+												description_kind: "plain"
+											}
+										}
+										volume_mounts: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													mount_path: {
+														type:             "string"
+														description:      "Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run"
+														description_kind: "plain"
+														required:         true
+													}
+													name: {
+														type:             "string"
+														description:      "This must match the Name of a Volume."
+														description_kind: "plain"
+														required:         true
+													}
+													sub_path: {
+														type:             "string"
+														description:      "Path within the volume from which the container's volume should be mounted."
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												description:      "Volume to mount into the container's filesystem."
+												description_kind: "plain"
+											}
+										}
+									}
+									description:      "Sandbox templates that can be launched through the 'sandbox' CLI."
+									description_kind: "plain"
+								}
+							}
+							description:      "Configuration for sandboxes."
+							description_kind: "plain"
+						}
+						max_items: 1
 					}
 					timeouts: {
 						nesting_mode: "single"
@@ -63380,6 +64536,103 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 													required:         true
 												}
 												description:      "Node Selector describes the hardware requirements of the resources."
+												description_kind: "plain"
+											}
+											max_items: 1
+										}
+										sandboxes: {
+											nesting_mode: "list"
+											block: {
+												block_types: templates: {
+													nesting_mode: "list"
+													block: {
+														attributes: {
+															args: {
+																type: ["list", "string"]
+																description:      "Arguments to the entrypoint. The docker image's CMD is used if this is not provided."
+																description_kind: "plain"
+																optional:         true
+															}
+															command: {
+																type: ["list", "string"]
+																description:      "Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided."
+																description_kind: "plain"
+																optional:         true
+															}
+															image: {
+																type:             "string"
+																description:      "Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed."
+																description_kind: "plain"
+																required:         true
+															}
+															name: {
+																type:             "string"
+																description:      "Name of the sandbox specified as a DNS_LABEL (RFC 1123)."
+																description_kind: "plain"
+																required:         true
+															}
+															working_dir: {
+																type:             "string"
+																description:      "Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image."
+																description_kind: "plain"
+																optional:         true
+															}
+														}
+														block_types: {
+															env: {
+																nesting_mode: "set"
+																block: {
+																	attributes: {
+																		name: {
+																			type:             "string"
+																			description:      "Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters."
+																			description_kind: "plain"
+																			required:         true
+																		}
+																		value: {
+																			type:             "string"
+																			description:      "Literal value of the environment variable. Defaults to \"\" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																	}
+																	description:      "List of environment variables to set in the sandbox."
+																	description_kind: "plain"
+																}
+															}
+															volume_mounts: {
+																nesting_mode: "list"
+																block: {
+																	attributes: {
+																		mount_path: {
+																			type:             "string"
+																			description:      "Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run"
+																			description_kind: "plain"
+																			required:         true
+																		}
+																		name: {
+																			type:             "string"
+																			description:      "This must match the Name of a Volume."
+																			description_kind: "plain"
+																			required:         true
+																		}
+																		sub_path: {
+																			type:             "string"
+																			description:      "Path within the volume from which the container's volume should be mounted."
+																			description_kind: "plain"
+																			optional:         true
+																		}
+																	}
+																	description:      "Volume to mount into the container's filesystem."
+																	description_kind: "plain"
+																}
+															}
+														}
+														description:      "Sandbox templates that can be launched through the 'sandbox' CLI."
+														description_kind: "plain"
+													}
+												}
+												description:      "Configuration for sandboxes."
 												description_kind: "plain"
 											}
 											max_items: 1
@@ -66457,6 +67710,103 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 											required:         true
 										}
 										description:      "Node Selector describes the hardware requirements of the resources."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								sandboxes: {
+									nesting_mode: "list"
+									block: {
+										block_types: templates: {
+											nesting_mode: "list"
+											block: {
+												attributes: {
+													args: {
+														type: ["list", "string"]
+														description:      "Arguments to the entrypoint. The docker image's CMD is used if this is not provided."
+														description_kind: "plain"
+														optional:         true
+													}
+													command: {
+														type: ["list", "string"]
+														description:      "Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided."
+														description_kind: "plain"
+														optional:         true
+													}
+													image: {
+														type:             "string"
+														description:      "Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed."
+														description_kind: "plain"
+														required:         true
+													}
+													name: {
+														type:             "string"
+														description:      "Name of the sandbox specified as a DNS_LABEL (RFC 1123)."
+														description_kind: "plain"
+														required:         true
+													}
+													working_dir: {
+														type:             "string"
+														description:      "Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image."
+														description_kind: "plain"
+														optional:         true
+													}
+												}
+												block_types: {
+													env: {
+														nesting_mode: "set"
+														block: {
+															attributes: {
+																name: {
+																	type:             "string"
+																	description:      "Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters."
+																	description_kind: "plain"
+																	required:         true
+																}
+																value: {
+																	type:             "string"
+																	description:      "Literal value of the environment variable. Defaults to \"\" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run."
+																	description_kind: "plain"
+																	optional:         true
+																}
+															}
+															description:      "List of environment variables to set in the sandbox."
+															description_kind: "plain"
+														}
+													}
+													volume_mounts: {
+														nesting_mode: "list"
+														block: {
+															attributes: {
+																mount_path: {
+																	type:             "string"
+																	description:      "Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run"
+																	description_kind: "plain"
+																	required:         true
+																}
+																name: {
+																	type:             "string"
+																	description:      "This must match the Name of a Volume."
+																	description_kind: "plain"
+																	required:         true
+																}
+																sub_path: {
+																	type:             "string"
+																	description:      "Path within the volume from which the container's volume should be mounted."
+																	description_kind: "plain"
+																	optional:         true
+																}
+															}
+															description:      "Volume to mount into the container's filesystem."
+															description_kind: "plain"
+														}
+													}
+												}
+												description:      "Sandbox templates that can be launched through the 'sandbox' CLI."
+												description_kind: "plain"
+											}
+										}
+										description:      "Configuration for sandboxes."
 										description_kind: "plain"
 									}
 									max_items: 1
@@ -78308,7 +79658,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 					runtime: {
 						type:             "string"
-						description:      "The runtime in which the function is going to run. Eg. \"nodejs20\", \"python37\", \"go111\"."
+						description:      "The runtime in which the function is going to run. Eg. \"nodejs22\", \"python37\", \"go111\"."
 						description_kind: "plain"
 						required:         true
 					}
@@ -82875,7 +84225,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									Indicates whether the backend service will be used with internal or
 									external load balancing. A backend service created for one type of
 									load balancing cannot be used with the other. For more information, refer to
-									[Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service). Default value: "EXTERNAL_MANAGED" Possible values: ["EXTERNAL", "INTERNAL_SELF_MANAGED", "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+									[Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service). Default value: "EXTERNAL_MANAGED" Possible values: ["EXTERNAL", "INTERNAL_SELF_MANAGED", "INTERNAL_MANAGED", "EXTERNAL_MANAGED", "EXTERNAL_PASSTHROUGH"]
 									"""
 						description_kind: "plain"
 						optional:         true
@@ -88004,6 +89354,10 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									* VPC_PEERING - for peer networks
 
 									* PRIVATE_SERVICE_CONNECT - for ([Beta](../guides/provider_versions.html.markdown)) only) Private Service Connect networks
+
+									* PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 - for Global External Passthrough Network Load Balancers
+
+									* PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1 - for Global External Passthrough Network Load Balancers
 									"""
 						description_kind: "plain"
 						optional:         true
@@ -88053,6 +89407,17 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 			version: 0
 			block: {
 				attributes: {
+					backend_service: {
+						type: "string"
+						description: """
+									Identifies the backend service to which the forwarding rule sends traffic.
+
+									Required for Global External Passthrough Network Load Balancing;
+									must be omitted for all other load balancer types.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
 					base_forwarding_rule: {
 						type:             "string"
 						description:      "[Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified."
@@ -88181,6 +89546,17 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						optional:         true
 						computed:         true
 					}
+					ip_addresses: {
+						type: ["list", "string"]
+						description: """
+									IP addresses for which this forwarding rule accepts traffic, ordered by
+									Availability Group 0 followed by Availability Group 1. Specify literal
+									IP addresses (for example, 'google_compute_global_address.example.address').
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
 					ip_protocol: {
 						type: "string"
 						description: """
@@ -88232,7 +89608,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									Specifies the forwarding rule type.
 
 									For more information about forwarding rules, refer to
-									[Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts). Default value: "EXTERNAL_MANAGED" Possible values: ["EXTERNAL", "EXTERNAL_MANAGED", "INTERNAL_MANAGED", "INTERNAL_SELF_MANAGED"]
+									[Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts). Default value: "EXTERNAL_MANAGED" Possible values: ["EXTERNAL", "EXTERNAL_MANAGED", "INTERNAL_MANAGED", "INTERNAL_SELF_MANAGED", "EXTERNAL_PASSTHROUGH"]
 									"""
 						description_kind: "plain"
 						optional:         true
@@ -88388,7 +89764,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 									"""
 						description_kind: "plain"
-						required:         true
+						optional:         true
 					}
 					terraform_labels: {
 						type: ["map", "string"]
@@ -166543,6 +167919,20 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												}
 												max_items: 1
 											}
+											multi_zone_config: {
+												nesting_mode: "list"
+												block: {
+													attributes: target_shape: {
+														type:             "string"
+														description:      "The distribution shape of the nodes in the multi-zonal cluster. Valid values are \"ANY\"."
+														description_kind: "plain"
+														required:         true
+													}
+													description:      "Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region."
+													description_kind: "plain"
+												}
+												max_items: 1
+											}
 											node_group_affinity: {
 												nesting_mode: "list"
 												block: {
@@ -167284,19 +168674,20 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 										attributes: {
 											boot_disk_size_gb: {
 												type:             "number"
-												description:      "The boot disk size in GB. Changing this forces a new resource to be created."
+												description:      "The boot disk size in GB. Changing this on an existing secondary worker group forces a new resource to be created."
 												description_kind: "plain"
 												optional:         true
+												computed:         true
 											}
 											core_count: {
 												type:             "number"
-												description:      "The number of vCPUs per instance. Must be a power of 2: 2, 4, 8, 16, or 32. Changing this forces a new resource to be created."
+												description:      "The number of vCPUs per instance. Must be a power of 2: 2, 4, 8, 16, or 32. Changing this on an existing secondary worker group forces a new resource to be created."
 												description_kind: "plain"
 												required:         true
 											}
 											hardware_class: {
 												type:             "string"
-												description:      "The hardware class of instances. Allowed values are \"STANDARD\" and \"PERFORMANCE\". Defaults to \"STANDARD\". Changing this forces a new resource to be created."
+												description:      "The hardware class of instances. Allowed values are \"STANDARD\" and \"PERFORMANCE\". Defaults to \"STANDARD\". Changing this on an existing secondary worker group forces a new resource to be created."
 												description_kind: "plain"
 												optional:         true
 											}
@@ -177584,6 +178975,902 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							}
 							description_kind: "plain"
 						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_design_center_application: {
+			version: 0
+			block: {
+				attributes: {
+					apphub_application: {
+						type:             "string"
+						description:      "AppHub application URI."
+						description_kind: "plain"
+						computed:         true
+					}
+					application_id: {
+						type:             "string"
+						description:      "The ID of the application."
+						description_kind: "plain"
+						required:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "Create time."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					deployment_metadata: {
+						type: ["list", ["object", {
+							build: "string"
+							component_output_parameters: ["list", ["object", {
+								component: "string"
+								parameters: ["list", ["object", {
+									key:   "string"
+									value: "string"
+								}]]
+							}]]
+							error: ["list", ["object", {
+								code:          "string"
+								detail:        "string"
+								error_message: "string"
+								type:          "string"
+							}]]
+							retry_attempts: "number"
+							revision:       "string"
+							worker_pool:    "string"
+						}]]
+						description:      "Deployment metadata of the application."
+						description_kind: "plain"
+						computed:         true
+					}
+					deployment_project: {
+						type:             "string"
+						description:      "Deployment project."
+						description_kind: "plain"
+						optional:         true
+					}
+					deployment_region: {
+						type:             "string"
+						description:      "Deployment region."
+						description_kind: "plain"
+						optional:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Description of the application."
+						description_kind: "plain"
+						optional:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "Display name."
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the space."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Name of the application."
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					service_account: {
+						type:             "string"
+						description:      "Service account for deployment."
+						description_kind: "plain"
+						optional:         true
+					}
+					space: {
+						type:             "string"
+						description:      "The space for the application."
+						description_kind: "plain"
+						required:         true
+					}
+					state: {
+						type:             "string"
+						description:      "State of the application."
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Update time."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					app_parameters: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								key: {
+									type:             "string"
+									description:      "The key of the parameter."
+									description_kind: "plain"
+									required:         true
+								}
+								value: {
+									type: "string"
+									description: """
+												The value of the parameter, as a JSON-encoded string. Use
+												'jsonencode()' to set it.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description: """
+										A list of parameters to attach to the deployment source object, which is
+										a catalog entry or an application template snapshot. When unset, the API
+										fills these in from the application template.
+										"""
+							description_kind: "plain"
+						}
+					}
+					attributes: {
+						nesting_mode: "list"
+						block: {
+							block_types: {
+								business_owners: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											display_name: {
+												type:             "string"
+												description:      "Contact's name."
+												description_kind: "plain"
+												optional:         true
+											}
+											email: {
+												type:             "string"
+												description:      "Email address of the contact."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Business team that ensures user needs are met and value is delivered."
+										description_kind: "plain"
+									}
+								}
+								criticality: {
+									nesting_mode: "list"
+									block: {
+										attributes: type: {
+											type: "string"
+											description: """
+															Criticality type. Possible values are 'MISSION_CRITICAL', 'HIGH',
+															'MEDIUM' and 'LOW'.
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "Criticality of the application."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								developer_owners: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											display_name: {
+												type:             "string"
+												description:      "Contact's name."
+												description_kind: "plain"
+												optional:         true
+											}
+											email: {
+												type:             "string"
+												description:      "Email address of the contact."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Developer team that owns development and coding."
+										description_kind: "plain"
+									}
+								}
+								environment: {
+									nesting_mode: "list"
+									block: {
+										attributes: type: {
+											type: "string"
+											description: """
+															Environment type. Possible values are 'PRODUCTION', 'STAGING',
+															'TEST' and 'DEVELOPMENT'.
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+										description:      "Environment of the application."
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								operator_owners: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											display_name: {
+												type:             "string"
+												description:      "Contact's name."
+												description_kind: "plain"
+												optional:         true
+											}
+											email: {
+												type:             "string"
+												description:      "Email address of the contact."
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Operator team that ensures runtime and operations."
+										description_kind: "plain"
+									}
+								}
+							}
+							description:      "Attributes of the App Hub application."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					component_parameters: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								component: {
+									type:             "string"
+									description:      "The URI of the component that the parameters belong to."
+									description_kind: "plain"
+									required:         true
+								}
+								state: {
+									type:             "string"
+									description:      "The deployment state of the component."
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							block_types: parameters: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										key: {
+											type:             "string"
+											description:      "The key of the parameter."
+											description_kind: "plain"
+											required:         true
+										}
+										value: {
+											type: "string"
+											description: """
+															The value of the parameter, as a JSON-encoded string. Use
+															'jsonencode()' to set it.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+									}
+									description:      "A list of parameters associated with the component."
+									description_kind: "plain"
+								}
+							}
+							description: """
+										A list of component parameters to associate with the application. When
+										unset, the API fills these in from the application template.
+										"""
+							description_kind: "plain"
+						}
+					}
+					composite_application_parameters: {
+						nesting_mode: "list"
+						block: {
+							attributes: service_account_map: {
+								type: ["map", "string"]
+								description: """
+												A map from a component URI to the service account that deploys the
+												component. Keys use the format
+												'projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{application_template}/components/{component}'
+												and values use the format
+												'projects/{project}/serviceAccounts/{email_address}'.
+												"""
+								description_kind: "plain"
+								optional:         true
+							}
+							description:      "Parameters that are required for composite applications."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					connection_configs: {
+						nesting_mode: "list"
+						block: {
+							attributes: connection_uri: {
+								type:             "string"
+								description:      "The URI of the connection."
+								description_kind: "plain"
+								required:         true
+							}
+							block_types: {
+								destination_component_parameters: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											key: {
+												type:             "string"
+												description:      "The key of the parameter."
+												description_kind: "plain"
+												required:         true
+											}
+											value: {
+												type: "string"
+												description: """
+															The value of the parameter, as a JSON-encoded string. Use
+															'jsonencode()' to set it.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description: """
+													The parameters of the connection associated with the destination
+													component.
+													"""
+										description_kind: "plain"
+									}
+								}
+								source_component_parameters: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											key: {
+												type:             "string"
+												description:      "The key of the parameter."
+												description_kind: "plain"
+												required:         true
+											}
+											value: {
+												type: "string"
+												description: """
+															The value of the parameter, as a JSON-encoded string. Use
+															'jsonencode()' to set it.
+															"""
+												description_kind: "plain"
+												optional:         true
+											}
+										}
+										description: """
+													The parameters of the connection associated with the source
+													component.
+													"""
+										description_kind: "plain"
+									}
+								}
+							}
+							description: """
+										Connection configurations for the application. When the application is
+										created or its source changes, the API sets these from the connections
+										in the application template.
+										"""
+							description_kind: "plain"
+						}
+					}
+					deployment_target: {
+						nesting_mode: "list"
+						block: {
+							block_types: gke_deployment_target: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										cluster_self_link: {
+											type: "string"
+											description: """
+															The self link of the cluster where the GKE based application is
+															deployed.
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+										kubernetes_service_account: {
+											type: "string"
+											description: """
+															The Kubernetes service account in the namespace, such as
+															'default'.
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+										kubernetes_service_account_creation: {
+											type: "bool"
+											description: """
+															Whether to create the Kubernetes service account. If 'true', the
+															service account is created in the namespace. If 'false', the
+															service account must already exist in the namespace.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										namespace: {
+											type:             "string"
+											description:      "The namespace where the application is deployed."
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									description:      "The GKE deployment target."
+									description_kind: "plain"
+								}
+								max_items: 1
+							}
+							description:      "The deployment target of the application."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					roles_apis_config: {
+						nesting_mode: "list"
+						block: {
+							attributes: project_id: {
+								type:             "string"
+								description:      "The project ID to which these configurations apply."
+								description_kind: "plain"
+								required:         true
+							}
+							block_types: {
+								apis: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											api: {
+												type:             "string"
+												description:      "API name, such as 'compute.googleapis.com'."
+												description_kind: "plain"
+												required:         true
+											}
+											system_provided: {
+												type:             "bool"
+												description:      "Whether Application Design Center added the API."
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										description: """
+													APIs that must be enabled in this project before the application is
+													deployed, in the form of '*.googleapis.com'.
+													"""
+										description_kind: "plain"
+									}
+								}
+								roles: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											role: {
+												type:             "string"
+												description:      "IAM role name, such as 'roles/editor'."
+												description_kind: "plain"
+												required:         true
+											}
+											system_provided: {
+												type:             "bool"
+												description:      "Whether Application Design Center added the role."
+												description_kind: "plain"
+												computed:         true
+											}
+										}
+										description: """
+													IAM roles that the deployment service account needs to deploy the
+													application within this project.
+													"""
+										description_kind: "plain"
+									}
+								}
+							}
+							description: """
+										Project-specific configurations required to deploy the application,
+										including IAM roles and APIs. When unset, the API fills in the roles and
+										APIs that the deployment needs.
+										"""
+							description_kind: "plain"
+						}
+					}
+					scope: {
+						nesting_mode: "list"
+						block: {
+							attributes: type: {
+								type:             "string"
+								description:      "Scope type."
+								description_kind: "plain"
+								optional:         true
+							}
+							description:      "AppHub Scope for the application."
+							description_kind: "plain"
+						}
+						min_items: 1
+						max_items: 1
+					}
+					source: {
+						nesting_mode: "list"
+						block: {
+							attributes: application_template_revision: {
+								type:             "string"
+								description:      "Application template revision URI."
+								description_kind: "plain"
+								optional:         true
+							}
+							description:      "DeploymentSource for the application."
+							description_kind: "plain"
+						}
+						min_items: 1
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_design_center_space: {
+			version: 0
+			block: {
+				attributes: {
+					create_time: {
+						type:             "string"
+						description:      "Space creation timestamp."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					description: {
+						type:             "string"
+						description:      "Description for the space."
+						description_kind: "plain"
+						optional:         true
+					}
+					display_name: {
+						type:             "string"
+						description:      "Display name for the space."
+						description_kind: "plain"
+						optional:         true
+					}
+					enable_gcp_shared_templates: {
+						type:             "bool"
+						description:      "Flag to enable Google opinionated shared templates."
+						description_kind: "plain"
+						optional:         true
+					}
+					gcs_bucket: {
+						type: "string"
+						description: """
+									An existing Google Cloud Storage bucket that you want to use instead of
+									creating a new bucket during Application Design Center setup. If not
+									provided, a default bucket is created during setup. The bucket must exist
+									in the same project as the space. Format: {bucket_name}
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description:      "The location of the space."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type:             "string"
+						description:      "Identifier. The space name."
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description:      "The ID of the space."
+						description_kind: "plain"
+						required:         true
+					}
+					tags: {
+						type: ["map", "string"]
+						description: """
+									Input only. Resource Manager tags to bind to the space at creation, as a
+									map of namespaced tag keys to tag value short names, for example
+									'{"123/environment" = "production"}'. For more information, see
+									https://cloud.google.com/resource-manager/docs/tags/tags-overview.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					update_time: {
+						type:             "string"
+						description:      "Space update timestamp."
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_design_center_space_iam_binding: {
+			version: 0
+			block: {
+				attributes: {
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					members: {
+						type: ["set", "string"]
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					space_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: condition: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							description: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							expression: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+							title: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						description_kind: "plain"
+					}
+					max_items: 1
+				}
+				description_kind: "plain"
+			}
+		}
+		google_design_center_space_iam_member: {
+			version: 0
+			block: {
+				attributes: {
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					member: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					role: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					space_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				block_types: condition: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							description: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							expression: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+							title: {
+								type:             "string"
+								description_kind: "plain"
+								required:         true
+							}
+						}
+						description_kind: "plain"
+					}
+					max_items: 1
+				}
+				description_kind: "plain"
+			}
+		}
+		google_design_center_space_iam_policy: {
+			version: 0
+			block: {
+				attributes: {
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					policy_data: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
 					}
 				}
 				description_kind: "plain"
@@ -192108,6 +194395,22 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						optional:         true
 						computed:         true
 					}
+					provision_intent: {
+						type: "string"
+						description: """
+									The Gemini Enterprise experience that the project is provisioned for.
+									'PROVISION_INTENT_SOBI' provisions the project for the new Gemini Enterprise
+									experience, and 'PROVISION_INTENT_LEGACY' provisions it for the classic
+									Gemini Enterprise experience. If unset, the API chooses the experience.
+
+									Changing this field forces a new resource, which calls the provisioning API
+									again with the new value. Provisioning doesn't remove an experience that the
+									project was already provisioned for, and the API may reject provisioning a
+									project that uses the classic experience for the new experience. Possible values: ["PROVISION_INTENT_SOBI", "PROVISION_INTENT_LEGACY"]
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
 				}
 				block_types: {
 					saas_params: {
@@ -203321,6 +205624,61 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									computed:         true
 								}
 							}
+							block_types: {
+								ignored_paths: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											pattern: {
+												type:             "string"
+												description:      "The pattern to match against."
+												description_kind: "plain"
+												required:         true
+											}
+											type: {
+												type:             "string"
+												description:      "The type of pattern to match against. Possible values: [\"RE2\", \"GLOB\", \"PREFIX\"]"
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description: """
+													A list of file paths patterns to exclude from triggering a rollout.
+													Patterns in this list take precedence over required_paths.
+													**Note**: All paths must be in the ignored_paths in order for the
+													rollout to be skipped. Limited to 100 paths.
+													"""
+										description_kind: "plain"
+									}
+								}
+								required_paths: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											pattern: {
+												type:             "string"
+												description:      "The pattern to match against."
+												description_kind: "plain"
+												required:         true
+											}
+											type: {
+												type:             "string"
+												description:      "The type of pattern to match against. Possible values: [\"RE2\", \"GLOB\", \"PREFIX\"]"
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description: """
+													A list of file paths patterns that trigger a build and rollout
+													if at least one of the changed files in the commit are present in
+													this list. This field is optional; the rollout policy will default to
+													triggering on all paths if both ignored_paths and required_paths are
+													not populated. Limited to 100 paths.
+													"""
+										description_kind: "plain"
+									}
+								}
+							}
 							description:      "The policy for how builds and rollouts are triggered and rolled out."
 							description_kind: "plain"
 						}
@@ -208923,6 +211281,18 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					enable_customer_data_sharing: {
 						type:             "bool"
 						description:      "Whether customer data sharing should be enabled."
+						description_kind: "plain"
+						optional:         true
+					}
+					gcs_bucket: {
+						type: "string"
+						description: """
+									The Cloud Storage bucket name allocated for this setting.
+									Note: Please make sure the cloudaicompanion service agent
+									'service-<PROJECT-NUMBER>@gcp-sa-cloudaicompanion.iam.gserviceaccount.com'
+									has 'storage.objects.get' and 'storage.objects.create' permission to the
+									Cloud Storage bucket.
+									"""
 						description_kind: "plain"
 						optional:         true
 					}
@@ -226177,7 +228547,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									workforce identity pool provider will produce an error.
 									* SCIM_USAGE_UNSPECIFIED: Default behaviour
 									* ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the 'google.groups'
-									  attribute mapping for authorization checks Possible values: ["SCIM_USAGE_UNSPECIFIED", "ENABLED_FOR_GROUPS"]
+									  attribute mapping for authorization checks
+									* ENABLED_FOR_USERS_GROUPS: Use SCIM-managed groups and users instead of the 'google.groups'
+									  attribute mapping for authorization checks Possible values: ["SCIM_USAGE_UNSPECIFIED", "ENABLED_FOR_GROUPS", "ENABLED_FOR_USERS_GROUPS"]
 									"""
 						description_kind: "plain"
 						optional:         true
@@ -227837,6 +230209,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 			version: 0
 			block: {
 				attributes: {
+					actor_providers: {
+						type: ["list", "string"]
+						description: """
+									A list of the resource names of 'WorkloadIdentityPoolProvider's in the same pool
+									that are authorized to issue actor tokens for this provider. An actor token
+									represents the identity of the acting party to whom authority is delegated. At
+									most 3 actor providers can be specified. Actor providers are only supported for
+									OIDC providers.
+
+									Each entry must be formatted as
+									'projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}',
+									where '{project}' matches the 'project' configured on this resource (for example,
+									by referencing 'google_iam_workload_identity_pool_provider.<actor>.id').
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
 					attribute_condition: {
 						type: "string"
 						description: """
@@ -228056,6 +230445,31 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 												//iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
 												https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
 												'''
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								discovery_uri: {
+									type: "string"
+									description: """
+												The URL to fetch the OIDC discovery document from, overriding the default URL
+												derived from 'issuer_uri'. If not set, 'discovery_uri' defaults to 'issuer_uri'
+												with '/.well-known/openid-configuration' appended, as per the OpenID Connect
+												Discovery 1.0 specification.
+
+												If set, 'discovery_uri' must meet the following requirements:
+												  * Must start with 'https://'.
+												  * Must not exceed 2000 characters.
+												  * The scheme, host, and port must match 'issuer_uri'.
+												  * The path must contain '/.well-known/<suffix>' (where '<suffix>' is not
+												    empty, such as 'openid-configuration') and conform to the 'issuer_uri'
+												    topology:
+												    * The well-known path segment is inserted before the issuer path (for
+												      example, 'https://example.com/.well-known/openid-configuration/tenant1'
+												      for issuer 'https://example.com/tenant1'), or
+												    * The well-known path segment is appended under the issuer path (for
+												      example, 'https://example.com/tenant1/.well-known/openid-configuration'
+												      for issuer 'https://example.com/tenant1').
 												"""
 									description_kind: "plain"
 									optional:         true
@@ -233126,27 +235540,55 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						required:         true
 					}
 				}
-				block_types: timeouts: {
-					nesting_mode: "single"
-					block: {
-						attributes: {
-							create: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
+				block_types: {
+					response_type: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								code: {
+									type:             "bool"
+									description:      "If true, authorization code is returned from IdP's authorization endpoint."
+									description_kind: "plain"
+									optional:         true
+								}
+								id_token: {
+									type:             "bool"
+									description:      "If true, ID token is returned from IdP's authorization endpoint."
+									description_kind: "plain"
+									optional:         true
+								}
 							}
-							delete: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
-							update: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
+							description: """
+										The response type to request for in the OAuth authorization flow.
+										You can set either idToken or code to true, but not both.
+										Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+										"""
+							description_kind: "plain"
 						}
-						description_kind: "plain"
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
 					}
 				}
 				description_kind: "plain"
@@ -297709,6 +300151,2176 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_saas_runtime_release: {
+			version: 0
+			block: {
+				attributes: {
+					annotations: {
+						type: ["map", "string"]
+						description: """
+									Annotations is an unstructured key-value map stored with a resource that
+									may be set by external tools to store and retrieve arbitrary metadata.
+									They are not queryable and should be preserved when modifying objects.
+
+									More info: https://kubernetes.io/docs/user-guide/annotations
+
+									**Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+									Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					application_template_component: {
+						type: ["list", ["object", {
+							component: "string"
+							composite_ref: ["list", ["object", {
+								application_template: "string"
+								revision:             "string"
+								sync_operation:       "string"
+							}]]
+							revision: "string"
+						}]]
+						description: """
+									Reference to a component and revision in a composite Application Design
+									Center ApplicationTemplate. Set by the service on Releases created by an
+									ApplicationTemplate import.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The timestamp when the resource was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					effective_annotations: {
+						type: ["map", "string"]
+						description:      "All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					etag: {
+						type: "string"
+						description: """
+									An opaque value that uniquely identifies a version or
+									generation of a resource. It can be used to confirm that the client
+									and server agree on the ordering of a resource being written.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					input_variables: {
+						type: ["list", ["object", {
+							type:     "string"
+							value:    "string"
+							variable: "string"
+						}]]
+						description: """
+									List of input variables declared on the blueprint and can be present with
+									their values on the unit spec
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									The labels on the resource, which can be used for categorization.
+									similar to Kubernetes resource labels.
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Identifier. The resource name (full URI of the resource) following the standard naming
+									scheme:
+
+									"projects/{project}/locations/{location}/releases/{release}"
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					output_variables: {
+						type: ["list", ["object", {
+							type:     "string"
+							value:    "string"
+							variable: "string"
+						}]]
+						description: """
+									List of output variables declared on the blueprint and can be present with
+									their values on the unit status
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					release_id: {
+						type:             "string"
+						description:      "The ID value for the new release."
+						description_kind: "plain"
+						required:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					uid: {
+						type: "string"
+						description: """
+									The unique identifier of the resource. UID is unique in the time
+									and space for this resource within the scope of the service. It is
+									typically generated by the server on successful creation of a resource
+									and must not be changed. UID is used to uniquely identify resources
+									with resource name reuses. This should be a UUID4.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					unit_kind: {
+						type: "string"
+						description: """
+									Reference to the UnitKind this Release corresponds to (required and
+									immutable once created).
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					update_time: {
+						type: "string"
+						description: """
+									The timestamp when the resource was last updated. Any
+									change to the resource made by users must refresh this value.
+									Changes to a resource made by the service should refresh this value.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					blueprint: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								engine: {
+									type:             "string"
+									description:      "Type of the engine used to actuate the blueprint. e.g. terraform, helm etc."
+									description_kind: "plain"
+									computed:         true
+								}
+								package: {
+									type: "string"
+									description: """
+												URI to a blueprint used by the Unit (required unless unitKind or release is
+												set).
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								version: {
+									type:             "string"
+									description:      "Version metadata if present on the blueprint."
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							description: """
+										Blueprints are OCI Images that contain all of the artifacts needed to
+										provision a unit. Metadata such as, type of the engine used to actuate the
+										blueprint (e.g. terraform, helm etc) and version will come from the image
+										manifest. If the hostname is omitted, it will be assumed to be the regional
+										path to Artifact Registry (eg. us-east1-docker.pkg.dev).
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					input_variable_defaults: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								type: {
+									type:             "string"
+									description:      "Name of a supported variable type. Supported types are STRING, INT, BOOL. Possible values: [\"TYPE_UNSPECIFIED\", \"STRING\", \"INT\", \"BOOL\"]"
+									description_kind: "plain"
+									optional:         true
+								}
+								value: {
+									type:             "string"
+									description:      "String encoded value for the variable."
+									description_kind: "plain"
+									optional:         true
+								}
+								variable: {
+									type:             "string"
+									description:      "Name of the variable from actuation configs."
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description:      "Mapping of input variables to default values. Maximum 100"
+							description_kind: "plain"
+						}
+					}
+					release_requirements: {
+						nesting_mode: "list"
+						block: {
+							attributes: upgradeable_from_releases: {
+								type: ["list", "string"]
+								description: """
+												A list of releases from which a unit can be upgraded to this one
+												(optional). If left empty no constraints will be applied. When provided,
+												unit upgrade requests to this release will check and enforce this
+												constraint.
+												"""
+								description_kind: "plain"
+								optional:         true
+							}
+							description:      "Set of requirements to be fulfilled on the Unit when using this Release."
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_saas_runtime_rollout_kind: {
+			version: 0
+			block: {
+				attributes: {
+					annotations: {
+						type: ["map", "string"]
+						description: """
+									Annotations is an unstructured key-value map stored with a resource that
+									may be set by external tools to store and retrieve arbitrary metadata.
+									They are not queryable and should be preserved when modifying objects.
+
+									More info: https://kubernetes.io/docs/user-guide/annotations
+
+									**Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+									Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The timestamp when the resource was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					effective_annotations: {
+						type: ["map", "string"]
+						description:      "All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									The labels on the resource, which can be used for categorization.
+									similar to Kubernetes resource labels.
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Identifier. The resource name (full URI of the resource) following the standard naming
+									scheme:
+
+									"projects/{project}/locations/{location}/rolloutKinds/{rollout_kind_id}"
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					rollout_kind_id: {
+						type:             "string"
+						description:      "The ID value for the new rollout kind."
+						description_kind: "plain"
+						required:         true
+					}
+					rollout_orchestration_strategy: {
+						type: "string"
+						description: """
+									The strategy used for executing a Rollout. This is a required field.
+
+									There are two supported values strategies which are used to control a rollout.
+									- "Google.Cloud.Simple.AllAtOnce"
+									- "Google.Cloud.Simple.OneLocationAtATime"
+
+									A rollout with one of these simple strategies will rollout across
+									all locations defined in the associated UnitKind's Saas Locations.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					uid: {
+						type: "string"
+						description: """
+									The unique identifier of the resource. UID is unique in the time
+									and space for this resource within the scope of the service. It is
+									typically generated by the server on successful creation of a resource
+									and must not be changed. UID is used to uniquely identify resources
+									with resource name reuses. This should be a UUID4.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					unit_filter: {
+						type: "string"
+						description: """
+									CEL(https://github.com/google/cel-spec) formatted filter string against
+									Unit. The filter will be applied to determine the eligible unit population.
+									This filter can only reduce, but not expand the scope of the rollout.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					unit_kind: {
+						type: "string"
+						description: """
+									UnitKind that this rollout kind corresponds to. Rollouts stemming from this
+									rollout kind will target the units of this unit kind. In other words, this
+									defines the population of target units to be upgraded by rollouts.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					update_time: {
+						type: "string"
+						description: """
+									The timestamp when the resource was last updated. Any
+									change to the resource made by users must refresh this value.
+									Changes to a resource made by the service should refresh this value.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					update_unit_kind_strategy: {
+						type: "string"
+						description: """
+									The config for updating the unit kind. By default, the unit kind will be
+									updated on the rollout start.
+									Possible values:
+									UPDATE_UNIT_KIND_STRATEGY_ON_START
+									UPDATE_UNIT_KIND_STRATEGY_NEVER Possible values: ["UPDATE_UNIT_KIND_STRATEGY_ON_START", "UPDATE_UNIT_KIND_STRATEGY_NEVER"]
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: {
+					error_budget: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								allowed_count: {
+									type: "number"
+									description: """
+												The maximum number of failed units allowed in a location without pausing
+												the rollout.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								allowed_percentage: {
+									type: "number"
+									description: """
+												The maximum percentage of units allowed to fail (0, 100] within a location
+												without pausing the rollout.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description: """
+										The configuration for error budget. If the number of failed units exceeds
+										max(allowed_count, allowed_ratio * total_units), the rollout will be paused.
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_saas_runtime_saas: {
+			version: 0
+			block: {
+				attributes: {
+					annotations: {
+						type: ["map", "string"]
+						description: """
+									Annotations is an unstructured key-value map stored with a resource that
+									may be set by external tools to store and retrieve arbitrary metadata.
+									They are not queryable and should be preserved when modifying objects.
+
+									More info: https://kubernetes.io/docs/user-guide/annotations
+
+									**Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+									Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					blueprint_repo: {
+						type: "string"
+						description: """
+									Name of the repository in Artifact Registry for system-generated
+									Blueprints, for example the Blueprints of imported ApplicationTemplates.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					conditions: {
+						type: ["list", ["object", {
+							last_transition_time: "string"
+							message:              "string"
+							reason:               "string"
+							status:               "string"
+							type:                 "string"
+						}]]
+						description: """
+									A set of conditions which indicate the various conditions this resource can
+									have.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The timestamp when the resource was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					effective_annotations: {
+						type: ["map", "string"]
+						description:      "All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					error: {
+						type: ["list", ["object", {
+							code:    "number"
+							message: "string"
+						}]]
+						description:      "If the state is 'STATE_FAILED', the corresponding error code and message."
+						description_kind: "plain"
+						computed:         true
+					}
+					etag: {
+						type: "string"
+						description: """
+									An opaque value that uniquely identifies a version or
+									generation of a resource. It can be used to confirm that the client
+									and server agree on the ordering of a resource being written.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									The labels on the resource, which can be used for categorization.
+									similar to Kubernetes resource labels.
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Identifier. The resource name (full URI of the resource) following the standard naming
+									scheme:
+
+									"projects/{project}/locations/{location}/saas/{saas}"
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					saas_id: {
+						type:             "string"
+						description:      "The ID value for the new saas."
+						description_kind: "plain"
+						required:         true
+					}
+					state: {
+						type: "string"
+						description: """
+									State of the Saas. It is always 'STATE_ACTIVE' if
+									'application_template.revision' is empty.
+									Possible values:
+									STATE_UNSPECIFIED
+									STATE_TYPE_UNSPECIFIED
+									STATE_ACTIVE
+									STATE_RUNNING
+									STATE_FAILED
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					uid: {
+						type: "string"
+						description: """
+									The unique identifier of the resource. UID is unique in the time
+									and space for this resource within the scope of the service. It is
+									typically generated by the server on successful creation of a resource
+									and must not be changed. UID is used to uniquely identify resources
+									with resource name reuses. This should be a UUID4.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type: "string"
+						description: """
+									The timestamp when the resource was last updated. Any
+									change to the resource made by users must refresh this value.
+									Changes to a resource made by the service should refresh this value.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					application_template: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								application_template: {
+									type: "string"
+									description: """
+												Reference to the ApplicationTemplate resource, in the format
+												'projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}'.
+												"""
+									description_kind: "plain"
+									required:         true
+								}
+								revision: {
+									type: "string"
+									description: """
+												Revision of the ApplicationTemplate to import, as a full resource name
+												prefixed by 'application_template':
+												'projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}/revisions/{revision}'.
+												Changes to the revision trigger a new import. If empty, the service
+												stores 'application_template' but doesn't import it.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								sync_operation: {
+									type:             "string"
+									description:      "Reference to the ongoing import and replication operation. Opaque for external usage."
+									description_kind: "plain"
+									computed:         true
+								}
+							}
+							description: """
+										Reference to a composite Application Design Center ApplicationTemplate.
+										When 'revision' is set, the service imports the template components into
+										equivalent UnitKind, Release and Blueprint resources. Create waits for
+										the import to finish. Update waits when the template changes or when the
+										Saas was failed, running, or not yet started. Both fail if 'state'
+										becomes 'STATE_FAILED'.
+
+										* The import creates UnitKinds (named 'u-<rootModuleId>-<6 chars>') and
+										  their Releases, and copies the Saas, the UnitKinds and the Releases to
+										  'global' and to the other 'locations'. Terraform doesn't manage or
+										  delete any of them, including when this field changes. Before
+										  destroying or replacing the Saas (including 'terraform apply -replace'
+										  and recreating a tainted Saas), delete the imported UnitKinds and
+										  Releases in every location: the API rejects the deletion of a Saas
+										  that still has UnitKinds.
+										* After a failed import, fix the template and change 'revision'. Any
+										  apply that changes a failed Saas restarts the import, and the provider
+										  waits for the restarted import to finish or fail again.
+										* While an import is running, the provider retries template or revision
+										  updates and DELETE until it finishes, within the resource timeouts.
+										* Don't create Terraform-managed UnitKinds whose
+										  'application_template_component' matches a component of this
+										  template: the import adopts them and overwrites their fields.
+										* Set this field only on the source-region Saas, not on the copies in
+										  'global' or other 'locations'.
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					locations: {
+						nesting_mode: "list"
+						block: {
+							attributes: name: {
+								type:             "string"
+								description:      "Name of location."
+								description_kind: "plain"
+								optional:         true
+							}
+							description: """
+										List of locations that the service is available in. Rollout refers to the
+										list to generate a rollout plan.
+										"""
+							description_kind: "plain"
+						}
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_saas_runtime_tenant: {
+			version: 0
+			block: {
+				attributes: {
+					annotations: {
+						type: ["map", "string"]
+						description: """
+									Annotations is an unstructured key-value map stored with a resource that
+									may be set by external tools to store and retrieve arbitrary metadata.
+									They are not queryable and should be preserved when modifying objects.
+
+									More info: https://kubernetes.io/docs/user-guide/annotations
+
+									**Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+									Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					consumer_resource: {
+						type: "string"
+						description: """
+									A reference to the consumer resource this SaaS Tenant is representing.
+
+									The relationship with a consumer resource can be used by App Lifecycle Manager for
+									retrieving consumer-defined settings and policies such as maintenance
+									policies (using Unified Maintenance Policy API).
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The timestamp when the resource was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					effective_annotations: {
+						type: ["map", "string"]
+						description:      "All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									The labels on the resource, which can be used for categorization.
+									similar to Kubernetes resource labels.
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Identifier. The resource name (full URI of the resource) following the standard naming
+									scheme:
+
+									"projects/{project}/locations/{location}/tenants/{tenant}"
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					saas: {
+						type: "string"
+						description: """
+									A reference to the Saas that defines the product (managed service) that
+									the producer wants to manage with App Lifecycle Manager. Part of the
+									App Lifecycle Manager common data model.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					tenant_id: {
+						type:             "string"
+						description:      "The ID value for the new tenant."
+						description_kind: "plain"
+						required:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					uid: {
+						type: "string"
+						description: """
+									The unique identifier of the resource. UID is unique in the time
+									and space for this resource within the scope of the service. It is
+									typically generated by the server on successful creation of a resource
+									and must not be changed. UID is used to uniquely identify resources
+									with resource name reuses. This should be a UUID4.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					update_time: {
+						type: "string"
+						description: """
+									The timestamp when the resource was last updated. Any
+									change to the resource made by users must refresh this value.
+									Changes to a resource made by the service should refresh this value.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: timeouts: {
+					nesting_mode: "single"
+					block: {
+						attributes: {
+							create: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							delete: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+							update: {
+								type:             "string"
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description_kind: "plain"
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_saas_runtime_unit: {
+			version: 0
+			block: {
+				attributes: {
+					annotations: {
+						type: ["map", "string"]
+						description: """
+									Annotations is an unstructured key-value map stored with a resource that
+									may be set by external tools to store and retrieve arbitrary metadata.
+									They are not queryable and should be preserved when modifying objects.
+
+									More info: https://kubernetes.io/docs/user-guide/annotations
+
+									**Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+									Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					application: {
+						type: "string"
+						description: """
+									Reference to the App Hub Application this Unit belongs to, in the format
+									'projects/{project}/locations/{location}/applications/{application}'.
+									All resources deployed in this Unit are associated with the specified
+									Application. If empty, the service sets it during any UnitOperation
+									when the UnitKind has 'app_params.group' and App Hub is enabled.
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					conditions: {
+						type: ["list", ["object", {
+							last_transition_time: "string"
+							message:              "string"
+							reason:               "string"
+							status:               "string"
+							type:                 "string"
+						}]]
+						description: """
+									A set of conditions which indicate the various conditions this resource can
+									have.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The timestamp when the resource was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					dependencies: {
+						type: ["list", ["object", {
+							alias: "string"
+							unit:  "string"
+						}]]
+						description:      "Set of dependencies for this unit. Maximum 10."
+						description_kind: "plain"
+						computed:         true
+					}
+					dependents: {
+						type: ["list", ["object", {
+							alias: "string"
+							unit:  "string"
+						}]]
+						description: """
+									List of Units that depend on this unit. Unit can only be deprovisioned if
+									this list is empty. Maximum 1000.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					effective_annotations: {
+						type: ["map", "string"]
+						description:      "All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					input_variables: {
+						type: ["list", ["object", {
+							type:     "string"
+							value:    "string"
+							variable: "string"
+						}]]
+						description:      "Indicates the current input variables deployed by the unit"
+						description_kind: "plain"
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									The labels on the resource, which can be used for categorization.
+									similar to Kubernetes resource labels.
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					management_mode: {
+						type: "string"
+						description: """
+									Indicates whether the Unit life cycle is controlled
+									by the user or by the system.
+									Immutable once created.
+									Possible values:
+									MANAGEMENT_MODE_USER
+									MANAGEMENT_MODE_SYSTEM
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Identifier. The resource name (full URI of the resource) following the standard naming
+									scheme:
+
+									"projects/{project}/locations/{location}/units/{unit}"
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					ongoing_operations: {
+						type: ["list", "string"]
+						description:      "List of concurrent UnitOperations that are operating on this Unit."
+						description_kind: "plain"
+						computed:         true
+					}
+					output_variables: {
+						type: ["list", ["object", {
+							type:     "string"
+							value:    "string"
+							variable: "string"
+						}]]
+						description: """
+									Set of key/value pairs corresponding to output variables from execution of
+									actuation templates. The variables are declared in actuation configs (e.g
+									in helm chart or terraform) and the values are fetched and returned by the
+									actuation engine upon completion of execution.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					pending_operations: {
+						type: ["list", "string"]
+						description:      "List of pending (wait to be executed) UnitOperations for this unit."
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					release: {
+						type:             "string"
+						description:      "The current Release object for this Unit."
+						description_kind: "plain"
+						computed:         true
+					}
+					scheduled_operations: {
+						type: ["list", "string"]
+						description:      "List of scheduled UnitOperations for this unit."
+						description_kind: "plain"
+						computed:         true
+					}
+					state: {
+						type: "string"
+						description: """
+									Current lifecycle state of the resource (e.g. if it's being
+									created or ready to use).
+									Possible values:
+									UNIT_STATE_NOT_PROVISIONED
+									UNIT_STATE_PROVISIONING
+									UNIT_STATE_UPDATING
+									UNIT_STATE_DEPROVISIONING
+									UNIT_STATE_READY
+									UNIT_STATE_ERROR
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					system_cleanup_at: {
+						type:             "string"
+						description:      "If set, indicates the time when the system will start removing the unit."
+						description_kind: "plain"
+						computed:         true
+					}
+					system_managed_state: {
+						type: "string"
+						description: """
+									Indicates the system managed state of the unit.
+									Possible values:
+									SYSTEM_MANAGED_STATE_ACTIVE
+									SYSTEM_MANAGED_STATE_INACTIVE
+									SYSTEM_MANAGED_STATE_DECOMMISSIONED
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					tenant: {
+						type: "string"
+						description: """
+									Reference to the Saas Tenant resource this unit belongs to. This for
+									example informs the maintenance policies to use for scheduling future
+									updates on a unit. (optional and immutable once created)
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					uid: {
+						type: "string"
+						description: """
+									The unique identifier of the resource. UID is unique in the time
+									and space for this resource within the scope of the service. It is
+									typically generated by the server on successful creation of a resource
+									and must not be changed. UID is used to uniquely identify resources
+									with resource name reuses. This should be a UUID4.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					unit_id: {
+						type:             "string"
+						description:      "The ID value for the new unit."
+						description_kind: "plain"
+						required:         true
+					}
+					unit_kind: {
+						type:             "string"
+						description:      "Reference to the UnitKind this Unit belongs to. Immutable once set."
+						description_kind: "plain"
+						optional:         true
+					}
+					update_time: {
+						type: "string"
+						description: """
+									The timestamp when the resource was last updated. Any
+									change to the resource made by users must refresh this value.
+									Changes to a resource made by the service should refresh this value.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					maintenance: {
+						nesting_mode: "list"
+						block: {
+							attributes: pinned_until_time: {
+								type: "string"
+								description: """
+												If present, it fixes the release on the unit until the given time; i.e.
+												changes to the release field will be rejected. Rollouts should and will
+												also respect this by not requesting an upgrade in the first place.
+												"""
+								description_kind: "plain"
+								optional:         true
+							}
+							description: """
+										Captures requested directives for performing future maintenance on the
+										unit. This includes a request for the unit to skip maintenance for a period
+										of time and remain pinned to its current release as well as controls for
+										postponing maintenance scheduled in future.
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_saas_runtime_unit_kind: {
+			version: 0
+			block: {
+				attributes: {
+					annotations: {
+						type: ["map", "string"]
+						description: """
+									Annotations is an unstructured key-value map stored with a resource that
+									may be set by external tools to store and retrieve arbitrary metadata.
+									They are not queryable and should be preserved when modifying objects.
+
+									More info: https://kubernetes.io/docs/user-guide/annotations
+
+									**Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+									Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The timestamp when the resource was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					default_release: {
+						type: "string"
+						description: """
+									A reference to the Release object to use as default for creating new units
+									of this UnitKind.
+									If not specified, a new unit must explicitly reference which release to use
+									for its creation.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					effective_annotations: {
+						type: ["map", "string"]
+						description:      "All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					etag: {
+						type: "string"
+						description: """
+									An opaque value that uniquely identifies a version or
+									generation of a resource. It can be used to confirm that the client
+									and server agree on the ordering of a resource being written.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									The labels on the resource, which can be used for categorization.
+									similar to Kubernetes resource labels.
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Identifier. The resource name (full URI of the resource) following the standard naming
+									scheme:
+
+									"projects/{project}/locations/{location}/unitKinds/{unitKind}"
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					saas: {
+						type: "string"
+						description: """
+									A reference to the Saas that defines the product (managed service) that
+									the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
+									common data model. Immutable once set.
+									"""
+						description_kind: "plain"
+						required:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					uid: {
+						type: "string"
+						description: """
+									The unique identifier of the resource. UID is unique in the time
+									and space for this resource within the scope of the service. It is
+									typically generated by the server on successful creation of a resource
+									and must not be changed. UID is used to uniquely identify resources
+									with resource name reuses. This should be a UUID4.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					unit_kind_id: {
+						type:             "string"
+						description:      "The ID value for the new unit kind."
+						description_kind: "plain"
+						required:         true
+					}
+					update_time: {
+						type: "string"
+						description: """
+									The timestamp when the resource was last updated. Any
+									change to the resource made by users must refresh this value.
+									Changes to a resource made by the service should refresh this value.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+				}
+				block_types: {
+					app_params: {
+						nesting_mode: "list"
+						block: {
+							attributes: group: {
+								type: "string"
+								description: """
+												Grouping used to construct the name of the App Hub Application.
+												Multiple UnitKinds can specify the same group to use the same
+												Application across their respective Units. Corresponds to the
+												app_boundary_id in the ADC composite ApplicationTemplate. If empty,
+												the service creates no App Hub application.
+												"""
+								description_kind: "plain"
+								optional:         true
+							}
+							block_types: scope: {
+								nesting_mode: "list"
+								block: {
+									attributes: type: {
+										type: "string"
+										description: """
+															Scope type.
+															Possible values:
+															TYPE_REGIONAL
+															TYPE_GLOBAL
+															"""
+										description_kind: "plain"
+										required:         true
+									}
+									description:      "Corresponds to the scope in the ADC composite ApplicationTemplate."
+									description_kind: "plain"
+								}
+								max_items: 1
+							}
+							description: """
+										Parameters for creating an App Hub Application for the Units of this
+										UnitKind.
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					application_template_component: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								component: {
+									type: "string"
+									description: """
+												Name of the component in the composite ApplicationTemplate (the root
+												module ID, e.g. a composite component ID or 'native-components').
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								revision: {
+									type: "string"
+									description: """
+												Revision of the component. If the component does not have a revision,
+												this is the revision of the composite ApplicationTemplate.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							block_types: composite_ref: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										application_template: {
+											type: "string"
+											description: """
+															Reference to the ApplicationTemplate resource, in the format
+															'projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{applicationTemplate}'.
+															"""
+											description_kind: "plain"
+											required:         true
+										}
+										revision: {
+											type: "string"
+											description: """
+															Revision of the ApplicationTemplate, as a full resource name
+															prefixed by 'application_template'.
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										sync_operation: {
+											type:             "string"
+											description:      "Reference to the ongoing import and replication operation. Opaque for external usage."
+											description_kind: "plain"
+											computed:         true
+										}
+									}
+									description:      "Reference to the composite ApplicationTemplate."
+									description_kind: "plain"
+								}
+								max_items: 1
+							}
+							description: """
+										Reference to a component and revision in a composite Application Design
+										Center ApplicationTemplate.
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					dependencies: {
+						nesting_mode: "list"
+						block: {
+							attributes: {
+								alias: {
+									type:             "string"
+									description:      "An alias for the dependency. Used for input variable mapping."
+									description_kind: "plain"
+									required:         true
+								}
+								unit_kind: {
+									type:             "string"
+									description:      "The unit kind of the dependency."
+									description_kind: "plain"
+									required:         true
+								}
+							}
+							description: """
+										List of other unit kinds that this release will depend on. Dependencies
+										will be automatically provisioned if not found. Maximum 10.
+										"""
+							description_kind: "plain"
+						}
+					}
+					input_variable_mappings: {
+						nesting_mode: "list"
+						block: {
+							attributes: variable: {
+								type:             "string"
+								description:      "name of the variable"
+								description_kind: "plain"
+								required:         true
+							}
+							block_types: {
+								from: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											dependency: {
+												type:             "string"
+												description:      "Alias of the dependency that the outputVariable will pass its value to"
+												description_kind: "plain"
+												required:         true
+											}
+											output_variable: {
+												type:             "string"
+												description:      "Name of the outputVariable on the dependency"
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Output variables whose values will be passed on to dependencies"
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								to: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											dependency: {
+												type:             "string"
+												description:      "Alias of the dependency that the inputVariable will pass its value to"
+												description_kind: "plain"
+												required:         true
+											}
+											ignore_for_lookup: {
+												type:             "bool"
+												description:      "Tells App Lifecycle Manager if this mapping should be used during lookup or not"
+												description_kind: "plain"
+												optional:         true
+											}
+											input_variable: {
+												type:             "string"
+												description:      "Name of the inputVariable on the dependency"
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Input variables whose values will be passed on to dependencies"
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+							}
+							description: """
+										List of inputVariables for this release that will either be retrieved from
+										a dependency’s outputVariables, or will be passed on to a dependency’s
+										inputVariables. Maximum 100.
+										"""
+							description_kind: "plain"
+						}
+					}
+					output_variable_mappings: {
+						nesting_mode: "list"
+						block: {
+							attributes: variable: {
+								type:             "string"
+								description:      "name of the variable"
+								description_kind: "plain"
+								required:         true
+							}
+							block_types: {
+								from: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											dependency: {
+												type:             "string"
+												description:      "Alias of the dependency that the outputVariable will pass its value to"
+												description_kind: "plain"
+												required:         true
+											}
+											output_variable: {
+												type:             "string"
+												description:      "Name of the outputVariable on the dependency"
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Output variables whose values will be passed on to dependencies"
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+								to: {
+									nesting_mode: "list"
+									block: {
+										attributes: {
+											dependency: {
+												type:             "string"
+												description:      "Alias of the dependency that the inputVariable will pass its value to"
+												description_kind: "plain"
+												required:         true
+											}
+											ignore_for_lookup: {
+												type:             "bool"
+												description:      "Tells App Lifecycle Manager if this mapping should be used during lookup or not"
+												description_kind: "plain"
+												optional:         true
+											}
+											input_variable: {
+												type:             "string"
+												description:      "Name of the inputVariable on the dependency"
+												description_kind: "plain"
+												required:         true
+											}
+										}
+										description:      "Input variables whose values will be passed on to dependencies"
+										description_kind: "plain"
+									}
+									max_items: 1
+								}
+							}
+							description: """
+										List of outputVariables for this unit kind will be passed to this unit's
+										outputVariables. Maximum 100.
+										"""
+							description_kind: "plain"
+						}
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+				}
+				description_kind: "plain"
+			}
+		}
+		google_saas_runtime_unit_operation: {
+			version: 0
+			block: {
+				attributes: {
+					annotations: {
+						type: ["map", "string"]
+						description: """
+									Annotations is an unstructured key-value map stored with a resource that
+									may be set by external tools to store and retrieve arbitrary metadata.
+									They are not queryable and should be preserved when modifying objects.
+
+									More info: https://kubernetes.io/docs/user-guide/annotations
+
+									**Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+									Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					conditions: {
+						type: ["list", ["object", {
+							last_transition_time: "string"
+							message:              "string"
+							reason:               "string"
+							status:               "string"
+							type:                 "string"
+						}]]
+						description: """
+									A set of conditions which indicate the various conditions this resource can
+									have.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					create_time: {
+						type:             "string"
+						description:      "The timestamp when the resource was created."
+						description_kind: "plain"
+						computed:         true
+					}
+					deletion_policy: {
+						type: "string"
+						description: """
+									Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+									When a 'terraform destroy' or 'terraform apply' would delete the instance,
+									the command will fail if this field is set to "PREVENT" in Terraform state.
+									When set to "ABANDON", the command will remove the resource from Terraform
+									management without updating or deleting the resource in the API.
+									When set to "DELETE", deleting the resource is allowed.
+
+									"""
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					effective_annotations: {
+						type: ["map", "string"]
+						description:      "All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					effective_labels: {
+						type: ["map", "string"]
+						description:      "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services."
+						description_kind: "plain"
+						computed:         true
+					}
+					engine_state: {
+						type: "string"
+						description: """
+									The engine state for on-going
+									deployment engine operation(s).
+									This field is opaque for external usage.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					error_category: {
+						type: "string"
+						description: """
+									Possible values:
+									NOT_APPLICABLE
+									FATAL
+									RETRIABLE
+									IGNORABLE
+									STANDARD
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					etag: {
+						type: "string"
+						description: """
+									An opaque value that uniquely identifies a version or
+									generation of a resource. It can be used to confirm that the client
+									and server agree on the ordering of a resource being written.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					labels: {
+						type: ["map", "string"]
+						description: """
+									The labels on the resource, which can be used for categorization.
+									similar to Kubernetes resource labels.
+
+									**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+									Please refer to the field 'effective_labels' for all of the labels present on the resource.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+					location: {
+						type:             "string"
+						description:      "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122."
+						description_kind: "plain"
+						required:         true
+					}
+					name: {
+						type: "string"
+						description: """
+									Identifier. The resource name (full URI of the resource) following the standard naming
+									scheme:
+
+									"projects/{project}/locations/{location}/unitOperations/{unitOperation}"
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					state: {
+						type: "string"
+						description: """
+									UnitOperationState describes the current state of the unit operation.
+									Possible values:
+									UNIT_OPERATION_STATE_UNKNOWN
+									UNIT_OPERATION_STATE_PENDING
+									UNIT_OPERATION_STATE_SCHEDULED
+									UNIT_OPERATION_STATE_RUNNING
+									UNIT_OPERATION_STATE_SUCCEEDED
+									UNIT_OPERATION_STATE_FAILED
+									UNIT_OPERATION_STATE_CANCELLED
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					terraform_labels: {
+						type: ["map", "string"]
+						description: """
+									The combination of labels configured directly on the resource
+									 and default labels configured on the provider.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					uid: {
+						type: "string"
+						description: """
+									The unique identifier of the resource. UID is unique in the time
+									and space for this resource within the scope of the service. It is
+									typically generated by the server on successful creation of a resource
+									and must not be changed. UID is used to uniquely identify resources
+									with resource name reuses. This should be a UUID4.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					unit: {
+						type:             "string"
+						description:      "The Unit a given UnitOperation will act upon."
+						description_kind: "plain"
+						required:         true
+					}
+					unit_operation_id: {
+						type:             "string"
+						description:      "The ID value for the new unit operation."
+						description_kind: "plain"
+						required:         true
+					}
+					update_time: {
+						type: "string"
+						description: """
+									The timestamp when the resource was last updated. Any
+									change to the resource made by users must refresh this value.
+									Changes to a resource made by the service should refresh this value.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
+					wait_for_completion: {
+						type: "bool"
+						description: """
+									If true, wait for the UnitOperation to reach a terminal state (SUCCEEDED, FAILED, CANCELLED)
+									before completing the apply.
+									"""
+						description_kind: "plain"
+						optional:         true
+					}
+				}
+				block_types: {
+					deprovision: {
+						nesting_mode: "list"
+						block: {
+							description: """
+										Deprovision is the unit operation that deprovision the underlying
+										resources represented by a Unit. Can only execute if the Unit is currently
+										provisioned.
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					provision: {
+						nesting_mode: "list"
+						block: {
+							attributes: release: {
+								type:             "string"
+								description:      "Reference to the Release object to use for the Unit. (optional)."
+								description_kind: "plain"
+								optional:         true
+							}
+							block_types: input_variables: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										type: {
+											type: "string"
+											description: """
+															Name of a supported variable type. Supported types are string, int, bool.
+															Possible values:
+															STRING
+															INT
+															BOOL
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										value: {
+											type:             "string"
+											description:      "String encoded value for the variable."
+											description_kind: "plain"
+											optional:         true
+										}
+										variable: {
+											type:             "string"
+											description:      "Name of the variable from actuation configs."
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									description:      "Set of input variables. Maximum 100. (optional)"
+									description_kind: "plain"
+								}
+							}
+							description: """
+										Provision is the unit operation that provision the underlying resources
+										represented by a Unit. Can only execute if the Unit is not currently
+										provisioned.
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+					timeouts: {
+						nesting_mode: "single"
+						block: {
+							attributes: {
+								create: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								delete: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+								update: {
+									type:             "string"
+									description_kind: "plain"
+									optional:         true
+								}
+							}
+							description_kind: "plain"
+						}
+					}
+					upgrade: {
+						nesting_mode: "list"
+						block: {
+							attributes: release: {
+								type:             "string"
+								description:      "Reference to the Release object to use for the Unit. (optional)."
+								description_kind: "plain"
+								optional:         true
+							}
+							block_types: input_variables: {
+								nesting_mode: "list"
+								block: {
+									attributes: {
+										type: {
+											type: "string"
+											description: """
+															Name of a supported variable type. Supported types are string, int, bool.
+															Possible values:
+															STRING
+															INT
+															BOOL
+															"""
+											description_kind: "plain"
+											optional:         true
+										}
+										value: {
+											type:             "string"
+											description:      "String encoded value for the variable."
+											description_kind: "plain"
+											optional:         true
+										}
+										variable: {
+											type:             "string"
+											description:      "Name of the variable from actuation configs."
+											description_kind: "plain"
+											required:         true
+										}
+									}
+									description:      "Set of input variables. Maximum 100. (optional)"
+									description_kind: "plain"
+								}
+							}
+							description: """
+										Upgrade is the unit operation that upgrades a provisioned unit, which may
+										also include the underlying resources represented by a Unit. Can only execute
+										if the Unit is currently provisioned.
+										"""
+							description_kind: "plain"
+						}
+						max_items: 1
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_scc_event_threat_detection_custom_module: {
 			version: 0
 			block: {
@@ -309672,6 +314284,12 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									required:         true
 								}
+								description: {
+									type:             "string"
+									description:      "User-provided description for the blue-green deployment."
+									description_kind: "plain"
+									optional:         true
+								}
 								old_source_instance_connection_name: {
 									type:             "string"
 									description:      "Auth Proxy connection string for the former Blue instance post-switchover."
@@ -319401,9 +324019,56 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									description_kind: "plain"
 									optional:         true
 								}
+								experiment: {
+									type: "string"
+									description: """
+												The Experiment associated with this job.
+												Format: 'projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}'
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								experiment_run: {
+									type: "string"
+									description: """
+												The Experiment Run associated with this job.
+												Format: 'projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}'
+												"""
+									description_kind: "plain"
+									optional:         true
+									computed:         true
+								}
+								models: {
+									type: ["list", "string"]
+									description: """
+												The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs.
+												Format: 'projects/{project}/locations/{location}/models/{model}'
+												In order to retrieve a specific version of the model, also provide the version ID or version alias.
+												Example: 'projects/{project}/locations/{location}/models/{model}@2' or 'projects/{project}/locations/{location}/models/{model}@golden'
+												If no version ID or alias is specified, the "default" version will be returned.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
 								network: {
 									type:             "string"
 									description:      "The full name of the Compute Engine network to which the Job should be peered."
+									description_kind: "plain"
+									optional:         true
+								}
+								persistent_resource_id: {
+									type: "string"
+									description: """
+												The ID of the PersistentResource in the same Project and Location which to run.
+												If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines.
+												The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
+												"""
+									description_kind: "plain"
+									optional:         true
+								}
+								protected_artifact_location_id: {
+									type:             "string"
+									description:      "The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location."
 									description_kind: "plain"
 									optional:         true
 								}
@@ -342659,6 +347324,19 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								node_selector: ["list", ["object", {
 									accelerator: "string"
 								}]]
+								sandboxes: ["list", ["object", {
+									templates: ["list", ["object", {
+										args: ["list", "string"]
+										command: ["list", "string"]
+										env: ["set", ["object", {
+											name: "string", value: "string"
+										}]]
+										image: "string", name: "string", volume_mounts: ["list", ["object", {
+											mount_path:     "string", name: "string", sub_path: "string"
+										}]]
+										working_dir: "string"
+									}]]
+								}]]
 								service_account: "string"
 								timeout:         "string"
 								volumes: ["list", ["object", {
@@ -343725,7 +348403,20 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							node_selector: ["list", ["object", {
 								accelerator: "string"
 							}]]
-							revision:        "string"
+							revision: "string"
+							sandboxes: ["list", ["object", {
+								templates: ["list", ["object", {
+									args: ["list", "string"]
+									command: ["list", "string"]
+									env: ["set", ["object", {
+										name: "string", value: "string"
+									}]]
+									image: "string", name: "string", volume_mounts: ["list", ["object", {
+										mount_path:     "string", name: "string", sub_path: "string"
+									}]]
+									working_dir: "string"
+								}]]
+							}]]
 							service_account: "string"
 							volumes: ["list", ["object", {
 								cloud_sql_instance: ["list", ["object", {
@@ -345046,7 +349737,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					}
 					runtime: {
 						type:             "string"
-						description:      "The runtime in which the function is going to run. Eg. \"nodejs20\", \"python37\", \"go111\"."
+						description:      "The runtime in which the function is going to run. Eg. \"nodejs22\", \"python37\", \"go111\"."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -346183,7 +350874,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									Indicates whether the backend service will be used with internal or
 									external load balancing. A backend service created for one type of
 									load balancing cannot be used with the other. For more information, refer to
-									[Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service). Default value: "EXTERNAL_MANAGED" Possible values: ["EXTERNAL", "INTERNAL_SELF_MANAGED", "INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+									[Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service). Default value: "EXTERNAL_MANAGED" Possible values: ["EXTERNAL", "INTERNAL_SELF_MANAGED", "INTERNAL_MANAGED", "EXTERNAL_MANAGED", "EXTERNAL_PASSTHROUGH"]
 									"""
 						description_kind: "plain"
 						computed:         true
@@ -347724,6 +352415,17 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 			version: 0
 			block: {
 				attributes: {
+					backend_service: {
+						type: "string"
+						description: """
+									Identifies the backend service to which the forwarding rule sends traffic.
+
+									Required for Global External Passthrough Network Load Balancing;
+									must be omitted for all other load balancer types.
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
 					base_forwarding_rule: {
 						type:             "string"
 						description:      "[Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified."
@@ -347850,6 +352552,16 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 						description_kind: "plain"
 						computed:         true
 					}
+					ip_addresses: {
+						type: ["list", "string"]
+						description: """
+									IP addresses for which this forwarding rule accepts traffic, ordered by
+									Availability Group 0 followed by Availability Group 1. Specify literal
+									IP addresses (for example, 'google_compute_global_address.example.address').
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
 					ip_protocol: {
 						type: "string"
 						description: """
@@ -347900,7 +352612,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 									Specifies the forwarding rule type.
 
 									For more information about forwarding rules, refer to
-									[Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts). Default value: "EXTERNAL_MANAGED" Possible values: ["EXTERNAL", "EXTERNAL_MANAGED", "INTERNAL_MANAGED", "INTERNAL_SELF_MANAGED"]
+									[Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts). Default value: "EXTERNAL_MANAGED" Possible values: ["EXTERNAL", "EXTERNAL_MANAGED", "INTERNAL_MANAGED", "INTERNAL_SELF_MANAGED", "EXTERNAL_PASSTHROUGH"]
 									"""
 						description_kind: "plain"
 						computed:         true
@@ -360189,6 +364901,47 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				description_kind: "plain"
 			}
 		}
+		google_design_center_space_iam_policy: {
+			version: 0
+			block: {
+				attributes: {
+					etag: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					id: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					location: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					policy_data: {
+						type:             "string"
+						description_kind: "plain"
+						computed:         true
+					}
+					project: {
+						type:             "string"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					space_id: {
+						type:             "string"
+						description_kind: "plain"
+						required:         true
+					}
+				}
+				description_kind: "plain"
+			}
+		}
 		google_discovery_engine_data_store: {
 			version: 0
 			block: {
@@ -362838,6 +367591,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 			version: 0
 			block: {
 				attributes: {
+					actor_providers: {
+						type: ["list", "string"]
+						description: """
+									A list of the resource names of 'WorkloadIdentityPoolProvider's in the same pool
+									that are authorized to issue actor tokens for this provider. An actor token
+									represents the identity of the acting party to whom authority is delegated. At
+									most 3 actor providers can be specified. Actor providers are only supported for
+									OIDC providers.
+
+									Each entry must be formatted as
+									'projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}',
+									where '{project}' matches the 'project' configured on this resource (for example,
+									by referencing 'google_iam_workload_identity_pool_provider.<actor>.id').
+									"""
+						description_kind: "plain"
+						computed:         true
+					}
 					attribute_condition: {
 						type: "string"
 						description: """
@@ -362992,8 +367762,9 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					oidc: {
 						type: ["list", ["object", {
 							allowed_audiences: ["list", "string"]
-							issuer_uri: "string"
-							jwks_json:  "string"
+							discovery_uri: "string"
+							issuer_uri:    "string"
+							jwks_json:     "string"
 						}]]
 						description:      "An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml."
 						description_kind: "plain"
@@ -375148,6 +379919,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 							active_environment:                  "string"
 							delete_old_source_on_destroy:        "bool"
 							deployment_name:                     "string"
+							description:                         "string"
 							old_source_instance_connection_name: "string"
 							old_source_instance_name:            "string"
 							target_database_version:             "string"
@@ -375672,6 +380444,7 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 								active_environment:                  "string"
 								delete_old_source_on_destroy:        "bool"
 								deployment_name:                     "string"
+								description:                         "string"
 								old_source_instance_connection_name: "string"
 								old_source_instance_name:            "string"
 								target_database_version:             "string"
@@ -384032,6 +388805,23 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				}
 			}
 		}
+		google_apihub_addon: {
+			version: 1
+			attributes: {
+				addon_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
 		google_apihub_api_hub_instance: {
 			version: 1
 			attributes: {
@@ -384399,6 +389189,27 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 		google_backup_dr_auto_protection_policy: {
 			version: 1
 			attributes: {
+				auto_protection_policy_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+			}
+		}
+		google_backup_dr_auto_protection_policy_binding: {
+			version: 1
+			attributes: {
+				auto_protection_policy_binding_id: {
+					type:                "string"
+					required_for_import: true
+				}
 				auto_protection_policy_id: {
 					type:                "string"
 					required_for_import: true
@@ -386443,6 +391254,27 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 			}
 		}
 		google_cloud_identity_group_membership: {
+			version: 1
+			attributes: name: {
+				type:                "string"
+				required_for_import: true
+			}
+		}
+		google_cloud_identity_inbound_oidc_sso_profile: {
+			version: 1
+			attributes: inbound_oidc_sso_profile_id: {
+				type:                "string"
+				required_for_import: true
+			}
+		}
+		google_cloud_identity_inbound_saml_sso_profile: {
+			version: 1
+			attributes: inbound_saml_sso_profile_id: {
+				type:                "string"
+				required_for_import: true
+			}
+		}
+		google_cloud_identity_policy: {
 			version: 1
 			attributes: name: {
 				type:                "string"
@@ -391047,6 +395879,73 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 				project: {
 					type:                "string"
 					optional_for_import: true
+				}
+			}
+		}
+		google_design_center_application: {
+			version: 1
+			attributes: {
+				application_id: {
+					type:                "string"
+					required_for_import: true
+				}
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				space: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_design_center_space: {
+			version: 1
+			attributes: {
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				space_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_design_center_space_iam_member: {
+			version: 1
+			attributes: {
+				condition_title: {
+					type:                "string"
+					optional_for_import: true
+				}
+				location: {
+					type:                "string"
+					optional_for_import: true
+				}
+				member: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				role: {
+					type:                "string"
+					required_for_import: true
+				}
+				space_id: {
+					type:                "string"
+					required_for_import: true
 				}
 			}
 		}
@@ -397902,6 +402801,125 @@ provider_schemas: "registry.terraform.io/hashicorp/google": {
 					required_for_import: true
 				}
 				parent: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_saas_runtime_release: {
+			version: 1
+			attributes: {
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				release_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_saas_runtime_rollout_kind: {
+			version: 1
+			attributes: {
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				rollout_kind_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_saas_runtime_saas: {
+			version: 1
+			attributes: {
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				saas_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_saas_runtime_tenant: {
+			version: 1
+			attributes: {
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				tenant_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_saas_runtime_unit: {
+			version: 1
+			attributes: {
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				unit_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_saas_runtime_unit_kind: {
+			version: 1
+			attributes: {
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				unit_kind_id: {
+					type:                "string"
+					required_for_import: true
+				}
+			}
+		}
+		google_saas_runtime_unit_operation: {
+			version: 1
+			attributes: {
+				location: {
+					type:                "string"
+					required_for_import: true
+				}
+				project: {
+					type:                "string"
+					optional_for_import: true
+				}
+				unit_operation_id: {
 					type:                "string"
 					required_for_import: true
 				}
