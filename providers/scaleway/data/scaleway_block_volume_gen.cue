@@ -4,6 +4,7 @@ scaleway_block_volume: {
 	@jsonschema(schema="https://json-schema.org/draft/2020-12/schema")
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_block_volume")
 	close({
+		// The ID of the volume, in the `{zone}/{uuid}` format.
 		id?: string
 
 		// The instance volume to create the block volume from
@@ -15,7 +16,7 @@ scaleway_block_volume: {
 		// The volume name
 		name?: string
 
-		// The project_id you want to attach the resource to
+		// The project ID the volume belongs to. Defaults to the provider's project ID.
 		project_id?: string
 
 		// The volume size in GB

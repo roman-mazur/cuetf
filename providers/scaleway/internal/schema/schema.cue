@@ -88,6 +88,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					delete_with_resources: {
+						type:             "bool"
+						description:      "If true, deleting the project also deletes all the resources it contains. Defaults to false."
+						description_kind: "plain"
+						optional:         true
+					}
 					description: {
 						type:             "string"
 						description:      "Description of the project"
@@ -131,6 +137,8 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					The [`scaleway_account_project`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/account_project) resource allows you to create and manage the Projects of a Scaleway Organization.
 
 					Refer to the Organizations and Projects [documentation](https://www.scaleway.com/en/docs/organizations-and-projects/) and [API documentation](https://www.scaleway.com/en/developers/api/account/project-api/) for more information.
+
+					By default, destroying a project that still contains resources fails. Set `delete_with_resources` to `true` to delete the project along with all the resources it contains, including resources not managed by Terraform. Deleting a project is permanent and cannot be undone.
 
 					"""
 				description_kind: "plain"
@@ -203,6 +211,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					The `scaleway_account_ssh_key` resource allows you to create and manage the Projects of a Scaleway Organization.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -1002,6 +1014,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Books and manages Autoscaling Instance groups.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -1118,6 +1134,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Books and manages Autoscaling Instance policies.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -1302,6 +1322,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Books and manages Autoscaling Instance templates.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -1552,7 +1576,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 									computed:         true
 								}
 							}
-							description:      "The options to enable on server"
+							description:      "The options to enable on server. Retrieving them using the scaleway_baremetal_option datasource is highly recommended."
 							description_kind: "plain"
 						}
 					}
@@ -1625,7 +1649,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 									computed:         true
 								}
 							}
-							description:      "The private networks to attach to the server"
+							description:      "The private networks to attach to the server. Requires an option with the private_network attribute to be enabled."
 							description_kind: "plain"
 						}
 					}
@@ -1658,6 +1682,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages Scaleway Bare Metal Servers.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -1956,8 +1984,8 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				attributes: {
 					id: {
 						type:             "string"
-						description_kind: "plain"
-						optional:         true
+						description:      "The ID of the volume, in the `{zone}/{uuid}` format."
+						description_kind: "markdown"
 						computed:         true
 					}
 					instance_volume_id: {
@@ -1982,14 +2010,14 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					project_id: {
 						type:             "string"
-						description:      "The project_id you want to attach the resource to"
-						description_kind: "plain"
+						description:      "The project ID the volume belongs to. Defaults to the provider's project ID."
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
 					size_in_gb: {
 						type:             "number"
-						description:      "The volume size in GB"
+						description:      "The volume size in GB. Defaults to 5GB, or to the snapshot's size if `snapshot_id` is specified"
 						description_kind: "plain"
 						optional:         true
 						computed:         true
@@ -2020,35 +2048,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
-				block_types: timeouts: {
-					nesting_mode: "single"
-					block: {
-						attributes: {
-							create: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
-							default: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
-							delete: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
-							read: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
-						}
-						description_kind: "plain"
-					}
-				}
-				description_kind: "plain"
+				description: """
+					The `scaleway_block_volume` resource is used to create and manage Scaleway Block Storage volumes.
+
+					"""
+				description_kind: "markdown"
 			}
 		}
 		scaleway_cockpit_alert_manager: {
@@ -2095,6 +2099,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the alert manager"
+						description_kind: "plain"
+						computed:         true
+					}
 				}
 				block_types: contact_points: {
 					nesting_mode: "list"
@@ -2109,6 +2119,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					The `scaleway_cockpit_alert_manager` resource allows you to enable and manage the Scaleway Cockpit [alert manager](https://www.scaleway.com/en/docs/observability/cockpit/concepts/#alert-manager).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -2164,6 +2178,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the data export"
+						description_kind: "plain"
 						computed:         true
 					}
 					status: {
@@ -2259,6 +2279,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					The `scaleway_cockpit_exporter` resource allows you to create and manage [data exports](https://www.scaleway.com/en/docs/observability/cockpit/concepts/#data-exports) in Scaleway's Cockpit. Data exports send metrics and logs from Scaleway products to external destinations like Datadog or OTLP-compatible endpoints.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -2316,6 +2340,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						required:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the data source"
+						description_kind: "plain"
+						computed:         true
+					}
 					synchronized_with_grafana: {
 						type:             "bool"
 						description:      "Indicates whether the data source is synchronized with Grafana"
@@ -2369,6 +2399,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					The `scaleway_cockpit_source` resource allows you to create and manage [data sources](https://www.scaleway.com/en/docs/observability/cockpit/concepts/#data-sources) in Scaleway's Cockpit.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -2516,6 +2550,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					The `scaleway_cockpit_token` resource allows you to create and manage your Cockpit [tokens](https://www.scaleway.com/en/docs/observability/cockpit/concepts/#tokens).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -2984,6 +3022,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					The `scaleway_container` resource allows you to create and manage [Serverless Containers](https://www.scaleway.com/en/docs/serverless/containers/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -3069,6 +3111,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					> **Important:** The resource `scaleway_container_cron` has been deprecated and will be removed in the future.
+					Please use `scaleway_container_trigger` with a cron configuration instead.
+
+					"""
 				description_kind: "plain"
 				deprecated:       true
 			}
@@ -3144,6 +3191,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					The `scaleway_container_domain` resource allows you to create and manage domain name bindings for Scaleway [Serverless Containers](https://www.scaleway.com/en/docs/serverless/containers/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -3270,6 +3321,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					The `scaleway_container_namespace` resource allows you to manage Scaleway [Serverless Containers](https://www.scaleway.com/en/docs/serverless/containers/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -3322,6 +3377,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						sensitive:        true
 					}
 				}
+				description: """
+					> **Important:** The resource `scaleway_container_token` has been deprecated and will no longer be supported in v1 of the API.
+					Please use IAM authentication instead. You will find an implementation example in the [IAM authentication](container.md#managing-authentication-of-private-containers-with-iam) section of the Container documentation.
+
+					"""
 				description_kind: "plain"
 				deprecated:       true
 			}
@@ -3573,6 +3633,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					The `scaleway_container_trigger` resource allows you to create and manage triggers for Scaleway [Serverless Containers](https://www.scaleway.com/en/docs/serverless/containers/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -3837,6 +3901,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Creates and manages Scaleway Data Warehouse databases within a deployment.
+					For more information refer to the [product documentation](https://www.scaleway.com/en/docs/data-warehouse/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -4070,6 +4139,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages Scaleway Data Warehouse deployments.
+					For more information refer to the [product documentation](https://www.scaleway.com/en/docs/data-warehouse/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -4122,6 +4196,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Creates and manages Scaleway Data Warehouse users within a deployment.
+					For more information refer to the [product documentation](https://www.scaleway.com/en/docs/data-warehouse/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -4345,6 +4424,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					The `scaleway_domain_record` resource allows you to create and manage DNS records for Scaleway domains.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -4809,6 +4892,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					The `scaleway_domain_registration` resource allows you to purchase and manage domain registrations with Scaleway. Using this resource you can register one or more domains for a specified duration, configure auto-renewal and DNSSEC options, and set contact information. You can supply an owner contact either by providing an existing contact ID or by specifying the complete contact details. The resource automatically returns additional contact information (administrative and technical) as provided by the Scaleway API.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -4889,6 +4976,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					The `scaleway_domain_zone` resource allows you to create and manage Scaleway DNS zones.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -5058,6 +5149,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						max_items: 1
 					}
 				}
+				description: """
+					Creates and manages Scaleway Edge Services Backend Stages.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -5163,6 +5258,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway Edge Services Cache Stages.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -5249,6 +5348,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Creates and manages Scaleway Edge Services DNS Stages.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -5276,6 +5379,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						required:         true
 					}
 				}
+				description: """
+					Sets the Scaleway Edge Services head stage of your pipeline.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -5360,6 +5467,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway Edge Services Pipelines.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -5388,6 +5499,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Creates and manages Scaleway Edge Services plans.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -5521,6 +5636,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway Edge Services Route Stages.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -5624,6 +5743,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway Edge Services TLS Stages.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -5696,6 +5819,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway Edge Services WAF Stages.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -5909,6 +6036,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway flexible IPs.
+					For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/elastic-metal-flexible-ip).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -6009,6 +6141,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway Flexible IP Mac Addresses.
+					For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/elastic-metal-flexible-ip/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -6212,6 +6349,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					The `scaleway_function` resource allows you to create and manage [Serverless Functions](https://www.scaleway.com/en/docs/serverless/functions/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -6303,6 +6444,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					The `scaleway_function_cron` resource allows you to create and manage CRON triggers for Scaleway [Serverless Functions](https://www.scaleway.com/en/docs/serverless/functions/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -6376,6 +6521,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					The `scaleway_function_domain` resource allows you to create and manage domain name bindings for Scaleway [Serverless Functions](https://www.scaleway.com/en/docs/serverless/functions/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -6493,6 +6642,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					The `scaleway_function_namespace` resource allows you to
+					for Scaleway [Serverless Functions](https://www.scaleway.com/en/docs/serverless/functions/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -6545,6 +6699,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						sensitive:        true
 					}
 				}
+				description: """
+					~> **Important:** The resource `scaleway_function_token` has been deprecated and will no longer be supported in v1 of the API.
+					Please use IAM authentication instead. You will find an implementation example in the [IAM authentication](function.md#managing-authentication-of-private-functions-with-iam) section of the Function documentation.
+
+					"""
 				description_kind: "plain"
 				deprecated:       true
 			}
@@ -6700,6 +6859,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					The `scaleway_function_trigger` resource allows you to create and manage triggers for Scaleway [Serverless Functions](https://www.scaleway.com/en/docs/serverless/functions/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -6794,6 +6957,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Creates and manages Scaleway API Keys. For more information, refer to the [IAM API documentation](https://www.scaleway.com/en/developers/api/iam/#api-keys-3665ae).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -6858,6 +7025,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Creates and manages Scaleway IAM Applications. For more information refer to the [IAM API documentation](https://www.scaleway.com/en/developers/api/iam/#applications-83ce5e).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -6934,6 +7105,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Creates and manages Scaleway IAM Groups.
+					For more information refer to the [IAM API documentation](https://www.scaleway.com/en/developers/api/iam/#groups-f592eb).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -6966,6 +7142,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Add members to an IAM group.
+					For more information refer to the [IAM API documentation](https://www.scaleway.com/en/developers/api/iam/#groups-f592eb).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -7088,6 +7269,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					min_items: 1
 				}
+				description: """
+					Creates and manages Scaleway IAM Policies. For more information refer to the [IAM API documentation](https://www.scaleway.com/en/developers/api/iam/#path-policies-create-a-new-policy).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -7367,6 +7552,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					The `scaleway_account_ssh_key` resource allows you to create and manage the Projects of a Scaleway Organization.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -7763,6 +7952,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages Scaleway Managed Inference deployments.
+					For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/inference/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -8066,6 +8260,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway Compute Images.
+					For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/instance/#path-images-list-instance-images).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -8148,6 +8347,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway compute Instance IPs. For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/instance/#path-ips-list-all-flexible-ips).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -8204,6 +8407,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Manages Scaleway compute Instance IPs Reverse DNS.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -8282,6 +8489,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Compute Instance Placement Groups. For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/instance/#path-placement-groups-list-placement-groups).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -8421,6 +8632,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages Scaleway Instance Private NICs. For more information, see
+					the [API documentation](https://www.scaleway.com/en/developers/api/instance/#path-private-nics-list-all-private-nics).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -8609,6 +8825,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages Scaleway compute Instance security groups. For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/instance/#path-security-groups-list-security-groups).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -8734,6 +8954,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages Scaleway compute Instance security group rules. For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/instance/#path-security-groups-list-security-groups).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -9115,6 +9339,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages Scaleway compute Instances. For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/instance/#path-instances-list-all-instances).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -9234,6 +9462,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages Scaleway Compute Snapshots.
+					For more information,
+					see the [API documentation](https://www.scaleway.com/en/developers/api/instance/#path-snapshots-list-snapshots).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -9475,6 +9709,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway compute Instance User Data values.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -9580,6 +9818,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway compute Instance Volumes.
+					For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/instance/#path-volumes-list-volumes).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -10045,6 +10288,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						max_items: 1
 					}
 				}
+				description: """
+					-> **Note:** This terraform resource is currently in beta and might include breaking change in future releases.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -10186,6 +10433,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					-> **Note:** This terraform resource is currently in beta and might include breaking change in future releases.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -10268,6 +10519,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					-> **Note:** This terraform resource is currently in beta and might include breaking change in future releases.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -10442,6 +10697,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					-> **Note:** This terraform resource is currently in beta and might include breaking change in future releases.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -10593,6 +10852,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						min_items: 1
 					}
 				}
+				description: """
+					Books and manages IPAM IPs.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -10655,6 +10918,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Manage the reverse DNS of IP addresses managed by Scaleway's IP Address Management (IPAM) service.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -10829,6 +11096,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages a Scaleway Serverless Job Definition. For more information, see the [Go API documentation](https://pkg.go.dev/github.com/scaleway/scaleway-sdk-go@master/api/jobs/v1alpha1).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -11836,6 +12107,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages Scaleway Kafka clusters.
+					For more information refer to the [product documentation](https://www.scaleway.com/en/developers/api/clusters-for-kafka).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -12292,6 +12568,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages Scaleway Load Balancers.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -12444,6 +12724,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages Scaleway Load Balancer ACLs.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -12752,6 +13036,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages Scaleway Load Balancer backends.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -12887,6 +13175,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages Scaleway Load Balancer certificates.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -13136,6 +13428,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages Scaleway Load Balancer frontends.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -13235,6 +13531,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway Load Balancer IP addresses.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -13323,6 +13623,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway Load Balancer Private Network attachments.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -13396,6 +13700,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway Load Balancer routes.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -13994,6 +14302,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Creates and manages Scaleway Messaging and Queuing NATS accounts.
+					For further information, see
+					our [main documentation](https://www.scaleway.com/en/docs/messaging/reference-content/nats-overview/)
+					To use the Scaleway provider with the official NATS JetStream provider, check out the [corresponding guide](../guides/mnq_with_nats_terraform_provider.md).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -14035,6 +14350,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Creates and manages Scaleway Messaging and Queuing NATS credentials.
+					For further information, see
+					our [main documentation](https://www.scaleway.com/en/docs/messaging/reference-content/nats-overview/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -14069,6 +14390,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Activates Scaleway Messaging and Queuing SNS in a Project.
+					For further information, see
+					our [main documentation](https://www.scaleway.com/en/docs/messaging/reference-content/sns-overview/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -14149,6 +14476,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					max_items: 1
 				}
+				description: """
+					Creates and manages Scaleway Messaging and Queuing SNS credentials.
+					For further information, see
+					our [main documentation](https://www.scaleway.com/en/docs/messaging/reference-content/sns-overview/)
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -14237,6 +14570,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Manage Scaleway Messaging and queuing SNS topics.
+					For further information, see
+					our [main documentation](https://www.scaleway.com/en/docs/messaging/how-to/create-manage-topics/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -14322,6 +14661,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Manages Scaleway Messaging and Queuing SNS topic subscriptions.
+					For further information, see
+					our [main documentation](https://www.scaleway.com/en/docs/messaging/reference-content/sns-overview/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -14356,6 +14701,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Activate Scaleway Messaging and Queuing SQS in a Project.
+					For further information, see
+					our [main documentation](https://www.scaleway.com/en/docs/messaging/reference-content/sqs-overview/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -14436,6 +14787,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					max_items: 1
 				}
+				description: """
+					Creates and manages Scaleway Messaging and Queuing SQS credentials.
+					For further information, see
+					our [main documentation](https://www.scaleway.com/en/docs/messaging/reference-content/sqs-overview/)
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -14600,6 +14957,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages Scaleway Messaging and Queuing SQS queues.
+					For further information, see
+					our [main documentation](https://www.scaleway.com/en/docs/messaging/how-to/create-manage-queues/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -14984,6 +15347,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway MongoDB® snapshots.
+					For more information refer to the [product documentation](https://www.scaleway.com/en/docs/managed-mongodb-databases/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -15242,6 +15610,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					The `scaleway_object` resource allows you to create and manage objects for [Scaleway Object storage](https://www.scaleway.com/en/docs/object-storage/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -15538,6 +15910,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						max_items: 1
 					}
 				}
+				description: """
+					The `scaleway_object_bucket` resource allows you to create and manage buckets for [Scaleway Object storage](https://www.scaleway.com/en/docs/object-storage/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -15665,6 +16041,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					max_items: 1
 				}
+				description: """
+					The `scaleway_object_bucket_acl` resource allows you to create and manage Access Control Lists (ACLs) for [Scaleway Object storage](https://www.scaleway.com/en/docs/object-storage/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -15737,6 +16117,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					min_items: 1
 					max_items: 1
 				}
+				description: """
+					The `scaleway_object_bucket_lock_configuration` resource allows you to create and manage an object lock configuration for [Scaleway Object storage](https://www.scaleway.com/en/docs/object-storage/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -15788,6 +16172,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					The `scaleway_object_bucket_policy` resource allows you to create and manage
+					bucket policies for [Scaleway Object storage][1].
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -15860,6 +16249,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					min_items: 1
 				}
+				description: """
+					The `scaleway_object_bucket_server_side_encryption_configuration` resource allows you to manage server-side encryption configuration for [Scaleway Object Storage](https://www.scaleway.com/en/docs/object-storage/) buckets.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -15937,6 +16330,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						max_items: 1
 					}
 				}
+				description: """
+					The `scaleway_object_bucket_website_configuration` resource allows you to deploy and manage a bucket website with [Scaleway Object storage](https://www.scaleway.com/en/docs/object-storage/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -16121,6 +16518,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						max_items: 1
 					}
 				}
+				description: """
+					Creates and manages Scaleway OpenSearch deployments.
+					For more information refer to the [product documentation](https://www.scaleway.com/en/developers/api/cloud-essentials-for-opensearch).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -16296,6 +16698,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the organization."
+						description_kind: "markdown"
+						computed:         true
+					}
 					status: {
 						type:             "string"
 						description:      "The current status of the organization."
@@ -16394,6 +16802,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages Scaleway Database instance authorized IPs.
+					For more information refer to the [API documentation](https://www.scaleway.com/en/developers/api/managed-database-postgre-mysql/#acl-rules-allowed-ips).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -16468,6 +16881,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages databases.
+					For more information, refer to the [API documentation](https://www.scaleway.com/en/developers/api/managed-database-postgre-mysql/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -16595,6 +17013,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages database backups.
+					For more information, refer to the [API documentation](https://www.scaleway.com/en/developers/api/managed-database-postgre-mysql/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -17103,6 +17526,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Create and manage Scaleway database privileges.
+					For more information refer to the [API documentation](https://www.scaleway.com/en/developers/api/managed-database-postgre-mysql/#user-and-permissions).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -17282,6 +17710,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages Read Replicas.
+					For more information refer to the [API documentation](https://www.scaleway.com/en/developers/api/managed-database-postgre-mysql/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -17381,6 +17814,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway RDB (Relational Database) Snapshots.
+					Snapshots are point-in-time backups of a database instance that can be used for recovery or duplication.
+					For more information, refer to [the API documentation](https://www.scaleway.com/en/developers/api/managed-database-postgre-mysql/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -17865,6 +18304,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway Container Registry.
+					For more information refer to the [API documentation](https://www.scaleway.com/en/developers/api/registry).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -18139,6 +18583,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages Scaleway Site-to-Site VPN Connections.
+					A connection links a Scaleway VPN Gateway to a Customer Gateway and establishes an IPSec tunnel with BGP routing.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -18224,6 +18673,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Creates and manages Scaleway Site-to-Site VPN Customer Gateways.
+					A customer gateway represents your external VPN endpoint (e.g., a firewall, router, or VPN appliance).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -18393,6 +18847,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages Scaleway Site-to-Site VPN Gateways.
+					For more information, see [the main documentation](https://www.scaleway.com/en/docs/site-to-site-vpn/reference-content/understanding-s2svpn/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -18477,6 +18936,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Creates and manages Scaleway Site-to-Site VPN Routing Policies.
+					A routing policy defines which routes are accepted from and advertised to the peer gateway via BGP.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -18581,6 +19045,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					The `scaleway_sdb_sql_database` resource allows you to create and manage databases for Scaleway Serverless SQL Databases.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -18836,6 +19304,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					The `scaleway_secret_version` resource allows you to create and manage secret versions in Scaleway Secret Manager.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -18888,6 +19360,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						required:         true
 					}
 				}
+				description: """
+					Creates and manages blocklisted email addresses for a Scaleway Transactional Email Domain.
+					For more information refer to the [API documentation](https://www.scaleway.com/en/developers/api/transactional-email/#post-transactional-email-v1alpha1-regions-region-blocklists).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -19107,6 +19584,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway Transactional Email Domains.
+					For more information refer to the [API documentation](https://www.scaleway.com/en/developers/api/transactional-email).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -19169,6 +19651,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					This Terraform resource manages the validation of domains for use with Scaleway's Transactional Email Management (TEM) service. It ensures that domains used for sending emails are verified and comply with Scaleway's requirements for email sending.
+					For more information refer to the [API documentation](https://developers.scaleway.com/en/products/transactional_email/api/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -19240,6 +19727,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Creates and manages Scaleway Transactional Email Webhooks.
+					For more information, refer to the [API documentation](https://www.scaleway.com/en/developers/api/transactional-email).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -19334,6 +19826,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Creates and manages Scaleway Virtual Private Clouds.
+					For more information, see [the main documentation](https://www.scaleway.com/en/docs/vpc/concepts/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -19436,6 +19933,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway VPC ACLs.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -19703,6 +20204,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages GatewayNetworks (connections between a Public Gateway and a Private Network).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -20007,6 +20512,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						}
 					}
 				}
+				description: """
+					Creates and manages Scaleway VPC Private Networks.
+					For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/vpc/#private-networks-ac2df4).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -20177,6 +20687,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway Public Gateways.
+					For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/public-gateway).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -20314,6 +20829,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					~> **Important:** The resource `scaleway_vpc_public_gateway_dhcp` has been deprecated and will no longer be supported.
+					In 2023, DHCP functionality was moved from Public Gateways to Private Networks, DHCP resources are now no longer needed.
+					For more information, please refer to the [dedicated guide](../guides/migration_guide_vpcgw_v2.md).
+
+					"""
 				description_kind: "plain"
 				deprecated:       true
 			}
@@ -20406,6 +20927,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					~> **Important:** The resource `scaleway_vpc_public_gateway_dhcp_reservation` has been deprecated and will no longer be supported.
+					In 2023, DHCP functionality was moved from Public Gateways to Private Networks, DHCP resources are now no longer needed.
+					You can use IPAM to manage your IPs. For more information, please refer to the [dedicated guide](../guides/migration_guide_vpcgw_v2.md).
+
+					"""
 				description_kind: "plain"
 				deprecated:       true
 			}
@@ -20478,6 +21005,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Creates and manages Scaleway VPC Public Gateway public (flexible) IP addresses.
+					For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/public-gateway/#path-ips-list-ips).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -20534,6 +21066,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Manages Scaleway Public Gateway public (flexible) IPs' reverse DNS.
+					For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/public-gateway/#path-ips-list-ips).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -20637,6 +21174,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					Creates and manages Scaleway Public Gateway PAT (Port Address Translation).
+					For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/public-gateway/#pat-rules-e75d10).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -20719,6 +21261,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						required:         true
 					}
 				}
+				description: """
+					Creates and manages Scaleway VPC Routes.
+					For more information, see [the main documentation](https://www.scaleway.com/en/docs/vpc/concepts/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -20727,182 +21274,231 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			block: {
 				attributes: {
 					cpanel_urls: {
-						type: ["list", ["object", {
-							dashboard: "string"
-							webmail:   "string"
-						}]]
+						nested_type: {
+							attributes: {
+								dashboard: {
+									type:             "string"
+									description:      "URL to connect to dashboard interface"
+									description_kind: "markdown"
+									computed:         true
+								}
+								webmail: {
+									type:             "string"
+									description:      "URL to connect to Webmail interface"
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
 						description:      "URL to connect to cPanel Dashboard and to Webmail interface"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					created_at: {
 						type:             "string"
 						description:      "Date and time of hosting's creation (RFC 3339 format)"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					dns_status: {
 						type:             "string"
 						description:      "DNS status of the hosting"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					domain: {
 						type:             "string"
 						description:      "The domain name of the hosting"
-						description_kind: "plain"
+						description_kind: "markdown"
 						required:         true
 					}
 					email: {
 						type:             "string"
 						description:      "Contact email of the client for the hosting"
-						description_kind: "plain"
+						description_kind: "markdown"
 						required:         true
 					}
 					id: {
 						type:             "string"
-						description_kind: "plain"
-						optional:         true
+						description:      "The ID of the webhosting"
+						description_kind: "markdown"
 						computed:         true
 					}
 					name_servers: {
-						type: ["list", ["object", {
-							hostname:   "string"
-							is_default: "bool"
-							status:     "string"
-						}]]
+						nested_type: {
+							attributes: {
+								hostname: {
+									type:             "string"
+									description:      "Hostname of the server"
+									description_kind: "markdown"
+									computed:         true
+								}
+								is_default: {
+									type:             "bool"
+									description:      "Whether or not the webhosting is the default one"
+									description_kind: "markdown"
+									computed:         true
+								}
+								status: {
+									type:             "string"
+									description:      "Status of the nameserver"
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
 						description:      "List of nameservers associated with the webhosting."
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					offer_id: {
 						type:             "string"
 						description:      "The ID of the selected offer for the hosting"
-						description_kind: "plain"
+						description_kind: "markdown"
 						required:         true
 					}
 					offer_name: {
 						type:             "string"
 						description:      "Name of the active offer"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					option_ids: {
 						type: ["list", "string"]
 						description:      "IDs of the selected options for the hosting"
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 					}
 					options: {
-						type: ["list", ["object", {
-							id:   "string"
-							name: "string"
-						}]]
+						nested_type: {
+							attributes: {
+								id: {
+									type:             "string"
+									description:      "ID of the active option"
+									description_kind: "markdown"
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Name of the option"
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
 						description:      "Active options of the hosting"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					organization_id: {
 						type:             "string"
-						description:      "The organization_id you want to attach the resource to"
-						description_kind: "plain"
-						deprecated:       true
+						description:      "The organization ID the hosting belongs to. Deprecated: this field is deprecated and will be removed in the next major version."
+						description_kind: "markdown"
 						computed:         true
 					}
 					platform_hostname: {
 						type:             "string"
 						description:      "Hostname of the host platform"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					platform_number: {
 						type:             "number"
 						description:      "Number of the host platform"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					project_id: {
 						type:             "string"
-						description:      "The project_id you want to attach the resource to"
-						description_kind: "plain"
+						description:      "The project ID the hosting belongs to"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
 					records: {
-						type: ["list", ["object", {
-							name:     "string"
-							priority: "number"
-							status:   "string"
-							ttl:      "number"
-							type:     "string"
-							value:    "string"
-						}]]
+						nested_type: {
+							attributes: {
+								name: {
+									type:             "string"
+									description:      "Name of the DNS record"
+									description_kind: "markdown"
+									computed:         true
+								}
+								priority: {
+									type:             "number"
+									description:      "Priority of DNS records associated with the webhosting."
+									description_kind: "markdown"
+									computed:         true
+								}
+								status: {
+									type:             "string"
+									description:      "Status of the hosting record"
+									description_kind: "markdown"
+									computed:         true
+								}
+								ttl: {
+									type:             "number"
+									description:      "Time to live in seconds of the record"
+									description_kind: "markdown"
+									computed:         true
+								}
+								type: {
+									type:             "string"
+									description:      "Type of the DNS record"
+									description_kind: "markdown"
+									computed:         true
+								}
+								value: {
+									type:             "string"
+									description:      "Value of the DNS record"
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
 						description:      "List of DNS records associated with the webhosting."
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					region: {
 						type:             "string"
-						description:      "The region you want to attach the resource to"
-						description_kind: "plain"
+						description:      "The region of the hosting"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
 					status: {
 						type:             "string"
 						description:      "The hosting status"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags of the hosting"
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
 					updated_at: {
 						type:             "string"
 						description:      "Date and time of hosting's last update (RFC 3339 format)"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					username: {
 						type:             "string"
 						description:      "Main hosting cPanel username"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 				}
-				block_types: timeouts: {
-					nesting_mode: "single"
-					block: {
-						attributes: {
-							create: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
-							default: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
-							delete: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
-							read: {
-								type:             "string"
-								description_kind: "plain"
-								optional:         true
-							}
-						}
-						description_kind: "plain"
-					}
-				}
-				description_kind: "plain"
+				description:      "Manages a Scaleway WebHosting"
+				description_kind: "markdown"
 			}
 		}
 	}
@@ -20914,6 +21510,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					created_at: {
 						type:             "string"
 						description:      "The date and time of the creation of the Project (Format ISO 8601)"
+						description_kind: "plain"
+						computed:         true
+					}
+					delete_with_resources: {
+						type:             "bool"
+						description:      "If true, deleting the project also deletes all the resources it contains. Defaults to false."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -20977,6 +21579,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					created_at: {
 						type:             "string"
 						description:      "The date and time of the creation of the Project (Format ISO 8601)"
+						description_kind: "plain"
+						computed:         true
+					}
+					delete_with_resources: {
+						type:             "bool"
+						description:      "If true, deleting the project also deletes all the resources it contains. Defaults to false."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -21111,6 +21719,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					The `scaleway_account_ssh_key` data source is used to retrieve information about a the SSH key of a Scaleway account.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -21289,6 +21901,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about a Apple Silicon operating system.
+					For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/apple-silicon/#path-os-list-all-operating-systems-os).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -21509,6 +22126,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about an Autoscaling Instance group.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -21591,6 +22212,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about an Autoscaling Instance policy.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -21628,6 +22253,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 					}
 				}
+				description: """
+					The `scaleway_availability_zones` data source is used to retrieve information about the available zones based on its Region.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -21722,6 +22351,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about a baremetal offer. For more information, see the [API documentation](https://developers.scaleway.com/en/products/baremetal/api).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -21761,6 +22394,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about a baremetal option.
+					For more information, see the [API documentation](https://developers.scaleway.com/en/products/baremetal/api).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -21800,6 +22438,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about a baremetal operating system.
+					For more information, see the [API documentation](https://www.scaleway.com/en/developers/api/elastic-metal/#path-os-list-available-oses).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -21850,6 +22493,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					The scaleway_baremetal_partition_schema data source allows you to retrieve a ready-to-use partitioning schema for a BareMetal server. This schema can be used for custom installations with optional swap and extra partitions.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -21956,7 +22603,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							id:         "string"
 							name:       "string"
 						}]]
-						description:      "The options to enable on server"
+						description:      "The options to enable on server. Retrieving them using the scaleway_baremetal_option datasource is highly recommended."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -22022,7 +22669,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							updated_at: "string"
 							vlan:       "number"
 						}]]
-						description:      "The private networks to attach to the server"
+						description:      "The private networks to attach to the server. Requires an option with the private_network attribute to be enabled."
 						description_kind: "plain"
 						computed:         true
 					}
@@ -22105,6 +22752,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about a baremetal server.
+					For more information, see the [API documentation](https://developers.scaleway.com/en/products/baremetal/api).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -22331,6 +22983,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about your Consumptions.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -22392,6 +23048,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about your Scaleway invoices.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -22566,72 +23226,80 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				attributes: {
 					id: {
 						type:             "string"
-						description_kind: "plain"
-						optional:         true
+						description:      "The ID of the volume, in the `{zone}/{uuid}` format."
+						description_kind: "markdown"
 						computed:         true
 					}
 					instance_volume_id: {
 						type:             "string"
 						description:      "The instance volume to create the block volume from"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					iops: {
 						type:             "number"
 						description:      "The maximum IO/s expected, must match available options"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					name: {
 						type:             "string"
 						description:      "The volume name"
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					project_id: {
 						type:             "string"
-						description:      "The project_id you want to attach the resource to"
-						description_kind: "plain"
+						description:      "The project ID the volume belongs to. Defaults to the provider's project ID."
+						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 					size_in_gb: {
 						type:             "number"
 						description:      "The volume size in GB"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					snapshot_id: {
 						type:             "string"
 						description:      "The snapshot to create the volume from"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					srn: {
 						type:             "string"
 						description:      "The Scaleway Resource Name (SRN) of the volume"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags associated with the volume"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					volume_id: {
 						type:             "string"
 						description:      "The ID of the volume"
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 					}
 					zone: {
 						type:             "string"
 						description:      "The zone you want to attach the resource to"
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
+						computed:         true
 					}
 				}
-				description_kind: "plain"
+				description: """
+					The `scaleway_block_volume` data source is used to retrieve information about a Block Storage volume.
+					Refer to the Block Storage [product documentation](https://www.scaleway.com/en/docs/block-storage/) and [API documentation](https://www.scaleway.com/en/developers/api/block/) for more information.
+
+					"""
+				description_kind: "markdown"
 			}
 		}
 		scaleway_cockpit_config: {
@@ -22702,6 +23370,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets regional Cockpit configuration, including retention limits and defaults for custom and product data sources.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -22775,6 +23447,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						optional:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the data export"
+						description_kind: "plain"
+						computed:         true
+					}
 					status: {
 						type:             "string"
 						description:      "Status of the data export"
@@ -22788,6 +23466,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about a [data export](https://www.scaleway.com/en/docs/observability/cockpit/concepts/#data-exports) in Scaleway's Cockpit.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -22814,7 +23496,17 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the Grafana instance"
+						description_kind: "plain"
+						computed:         true
+					}
 				}
+				description: """
+					Gets information about Scaleway Cockpit's Grafana instance for a specific project.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -23020,6 +23712,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about preconfigured alert rules available in Scaleway Cockpit.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -23057,6 +23753,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets the list of Cockpit products available for a specific region.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -23112,6 +23812,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the data source"
+						description_kind: "plain"
+						computed:         true
+					}
 					synchronized_with_grafana: {
 						type:             "bool"
 						description:      "Indicates whether the data source is synchronized with Grafana"
@@ -23137,6 +23843,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					The `scaleway_cockpit_source` data source allows you to retrieve information about a specific [data source](https://www.scaleway.com/en/docs/observability/cockpit/concepts/#data-sources) in Scaleway's Cockpit.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -23202,12 +23912,19 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							push_url:                  "string"
 							region:                    "string"
 							retention_days:            "number"
+							srn:                       "string"
 							synchronized_with_grafana: "bool"
 							type:                      "string"
 							updated_at:                "string"
 							url:                       "string"
 						}]]
 						description:      "List of cockpit sources."
+						description_kind: "plain"
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the data source"
 						description_kind: "plain"
 						computed:         true
 					}
@@ -23236,6 +23953,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about multiple Cockpit data sources.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -23323,6 +24044,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about the current configuration that Scaleway provider is using.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -23623,6 +24348,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					The `scaleway_container` data source is used to retrieve information about a Serverless Container.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -23716,6 +24445,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					The `scaleway_container_namespace` data source is used to retrieve information about a Serverless Containers namespace.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -24159,6 +24892,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					The `scaleway_domain_record` data source is used to get information about an existing domain record.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -24390,6 +25127,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					The `scaleway_domain_registration` data source retrieves information about an existing domain registration by domain name. Use it to get the `task_id` and `project_id` needed for importing a domain registration into Terraform state.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -24458,6 +25199,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					The `scaleway_domain_zone` data source is used to get information about a DNS zone within a specific domain and subdomain in Scaleway Domains and DNS.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -25184,6 +25929,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about a Flexible IP.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -25257,6 +26006,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about multiple Flexible IPs.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -25428,6 +26181,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					The `scaleway_function` data source is used to retrieve information about a Serverless Function.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -25515,6 +26272,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					The `scaleway_function_namespace` data source is used to retrieve information about a Serverless Functions namespace.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -25601,6 +26362,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about an existing IAM API key. For more information, refer to the [IAM API documentation](https://www.scaleway.com/en/developers/api/iam/#api-keys-3665ae).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -25669,6 +26434,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about an existing IAM application.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -25749,6 +26518,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about an existing IAM group.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -25852,6 +26625,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Use this data source to get information on an existing IAM policy based on its ID.
+					For more information refer to the [IAM API documentation](https://developers.scaleway.com/en/products/iam/api/).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -26121,6 +26899,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					The `scaleway_account_ssh_key` data source is used to retrieve information about a the SSH key of a Scaleway account.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -26280,6 +27062,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Use this data source to get information on an existing IAM user based on its ID or email address.
+					For more information refer to the [IAM API documentation](https://developers.scaleway.com/en/products/iam/api/v1alpha1/#users-06bdcf).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -26404,6 +27191,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					The `scaleway_inference_model` data source allows you to retrieve information about an inference model available in the Scaleway Inference API, either by providing the model's `name` or its `model_id`.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -26510,6 +27301,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about an instance image.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -26578,6 +27373,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about an instance IP.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -26647,6 +27446,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about a Security Group.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -26742,6 +27545,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about an instance private NIC.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -26854,6 +27661,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about a Security Group.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -27064,6 +27875,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about an instance server.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -27165,6 +27980,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about a server type.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -27246,6 +28065,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about multiple instance servers.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -27329,6 +28152,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about an instance snapshot.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -27409,6 +28236,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about an instance volume.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -27482,6 +28313,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description:      "The region you want to attach the resource to"
 						description_kind: "plain"
 						optional:         true
+						computed:         true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the dedicated connection"
+						description_kind: "plain"
 						computed:         true
 					}
 					status: {
@@ -27754,6 +28591,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the partner"
+						description_kind: "plain"
+						computed:         true
+					}
 					updated_at: {
 						type:             "string"
 						description:      "Last update date of the partner"
@@ -27788,6 +28631,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							logo_url:      "string"
 							name:          "string"
 							portal_url:    "string"
+							srn:           "string"
 							updated_at:    "string"
 						}]]
 						description:      "List of partners"
@@ -27883,6 +28727,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 						computed:         true
 					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the PoP"
+						description_kind: "plain"
+						computed:         true
+					}
 				}
 				description: """
 					Gets information about an Interlink PoP (Point of Presence).
@@ -27944,6 +28794,7 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 							logo_url:              "string"
 							name:                  "string"
 							region:                "string"
+							srn:                   "string"
 						}]]
 						description:      "List of PoPs"
 						description_kind: "plain"
@@ -28166,6 +29017,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about an IOT Device.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -28300,6 +29155,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about an IOT Hub.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -28423,6 +29282,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					max_items: 1
 				}
+				description: """
+					Gets information about IP addresses managed by Scaleway's IP Address Management (IPAM) service. IPAM is used for the DHCP bundled with VPC Private Networks.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -28542,6 +29405,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					}
 					max_items: 1
 				}
+				description: """
+					Gets information about multiple IP addresses managed by Scaleway's IP Address Management (IPAM) service.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -29211,6 +30078,13 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					page_title: "scaleway_kafka_cluster Data Source - terraform-provider-scaleway"
+					subcategory: "Kafka"
+					description: |-
+					---
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -29716,6 +30590,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about a Load Balancer.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -29792,6 +30670,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about multiple Load Balancer ACLs.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -30014,6 +30896,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Get information about Scaleway Load Balancer backends.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -30105,6 +30991,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about multiple Load Balancer Backends.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -30190,6 +31080,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Get information about Scaleway Load Balancer certificates.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -30315,6 +31209,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Get information about Scaleway Load Balancer frontends.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -30380,6 +31278,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about multiple Load Balancer frontends.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -30454,6 +31356,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about a Load Balancer IP address.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -30521,6 +31427,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about multiple Load Balancer IP addresses.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -30589,6 +31499,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Get information about Scaleway Load Balancer routes.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -30644,6 +31558,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about multiple Load Balancer routes.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -30731,6 +31649,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about multiple Load Balancers.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -30861,6 +31783,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets local image ID of an image from its label name.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -31269,6 +32195,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about SNS for a Project
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -31301,6 +32231,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about SQS for a Project
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -31520,6 +32454,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about a MongoDB® Instance.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -31619,6 +32557,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					The `scaleway_object` data source is used to retrieve information about an Object Storage object.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -31740,6 +32682,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					The `scaleway_object_bucket` data source is used to retrieve information about an Object Storage bucket.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -31778,6 +32724,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					The `scaleway_object_bucket_policy` data source is used to retrieve information about the bucket policy of an Object Storage bucket.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -31969,6 +32919,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about an OpenSearch deployment.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -32004,6 +32958,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about the Database Instance network Access Control List.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -32054,6 +33012,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about a database.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -32158,6 +33120,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about an RDB backup.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -32472,6 +33438,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about an Database Instance.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -32797,6 +33767,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						required:         true
 					}
 				}
+				description: """
+					Gets information about the privileges in a database.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -32969,6 +33943,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about a Redis™ cluster.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -33156,6 +34134,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about a Container Registry image.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -33232,6 +34214,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about a specific tag of a Container Registry image.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -33294,6 +34280,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about a registry namespace.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -33494,6 +34484,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about a Site-to-Site VPN connection.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -33580,6 +34574,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about a Site-to-Site VPN customer gateway.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -33699,6 +34697,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about a Site-to-Site VPN gateway.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -33785,6 +34787,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about a Site-to-Site VPN routing policy.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -33963,6 +34969,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					The `scaleway_secret` data source is used to get information about a specific secret in Scaleway's Secret Manager.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -34064,6 +35074,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					The `scaleway_secret_version` data source is used to get information about a specific secret version stored in Scaleway Secret Manager.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -34258,6 +35272,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about a transactional email domain.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -34347,6 +35365,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about a transactional email offer subscription.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -34440,6 +35462,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about a Scaleway Virtual Private Cloud.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -34494,6 +35520,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						required:         true
 					}
 				}
+				description: """
+					Gets information about a VPC ACL (Access Control List).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -34702,6 +35732,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about a GatewayNetwork (a connection between a Public Gateway and a Private Network).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -34917,6 +35951,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about a Private Network.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -35051,6 +36089,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about a Public Gateway.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -35179,6 +36221,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					~> **Important:** The data source `scaleway_vpc_public_gateway_dhcp` has been deprecated and will no longer be supported.
+					In 2023, DHCP functionality was moved from Public Gateways to Private Networks, DHCP resources are now no longer needed.
+					For more information, please refer to the [dedicated guide](../guides/migration_guide_vpcgw_v2.md).
+
+					"""
 				description_kind: "plain"
 				deprecated:       true
 			}
@@ -35254,6 +36302,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					~> **Important:** The data source `scaleway_vpc_public_gateway_dhcp_reservation` has been deprecated and will no longer be supported.
+					In 2023, DHCP functionality was moved from Public Gateways to Private Networks, DHCP resources are now no longer needed.
+					You can use IPAM to manage your IPs. For more information, please refer to the [dedicated guide](../guides/migration_guide_vpcgw_v2.md).
+
+					"""
 				description_kind: "plain"
 				deprecated:       true
 			}
@@ -35329,6 +36383,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about a Public Gateway public flexible IP address.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -35409,6 +36467,11 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about a Public Gateway PAT rule. For further information, please see the
+					[API documentation](https://www.scaleway.com/en/developers/api/public-gateway/#path-pat-rules-list-pat-rules).
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -35507,6 +36570,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about a VPC route.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -35583,6 +36650,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						optional:         true
 					}
 				}
+				description: """
+					Gets information about multiple VPC routes.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -35645,6 +36716,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						computed:         true
 					}
 				}
+				description: """
+					Gets information about multiple Virtual Private Clouds.
+
+					"""
 				description_kind: "plain"
 			}
 		}
@@ -35653,157 +36728,236 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			block: {
 				attributes: {
 					cpanel_urls: {
-						type: ["list", ["object", {
-							dashboard: "string"
-							webmail:   "string"
-						}]]
+						nested_type: {
+							attributes: {
+								dashboard: {
+									type:             "string"
+									description:      "URL to connect to dashboard interface"
+									description_kind: "markdown"
+									computed:         true
+								}
+								webmail: {
+									type:             "string"
+									description:      "URL to connect to Webmail interface"
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
 						description:      "URL to connect to cPanel Dashboard and to Webmail interface"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					created_at: {
 						type:             "string"
 						description:      "Date and time of hosting's creation (RFC 3339 format)"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					dns_status: {
 						type:             "string"
 						description:      "DNS status of the hosting"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					domain: {
 						type:             "string"
 						description:      "The domain name of the hosting"
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 					}
 					email: {
 						type:             "string"
 						description:      "Contact email of the client for the hosting"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					id: {
 						type:             "string"
-						description_kind: "plain"
-						optional:         true
+						description:      "The ID of the webhosting"
+						description_kind: "markdown"
 						computed:         true
 					}
 					name_servers: {
-						type: ["list", ["object", {
-							hostname:   "string"
-							is_default: "bool"
-							status:     "string"
-						}]]
+						nested_type: {
+							attributes: {
+								hostname: {
+									type:             "string"
+									description:      "Hostname of the server"
+									description_kind: "markdown"
+									computed:         true
+								}
+								is_default: {
+									type:             "bool"
+									description:      "Whether or not the webhosting is the default one"
+									description_kind: "markdown"
+									computed:         true
+								}
+								status: {
+									type:             "string"
+									description:      "Status of the nameserver"
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
 						description:      "List of nameservers associated with the webhosting."
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					offer_id: {
 						type:             "string"
 						description:      "The ID of the selected offer for the hosting"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					offer_name: {
 						type:             "string"
 						description:      "Name of the active offer"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					option_ids: {
 						type: ["list", "string"]
 						description:      "IDs of the selected options for the hosting"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					options: {
-						type: ["list", ["object", {
-							id:   "string"
-							name: "string"
-						}]]
+						nested_type: {
+							attributes: {
+								id: {
+									type:             "string"
+									description:      "ID of the active option"
+									description_kind: "markdown"
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Name of the option"
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
 						description:      "Active options of the hosting"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					organization_id: {
 						type:             "string"
-						description:      "ID of organization the resource is associated to."
-						description_kind: "plain"
+						description:      "The organization ID the resource is associated to"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
 					platform_hostname: {
 						type:             "string"
 						description:      "Hostname of the host platform"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					platform_number: {
 						type:             "number"
 						description:      "Number of the host platform"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					project_id: {
 						type:             "string"
 						description:      "The project ID the resource is associated to"
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 					}
 					records: {
-						type: ["list", ["object", {
-							name:     "string"
-							priority: "number"
-							status:   "string"
-							ttl:      "number"
-							type:     "string"
-							value:    "string"
-						}]]
+						nested_type: {
+							attributes: {
+								name: {
+									type:             "string"
+									description:      "Name of the DNS record"
+									description_kind: "markdown"
+									computed:         true
+								}
+								priority: {
+									type:             "number"
+									description:      "Priority of DNS records associated with the webhosting."
+									description_kind: "markdown"
+									computed:         true
+								}
+								status: {
+									type:             "string"
+									description:      "Status of the hosting record"
+									description_kind: "markdown"
+									computed:         true
+								}
+								ttl: {
+									type:             "number"
+									description:      "Time to live in seconds of the record"
+									description_kind: "markdown"
+									computed:         true
+								}
+								type: {
+									type:             "string"
+									description:      "Type of the DNS record"
+									description_kind: "markdown"
+									computed:         true
+								}
+								value: {
+									type:             "string"
+									description:      "Value of the DNS record"
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
 						description:      "List of DNS records associated with the webhosting."
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					region: {
 						type:             "string"
-						description:      "The region you want to attach the resource to"
-						description_kind: "plain"
+						description:      "The region of the hosting"
+						description_kind: "markdown"
+						optional:         true
 						computed:         true
 					}
 					status: {
 						type:             "string"
 						description:      "The hosting status"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					tags: {
 						type: ["list", "string"]
 						description:      "The tags of the hosting"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					updated_at: {
 						type:             "string"
 						description:      "Date and time of hosting's last update (RFC 3339 format)"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					username: {
 						type:             "string"
 						description:      "Main hosting cPanel username"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					webhosting_id: {
 						type:             "string"
-						description:      "The ID of the Webhosting"
-						description_kind: "plain"
+						description:      "The ID of the webhosting"
+						description_kind: "markdown"
 						optional:         true
 					}
 				}
-				description_kind: "plain"
+				description:      "Finds a Scaleway WebHosting by ID or domain."
+				description_kind: "markdown"
 			}
 		}
 		scaleway_webhosting_offer: {
@@ -35813,94 +36967,341 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 					billing_operation_path: {
 						type:             "string"
 						description:      "Billing operation path"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					control_panel: {
 						type:             "string"
-						description:      "Name of the control panel.(Cpanel or Plesk)"
-						description_kind: "plain"
+						description:      "Name of the control panel (Cpanel or Plesk)"
+						description_kind: "markdown"
 						optional:         true
 					}
 					id: {
 						type:             "string"
-						description_kind: "plain"
-						optional:         true
+						description:      "The regional ID of the offer"
+						description_kind: "markdown"
 						computed:         true
 					}
 					name: {
 						type:             "string"
 						description:      "Exact name of the desired offer"
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 					}
 					offer: {
-						type: ["list", ["object", {
-							available:              "bool"
-							billing_operation_path: "string"
-							control_panel_name:     "string"
-							end_of_life:            "bool"
-							id:                     "string"
-							name:                   "string"
-							options: ["list", ["object", {
-								billing_operation_path: "string"
-								current_value:          "number"
-								id:                     "string"
-								max_value:              "number"
-								min_value:              "number"
-								name:                   "string"
-								price:                  "string"
-								quota_warning:          "string"
-							}]]
-							price:         "string"
-							quota_warning: "string"
-						}]]
+						nested_type: {
+							attributes: {
+								available: {
+									type:             "bool"
+									description:      "Whether or not the offer is available"
+									description_kind: "markdown"
+									computed:         true
+								}
+								billing_operation_path: {
+									type:             "string"
+									description:      "Billing operation path"
+									description_kind: "markdown"
+									computed:         true
+								}
+								control_panel_name: {
+									type:             "string"
+									description:      "Name of the control panel"
+									description_kind: "markdown"
+									computed:         true
+								}
+								end_of_life: {
+									type:             "bool"
+									description:      "Whether this offer is in end of life"
+									description_kind: "markdown"
+									computed:         true
+								}
+								id: {
+									type:             "string"
+									description:      "ID of the offer"
+									description_kind: "markdown"
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Name of the offer"
+									description_kind: "markdown"
+									computed:         true
+								}
+								options: {
+									nested_type: {
+										attributes: {
+											billing_operation_path: {
+												type:             "string"
+												description:      "Billing operation path"
+												description_kind: "markdown"
+												computed:         true
+											}
+											current_value: {
+												type:             "number"
+												description:      "Current value"
+												description_kind: "markdown"
+												computed:         true
+											}
+											id: {
+												type:             "string"
+												description:      "ID of the option"
+												description_kind: "markdown"
+												computed:         true
+											}
+											max_value: {
+												type:             "number"
+												description:      "The maximum allowed value of this option"
+												description_kind: "markdown"
+												computed:         true
+											}
+											min_value: {
+												type:             "number"
+												description:      "Minimum value for this option"
+												description_kind: "markdown"
+												computed:         true
+											}
+											name: {
+												type:             "string"
+												description:      "Name of the option"
+												description_kind: "markdown"
+												computed:         true
+											}
+											price: {
+												type:             "string"
+												description:      "Price of the option"
+												description_kind: "markdown"
+												computed:         true
+											}
+											quota_warning: {
+												type:             "string"
+												description:      "Quota warning"
+												description_kind: "markdown"
+												computed:         true
+											}
+										}
+										nesting_mode: "list"
+									}
+									description:      "List of options available for a particular offer"
+									description_kind: "markdown"
+									computed:         true
+								}
+								price: {
+									type:             "string"
+									description:      "Price of the offer"
+									description_kind: "markdown"
+									computed:         true
+								}
+								quota_warning: {
+									type:             "string"
+									description:      "Quota warning for this offer"
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
 						description:      "The offer details of the hosting"
-						description_kind: "plain"
+						description_kind: "markdown"
 						computed:         true
 					}
 					offer_id: {
 						type:             "string"
 						description:      "ID of the desired offer"
-						description_kind: "plain"
+						description_kind: "markdown"
 						optional:         true
 					}
 					price: {
 						type:             "string"
-						description:      "Price of the offer."
-						description_kind: "plain"
+						description:      "Price of the offer"
+						description_kind: "markdown"
 						computed:         true
 					}
 					product: {
-						type: ["list", ["object", {
-							databases_quota:       "number"
-							email_accounts_quota:  "number"
-							email_storage_quota:   "number"
-							hosting_storage_quota: "number"
-							name:                  "string"
-							option:                "bool"
-							ram:                   "number"
-							support_included:      "bool"
-							v_cpu:                 "number"
-						}]]
-						description:      "Product list"
-						description_kind: "plain"
-						deprecated:       true
+						nested_type: {
+							attributes: {
+								databases_quota: {
+									type:             "number"
+									description:      "Limit number of databases"
+									description_kind: "markdown"
+									computed:         true
+								}
+								email_accounts_quota: {
+									type:             "number"
+									description:      "Limit number of email accounts"
+									description_kind: "markdown"
+									computed:         true
+								}
+								email_storage_quota: {
+									type:             "number"
+									description:      "Limit quantity of email storage in gigabytes"
+									description_kind: "markdown"
+									computed:         true
+								}
+								hosting_storage_quota: {
+									type:             "number"
+									description:      "Limit quantity of hosting storage in gigabytes"
+									description_kind: "markdown"
+									computed:         true
+								}
+								name: {
+									type:             "string"
+									description:      "Name of the product"
+									description_kind: "markdown"
+									computed:         true
+								}
+								option: {
+									type:             "bool"
+									description:      "Whether or not the product is in the offer"
+									description_kind: "markdown"
+									computed:         true
+								}
+								ram: {
+									type:             "number"
+									description:      "Limit quantity of memory in gigabytes"
+									description_kind: "markdown"
+									computed:         true
+								}
+								support_included: {
+									type:             "bool"
+									description:      "Whether or not support is included"
+									description_kind: "markdown"
+									computed:         true
+								}
+								v_cpu: {
+									type:             "number"
+									description:      "Limit number of virtual CPU"
+									description_kind: "markdown"
+									computed:         true
+								}
+							}
+							nesting_mode: "list"
+						}
+						description:      "Product list. Deprecated: use the `offer` field instead."
+						description_kind: "markdown"
 						computed:         true
 					}
 					region: {
 						type:             "string"
-						description:      "The region you want to attach the resource to"
-						description_kind: "plain"
+						description:      "The region of the offer"
+						description_kind: "markdown"
 						optional:         true
 						computed:         true
 					}
 				}
-				description_kind: "plain"
+				description:      "Finds a Scaleway WebHosting offer by name or ID."
+				description_kind: "markdown"
 			}
 		}
 	}
 	ephemeral_resource_schemas: {
+		scaleway_cockpit_token: {
+			version: 0
+			block: {
+				attributes: {
+					name: {
+						type:             "string"
+						description:      "The name of the token"
+						description_kind: "plain"
+						required:         true
+					}
+					project_id: {
+						type:             "string"
+						description:      "ID of the Scaleway project the token belongs to"
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					region: {
+						type:             "string"
+						description:      "Region of the token. If not set, the region is derived from the provider configuration."
+						description_kind: "plain"
+						optional:         true
+						computed:         true
+					}
+					secret_key: {
+						type:             "string"
+						description:      "The secret key of the token"
+						description_kind: "plain"
+						computed:         true
+						sensitive:        true
+					}
+				}
+				block_types: scopes: {
+					nesting_mode: "list"
+					block: {
+						attributes: {
+							query_logs: {
+								type:             "bool"
+								description:      "Query logs. Defaults to false (same as scaleway_cockpit_token)."
+								description_kind: "plain"
+								optional:         true
+							}
+							query_metrics: {
+								type:             "bool"
+								description:      "Query metrics. Defaults to false (same as scaleway_cockpit_token)."
+								description_kind: "plain"
+								optional:         true
+							}
+							query_traces: {
+								type:             "bool"
+								description:      "Query traces. Defaults to false (same as scaleway_cockpit_token)."
+								description_kind: "plain"
+								optional:         true
+							}
+							setup_alerts: {
+								type:             "bool"
+								description:      "Setup alerts. Defaults to false (same as scaleway_cockpit_token)."
+								description_kind: "plain"
+								optional:         true
+							}
+							setup_logs_rules: {
+								type:             "bool"
+								description:      "Setup logs rules. Defaults to false (same as scaleway_cockpit_token)."
+								description_kind: "plain"
+								optional:         true
+							}
+							setup_metrics_rules: {
+								type:             "bool"
+								description:      "Setup metrics rules. Defaults to false (same as scaleway_cockpit_token)."
+								description_kind: "plain"
+								optional:         true
+							}
+							write_logs: {
+								type:             "bool"
+								description:      "Write logs. Defaults to true (same as scaleway_cockpit_token)."
+								description_kind: "plain"
+								optional:         true
+							}
+							write_metrics: {
+								type:             "bool"
+								description:      "Write metrics. Defaults to true (same as scaleway_cockpit_token)."
+								description_kind: "plain"
+								optional:         true
+							}
+							write_traces: {
+								type:             "bool"
+								description:      "Write traces. Defaults to false (same as scaleway_cockpit_token)."
+								description_kind: "plain"
+								optional:         true
+							}
+						}
+						description:      "Token permission scopes. If not set, defaults to write_metrics and write_logs."
+						description_kind: "plain"
+					}
+				}
+				description: """
+					The [`scaleway_cockpit_token`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/ephemeral-resources/cockpit_token) Ephemeral Resource creates a temporary Scaleway Cockpit token that is never stored in Terraform state.
+
+					Unlike the regular [`scaleway_cockpit_token` Resource](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/cockpit_token), this ephemeral resource creates a token during plan/apply, exposes `secret_key` for use in ephemeral contexts (for example write-only attributes), and deletes the token when Terraform finishes using it (`Close`).
+
+					Each Terraform run creates a new token. No token persists between runs when `Close` succeeds.
+
+					For more information, see [our guide to using Ephemeral Resources](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/guides/using-ephemeral-resources), the [Cockpit documentation](https://www.scaleway.com/en/docs/observability/cockpit/), and the [API documentation](https://www.scaleway.com/en/docs/cockpit/api-cli/).
+
+					"""
+				description_kind: "markdown"
+			}
+		}
 		scaleway_config: {
 			version: 0
 			block: {
@@ -36051,6 +37452,12 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 						description_kind: "plain"
 						computed:         true
 						sensitive:        true
+					}
+					srn: {
+						type:             "string"
+						description:      "The Scaleway Resource Name (SRN) of the iam api key"
+						description_kind: "plain"
+						computed:         true
 					}
 					updated_at: {
 						type:             "string"
@@ -38044,12 +39451,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			attributes: {
 				id: {
 					type:                "string"
-					description:         "The id of the resource (UUID format)"
 					required_for_import: true
 				}
 				zone: {
 					type:                "string"
-					description:         "The zone of the resource"
 					required_for_import: true
 				}
 			}
@@ -39642,12 +41047,10 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 			attributes: {
 				id: {
 					type:                "string"
-					description:         "The id of the resource (UUID format)"
 					required_for_import: true
 				}
 				region: {
 					type:                "string"
-					description:         "The region of the resource"
 					required_for_import: true
 				}
 			}
@@ -40531,6 +41934,37 @@ provider_schemas: "registry.terraform.io/scaleway/scaleway": {
 				Note that by default, even when route propagation is enabled, all routes are blocked. It is essential to attach a routing policy to the connection to define the ranges of routes to announce.
 
 				Refer to the [S2S VPN documentation](https://www.scaleway.com/en/docs/site-to-site-vpn/) and [API documentation](https://www.scaleway.com/en/developers/api/s2s-vpn/) for more information.
+
+				"""
+			description_kind: "markdown"
+		}
+		scaleway_tem_update_offer_subscription: block: {
+			attributes: {
+				offer_name: {
+					type:             "string"
+					description:      "Name of the offer to subscribe to (`essential` or `scale`)"
+					description_kind: "plain"
+					required:         true
+				}
+				project_id: {
+					type:             "string"
+					description:      "ID of the project. Defaults to the provider project_id."
+					description_kind: "plain"
+					optional:         true
+				}
+				region: {
+					type:             "string"
+					description:      "The region you want to attach the resource to"
+					description_kind: "plain"
+					optional:         true
+				}
+			}
+			description: """
+				The [`scaleway_tem_update_offer_subscription`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/actions/tem_update_offer_subscription) action subscribes a project to a Transactional Email offer, or updates an existing offer subscription (`essential` or `scale`).
+
+				There is no API to cancel an offer subscription. Use the [`scaleway_tem_offer_subscription`](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/data-sources/tem_offer_subscription) data source to read the current subscription.
+
+				Refer to the Transactional Email [documentation](https://www.scaleway.com/en/docs/transactional-email/how-to/manage-tem-plans/) and [API documentation](https://www.scaleway.com/en/developers/api/transactional-email/offer-subscriptions) for more information.
 
 				"""
 			description_kind: "markdown"

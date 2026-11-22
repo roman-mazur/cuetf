@@ -14,6 +14,7 @@ scaleway_interlink_partners: {
 			logo_url?:      string
 			name?:          string
 			portal_url?:    string
+			srn?:           string
 			updated_at?:    string
 		})]
 
