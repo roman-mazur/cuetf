@@ -19,6 +19,9 @@ scaleway_cockpit_alert_manager: {
 
 		// The region you want to attach the resource to
 		region?: string
+
+		// The Scaleway Resource Name (SRN) of the alert manager
+		srn?: string
 	})
 
 	#contact_points: close({

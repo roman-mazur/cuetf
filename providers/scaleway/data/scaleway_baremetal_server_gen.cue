@@ -57,7 +57,8 @@ scaleway_baremetal_server: {
 		// Name of the server offer
 		offer_name?: string
 
-		// The options to enable on server
+		// The options to enable on server. Retrieving them using the
+		// scaleway_baremetal_option datasource is highly recommended.
 		options?: [...close({
 			expires_at?: string
 			id?:         string
@@ -98,7 +99,8 @@ scaleway_baremetal_server: {
 			id?:      string
 		})]
 
-		// The private networks to attach to the server
+		// The private networks to attach to the server. Requires an option with the
+		// private_network attribute to be enabled.
 		private_network?: [...close({
 			created_at?: string
 			id?:         string

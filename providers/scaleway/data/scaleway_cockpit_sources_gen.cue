@@ -37,11 +37,15 @@ scaleway_cockpit_sources: {
 			push_url?:                  string
 			region?:                    string
 			retention_days?:            number
+			srn?:                       string
 			synchronized_with_grafana?: bool
 			type?:                      string
 			updated_at?:                string
 			url?:                       string
 		})]
+
+		// The Scaleway Resource Name (SRN) of the data source
+		srn?: string
 
 		// Indicates whether the data source is synchronized with Grafana
 		synchronized_with_grafana?: bool

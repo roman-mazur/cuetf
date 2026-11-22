@@ -29,6 +29,9 @@ scaleway_cockpit_source: {
 		// read allowed min, max, and default values for each data source type.
 		retention_days?: number
 
+		// The Scaleway Resource Name (SRN) of the data source
+		srn?: string
+
 		// Indicates whether the data source is synchronized with Grafana
 		synchronized_with_grafana?: bool
 

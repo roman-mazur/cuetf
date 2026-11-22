@@ -5,30 +5,49 @@ scaleway_webhosting: {
 	@jsonschema(id="https://github.com/roman-mazur/cuetf/schema/data/scaleway_webhosting")
 	close({
 		// URL to connect to cPanel Dashboard and to Webmail interface
-		cpanel_urls?: [...close({
+		cpanel_urls?: matchN(1, [close({
+			// URL to connect to dashboard interface
 			dashboard?: string
-			webmail?:   string
-		})]
+
+			// URL to connect to Webmail interface
+			webmail?: string
+		}), [...close({
+			// URL to connect to dashboard interface
+			dashboard?: string
+
+			// URL to connect to Webmail interface
+			webmail?: string
+		})]])
 
 		// Date and time of hosting's creation (RFC 3339 format)
 		created_at?: string
 
-		// DNS status of the hosting
-		dns_status?: string
-
-		// The domain name of the hosting
-		domain?: string
-
-		// Contact email of the client for the hosting
-		email?: string
-		id?:    string
+		// The ID of the webhosting
+		id?: string
 
 		// List of nameservers associated with the webhosting.
-		name_servers?: [...close({
-			hostname?:   string
+		name_servers?: matchN(1, [close({
+			// Hostname of the server
+			hostname?: string
+
+			// Whether or not the webhosting is the default one
 			is_default?: bool
-			status?:     string
-		})]
+
+			// Status of the nameserver
+			status?: string
+		}), [...close({
+			// Hostname of the server
+			hostname?: string
+
+			// Whether or not the webhosting is the default one
+			is_default?: bool
+
+			// Status of the nameserver
+			status?: string
+		})]])
+
+		// DNS status of the hosting
+		dns_status?: string
 
 		// The ID of the selected offer for the hosting
 		offer_id?: string
@@ -40,12 +59,24 @@ scaleway_webhosting: {
 		option_ids?: [...string]
 
 		// Active options of the hosting
-		options?: [...close({
-			id?:   string
-			name?: string
-		})]
+		options?: matchN(1, [close({
+			// ID of the active option
+			id?: string
 
-		// ID of organization the resource is associated to.
+			// Name of the option
+			name?: string
+		}), [...close({
+			// ID of the active option
+			id?: string
+
+			// Name of the option
+			name?: string
+		})]])
+
+		// The domain name of the hosting
+		domain?: string
+
+		// The organization ID the resource is associated to
 		organization_id?: string
 
 		// Hostname of the host platform
@@ -58,16 +89,48 @@ scaleway_webhosting: {
 		project_id?: string
 
 		// List of DNS records associated with the webhosting.
-		records?: [...close({
-			name?:     string
-			priority?: number
-			status?:   string
-			ttl?:      number
-			type?:     string
-			value?:    string
-		})]
+		records?: matchN(1, [close({
+			// Name of the DNS record
+			name?: string
 
-		// The region you want to attach the resource to
+			// Priority of DNS records associated with the webhosting.
+			priority?: number
+
+			// Status of the hosting record
+			status?: string
+
+			// Time to live in seconds of the record
+			ttl?: number
+
+			// Type of the DNS record
+			type?: string
+
+			// Value of the DNS record
+			value?: string
+		}), [...close({
+			// Name of the DNS record
+			name?: string
+
+			// Priority of DNS records associated with the webhosting.
+			priority?: number
+
+			// Status of the hosting record
+			status?: string
+
+			// Time to live in seconds of the record
+			ttl?: number
+
+			// Type of the DNS record
+			type?: string
+
+			// Value of the DNS record
+			value?: string
+		})]])
+
+		// Contact email of the client for the hosting
+		email?: string
+
+		// The region of the hosting
 		region?: string
 
 		// The hosting status
@@ -82,7 +145,7 @@ scaleway_webhosting: {
 		// Main hosting cPanel username
 		username?: string
 
-		// The ID of the Webhosting
+		// The ID of the webhosting
 		webhosting_id?: string
 	})
 }

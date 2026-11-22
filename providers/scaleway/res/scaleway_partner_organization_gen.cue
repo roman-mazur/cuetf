@@ -40,6 +40,9 @@ scaleway_partner_organization: {
 		// The phone number of the new organization owner.
 		phone_number?: string
 
+		// The Scaleway Resource Name (SRN) of the organization.
+		srn?: string
+
 		// The current status of the organization.
 		status?: string
 	})

@@ -10,5 +10,8 @@ scaleway_cockpit_grafana: {
 
 		// The project ID associated with the Grafana instance
 		project_id?: string
+
+		// The Scaleway Resource Name (SRN) of the Grafana instance
+		srn?: string
 	})
 }

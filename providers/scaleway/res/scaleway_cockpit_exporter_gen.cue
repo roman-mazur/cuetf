@@ -33,6 +33,9 @@ scaleway_cockpit_exporter: {
 		// The region you want to attach the resource to
 		region?: string
 
+		// The Scaleway Resource Name (SRN) of the data export
+		srn?: string
+
 		// Status of the data export
 		status?: string
 

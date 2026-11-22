@@ -7,6 +7,9 @@ scaleway_account_projects: {
 		// The date and time of the creation of the Project (Format ISO 8601)
 		created_at?: string
 
+		// If true, deleting the project also deletes all the resources it contains. Defaults to false.
+		delete_with_resources?: bool
+
 		// Description of the project
 		description?: string
 		id?:          string

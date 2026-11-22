@@ -26,6 +26,9 @@ scaleway_interlink_partner: {
 		// The region you want to attach the resource to
 		region?: string
 
+		// The Scaleway Resource Name (SRN) of the partner
+		srn?: string
+
 		// Last update date of the partner
 		updated_at?: string
 	})

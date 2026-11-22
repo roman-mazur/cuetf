@@ -31,5 +31,8 @@ scaleway_interlink_pop: {
 
 		// The region you want to attach the resource to
 		region?: string
+
+		// The Scaleway Resource Name (SRN) of the PoP
+		srn?: string
 	})
 }

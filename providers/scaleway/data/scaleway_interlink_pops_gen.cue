@@ -31,6 +31,7 @@ scaleway_interlink_pops: {
 			logo_url?:              string
 			name?:                  string
 			region?:                string
+			srn?:                   string
 		})]
 
 		// The region you want to attach the resource to
