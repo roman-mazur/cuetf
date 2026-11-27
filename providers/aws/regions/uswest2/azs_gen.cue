@@ -1,71 +1,60 @@
 package uswest2
 
-AvailabilityZones: [{
-	OptInStatus: "opt-in-not-required"
-	Messages: []
-	RegionName:         "us-west-2"
-	ZoneName:           "us-west-2a"
-	ZoneId:             "usw2-az1"
-	GroupName:          "us-west-2-zg-1"
-	NetworkBorderGroup: "us-west-2"
-	ZoneType:           "availability-zone"
-	GroupLongName:      "US West (Oregon) 1"
-	Geography: [{
-		Name: "United States of America"
-	}]
-	SubGeography: [{
-		Name: "Oregon"
-	}]
-	State: "available"
-}, {
-	OptInStatus: "opt-in-not-required"
-	Messages: []
-	RegionName:         "us-west-2"
-	ZoneName:           "us-west-2b"
-	ZoneId:             "usw2-az2"
-	GroupName:          "us-west-2-zg-1"
-	NetworkBorderGroup: "us-west-2"
-	ZoneType:           "availability-zone"
-	GroupLongName:      "US West (Oregon) 1"
-	Geography: [{
-		Name: "United States of America"
-	}]
-	SubGeography: [{
-		Name: "Oregon"
-	}]
-	State: "available"
-}, {
-	OptInStatus: "opt-in-not-required"
-	Messages: []
-	RegionName:         "us-west-2"
-	ZoneName:           "us-west-2c"
-	ZoneId:             "usw2-az3"
-	GroupName:          "us-west-2-zg-1"
-	NetworkBorderGroup: "us-west-2"
-	ZoneType:           "availability-zone"
-	GroupLongName:      "US West (Oregon) 1"
-	Geography: [{
-		Name: "United States of America"
-	}]
-	SubGeography: [{
-		Name: "Oregon"
-	}]
-	State: "available"
-}, {
-	OptInStatus: "opt-in-not-required"
-	Messages: []
-	RegionName:         "us-west-2"
-	ZoneName:           "us-west-2d"
-	ZoneId:             "usw2-az4"
-	GroupName:          "us-west-2-zg-1"
-	NetworkBorderGroup: "us-west-2"
-	ZoneType:           "availability-zone"
-	GroupLongName:      "US West (Oregon) 1"
-	Geography: [{
-		Name: "United States of America"
-	}]
-	SubGeography: [{
-		Name: "Oregon"
-	}]
-	State: "available"
-}]
+AvailabilityZones: [
+	{
+		OptInStatus:        "opt-in-not-required"
+		Messages:           []
+		RegionName:         "us-west-2"
+		ZoneName:           "us-west-2a"
+		ZoneId:             "usw2-az1"
+		GroupName:          "us-west-2-zg-1"
+		NetworkBorderGroup: "us-west-2"
+		ZoneType:           "availability-zone"
+		GroupLongName:      "US West (Oregon) 1"
+		Geography:          [{Name: "United States of America"}]
+		SubGeography:       [{Name: "Oregon"}]
+		State:              "available"
+	},
+	{
+		OptInStatus:        "opt-in-not-required"
+		Messages:           []
+		RegionName:         "us-west-2"
+		ZoneName:           "us-west-2b"
+		ZoneId:             "usw2-az2"
+		GroupName:          "us-west-2-zg-1"
+		NetworkBorderGroup: "us-west-2"
+		ZoneType:           "availability-zone"
+		GroupLongName:      "US West (Oregon) 1"
+		Geography:          [{Name: "United States of America"}]
+		SubGeography:       [{Name: "Oregon"}]
+		State:              "available"
+	},
+	{
+		OptInStatus:        "opt-in-not-required"
+		Messages:           []
+		RegionName:         "us-west-2"
+		ZoneName:           "us-west-2c"
+		ZoneId:             "usw2-az3"
+		GroupName:          "us-west-2-zg-1"
+		NetworkBorderGroup: "us-west-2"
+		ZoneType:           "availability-zone"
+		GroupLongName:      "US West (Oregon) 1"
+		Geography:          [{Name: "United States of America"}]
+		SubGeography:       [{Name: "Oregon"}]
+		State:              "available"
+	},
+	{
+		OptInStatus:        "opt-in-not-required"
+		Messages:           []
+		RegionName:         "us-west-2"
+		ZoneName:           "us-west-2d"
+		ZoneId:             "usw2-az4"
+		GroupName:          "us-west-2-zg-1"
+		NetworkBorderGroup: "us-west-2"
+		ZoneType:           "availability-zone"
+		GroupLongName:      "US West (Oregon) 1"
+		Geography:          [{Name: "United States of America"}]
+		SubGeography:       [{Name: "Oregon"}]
+		State:              "available"
+	}
+]
